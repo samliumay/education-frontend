@@ -1,8 +1,8 @@
 <!-- eslint-disable vue-scoped-css/enforce-style-type -->
 <template>
-  <div class="app p-5 flex flex-col">
+  <div class="appflex flex-col">
     <AppHeader />
-    <main class="flex-1">
+    <main class="flex-1 p-5">
       <!-- eslint-disable-next-line vue/no-undef-components -->
       <router-view />
     </main>

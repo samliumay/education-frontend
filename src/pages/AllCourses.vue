@@ -4,10 +4,13 @@
     <AppProductCard
       v-for="card in cards"
       :key="card.id"
+      :course="card"
     />
   </div>
 </template>
 <script setup lang="ts">
+import { ref } from 'vue'
+
 import AppProductCard from '@/components/AppProductCard.vue'
 import { Product } from '@/types'
 

@@ -47,6 +47,14 @@ module.exports = {
     '@intlify/vue-i18n/no-unknown-locale': 'error',
     '@intlify/vue-i18n/no-unused-keys': 'error',
     '@intlify/vue-i18n/prefer-sfc-lang-attr': 'error',
+    '@intlify/vue-i18n/no-raw-text': [
+      'error',
+      {
+        ignorePattern: '^[^a-zA-Z]+$', // non-letter chars
+        ignoreText: [''],
+      },
+    ],
+
     'vue-scoped-css/enforce-style-type': 'error',
     'vue-scoped-css/no-parsing-error': 'error',
     'vue-scoped-css/no-unused-keyframes': 'error',

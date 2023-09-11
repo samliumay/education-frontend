@@ -9,13 +9,13 @@
     "preview": "vite preview",
     "test": "vitest",
     "lint": "eslint .",
-    "lint:precommit": "eslint . --fix",
+    "lint:fix": "eslint . --fix",
     "format": "prettier . --write",
     "format:check": "prettier . --check"
   },
   "pre-commit": [
     "format",
-    "lint:precommit"
+    "lint:fix"
   ],
   "dependencies": {
     "naive-ui": "^2.34.4",

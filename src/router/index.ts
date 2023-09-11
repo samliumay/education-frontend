@@ -4,6 +4,7 @@ const routes: RouteRecordRaw[] = [
   { path: '/', component: () => import('@/pages/AllCourses.vue') },
   { path: '/course/:id', component: () => import('@/pages/CoursePage.vue') },
   { path: '/login', component: () => import('@/pages/LoginForm.vue') },
+  { path: '/terms', component: () => import('@/pages/TermsAndConditions.vue') },
 ]
 
 export const router = createRouter({

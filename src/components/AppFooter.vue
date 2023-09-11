@@ -1,5 +1,5 @@
 <template>
-  <footer class="flex justify-between items-center">
+  <footer class="flex justify-between items-center bg-slate-300 p-5">
     <!-- navigation -->
     <nav>
       <ul>

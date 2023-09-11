@@ -1,6 +1,5 @@
 <template>
-  <header class="flex justify-between items-center">
-    <!-- logo -->
+  <header class="p-5 flex justify-between items-center bg-slate-300">
     <div>
       <Logo />
     </div>
@@ -14,7 +13,6 @@
         </li>
       </ul>
     </nav>
-    <!-- Login -->
     <n-button>{{ $t('common.login') }}</n-button>
   </header>
 </template>
