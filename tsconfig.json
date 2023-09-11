@@ -34,7 +34,8 @@
     "src/**/*.vue",
     ".eslintrc*",
     "tailwind.config.js",
-    "postcss.config.js"
+    "postcss.config.js",
+    "vite.config.ts"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

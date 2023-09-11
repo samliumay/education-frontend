@@ -1,12 +1,19 @@
 <!-- eslint-disable vue-scoped-css/enforce-style-type -->
 <template>
-  <div class="app">
-    <!-- eslint-disable-next-line vue/no-undef-components -->
-    <router-view />
+  <div class="app p-5 flex flex-col">
+    <AppHeader />
+    <main class="flex-1">
+      <!-- eslint-disable-next-line vue/no-undef-components -->
+      <router-view />
+    </main>
+    <AppFooter />
   </div>
 </template>
 <script setup lang="ts">
 import { onMounted, onUnmounted } from 'vue'
+
+import AppFooter from './components/AppFooter.vue'
+import AppHeader from './components/AppHeader.vue'
 
 // set valid height in IOS
 const appHeight = () => {

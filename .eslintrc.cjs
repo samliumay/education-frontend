@@ -15,7 +15,8 @@ module.exports = {
   // https://eslint.vuejs.org/user-guide/#how-to-use-a-custom-parser
   parser: 'vue-eslint-parser',
   parserOptions: {
-    parser: { ts: '@typescript-eslint/parser', json: 'jsonc-eslint-parser' },
+    project: './tsconfig.json',
+    parser: '@typescript-eslint/parser',
     sourceType: 'module',
     ecmaVersion: 'latest',
     tsconfigRootDir: __dirname, // Needed for tsconfig to be applied to ts files within a dir
@@ -53,6 +54,7 @@ module.exports = {
     'vue-scoped-css/no-deprecated-v-enter-v-leave-class': 'error',
     'vue-scoped-css/require-selector-used-inside': 'error',
     // Off - block
+    'import/no-extraneous-dependencies': 'off',
     'import/prefer-default-export': 'off',
     'no-plusplus': 'off',
     'no-nested-ternary': 'off',
