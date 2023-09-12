@@ -74,9 +74,6 @@ apiClient.interceptors.response.use(
   },
   error => {
     console.error(error)
-    if (error.response.config.url.startsWith('/risks/my_global_role')) {
-      return Promise.reject(error)
-    }
     // to let others parts of the code to catch the same error
     // and to omit the fail to the `then` block
     return Promise.reject(error)

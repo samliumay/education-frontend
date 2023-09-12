@@ -36,11 +36,11 @@ export type FullUser = {
   last_name: string
   phone_number: string
   company_name: string
+  city: number
   country: number
+  state: string
   street: string
   post_code: string
-  city: number
-  state: string
 }
 
 export type LoginUser = {
