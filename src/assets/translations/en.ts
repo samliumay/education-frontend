@@ -1,9 +1,25 @@
 export const en = {
   common: {
-    login: 'Login',
+    email: 'email',
     password: 'Password',
-    ok: 'Ok',
+    passwordRepeat: 'Confirm Password',
+    submit: 'Submit',
     randomText: 'some random text',
+    registration: 'Registration',
+    loginForm: 'Login',
+    phone: 'Phone number',
+    login: 'Login',
+    notFound: 'The given page does not exist',
+    goToMain: 'Go to the main page',
+    catalog: 'Catalog',
+  },
+  slots: {
+    weekday: 'Weekday',
+    start: 'Start',
+    end: 'End',
+    space: 'Space',
+    instructor: 'Instructor',
+    slots: 'Slots',
   },
   links: {
     terms: 'Terms and conditions',

@@ -1,8 +1,8 @@
 <template>
-  <header class="p-5 flex justify-between items-center bg-slate-300">
-    <div>
+  <header class="px-5 py-3 flex justify-between items-center bg-slate-300">
+    <router-link to="/">
       <Logo />
-    </div>
+    </router-link>
     <nav>
       <ul class="flex gap-2">
         <li
@@ -13,7 +13,9 @@
         </li>
       </ul>
     </nav>
-    <n-button>{{ $t('common.login') }}</n-button>
+    <n-button>
+      <router-link to="/login">{{ $t('common.login') }}</router-link>
+    </n-button>
   </header>
 </template>
 <script setup lang="ts">
@@ -22,9 +24,9 @@ import { NButton } from 'naive-ui'
 import Logo from '@/assets/icons/logo.svg'
 
 const navigationLinks = [
-  { name: 'courses', link: '/' },
-  { name: 'workshops', link: '/' },
-  { name: 'summer school', link: '/' },
+  // { name: 'courses', link: '/' },
+  // { name: 'workshops', link: '/' },
+  // { name: 'summer school', link: '/' },
   { name: 'menu', link: '/' },
 ]
 </script>

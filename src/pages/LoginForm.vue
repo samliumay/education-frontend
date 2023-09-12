@@ -1,36 +1,48 @@
 <template>
-  <form @submit.prevent="submit">
-    <AppTextInput
-      v-model:value="login"
-      :label="$t('common.login')"
-    />
-    <AppTextInput
-      v-model:value="password"
-      :label="$t('common.password')"
-      is-password
-    />
-    <button type="submit">{{ $t('common.ok') }}</button>
-    <div v-if="value">
-      {{ value }}
+  <n-form>
+    <div class="max-w-sm m-auto">
+      <n-h1>{{ $t('common.loginForm') }}</n-h1>
+      <n-alert v-show="error">{{ error }}</n-alert>
+      <n-form-item
+        required
+        :label="$t('common.email')"
+      >
+        <n-input v-model:value="login" />
+      </n-form-item>
+      <n-form-item
+        required
+        :label="$t('common.password')"
+      >
+        <n-input
+          v-model:value="password"
+          type="password"
+          is-password
+        />
+      </n-form-item>
+      <n-button @click="submit">{{ $t('common.submit') }}</n-button>
     </div>
-  </form>
+  </n-form>
 </template>
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { NAlert, NButton, NForm, NFormItem, NH1, NInput } from 'naive-ui'
+import { ref } from 'vue'
 
-import AppTextInput from '@/components/AppTextInput.vue'
+import { HTTP } from '@/assets/api'
+import { useUserStore } from '@/store/user'
 
 const login = ref('')
 const password = ref('')
-const value = ref('')
 
-const calc = computed<string>(() => {
-  if (login.value) return `${!!login.value && !!password.value}`
-  return `82167${password.value}`
-})
+const error = ref('')
 
-const submit = () => {
-  const arr = ['a', 'b', 'c'].map(_v => `${_v}g`)[0]
-  value.value = calc.value ? calc.value : arr
+const userStore = useUserStore()
+const submit = async () => {
+  const user = await HTTP.post('/api/v1/users/login/', {
+    email: login,
+    password,
+  }).catch(errors => {
+    error.value = errors
+  })
+  userStore.setUser(user)
 }
 </script>

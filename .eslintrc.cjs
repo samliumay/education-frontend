@@ -48,7 +48,7 @@ module.exports = {
     '@intlify/vue-i18n/no-unused-keys': 'error',
     '@intlify/vue-i18n/prefer-sfc-lang-attr': 'error',
     '@intlify/vue-i18n/no-raw-text': [
-      'error',
+      'warn',
       {
         ignorePattern: '^[^a-zA-Z]+$', // non-letter chars
         ignoreText: [''],
@@ -62,6 +62,8 @@ module.exports = {
     'vue-scoped-css/no-deprecated-v-enter-v-leave-class': 'error',
     'vue-scoped-css/require-selector-used-inside': 'error',
     // Off - block
+    'import/order': 'off',
+    'import/extensions': 'off',
     'import/no-extraneous-dependencies': 'off',
     'import/prefer-default-export': 'off',
     'no-plusplus': 'off',
@@ -164,7 +166,7 @@ module.exports = {
     'camelcase': [
       'warn',
       {
-        properties: 'always',
+        properties: 'never',
         ignoreDestructuring: true,
         ignoreImports: true,
         ignoreGlobals: true,
@@ -198,10 +200,10 @@ module.exports = {
     'no-magic-numbers': [
       'error',
       {
-        ignore: [0, 1, 10],
+        ignore: [0, 1, 10, 1000],
         ignoreDefaultValues: true,
         enforceConst: false,
-        detectObjects: true,
+        detectObjects: false,
       },
     ],
     'no-new-func': 'error',
