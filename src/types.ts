@@ -30,20 +30,32 @@ export type Country = {
 }
 
 export type FullUser = {
-  id: number
+  id?: number
   email: string
   first_name: string
   last_name: string
   phone_number: string
   company_name: string
-  city: number
-  country: number
+  city?: number
+  country?: number
   state: string
   street: string
   post_code: string
+  token: string
 }
 
 export type LoginUser = {
   email: string
   password: string
+}
+
+export type Offer = {
+  meeting_card?: {
+    number_of_meetings: number
+    price: string
+  }
+  subscription?: {
+    number_of_meetings_per_week: number
+    price: string
+  }
 }

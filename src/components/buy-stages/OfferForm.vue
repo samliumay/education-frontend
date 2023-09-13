@@ -4,14 +4,7 @@
     :rules="rules"
   >
     <n-h2>User part</n-h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-      <n-form-item
-        path="email"
-        label="email"
-        required
-      >
-        <n-input v-model:value="currentValue.email" />
-      </n-form-item>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
       <n-form-item
         path="phone_number"
         label="Phone number"
@@ -89,21 +82,52 @@
       </n-form-item>
     </div>
 
-    <n-h2>Payment stratagy</n-h2>
-    <div>
-      <div>First stratagy</div>
-      <div>Second stratagy</div>
+    <n-h2>Payment strategy</n-h2>
+    <div class="flex gap-3 justify-between">
+      <section v-if="!!offer?.meeting_card">
+        <n-h3>Meeting card</n-h3>
+        <dl>
+          <div>
+            <dt>Number of meetings</dt>
+            <dd>{{ offer.meeting_card.number_of_meetings }}</dd>
+          </div>
+
+          <div>
+            <dt>Price</dt>
+            <dd>{{ offer.meeting_card.price }}</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section v-if="!!offer?.subscription">
+        <n-h3>Subscription</n-h3>
+        <dl>
+          <div>
+            <dt>Number of meetings per week</dt>
+            <dd>{{ offer?.subscription?.number_of_meetings_per_week }}</dd>
+          </div>
+
+          <div>
+            <dt>Price</dt>
+            <dd>{{ offer?.subscription?.price }}</dd>
+          </div>
+        </dl>
+      </section>
     </div>
     <n-button @click="submit">Submit</n-button>
   </n-form>
 </template>
 <script setup lang="ts">
 import {
+  FormInst,
+  FormItemRule,
   FormRules,
+  FormValidationError,
   NButton,
   NForm,
   NFormItem,
   NH2,
+  NH3,
   NInput,
   NSelect,
 } from 'naive-ui'
@@ -111,11 +135,14 @@ import { ref } from 'vue'
 
 import { useListsStore } from '@/store/lists'
 import { useUserStore } from '@/store/user'
+import { FullUser, Offer } from '@/types'
+
+defineProps<{ offer?: Offer }>()
 
 const emit = defineEmits<Emits>()
 
 interface Emits {
-  (e: 'send', slots: number[]): void
+  (e: 'send', value: FullUser): void
 }
 
 const listsStorage = useListsStore()
@@ -156,6 +183,6 @@ const submit = () => {
     return
   }
 
-  emit('send', currentValue)
+  emit('send', currentValue.value)
 }
 </script>

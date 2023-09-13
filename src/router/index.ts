@@ -1,11 +1,13 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
+import BuyForm from '@/pages/BuyForm.vue'
+
 const routes: RouteRecordRaw[] = [
   { path: '/', component: () => import('@/pages/AllCourses.vue') },
   { path: '/course/:id', component: () => import('@/pages/CoursePage.vue') },
   {
     path: '/buy/:id',
-    component: () => import('@/pages/BuyForm.vue'),
+    component: () => BuyForm,
   },
   { path: '/login', component: () => import('@/pages/LoginForm.vue') },
   {

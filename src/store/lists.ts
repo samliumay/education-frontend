@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
-// import { HTTP } from '@/api/index'
+import { HTTP } from '@/api/index'
 import { City, Country, Product } from '@/types'
 
 export const useListsStore = defineStore('user', () => {
@@ -10,13 +10,13 @@ export const useListsStore = defineStore('user', () => {
   const products = ref<Product[]>([])
 
   const populateLists = async () => {
-    // Promise.all([
-    //   // (products.value = await HTTP.get('/api/v1/products/')),
-    //   // (cities.value = await HTTP.get('/api/v1/users/cities/')),
-    //   // (countries.value = await HTTP.get('/api/v1/users/countries/')),
-    // ])
+    Promise.all([
+      (products.value = await HTTP.get('/api/v1/products/')),
+      (cities.value = await HTTP.get('/api/v1/users/cities/')),
+      (countries.value = await HTTP.get('/api/v1/users/countries/')),
+    ])
 
-    products.value = await [
+    products.value = [
       {
         id: 12,
         type: 'a',

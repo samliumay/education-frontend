@@ -1,11 +1,11 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { Ref, ref } from 'vue'
 
 import { HTTP } from '@/api/index'
 import { FullUser } from '@/types'
 
 export const useUserStore = defineStore('user', () => {
-  const user = ref<FullUser>({
+  const user: Ref<FullUser> = ref({
     id: undefined,
     email: '',
     first_name: 'string',
@@ -17,6 +17,7 @@ export const useUserStore = defineStore('user', () => {
     state: '',
     street: '',
     post_code: '',
+    token: '',
   })
   const setUser = (newValue: FullUser) => {
     user.value = newValue

@@ -59,7 +59,8 @@ import {
 } from 'naive-ui'
 import { ref } from 'vue'
 
-import { HTTP, setToken } from '@/assets/api'
+import { HTTP, setToken } from '@/api'
+import { FullUser } from '@/types'
 
 const login = ref('')
 const password1 = ref('')
@@ -107,13 +108,13 @@ const submit = async () => {
     return
   }
 
-  const newUser = await HTTP.post('/api/v1/users/registration/', {
+  const newUser = await HTTP.post<FullUser>('/api/v1/users/registration/', {
     email: login.value,
     password1: password1.value,
     password2: password2.value,
     phone_number: phone.value,
   })
 
-  setToken(newUser, newUser.token)
+  setToken(newUser.token)
 }
 </script>
