@@ -11,9 +11,9 @@ import { computed, ref } from 'vue'
 
 import { HTTP } from '@/api'
 import { useUserStore } from '@/store/user'
+import { FullUser } from '@/types'
 
 import LoginFormFields from '../LoginFormFields.vue'
-import { FullUser } from '@/types'
 
 const emit = defineEmits<Emits>()
 
