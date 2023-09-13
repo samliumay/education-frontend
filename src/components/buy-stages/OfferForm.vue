@@ -3,8 +3,25 @@
     ref="offerForm"
     :rules="rules"
   >
-    <n-h2>User part</n-h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+      <n-form-item
+        required
+        path="email"
+        :label="$t('common.email')"
+      >
+        <n-input v-model:value="currentValue.email" />
+      </n-form-item>
+      <n-form-item
+        required
+        path="password"
+        :label="$t('common.password')"
+      >
+        <n-input
+          v-model:value="currentValue.password"
+          type="password"
+          is-password
+        />
+      </n-form-item>
       <n-form-item
         path="phone_number"
         label="Phone number"
@@ -12,13 +29,14 @@
       >
         <n-input v-model:value="currentValue.phone_number" />
       </n-form-item>
+      <div />
 
       <n-form-item
         path="first_name"
         label="First Name"
         required
       >
-        <n-input v-model:value="currentValue.first_name" />
+        <n-input v-model:value="currentValue.child_first_name" />
       </n-form-item>
 
       <n-form-item
@@ -26,7 +44,7 @@
         label="Last Name"
         required
       >
-        <n-input v-model:value="currentValue.last_name" />
+        <n-input v-model:value="currentValue.child_last_name" />
       </n-form-item>
 
       <n-form-item
@@ -82,52 +100,17 @@
       </n-form-item>
     </div>
 
-    <n-h2>Payment strategy</n-h2>
-    <div class="flex gap-3 justify-between">
-      <section v-if="!!offer?.meeting_card">
-        <n-h3>Meeting card</n-h3>
-        <dl>
-          <div>
-            <dt>Number of meetings</dt>
-            <dd>{{ offer.meeting_card.number_of_meetings }}</dd>
-          </div>
-
-          <div>
-            <dt>Price</dt>
-            <dd>{{ offer.meeting_card.price }}</dd>
-          </div>
-        </dl>
-      </section>
-
-      <section v-if="!!offer?.subscription">
-        <n-h3>Subscription</n-h3>
-        <dl>
-          <div>
-            <dt>Number of meetings per week</dt>
-            <dd>{{ offer?.subscription?.number_of_meetings_per_week }}</dd>
-          </div>
-
-          <div>
-            <dt>Price</dt>
-            <dd>{{ offer?.subscription?.price }}</dd>
-          </div>
-        </dl>
-      </section>
-    </div>
     <n-button @click="submit">Submit</n-button>
   </n-form>
 </template>
 <script setup lang="ts">
 import {
   FormInst,
-  FormItemRule,
   FormRules,
   FormValidationError,
   NButton,
   NForm,
   NFormItem,
-  NH2,
-  NH3,
   NInput,
   NSelect,
 } from 'naive-ui'
@@ -135,20 +118,19 @@ import { ref } from 'vue'
 
 import { useListsStore } from '@/store/lists'
 import { useUserStore } from '@/store/user'
-import { FullUser, Offer } from '@/types'
-
-defineProps<{ offer?: Offer }>()
+import { FullUser } from '@/types'
 
 const emit = defineEmits<Emits>()
 
 interface Emits {
   (e: 'send', value: FullUser): void
+  (e: 'error', value: boolean): void
 }
 
 const listsStorage = useListsStore()
 const userStorage = useUserStore()
 
-const currentValue = ref({ ...userStorage.user })
+const currentValue = ref<FullUser>({ ...userStorage.user })
 const { countries, cities } = listsStorage
 
 const offerForm = ref<FormInst | undefined>()
@@ -156,26 +138,49 @@ const offerForm = ref<FormInst | undefined>()
 const emailRegex = /^\S+@\S+\.\S+$/
 const phoneNumberRegex = /^\+?1?\d{9,15}$/
 
+const requiredFields = [
+  'child_first_name',
+  'child_last_name',
+  'company_name',
+  'city',
+  'country',
+  'state',
+  'street',
+  'post_code',
+]
 const rules: FormRules = {
   email: {
     required: true,
-    validator: (_: FormItemRule, value: string) => emailRegex.test(value),
+    validator: () => emailRegex.test(currentValue.value.email),
     message: 'Invalid email',
     trigger: ['input', 'blur'],
   },
-  phone: {
-    validator: (_, value: string) => phoneNumberRegex.test(value),
+  phone_number: {
+    validator: () => phoneNumberRegex.test(currentValue.value.phone_number),
     message: 'Invalid phone number format',
     trigger: ['input', 'blur'],
   },
+  ...requiredFields.reduce(
+    (acc: FormRules, field: string) => ({
+      ...acc,
+      [field]: {
+        required: true,
+        message: 'This field is required',
+        trigger: ['input', 'blur'],
+      },
+    }),
+    {} as FormRules,
+  ),
 }
 
 const submit = () => {
   let isValid = true
+  emit('error', false)
   offerForm.value?.validate(
     (errors: Array<FormValidationError> | undefined) => {
       if (errors) {
         isValid = false
+        emit('error', true)
       }
     },
   )

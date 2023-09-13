@@ -8,9 +8,10 @@ export const useUserStore = defineStore('user', () => {
   const user: Ref<FullUser> = ref({
     id: undefined,
     email: '',
-    first_name: 'string',
-    last_name: '',
-    phone_number: '',
+    password: '',
+    child_first_name: 'string',
+    child_last_name: '',
+    phone_number: '+',
     company_name: '',
     city: undefined,
     country: undefined,

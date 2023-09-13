@@ -32,8 +32,8 @@ export type Country = {
 export type FullUser = {
   id?: number
   email: string
-  first_name: string
-  last_name: string
+  child_first_name: string
+  child_last_name: string
   phone_number: string
   company_name: string
   city?: number
@@ -42,6 +42,15 @@ export type FullUser = {
   street: string
   post_code: string
   token: string
+  password?: string
+}
+
+export type Tariff = 'subscription' | 'meeting_card'
+
+export interface OfferUser extends FullUser {
+  selected_schedule_slots: number[]
+  product: number
+  order_type?: Tariff
 }
 
 export type LoginUser = {

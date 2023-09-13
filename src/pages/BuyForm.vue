@@ -10,12 +10,16 @@
         description="Courses have different time slots. You have to select the comfortable one"
       />
       <n-step
+        title="Select tariff"
+        description="Decide if you will pay for subscriptions or for specific number of classes"
+      />
+      <!-- <n-step
         title="Login/Register"
         description="The stage is skipped for those, who already logged in. Login, if you already have an account, select the password and login otherwise"
-      />
+      /> -->
       <n-step
-        title="Fill user info and select tariff"
-        description="Fill the info about yourself. You should also decide if you will pay for subscriptions or for specific number of classes"
+        title="User info"
+        description="Fill the info about your child"
       />
       <n-step title="Pay" />
     </n-steps>
@@ -26,14 +30,24 @@
         :min-selected="course.min_number_of_meeting_per_week"
         @send="makeOffer"
       />
-      <BuyLoginForm
-        v-else-if="currentStage === 2"
+      <ProductTypeForm
+        v-else-if="currentStage === 2 && offer"
+        :offer="offer"
+        @send="
+          tariff => {
+            tariff = tariff
+            currentStage++
+          }
+        "
+      />
+      <!-- <BuyLoginForm
+        v-else-if="currentStage === 3"
         @error="setErrorStatus"
         @next-stage="currentStage++"
-      />
+      /> -->
       <OfferForm
         v-else-if="currentStage === 3"
-        :offer="offer"
+        @error="setErrorStatus"
         @send="getPaymentLink"
       />
       <!-- :offer="offer"
@@ -47,15 +61,13 @@ import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 import { HTTP } from '@/api/index'
-import BuyLoginForm from '@/components/buy-stages/BuyLoginForm.vue'
 import OfferForm from '@/components/buy-stages/OfferForm.vue'
+import ProductTypeForm from '@/components/buy-stages/ProductTypeForm.vue'
 import SlotsForm from '@/components/buy-stages/SlotsForm.vue'
 import { useListsStore } from '@/store/lists'
-import { useUserStore } from '@/store/user'
-import { FullUser, Offer } from '@/types'
+import { FullUser, Offer, OfferUser, Tariff } from '@/types'
 
 const listsStore = useListsStore()
-const userStore = useUserStore()
 
 const route = useRoute()
 const courseId = computed(() => Number(route?.params?.id))
@@ -68,40 +80,39 @@ const setErrorStatus = () => {
   currentStatus.value = 'error'
 }
 
+const slots = ref<number[]>([])
 const offer = ref<Offer | undefined>()
+const tariff = ref<Tariff | undefined>()
 
 const makeOffer = async (data: number[]) => {
+  slots.value = data
   currentStage.value++
   offer.value = await HTTP.post<Offer>(
     `/api/v1/products/${courseId.value}/check-offers/`,
     {
-      slots: data,
-    },
-  ).catch()
-  offer.value = {
-    meeting_card: {
-      number_of_meetings: 100,
-      price: '500',
-    },
-    subscription: {
-      number_of_meetings_per_week: 2,
-      price: '200',
-    },
-  }
-  // skip login stage if user is already logged in
-  if (userStore?.user?.id) currentStage.value++
-}
-
-const getPaymentLink = async (data: FullUser) => {
-  currentStage.value++
-  const { link } = await HTTP.post<{ link: string }>(
-    `/api/v1/products/${courseId.value}/check-offers/`,
-    {
-      slots: data,
+      selected_schedule_slots: data,
     },
   )
-  if (link) {
-    window.location.replace(link)
+  // skip login stage if user is already logged in
+  //   if (userStore?.user?.id) currentStage.value++
+}
+
+const getPaymentLink = async (userData: FullUser) => {
+  currentStage.value++
+  const payload: OfferUser = {
+    ...userData,
+    selected_schedule_slots: slots.value,
+    product: courseId.value,
+    order_type: tariff.value,
+  }
+
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  const { payment_link } = await HTTP.post<{ payment_link: string }>(
+    `/api/v1/products/${courseId.value}/check-offers/`,
+    payload,
+  )
+  if (payment_link) {
+    window.location.replace(payment_link)
   }
 }
 
