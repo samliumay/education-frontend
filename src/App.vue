@@ -26,7 +26,6 @@ const listsStore = useListsStore()
 const appHeight = () => {
   const doc = document.documentElement
   doc.style.setProperty('--app-height', `${window.innerHeight}px`)
-  console.error('Ho')
 }
 
 onMounted(async () => {

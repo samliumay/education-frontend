@@ -9,7 +9,7 @@
       You should select minimum {{ minSelected }} slots
     </n-p>
     <div
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 grid-flow-col gap-4 mb-2"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4 mb-2"
     >
       <label
         v-for="timeSlot in slots"

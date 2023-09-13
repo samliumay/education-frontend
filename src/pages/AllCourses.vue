@@ -6,7 +6,7 @@
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4"
     >
       <AppProductCard
-        v-for="card in products"
+        v-for="card in listsStore.products"
         :key="card.id"
         :course="card"
       />
@@ -18,5 +18,4 @@ import AppProductCard from '@/components/AppProductCard.vue'
 import { useListsStore } from '@/store/lists'
 
 const listsStore = useListsStore()
-const { products } = listsStore
 </script>
