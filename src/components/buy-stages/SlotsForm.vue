@@ -29,6 +29,7 @@
     </div>
     <n-button
       :disabled="isAlert"
+      keyboard
       @click="checkSlots"
     >
       {{ $t('common.submit') }}

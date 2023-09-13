@@ -2,6 +2,7 @@
   <n-form
     ref="offerForm"
     :rules="rules"
+    :model="currentValue"
   >
     <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
       <n-form-item
@@ -32,7 +33,7 @@
       <div />
 
       <n-form-item
-        path="first_name"
+        path="child_first_name"
         label="First Name"
         required
       >
@@ -40,7 +41,7 @@
       </n-form-item>
 
       <n-form-item
-        path="last_name"
+        path="child_last_name"
         label="Last Name"
         required
       >
@@ -54,7 +55,12 @@
       >
         <n-select
           v-model:value="currentValue.country"
-          :options="countries"
+          :options="
+            countries.map(country => ({
+              label: country.name,
+              value: country.id,
+            }))
+          "
         />
       </n-form-item>
 
@@ -65,7 +71,12 @@
       >
         <n-select
           v-model:value="currentValue.city"
-          :options="cities"
+          :options="
+            cities.map(city => ({
+              label: city.name,
+              value: city.id,
+            }))
+          "
         />
       </n-form-item>
 
@@ -157,7 +168,7 @@ const rules: FormRules = {
   },
   phone_number: {
     validator: () => phoneNumberRegex.test(currentValue.value.phone_number),
-    message: 'Invalid phone number format',
+    message: 'Invalid phone number format. It should start with +',
     trigger: ['input', 'blur'],
   },
   ...requiredFields.reduce(
@@ -166,17 +177,16 @@ const rules: FormRules = {
       [field]: {
         required: true,
         message: 'This field is required',
-        trigger: ['input', 'blur'],
       },
     }),
     {} as FormRules,
   ),
 }
 
-const submit = () => {
+const submit = async () => {
   let isValid = true
   emit('error', false)
-  offerForm.value?.validate(
+  await offerForm.value?.validate(
     (errors: Array<FormValidationError> | undefined) => {
       if (errors) {
         isValid = false

@@ -60,6 +60,7 @@
   </div>
   <n-button
     :disabled="!tariff"
+    keyboard
     @click="$emit('send', tariff)"
   >
     {{ $t('common.submit') }}

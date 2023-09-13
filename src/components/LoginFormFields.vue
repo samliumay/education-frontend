@@ -21,7 +21,12 @@
         is-password
       />
     </n-form-item>
-    <n-button @click="validate">{{ $t('common.submit') }}</n-button>
+    <n-button
+      keyboard
+      @click="validate"
+    >
+      {{ $t('common.submit') }}
+    </n-button>
   </n-form>
 </template>
 <script setup lang="ts">
