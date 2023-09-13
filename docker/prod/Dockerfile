@@ -23,7 +23,7 @@ FROM nginx:1.23.3-alpine
 WORKDIR /usr/src
 
 RUN rm -rf /etc/nginx/conf.d
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY docker/prod/nginx.conf /etc/nginx/nginx.conf
 COPY public/* /usr/src/public/
 
 # Copy build dist files to NGINX image
