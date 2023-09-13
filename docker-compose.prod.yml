@@ -9,6 +9,8 @@ services:
     build:
       context: .
       dockerfile: ./docker/prod/Dockerfile
+      args:
+        VITE_API_URL: https://api.clavis.the-o.co
     image: $CI_REGISTRY_IMAGE/frontend:$CI_COMMIT_SHA
     restart: unless-stopped
     expose:
@@ -16,7 +18,5 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.frontend-prod.rule=Host(`clavis.the-o.co`)
-    environment:
-      - VITE_API_URL="https://api.clavis.the-o.co"
     networks:
       - traefik
