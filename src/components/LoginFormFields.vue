@@ -27,12 +27,6 @@
         is-password
       />
     </n-form-item>
-    <n-button
-      keyboard
-      @click="validate"
-    >
-      {{ $t('common.submit') }}
-    </n-button>
   </n-form>
 </template>
 <script setup lang="ts">
@@ -41,7 +35,6 @@ import {
   FormRules,
   FormValidationError,
   NAlert,
-  NButton,
   NForm,
   NFormItem,
   NInput,
@@ -90,4 +83,8 @@ const validate = async () => {
     .login(login.value, password.value)
     .then(() => emit('submited'))
 }
+
+defineExpose({
+  validate,
+})
 </script>

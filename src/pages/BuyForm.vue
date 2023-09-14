@@ -27,13 +27,8 @@
         :offer="offer"
         @send="setTariff"
       />
-      <BuyLoginForm
-        v-else-if="currentStage === 3"
-        @error="setErrorStatus"
-        @next-stage="currentStage++"
-      />
       <OfferForm
-        v-else-if="currentStage === 4"
+        v-else-if="currentStage === 3"
         @error="setErrorStatus"
         @send="getPaymentLink"
       />
@@ -48,16 +43,13 @@ import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 import { HTTP } from '@/api/index'
-import BuyLoginForm from '@/components/buy-stages/BuyLoginForm.vue'
 import OfferForm from '@/components/buy-stages/OfferForm.vue'
 import ProductTypeForm from '@/components/buy-stages/ProductTypeForm.vue'
 import SlotsForm from '@/components/buy-stages/SlotsForm.vue'
 import { useListsStore } from '@/store/lists'
-import { useUserStore } from '@/store/user'
 import { FullUser, Offer, OfferUser, Tariff } from '@/types'
 
 const listsStore = useListsStore()
-const userStore = useUserStore()
 
 const route = useRoute()
 const courseId = computed(() => Number(route?.params?.id))
@@ -78,13 +70,8 @@ const steps = [
       'Decide if you will pay for subscriptions or for specific number of classes',
   },
   {
-    title: 'Login/Register',
-    description:
-      'The stage is skipped for those, who already logged in. Login, if you already have an account, select the password and login otherwise',
-  },
-  {
     title: 'User info',
-    description: 'Fill the info about your child',
+    description: 'Login/Register and fill the info about your child',
   },
 ]
 
@@ -116,8 +103,6 @@ const makeOffer = async (data: number[]) => {
 const setTariff = (newTariff: Tariff) => {
   tariff.value = newTariff
   currentStage.value++
-  // skip login stage if user is already logged in
-  if (userStore.isLoggedIn) currentStage.value++
 }
 
 const getPaymentLink = async (userData: FullUser) => {

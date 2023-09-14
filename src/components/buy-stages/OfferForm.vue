@@ -4,6 +4,33 @@
     :rules="rules"
     :model="currentValue"
   >
+    <template v-if="isLoginForm">
+      <div>
+        <n-h2 class="mb-1">{{ $t('common.loginForm') }}</n-h2>
+        <n-a
+          class="underline mb-2"
+          @click="isLoginForm = !isLoginForm"
+        >
+          {{ $t('common.registrationForm') }}
+        </n-a>
+      </div>
+      <LoginFormFields ref="loginForm" />
+    </template>
+    <template v-else>
+      <div>
+        <n-h2 class="mb-1">{{ $t('common.registrationForm') }}</n-h2>
+        <n-a
+          class="underline mb-2"
+          @click="isLoginForm = !isLoginForm"
+        >
+          {{ $t('common.loginForm') }}
+        </n-a>
+      </div>
+      <RegistrationFormFields ref="registrationForm" />
+    </template>
+
+    <n-h2>Payment details</n-h2>
+
     <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
       <!-- <n-form-item
         path="phone_number"
@@ -100,9 +127,11 @@ import {
   FormInst,
   FormRules,
   FormValidationError,
+  NA,
   NButton,
   NForm,
   NFormItem,
+  NH2,
   NInput,
   NSelect,
 } from 'naive-ui'
@@ -114,12 +143,17 @@ import { useListsStore } from '@/store/lists'
 import { useUserStore } from '@/store/user'
 import { FullUser } from '@/types'
 
+import LoginFormFields from '../LoginFormFields.vue'
+import RegistrationFormFields from '../RegistrationFormFields.vue'
+
 const emit = defineEmits<Emits>()
 
 interface Emits {
   (e: 'send', value: FullUser): void
   (e: 'error', value: boolean): void
 }
+
+const isLoginForm = ref<boolean>(true)
 
 const listsStorage = useListsStore()
 const userStorage = useUserStore()
@@ -130,7 +164,7 @@ const { countries, cities } = listsStorage
 const offerForm = ref<FormInst | undefined>()
 
 const { t } = useI18n()
-const requiredFields = [
+const requiredFields: Array<keyof FullUser> = [
   'child_first_name',
   'child_last_name',
   'company_name',
@@ -158,7 +192,16 @@ const rules: FormRules = {
   ),
 }
 
+const registrationForm = ref<typeof RegistrationFormFields | undefined>()
+const loginForm = ref<typeof LoginFormFields | undefined>()
+
+const submitFirstForm = async () => {
+  if (isLoginForm.value) await loginForm.value?.validate()
+  else await registrationForm.value?.validate()
+}
+
 const submit = async () => {
+  await submitFirstForm()
   let isValid = true
   emit('error', false)
   await offerForm.value?.validate(
@@ -173,6 +216,16 @@ const submit = async () => {
     return
   }
 
-  emit('send', currentValue.value)
+  userStorage.setUser({
+    ...userStorage.user,
+    ...requiredFields.reduce(
+      (acc, field) => ({
+        ...acc,
+        [field]: currentValue.value[field],
+      }),
+      {} as FullUser,
+    ),
+  })
+  emit('send', userStorage.user)
 }
 </script>
