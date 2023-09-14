@@ -1,45 +1,61 @@
 <template>
-  <footer class="flex justify-between items-center bg-slate-300 px-5 py-3">
-    <!-- navigation -->
-    <nav>
-      <ul>
-        <li>
-          <router-link to="/terms">{{ $t('links.terms') }}</router-link>
+  <footer class="bg-[#E7E7D9] py-6">
+    <div class="items-center mx-auto container px-5 md:px-0 py-3 flex justify-between">
+      <!-- navigation -->
+      <nav>
+        <ul class="space-y-2 font-bold">
+          <li>
+            <router-link to="/kontaktieren-sie-uns">Kontaktieren Sie uns</router-link>
+          </li>
+          <li>
+            <a href="https://clavis-schule.de/wp-content/uploads/2023/08/230830_Stundenplan_druck-1.pdf" target="_blank">
+              Stundenplan
+            </a>
+          </li>
+          <li>
+            <router-link to="/agb">AGB</router-link>
+          </li>
+          <li>
+            <router-link to="/datenschutz">Datenschutz</router-link>
+          </li>
+          <li>
+            <router-link to="/impressum">Impressum</router-link>
+          </li>
+        </ul>
+      </nav>
+      <!-- social networks -->
+      <ul class="flex gap-2">
+        <li
+          v-for="social in socialMediaLinks"
+          :key="social.key"
+        >
+          <a
+            :href="social.link"
+            class="flex rounded-full border-current border-2 p-1.5"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <NIcon
+              size="20"
+              :title="social.key"
+            >
+              <component :is="social.icon" />
+            </NIcon>
+            <p class="hidden">{{ social.key }}</p>
+          </a>
         </li>
       </ul>
-    </nav>
-    <!-- social networks -->
-    <ul class="flex gap-2">
-      <li
-        v-for="social in socialMediaLinks"
-        :key="social.key"
-      >
-        <a
-          :href="social.link"
-          class="flex rounded-full border-current border-2 p-1.5"
-          rel="noopener noreferrer"
-          target="_blank"
+      <div>
+        <label for="language">{{ $t('common.chooseLanguage') }}</label>
+        <select
+          id="language"
+          v-model="$i18n.locale"
+          class="ml-2 bg-transparent border-none"
         >
-          <NIcon
-            size="20"
-            :title="social.key"
-          >
-            <component :is="social.icon" />
-          </NIcon>
-          <p class="hidden">{{ social.key }}</p>
-        </a>
-      </li>
-    </ul>
-    <div>
-      <label for="language">{{ $t('common.chooseLanguage') }}</label>
-      <select
-        id="language"
-        v-model="$i18n.locale"
-        class="ml-2 bg-transparent border-none"
-      >
-        <option value="de">de</option>
-        <option value="en">en</option>
-      </select>
+          <option value="de">de</option>
+          <option value="en">en</option>
+        </select>
+      </div>
     </div>
   </footer>
 </template>
