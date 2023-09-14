@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h1 class="hidden">{{ $t('links.all') }}</h1>
+    <n-h1>{{ $t('links.all') }}</n-h1>
 
     <div
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4"
+      class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"
     >
       <AppProductCard
         v-for="card in listsStore.products"
@@ -14,6 +14,8 @@
   </div>
 </template>
 <script setup lang="ts">
+import { NH1 } from 'naive-ui'
+
 import AppProductCard from '@/components/AppProductCard.vue'
 import { useListsStore } from '@/store/lists'
 

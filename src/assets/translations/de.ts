@@ -1,8 +1,8 @@
-export const en = {
+export const de = {
   common: {
     email: 'email',
-    password: 'Password',
-    passwordRepeat: 'Confirm Password',
+    password: 'Passwort',
+    passwordRepeat: 'Confirm Passwort',
     submit: 'Submit',
     randomText: 'some random text',
     registration: 'Registration',
@@ -13,7 +13,7 @@ export const en = {
     notFound: 'The given page does not exist',
     goToMain: 'Go to the main page',
     catalog: 'Catalog',
-    buy: 'Buy',
+    buy: 'Kaufen',
   },
   slots: {
     weekday: 'Weekday',
@@ -25,7 +25,7 @@ export const en = {
   },
   links: {
     terms: 'Terms and conditions',
-    all: 'All Courses',
+    all: 'Kurs angebote',
   },
   terms: {
     title: 'GENERAL TERMS FOR Clavis Kunst und Wissenschaft Privatschule GmbH',
@@ -124,22 +124,22 @@ export const en = {
   },
   weekdays: {
     full: {
-      monday: 'monday',
-      tuesday: 'tuesday',
-      wednesday: 'wednesday',
-      thursday: 'thursday',
-      friday: 'friday',
-      saturday: 'saturday',
-      sunday: 'sunday',
+      monday: 'Montag',
+      tuesday: 'Dienstag',
+      wednesday: 'Mittwoch',
+      thursday: 'Donnerstag',
+      friday: 'Freitag',
+      saturday: 'Samstag',
+      sunday: 'Sonntag',
     },
     short: {
       monday: 'Mo',
-      tuesday: 'Tu',
-      wednesday: 'We',
-      thursday: 'Th',
+      tuesday: 'Di',
+      wednesday: 'Mi',
+      thursday: 'Do',
       friday: 'Fr',
       saturday: 'Sa',
-      sunday: 'Su',
+      sunday: 'So',
     },
   },
 }

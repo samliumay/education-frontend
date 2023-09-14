@@ -4,6 +4,7 @@ export const ru = {
     password: 'Password',
     ok: 'Ok',
     randomText: 'произвольный текст',
+    buy: 'Купить',
   },
   links: {
     terms: 'Перс. данные',
