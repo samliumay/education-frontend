@@ -8,7 +8,10 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/pages/BuyForm.vue'),
   },
   { path: '/login', component: () => import('@/pages/LoginForm.vue') },
-  { path: '/terms', component: () => import('@/pages/TermsAndConditions.vue') },
+  { path: '/kontaktieren-sie-uns', component: () => import('@/pages/static/ContactUs.vue') },
+  { path: '/agb', component: () => import('@/pages/static/AGB.vue') },
+  { path: '/datenschutz', component: () => import('@/pages/static/Datenschutz.vue') },
+  { path: '/impressum', component: () => import('@/pages/static/Impressum.vue') },
   {
     path: '/:url(.*)*',
     name: 'not-found',
