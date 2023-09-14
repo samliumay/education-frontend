@@ -29,7 +29,7 @@
       <RegistrationFormFields ref="registrationForm" />
     </template>
 
-    <n-h2>Payment details</n-h2>
+    <n-h2>{{ $t('offerForm.paymentDetails') }}</n-h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
       <!-- <n-form-item
@@ -42,7 +42,7 @@
 
       <n-form-item
         path="child_first_name"
-        label="First Name"
+        :label="$t('offerForm.child_first_name')"
         required
       >
         <n-input v-model:value="currentValue.child_first_name" />
@@ -50,14 +50,14 @@
 
       <n-form-item
         path="child_last_name"
-        label="Last Name"
+        :label="$t('offerForm.child_last_name')"
         required
       >
         <n-input v-model:value="currentValue.child_last_name" />
       </n-form-item>
 
       <n-form-item
-        label="Country"
+        :label="$t('offerForm.country')"
         path="country"
         required
       >
@@ -73,7 +73,7 @@
       </n-form-item>
 
       <n-form-item
-        label="City"
+        :label="$t('offerForm.city')"
         path="city"
         required
       >
@@ -90,14 +90,14 @@
 
       <n-form-item
         path="state"
-        label="State"
+        :label="$t('offerForm.state')"
         required
       >
         <n-input v-model:value="currentValue.state" />
       </n-form-item>
       <n-form-item
+        :label="$t('offerForm.street')"
         path="street"
-        label="Street"
         required
       >
         <n-input v-model:value="currentValue.street" />
@@ -105,14 +105,14 @@
 
       <n-form-item
         path="post_code"
-        label="Street"
+        :label="$t('offerForm.post_code')"
         required
       >
         <n-input v-model:value="currentValue.post_code" />
       </n-form-item>
       <n-form-item
         path="company_name"
-        label="Company name"
+        :label="$t('offerForm.company_name')"
         required
       >
         <n-input v-model:value="currentValue.company_name" />

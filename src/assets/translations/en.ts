@@ -22,7 +22,8 @@ export const en = {
   common: {
     email: 'email',
     password: 'Password',
-    passwordRepeat: 'Confirm Password',
+    password1: 'Password',
+    password2: 'Confirm Password',
     submit: 'Submit',
     randomText: 'some random text',
     registration: 'Registration',
@@ -48,7 +49,40 @@ export const en = {
     instructor: 'Instructor',
     slots: 'Slots',
   },
+  offerForm: {
+    paymentDetails: 'Payment details',
+    child_first_name: 'Child first name',
+    child_last_name: 'Child last name',
+    country: 'Country',
+    city: 'City',
+    state: 'State',
+    post_code: 'Post code',
+    street: 'Street',
+    company_name: 'Company name',
+  },
+  steps: [
+    {
+      title: 'Select slots',
+      description:
+        'Courses have different time slots. You have to select the comfortable one',
+    },
+    {
+      title: 'Select tariff',
+      description:
+        'Decide if you will pay for subscriptions or for specific number of classes',
+    },
+    {
+      title: 'User info',
+      description: 'Login/Register and fill the info about your child',
+    },
+    {
+      title: 'Pay',
+      description: '',
+    },
+  ],
   tariff: {
+    select_payment_strategy: 'Select payment strategy',
+    click_on_option: 'Click on option to select',
     meeting_card: {
       title: 'Meeting card',
       number_of_meetings: 'Number of meetings',

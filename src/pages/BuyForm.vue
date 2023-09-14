@@ -13,7 +13,6 @@
         :description="step.description"
         @click="() => stepBack(idx)"
       />
-      <n-step title="Pay" />
     </n-steps>
     <div v-if="course">
       <SlotsForm
@@ -40,6 +39,7 @@
 <script setup lang="ts">
 import { NH1, NSpace, NStep, NSteps, StepsProps } from 'naive-ui'
 import { computed, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 
 import { HTTP } from '@/api/index'
@@ -58,22 +58,15 @@ const course = computed(() => listsStore.getProductById(courseId.value))
 const currentStage = ref<number>(1)
 const currentStatus = ref<StepsProps['status']>('process')
 
-const steps = [
-  {
-    title: 'Select slots',
-    description:
-      'Courses have different time slots. You have to select the comfortable one',
-  },
-  {
-    title: 'Select tariff',
-    description:
-      'Decide if you will pay for subscriptions or for specific number of classes',
-  },
-  {
-    title: 'User info',
-    description: 'Login/Register and fill the info about your child',
-  },
-]
+const { t } = useI18n()
+const steps = computed(() =>
+  Array.from({ length: 4 })
+    .map((_, idx) => idx)
+    .map(idx => ({
+      title: t(`steps[${idx}].title`),
+      description: t(`steps[${idx}].description`),
+    })),
+)
 
 const setErrorStatus = () => {
   currentStatus.value = 'error'

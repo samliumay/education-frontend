@@ -22,7 +22,8 @@ export const de = {
   common: {
     email: 'E-Mail',
     password: 'Passwort',
-    passwordRepeat: 'Passwort bestätigen',
+    password1: 'Passwort',
+    password2: 'Passwort bestätigen',
     submit: 'Absenden',
     randomText: 'irgendwelcher zufälliger Text',
     registration: 'Registrierung',
@@ -48,7 +49,38 @@ export const de = {
     instructor: 'Lehrer',
     slots: 'Zeitfenster',
   },
+  offerForm: {
+    paymentDetails: 'Rechnungsdetails',
+    child_first_name: 'Vorname des Kindes',
+    child_last_name: 'Nachname des Kindes',
+    country: 'Land',
+    city: 'Stadt',
+    state: 'Bundesland',
+    post_code: 'Postleitzahl',
+    street: 'Straße',
+    company_name: 'Firmenname',
+  },
+  steps: [
+    {
+      title: 'Slots auswählen',
+      description:
+        'Kurse haben verschiedene Zeitfenster. Sie müssen das passende auswählen',
+    },
+    {
+      title: 'Tarif auswählen',
+      description:
+        'Entscheiden Sie, ob Sie für Abonnements oder für eine bestimmte Anzahl von Kursen bezahlen möchten',
+    },
+    {
+      title: 'Benutzerinformationen',
+      description:
+        'Einloggen/Registrieren und die Informationen über Ihr Kind ausfüllen',
+    },
+    { title: 'Bezahlen', description: '' },
+  ],
   tariff: {
+    select_payment_strategy: 'Selecteer betalingsstrategie',
+    click_on_option: 'Klik op optie om te selecteren',
     meeting_card: {
       title: 'Treffen-Karte',
       number_of_meetings: 'Anzahl der Treffen',

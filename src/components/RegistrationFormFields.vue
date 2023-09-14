@@ -20,7 +20,7 @@
     <n-form-item
       required
       path="phone_number"
-      :label="$t('common.phone_number')"
+      :label="$t('common.phone')"
     >
       <n-input v-model:value="phoneNumber" />
     </n-form-item>
