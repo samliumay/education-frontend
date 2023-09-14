@@ -1,50 +1,49 @@
 <template>
   <div class="max-w-sm m-auto">
-    <n-h1>{{ $t('common.loginForm') }}</n-h1>
-    <n-alert v-show="error">{{ error }}</n-alert>
-    <LoginFormFields @send="submit" />
+    <template v-if="isLoginForm">
+      <div class="flex justify-between">
+        <n-h1>{{ $t('common.loginForm') }}</n-h1>
+        <n-button @click="isLoginForm = !isLoginForm">
+          {{ $t('common.registrationForm') }}
+        </n-button>
+      </div>
+      <LoginFormFields @submited="$emit('nextStage')" />
+    </template>
+    <template v-else>
+      <div class="flex justify-between">
+        <n-h1>{{ $t('common.registrationForm') }}</n-h1>
+        <n-button @click="isLoginForm = !isLoginForm">
+          {{ $t('common.loginForm') }}
+        </n-button>
+      </div>
+      <RegistrationFormFields @submited="$emit('nextStage')" />
+    </template>
   </div>
 </template>
 <script setup lang="ts">
-import { NAlert, NH1 } from 'naive-ui'
-import { computed, ref } from 'vue'
-
-import { HTTP } from '@/api'
-import { useUserStore } from '@/store/user'
-import { FullUser } from '@/types'
+import { NButton, NH1 } from 'naive-ui'
+import { ref } from 'vue'
 
 import LoginFormFields from '../LoginFormFields.vue'
+import RegistrationFormFields from '../RegistrationFormFields.vue'
 
-const emit = defineEmits<Emits>()
+defineEmits<Emits>()
 
 interface Emits {
   (e: 'nextStage'): void
   (e: 'error', value: boolean): void
 }
 
-const localError = ref('')
-const error = computed({
-  get() {
-    return localError.value
-  },
-  set(newValue: string) {
-    localError.value = newValue
-    emit('error', !!newValue)
-  },
-})
+const isLoginForm = ref<boolean>(true)
 
-const userStore = useUserStore()
-
-const submit = async (login: string, password: string) => {
-  error.value = ''
-  const user = await HTTP.post<FullUser>('/api/v1/users/login/', {
-    email: login,
-    password,
-  }).catch(errors => {
-    error.value = errors
-  })
-  if (!error.value && user) userStore.setUser(user)
-
-  emit('nextStage')
-}
+// const localError = ref('')
+// const error = computed({
+//   get() {
+//     return localError.value
+//   },
+//   set(newValue: string) {
+//     localError.value = newValue
+//     emit('error', !!newValue)
+//   },
+// })
 </script>

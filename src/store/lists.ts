@@ -4,7 +4,7 @@ import { ref } from 'vue'
 import { HTTP } from '@/api/index'
 import { City, Country, Product } from '@/types'
 
-export const useListsStore = defineStore('user', () => {
+export const useListsStore = defineStore('lists', () => {
   const cities = ref<City[]>([])
   const countries = ref<Country[]>([])
   const products = ref<Product[]>([])

@@ -5,32 +5,13 @@
     :model="currentValue"
   >
     <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-      <n-form-item
-        required
-        path="email"
-        :label="$t('common.email')"
-      >
-        <n-input v-model:value="currentValue.email" />
-      </n-form-item>
-      <n-form-item
-        required
-        path="password"
-        :label="$t('common.password')"
-      >
-        <n-input
-          v-model:value="currentValue.password"
-          type="password"
-          is-password
-        />
-      </n-form-item>
-      <n-form-item
+      <!-- <n-form-item
         path="phone_number"
         label="Phone number"
         required
       >
         <n-input v-model:value="currentValue.phone_number" />
-      </n-form-item>
-      <div />
+      </n-form-item> -->
 
       <n-form-item
         path="child_first_name"
@@ -127,6 +108,7 @@ import {
 } from 'naive-ui'
 import { ref } from 'vue'
 
+import { phoneNumberRegex } from '@/constants/regexes'
 import { useListsStore } from '@/store/lists'
 import { useUserStore } from '@/store/user'
 import { FullUser } from '@/types'
@@ -146,9 +128,6 @@ const { countries, cities } = listsStorage
 
 const offerForm = ref<FormInst | undefined>()
 
-const emailRegex = /^\S+@\S+\.\S+$/
-const phoneNumberRegex = /^\+?1?\d{9,15}$/
-
 const requiredFields = [
   'child_first_name',
   'child_last_name',
@@ -160,12 +139,6 @@ const requiredFields = [
   'post_code',
 ]
 const rules: FormRules = {
-  email: {
-    required: true,
-    validator: () => emailRegex.test(currentValue.value.email),
-    message: 'Invalid email',
-    trigger: ['input', 'blur'],
-  },
   phone_number: {
     validator: () => phoneNumberRegex.test(currentValue.value.phone_number),
     message: 'Invalid phone number format. It should start with +',

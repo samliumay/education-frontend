@@ -3,6 +3,7 @@ import axios from 'axios'
 export const getToken = () => {
   const token = document.cookie.match(/odev-token=([^ ;]*)/)
   const localstorageToken = window.localStorage.getItem('odev-token')
+
   if (token && token.length > 0) {
     return token[1]
   }
@@ -17,6 +18,7 @@ const msInMonth = 1000 * 3600 * 24 * 30
 
 export const setToken = (token: string) => {
   const expirationDate = new Date(Date.now() + msInMonth).toUTCString()
+
   document.cookie = `odev-token=${token}; expires${expirationDate}; path=/`
   window.localStorage.setItem('odev-token', token)
 }
@@ -86,81 +88,3 @@ export class HTTP {
   }
 }
 /* eslint-enable @typescript-eslint/no-explicit-any */
-
-// export class Endpoint<T> {
-//   model
-//   endpoint: string
-//   cache: boolean
-//   ruName?: string | undefined
-//   wordEnd?: string
-
-//   constructor(
-//     endpoint,
-//     endpointChild,
-//     cache = false,
-//     ruName: undefined | string = undefined,
-//     wordEnd = '',
-//   ) {
-//     this.endpoint = endpoint
-//     this.model = endpointChild
-//     this.cache = cache
-//     this.ruName = ruName
-//     this.wordEnd = wordEnd
-//   }
-
-//   get(id, params = {}): Promise<T> {
-//     return (
-//       apiClient
-//         .get(`${this.endpoint}/${id}${id ? '/' : ''}`, params)
-//         // eslint-disable-next-line new-cap
-//         .then(data => new this.model(data))
-//     )
-//   }
-
-//   async list(params = {}): Promise<Array<T>> {
-//     const key = this.endpoint + JSON.stringify(params)
-//     if (this.cache && caches[key]) return caches[key]
-
-//     const request = await apiClient
-//       .get(`${this.endpoint}/`, params)
-//       // eslint-disable-next-line new-cap
-//       .then(array => array.map(element => new this.model(element)))
-
-//     if (this.cache) caches[key] = request
-
-//     return request
-//   }
-
-//   post(data: Serializable | object, params = {}): Promise<T> {
-//     const info = 'serialize' in data ? data.serialize() : data
-//     return apiClient.post(`${this.endpoint}/`, info, params).then(element => {
-//       if (this.ruName)
-//         emitter.$emit('success', `${this.ruName} успешно создан${this.wordEnd}`)
-//       // eslint-disable-next-line new-cap
-//       return new this.model(element)
-//     })
-//   }
-
-//   patch(data: Serializable | object, params = {}, qargs = ''): Promise<T> {
-//     const info = 'serialize' in data ? data.serialize() : data
-//     return apiClient
-//       .patch(`${this.endpoint}/${data?.id}/${qargs}`, info, params)
-//       .then(element => {
-//         if (this.ruName) emitter.$emit('success', 'Изменения успешно сохранены')
-//         // eslint-disable-next-line new-cap
-//         return new this.model(element)
-//       })
-//   }
-
-//   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-//   delete(id, params = {}): Promise<any> {
-//     return apiClient.delete(`${this.endpoint}/${id}`, params).then(data => {
-//       if (this.ruName)
-//         emitter.$emit(
-//           'success',
-//           `  ${this.ruName} успешно удален${this.wordEnd}`,
-//         )
-//       return data
-//     })
-//   }
-// }

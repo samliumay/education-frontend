@@ -1,29 +1,14 @@
 <template>
   <div class="max-w-sm m-auto">
     <n-h1>{{ $t('common.loginForm') }}</n-h1>
-    <n-alert v-show="error">{{ error }}</n-alert>
-    <login-form-fields @send="submit" />
+    <login-form-fields @submited="router.push('/')" />
   </div>
 </template>
 <script setup lang="ts">
-import { NAlert, NH1 } from 'naive-ui'
-import { ref } from 'vue'
+import { NH1 } from 'naive-ui'
+import { useRouter } from 'vue-router'
 
-import { HTTP } from '@/api'
 import LoginFormFields from '@/components/LoginFormFields.vue'
-import { useUserStore } from '@/store/user'
-import { FullUser } from '@/types'
 
-const error = ref('')
-
-const userStore = useUserStore()
-const submit = async (login: string, password: string) => {
-  const user = await HTTP.post<FullUser>('/api/v1/users/login/', {
-    email: login,
-    password,
-  }).catch(errors => {
-    error.value = errors
-  })
-  if (user) userStore.setUser(user)
-}
+const router = useRouter()
 </script>

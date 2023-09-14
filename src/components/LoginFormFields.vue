@@ -3,6 +3,12 @@
     ref="formRef"
     :rules="rules"
   >
+    <n-alert
+      v-if="error"
+      type="error"
+    >
+      {{ error }}
+    </n-alert>
     <n-form-item
       required
       path="email"
@@ -34,6 +40,7 @@ import {
   FormInst,
   FormRules,
   FormValidationError,
+  NAlert,
   NButton,
   NForm,
   NFormItem,
@@ -42,11 +49,12 @@ import {
 import { ref } from 'vue'
 
 import { emailRegex } from '@/constants/regexes'
+import { useUserStore } from '@/store/user'
 
 const emit = defineEmits<Emits>()
 
 interface Emits {
-  (e: 'send', login: string, password: string): void
+  (e: 'submited'): void
 }
 
 const login = ref('')
@@ -63,6 +71,9 @@ const rules: FormRules = {
 
 const formRef = ref<FormInst | undefined>()
 
+const error = ref('')
+const userStore = useUserStore()
+
 const validate = async () => {
   let isValid = true
   await formRef.value?.validate(
@@ -75,6 +86,8 @@ const validate = async () => {
   if (!isValid) {
     return
   }
-  emit('send', login.value, password.value)
+  await userStore
+    .login(login.value, password.value)
+    .then(() => emit('submited'))
 }
 </script>

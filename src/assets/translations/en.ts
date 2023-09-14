@@ -7,6 +7,7 @@ export const en = {
     randomText: 'some random text',
     registration: 'Registration',
     loginForm: 'Login',
+    registrationForm: 'Registration',
     phone: 'Phone number',
     login: 'Login',
     notFound: 'The given page does not exist',
