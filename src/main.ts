@@ -9,7 +9,7 @@ import { router } from '@/router/index'
 import App from './App.vue'
 
 const i18n = createI18n({
-  // something vue-i18n options here ...
+  legacy: false,
   locale: 'de',
   messages: {
     en,

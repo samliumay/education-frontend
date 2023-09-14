@@ -8,26 +8,14 @@
     >
       {{ $t('slots.minSlots', { minSelected }) }}
     </n-p>
-    <div
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4 mb-2"
-    >
-      <label
-        v-for="timeSlot in slots"
-        :key="timeSlot.id"
-      >
-        <AppSlotCard
-          :selected="!!selectedSlots.includes(timeSlot.id)"
-          :slot-value="timeSlot"
-          @click="clickCourse(timeSlot.id)"
-        />
-        <input
-          class="hidden"
-          type="checkbox"
-          :checked="!!selectedSlots.includes(timeSlot.id)"
-        />
-      </label>
-    </div>
+    <n-select
+      v-model:value="selectedSlots"
+      :options="slotsOptions"
+      filterable
+      multiple
+    />
     <n-button
+      class="mt-2"
       :disabled="isAlert"
       keyboard
       @click="checkSlots"
@@ -37,29 +25,32 @@
   </n-form>
 </template>
 <script setup lang="ts">
-import { NButton, NForm, NH1, NP } from 'naive-ui'
+import { NButton, NForm, NH1, NP, NSelect } from 'naive-ui'
 import { computed, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 import { Slot } from '@/types'
-
-import AppSlotCard from '../AppSlotCard.vue'
 
 const props = defineProps<{ slots: Slot[]; minSelected: number }>()
 
 const emit = defineEmits<Emits>()
 
+const { t } = useI18n()
+
 interface Emits {
   (e: 'send', slots: number[]): void
 }
 
+const slotsOptions = computed(() =>
+  props.slots.map(slot => ({
+    value: slot.id,
+    label: `${t(`dates.weekdays.short.${slot.weekday}`)} ${slot.start} - ${
+      slot.end
+    }`,
+  })),
+)
+
 const selectedSlots = ref<number[]>([])
-const clickCourse = (id: number) => {
-  if (selectedSlots.value.includes(id)) {
-    selectedSlots.value = selectedSlots.value.filter(slotId => slotId !== id)
-  } else {
-    selectedSlots.value.push(id)
-  }
-}
 
 const isAlert = computed(() => props.minSelected > selectedSlots.value.length)
 const checkSlots = () => {
