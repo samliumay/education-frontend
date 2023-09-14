@@ -25,12 +25,7 @@
       <ProductTypeForm
         v-else-if="currentStage === 2 && offer"
         :offer="offer"
-        @send="
-          tar => {
-            tariff = tar
-            currentStage++
-          }
-        "
+        @send="setTariff"
       />
       <BuyLoginForm
         v-else-if="currentStage === 3"
@@ -116,6 +111,11 @@ const makeOffer = async (data: number[]) => {
       selected_schedule_slots: data,
     },
   )
+}
+
+const setTariff = (newTariff: Tariff) => {
+  tariff.value = newTariff
+  currentStage.value++
   // skip login stage if user is already logged in
   if (userStore.isLoggedIn) currentStage.value++
 }

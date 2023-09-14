@@ -1,4 +1,15 @@
 export const en = {
+  dates: {
+    weekdays: {
+      sunday: 'Sunday',
+      monday: 'Monday',
+      tuesday: 'Tuesday',
+      wednesday: 'Wednesday',
+      thursday: 'Thursday',
+      friday: 'Friday',
+      saturday: 'Saturday',
+    },
+  },
   common: {
     email: 'email',
     password: 'Password',
@@ -13,14 +24,38 @@ export const en = {
     notFound: 'The given page does not exist',
     goToMain: 'Go to the main page',
     catalog: 'Catalog',
+    chooseLanguage: 'Choose language',
   },
   slots: {
+    fillInfo: 'Fill your info',
+    selectTimeSlots: 'Select the time slots, which will be comfortable for you',
+    minSlots: 'You should select minimum {minSelected} slots',
+    selected: 'Selected:',
     weekday: 'Weekday',
     start: 'Start',
     end: 'End',
     space: 'Space',
     instructor: 'Instructor',
     slots: 'Slots',
+  },
+  tariff: {
+    meeting_card: {
+      title: 'Meeting card',
+      number_of_meetings: 'Number of meetings',
+      price: 'Price',
+    },
+    subscription: {
+      title: 'Subscription',
+      number_of_meetings_per_week: 'Number of meetings per week',
+      price: 'Price',
+    },
+  },
+  validation: {
+    password1: 'Password should have at least {n} chars',
+    password2: 'Passwords should be equal',
+    email: 'Invalid email',
+    required: 'This field is required',
+    phoneNumber: 'Invalid phone number format. It should start with +',
   },
   links: {
     terms: 'Terms and conditions',

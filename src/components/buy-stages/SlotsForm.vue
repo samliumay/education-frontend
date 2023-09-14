@@ -1,12 +1,12 @@
 <template>
   <n-form>
-    <n-h1>Fill your info</n-h1>
-    <n-p>Select the time slots, which will be comfortable for you</n-p>
+    <n-h1>{{ $t('slots.fillInfo') }}</n-h1>
+    <n-p>{{ $t('slots.selectTimeSlots') }}</n-p>
     <n-p
       :class="{ 'text-rose-500 ': isAlert }"
       :role="isAlert ? 'alert' : ''"
     >
-      You should select minimum {{ minSelected }} slots
+      {{ $t('slots.minSlots', { minSelected }) }}
     </n-p>
     <div
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4 mb-2"

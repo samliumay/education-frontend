@@ -1,6 +1,6 @@
 <template>
-  <n-h2>Select Payment strategy</n-h2>
-  <n-p>Click on option to select</n-p>
+  <n-h2>{{ $t('tariff.select_payment_strategy') }}</n-h2>
+  <n-p>{{ $t('tariff.click_on_option') }}</n-p>
   <div class="flex gap-3 justify-center">
     <section
       v-if="!!offer?.meeting_card"
@@ -15,15 +15,15 @@
         @change="() => (tariff = 'meeting_card')"
       />
       <label for="meeting_card">
-        <n-h3> Meeting card </n-h3>
+        <n-h3>{{ $t('tariff.meeting_card.title') }}</n-h3>
         <dl>
           <div>
-            <dt>Number of meetings</dt>
+            <dt>{{ $t('tariff.meeting_card.number_of_meetings') }}</dt>
             <dd>{{ offer.meeting_card.number_of_meetings }}</dd>
           </div>
 
           <div>
-            <dt>Price</dt>
+            <dt>{{ $t('tariff.meeting_card.price') }}</dt>
             <dd>{{ offer.meeting_card.price }}</dd>
           </div>
         </dl>
@@ -43,15 +43,15 @@
         @change="() => (tariff = 'subscription')"
       />
       <label for="subscription">
-        <n-h3>Subscription</n-h3>
+        <n-h3>{{ $t('tariff.subscription.title') }}</n-h3>
         <dl>
           <div>
-            <dt>Number of meetings per week</dt>
+            <dt>{{ $t('tariff.subscription.number_of_meetings_per_week') }}</dt>
             <dd>{{ offer?.subscription?.number_of_meetings_per_week }}</dd>
           </div>
 
           <div>
-            <dt>Price</dt>
+            <dt>{{ $t('tariff.subscription.price') }}</dt>
             <dd>{{ offer?.subscription?.price }}</dd>
           </div>
         </dl>
