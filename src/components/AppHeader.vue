@@ -3,6 +3,7 @@
     <div class="flex justify-between items-center container mx-auto">
       <router-link to="/">
         <Logo />
+        <p class="hidden">{{ $t('common.goToMain') }}</p>
       </router-link>
       <nav>
         <ul class="flex gap-2">

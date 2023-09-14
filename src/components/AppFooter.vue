@@ -1,14 +1,22 @@
 <template>
   <footer class="bg-[#E7E7D9] py-6">
-    <div class="items-center mx-auto container px-5 md:px-0 py-3 flex justify-between">
+    <div
+      class="items-center mx-auto container px-5 md:px-0 py-3 flex justify-between"
+    >
       <!-- navigation -->
       <nav>
         <ul class="space-y-2 font-bold">
           <li>
-            <router-link to="/kontaktieren-sie-uns">Kontaktieren Sie uns</router-link>
+            <router-link to="/kontaktieren-sie-uns">
+              Kontaktieren Sie uns
+            </router-link>
           </li>
           <li>
-            <a href="https://clavis-schule.de/wp-content/uploads/2023/08/230830_Stundenplan_druck-1.pdf" target="_blank">
+            <a
+              href="https://clavis-schule.de/wp-content/uploads/2023/08/230830_Stundenplan_druck-1.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Stundenplan
             </a>
           </li>

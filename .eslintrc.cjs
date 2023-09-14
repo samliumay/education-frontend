@@ -62,6 +62,7 @@ module.exports = {
     'vue-scoped-css/no-deprecated-v-enter-v-leave-class': 'error',
     'vue-scoped-css/require-selector-used-inside': 'error',
     // Off - block
+    'vue/multi-word-component-names': 'off',
     'import/order': 'off',
     'import/extensions': 'off',
     'import/no-extraneous-dependencies': 'off',
@@ -299,6 +300,12 @@ module.exports = {
       files: ['.eslintrc*', 'vite.config*'],
       rules: {
         'no-magic-numbers': 'off',
+      },
+    },
+    {
+      files: ['src/pages/static/*.vue'],
+      rules: {
+        '@intlify/vue-i18n/no-raw-text': 'off',
       },
     },
   ],

@@ -57,10 +57,10 @@ apiClient.interceptors.response.use(
     return data
   },
   error => {
-    console.error(error)
+    console.error(error.response.data)
     // to let others parts of the code to catch the same error
     // and to omit the fail to the `then` block
-    return Promise.reject(error)
+    return Promise.reject(error.response.data)
   },
 )
 

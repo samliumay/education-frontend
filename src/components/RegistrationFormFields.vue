@@ -1,9 +1,10 @@
 <template>
   <n-alert
-    v-if="error"
+    v-if="errors.non_field_errors"
+    class="my-2"
     type="error"
   >
-    {{ error }}
+    {{ errors.non_field_errors.join(', ') }}
   </n-alert>
   <n-form
     ref="formRef"
@@ -52,19 +53,19 @@
 <script setup lang="ts">
 import {
   FormInst,
-  FormRules,
   FormValidationError,
   NAlert,
   NForm,
   NFormItem,
   NInput,
 } from 'naive-ui'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import { MIN_PWD_LENGTH } from '@/constants/index'
 import { emailRegex, phoneNumberRegex } from '@/constants/regexes'
 import { useUserStore } from '@/store/user'
+import { RegistrationErrors } from '@/types'
 
 const emit = defineEmits<Emits>()
 
@@ -79,53 +80,85 @@ const phoneNumber = ref('+')
 
 const { t } = useI18n()
 
-const rules: FormRules = {
-  email: {
-    required: true,
-    validator: () => emailRegex.test(login.value),
-    message: t('validation.email'),
-    trigger: ['input', 'blur'],
-  },
-  phone_number: {
-    validator: () => phoneNumberRegex.test(phoneNumber.value),
-    message: t('validation.phoneNumber'),
-    trigger: ['input', 'blur'],
-  },
-  password1: {
-    validator: () => password1.value.length >= MIN_PWD_LENGTH,
-    message: t('validation.password1', { n: MIN_PWD_LENGTH }),
-    trigger: ['input', 'blur'],
-  },
-  password2: {
-    validator: () => password1.value === password2.value,
-    message: t('validation.password2'),
-    trigger: ['input', 'blur'],
-  },
-}
+const errors = ref<RegistrationErrors>({})
+
+const fields: Array<keyof RegistrationErrors> = [
+  'email',
+  'phone_number',
+  'password1',
+  'password2',
+]
+
+const rules = computed(() =>
+  Object.keys(errors.value).length
+    ? fields.reduce(
+        (acc, field) => ({
+          ...acc,
+          [field]: {
+            validator: () => !errors.value[field],
+            message: () => errors.value[field]?.join(', '),
+            required: true,
+          },
+        }),
+        {},
+      )
+    : {
+        email: {
+          required: true,
+          validator: () => emailRegex.test(login.value),
+          message: t('validation.email'),
+          trigger: ['input', 'blur'],
+        },
+        phone_number: {
+          validator: () => phoneNumberRegex.test(phoneNumber.value),
+          message: t('validation.phoneNumber'),
+          trigger: ['input', 'blur'],
+        },
+        password1: {
+          validator: () => password1.value.length >= MIN_PWD_LENGTH,
+          message: t('validation.password1', { n: MIN_PWD_LENGTH }),
+          trigger: ['input', 'blur'],
+        },
+        password2: {
+          validator: () => password1.value === password2.value,
+          message: t('validation.password2'),
+          trigger: ['input', 'blur'],
+        },
+      },
+)
 
 const formRef = ref<FormInst | undefined>()
 
-const error = ref('')
 const userStore = useUserStore()
 
 const validate = async () => {
   let isValid = true
   await formRef.value?.validate(
-    (errors: Array<FormValidationError> | undefined) => {
-      if (errors !== undefined) {
+    (validationErrors: Array<FormValidationError> | undefined) => {
+      if (validationErrors !== undefined) {
         isValid = false
       }
     },
   )
-  if (!isValid) {
-    return
-  }
+  return isValid
+}
+
+const submit = async () => {
+  errors.value = {}
+  const isValid = await validate()
+  if (!isValid) return
   await userStore
     .register(login.value, phoneNumber.value, password1.value, password2.value)
-    .then(() => emit('submited'))
+    .catch(backendErrors => {
+      errors.value = backendErrors
+      setTimeout(validate)
+    })
+  if (!Object.keys(errors.value).length) {
+    emit('submited')
+  }
 }
 
 defineExpose({
-  validate,
+  submit,
 })
 </script>

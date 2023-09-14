@@ -14,7 +14,10 @@
           {{ $t('common.registrationForm') }}
         </n-a>
       </div>
-      <LoginFormFields ref="loginForm" />
+      <LoginFormFields
+        ref="loginForm"
+        @submited="submit"
+      />
     </template>
     <template v-else>
       <div>
@@ -26,7 +29,10 @@
           {{ $t('common.loginForm') }}
         </n-a>
       </div>
-      <RegistrationFormFields ref="registrationForm" />
+      <RegistrationFormFields
+        ref="registrationForm"
+        @submited="submit"
+      />
     </template>
 
     <n-h2>{{ $t('offerForm.paymentDetails') }}</n-h2>
@@ -119,7 +125,7 @@
       </n-form-item>
     </div>
 
-    <n-button @click="submit">{{ $t('common.submit') }}</n-button>
+    <n-button @click="submitFirstForm">{{ $t('common.submit') }}</n-button>
   </n-form>
 </template>
 <script setup lang="ts">
@@ -196,12 +202,11 @@ const registrationForm = ref<typeof RegistrationFormFields | undefined>()
 const loginForm = ref<typeof LoginFormFields | undefined>()
 
 const submitFirstForm = async () => {
-  if (isLoginForm.value) await loginForm.value?.validate()
-  else await registrationForm.value?.validate()
+  if (isLoginForm.value) await loginForm.value?.submit()
+  else await registrationForm.value?.submit()
 }
 
 const submit = async () => {
-  await submitFirstForm()
   let isValid = true
   emit('error', false)
   await offerForm.value?.validate(

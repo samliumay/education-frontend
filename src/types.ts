@@ -69,3 +69,17 @@ export type Offer = {
     price: string
   }
 }
+
+export type LoginErrors = {
+  email?: string[]
+  password?: string[]
+  non_field_errors?: string[]
+}
+
+export type RegistrationErrors = {
+  email?: string[]
+  phone_number?: string[]
+  password1?: string[]
+  password2?: string[]
+  non_field_errors?: string[]
+}

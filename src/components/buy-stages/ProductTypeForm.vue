@@ -1,7 +1,7 @@
 <template>
   <n-h2>{{ $t('tariff.select_payment_strategy') }}</n-h2>
   <n-p>{{ $t('tariff.click_on_option') }}</n-p>
-  <div class="flex gap-3 justify-center">
+  <div class="grid grid-cols-2 gap-5">
     <section
       v-if="!!offer?.meeting_card"
       :class="{ active: tariff === 'meeting_card' }"
@@ -84,9 +84,27 @@ const tariff = ref<Tariff>()
 </script>
 <style scoped lang="scss">
 section {
-  @apply border-slate-300 border-2 rounded bg-green-200 hover:bg-green-300 p-3 shadow-inner hover:shadow-lg;
+  @apply border-slate-300 border-2 rounded bg-green-200 hover:bg-green-300 p-3 shadow-inner hover:shadow-lg mb-3;
   &.active {
     @apply bg-green-400;
+  }
+
+  label {
+    cursor: pointer;
+  }
+}
+
+dl > div {
+  dt {
+    font-weight: 600;
+    margin-right: 2rem;
+    &::after {
+      content: ':';
+    }
+  }
+  dd,
+  dt {
+    display: inline;
   }
 }
 </style>

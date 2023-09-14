@@ -38,42 +38,37 @@ export const useUserStore = defineStore('user', () => {
     return user.value
   }
 
-  const userPostRequest = async (data: any, url: string) => {
-    // let errors = ''
-    let token = ''
-    await HTTP.post<{ key: string }>(url, data).then(
-      ({ key }: { key: string }) => {
-        token = key
-      },
-    )
-    // .catch(err => {
-    //   errors = err
-    // })
-    // if (errors) return Promise.reject(errors)
-
-    if (token) setToken(token)
-
-    await retrieveUser()
+  const userPostRequest = async (payload: any, url: string) => {
+    let errors = {}
+    await HTTP.post<{ key: string }>(url, payload)
+      .then(async (result: { key: string }) => {
+        setToken(result.key)
+        await retrieveUser()
+      })
+      .catch(data => {
+        errors = data
+      })
+    if (errors) return Promise.reject(errors)
+    return Promise.resolve()
   }
 
   // eslint-disable-next-line consistent-return
-  const login = async (email: string, password: string) => {
-    await userPostRequest(
+  const login = (email: string, password: string) =>
+    userPostRequest(
       {
         email,
         password,
       },
       '/api/v1/users/login/',
     )
-  }
 
-  const register = async (
+  const register = (
     email: string,
     phoneNumber: string,
     password1: string,
     password2: string,
-  ) => {
-    await userPostRequest(
+  ) =>
+    userPostRequest(
       {
         email,
         username: email,
@@ -83,7 +78,6 @@ export const useUserStore = defineStore('user', () => {
       },
       '/api/v1/users/registration/',
     )
-  }
 
   return { user, setUser, retrieveUser, login, register, isLoggedIn }
 })
