@@ -8,6 +8,15 @@ export const en = {
       thursday: 'Thursday',
       friday: 'Friday',
       saturday: 'Saturday',
+      short: {
+        monday: 'Mo',
+        tuesday: 'Tu',
+        wednesday: 'We',
+        thursday: 'Th',
+        friday: 'Fr',
+        saturday: 'Sa',
+        sunday: 'Su',
+      },
     },
   },
   common: {
@@ -24,6 +33,7 @@ export const en = {
     notFound: 'The given page does not exist',
     goToMain: 'Go to the main page',
     catalog: 'Catalog',
+    buy: 'Buy',
     chooseLanguage: 'Choose language',
   },
   slots: {

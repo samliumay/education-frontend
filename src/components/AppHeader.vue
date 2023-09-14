@@ -1,25 +1,27 @@
 <template>
-  <header class="px-5 py-3 flex justify-between items-center bg-slate-300">
-    <router-link to="/">
-      <Logo />
-    </router-link>
-    <nav>
-      <ul class="flex gap-2">
-        <li
-          v-for="link in navigationLinks"
-          :key="link.name"
-        >
-          <router-link :to="link.link">{{ link.name }}</router-link>
-        </li>
-      </ul>
-    </nav>
-    <n-button>
-      <router-link to="/login">{{ $t('common.login') }}</router-link>
-    </n-button>
+  <header class="px-5 py-3 bg-[#f5f5ef]">
+    <div class="flex justify-between items-center container mx-auto">
+      <router-link to="/">
+        <Logo />
+      </router-link>
+      <nav>
+        <ul class="flex gap-2">
+          <li
+            v-for="link in navigationLinks"
+            :key="link.name"
+          >
+            <router-link :to="link.link">{{ link.name }}</router-link>
+          </li>
+        </ul>
+      </nav>
+      <!-- <n-button>
+        <router-link to="/login">{{ $t('common.login') }}</router-link>
+      </n-button> -->
+    </div>
   </header>
 </template>
 <script setup lang="ts">
-import { NButton } from 'naive-ui'
+// import { NButton } from 'naive-ui'
 
 import Logo from '@/assets/icons/logo.svg'
 
@@ -27,6 +29,6 @@ const navigationLinks = [
   // { name: 'courses', link: '/' },
   // { name: 'workshops', link: '/' },
   // { name: 'summer school', link: '/' },
-  { name: 'menu', link: '/' },
+  { name: 'Kurs angebote', link: '/' },
 ]
 </script>

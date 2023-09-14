@@ -8,6 +8,15 @@ export const de = {
       thursday: 'Donnerstag',
       friday: 'Freitag',
       saturday: 'Samstag',
+      short: {
+        monday: 'Mo',
+        tuesday: 'Di',
+        wednesday: 'Mi',
+        thursday: 'Do',
+        friday: 'Fr',
+        saturday: 'Sa',
+        sunday: 'So',
+      },
     },
   },
   common: {
@@ -25,6 +34,7 @@ export const de = {
     goToMain: 'Zur Hauptseite gehen',
     catalog: 'Katalog',
     chooseLanguage: 'Kies een taal',
+    buy: 'Kaufen',
   },
   slots: {
     fillInfo: 'Füllen Sie Ihre Informationen aus',

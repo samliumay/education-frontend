@@ -3,7 +3,7 @@
   <n-config-provider :theme-overrides="themeOverrides">
     <div class="app flex flex-col">
       <AppHeader />
-      <main class="flex-1 p-5">
+      <main class="flex-1 py-5 container mx-auto px-5 md:px-0">
         <!-- eslint-disable-next-line vue/no-undef-components -->
         <router-view />
       </main>
@@ -53,5 +53,9 @@ const themeOverrides = {
 .app {
   height: 100vh;
   height: var(--app-height);
+}
+
+body {
+  background-color: #f5f5ef;
 }
 </style>
