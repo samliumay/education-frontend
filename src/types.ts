@@ -30,6 +30,7 @@ export type Country = {
 }
 
 export type FullUser = {
+  pk?: number
   id?: number
   email: string
   child_first_name: string

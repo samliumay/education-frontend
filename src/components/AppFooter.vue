@@ -30,13 +30,17 @@
         </a>
       </li>
     </ul>
-    <nav>
-      <ul>
-        <li>
-          <router-link to="/terms"> {{ $t('links.terms') }} </router-link>
-        </li>
-      </ul>
-    </nav>
+    <div>
+      <label for="language">{{ $t('common.chooseLanguage') }}</label>
+      <select
+        id="language"
+        v-model="$i18n.locale"
+        class="ml-2 bg-transparent border-none"
+      >
+        <option value="de">de</option>
+        <option value="en">en</option>
+      </select>
+    </div>
   </footer>
 </template>
 <script setup lang="ts">

@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { computed, Ref, ref } from 'vue'
 
-import { HTTP, setToken } from '@/api/index'
+import { getToken, HTTP, setToken } from '@/api/index'
 import { FullUser } from '@/types'
 
 export const useUserStore = defineStore('user', () => {
@@ -9,6 +9,7 @@ export const useUserStore = defineStore('user', () => {
   const initialUser = localUser
     ? JSON.parse(localUser)
     : {
+        pk: undefined,
         id: undefined,
         email: '',
         password: '',
@@ -25,7 +26,7 @@ export const useUserStore = defineStore('user', () => {
       }
   const user: Ref<FullUser> = ref(initialUser)
 
-  const isLoggedIn = computed<boolean>(() => !!user.value.id)
+  const isLoggedIn = computed<boolean>(() => !!user.value.pk && !!getToken())
 
   const setUser = (newValue: FullUser) => {
     user.value = newValue

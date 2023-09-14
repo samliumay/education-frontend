@@ -4,7 +4,6 @@ import { createI18n } from 'vue-i18n'
 
 import { de } from '@/assets/translations/de'
 import { en } from '@/assets/translations/en'
-import { ru } from '@/assets/translations/ru'
 import { router } from '@/router/index'
 
 import App from './App.vue'
@@ -14,7 +13,6 @@ const i18n = createI18n({
   locale: 'de',
   messages: {
     en,
-    ru,
     de,
   },
 })

@@ -8,10 +8,6 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/pages/BuyForm.vue'),
   },
   { path: '/login', component: () => import('@/pages/LoginForm.vue') },
-  {
-    path: '/register',
-    component: () => import('@/pages/RegistrationForm.vue'),
-  },
   { path: '/terms', component: () => import('@/pages/TermsAndConditions.vue') },
   {
     path: '/:url(.*)*',

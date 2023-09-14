@@ -21,7 +21,7 @@
   </header>
 </template>
 <script setup lang="ts">
-import { NButton } from 'naive-ui'
+// import { NButton } from 'naive-ui'
 
 import Logo from '@/assets/icons/logo.svg'
 

@@ -92,7 +92,7 @@
       </n-form-item>
     </div>
 
-    <n-button @click="submit">Submit</n-button>
+    <n-button @click="submit">{{ $t('common.submit') }}</n-button>
   </n-form>
 </template>
 <script setup lang="ts">
@@ -107,6 +107,7 @@ import {
   NSelect,
 } from 'naive-ui'
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 import { phoneNumberRegex } from '@/constants/regexes'
 import { useListsStore } from '@/store/lists'
@@ -128,6 +129,7 @@ const { countries, cities } = listsStorage
 
 const offerForm = ref<FormInst | undefined>()
 
+const { t } = useI18n()
 const requiredFields = [
   'child_first_name',
   'child_last_name',
@@ -141,7 +143,7 @@ const requiredFields = [
 const rules: FormRules = {
   phone_number: {
     validator: () => phoneNumberRegex.test(currentValue.value.phone_number),
-    message: 'Invalid phone number format. It should start with +',
+    message: t('validation.phoneNumber'),
     trigger: ['input', 'blur'],
   },
   ...requiredFields.reduce(
@@ -149,7 +151,7 @@ const rules: FormRules = {
       ...acc,
       [field]: {
         required: true,
-        message: 'This field is required',
+        message: t('validation.required'),
       },
     }),
     {} as FormRules,

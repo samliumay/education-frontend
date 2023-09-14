@@ -67,6 +67,7 @@ import {
   NInput,
 } from 'naive-ui'
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 import { MIN_PWD_LENGTH } from '@/constants/index'
 import { emailRegex, phoneNumberRegex } from '@/constants/regexes'
@@ -83,26 +84,28 @@ const password1 = ref('')
 const password2 = ref('')
 const phoneNumber = ref('+')
 
+const { t } = useI18n()
+
 const rules: FormRules = {
   email: {
     required: true,
     validator: () => emailRegex.test(login.value),
-    message: 'Invalid email',
+    message: t('validation.email'),
     trigger: ['input', 'blur'],
   },
   phone_number: {
     validator: () => phoneNumberRegex.test(phoneNumber.value),
-    message: 'Invalid phone number format. It should start with +',
+    message: t('validation.phoneNumber'),
     trigger: ['input', 'blur'],
   },
   password1: {
     validator: () => password1.value.length >= MIN_PWD_LENGTH,
-    message: 'Password should have at least 6 chars',
+    message: t('validation.password1', { n: MIN_PWD_LENGTH }),
     trigger: ['input', 'blur'],
   },
   password2: {
     validator: () => password1.value === password2.value,
-    message: 'Passwords should be equal',
+    message: t('validation.password2'),
     trigger: ['input', 'blur'],
   },
 }

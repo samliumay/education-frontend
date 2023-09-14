@@ -5,7 +5,7 @@
   >
     <dl>
       <div>
-        <dt>Selected: </dt>
+        <dt>{{ $t('slots.selected') }}</dt>
         <dd>
           <n-icon size="20">
             <check v-if="selected" />
@@ -15,15 +15,15 @@
       </div>
       <div>
         <dt>{{ $t('slots.weekday') }}</dt>
-        <dd>{{ slotValue.weekday }}</dd>
+        <dd>{{ $t(`dates.weekdays.${slotValue.weekday}`) }}</dd>
       </div>
       <div>
         <dt>{{ $t('slots.start') }}</dt>
-        <!-- <dd><n-time :value="slotValue.start" /></dd> -->
+        <dd>{{ slotValue.start }}</dd>
       </div>
       <div>
         <dt>{{ $t('slots.end') }}</dt>
-        <!-- <dd><n-time :value="slotValue.end" /></dd> -->
+        <dd>{{ slotValue.end }}</dd>
       </div>
       <div>
         <dt>{{ $t('slots.space') }}</dt>

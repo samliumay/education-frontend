@@ -12,7 +12,9 @@
               class="mr-2"
             >
               <span>
-                <strong>{{ $t(`weekdays.short.${slot.weekday}`) }}</strong>
+                <strong>{{
+                  $t(`dates.weekdays.short.${slot.weekday}`)
+                }}</strong>
                 {{ slot.start.slice(0, -3) }} - {{ slot.end.slice(0, -3) }}
               </span>
             </span>

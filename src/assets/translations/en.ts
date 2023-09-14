@@ -1,4 +1,24 @@
 export const en = {
+  dates: {
+    weekdays: {
+      sunday: 'Sunday',
+      monday: 'Monday',
+      tuesday: 'Tuesday',
+      wednesday: 'Wednesday',
+      thursday: 'Thursday',
+      friday: 'Friday',
+      saturday: 'Saturday',
+      short: {
+        monday: 'Mo',
+        tuesday: 'Tu',
+        wednesday: 'We',
+        thursday: 'Th',
+        friday: 'Fr',
+        saturday: 'Sa',
+        sunday: 'Su',
+      },
+    },
+  },
   common: {
     email: 'email',
     password: 'Password',
@@ -14,14 +34,38 @@ export const en = {
     goToMain: 'Go to the main page',
     catalog: 'Catalog',
     buy: 'Buy',
+    chooseLanguage: 'Choose language',
   },
   slots: {
+    fillInfo: 'Fill your info',
+    selectTimeSlots: 'Select the time slots, which will be comfortable for you',
+    minSlots: 'You should select minimum {minSelected} slots',
+    selected: 'Selected:',
     weekday: 'Weekday',
     start: 'Start',
     end: 'End',
     space: 'Space',
     instructor: 'Instructor',
     slots: 'Slots',
+  },
+  tariff: {
+    meeting_card: {
+      title: 'Meeting card',
+      number_of_meetings: 'Number of meetings',
+      price: 'Price',
+    },
+    subscription: {
+      title: 'Subscription',
+      number_of_meetings_per_week: 'Number of meetings per week',
+      price: 'Price',
+    },
+  },
+  validation: {
+    password1: 'Password should have at least {n} chars',
+    password2: 'Passwords should be equal',
+    email: 'Invalid email',
+    required: 'This field is required',
+    phoneNumber: 'Invalid phone number format. It should start with +',
   },
   links: {
     terms: 'Terms and conditions',
@@ -121,25 +165,5 @@ export const en = {
       'The course participants are obliged to take any work that has been done with them after completion in the current course. Liability for damage or loss of work is excluded. Clavis has no obligation to keep.',
     t7sub2p5:
       'The legal guardian as the legal representative of the child / the participant grants the organizer an unlimited right of use exclusively for advertising purposes at the works of the child / participant.',
-  },
-  weekdays: {
-    full: {
-      monday: 'monday',
-      tuesday: 'tuesday',
-      wednesday: 'wednesday',
-      thursday: 'thursday',
-      friday: 'friday',
-      saturday: 'saturday',
-      sunday: 'sunday',
-    },
-    short: {
-      monday: 'Mo',
-      tuesday: 'Tu',
-      wednesday: 'We',
-      thursday: 'Th',
-      friday: 'Fr',
-      saturday: 'Sa',
-      sunday: 'Su',
-    },
   },
 }
