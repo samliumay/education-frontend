@@ -58,6 +58,7 @@ const setTariff = (newTariff: Tariff, newSlots: number[], newChild: Child) => {
 
 const getPaymentLink = async (userData: FullUser) => {
   currentStage.value++
+  // @ts-ignore
   const payload: OfferUser = {
     ...userData,
     ...child.value,
