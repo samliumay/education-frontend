@@ -2,19 +2,12 @@
   <n-h2>{{ $t('tariff.select_payment_strategy') }}</n-h2>
   <n-p>{{ $t('tariff.click_on_option') }}</n-p>
   <div class="grid grid-cols-2 gap-5">
-    <section
+    <button
       v-if="!!offer?.meeting_card"
-      :class="{ active: tariff === 'meeting_card' }"
+      type="button"
+      @click="() => $emit('send', 'meeting_card')"
     >
-      <input
-        id="meeting_card"
-        class="hidden"
-        type="radio"
-        name="tariff"
-        value="meeting_card"
-        @change="() => (tariff = 'meeting_card')"
-      />
-      <label for="meeting_card">
+      <section>
         <n-h3>{{ $t('tariff.meeting_card.title') }}</n-h3>
         <dl>
           <div>
@@ -24,25 +17,18 @@
 
           <div>
             <dt>{{ $t('tariff.meeting_card.price') }}</dt>
-            <dd>{{ offer.meeting_card.price }}</dd>
+            <dd>{{ offer.meeting_card.price }} €</dd>
           </div>
         </dl>
-      </label>
-    </section>
+      </section>
+    </button>
 
-    <section
+    <button
       v-if="!!offer?.subscription"
-      :class="{ active: tariff === 'subscription' }"
+      type="button"
+      @click="() => $emit('send', 'subscription')"
     >
-      <input
-        id="subscription"
-        class="hidden"
-        type="radio"
-        name="tariff"
-        value="subscription"
-        @change="() => (tariff = 'subscription')"
-      />
-      <label for="subscription">
+      <section>
         <n-h3>{{ $t('tariff.subscription.title') }}</n-h3>
         <dl>
           <div>
@@ -52,23 +38,15 @@
 
           <div>
             <dt>{{ $t('tariff.subscription.price') }}</dt>
-            <dd>{{ offer?.subscription?.price }}</dd>
+            <dd>{{ offer?.subscription?.price }} €</dd>
           </div>
         </dl>
-      </label>
-    </section>
+      </section>
+    </button>
   </div>
-  <n-button
-    :disabled="!tariff"
-    keyboard
-    @click="$emit('send', tariff)"
-  >
-    {{ $t('common.submit') }}
-  </n-button>
 </template>
 <script setup lang="ts">
-import { NButton, NH2, NH3, NP } from 'naive-ui'
-import { ref } from 'vue'
+import { NH2, NH3, NP } from 'naive-ui'
 
 import { Offer, Tariff } from '@/types'
 
@@ -79,25 +57,16 @@ defineEmits<Emits>()
 interface Emits {
   (e: 'send', value: Tariff): void
 }
-
-const tariff = ref<Tariff>()
 </script>
 <style scoped lang="scss">
-section {
-  @apply border-slate-300 border-2 rounded bg-green-200 hover:bg-green-300 p-3 shadow-inner hover:shadow-lg mb-3;
-  &.active {
-    @apply bg-green-400;
-  }
-
-  label {
-    cursor: pointer;
-  }
+button {
+  @apply rounded-xl h-full hover:bg-red-200 transition p-3 hover:shadow-lg  bg-gray-200;
 }
 
 dl > div {
   dt {
     font-weight: 600;
-    margin-right: 2rem;
+    margin-right: 1rem;
     &::after {
       content: ':';
     }
