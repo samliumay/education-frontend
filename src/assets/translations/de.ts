@@ -68,24 +68,6 @@ export const de = {
     street: 'Straße',
     company_name: 'Firmenname',
   },
-  steps: [
-    {
-      title: 'Slots auswählen',
-      description:
-        'Kurse haben verschiedene Zeitfenster. Sie müssen das passende auswählen',
-    },
-    {
-      title: 'Tarif auswählen',
-      description:
-        'Entscheiden Sie, ob Sie für Abonnements oder für eine bestimmte Anzahl von Kursen bezahlen möchten',
-    },
-    {
-      title: 'Benutzerinformationen',
-      description:
-        'Einloggen/Registrieren und die Informationen über Ihr Kind ausfüllen',
-    },
-    { title: 'Bezahlen', description: '' },
-  ],
   tariff: {
     select_payment_strategy: 'Selecteer betalingsstrategie',
     click_on_option: 'Klik op optie om te selecteren',

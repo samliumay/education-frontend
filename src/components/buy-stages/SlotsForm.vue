@@ -1,6 +1,6 @@
 <template>
   <n-form>
-    <n-h1>{{ $t('slots.fillInfo') }}</n-h1>
+    <n-h2>{{ $t('slots.fillInfo') }}</n-h2>
     <n-p>{{ $t('slots.selectTimeSlots') }}</n-p>
     <n-p
       :class="{ 'text-rose-500 ': isAlert }"
@@ -9,36 +9,47 @@
       {{ $t('slots.minSlots', { minSelected }) }}
     </n-p>
     <n-select
-      v-model:value="selectedSlots"
+      :value="selectedSlots"
       :options="slotsOptions"
       filterable
       multiple
+      @update:value="updateSlots"
     />
-    <n-button
-      class="mt-2"
-      :disabled="isAlert"
-      keyboard
-      @click="checkSlots"
+    <product-type-form
+      v-if="!isOfferLoading && offer"
+      :offer="offer"
+      @send="tariff => $emit('send', tariff, selectedSlots)"
+    />
+    <div
+      v-else-if="isOfferLoading"
+      class="flex justify-center mt-3"
     >
-      {{ $t('common.submit') }}
-    </n-button>
+      <n-spin size="large" />
+    </div>
   </n-form>
 </template>
 <script setup lang="ts">
-import { NButton, NForm, NH1, NP, NSelect } from 'naive-ui'
+import { NForm, NH2, NP, NSelect, NSpin } from 'naive-ui'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { Slot } from '@/types'
+import { HTTP } from '@/api/index'
+import { Offer, Slot, Tariff } from '@/types'
 
-const props = defineProps<{ slots: Slot[]; minSelected: number }>()
+import ProductTypeForm from './ProductTypeForm.vue'
 
-const emit = defineEmits<Emits>()
+const props = defineProps<{
+  courseId: number
+  slots: Slot[]
+  minSelected: number
+}>()
+
+defineEmits<Emits>()
 
 const { t } = useI18n()
 
 interface Emits {
-  (e: 'send', slots: number[]): void
+  (e: 'send', fariff: Tariff, slots: number[]): void
 }
 
 const slotsOptions = computed(() =>
@@ -51,12 +62,27 @@ const slotsOptions = computed(() =>
 )
 
 const selectedSlots = ref<number[]>([])
+const offer = ref<Offer | undefined>()
 
 const isAlert = computed(() => props.minSelected > selectedSlots.value.length)
-const checkSlots = () => {
+const isOfferLoading = ref<boolean>(false)
+
+const makeOffer = async () => {
+  offer.value = await HTTP.post<Offer>(
+    `/api/v1/products/${props.courseId}/check-offers/`,
+    {
+      selected_schedule_slots: selectedSlots.value,
+    },
+  )
+}
+
+const updateSlots = async (newSlots: number[]) => {
+  selectedSlots.value = newSlots
   if (isAlert.value) {
     return
   }
-  emit('send', selectedSlots.value)
+  isOfferLoading.value = true
+  await makeOffer()
+  isOfferLoading.value = false
 }
 </script>

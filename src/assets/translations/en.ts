@@ -68,26 +68,6 @@ export const en = {
     street: 'Street',
     company_name: 'Company name',
   },
-  steps: [
-    {
-      title: 'Select slots',
-      description:
-        'Courses have different time slots. You have to select the comfortable one',
-    },
-    {
-      title: 'Select tariff',
-      description:
-        'Decide if you will pay for subscriptions or for specific number of classes',
-    },
-    {
-      title: 'User info',
-      description: 'Login/Register and fill the info about your child',
-    },
-    {
-      title: 'Pay',
-      description: '',
-    },
-  ],
   tariff: {
     select_payment_strategy: 'Select payment strategy',
     click_on_option: 'Click on option to select',
