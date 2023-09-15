@@ -48,7 +48,7 @@ export const de = {
   slots: {
     options: 'Sie können diesen Kurs mit folgenden Optionen kaufen',
     optionsMeetingCard: 'Terminkarten ({n} Besuchen, €{price})',
-    optionsSubscriptions: '{n} Kurse pro Woche (€{price})',
+    optionsSubscriptions: '{n} Kurse pro Woche ({price}€)',
     fillInfo: 'Füllen Sie Ihre Informationen aus',
     selectTimeSlots: 'Wählen Sie die Zeitfenster aus, die Ihnen angenehm sind',
     minSlots: 'Sie müssen mindestens {minSelected} Zeitfenster auswählen',
