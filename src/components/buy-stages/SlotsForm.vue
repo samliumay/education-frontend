@@ -4,7 +4,6 @@
     :rules="rules"
   >
     <n-h2>{{ $t('slots.fillInfo') }}</n-h2>
-    <n-p>{{ $t('slots.childName') }}</n-p>
 
     <div class="grid grid-cols-2 gap-5">
       <n-form-item
@@ -22,11 +21,38 @@
         <n-input v-model:value="child.child_last_name" />
       </n-form-item>
     </div>
-    <n-p>{{ $t('slots.selectTimeSlots') }}</n-p>
+    <n-p>
+      {{ $t('slots.options') }}:
+      <n-ul class="list-disc">
+        <n-li>
+          {{
+            $t('slots.optionsMeetingCard', {
+              n: course.meeting_card.number_of_meetings,
+              price: course.meeting_card.price,
+            })
+          }}
+        </n-li>
+        <n-li
+          v-for="subscription in course.subscriptions"
+          :key="subscription.number_of_meetings_per_week"
+        >
+          {{
+            $t('slots.optionsSubscriptions', {
+              n: subscription.number_of_meetings_per_week,
+              price: subscription.price,
+            })
+          }}
+        </n-li>
+      </n-ul>
+    </n-p>
     <n-form-item
       path="slots"
       :label="$t('slots.selectTimeSlots')"
-      :feedback="$t('slots.minSlots', { minSelected })"
+      :feedback="
+        $t('slots.minSlots', {
+          minSelected: course.min_number_of_meeting_per_week,
+        })
+      "
     >
       <n-select
         v-model:value="selectedSlots"
@@ -56,22 +82,22 @@ import {
   NFormItem,
   NH2,
   NInput,
+  NLi,
   NP,
   NSelect,
   NSpin,
+  NUl,
 } from 'naive-ui'
 import { computed, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import { HTTP } from '@/api/index'
-import { Child, Offer, Slot, Tariff } from '@/types'
+import { Child, Offer, Product, Tariff } from '@/types'
 
 import ProductTypeForm from './ProductTypeForm.vue'
 
 const props = defineProps<{
-  courseId: number
-  slots: Slot[]
-  minSelected: number
+  course: Product
 }>()
 
 defineEmits<Emits>()
@@ -83,7 +109,7 @@ interface Emits {
 }
 
 const slotsOptions = computed(() =>
-  props.slots.map(slot => ({
+  props.course.schedule_slots.map(slot => ({
     value: slot.id,
     label: `${t(`dates.weekdays.short.${slot.weekday}`)} ${slot.start} - ${
       slot.end
@@ -103,7 +129,8 @@ const isOfferLoading = ref<boolean>(false)
 const rules = {
   slots: {
     required: true,
-    validator: () => selectedSlots.value.length >= props.minSelected,
+    validator: () =>
+      selectedSlots.value.length >= props.course.min_number_of_meeting_per_week,
     trigger: ['input', 'blur'],
   },
   child_first_name: {
@@ -139,7 +166,7 @@ const makeOffer = async () => {
   }
   isOfferLoading.value = true
   offer.value = await HTTP.post<Offer>(
-    `/api/v1/products/${props.courseId}/check-offers/`,
+    `/api/v1/products/${props.course.id}/check-offers/`,
     {
       selected_schedule_slots: selectedSlots.value,
     },

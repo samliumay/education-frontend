@@ -46,6 +46,9 @@ export const en = {
     link: 'Cancellation policy',
   },
   slots: {
+    options: 'You can buy this course with the following options',
+    optionsMeetingCard: 'Termin karten ({n} meetings, €{price})',
+    optionsSubscriptions: '{n} class per week (€{price})',
     fillInfo: 'Fill your info',
     selectTimeSlots: 'Select the time slots, which will be comfortable for you',
     minSlots: 'You should select minimum {minSelected} slots',
@@ -59,6 +62,8 @@ export const en = {
   },
   offerForm: {
     paymentDetails: 'Payment details',
+    payer_first_name: 'Payer first name',
+    payer_last_name: 'Payer last name',
     child_first_name: 'Child first name',
     child_last_name: 'Child last name',
     country: 'Country',

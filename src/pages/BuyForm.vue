@@ -4,9 +4,7 @@
     <div v-if="course">
       <SlotsForm
         v-if="currentStage === 1"
-        :slots="course.schedule_slots || []"
-        :course-id="courseId"
-        :min-selected="course.min_number_of_meeting_per_week"
+        :course="course"
         @send="setTariff"
       />
       <OfferForm

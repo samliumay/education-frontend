@@ -46,6 +46,9 @@ export const de = {
     link: 'Widerrufsbelehrung',
   },
   slots: {
+    options: 'Sie können diesen Kurs mit folgenden Optionen kaufen',
+    optionsMeetingCard: 'Terminkarten ({n} Besuchen, €{price})',
+    optionsSubscriptions: '{n} Kurse pro Woche (€{price})',
     fillInfo: 'Füllen Sie Ihre Informationen aus',
     selectTimeSlots: 'Wählen Sie die Zeitfenster aus, die Ihnen angenehm sind',
     minSlots: 'Sie müssen mindestens {minSelected} Zeitfenster auswählen',
@@ -59,6 +62,8 @@ export const de = {
   },
   offerForm: {
     paymentDetails: 'Rechnungsdetails',
+    payer_first_name: 'Vorname des Zahlers',
+    payer_last_name: 'Nachname des Zahlers',
     child_first_name: 'Vorname des Kindes',
     child_last_name: 'Nachname des Kindes',
     country: 'Land',
