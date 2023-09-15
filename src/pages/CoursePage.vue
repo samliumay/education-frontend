@@ -47,7 +47,7 @@
 </template>
 <script setup lang="ts">
 import { NButton, NH1 } from 'naive-ui'
-import { computed } from 'vue'
+import { computed, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 
 import { useListsStore } from '@/store/lists'
@@ -56,7 +56,13 @@ const listsStore = useListsStore()
 
 const route = useRoute()
 const courseId = computed(() => Number(route?.params?.id))
-const course = computed(() => listsStore.getProductById(courseId.value))
+const course = computed(() => {
+  const result = listsStore.getProductById(courseId.value)
+  nextTick(() => {
+    document.title = `${result?.name} - Clavis Schule`
+  })
+  return result
+})
 </script>
 <style scoped lang="scss">
 .centered {

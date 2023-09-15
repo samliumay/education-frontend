@@ -10,10 +10,10 @@ import App from './App.vue'
 
 const i18n = createI18n({
   legacy: false,
-  locale: 'de',
+  locale: 'de-DE',
   messages: {
-    en,
-    de,
+    'en-US': en,
+    'de-DE': de,
   },
 })
 

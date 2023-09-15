@@ -60,8 +60,8 @@
           v-model="$i18n.locale"
           class="ml-2 bg-transparent border-none"
         >
-          <option value="de">de</option>
-          <option value="en">en</option>
+          <option value="de-DE">de</option>
+          <option value="en-US">en</option>
         </select>
       </div>
     </div>
@@ -77,6 +77,8 @@ import {
   Youtube,
 } from '@vicons/fa'
 import { NIcon } from 'naive-ui'
+import { watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 const socialMediaLinks = [
   {
@@ -110,4 +112,10 @@ const socialMediaLinks = [
     link: 'https://www.youtube.com/@ClavisSchuleBerlin',
   },
 ]
+
+const { locale } = useI18n()
+
+watch(locale, () => {
+  document.documentElement.lang = locale.value
+})
 </script>

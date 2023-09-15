@@ -39,7 +39,7 @@
 </template>
 <script setup lang="ts">
 import { NH1, NSpace, NStep, NSteps, StepsProps } from 'naive-ui'
-import { computed, ref } from 'vue'
+import { computed, nextTick, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 
@@ -54,7 +54,13 @@ const listsStore = useListsStore()
 
 const route = useRoute()
 const courseId = computed(() => Number(route?.params?.id))
-const course = computed(() => listsStore.getProductById(courseId.value))
+const course = computed(() => {
+  const result = listsStore.getProductById(courseId.value)
+  nextTick(() => {
+    document.title = `${result?.name} - Clavis Schule`
+  })
+  return result
+})
 
 const currentStage = ref<number>(1)
 const currentStatus = ref<StepsProps['status']>('process')
