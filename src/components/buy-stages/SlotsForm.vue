@@ -159,6 +159,13 @@ const validate = async () => {
   return isValid
 }
 
+const canLoadType = computed(
+  () =>
+    child.value.child_first_name &&
+    child.value.child_last_name &&
+    selectedSlots.value.length >= props.course.min_number_of_meeting_per_week,
+)
+
 const makeOffer = async () => {
   const isValid = await validate()
   if (!isValid) {
@@ -175,18 +182,13 @@ const makeOffer = async () => {
 }
 
 watch(
-  selectedSlots,
-  async () => {
-    await makeOffer()
+  canLoadType,
+  async (valueAfter, valueBefore) => {
+    if (!valueBefore && valueAfter) await makeOffer()
+    else if (!valueAfter && valueBefore) offer.value = undefined
   },
   { deep: true },
 )
 
-watch(
-  child,
-  async () => {
-    await makeOffer()
-  },
-  { deep: true },
-)
+watch(selectedSlots, makeOffer)
 </script>
