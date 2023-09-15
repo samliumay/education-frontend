@@ -1,9 +1,11 @@
 <template>
   <header class="px-5 py-3 bg-[#f5f5ef]">
     <div class="flex justify-between items-center container mx-auto">
-      <router-link to="/">
+      <router-link
+        to="/"
+        :aria-label="$t('common.goToMain')"
+      >
         <Logo />
-        <p class="hidden">{{ $t('common.goToMain') }}</p>
       </router-link>
       <nav>
         <ul class="flex gap-2">
