@@ -4,6 +4,7 @@
     <n-steps
       :current="currentStage"
       :status="currentStatus"
+      class="flex-col lg:flex-row"
     >
       <n-step
         v-for="(step, idx) in steps"

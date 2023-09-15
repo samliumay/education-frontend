@@ -82,7 +82,7 @@ export const de = {
     select_payment_strategy: 'Selecteer betalingsstrategie',
     click_on_option: 'Klik op optie om te selecteren',
     meeting_card: {
-      title: 'Treffen-Karte',
+      title: 'Termin Karten',
       number_of_meetings: 'Anzahl der Treffen',
       price: 'Preis',
     },

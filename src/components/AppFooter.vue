@@ -1,7 +1,7 @@
 <template>
   <footer class="bg-[#E7E7D9] py-6">
     <div
-      class="items-center mx-auto container px-5 md:px-0 py-3 flex justify-between"
+      class="md:items-center mx-auto container px-5 md:px-0 py-3 flex justify-between flex-col md:flex-row"
     >
       <!-- navigation -->
       <nav>
@@ -32,7 +32,7 @@
         </ul>
       </nav>
       <!-- social networks -->
-      <ul class="flex gap-2">
+      <ul class="flex gap-2 my-4 md:my-0">
         <li
           v-for="social in socialMediaLinks"
           :key="social.key"
