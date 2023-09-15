@@ -14,6 +14,10 @@ const routes: RouteRecordRaw[] = [
   },
   { path: '/agb', component: () => import('@/pages/static/AGB.vue') },
   {
+    path: '/widerrufsbelehrung',
+    component: () => import('@/pages/static/WiderrufsbelehrungPage.vue'),
+  },
+  {
     path: '/datenschutz',
     component: () => import('@/pages/static/Datenschutz.vue'),
   },
