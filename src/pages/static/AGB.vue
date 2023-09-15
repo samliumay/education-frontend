@@ -138,20 +138,20 @@
       <tbody>
         <tr>
           <td width="284">
-            <p>bis 14 Tage vor Beginn des Kurses&nbsp;&nbsp;</p>
-</td><td width="172"><p>0% der Teilnahmekosten</p></td>
-</tr><tr>
+            <p>bis 14 Tage vor Beginn des Kurses&nbsp;&nbsp;</p> </td
+          ><td width="172"><p>0% der Teilnahmekosten</p></td> </tr
+        ><tr>
           <td width="284">
             <p>
               bis 7 Tage vor Beginn des Kurses&nbsp; &nbsp;&nbsp; &nbsp;
-            </p>
-</td><td width="172"><p>50% der Teilnahmekosten</p></td>
-</tr><tr>
+            </p> </td
+          ><td width="172"><p>50% der Teilnahmekosten</p></td> </tr
+        ><tr>
           <td width="284">
             <p>
               bis 2 Tage vor Beginn des Kurses&nbsp; &nbsp;&nbsp; &nbsp;
-            </p>
-</td><td width="172"><p>80% der Teilnahmekosten</p></td>
+            </p> </td
+          ><td width="172"><p>80% der Teilnahmekosten</p></td>
         </tr>
       </tbody>
     </table>

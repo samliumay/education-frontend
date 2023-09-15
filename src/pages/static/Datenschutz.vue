@@ -412,8 +412,8 @@
         Profiling und ggf. aussagekräftigen Informationen zu deren Einzelheiten
         verlangen;• gemäß Art. 16 DSGVO unverzüglich die Berichtigung
         unrichtiger oder Vervollständigung Ihrer bei uns gespeicherten
-        personenbezogenen Daten zu verlangen;
-</li><li>
+        personenbezogenen Daten zu verlangen; </li
+      ><li>
         gemäß Art. 17 DSGVO die Löschung Ihrer bei uns gespeicherten
         personenbezogenen Daten zu verlangen, soweit nicht die Verarbeitung zur
         Ausübung des Rechts auf freie Meinungsäußerung und Information, zur

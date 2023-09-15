@@ -31,6 +31,10 @@ const routes: RouteRecordRaw[] = [
     name: 'Allgemeine Geschäftsbedingungen - Clavis Schule',
   },
   {
+    path: '/widerrufsbelehrung',
+    component: () => import('@/pages/static/WiderrufsbelehrungPage.vue'),
+  },
+  {
     path: '/datenschutz',
     component: () => import('@/pages/static/Datenschutz.vue'),
     name: 'Datenschutz - Clavis Schule',
