@@ -33,8 +33,8 @@ export type FullUser = {
   pk?: number
   id?: number
   email: string
-  child_first_name: string
-  child_last_name: string
+  payer_first_name: string
+  payer_last_name: string
   phone_number: string
   company_name: string
   city?: number
@@ -48,7 +48,12 @@ export type FullUser = {
 
 export type Tariff = 'subscription' | 'meeting_card'
 
-export interface OfferUser extends FullUser {
+export type Child = {
+  child_first_name: string
+  child_last_name: string
+}
+
+export interface OfferUser extends FullUser, Child {
   selected_schedule_slots: number[]
   product: number
   order_type?: Tariff
@@ -81,5 +86,7 @@ export type RegistrationErrors = {
   phone_number?: string[]
   password1?: string[]
   password2?: string[]
+  first_name?: string[]
+  last_name?: string[]
   non_field_errors?: string[]
 }

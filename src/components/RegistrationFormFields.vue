@@ -48,6 +48,21 @@
         is-password
       />
     </n-form-item>
+
+    <n-form-item
+      required
+      path="first_name"
+      :label="$t('common.first_name')"
+    >
+      <n-input v-model:value="firstName" />
+    </n-form-item>
+    <n-form-item
+      required
+      path="last_name"
+      :label="$t('common.last_name')"
+    >
+      <n-input v-model:value="lastName" />
+    </n-form-item>
   </n-form>
 </template>
 <script setup lang="ts">
@@ -77,6 +92,8 @@ const login = ref('')
 const password1 = ref('')
 const password2 = ref('')
 const phoneNumber = ref('+')
+const firstName = ref('')
+const lastName = ref('')
 
 const { t } = useI18n()
 
@@ -87,6 +104,8 @@ const fields: Array<keyof RegistrationErrors> = [
   'phone_number',
   'password1',
   'password2',
+  'first_name',
+  'last_name',
 ]
 
 const rules = computed(() =>
@@ -124,6 +143,16 @@ const rules = computed(() =>
           message: t('validation.password2'),
           trigger: ['input', 'blur'],
         },
+        first_name: {
+          validator: () => !!firstName.value,
+          message: t('validation.required'),
+          trigger: ['input', 'blur'],
+        },
+        last_name: {
+          validator: () => !!lastName.value,
+          message: t('validation.required'),
+          trigger: ['input', 'blur'],
+        },
       },
 )
 
@@ -148,7 +177,14 @@ const submit = async () => {
   const isValid = await validate()
   if (!isValid) return
   await userStore
-    .register(login.value, phoneNumber.value, password1.value, password2.value)
+    .register(
+      login.value,
+      phoneNumber.value,
+      password1.value,
+      password2.value,
+      firstName.value,
+      lastName.value,
+    )
     .catch(backendErrors => {
       errors.value = backendErrors
       setTimeout(validate)

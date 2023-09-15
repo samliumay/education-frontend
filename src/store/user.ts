@@ -67,6 +67,8 @@ export const useUserStore = defineStore('user', () => {
     phoneNumber: string,
     password1: string,
     password2: string,
+    firstName: string,
+    lastName: string,
   ) =>
     userPostRequest(
       {
@@ -75,6 +77,8 @@ export const useUserStore = defineStore('user', () => {
         phone_number: phoneNumber,
         password1,
         password2,
+        first_name: firstName,
+        last_name: lastName,
       },
       '/api/v1/users/registration/',
     )

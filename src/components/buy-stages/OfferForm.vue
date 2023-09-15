@@ -38,28 +38,20 @@
     <n-h2>{{ $t('offerForm.paymentDetails') }}</n-h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-      <!-- <n-form-item
-        path="phone_number"
-        label="Phone number"
-        required
-      >
-        <n-input v-model:value="currentValue.phone_number" />
-      </n-form-item> -->
-
       <n-form-item
         path="child_first_name"
-        :label="$t('offerForm.child_first_name')"
+        :label="$t('offerForm.payer_first_name')"
         required
       >
-        <n-input v-model:value="currentValue.child_first_name" />
+        <n-input v-model:value="currentValue.payer_first_name" />
       </n-form-item>
 
       <n-form-item
         path="child_last_name"
-        :label="$t('offerForm.child_last_name')"
+        :label="$t('offerForm.payer_last_name')"
         required
       >
-        <n-input v-model:value="currentValue.child_last_name" />
+        <n-input v-model:value="currentValue.payer_last_name" />
       </n-form-item>
 
       <n-form-item
@@ -171,8 +163,8 @@ const offerForm = ref<FormInst | undefined>()
 
 const { t } = useI18n()
 const requiredFields: Array<keyof FullUser> = [
-  'child_first_name',
-  'child_last_name',
+  'payer_first_name',
+  'payer_last_name',
   'company_name',
   'city',
   'country',

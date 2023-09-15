@@ -26,7 +26,7 @@ import { HTTP } from '@/api/index'
 import OfferForm from '@/components/buy-stages/OfferForm.vue'
 import SlotsForm from '@/components/buy-stages/SlotsForm.vue'
 import { useListsStore } from '@/store/lists'
-import { FullUser, OfferUser, Tariff } from '@/types'
+import { Child, FullUser, OfferUser, Tariff } from '@/types'
 
 const listsStore = useListsStore()
 
@@ -49,10 +49,12 @@ const setErrorStatus = () => {
 
 const slots = ref<number[]>([])
 const tariff = ref<Tariff | undefined>()
+const child = ref<Child | undefined>()
 
-const setTariff = (newTariff: Tariff, newSlots: number[]) => {
+const setTariff = (newTariff: Tariff, newSlots: number[], newChild: Child) => {
   slots.value = newSlots
   tariff.value = newTariff
+  child.value = newChild
   currentStage.value++
 }
 
@@ -60,6 +62,7 @@ const getPaymentLink = async (userData: FullUser) => {
   currentStage.value++
   const payload: OfferUser = {
     ...userData,
+    ...child.value,
     selected_schedule_slots: slots.value,
     product: courseId.value,
     order_type: tariff.value,
