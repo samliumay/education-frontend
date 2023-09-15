@@ -2,6 +2,10 @@
 <template>
   <n-config-provider :theme-overrides="themeOverrides">
     <div class="app flex flex-col">
+      <CookiesPopup
+        v-if="showCookiesPopup"
+        @close="setCookies"
+      />
       <AppHeader />
       <main class="flex-1 py-5 container mx-auto px-5 md:px-0">
         <!-- eslint-disable-next-line vue/no-undef-components -->
@@ -13,12 +17,13 @@
 </template>
 <script setup lang="ts">
 import { NConfigProvider } from 'naive-ui'
-import { onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 
 import { useListsStore } from '@/store/lists'
 
 import AppFooter from './components/AppFooter.vue'
 import AppHeader from './components/AppHeader.vue'
+import CookiesPopup from './components/CookiesPopup.vue'
 
 const listsStore = useListsStore()
 
@@ -28,10 +33,24 @@ const appHeight = () => {
   doc.style.setProperty('--app-height', `${window.innerHeight}px`)
 }
 
+const showCookiesPopup = ref<boolean>(false)
+
+const computeCookies = () => {
+  showCookiesPopup.value = !JSON.parse(localStorage.getItem('cookies') ?? '{}')
+    ?.value
+}
+
+const setCookies = (value: boolean) => {
+  localStorage.setItem('cookies', JSON.stringify({ value }))
+  showCookiesPopup.value = false
+}
+
 onMounted(async () => {
   window.addEventListener('resize', appHeight)
   appHeight()
   await listsStore.populateLists()
+
+  setTimeout(computeCookies, 1000)
 })
 
 onUnmounted(() => {

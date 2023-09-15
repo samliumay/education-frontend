@@ -37,6 +37,14 @@ export const en = {
     buy: 'Buy',
     chooseLanguage: 'Choose language',
   },
+  cookies: {
+    title: 'USE OF COOKIES',
+    body: 'In order to offer you a better navigation experience when visiting our website, we use technical, analytical and profiling cookies - also from third parties. The use of non-technical cookies requires your prior consent (more on this in our cookie guidelines). By clicking on “Allow all cookies” you consent to the use of all cookies, including profiling cookies. If you select “Allow technical cookies only”, the standard settings, which only use essential, technical cookies, are retained.',
+    btn1: 'Alle Cookies zulassen',
+    btn2: 'Ablehnen',
+    btn3: 'Einstellungen anzeigen',
+    link: 'Cancellation policy',
+  },
   slots: {
     fillInfo: 'Fill your info',
     selectTimeSlots: 'Select the time slots, which will be comfortable for you',

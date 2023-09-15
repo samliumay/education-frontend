@@ -37,6 +37,14 @@ export const de = {
     chooseLanguage: 'Kies een taal',
     buy: 'Kaufen',
   },
+  cookies: {
+    title: 'VERWENDUNG VON COOKIES',
+    body: 'Um Ihnen beim Besuch unserer Website ein besseres Navigations-Erlebnis zu bieten, verwenden wir technische, analytische und profilierende Cookies – auch von Dritten. Die Verwendung nicht technischer Cookies bedarf Ihrer vorherigen Zustimmung (mehr dazu in unseren Cookie-Richtlinien). Mit Klick auf “Alle Cookies zulassen” stimmen Sie der Verwendung aller Cookies, einschließlich der profilierenden Cookies, zu. Wählen Sie “Nur technische Cookies zulassen”, werden die Standardeinstellungen, bei der nur essenziell notwendige, technische Cookies verwendet werden, beibehalten.',
+    btn1: 'Alle Cookies zulassen',
+    btn2: 'Ablehnen',
+    btn3: 'Einstellungen anzeigen',
+    link: 'Widerrufsbelehrung',
+  },
   slots: {
     fillInfo: 'Füllen Sie Ihre Informationen aus',
     selectTimeSlots: 'Wählen Sie die Zeitfenster aus, die Ihnen angenehm sind',
