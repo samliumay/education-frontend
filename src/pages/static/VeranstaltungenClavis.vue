@@ -2,47 +2,49 @@
   <div>
     <n-h1 class="mb-4">Veranstaltungen bei Clavis</n-h1>
 
-    <p
-      >Gerne organisieren wir mit Ihnen gemeinsam einen Kindergeburtstag oder
+    <p>
+      Gerne organisieren wir mit Ihnen gemeinsam einen Kindergeburtstag oder
       einen Workshop bei Clavis. die Veranstaltung kann bei Ihnen vor Ort oder
-      in unseren Räumlichkeiten stattfinden.</p
-    >
+      in unseren Räumlichkeiten stattfinden.
+    </p>
 
     <n-h3>WKindergeburtstag 5-8 Jahre</n-h3>
-    <p
-      >Für die Kinder ist Ihr Geburtstag immer ein ganz Besonderer Tag. Wir
-      planen gerne mit Ihnen zusammen einen unvergesslichen Kindergeburstag.</p
-    >
-    <p
-      >Der Kindergeburtstag bei Clavis beinhaltet zwei getrennt Workshops a
-      1,5h, die Workshop Themen können Sie aus unserer angbotenen Kusliste
-      auswählen, gerne beraten wir Sie bei der Wahl.</p
-    >
+    <p>
+      Für die Kinder ist Ihr Geburtstag immer ein ganz Besonderer Tag. Wir
+      planen gerne mit Ihnen zusammen einen unvergesslichen Kindergeburstag.
+    </p>
+    <p>
+      Der Kindergeburtstag bei Clavis beinhaltet zwei getrennt Workshops a 1,5h,
+      die Workshop Themen können Sie aus unserer angbotenen Kusliste auswählen,
+      gerne beraten wir Sie bei der Wahl.
+    </p>
     <p>Dauer: 3h </p>
-    <p
-      >Bei Interesse
+    <p>
+      Bei Interesse
       <router-link
         class="text-red-400 font-bold underline"
         to="/kontaktieren-sie-uns"
-        >kontaktieren Sie uns</router-link
       >
+        kontaktieren Sie uns
+      </router-link>
       gerne per Email oder Telefon.
     </p>
 
     <n-h3 class="mt-8">Privater Workshop 8+ Jahre</n-h3>
-    <p
-      >Private Workshops kann für unterschiedliche Anlässe geplant werden. Gerne
+    <p>
+      Private Workshops kann für unterschiedliche Anlässe geplant werden. Gerne
       passen wir uns individuell Ihren Wünschen an, dabei beraten wir Sie gerne
-      in der Wahl des Workshops.</p
-    >
+      in der Wahl des Workshops.
+    </p>
     <p>Dauer: 3h </p>
-    <p
-      >Bei Interesse
+    <p>
+      Bei Interesse
       <router-link
         class="text-red-400 font-bold underline"
         to="/kontaktieren-sie-uns"
-        >kontaktieren Sie uns</router-link
       >
+        kontaktieren Sie uns
+      </router-link>
       gerne per Email oder Telefon.
     </p>
 

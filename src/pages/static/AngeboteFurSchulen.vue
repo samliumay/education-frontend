@@ -3,35 +3,37 @@
     <n-h1 class="mb-4">Angebote für Schulen</n-h1>
 
     <n-h3>Clavis Workshops</n-h3>
-    <p
-      >Wir bieten für Schulen alle unsere angebotenen Kurse auch als Workshop
-      an. Der Workshop kann bei Ihnen vor Ort oder in unseren Räumlichkeiten
-      stattfinden.</p
-    >
+    <p>
+      Wir bieten für Schulen alle unsere angebotenen Kurse auch als Workshop an.
+      Der Workshop kann bei Ihnen vor Ort oder in unseren Räumlichkeiten
+      stattfinden.
+    </p>
     <p>Dauer: 1,5-3h </p>
-    <p
-      >Bei Interesse
+    <p>
+      Bei Interesse
       <router-link
         class="text-red-400 font-bold underline"
         to="/kontaktieren-sie-uns"
-        >kontaktieren Sie uns</router-link
       >
+        kontaktieren Sie uns
+      </router-link>
       gerne per Email oder Telefon.
     </p>
 
     <n-h3 class="mt-8">AGs und Ferienkurse</n-h3>
-    <p
-      >Gerne kooperieren wir mit Schulen bei der Organisation ihres Nachmittags
-      oder Ferienprogramms bei uns oder bei ihnen vor Ort.</p
-    >
+    <p>
+      Gerne kooperieren wir mit Schulen bei der Organisation ihres Nachmittags
+      oder Ferienprogramms bei uns oder bei ihnen vor Ort.
+    </p>
     <p>Dauer: 3h </p>
-    <p
-      >Bei Interesse
+    <p>
+      Bei Interesse
       <router-link
         class="text-red-400 font-bold underline"
         to="/kontaktieren-sie-uns"
-        >kontaktieren Sie uns</router-link
       >
+        kontaktieren Sie uns
+      </router-link>
       gerne per Email oder Telefon.
     </p>
 
