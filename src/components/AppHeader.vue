@@ -31,5 +31,7 @@ const navigationLinks = [
   // { name: 'workshops', link: '/' },
   // { name: 'summer school', link: '/' },
   { name: 'Kurs angebote', link: '/' },
+  { name: 'Veranstaltungen bei Clavis', link: '/veranstaltungen-bei-clavis' },
+  { name: 'Angebote für Schulen', link: '/angebote-fuer-schulen' },
 ]
 </script>
