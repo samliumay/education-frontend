@@ -100,3 +100,10 @@ export type RegistrationErrors = {
   last_name?: string[]
   non_field_errors?: string[]
 }
+
+export type Instructor = {
+  first_name: string
+  last_name: string
+  job: string
+  photo: string
+}

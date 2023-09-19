@@ -36,6 +36,7 @@ export const de = {
     catalog: 'Katalog',
     chooseLanguage: 'Kies een taal',
     buy: 'Kaufen',
+    instructors: 'Fakultät & Mitarbeiter',
   },
   cookies: {
     title: 'VERWENDUNG VON COOKIES',

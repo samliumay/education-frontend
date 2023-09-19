@@ -29,6 +29,9 @@
           <li>
             <router-link to="/impressum">Impressum</router-link>
           </li>
+          <li>
+            <router-link to="/instructors">Fakultät & Mitarbeiter</router-link>
+          </li>
         </ul>
       </nav>
       <!-- social networks -->

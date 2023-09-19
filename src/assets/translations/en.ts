@@ -36,6 +36,7 @@ export const en = {
     catalog: 'Catalog',
     buy: 'Buy',
     chooseLanguage: 'Choose language',
+    instructors: 'Our instructors',
   },
   cookies: {
     title: 'USE OF COOKIES',
