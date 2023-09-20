@@ -8,7 +8,7 @@
       in unseren Räumlichkeiten stattfinden.
     </p>
 
-    <n-h3>WKindergeburtstag 5-8 Jahre</n-h3>
+    <n-h2>WKindergeburtstag 5-8 Jahre</n-h2>
     <p>
       Für die Kinder ist Ihr Geburtstag immer ein ganz Besonderer Tag. Wir
       planen gerne mit Ihnen zusammen einen unvergesslichen Kindergeburstag.
@@ -30,7 +30,7 @@
       gerne per Email oder Telefon.
     </p>
 
-    <n-h3 class="mt-8">Privater Workshop 8+ Jahre</n-h3>
+    <n-h2 class="mt-8">Privater Workshop 8+ Jahre</n-h2>
     <p>
       Private Workshops kann für unterschiedliche Anlässe geplant werden. Gerne
       passen wir uns individuell Ihren Wünschen an, dabei beraten wir Sie gerne
@@ -48,20 +48,22 @@
       gerne per Email oder Telefon.
     </p>
 
-    <n-h3 class="mt-8">Kursauswahl:</n-h3>
-    <p>Zeichnen, Malen, Plastizieren (DE)</p>
-    <p>Manga Zeichnen (DE/ENG)</p>
-    <p>Digitales Zeichnen (DE/ENG)</p>
-    <p>Mode Design (DE)</p>
-    <p>Multimedia Art (EN)</p>
-    <p>Animation Studio (DE/ENG)</p>
-    <p>Theater (ENG)</p>
-    <p>Maths and Sciences (ENG)</p>
-    <p>Photo Lab (ENG)</p>
+    <n-h2 class="mt-8">Kursauswahl:</n-h2>
+    <ul>
+      <li>Zeichnen, Malen, Plastizieren (DE)</li>
+      <li>Manga Zeichnen (DE/ENG)</li>
+      <li>Digitales Zeichnen (DE/ENG)</li>
+      <li>Mode Design (DE)</li>
+      <li>Multimedia Art (EN)</li>
+      <li>Animation Studio (DE/ENG)</li>
+      <li>Theater (ENG)</li>
+      <li>Maths and Sciences (ENG)</li>
+      <li>Photo Lab (ENG)</li>
+    </ul>
   </div>
 </template>
 <script setup lang="ts">
-import { NH1, NH3 } from 'naive-ui'
+import { NH1, NH2 } from 'naive-ui'
 import { RouterLink } from 'vue-router'
 </script>
 <style scoped lang="scss">

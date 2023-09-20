@@ -2,7 +2,7 @@
   <div>
     <n-h1 class="mb-4">Angebote für Schulen</n-h1>
 
-    <n-h3>Clavis Workshops</n-h3>
+    <n-h2>Clavis Workshops</n-h2>
     <p>
       Wir bieten für Schulen alle unsere angebotenen Kurse auch als Workshop an.
       Der Workshop kann bei Ihnen vor Ort oder in unseren Räumlichkeiten
@@ -20,7 +20,7 @@
       gerne per Email oder Telefon.
     </p>
 
-    <n-h3 class="mt-8">AGs und Ferienkurse</n-h3>
+    <n-h2 class="mt-8">AGs und Ferienkurse</n-h2>
     <p>
       Gerne kooperieren wir mit Schulen bei der Organisation ihres Nachmittags
       oder Ferienprogramms bei uns oder bei ihnen vor Ort.
@@ -37,16 +37,18 @@
       gerne per Email oder Telefon.
     </p>
 
-    <n-h3 class="mt-8">Kursauswahl:</n-h3>
-    <p>Zeichnen, Malen, Plastizieren (DE)</p>
-    <p>Manga Zeichnen (DE/ENG)</p>
-    <p>Digitales Zeichnen (DE/ENG)</p>
-    <p>Mode Design (DE)</p>
-    <p>Multimedia Art (EN)</p>
-    <p>Animation Studio (DE/ENG)</p>
-    <p>Theater (ENG)</p>
-    <p>Maths and Sciences (ENG)</p>
-    <p>Photo Lab (ENG)</p>
+    <n-h2 class="mt-8">Kursauswahl:</n-h2>
+    <ul>
+      <li>Zeichnen, Malen, Plastizieren (DE)</li>
+      <li>Manga Zeichnen (DE/ENG)</li>
+      <li>Digitales Zeichnen (DE/ENG)</li>
+      <li>Mode Design (DE)</li>
+      <li>Multimedia Art (EN)</li>
+      <li>Animation Studio (DE/ENG)</li>
+      <li>Theater (ENG)</li>
+      <li>Maths and Sciences (ENG)</li>
+      <li>Photo Lab (ENG)</li>
+    </ul>
   </div>
 </template>
 <script setup lang="ts">

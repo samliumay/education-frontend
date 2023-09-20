@@ -16,6 +16,7 @@
           v-if="course?.photo"
           :src="course.photo"
           :alt="course.name"
+          aria-hidden="true"
           class="w-full h-full object-cover"
         />
       </div>

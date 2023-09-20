@@ -38,14 +38,17 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/widerrufsbelehrung',
     component: () => import('@/pages/static/WiderrufsbelehrungPage.vue'),
+    name: 'Widerrufsbelehrung - Clavis Schule',
   },
   {
     path: '/veranstaltungen-bei-clavis',
     component: () => import('@/pages/static/VeranstaltungenClavis.vue'),
+    name: 'Veranstaltungen bei Clavis - Clavis Schule',
   },
   {
     path: '/angebote-fuer-schulen',
     component: () => import('@/pages/static/AngeboteFurSchulen.vue'),
+    name: 'Angebote für Schulen - Clavis Schule',
   },
   {
     path: '/datenschutz',
