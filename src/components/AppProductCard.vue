@@ -2,7 +2,7 @@
   <router-link :to="`/course/${course.id}`">
     <article
       class="rounded-xl border h-full hover:bg-red-200 transition p-3 hover:shadow-lg flex flex-col justify-between min-h-[240px] bg-gray-200 text-white"
-      :style="{ backgroundColor: AgeColors[course?.age_group] }"
+      :class="`bg-${[course?.age_group]}`"
     >
       <div class="text-gray-100">
         <div class="pb-1 flex justify-between">
@@ -42,7 +42,6 @@
 <script setup lang="ts">
 import { NH2 } from 'naive-ui'
 
-import { AgeColors } from '@/constants'
 import { Product } from '@/types'
 
 defineProps<{

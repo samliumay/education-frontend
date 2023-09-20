@@ -52,7 +52,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { NH1, NH3 } from 'naive-ui'
+import { NH1, NH2 } from 'naive-ui'
 import { RouterLink } from 'vue-router'
 </script>
 <style scoped lang="scss">
