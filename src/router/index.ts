@@ -21,6 +21,11 @@ const routes: RouteRecordRaw[] = [
     name: 'Mein Konto - Clavis Schule',
   },
   {
+    path: '/instructors',
+    component: () => import('@/pages/InstructorsPage.vue'),
+    name: 'Fakultät & Mitarbeiter - Clavis Schule',
+  },
+  {
     path: '/kontaktieren-sie-uns',
     component: () => import('@/pages/static/ContactUs.vue'),
     name: 'Kontaktieren Sie uns - Clavis Schule',

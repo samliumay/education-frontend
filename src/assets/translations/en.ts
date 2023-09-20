@@ -36,6 +36,7 @@ export const en = {
     catalog: 'Catalog',
     buy: 'Buy',
     chooseLanguage: 'Choose language',
+    instructors: 'Our instructors',
   },
   cookies: {
     title: 'USE OF COOKIES',
@@ -46,6 +47,9 @@ export const en = {
     link: 'Cancellation policy',
   },
   slots: {
+    options: 'You can buy this course with the following options',
+    optionsMeetingCard: 'Termin karten ({n} meetings, €{price})',
+    optionsSubscriptions: '{n} class per week (€{price})',
     fillInfo: 'Fill your info',
     selectTimeSlots: 'Select the time slots, which will be comfortable for you',
     minSlots: 'You should select minimum {minSelected} slots',
@@ -59,6 +63,8 @@ export const en = {
   },
   offerForm: {
     paymentDetails: 'Payment details',
+    payer_first_name: 'Payer first name',
+    payer_last_name: 'Payer last name',
     child_first_name: 'Child first name',
     child_last_name: 'Child last name',
     country: 'Country',
@@ -68,26 +74,6 @@ export const en = {
     street: 'Street',
     company_name: 'Company name',
   },
-  steps: [
-    {
-      title: 'Select slots',
-      description:
-        'Courses have different time slots. You have to select the comfortable one',
-    },
-    {
-      title: 'Select tariff',
-      description:
-        'Decide if you will pay for subscriptions or for specific number of classes',
-    },
-    {
-      title: 'User info',
-      description: 'Login/Register and fill the info about your child',
-    },
-    {
-      title: 'Pay',
-      description: '',
-    },
-  ],
   tariff: {
     select_payment_strategy: 'Select payment strategy',
     click_on_option: 'Click on option to select',

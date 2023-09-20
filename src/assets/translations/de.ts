@@ -36,6 +36,7 @@ export const de = {
     catalog: 'Katalog',
     chooseLanguage: 'Kies een taal',
     buy: 'Kaufen',
+    instructors: 'Fakultät & Mitarbeiter',
   },
   cookies: {
     title: 'VERWENDUNG VON COOKIES',
@@ -46,6 +47,9 @@ export const de = {
     link: 'Widerrufsbelehrung',
   },
   slots: {
+    options: 'Sie können diesen Kurs mit folgenden Optionen kaufen',
+    optionsMeetingCard: 'Terminkarten ({n} Besuchen, {price}€)',
+    optionsSubscriptions: '{n} Kurse pro Woche ({price}€)',
     fillInfo: 'Füllen Sie Ihre Informationen aus',
     selectTimeSlots: 'Wählen Sie die Zeitfenster aus, die Ihnen angenehm sind',
     minSlots: 'Sie müssen mindestens {minSelected} Zeitfenster auswählen',
@@ -59,6 +63,8 @@ export const de = {
   },
   offerForm: {
     paymentDetails: 'Rechnungsdetails',
+    payer_first_name: 'Vorname des Zahlers',
+    payer_last_name: 'Nachname des Zahlers',
     child_first_name: 'Vorname des Kindes',
     child_last_name: 'Nachname des Kindes',
     country: 'Land',
@@ -68,24 +74,6 @@ export const de = {
     street: 'Straße',
     company_name: 'Firmenname',
   },
-  steps: [
-    {
-      title: 'Slots auswählen',
-      description:
-        'Kurse haben verschiedene Zeitfenster. Sie müssen das passende auswählen',
-    },
-    {
-      title: 'Tarif auswählen',
-      description:
-        'Entscheiden Sie, ob Sie für Abonnements oder für eine bestimmte Anzahl von Kursen bezahlen möchten',
-    },
-    {
-      title: 'Benutzerinformationen',
-      description:
-        'Einloggen/Registrieren und die Informationen über Ihr Kind ausfüllen',
-    },
-    { title: 'Bezahlen', description: '' },
-  ],
   tariff: {
     select_payment_strategy: 'Selecteer betalingsstrategie',
     click_on_option: 'Klik op optie om te selecteren',
