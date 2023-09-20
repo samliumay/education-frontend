@@ -38,6 +38,17 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/widerrufsbelehrung',
     component: () => import('@/pages/static/WiderrufsbelehrungPage.vue'),
+    name: 'Widerrufsbelehrung - Clavis Schule',
+  },
+  {
+    path: '/veranstaltungen-bei-clavis',
+    component: () => import('@/pages/static/VeranstaltungenClavis.vue'),
+    name: 'Veranstaltungen bei Clavis - Clavis Schule',
+  },
+  {
+    path: '/angebote-fuer-schulen',
+    component: () => import('@/pages/static/AngeboteFurSchulen.vue'),
+    name: 'Angebote für Schulen - Clavis Schule',
   },
   {
     path: '/datenschutz',
@@ -64,6 +75,7 @@ router.afterEach(to => {
   // Use next tick to handle router history correctly
   // see: https://github.com/vuejs/vue-router/issues/914#issuecomment-384477609
   nextTick(() => {
-    document.title = (to.name as string) || 'Clavis Schule'
+    document.title =
+      (to.name as string) || 'Clavis Schule für Kunst und Wissenschaft'
   })
 })

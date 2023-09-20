@@ -17,6 +17,7 @@ export type Product = {
   min_number_of_meeting_per_week: number
   category: string
   schedule_slots: Slot[]
+  photo: string
   meeting_card: {
     number_of_meetings: number
     price: string
