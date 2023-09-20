@@ -1,7 +1,7 @@
 <template>
   <router-link :to="`/course/${course.id}`">
     <article
-      class="rounded-xl border h-full hover:bg-red-200 transition p-3 hover:shadow-lg flex flex-col justify-between min-h-[240px] bg-gray-200 text-white"
+      class="rounded-xl border h-full hover:bg-red-200 transition p-3 hover:shadow-lg flex flex-col justify-between min-h-[240px] text-white"
       :class="`bg-${[course?.age_group]}`"
     >
       <div class="text-gray-100">
