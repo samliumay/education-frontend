@@ -1,6 +1,6 @@
 <template>
   <header class="px-5 py-3 bg-[#f5f5ef]">
-    <div class="flex justify-between items-center container mx-auto">
+    <div class="md:flex justify-between items-center container mx-auto">
       <router-link
         to="/"
         :aria-label="$t('common.goToMain')"

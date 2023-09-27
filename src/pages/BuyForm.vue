@@ -1,7 +1,46 @@
 <template>
-  <div>
-    <n-h1>{{ course?.name }}</n-h1>
-    <div v-if="course">
+  <div class="md:flex gap-12 h-100">
+    <div
+      v-if="course"
+      class="md:w-1/2"
+    >
+      <div>
+        <n-h1>{{ course?.name }}</n-h1>
+
+        <img
+          v-if="course.photo"
+          :src="course.photo"
+          :alt="course.name"
+          aria-hidden
+          class="w-full object-cover rounded-xl"
+        />
+
+        <div class="my-4">
+          <div>
+            <span
+              v-for="slot in course.schedule_slots"
+              :key="slot.id"
+              class="mr-2"
+            >
+              <span>
+                <strong>{{
+                  $t(`dates.weekdays.short.${slot.weekday}`)
+                }}</strong>
+                {{ slot.start.slice(0, -3) }} - {{ slot.end.slice(0, -3) }}
+              </span>
+            </span>
+          </div>
+
+          <div class="my-1">
+            {{ course.schedule_slots[0].instructor }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      v-if="course"
+      class="md:w-1/2"
+    >
       <SlotsForm
         v-if="currentStage === 1"
         :course="course"
