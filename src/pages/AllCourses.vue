@@ -59,8 +59,8 @@ const filters = computed<{ key: keyof Filters; options: SelectOption[] }[]>(
     {
       key: 'category',
       options: listsStore.categories.map(category => ({
-        label: category,
-        value: category,
+        label: category.name,
+        value: category.id,
       })),
     },
     {
@@ -72,7 +72,7 @@ const filters = computed<{ key: keyof Filters; options: SelectOption[] }[]>(
 
 interface Filters {
   age_group?: string
-  category?: string
+  category?: number
   language?: string
 }
 

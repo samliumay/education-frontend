@@ -2,13 +2,13 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
 import { HTTP } from '@/api/index'
-import { City, Country, Product } from '@/types'
+import { Category, City, Country, Product } from '@/types'
 
 export const useListsStore = defineStore('lists', () => {
   const cities = ref<City[]>([])
   const countries = ref<Country[]>([])
   const products = ref<Product[]>([])
-  const categories = ref<string[]>([])
+  const categories = ref<Category[]>([])
   const isDataLoading = ref<boolean>(true)
 
   const populateLists = async () => {
@@ -16,11 +16,8 @@ export const useListsStore = defineStore('lists', () => {
       (products.value = await HTTP.get('/api/v1/products/')),
       (cities.value = await HTTP.get('/api/v1/users/cities/')),
       (countries.value = await HTTP.get('/api/v1/users/countries/')),
+      (categories.value = await HTTP.get('/api/v1/products/categories/')),
     ])
-    // list of unique categories
-    categories.value = [
-      ...new Set(products.value.map(product => product.category)),
-    ]
     isDataLoading.value = false
   }
 
