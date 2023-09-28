@@ -22,6 +22,7 @@ export const de = {
   common: {
     successful: 'Zahlung abgeschlossen!',
     seeYou: 'Wir sehen uns in der Clavis Schule!',
+    goHome: 'Kurs angebote',
     email: 'E-Mail',
     password: 'Passwort',
     password1: 'Passwort',
