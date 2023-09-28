@@ -20,6 +20,8 @@ export const en = {
     },
   },
   common: {
+    successful: 'Payment completed!',
+    seeYou: 'See you at Clavis School!',
     email: 'email',
     password: 'Password',
     password1: 'Password',

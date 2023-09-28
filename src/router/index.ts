@@ -8,6 +8,10 @@ const routes: RouteRecordRaw[] = [
     name: 'Clavis Schule für Kunst und Wissenschaft',
   },
   {
+    path: '/payment-complete/:id',
+    component: () => import('@/pages/SuccessfulPayment.vue'),
+  },
+  {
     path: '/course/:id',
     component: () => import('@/pages/CoursePage.vue'),
   },
