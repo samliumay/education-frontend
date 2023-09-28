@@ -37,6 +37,13 @@ export const de = {
     chooseLanguage: 'Kies een taal',
     buy: 'Kaufen',
     instructors: 'Fakultät & Mitarbeiter',
+    first_name: 'Vorname',
+    last_name: 'Nachname',
+    filters: {
+      age_group: 'Altersgruppe',
+      category: 'Kategorie',
+      language: 'Sprache',
+    },
   },
   cookies: {
     title: 'VERWENDUNG VON COOKIES',
