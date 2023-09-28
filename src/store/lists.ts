@@ -8,6 +8,8 @@ export const useListsStore = defineStore('lists', () => {
   const cities = ref<City[]>([])
   const countries = ref<Country[]>([])
   const products = ref<Product[]>([])
+  const categories = ref<string[]>([])
+  const isDataLoading = ref<boolean>(true)
 
   const populateLists = async () => {
     Promise.all([
@@ -15,10 +17,23 @@ export const useListsStore = defineStore('lists', () => {
       (cities.value = await HTTP.get('/api/v1/users/cities/')),
       (countries.value = await HTTP.get('/api/v1/users/countries/')),
     ])
+    // list of unique categories
+    categories.value = [
+      ...new Set(products.value.map(product => product.category)),
+    ]
+    isDataLoading.value = false
   }
 
   const getProductById = (id: number) =>
     products.value.find(product => product.id === id)
 
-  return { products, populateLists, cities, countries, getProductById }
+  return {
+    products,
+    populateLists,
+    cities,
+    countries,
+    categories,
+    getProductById,
+    isDataLoading,
+  }
 })
