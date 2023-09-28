@@ -40,6 +40,11 @@ export type Country = {
   name: string
 }
 
+export type Category = {
+  id: number
+  name: string
+}
+
 export type FullUser = {
   pk?: number
   id?: number

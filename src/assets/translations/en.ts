@@ -40,6 +40,13 @@ export const en = {
     buy: 'Buy',
     chooseLanguage: 'Choose language',
     instructors: 'Our instructors',
+    first_name: 'First name',
+    last_name: 'Last name',
+    filters: {
+      age_group: 'Age group',
+      category: 'Category',
+      language: 'Language',
+    },
   },
   cookies: {
     title: 'USE OF COOKIES',
