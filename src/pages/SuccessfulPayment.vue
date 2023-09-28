@@ -30,7 +30,7 @@
               size="large"
               type="primary"
             >
-              {{ $t('common.buy') }}
+              {{ $t('common.goHome') }}
             </n-button>
           </router-link>
         </div>
