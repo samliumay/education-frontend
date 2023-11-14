@@ -8,7 +8,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "lint:fix": "eslint . --fix",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
