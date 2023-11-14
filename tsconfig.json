@@ -22,21 +22,21 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["/*"]
     },
-    "types": ["vitest/globals"],
     // for eslint
     "allowJs": true
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
+    "**/*.ts",
+    "**/*.d.ts",
+    "**/*.tsx",
+    "**/*.vue",
     ".eslintrc*",
     "tailwind.config.js",
     "postcss.config.js",
     "vite.config.ts"
   ],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "extends": "./.nuxt/tsconfig.json"
 }
+
