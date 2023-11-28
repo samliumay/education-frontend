@@ -1,10 +1,10 @@
-import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { defineStore } from "pinia"
+import { ref } from "vue"
 
-import { HTTP } from '../api/index'
-import { type Category, type City, type Country, type Product } from '../types'
+import { HTTP } from "../api/index"
+import { type Category, type City, type Country, type Product } from "../types"
 
-export const useListsStore = defineStore('lists', () => {
+export const useListsStore = defineStore("lists", () => {
   const cities = ref<City[]>([])
   const countries = ref<Country[]>([])
   const products = ref<Product[]>([])
@@ -13,10 +13,10 @@ export const useListsStore = defineStore('lists', () => {
 
   const populateLists = async () => {
     Promise.all([
-      (products.value = await HTTP.get('/api/v1/products/')),
-      (cities.value = await HTTP.get('/api/v1/users/cities/')),
-      (countries.value = await HTTP.get('/api/v1/users/countries/')),
-      (categories.value = await HTTP.get('/api/v1/products/categories/')),
+      (products.value = await HTTP.get("/api/v1/products/")),
+      (cities.value = await HTTP.get("/api/v1/users/cities/")),
+      (countries.value = await HTTP.get("/api/v1/users/countries/")),
+      (categories.value = await HTTP.get("/api/v1/products/categories/")),
     ])
     isDataLoading.value = false
   }

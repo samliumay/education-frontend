@@ -40,11 +40,11 @@
   </NuxtLink>
 </template>
 <script setup lang="ts">
-import { NH2 } from 'naive-ui'
+import { NH2 } from "naive-ui"
 
-import { type Product } from '../types'
+import { type Product } from "../types"
 
 defineProps<{
-  course: Product
+  course: Product;
 }>()
 </script>

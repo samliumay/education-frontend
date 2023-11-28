@@ -1,11 +1,11 @@
-import { de } from './assets/translations/de'
-import { en } from './assets/translations/en'
+import { de } from "./assets/translations/de"
+import { en } from "./assets/translations/en"
 
 export default defineI18nConfig(() => ({
   legacy: false,
-  locale: 'de-DE',
+  locale: "de-DE",
   messages: {
-    'en-US': en,
-    'de-DE': de,
+    "en-US": en,
+    "de-DE": de,
   },
 }))

@@ -1,39 +1,46 @@
 <template>
-  <header class="px-5 py-3 bg-[#f5f5ef]">
-    <div class="md:flex justify-between items-center container mx-auto">
-      <NuxtLink
-        to="/"
-        :aria-label="$t('common.goToMain')"
-      >
-        <Logo />
-      </NuxtLink>
-      <nav>
-        <ul class="flex gap-2">
-          <li
-            v-for="link in navigationLinks"
-            :key="link.name"
-          >
-            <NuxtLink :to="link.link">{{ link.name }}</NuxtLink>
-          </li>
-        </ul>
-      </nav>
-      <!-- <n-button>
-        <NuxtLink to="/login">{{ $t('common.login') }}</NuxtLink>
-      </n-button> -->
+  <div
+    class="flex items-center gap-[32px] text-[16px] font-medium bg-white border-black border-b-[1px] px-[48px] py-[28px]"
+  >
+    <img src="../assets/icons/logo_header.svg" alt="Clavis logo" />
+    <div
+      class="border-black rounded-[12px] border-[1px] px-[24px] py-[12px] cursor-pointer"
+    >
+      Меню
     </div>
-  </header>
+    <NuxtLink
+      v-for="route in routes"
+      :key="route.value"
+      :to="route.value"
+      class="cursor-pointer"
+    >
+      {{ route.label }}
+    </NuxtLink>
+    <div class="grow" />
+    <div class="flex items-center">
+      <span class="cursor-pointer"> Корзина </span>
+      <span class="border-black rounded-[1000px] border-[1px] p-[6px] ml-[6px]">
+        0
+      </span>
+    </div>
+    <AppButton> Войти </AppButton>
+  </div>
 </template>
 <script setup lang="ts">
-// import { NButton } from 'naive-ui'
+import AppButton from "./AppButton.vue"
 
-import Logo from '../assets/icons/logo.svg'
-
-const navigationLinks = [
-  // { name: 'courses', link: '/' },
-  // { name: 'workshops', link: '/' },
-  // { name: 'summer school', link: '/' },
-  { name: 'Kurs angebote', link: '/' },
-  { name: 'Veranstaltungen bei Clavis', link: '/veranstaltungen-bei-clavis' },
-  { name: 'Angebote für Schulen', link: '/angebote-fuer-schulen' },
+const routes = [
+  {
+    label: "Курсы",
+    value: "/",
+  },
+  {
+    label: "Академии",
+    value: "/academies",
+  },
+  {
+    label: "Воркшопы",
+    value: "/workshops",
+  },
 ]
 </script>

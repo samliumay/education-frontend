@@ -1,28 +1,28 @@
-import { defineStore } from 'pinia'
-import { computed, type Ref, ref } from 'vue'
+import { defineStore } from "pinia"
+import { computed, type Ref, ref } from "vue"
 
-import { getToken, HTTP, setToken } from '../api/index'
-import { type FullUser } from '../types'
+import { getToken, HTTP, setToken } from "../api/index"
+import { type FullUser } from "../types"
 
-export const useUserStore = defineStore('user', () => {
-  const localUser = localStorage.getItem('user')
+export const useUserStore = defineStore("user", () => {
+  const localUser = localStorage.getItem("user")
   const initialUser = localUser
     ? JSON.parse(localUser)
     : {
         pk: undefined,
         id: undefined,
-        email: '',
-        password: '',
-        child_first_name: '',
-        child_last_name: '',
-        phone_number: '+',
-        company_name: '',
+        email: "",
+        password: "",
+        child_first_name: "",
+        child_last_name: "",
+        phone_number: "+",
+        company_name: "",
         city: undefined,
         country: undefined,
-        state: '',
-        street: '',
-        post_code: '',
-        token: '',
+        state: "",
+        street: "",
+        post_code: "",
+        token: "",
       }
   const user: Ref<FullUser> = ref(initialUser)
 
@@ -30,11 +30,11 @@ export const useUserStore = defineStore('user', () => {
 
   const setUser = (newValue: FullUser) => {
     user.value = newValue
-    localStorage.setItem('user', JSON.stringify(newValue))
+    localStorage.setItem("user", JSON.stringify(newValue))
   }
 
   const retrieveUser = async () => {
-    setUser(await HTTP.get('/api/v1/users/user/'))
+    setUser(await HTTP.get("/api/v1/users/user/"))
     return user.value
   }
 
@@ -59,7 +59,7 @@ export const useUserStore = defineStore('user', () => {
         email,
         password,
       },
-      '/api/v1/users/login/',
+      "/api/v1/users/login/",
     )
 
   const register = (
@@ -80,7 +80,7 @@ export const useUserStore = defineStore('user', () => {
         first_name: firstName,
         last_name: lastName,
       },
-      '/api/v1/users/registration/',
+      "/api/v1/users/registration/",
     )
 
   return { user, setUser, retrieveUser, login, register, isLoggedIn }

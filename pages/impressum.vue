@@ -77,7 +77,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { NH1 } from 'naive-ui'
+import { NH1 } from "naive-ui"
 </script>
 <style scoped lang="scss">
 p {

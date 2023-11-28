@@ -22,13 +22,13 @@
   </div>
 </template>
 <script setup lang="ts">
-import { NH2 } from 'naive-ui'
-import { ref } from 'vue'
+import { NH2 } from "naive-ui"
+import { ref } from "vue"
 
-import { HTTP } from '../api'
-import { type Instructor } from '../types'
+import { HTTP } from "../api"
+import { type Instructor } from "../types"
 
 const instructors = ref<Instructor[]>(
-  await HTTP.get<Instructor[]>('/api/v1/users/instructors/'),
+  await HTTP.get<Instructor[]>("/api/v1/users/instructors/"),
 )
 </script>
