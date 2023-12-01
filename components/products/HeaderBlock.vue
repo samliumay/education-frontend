@@ -88,13 +88,13 @@ const details = computed(() => [
   {
     key: "Преподаватели: ",
     value: Array.from(
-      new Set(props.product.schedule_slots.map(slot => slot.instructor)),
+      new Set(props.product.schedule_slots?.map(slot => slot.instructor)),
     ).join("; "),
   },
   {
     key: "Кабинет: ",
     value: Array.from(
-      new Set(props.product.schedule_slots.map(slot => slot.space)),
+      new Set(props.product.schedule_slots?.map(slot => slot.space)),
     ).join("; "),
   },
 ])

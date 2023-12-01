@@ -17,7 +17,7 @@
       </div>
 
       <p class="text-[24px] font-medium mt-[16px]">
-        от {{ product.subscriptions[0].price }} € / месяц
+        от {{ product.subscriptions?.[0]?.price || "88" }} € / месяц
       </p>
 
       <p class="text-[16px] font-medium text-gray-400 mt-[24px]">
@@ -45,7 +45,7 @@
       </div>
 
       <p class="text-[24px] font-medium mt-[16px]">
-        {{ product.meeting_card.price }} € / единоразово
+        {{ product.meeting_card?.price || "168" }} € / единоразово
       </p>
 
       <p class="text-[16px] font-medium text-gray-400 mt-[24px]">

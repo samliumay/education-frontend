@@ -27,7 +27,11 @@
       <SelectTagsBlock
         :tags="
           product.schedule_slots.map(
-            (slot) => `${slot.weekday.slice(0, 2)} ${slot.start.slice(0, 5)}-${slot.end.slice(0, 5)}`,
+            (slot) =>
+              `${slot.weekday.slice(0, 2)} ${slot.start.slice(
+                0,
+                5,
+              )}-${slot.end.slice(0, 5)}`,
           )
         "
         :selected-tags="buyForm.selectedTags"
@@ -94,7 +98,10 @@ import SubscriptionOptions from "../../../components/products/SubscriptionOption
 
 const route = useRoute()
 
-const { data: product } = await useFetch(`https://api.clavis.the-o.co/api/v1/products/${route.params.id}`, {deep: true})
+const { data: product } = await useFetch(
+  `https://api.clavis.the-o.co/api/v1/products/${route.params.id}`,
+  { deep: true },
+)
 
 const buyForm = ref({
   subscription: undefined as "subscription" | "card" | undefined,
