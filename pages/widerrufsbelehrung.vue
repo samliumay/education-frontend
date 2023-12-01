@@ -47,14 +47,11 @@
       Vertrag vorgesehenen Dienstleistungen/Veranstaltungen entspricht.
     </p>
     <form>
-      <input
-        id="checkAgree"
-        type="checkbox"
-      />
+      <input id="checkAgree" type="checkbox" />
       <label for="checkAgree">Ich habe die Widerrufsbelehrung zur Kenntnis genommen.</label>
     </form>
   </div>
 </template>
 <script setup lang="ts">
-import { NH1 } from 'naive-ui'
+import { NH1 } from "naive-ui"
 </script>

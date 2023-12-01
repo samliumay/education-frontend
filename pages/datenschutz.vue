@@ -413,7 +413,8 @@
         verlangen;• gemäß Art. 16 DSGVO unverzüglich die Berichtigung
         unrichtiger oder Vervollständigung Ihrer bei uns gespeicherten
         personenbezogenen Daten zu verlangen;
-</li><li>
+      </li>
+      <li>
         gemäß Art. 17 DSGVO die Löschung Ihrer bei uns gespeicherten
         personenbezogenen Daten zu verlangen, soweit nicht die Verarbeitung zur
         Ausübung des Rechts auf freie Meinungsäußerung und Information, zur
@@ -508,7 +509,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { NH1, NH3 } from 'naive-ui'
+import { NH1, NH3 } from "naive-ui"
 </script>
 <style scoped lang="scss">
 p,

@@ -1,6 +1,6 @@
 <template>
   <article>
-    <n-h1>{{ $t('common.instructors') }}</n-h1>
+    <n-h1>{{ $t("common.instructors") }}</n-h1>
     <Suspense>
       <template #fallback>
         <div class="flex justify-center">
@@ -13,7 +13,7 @@
 </template>
 <script setup lang="ts">
 // This component is implemented with Suspense just for experiment
-import { NH1, NSpin } from 'naive-ui'
+import { NH1, NSpin } from "naive-ui"
 
-import InstructorsList from '../components/InstructorsList.vue'
+import InstructorsList from "../components/InstructorsList.vue"
 </script>

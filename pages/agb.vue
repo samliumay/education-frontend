@@ -31,7 +31,7 @@
       Ein Vertrag kommt mit der Clavis Kunst und Wissenschaft Privatschule GmbH
       – im Folgenden „Veranstalter“/“Clavis“ – mit Sitz in Berlin zustande.
     </p>
-    <p> Geschäftsführer/innen: Margarita Stroutchenkov, Olga Novik </p>
+    <p>Geschäftsführer/innen: Margarita Stroutchenkov, Olga Novik</p>
     <p>Immanuelkirchstraße 4</p>
     <p>10405 Berlin</p>
     <p>Telefon: +49 (0)30 71537477</p>
@@ -139,19 +139,20 @@
         <tr>
           <td width="284">
             <p>bis 14 Tage vor Beginn des Kurses&nbsp;&nbsp;</p>
-</td><td width="172"><p>0% der Teilnahmekosten</p></td>
-</tr><tr>
+          </td>
+          <td width="172"><p>0% der Teilnahmekosten</p></td>
+        </tr>
+        <tr>
           <td width="284">
-            <p>
-              bis 7 Tage vor Beginn des Kurses&nbsp; &nbsp;&nbsp; &nbsp;
-            </p>
-</td><td width="172"><p>50% der Teilnahmekosten</p></td>
-</tr><tr>
+            <p>bis 7 Tage vor Beginn des Kurses&nbsp; &nbsp;&nbsp; &nbsp;</p>
+          </td>
+          <td width="172"><p>50% der Teilnahmekosten</p></td>
+        </tr>
+        <tr>
           <td width="284">
-            <p>
-              bis 2 Tage vor Beginn des Kurses&nbsp; &nbsp;&nbsp; &nbsp;
-            </p>
-</td><td width="172"><p>80% der Teilnahmekosten</p></td>
+            <p>bis 2 Tage vor Beginn des Kurses&nbsp; &nbsp;&nbsp; &nbsp;</p>
+          </td>
+          <td width="172"><p>80% der Teilnahmekosten</p></td>
         </tr>
       </tbody>
     </table>
@@ -349,7 +350,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { NH1 } from 'naive-ui'
+import { NH1 } from "naive-ui"
 </script>
 <style scoped lang="scss">
 p {
