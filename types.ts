@@ -17,6 +17,11 @@ export type Product = {
   min_number_of_meeting_per_week: number;
   category: string;
   schedule_slots: Slot[];
+  purchase_options: Array<{
+    id: number,
+    type: string,
+    base_price: string,
+  }>;
   photo: string;
   meeting_card: {
     number_of_meetings: number;
@@ -49,17 +54,16 @@ export type FullUser = {
   pk?: number;
   id?: number;
   email: string;
-  payer_first_name: string;
-  payer_last_name: string;
-  phone_number: string;
-  company_name: string;
+  first_name: string;
+  last_name: string;
+  phone_number?: string;
+  company_name?: string;
   city?: number;
   country?: number;
-  state: string;
-  street: string;
-  post_code: string;
-  token: string;
-  password?: string;
+  state?: string;
+  street?: string;
+  post_code?: string;
+  token?: string;
 }
 
 export type Tariff = "subscription" | "meeting_card"
@@ -121,4 +125,68 @@ export interface IEventTarget {
 export enum LoginSteps {
   Options,
   Email,
+}
+
+export type OrderItem = {
+  id: number;
+  calculated_price: string;
+  academy_number_of_weeks: number;
+  schedule_type: ScheduleType;
+  product: Product;
+  order: number;
+  visitor: number;
+  purchase_option: number;
+  schedule_slots: number[];
+}
+
+export type Order = {
+  id: number;
+  items: OrderItem[];
+  stripe_id: string;
+  paypal_id: string;
+  status: OrderStatusType;
+  payer_first_name: string;
+  payer_last_name: string;
+  created_at: string;
+  user: number;
+}
+
+export type ScheduleType =
+  | "Course (1 / week)"
+  | "Course (2 / week)"
+  | "Course (3 / week)"
+  | "TERMINKARTEN"
+  | "Academy (1st half)"
+  | "Academy (2nd half)"
+  | "Academy (full day)"
+
+export type OrderStatusType =
+  | "in_cart"
+  | "payment_staged"
+  | "payment_fulfilled"
+  | "payment_declined"
+
+export type AdditionalInfo = {
+  email: string;
+  first_name: string;
+  last_name: string;
+  phone_number: string;
+  company_name: string;
+  country: string;
+  street: string;
+  post_code: string;
+  city: string;
+  state: string;
+}
+
+export type Visitor = {
+  id: number;
+  first_name: string;
+  last_name: string;
+  birth_date: string;
+}
+
+export enum GetChildStep {
+  Select,
+  Add,
 }

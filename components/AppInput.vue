@@ -1,6 +1,6 @@
 <template>
   <input
-    class="bg-white w-full rounded-[12px] px-[24px] py-[16px]"
+    class="bg-white w-full rounded-[12px] px-[24px] py-[16px] border-gray-200 border-[1px]"
     :placeholder="placeholder"
     :type="type ? 'text' : type"
     :value="modelValue"
@@ -13,7 +13,7 @@
   />
 </template>
 <script setup lang="ts">
-import type { IEventTarget } from "types"
+import type { IEventTarget } from "../types"
 
 defineProps<{
   modelValue: string;
