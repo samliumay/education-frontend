@@ -3,7 +3,7 @@
 <!-- eslint-disable vue/block-lang -->
 <template>
   <n-config-provider :theme-overrides="themeOverrides" class="text-gray-">
-    <div class="min-h-[100vh] flex flex-col overflow-x-hidden">
+    <div class="min-h-[100vh] flex flex-col overflow-x-hidden relative">
       <AppHeader />
       <NuxtLayout>
         <NuxtPage />

@@ -9,8 +9,8 @@
       <h2 class="text-[48px] font-medium mb-[36px]">Заполните данные</h2>
 
       <GetChildData
-        :child="buyForm.child"
-        @update:child="(el) => (buyForm.child = el)"
+        :visitor="buyForm.visitor"
+        @update:visitor="(el) => (buyForm.visitor = el)"
       />
 
       <AppDivider class="my-[24px]" />
@@ -29,10 +29,10 @@
 
       <n-radio
         class="mt-[16px]"
-        :checked="buyForm.when === 'first'"
+        :checked="buyForm.schedule_type === 'Academy (1st half)'"
         value="first"
         name="when"
-        @change="buyForm.when = 'first'"
+        @change="buyForm.schedule_type = 'Academy (1st half)'"
       >
         <div class="flex flex-col gap-[4px] text-[16px]">
           <p class="font-medium">1/2 дня утром</p>
@@ -41,10 +41,10 @@
       </n-radio>
       <n-radio
         class="mt-[12px]"
-        :checked="buyForm.when === 'second'"
+        :checked="buyForm.schedule_type === 'Academy (2nd half)'"
         value="second"
         name="when"
-        @change="buyForm.when = 'second'"
+        @change="buyForm.schedule_type = 'Academy (2nd half)'"
       >
         <div class="flex flex-col gap-[4px] text-[16px]">
           <p class="font-medium">1/2 дня во второй половине</p>
@@ -53,10 +53,10 @@
       </n-radio>
       <n-radio
         class="mt-[12px]"
-        :checked="buyForm.when === 'full'"
+        :checked="buyForm.schedule_type === 'Academy (full day)'"
         value="full"
         name="when"
-        @change="buyForm.when = 'full'"
+        @change="buyForm.schedule_type === 'Academy (full day)'"
       >
         <div class="flex flex-col gap-[4px] text-[16px]">
           <p class="font-medium">Полный день</p>
@@ -71,7 +71,7 @@
         <span class="text-green-700 mr-[8px]"> 168,00 € </span>
       </p>
 
-      <AppButton @click="navigateTo('/academies')">
+      <AppButton @click="addAcademy">
         Добавить в корзину
       </AppButton>
     </div>
@@ -82,17 +82,38 @@ import { NCheckbox, NRadio } from "naive-ui"
 import { ref } from "vue"
 
 import GetChildData from "../../../components/buy/GetChildData.vue"
-import type { Product } from "../../../types"
+import { useCartStore } from "../../../store/cart"
+import type { OrderItem, Product } from "../../../types"
 
-const product = ref({} as Product)
+const route = useRoute()
+
+const cart = useCartStore()
+
 const buyForm = ref({
-  child: {
-    name: "",
-    surname: "",
-    birthdate: "",
-  },
+  academy_number_of_weeks: 0,
+  schedule_type: "Academy (1st half)",
   first: false,
   second: false,
-  when: "first" as "first" | "second" | "full",
-})
+  product: route.params.id,
+  schedule_slots: [],
+} as Partial<OrderItem> & { first: boolean; second: boolean })
+
+const { data: product } = (await useFetch(
+  `https://api.clavis.the-o.co/api/v1/products/${route.params.id}`,
+  { deep: true },
+)) as { data: Product }
+
+const addAcademy = async () => {
+  let weeks = 0
+  if (buyForm.value.first) weeks++
+  if (buyForm.value.second) weeks++
+  await cart.addOrderItem({
+    academy_number_of_weeks: weeks,
+    product: route.params.id,
+    purchase_option: product.purchase_options.find((option) => buyForm.value.schedule_type === option.type)?.id || 0,
+    visitor: buyForm.value.visitor,
+    schedule_slots: [],
+  })
+  navigateTo("/cart")
+}
 </script>

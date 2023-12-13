@@ -16,8 +16,8 @@
       <h2 class="text-[48px] font-medium mb-[36px]">Заполните данные</h2>
 
       <GetChildData
-        :child="buyForm.child"
-        @update:child="(el) => (buyForm.child = el)"
+        :child="buyForm.visitor"
+        @update:visitor="(el) => (buyForm.visitor = el)"
       />
 
       <AppDivider class="my-[24px]" />
@@ -25,17 +25,17 @@
       <p class="text-[24px] font-medium">Выберите дни посещения</p>
       <p class="text-[16px] mt-[4px] mb-[12px]">До 3 дней максимум</p>
       <SelectTagsBlock
-        :tags="
-          product.schedule_slots.map(
-            (slot) =>
-              `${slot.weekday.slice(0, 2)} ${slot.start.slice(
+        :tags="product.schedule_slots.map(slot => {
+          return {
+            label: `${slot.weekday.slice(0, 2)} ${slot.start.slice(
                 0,
                 5,
               )}-${slot.end.slice(0, 5)}`,
-          )
-        "
-        :selected-tags="buyForm.selectedTags"
-        @update:selected-tags="(el: string[]) => (buyForm.selectedTags = el)"
+            value: slot.id,
+          }
+        })"
+        :selected-tags="(buyForm.schedule_slots as number[])"
+        @update:selected-tags="(el) => (buyForm.schedule_slots = el)"
       />
 
       <AppDivider class="my-[24px]" />
@@ -78,7 +78,7 @@
         <span class="text-green-700 mr-[8px]"> 168,00 € </span>
       </p>
 
-      <AppButton class="w-full mt-[24px]" @click="navigateTo('/')">
+      <AppButton class="w-full mt-[24px]" @click="addCourse">
         Добавить в корзину
       </AppButton>
     </div>
@@ -95,23 +95,43 @@ import BuyProductCard from "../../../components/buy/BuyProductCard.vue"
 import GetChildData from "../../../components/buy/GetChildData.vue"
 import SelectTagsBlock from "../../../components/misc/SelectTagsBlock.vue"
 import SubscriptionOptions from "../../../components/products/SubscriptionOptions.vue"
+import { useCartStore } from "../../../store/cart"
+import type { OrderItem } from "../../../types"
 
 const route = useRoute()
 
-const { data: product } = await useFetch(
-  `https://api.clavis.the-o.co/api/v1/products/${route.params.id}`,
-  { deep: true },
-)
+const cart = useCartStore()
 
 const buyForm = ref({
-  subscription: undefined as "subscription" | "card" | undefined,
-  child: {
-    name: "",
-    surname: "",
-    birthdate: "",
-  },
-  selectedTags: [] as string[],
-  when: "now" as "now" | "later",
-  later: "",
-})
+  academy_number_of_weeks: 1,
+  schedule_type: "Course (1 / week)",
+  first: false,
+  second: false,
+  product: route.params.id,
+  when: 'now',
+  schedule_slots: [],
+  later: '',
+  subscription: 'subscription',
+  visitor: 0,
+} as Partial<OrderItem> & {when: string, later: string, subscription?: "subscription" | "card" })
+
+const { data: product } = await useFetch(
+  `https://api.clavis.the-o.co/api/v1/products/${route.params.id}`,
+)
+
+const addCourse = async () => {
+  if (buyForm.value.subscription === 'subscription') {
+    buyForm.value.schedule_type = `Course (${buyForm.value.schedule_slots?.length} / week)` as 'Course (1 / week)'
+  } else {
+    buyForm.value.schedule_type = 'TERMINKARTEN'
+  }
+  await cart.addOrderItem({
+    academy_number_of_weeks: 1,
+    product: route.params.id,
+    purchase_option: product.value.purchase_options.find((option: { type: string | undefined }) => buyForm.value.schedule_type === option.type).id || 0,
+    visitor: buyForm.value.visitor,
+    schedule_slots: buyForm.value.schedule_slots,
+  })
+  navigateTo("/cart")
+}
 </script>

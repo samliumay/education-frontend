@@ -8,7 +8,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { Slot } from "types"
+import type { Slot } from "../../types"
 
 defineProps<{
   items: Array<Slot>;

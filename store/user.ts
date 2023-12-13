@@ -2,7 +2,7 @@ import { defineStore } from "pinia"
 import { computed, type Ref, ref } from "vue"
 
 import { getToken, HTTP, setToken } from "../api/index"
-import { type FullUser } from "../types"
+import { type FullUser, type Visitor } from "../types"
 
 export const useUserStore = defineStore("user", () => {
   const localUser = localStorage.getItem("user")
@@ -13,8 +13,8 @@ export const useUserStore = defineStore("user", () => {
         id: undefined,
         email: "",
         password: "",
-        child_first_name: "",
-        child_last_name: "",
+        first_name: "",
+        last_name: "",
         phone_number: "+",
         company_name: "",
         city: undefined,
@@ -25,8 +25,19 @@ export const useUserStore = defineStore("user", () => {
         token: "",
       }
   const user: Ref<FullUser> = ref(initialUser)
+  const visitors: Ref<Visitor[]> = ref([])
 
   const isLoggedIn = computed<boolean>(() => !!user.value.pk && !!getToken())
+
+  const getVisitors = async () => {
+    visitors.value = await HTTP.get("/api/v1/visitors/")
+  }
+
+  const postVisitor = async (visitor: Omit<Visitor, "id">) => {
+    const res = await HTTP.post("/api/v1/visitors/", visitor)
+    getVisitors()
+    return res
+  }
 
   const setUser = (newValue: FullUser) => {
     user.value = newValue
@@ -34,7 +45,8 @@ export const useUserStore = defineStore("user", () => {
   }
 
   const retrieveUser = async () => {
-    setUser(await HTTP.get("/api/v1/users/user/"))
+    setUser(await HTTP.get("/api/v1/users/me/"))
+    await getVisitors()
     return user.value
   }
 
@@ -59,7 +71,7 @@ export const useUserStore = defineStore("user", () => {
         email,
         password,
       },
-      "/api/v1/users/login/",
+      "/api/v1/users/sign_in/",
     )
 
   const register = (
@@ -80,8 +92,32 @@ export const useUserStore = defineStore("user", () => {
         first_name: firstName,
         last_name: lastName,
       },
-      "/api/v1/users/registration/",
+      "/api/v1/users/sign_up/",
     )
 
-  return { user, setUser, retrieveUser, login, register, isLoggedIn }
+  const findVisitorById = (id?: number) =>
+    id
+      ? (visitors.value.find(visitor => visitor.id === id) as Visitor)
+      : ({} as Visitor)
+
+  const getVisitorOptions = computed(() =>
+    visitors.value.map(visitor => ({
+      value: visitor.id,
+      label: `${visitor.first_name} ${visitor.last_name}`,
+    })),
+  )
+
+  return {
+    user,
+    setUser,
+    retrieveUser,
+    login,
+    register,
+    isLoggedIn,
+    visitors,
+    findVisitorById,
+    getVisitors,
+    getVisitorOptions,
+    postVisitor,
+  }
 })

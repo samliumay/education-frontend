@@ -17,12 +17,12 @@
       {{ route.label }}
     </NuxtLink>
     <div class="grow" />
-    <div class="flex items-center">
-      <span class="cursor-pointer"> Корзина </span>
+    <NuxtLink to="/cart" class="flex items-center cursor-pointer">
+      <span> Корзина </span>
       <span class="border-black rounded-[1000px] border-[1px] p-[6px] ml-[6px]">
         0
       </span>
-    </div>
+    </NuxtLink>
     <AppButton> Войти </AppButton>
   </div>
 </template>
