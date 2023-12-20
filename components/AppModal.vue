@@ -10,8 +10,6 @@
   </Teleport>
 </template>
 <script lang="ts" setup>
-import { NModal } from 'naive-ui';
-
 defineProps<{
   isOpen: boolean;
 }>()

@@ -18,9 +18,9 @@ export type Product = {
   category: string;
   schedule_slots: Slot[];
   purchase_options: Array<{
-    id: number,
-    type: string,
-    base_price: string,
+    id: number;
+    type: string;
+    base_price: string;
   }>;
   photo: string;
   meeting_card: {
@@ -136,7 +136,7 @@ export type OrderItem = {
   order: number;
   visitor: number;
   purchase_option: number;
-  schedule_slots: number[];
+  schedule_slots: (number | Slot)[];
 }
 
 export type Order = {
@@ -184,6 +184,10 @@ export type Visitor = {
   first_name: string;
   last_name: string;
   birth_date: string;
+}
+
+export type VisitorOrders = Visitor & {
+  orders: OrderItem[];
 }
 
 export enum GetChildStep {

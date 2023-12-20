@@ -10,7 +10,7 @@
     </div>
 
     <div class="flex gap-[12px] mt-[48px]">
-      <p class="whitespace-pre-wrap font-medium text-[16px]">
+      <p class="whitespace-pre-wrap font-medium">
         {{ product.description }}
       </p>
       <div class="shrink-0">

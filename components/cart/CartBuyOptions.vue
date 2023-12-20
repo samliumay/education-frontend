@@ -21,12 +21,10 @@
             class="h-[14px] w-[14px] rounded-[1000px] bg-green-600"
           />
         </div>
-        <div class="flex items-center justify-center">
-          Оплата через Paypal
-        </div>
+        <div class="flex items-center justify-center">Оплата через Paypal</div>
       </div>
 
-      <img src="../../assets/icons/pay/paypal.svg" alt="Stripe icon">
+      <img src="../../assets/icons/pay/paypal.svg" alt="Stripe icon" />
     </div>
 
     <div
@@ -50,17 +48,14 @@
             class="h-[14px] w-[14px] rounded-[1000px] bg-green-600"
           />
         </div>
-        <div class="flex items-center justify-center">
-          Оплата через Stripe
-        </div>
+        <div class="flex items-center justify-center">Оплата через Stripe</div>
       </div>
 
-      <img src="../../assets/icons/pay/stripe.svg" alt="Stripe icon">
+      <img src="../../assets/icons/pay/stripe.svg" alt="Stripe icon" />
     </div>
   </div>
 </template>
 <script setup lang="ts">
-
 defineProps<{
   option: "paypal" | "stripe";
 }>()

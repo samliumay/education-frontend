@@ -34,9 +34,7 @@
         alt="Season logo"
         class="absolute bottom-[16px] right-[16px]"
       />
-      <p
-        class="text-[16px] flex items-center gap-[8px] absolute bottom-[16px] left-[16px]"
-      >
+      <p class="flex items-center gap-[8px] absolute bottom-[16px] left-[16px]">
         12.04
         <ArrowRight />
         16.04

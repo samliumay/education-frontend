@@ -34,7 +34,7 @@
         name="when"
         @change="buyForm.schedule_type = 'Academy (1st half)'"
       >
-        <div class="flex flex-col gap-[4px] text-[16px]">
+        <div class="flex flex-col gap-[4px]">
           <p class="font-medium">1/2 дня утром</p>
           <p class="text-gray-400">Пн-Пт с 9:30 до 12:30</p>
         </div>
@@ -46,7 +46,7 @@
         name="when"
         @change="buyForm.schedule_type = 'Academy (2nd half)'"
       >
-        <div class="flex flex-col gap-[4px] text-[16px]">
+        <div class="flex flex-col gap-[4px]">
           <p class="font-medium">1/2 дня во второй половине</p>
           <p class="text-gray-400">Пн-Пт с 9:30 до 12:30</p>
         </div>
@@ -58,7 +58,7 @@
         name="when"
         @change="buyForm.schedule_type === 'Academy (full day)'"
       >
-        <div class="flex flex-col gap-[4px] text-[16px]">
+        <div class="flex flex-col gap-[4px]">
           <p class="font-medium">Полный день</p>
           <p class="text-gray-400">Пн-Пт с 9:30 до 12:30</p>
         </div>
@@ -71,9 +71,7 @@
         <span class="text-green-700 mr-[8px]"> 168,00 € </span>
       </p>
 
-      <AppButton @click="addAcademy">
-        Добавить в корзину
-      </AppButton>
+      <AppButton @click="addAcademy"> Добавить в корзину </AppButton>
     </div>
   </div>
 </template>
@@ -110,7 +108,10 @@ const addAcademy = async () => {
   await cart.addOrderItem({
     academy_number_of_weeks: weeks,
     product: route.params.id,
-    purchase_option: product.purchase_options.find((option) => buyForm.value.schedule_type === option.type)?.id || 0,
+    purchase_option:
+      product.purchase_options.find(
+        option => buyForm.value.schedule_type === option.type,
+      )?.id || 0,
     visitor: buyForm.value.visitor,
     schedule_slots: [],
   })

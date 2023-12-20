@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex items-center gap-[32px] text-[16px] font-medium bg-white border-black border-b-[1px] px-[48px] py-[28px]"
+    class="flex items-center gap-[32px] font-medium bg-white border-black border-b-[1px] px-[48px] py-[28px]"
   >
     <img src="../assets/icons/logo_header.svg" alt="Clavis logo" />
     <div
@@ -23,10 +23,11 @@
         0
       </span>
     </NuxtLink>
-    <AppButton> Войти </AppButton>
+    <AppButton @click="navigateTo('/profile')"> {{ user.isLoggedIn ? 'Профиль' : 'Войти' }} </AppButton>
   </div>
 </template>
 <script setup lang="ts">
+import { useUserStore } from "../store/user"
 import AppButton from "./AppButton.vue"
 
 const routes = [
@@ -43,4 +44,6 @@ const routes = [
     value: "/workshops",
   },
 ]
+
+const user = useUserStore()
 </script>

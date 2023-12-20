@@ -3,7 +3,12 @@
 
   <div class="flex flex-col gap-[12px] mt-[16px]">
     <template v-if="step === GetChildStep.Select">
-      <n-select placeholder="Выберите ребенка" :options="userStore.getVisitorOptions" :value="visitor" @update:value="(el) => $emit('update:visitor', el)" />
+      <n-select
+        placeholder="Выберите ребенка"
+        :options="userStore.getVisitorOptions"
+        :value="visitor"
+        @update:value="(el) => $emit('update:visitor', el)"
+      />
     </template>
     <template v-else-if="step === GetChildStep.Add">
       <AppInput
@@ -18,12 +23,21 @@
         v-model:model-value="newVisitor.birth_date"
         placeholder="Дата рождения ребенка"
       />
-      <AppButton @click="addVisitor">
-        Добавить ребенка
-      </AppButton>
+      <AppButton @click="addVisitor"> Добавить ребенка </AppButton>
     </template>
-    <div class="flex items-center gap-[8px] text-[16px] cursor-pointer" @click="step === GetChildStep.Add ? step = GetChildStep.Select : step = GetChildStep.Add">
-      <span>{{ step === GetChildStep.Select ? 'Добавить нового ребенка' : 'Вернуться к выбору ребенка' }}</span>
+    <div
+      class="flex items-center gap-[8px] cursor-pointer"
+      @click="
+        step === GetChildStep.Add
+          ? (step = GetChildStep.Select)
+          : (step = GetChildStep.Add)
+      "
+    >
+      <span>{{
+        step === GetChildStep.Select
+          ? "Добавить нового ребенка"
+          : "Вернуться к выбору ребенка"
+      }}</span>
       <ArrowIcon class="relative top-[4px]" />
     </div>
   </div>
@@ -32,9 +46,9 @@
 import { NSelect } from "naive-ui"
 import { ref, watch } from "vue"
 
-import ArrowIcon from '../../assets/icons/arrow_short_right.svg'
+import ArrowIcon from "../../assets/icons/arrow_short_right.svg"
 import { useUserStore } from "../../store/user"
-import { GetChildStep } from '../../types'
+import { GetChildStep } from "../../types"
 import AppButton from "../AppButton.vue"
 import AppInput from "../AppInput.vue"
 
@@ -50,19 +64,22 @@ await userStore.getVisitors()
 
 const step = ref(GetChildStep.Select)
 const newVisitor = ref({
-  first_name: '',
-  last_name: '',
-  birth_date: '',
+  first_name: "",
+  last_name: "",
+  birth_date: "",
 })
 
 const addVisitor = () => {
   userStore.postVisitor(newVisitor.value).then((res: any) => {
-    emit('update:visitor', res.id)
+    emit("update:visitor", res.id)
     step.value = GetChildStep.Select
   })
 }
 
-watch(() => newVisitor.value, () => {
-  console.log(newVisitor.value)
-})
+watch(
+  () => newVisitor.value,
+  () => {
+    console.log(newVisitor.value)
+  },
+)
 </script>

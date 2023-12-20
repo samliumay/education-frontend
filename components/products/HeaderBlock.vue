@@ -9,11 +9,11 @@
 
       <dl class="mt-[24px]">
         <div v-for="detail in details" :key="detail.key" class="flex">
-          <dt class="text-[16px] font-medium">
+          <dt class="font-medium">
             {{ detail.key }}
           </dt>
           &nbsp;
-          <dd class="text-[16px] text-gray-700">
+          <dd class="text-gray-700">
             {{ detail.value }}
           </dd>
         </div>
