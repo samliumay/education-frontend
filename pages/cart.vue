@@ -16,8 +16,9 @@
             <AppDivider
               v-if="
                 idx + 1 !==
-                cart.order.items.filter((item) => item.product.type === 'Course')
-                  .length
+                cart.order.items.filter(
+                  (item) => item.product.type === 'Course',
+                ).length
               "
               class="my-[24px]"
             />
@@ -26,7 +27,7 @@
             class="bg-orange-200 rounded-[12px] p-[16px] mt-[24px] flex justify-between items-center cursor-pointer"
             @click="navigateTo('/')"
           >
-            <div class="flex flex-col text-[16px]">
+            <div class="flex flex-col">
               <p>При выборе следующего курса цена ниже</p>
               <p>Можно выбирать разные курсы</p>
             </div>
@@ -55,8 +56,9 @@
             <AppDivider
               v-if="
                 idx + 1 !==
-                cart.order.items.filter((item) => item.product.type === 'Academy')
-                  .length
+                cart.order.items.filter(
+                  (item) => item.product.type === 'Academy',
+                ).length
               "
               class="my-[24px]"
             />
@@ -65,7 +67,7 @@
             class="bg-green-200 rounded-[12px] p-[16px] mt-[24px] flex justify-between items-center cursor-pointer"
             @click="navigateTo('/academies')"
           >
-            <div class="flex flex-col text-[16px]">
+            <div class="flex flex-col">
               <p>При выборе следующей академии цена ниже</p>
               <p>Можно выбирать разные академии</p>
             </div>
@@ -94,16 +96,17 @@
             <AppDivider
               v-if="
                 idx + 1 !==
-                cart.order.items.filter((item) => item.product.type === 'Workshop')
-                  .length
+                cart.order.items.filter(
+                  (item) => item.product.type === 'Workshop',
+                ).length
               "
               class="my-[24px]"
             />
           </template>
           <div
-            class="bg-blue-200 rounded-[12px] p-[16px] mt-[24px] flex justify-between items-center  cursor-pointer"
+            class="bg-blue-200 rounded-[12px] p-[16px] mt-[24px] flex justify-between items-center cursor-pointer"
           >
-            <div class="flex flex-col text-[16px]">
+            <div class="flex flex-col">
               <p>При выборе следующего воркшопа цена ниже</p>
               <p>Можно выбирать разные воркшопы</p>
             </div>
@@ -126,7 +129,11 @@
         >
           <h2 class="font-medium text-[24px]">
             Вы вошли как
-            {{ cart.order.payer_first_name ? `${cart.order.payer_first_name} ${cart.order.payer_last_name}` : '' }}
+            {{
+              cart.order.payer_first_name
+                ? `${cart.order.payer_first_name} ${cart.order.payer_last_name}`
+                : ""
+            }}
           </h2>
           <AppButton> Изменить </AppButton>
         </div>
@@ -179,7 +186,7 @@
           <h2 class="font-medium text-[24px]">Подробности заказа</h2>
 
           <template v-for="(item, idx) in cart.order.items" :key="item.id">
-            <div class="flex justify-between text-[16px] gap-[24px]">
+            <div class="flex justify-between gap-[24px]">
               <span>
                 {{ item.product.name }}
               </span>

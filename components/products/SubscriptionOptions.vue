@@ -12,7 +12,7 @@
         />
         <dl class="flex flex-col gap-[6px]">
           <dt class="text-[24px] font-medium">Абонемент</dt>
-          <dd class="text-[16px] font-medium text-gray-400">Можно отменить</dd>
+          <dd class="font-medium text-gray-400">Можно отменить</dd>
         </dl>
       </div>
 
@@ -20,7 +20,7 @@
         от {{ product.subscriptions?.[0]?.price || "88" }} € / месяц
       </p>
 
-      <p class="text-[16px] font-medium text-gray-400 mt-[24px]">
+      <p class="font-medium text-gray-400 mt-[24px]">
         Вы также можете приобрести два или три приема в неделю. Каждый следующий
         прием дешевле
       </p>
@@ -38,7 +38,7 @@
         />
         <dl class="flex flex-col gap-[6px]">
           <dt class="text-[24px] font-medium">Карта встреч</dt>
-          <dd class="text-[16px] font-medium text-gray-400">
+          <dd class="font-medium text-gray-400">
             Действительна в течение 6 месяцев
           </dd>
         </dl>
@@ -48,7 +48,7 @@
         {{ product.meeting_card?.price || "168" }} € / единоразово
       </p>
 
-      <p class="text-[16px] font-medium text-gray-400 mt-[24px]">
+      <p class="font-medium text-gray-400 mt-[24px]">
         Если вы не можете посещать регулярно, у вас есть возможность приобрести
         карту на 8 посещений
       </p>

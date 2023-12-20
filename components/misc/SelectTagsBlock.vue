@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-[8px] text-[16px] font-medium">
+  <div class="flex gap-[8px] font-medium">
     <button
       v-for="tag in tags"
       :key="tag.value"
@@ -15,7 +15,9 @@
         $emit(
           'update:selectedTags',
           selectedTags.includes(tag.value)
-            ? selectedTags.filter((selectedTag: string | number) => selectedTag !== tag.value)
+            ? selectedTags.filter(
+                (selectedTag: string | number) => selectedTag !== tag.value,
+              )
             : [...selectedTags, tag.value],
         )
       "
@@ -27,8 +29,8 @@
 <script setup lang="ts">
 defineProps<{
   tags: Array<{
-    label: string,
-    value: number | string,
+    label: string;
+    value: number | string;
   }>;
   selectedTags: Array<string | number>;
 }>()

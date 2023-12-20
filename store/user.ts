@@ -2,7 +2,12 @@ import { defineStore } from "pinia"
 import { computed, type Ref, ref } from "vue"
 
 import { getToken, HTTP, setToken } from "../api/index"
-import { type FullUser, type Visitor } from "../types"
+import {
+  type FullUser,
+  type OrderItem,
+  type Visitor,
+  type VisitorOrders,
+} from "../types"
 
 export const useUserStore = defineStore("user", () => {
   const localUser = localStorage.getItem("user")
@@ -27,6 +32,11 @@ export const useUserStore = defineStore("user", () => {
   const user: Ref<FullUser> = ref(initialUser)
   const visitors: Ref<Visitor[]> = ref([])
 
+  const visitorsOrders: Ref<VisitorOrders[]> = ref([])
+
+  const workshops: Ref<OrderItem[]> = ref([])
+  const orders: Ref<OrderItem[]> = ref([])
+
   const isLoggedIn = computed<boolean>(() => !!user.value.pk && !!getToken())
 
   const getVisitors = async () => {
@@ -39,6 +49,10 @@ export const useUserStore = defineStore("user", () => {
     return res
   }
 
+  const updateVisitor = async (id: number, data: Partial<Visitor>) => {
+    await HTTP.patch(`/api/v1/visitors/${id}/`, data)
+  }
+
   const setUser = (newValue: FullUser) => {
     user.value = newValue
     localStorage.setItem("user", JSON.stringify(newValue))
@@ -48,6 +62,10 @@ export const useUserStore = defineStore("user", () => {
     setUser(await HTTP.get("/api/v1/users/me/"))
     await getVisitors()
     return user.value
+  }
+
+  const updateUser = async (data: Partial<FullUser>) => {
+    await HTTP.patch("/api/v1/users/add_profile_info/", data)
   }
 
   const userPostRequest = async (payload: any, url: string) => {
@@ -119,5 +137,10 @@ export const useUserStore = defineStore("user", () => {
     getVisitors,
     getVisitorOptions,
     postVisitor,
+    visitorsOrders,
+    workshops,
+    orders,
+    updateUser,
+    updateVisitor,
   }
 })
