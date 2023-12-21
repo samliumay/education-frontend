@@ -61,7 +61,9 @@
     </template>
 
     <template v-else>
-      <div class="px-[16px] bg-gray-200 py-[20px] rounded-[12px]">Нет активных курсов</div>
+      <div class="px-[16px] bg-gray-200 py-[20px] rounded-[12px]">
+        Нет активных курсов
+      </div>
     </template>
   </div>
 </template>

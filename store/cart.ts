@@ -18,7 +18,11 @@ export const useCartStore = defineStore("cart", () => {
   }
 
   const fulfillOrder = async () => {
-    await HTTP.post("/api/v1/orders/fullfill/")
+    await HTTP.delete("/api/v1/orders/current/clear/")
+  }
+
+  const setPromocode = async (promocode: string) => {
+    await HTTP.put("/api/v1/orders/current/set_promocode", { promocode })
   }
 
   return {
@@ -27,5 +31,6 @@ export const useCartStore = defineStore("cart", () => {
     addOrderItem,
     isDataLoading,
     fulfillOrder,
+    setPromocode,
   }
 })
