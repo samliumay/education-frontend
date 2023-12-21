@@ -27,4 +27,4 @@ COPY docker/prod/nginx.conf /etc/nginx/nginx.conf
 COPY public/* /usr/src/public/
 
 # Copy build dist files to NGINX image
-COPY --from=0 /usr/src/dist /usr/src
+COPY --from=0 /usr/src/.nuxt/dist /usr/src
