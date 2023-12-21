@@ -37,11 +37,11 @@ build:
   script:
     - npm run build
 
-Build Prod:
-  stage: build
+build container:
+  stage: test
   image: atnartur/docker:latest
   only:
-    - main
+    - dev
   script:
     - docker-compose -f docker-compose.prod.yml build
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
