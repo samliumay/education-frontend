@@ -24,12 +24,13 @@ ADD package.json .
 
 ADD nuxt.config.ts .
 
+COPY --from=build-stage /app/.output ./.output
 COPY --from=build-stage /app/.nuxt ./.nuxt
 COPY --from=build-stage /app/node_modules ./node_modules
 
 ENV NUXT_HOST=0.0.0.0
-ENV NUXT_PORT=80
+ENV NUXT_PORT=3000
 
-EXPOSE 80
+EXPOSE 3000
 
 CMD ["node", ".output/server/index.mjs"]
