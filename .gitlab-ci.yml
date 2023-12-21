@@ -37,22 +37,22 @@ build:
   script:
     - npm run build
 
-Build Prod:
+Build dev:
   stage: build
   image: atnartur/docker:latest
   only:
     - main
   script:
-    - docker-compose -f docker-compose.prod.yml build
+    - docker-compose -f docker-compose.dev.yml build
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-    - docker-compose -f docker-compose.prod.yml push
+    - docker-compose -f docker-compose.dev.yml push
 
-Deploy Prod:
+Deploy dev:
   stage: deploy
   image: atnartur/docker:latest
   only:
     - dev
   script:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-    - docker-compose -f docker-compose.prod.yml pull
-    - docker-compose -f docker-compose.prod.yml up -d
+    - docker-compose -f docker-compose.dev.yml pull
+    - docker-compose -f docker-compose.dev.yml up -d
