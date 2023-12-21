@@ -5,7 +5,7 @@ stages:
   - deploy
 
 prepare:
-  image: node:16
+  image: node:18
   stage: prepare
   script:
     - npm install
@@ -22,7 +22,7 @@ prepare:
       - package-lock.json
 
 lint:
-  image: node:16
+  image: node:18
   stage: test
   dependencies:
     - prepare
@@ -30,7 +30,7 @@ lint:
     - npm run lint
 
 build:
-  image: node:16
+  image: node:18
   stage: test
   dependencies:
     - prepare
@@ -43,16 +43,16 @@ build container:
   only:
     - dev
   script:
-    - docker-compose -f docker-compose.prod.yml build
+    - docker-compose -f compose.yml build
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-    - docker-compose -f docker-compose.prod.yml push
+    - docker-compose -f compose.yml push
 
-Deploy Prod:
+Deploy dev:
   stage: deploy
   image: atnartur/docker:latest
   only:
     - dev
   script:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-    - docker-compose -f docker-compose.prod.yml pull
-    - docker-compose -f docker-compose.prod.yml up -d
+    - docker-compose -f compose.yml pull
+    - docker-compose -f compose.yml up -d
