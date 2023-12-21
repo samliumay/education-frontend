@@ -26,7 +26,6 @@ ADD nuxt.config.ts .
 
 COPY --from=build-stage /app/.nuxt ./.nuxt
 COPY --from=build-stage /app/node_modules ./node_modules
-COPY --from=build-stage /app/static ./static
 
 ENV NUXT_HOST=0.0.0.0
 ENV NUXT_PORT=80
