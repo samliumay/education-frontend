@@ -38,7 +38,7 @@ build:
     - npm run build
 
 build container:
-  stage: test
+  stage: build
   image: atnartur/docker:latest
   only:
     - dev
