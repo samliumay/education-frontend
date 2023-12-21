@@ -22,7 +22,7 @@ WORKDIR /app
 
 ADD package.json .
 
-ADD nuxt.config.js .
+ADD nuxt.config.ts .
 
 COPY --from=build-stage /app/.nuxt ./.nuxt
 COPY --from=build-stage /app/node_modules ./node_modules
