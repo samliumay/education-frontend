@@ -7,8 +7,10 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json,vue}'",
+    "format:check": "prettier --check './**/*.{js,jsx,ts,tsx,css,md,json,vue}'",
     "postinstall": "nuxt prepare",
     "prepare": "husky install"
   },

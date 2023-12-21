@@ -75,11 +75,4 @@ const addVisitor = () => {
     step.value = GetChildStep.Select
   })
 }
-
-watch(
-  () => newVisitor.value,
-  () => {
-    console.log(newVisitor.value)
-  },
-)
 </script>

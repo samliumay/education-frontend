@@ -54,7 +54,12 @@
               />
             </div>
 
-            <AppButtonVue class="mt-[24px] w-full" @click="user.updateUser(user.user)"> Сохранить </AppButtonVue>
+            <AppButtonVue
+              class="mt-[24px] w-full"
+              @click="user.updateUser(user.user)"
+            >
+              Сохранить
+            </AppButtonVue>
           </div>
         </div>
 
@@ -118,7 +123,9 @@
           </div>
 
           <div class="flex justify-end mt-[24px]">
-            <AppButtonVue @click="user.updateVisitor(visitor.id, visitor)"> Сохранить </AppButtonVue>
+            <AppButtonVue @click="user.updateVisitor(visitor.id, visitor)">
+              Сохранить
+            </AppButtonVue>
           </div>
 
           <AppDivider class="my-[36px]" />
@@ -127,7 +134,9 @@
         </div>
       </n-tab-pane>
       <n-tab-pane name="workshops" tab="Воркшопы">
-        <div class="flex flex-col gap-[12px] bg-white p-[36px] rounded-[12px] mt-[48px] mb-[24px]">
+        <div
+          class="flex flex-col gap-[12px] bg-white p-[36px] rounded-[12px] mt-[48px] mb-[24px]"
+        >
           <div class="grid grid-cols-4 gap-[12px] font-medium p-[16px]">
             <p>Название</p>
             <p>Расписание</p>
@@ -135,21 +144,25 @@
             <p>Комментарий</p>
           </div>
 
-          <template v-if="user.workshops?.length && user.workshops?.length !== 0">
-          <div
-            v-for="workshop in user.workshops"
-            :key="workshop.id"
-            class="grid grid-cols-4 gap-[12px] bg-gray-200 p-[16px]"
+          <template
+            v-if="user.workshops?.length && user.workshops?.length !== 0"
           >
-            <p>{{ workshop.product.name }}</p>
-            <p>Вт 12:55</p>
-            <p>{{ new Date().toDateString() }}</p>
-            <p class="text-blue-500 cursor-pointer">Смотреть</p>
-          </div>
+            <div
+              v-for="workshop in user.workshops"
+              :key="workshop.id"
+              class="grid grid-cols-4 gap-[12px] bg-gray-200 p-[16px]"
+            >
+              <p>{{ workshop.product.name }}</p>
+              <p>Вт 12:55</p>
+              <p>{{ new Date().toDateString() }}</p>
+              <p class="text-blue-500 cursor-pointer">Смотреть</p>
+            </div>
           </template>
 
           <template v-else>
-            <div class="px-[16px] bg-gray-200 py-[20px] rounded-[12px]">Нет активных воркшопов</div>
+            <div class="px-[16px] bg-gray-200 py-[20px] rounded-[12px]">
+              Нет активных воркшопов
+            </div>
           </template>
         </div>
       </n-tab-pane>

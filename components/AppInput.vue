@@ -10,6 +10,7 @@
         ($event.target as unknown as IEventTarget).value,
       )
     "
+    @blur="$emit('blur')"
   />
 </template>
 <script setup lang="ts">
@@ -21,5 +22,5 @@ defineProps<{
   placeholder?: string;
 }>()
 
-defineEmits(["update:modelValue"])
+defineEmits(["update:modelValue", "blur"])
 </script>
