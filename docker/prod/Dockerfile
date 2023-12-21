@@ -1,30 +1,36 @@
+# Stage 1 - build
 FROM node:16-alpine as build-stage
-RUN mkdir -p /usr/src
-WORKDIR /usr/src
 
-# Install dependencies needed for build
+WORKDIR /app
+
 COPY package*.json ./
 
-RUN npm install
+RUN  npm install
+
+COPY . .
 
 ARG VITE_API_URL
+RUN echo "VITE_API_URL=$VITE_API_URL" > /app/.env
 
-COPY . /usr/src
-
-RUN echo "VITE_API_URL=$VITE_API_URL" > /usr/src/.env
-
-# build necessary, even if no static files are needed,
-# since it builds the server as well
 RUN npm run build
 
-# Use NGINX to serve the built app
-FROM nginx:1.23.3-alpine
 
-WORKDIR /usr/src
+# Stage 2 - production
+FROM node:16-alpine as final
 
-RUN rm -rf /etc/nginx/conf.d
-COPY docker/prod/nginx.conf /etc/nginx/nginx.conf
-COPY public/* /usr/src/public/
+WORKDIR /app
 
-# Copy build dist files to NGINX image
-COPY --from=0 /usr/src/dist /usr/src
+ADD package.json .
+
+ADD nuxt.config.js .
+
+COPY --from=build-stage /app/.nuxt ./.nuxt
+COPY --from=build-stage /app/node_modules ./node_modules
+COPY --from=build-stage /app/static ./static
+
+ENV NUXT_HOST=0.0.0.0
+ENV NUXT_PORT=80
+
+EXPOSE 80
+
+CMD ["node", ".output/server/index.mjs"]
