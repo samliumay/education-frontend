@@ -44,7 +44,7 @@
 </template>
 <script setup lang="ts">
 import { NSelect } from "naive-ui"
-import { ref, watch } from "vue"
+import { ref } from "vue"
 
 import ArrowIcon from "../../assets/icons/arrow_short_right.svg"
 import { useUserStore } from "../../store/user"
