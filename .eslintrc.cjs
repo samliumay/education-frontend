@@ -107,6 +107,7 @@ module.exports = {
         allowBinding: true,
       },
     ],
+    '@typescript-eslint/return-await': 'off',
     'vue/no-this-in-before-route-enter': 'error',
     'vue/no-unused-properties': 'error',
     'vue/no-unused-refs': 'error',

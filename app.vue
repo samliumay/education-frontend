@@ -67,13 +67,13 @@ useHead({
 const themeOverrides = {
   common: {
     primaryColor: "rgb(34, 197, 94)",
-    fontSize: "18px",
+    fontSize: "16px",
   },
 }
 </script>
 <style>
 body {
   background: #f4f1f1;
-  font-size: 18px;
+  font-size: 16px;
 }
 </style>
