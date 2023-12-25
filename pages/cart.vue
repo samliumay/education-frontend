@@ -208,7 +208,8 @@
             v-model="promocode"
             placeholder="Введите промокод"
             class="mt-[24px] w-full"
-            @blur="cart.setPromocode(promocode)"
+            @blur="setPromocode"
+            @enter="setPromocode"
           />
 
           <p class="flex justify-between font-medium text-[24px] mt-[24px]">
@@ -251,7 +252,12 @@ const cart = useCartStore()
 await cart.getCurrentOrder()
 
 const fullfillOrder = async () => {
-  await cart.fulfillOrder()
-  navigateTo("/")
+  const urlObject = await cart.fulfillOrder(buyOption.value, String(window.location).replace('cart', ''))
+  window.location.href = buyOption.value === 'paypal' ? urlObject.links[1] : urlObject.url
+}
+
+const setPromocode = async () => {
+  await cart.setPromocode(promocode.value)
+  promocode.value = ''
 }
 </script>

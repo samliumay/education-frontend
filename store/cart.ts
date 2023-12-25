@@ -17,12 +17,15 @@ export const useCartStore = defineStore("cart", () => {
     await HTTP.post("/api/v1/orders/items/", orderItem)
   }
 
-  const fulfillOrder = async () => {
-    await HTTP.delete("/api/v1/orders/current/clear/")
+  const fulfillOrder = async (gateway: string, successUrl: string) => {
+    const res = await HTTP.post(`/api/v1/orders/fulfill/?payment_gateway=${gateway}&success_url=${successUrl}`) as any
+    getCurrentOrder()
+    return res
   }
 
   const setPromocode = async (promocode: string) => {
     await HTTP.put("/api/v1/orders/current/set_promocode", { promocode })
+    await getCurrentOrder()
   }
 
   return {

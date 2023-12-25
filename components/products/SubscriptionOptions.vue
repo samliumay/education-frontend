@@ -17,7 +17,7 @@
       </div>
 
       <p class="text-[24px] font-medium mt-[16px]">
-        от {{ product.subscriptions?.[0]?.price || "88" }} € / месяц
+        от {{ +(product.purchase_options?.find(purchaseOption => purchaseOption.type === 'Course (1 / week)')?.base_price || "88") }} € / месяц
       </p>
 
       <p class="font-medium text-gray-400 mt-[24px]">
@@ -45,7 +45,7 @@
       </div>
 
       <p class="text-[24px] font-medium mt-[16px]">
-        {{ product.meeting_card?.price || "168" }} € / единоразово
+        {{ +(product.purchase_options?.find(purchaseOption => purchaseOption.type === 'TERMINKARTEN')?.base_price || "168") }} € / единоразово
       </p>
 
       <p class="font-medium text-gray-400 mt-[24px]">

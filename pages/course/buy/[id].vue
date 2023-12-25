@@ -77,7 +77,7 @@
 
       <p class="text-[24px] font-medium">
         Итого:
-        <span class="text-green-700 mr-[8px]"> 168,00 € </span>
+        <span class="text-green-700 mr-[8px]">  {{ +(product.purchase_options?.find((purchaseOption: any) => purchaseOption.type === scheduleType)?.base_price || "0") }} € </span>
       </p>
 
       <AppButton class="w-full mt-[24px]" @click="addCourse">
@@ -88,7 +88,7 @@
 </template>
 <script setup lang="ts">
 import { NRadio, NSpace } from "naive-ui"
-import { ref } from "vue"
+import { computed, ref } from "vue"
 
 import AppButton from "../../../components/AppButton.vue"
 import AppDivider from "../../../components/AppDivider.vue"
@@ -124,6 +124,13 @@ const buyForm = ref({
 const { data: product } = await useFetch(
   `https://api.clavis.the-o.co/api/v1/products/${route.params.id}`,
 )
+
+const scheduleType = computed(() => {
+  if (buyForm.value.subscription === "subscription") {
+    return `Course (${buyForm.value.schedule_slots?.length} / week)` as "Course (1 / week)"
+  }
+    return "TERMINKARTEN"
+})
 
 const addCourse = async () => {
   if (buyForm.value.subscription === "subscription") {
