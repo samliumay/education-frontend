@@ -252,12 +252,16 @@ const cart = useCartStore()
 await cart.getCurrentOrder()
 
 const fullfillOrder = async () => {
-  const urlObject = await cart.fulfillOrder(buyOption.value, String(window.location).replace('cart', ''))
-  window.location.href = buyOption.value === 'paypal' ? urlObject.links[1] : urlObject.url
+  const urlObject = await cart.fulfillOrder(
+    buyOption.value,
+    String(window.location).replace("cart", ""),
+  )
+  window.location.href =
+    buyOption.value === "paypal" ? urlObject.links[1] : urlObject.url
 }
 
 const setPromocode = async () => {
   await cart.setPromocode(promocode.value)
-  promocode.value = ''
+  promocode.value = ""
 }
 </script>

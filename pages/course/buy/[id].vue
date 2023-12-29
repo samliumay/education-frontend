@@ -77,7 +77,16 @@
 
       <p class="text-[24px] font-medium">
         Итого:
-        <span class="text-green-700 mr-[8px]">  {{ +(product.purchase_options?.find((purchaseOption: any) => purchaseOption.type === scheduleType)?.base_price || "0") }} € </span>
+        <span class="text-green-700 mr-[8px]">
+          {{
+            +(
+              product.purchase_options?.find(
+                (purchaseOption: any) => purchaseOption.type === scheduleType,
+              )?.base_price || "0"
+            )
+          }}
+          €
+        </span>
       </p>
 
       <AppButton class="w-full mt-[24px]" @click="addCourse">
@@ -129,7 +138,7 @@ const scheduleType = computed(() => {
   if (buyForm.value.subscription === "subscription") {
     return `Course (${buyForm.value.schedule_slots?.length} / week)` as "Course (1 / week)"
   }
-    return "TERMINKARTEN"
+  return "TERMINKARTEN"
 })
 
 const addCourse = async () => {

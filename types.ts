@@ -194,3 +194,42 @@ export enum GetChildStep {
   Select,
   Add,
 }
+
+export type PageBlockMeta = {
+  type: string;
+  detail_url?: string;
+}
+
+export type PageBlock = {
+  id: number;
+  meta: PageBlockMeta;
+  field: string;
+  items: PageBlock[];
+  [x: string]: any;
+}
+
+export type PageResponse = {
+  meta: {
+    total_count: number;
+  };
+  items: PageBlock[];
+}
+
+export type AcademySeason = {
+  to: string;
+  from: string;
+  title: string;
+  image_url: string | null;
+}
+
+export type ProductType = "course" | "academy" | "workshop"
+
+export type CmsImage = {
+  id: number;
+  meta: {
+    type: string;
+    detail_url: string;
+    download_url: string;
+  };
+  title: string;
+}

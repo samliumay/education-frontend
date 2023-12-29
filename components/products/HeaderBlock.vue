@@ -19,21 +19,18 @@
         </div>
       </dl>
 
-      <CategoryBlock class="mt-[24px]" :items="product.schedule_slots">
+      <CategoryBlock :items="product.schedule_slots" class="mt-[24px]">
         <template #icon>
-          <CourseIcon
+          <img
             v-if="type === 'course'"
-            alt="Items icon"
+            src="../../assets/icons/products/course_calendar.svg"
+            alt="Schedule icon"
             class="mr-[8px]"
           />
-          <AcademyIcon
-            v-if="type === 'academy'"
-            alt="Items icon"
-            class="mr-[8px]"
-          />
-          <WorkshopIcon
-            v-if="type === 'workshop'"
-            alt="Items icon"
+          <img
+            v-else
+            src="../../assets/icons/products/other_clock.svg"
+            alt="Schedule icon"
             class="mr-[8px]"
           />
         </template>
@@ -58,9 +55,6 @@
 <script setup lang="ts">
 import { computed } from "vue"
 
-import AcademyIcon from "../../assets/icons/products/academy_category.svg"
-import CourseIcon from "../../assets/icons/products/course_category.svg"
-import WorkshopIcon from "../../assets/icons/products/workshop_category.svg"
 import { getTagsFromProduct } from "../../helpers/products"
 import { ageMap, languageMap } from "../../mappers/products"
 import type { Product } from "../../types"
