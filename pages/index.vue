@@ -14,20 +14,20 @@
 
       <div class="overflow-x-scroll w-full pb-3 md:overflow-hidden xl:w-fit">
         <div class="flex items-center gap-[12px] w-[800px]">
-          <n-select placeholder="Направление" disabled />
-          <n-select
+          <AppSelect placeholder="Направление" disabled />
+          <AppSelect
             v-model:value="filters.language"
             placeholder="Язык"
             clearable
             :options="languageOptions"
           />
-          <n-select
+          <AppSelect
             v-model:value="filters.age"
             placeholder="Возраст"
             clearable
             :options="ageOptions"
           />
-          <n-select placeholder="Филиал" disabled />
+          <AppSelect placeholder="Филиал" disabled />
         </div>
       </div>
     </div>
@@ -48,9 +48,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import { NSelect } from "naive-ui";
 import { ref } from "vue";
 
+import AppSelect from "../components/AppSelect.vue";
 import ProductCard from "../components/products/ProductCard.vue";
 import { getTagsFromProduct } from "../helpers/products";
 import { ageOptions, languageOptions } from "../mappers/options";

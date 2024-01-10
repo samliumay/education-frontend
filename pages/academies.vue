@@ -22,21 +22,21 @@
 
     <div class="w-full overflow-x-scroll md:overflow-hidden pb-3">
       <div class="ml-auto flex items-center gap-[12px] mt-[48px] w-[800px]">
-        <n-select placeholder="Направление" disabled />
-        <n-select
+        <AppSelect placeholder="Направление" disabled />
+        <AppSelect
           v-model:value="filters.language"
           placeholder="Язык"
           clearable
           :options="languageOptions"
         />
-        <n-select
+        <AppSelect
           v-model:value="filters.age"
           placeholder="Возраст"
           clearable
           :options="ageOptions"
         />
-        <n-select placeholder="Филиал" disabled />
-        <n-select placeholder="Смена" disabled />
+        <AppSelect placeholder="Филиал" disabled />
+        <AppSelect placeholder="Смена" disabled />
       </div>
     </div>
 
@@ -56,9 +56,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import { NSelect } from "naive-ui";
 import { ref } from "vue";
 
+import AppSelect from "../components/AppSelect.vue";
 import AcademySeason from "../components/products/AcademySeason.vue";
 import ProductCard from "../components/products/ProductCard.vue";
 import { getTagsFromProduct } from "../helpers/products";

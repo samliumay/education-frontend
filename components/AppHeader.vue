@@ -1,5 +1,7 @@
 <template>
-  <header class="before:font-medium bg-white px-[18px] py-[18px] lg:px-[40px] lg:py-[28px]">
+  <header
+    class="before:font-medium bg-white px-[18px] py-[18px] lg:px-[40px] lg:py-[28px]"
+  >
     <!-- DESKTOP HEADER -->
     <div class="w-full justify-between gap-[48px] hidden lg:flex">
       <div class="flex items-center gap-6">
@@ -25,6 +27,12 @@
       </div>
 
       <div class="flex items-center gap-8">
+        <AppSelect
+          v-model:value="currentLanguage"
+          :options="languageOptions"
+          variant="transparent"
+        />
+
         <NuxtLink to="/cart" class="flex items-center cursor-pointer">
           <span> Корзина </span>
           <span
@@ -50,7 +58,11 @@
         <p>Меню</p>
       </AppButton>
 
-      <img src="../assets/icons/logo_pink.svg" alt="Clavis logo" class="w-[80px] sm:w-[120px]" />
+      <img
+        src="../assets/icons/logo_pink.svg"
+        alt="Clavis logo"
+        class="w-[80px] sm:w-[120px]"
+      />
 
       <div class="flex items-center gap-4">
         <img src="../assets/icons/cart.svg" alt="Cart" />
@@ -60,9 +72,12 @@
   </header>
 </template>
 <script setup lang="ts">
-import { useCartStore } from "../store/cart";
-import { useUserStore } from "../store/user";
-import AppButton from "./AppButton.vue";
+import { ref } from "vue";
+
+import { useCartStore } from "../store/cart"
+import { useUserStore } from "../store/user"
+import AppButton from "./AppButton.vue"
+import AppSelect from './AppSelect.vue'
 
 const routes = [
   {
@@ -83,4 +98,22 @@ const user = useUserStore();
 const cart = useCartStore();
 
 cart.getCurrentOrder();
+
+// Language Switcher
+const currentLanguage = ref('ru')
+
+const languageOptions = [
+  {
+    label: "Ru",
+    value: "ru",
+  },
+  {
+    label: "En",
+    value: "en",
+  },
+  {
+    label: "De",
+    value: "de",
+  },
+];
 </script>

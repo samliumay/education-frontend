@@ -2,7 +2,7 @@
 <!-- eslint-disable vue/block-lang -->
 <!-- eslint-disable vue/block-lang -->
 <template>
-  <n-config-provider :theme-overrides="themeOverrides" class="text-gray-">
+  <n-config-provider :theme-overrides="themeOverrides">
     <div class="min-h-[100vh] flex flex-col overflow-x-hidden relative">
       <AppHeader />
       <NuxtLayout>
@@ -14,8 +14,8 @@
   </n-config-provider>
 </template>
 <script setup lang="ts">
-import AppFooter from "./components/AppFooter.vue"
-import AppHeader from "./components/AppHeader.vue"
+import AppFooter from "./components/AppFooter.vue";
+import AppHeader from "./components/AppHeader.vue";
 
 useHead({
   title: "Clavis Schule für Kunst und Wissenschaft",
@@ -69,11 +69,11 @@ const themeOverrides = {
     primaryColor: "rgb(34, 197, 94)",
     fontSize: "16px",
   },
-}
+};
 </script>
 <style>
 body {
-  background: #f4f1f1;
+  background: white;
   font-size: 16px;
 }
 </style>

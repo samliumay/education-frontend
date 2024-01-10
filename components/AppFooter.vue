@@ -1,5 +1,5 @@
 <template>
-  <footer class="w-full p-[28px] md:p-[48px] flex flex-col gap-10">
+  <footer class="w-full p-[28px] md:p-[48px] flex flex-col gap-10 bg-brand-light-gray">
     <div class="flex justify-between gap-10 flex-col md:flex-row">
       <div class="flex flex-col gap-8 flex-wrap lg:gap-16 md:flex-row">
         <div class="flex flex-col justify-between gap-4">
