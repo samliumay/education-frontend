@@ -1,13 +1,13 @@
 <template>
   <div>
-    <div
-      class="flex justify-between items-start mt-6 mx-[28px] md:mx-[48px] flex-col xl:flex-row xl:items-center"
-    >
-      <n-breadcrumb class="mb-10">
-        <n-breadcrumb-item сlass="text-brand-gray">Главная</n-breadcrumb-item>
-        <n-breadcrumb-item сlass="text-brand-gray">Курсы</n-breadcrumb-item>
-      </n-breadcrumb>
+    <n-breadcrumb class="mt-6 mb-10 mx-[28px] md:mx-[48px]">
+      <n-breadcrumb-item сlass="text-brand-gray">Главная</n-breadcrumb-item>
+      <n-breadcrumb-item сlass="text-brand-gray">Курсы</n-breadcrumb-item>
+    </n-breadcrumb>
 
+    <div
+      class="flex justify-between items-start mx-[28px] md:mx-[48px] flex-col xl:flex-row xl:items-center"
+    >
       <div class="flex items-center justify-start gap-[18px] mb-10 xl:mb-0">
         <h1 class="text-[38px] md:text-[48px] font-medium uppercase">Курсы</h1>
         <img

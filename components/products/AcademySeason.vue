@@ -3,7 +3,7 @@
     <div
       v-for="season in seasons"
       :key="season"
-      class="relative min-h-[140px] rounded-[12px] bg-white p-[16px] cursor-pointer flex flex-col justify-between"
+      class="relative min-h-[140px] rounded-[12px] bg-brand-light-gray p-[16px] cursor-pointer flex flex-col justify-between"
       :class="{ 'border-black border-[1px]': selected === season }"
       @click="$emit('update:selected', season)"
     >

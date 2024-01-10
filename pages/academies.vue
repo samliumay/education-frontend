@@ -20,14 +20,14 @@
       </div>
     </div>
 
-    <div class="w-full overflow-x-scroll md:overflow-hidden pb-3">
+    <div class="w-full overflow-x-auto xl:overflow-hidden pb-3">
       <AcademySeason
         :selected="selectedSeason"
         @update:selected="(el) => (selectedSeason = el)"
       />
     </div>
 
-    <div class="w-full overflow-x-scroll md:overflow-hidden pb-3">
+    <div class="w-full overflow-x-auto lg:overflow-hidden pb-3">
       <div class="ml-auto flex items-center gap-[12px] mt-[48px] w-[800px]">
         <AppSelect placeholder="Направление" disabled />
         <AppSelect
