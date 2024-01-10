@@ -1,19 +1,27 @@
 <template>
-  <div>
-    <div class="flex items-center justify-between mt-[96px] mx-[48px]">
-      <div class="flex items-center gap-[16px]">
-        <h1 class="text-[48px] font-medium">Академии</h1>
-        <img src="../assets/icons/products/academy_stars.svg" alt="Stars" />
+  <div class="mx-[28px] md:mx-[48px]">
+    <div class="flex items-center justify-between mt-[96px]">
+      <div class="flex items-center gap-[18px] mb-10">
+        <h1 class="text-[38px] md:text-[48px] font-medium uppercase">
+          Академии
+        </h1>
+        <img
+          src="../assets/icons/products/academy_cloud.svg"
+          class="w-[60px] md:w-[80px]"
+          alt="cloud"
+        />
       </div>
     </div>
 
-    <AcademySeason
-      :selected="selectedSeason"
-      @update:selected="(el) => (selectedSeason = el)"
-    />
+    <div class="w-full overflow-x-scroll md:overflow-hidden pb-3">
+      <AcademySeason
+        :selected="selectedSeason"
+        @update:selected="(el) => (selectedSeason = el)"
+      />
+    </div>
 
-    <div class="flex justify-end pr-[48px]">
-      <div class="flex items-center gap-[12px] mt-[48px] w-[800px]">
+    <div class="w-full overflow-x-scroll md:overflow-hidden pb-3">
+      <div class="ml-auto flex items-center gap-[12px] mt-[48px] w-[800px]">
         <n-select placeholder="Направление" disabled />
         <n-select
           v-model:value="filters.language"
@@ -32,7 +40,9 @@
       </div>
     </div>
 
-    <div class="mt-[48px] mb-[96px] grid grid-cols-3 gap-[24px] mx-[48px]">
+    <div
+      class="mt-[48px] mb-[96px] grid gap-[24px] grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
+    >
       <ProductCard
         v-for="academy in academies"
         :key="academy.id"
@@ -46,15 +56,15 @@
   </div>
 </template>
 <script setup lang="ts">
-import { NSelect } from "naive-ui"
-import { ref } from "vue"
+import { NSelect } from "naive-ui";
+import { ref } from "vue";
 
-import AcademySeason from "../components/products/AcademySeason.vue"
-import ProductCard from "../components/products/ProductCard.vue"
-import { getTagsFromProduct } from "../helpers/products"
-import { ageOptions, languageOptions } from "../mappers/options"
+import AcademySeason from "../components/products/AcademySeason.vue";
+import ProductCard from "../components/products/ProductCard.vue";
+import { getTagsFromProduct } from "../helpers/products";
+import { ageOptions, languageOptions } from "../mappers/options";
 
-const page = ref({} as any)
+const page = ref({} as any);
 
 useHead({
   title: page.value.title || "Clavis - Academies",
@@ -72,14 +82,14 @@ useHead({
       href: page.value.canonical || "https://clavis-schule.de/",
     },
   ],
-})
+});
 
 const filters = ref({
   language: undefined,
   age: undefined,
-})
+});
 
-const selectedSeason = ref("summer" as "summer")
+const selectedSeason = ref("summer" as "summer");
 
 const { data: academies } = await useAsyncData(
   "courses",
@@ -90,12 +100,12 @@ const { data: academies } = await useAsyncData(
         ...Object.keys(filters.value).reduce((acc, filterKey) => {
           if (filters.value[filterKey as keyof typeof filters.value]) {
             acc[filterKey as keyof typeof filters.value] =
-              filters.value[filterKey as keyof typeof filters.value]
+              filters.value[filterKey as keyof typeof filters.value];
           }
-          return acc
+          return acc;
         }, {} as any),
       } as any)}`,
     ),
   { watch: [filters] },
-)
+);
 </script>

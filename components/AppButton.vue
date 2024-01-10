@@ -1,8 +1,8 @@
 <template>
   <button
-    class="px-[24px] py-[16px] rounded-[12px]"
+    class="px-[18px] py-[8px] rounded-[12px] sm:px-[22px] sm:py-[12px]"
     :class="{
-      'bg-black text-white': !isInverted,
+      'bg-brand-yellow text-black': !isInverted,
       'bg-white text-black border-black border-[1px]': isInverted,
     }"
   >
