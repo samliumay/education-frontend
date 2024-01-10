@@ -20,6 +20,7 @@
             :key="route.value"
             :to="route.value"
             class="cursor-pointer"
+            :class="{ 'text-brand-red': $route.href === route.value }"
           >
             {{ route.label }}
           </NuxtLink>

@@ -1,6 +1,13 @@
 <template>
-  <div class="mx-[28px] md:mx-[48px]">
-    <div class="flex items-center justify-between mt-[96px]">
+  <div class="mx-[28px] md:mx-[48px] mt-6">
+    <n-breadcrumb class="mb-10">
+      <n-breadcrumb-item сlass="text-brand-gray">
+        <NuxtLink to="/">Главная</NuxtLink>
+      </n-breadcrumb-item>
+      <n-breadcrumb-item сlass="text-brand-gray">Академии</n-breadcrumb-item>
+    </n-breadcrumb>
+
+    <div class="flex items-center justify-between">
       <div class="flex items-center gap-[18px] mb-10">
         <h1 class="text-[38px] md:text-[48px] font-medium uppercase">
           Академии
@@ -56,6 +63,7 @@
   </div>
 </template>
 <script setup lang="ts">
+import { NBreadcrumb, NBreadcrumbItem } from "naive-ui";
 import { ref } from "vue";
 
 import AppSelect from "../components/AppSelect.vue";

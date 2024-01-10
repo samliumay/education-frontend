@@ -1,6 +1,11 @@
 <template>
+  <n-breadcrumb class="mt-6 mb-10 mx-[28px] md:mx-[48px]">
+    <n-breadcrumb-item сlass="text-brand-gray"><NuxtLink to="/">Главная</NuxtLink></n-breadcrumb-item>
+    <n-breadcrumb-item сlass="text-brand-gray">Воркшопы</n-breadcrumb-item>
+  </n-breadcrumb>
+
   <div
-    class="flex items-start mt-[96px] mx-[28px] md:mx-[48px] flex-col justify-start md:flex-row md:justify-between"
+    class="flex items-start mx-[28px] md:mx-[48px] flex-col justify-start md:flex-row md:justify-between"
   >
     <div class="flex items-center gap-[18px]">
       <h1 class="text-[38px] md:text-[48px] font-medium uppercase">Воркшопы</h1>
@@ -36,6 +41,7 @@
   </div>
 </template>
 <script setup lang="ts">
+import { NBreadcrumb, NBreadcrumbItem } from "naive-ui";
 import { ref } from "vue";
 
 import AppSelect from "../components/AppSelect.vue";
