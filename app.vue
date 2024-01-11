@@ -2,7 +2,7 @@
 <!-- eslint-disable vue/block-lang -->
 <!-- eslint-disable vue/block-lang -->
 <template>
-  <n-config-provider :theme-overrides="themeOverrides" class="text-gray-">
+  <n-config-provider :theme-overrides="themeOverrides">
     <div class="min-h-[100vh] flex flex-col overflow-x-hidden relative">
       <AppHeader />
       <NuxtLayout>
@@ -73,7 +73,7 @@ const themeOverrides = {
 </script>
 <style>
 body {
-  background: #f4f1f1;
+  background: white;
   font-size: 16px;
 }
 </style>

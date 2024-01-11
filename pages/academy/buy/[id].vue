@@ -68,7 +68,17 @@
 
       <p class="text-[24px] font-medium">
         Итого:
-        <span class="text-green-700 mr-[8px]"> {{ +(product.purchase_options?.find((purchaseOption: any) => purchaseOption.type === buyForm.schedule_type)?.base_price || "0") }} € </span>
+        <span class="text-green-700 mr-[8px]">
+          {{
+            +(
+              product.purchase_options?.find(
+                (purchaseOption: any) =>
+                  purchaseOption.type === buyForm.schedule_type,
+              )?.base_price || "0"
+            )
+          }}
+          €
+        </span>
       </p>
 
       <AppButton @click="addAcademy"> Добавить в корзину </AppButton>

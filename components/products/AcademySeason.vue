@@ -1,44 +1,29 @@
 <template>
-  <div class="grid grid-cols-4 gap-[24px] mx-[48px]">
+  <div class="grid grid-cols-4 gap-[24px] min-w-[1100px]">
     <div
       v-for="season in seasons"
       :key="season"
-      class="relative h-[140px] rounded-[12px] bg-white p-[16px] cursor-pointer my-[48px]"
+      class="relative min-h-[140px] rounded-[12px] bg-brand-light-gray p-[16px] cursor-pointer flex flex-col justify-between"
       :class="{ 'border-black border-[1px]': selected === season }"
       @click="$emit('update:selected', season)"
     >
-      <h2 class="text-[24px] font-medium mr-[40px]">
+      <h2 class="text-[24px] font-medium mr-[40px] text-brand-red">
         {{ seasonMap[season as keyof typeof seasonMap] }}
       </h2>
-      <img
-        v-if="season === 'summer'"
-        src="../../assets/icons/products/academy_summer.svg"
-        alt="Season logo"
-        class="absolute bottom-[16px] right-[16px]"
-      />
-      <img
-        v-if="season === 'autumn'"
-        src="../../assets/icons/products/academy_autumn.svg"
-        alt="Season logo"
-        class="absolute bottom-[16px] right-[16px]"
-      />
-      <img
-        v-if="season === 'winter'"
-        src="../../assets/icons/products/academy_winter.svg"
-        alt="Season logo"
-        class="absolute bottom-[16px] right-[16px]"
-      />
-      <img
-        v-if="season === 'spring'"
-        src="../../assets/icons/products/academy_spring.svg"
-        alt="Season logo"
-        class="absolute bottom-[16px] right-[16px]"
-      />
-      <p class="flex items-center gap-[8px] absolute bottom-[16px] left-[16px]">
-        12.04
-        <ArrowRight />
-        16.04
-      </p>
+
+      <div class="w-full flex items-center justify-between">
+        <p class="flex items-center gap-[8px]">
+          12.04
+          <ArrowRight />
+          16.04
+        </p>
+
+        <img
+          src="../../assets/icons/chevron_left.svg"
+          alt="Arrow"
+          class="w-[24px] h-[24px]"
+        />
+      </div>
     </div>
   </div>
 </template>
