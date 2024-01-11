@@ -1,14 +1,21 @@
 <template>
   <div class="flex flex-col justify-between gap-4 rounded-[12px] bg-white">
     <div class="flex flex-col gap-4">
-      <img
-        src="../../assets/images/products/cover_1.jpg"
-        alt="Course image"
-        class="rounded-[12px]"
-      />
+      <div class="rounded-[12px] overflow-hidden relative">
+        <img
+          :src="`https://api.clavis.the-o.co${title_image.meta.download_url}`"
+          alt="Title image"
+          class="absolute bottom-0 right-6 w-5/12"
+        />
+        <img
+          :src="`https://api.clavis.the-o.co${background_image.meta.download_url}`"
+          alt="Background image"
+          class="w-full h-full object-cover"
+        />
+      </div>
 
       <div class="flex flex-col gap-1">
-        <div class="flex gap-2 items-center">
+        <!-- <div class="flex gap-2 items-center">
           <template v-for="(category, index) in categories" :key="category">
             <p>{{ category }}</p>
 
@@ -22,24 +29,24 @@
               <circle cx="3" cy="3" r="3" fill="#6F6F6F" />
             </svg>
           </template>
-        </div>
+        </div> -->
 
         <h2 class="text-[24px] font-medium uppercase text-brand-red">
           {{ name }}
         </h2>
 
-        <TagsBlock :tags="tags" />
+        <!-- <TagsBlock :tags="tags" /> -->
       </div>
     </div>
 
     <div class="flex flex-col gap-4">
       <div class="flex flex-col gap-2">
         <div
-          v-for="schedule in scheduleGroup"
-          :key="schedule.time"
+          v-for="schedule in schedule_slots"
+          :key="schedule.id"
           class="flex gap-4 items-center"
         >
-          <p class="w-[70px]">{{ schedule.date }}</p>
+          <p class="w-[70px]">{{ schedule.start }} {{ schedule.weekday }}</p>
 
           <div class="flex-grow flex-shrink-0 flex items-center relative">
             <div class="h-[1px] w-full bg-brand-gray mr-[4px]" />
@@ -59,7 +66,7 @@
             </div>
           </div>
 
-          <p class="w-[80px]">{{ schedule.time }}</p>
+          <p class="w-[80px]">{{ schedule.end }}</p>
         </div>
       </div>
 
@@ -68,18 +75,23 @@
   </div>
 </template>
 <script setup lang="ts">
-import AppButton from "../AppButton.vue"
-import TagsBlock from "../misc/TagsBlock.vue"
+import AppButton from "../AppButton.vue";
+import TagsBlock from "../misc/TagsBlock.vue";
 
-defineProps<{
+const props = defineProps<{
   name: string;
   tags: Array<string>;
-}>()
+  title_image?: string;
+  background_image?: string;
+  schedule_slots?: string;
+}>();
 
-const categories = ["Wissenschaftliche Kurse", "DE", "ABS 234"]
+console.debug(props);
+
+const categories = ["Wissenschaftliche Kurse", "DE", "ABS 234"];
 const scheduleGroup = [
   { date: "Mo 23.12", time: "16:15 UHR" },
   { date: "Di 23.12", time: "16:15 UHR" },
   { date: "Do 23.12", time: "10:15 UHR" },
-]
+];
 </script>

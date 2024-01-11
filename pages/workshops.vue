@@ -27,18 +27,11 @@
   </div>
 
   <div
-    class="mt-[48px] grid gap-[24px] mx-[28px] md:mx-[48px] grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
-  >
-    <ProductCard
-      v-for="workshop in workshops"
-      :key="workshop.id"
-      :name="workshop.name"
-      :times="workshop.schedule_slots"
-      type="workshop"
-      :tags="getTagsFromProduct(workshop)"
-      @click="navigateTo(`/workshop/${workshop.id}`)"
-    />
-  </div>
+      class="mt-[48px] gap-[24px] mx-[48px] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
+    >
+      <PageConstructor v-if="!pending" :page-blocks="workshops.items" />
+      <p v-else>Loading...</p>
+    </div>
 
   <div class="mx-[28px] md:mx-[48px] flex justify-center w-full mb-10 mt-6">
       <AppButton>Показать больше</AppButton>
@@ -49,8 +42,6 @@ import { NBreadcrumb, NBreadcrumbItem } from "naive-ui"
 import { ref } from "vue"
 
 import AppSelect from "../components/AppSelect.vue"
-import ProductCard from "../components/products/ProductCard.vue"
-import { getTagsFromProduct } from "../helpers/products"
 import { ageOptions } from "../mappers/options"
 
 const page = ref({} as any)
@@ -77,21 +68,12 @@ const filters = ref({
   age: undefined,
 })
 
-const { data: workshops } = await useAsyncData(
-  "courses",
+const { data: workshops, pending } = await useAsyncData(
+  "workshops",
   () =>
     $fetch(
-      `https://api.clavis.the-o.co/api/v1/products/?${new URLSearchParams({
-        type: "Workshop",
-        ...Object.keys(filters.value).reduce((acc, filterKey) => {
-          if (filters.value[filterKey as keyof typeof filters.value]) {
-            acc[filterKey as keyof typeof filters.value] =
-              filters.value[filterKey as keyof typeof filters.value]
-          }
-          return acc
-        }, {} as any),
-      } as any)}`,
+      `https://api.clavis.the-o.co/api/v2/wagtail/products/?fields=*&type=Workshop${filters.value.age ? `&age_group=${filters.value.age}` : ""}`,
     ),
   { watch: [filters] },
-)
+);
 </script>

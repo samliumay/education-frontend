@@ -31,13 +31,13 @@
       <div class="ml-auto flex items-center gap-[12px] mt-[48px] w-[800px]">
         <AppSelect placeholder="Направление" disabled />
         <AppSelect
-          v-model:value="filters.language"
+          v-model="filters.language"
           placeholder="Язык"
           clearable
           :options="languageOptions"
         />
         <AppSelect
-          v-model:value="filters.age"
+          v-model="filters.age"
           placeholder="Возраст"
           clearable
           :options="ageOptions"
@@ -48,17 +48,10 @@
     </div>
 
     <div
-      class="mt-[48px] grid gap-[24px] grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
+      class="mt-[48px] gap-[24px] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
     >
-      <ProductCard
-        v-for="academy in academies"
-        :key="academy.id"
-        :name="academy.name"
-        :times="academy.schedule_slots"
-        type="academy"
-        :tags="getTagsFromProduct(academy)"
-        @click="navigateTo(`/academy/${academy.id}`)"
-      />
+      <PageConstructor v-if="!pending" :page-blocks="academies.items" />
+      <p v-else>Loading...</p>
     </div>
 
     <div class="mx-[28px] md:mx-[48px] flex justify-center w-full mb-10 mt-6">
@@ -72,8 +65,6 @@ import { ref } from "vue"
 
 import AppSelect from "../components/AppSelect.vue"
 import AcademySeason from "../components/products/AcademySeason.vue"
-import ProductCard from "../components/products/ProductCard.vue"
-import { getTagsFromProduct } from "../helpers/products"
 import { ageOptions, languageOptions } from "../mappers/options"
 
 const page = ref({} as any)
@@ -101,23 +92,16 @@ const filters = ref({
   age: undefined,
 })
 
-const selectedSeason = ref("summer" as "summer")
+const selectedSeason = ref("summer")
 
-const { data: academies } = await useAsyncData(
-  "courses",
+const { data: academies, pending } = await useAsyncData(
+  "academies",
   () =>
     $fetch(
-      `https://api.clavis.the-o.co/api/v1/products/?${new URLSearchParams({
-        type: "Academy",
-        ...Object.keys(filters.value).reduce((acc, filterKey) => {
-          if (filters.value[filterKey as keyof typeof filters.value]) {
-            acc[filterKey as keyof typeof filters.value] =
-              filters.value[filterKey as keyof typeof filters.value]
-          }
-          return acc
-        }, {} as any),
-      } as any)}`,
+      `https://api.clavis.the-o.co/api/v2/wagtail/products/?fields=*&type=Academy${
+        filters.value.language ? `&language=${filters.value.language}` : ""
+      }${filters.value.age ? `&age_group=${filters.value.age}` : ""}`,
     ),
   { watch: [filters] },
-)
+);
 </script>

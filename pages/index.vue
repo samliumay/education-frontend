@@ -40,15 +40,8 @@
     <div
       class="mt-[48px] gap-[24px] mx-[48px] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
     >
-      <ProductCard
-        v-for="course in courses"
-        :key="course.id"
-        :name="course.name"
-        :times="course.schedule_slots"
-        type="course"
-        :tags="getTagsFromProduct(course)"
-        @click="navigateTo(`/course/${course.id}`)"
-      />
+      <PageConstructor v-if="!pending" :page-blocks="courses.items" />
+      <p v-else>Loading...</p>
     </div>
 
     <div class="mx-[28px] md:mx-[48px] flex justify-center w-full mb-10 mt-6">
@@ -57,16 +50,15 @@
   </div>
 </template>
 <script setup lang="ts">
-import { NBreadcrumb, NBreadcrumbItem } from "naive-ui"
-import { ref } from "vue"
+import { NBreadcrumb, NBreadcrumbItem } from "naive-ui";
+import { ref } from "vue";
 
-import AppButton from "../components/AppButton.vue"
-import AppSelect from "../components/AppSelect.vue"
-import ProductCard from "../components/products/ProductCard.vue"
-import { getTagsFromProduct } from "../helpers/products"
-import { ageOptions, languageOptions } from "../mappers/options"
+import AppButton from "../components/AppButton.vue";
+import AppSelect from "../components/AppSelect.vue";
+import PageConstructor from "../components/PageConstructor.vue";
+import { ageOptions, languageOptions } from "../mappers/options";
 
-const page = ref({} as any)
+const page = ref({} as any);
 
 useHead({
   title: page.value.title || "Clavis - Courses",
@@ -84,28 +76,21 @@ useHead({
       href: page.value.canonical || "https://clavis-schule.de/",
     },
   ],
-})
+});
 
 const filters = ref({
   language: undefined,
   age: undefined,
-})
+});
 
-const { data: courses } = await useAsyncData(
+const { data: courses, pending } = await useAsyncData(
   "courses",
   () =>
     $fetch(
-      `https://api.clavis.the-o.co/api/v1/products/?${new URLSearchParams({
-        type: "Course",
-        ...Object.keys(filters.value).reduce((acc, filterKey) => {
-          if (filters.value[filterKey as keyof typeof filters.value]) {
-            acc[filterKey as keyof typeof filters.value] =
-              filters.value[filterKey as keyof typeof filters.value]
-          }
-          return acc
-        }, {} as any),
-      } as any)}`,
+      `https://api.clavis.the-o.co/api/v2/wagtail/products/?fields=*&type=Course${
+        filters.value.language ? `&language=${filters.value.language}` : ""
+      }${filters.value.age ? `&age_group=${filters.value.age}` : ""}`,
     ),
   { watch: [filters] },
-)
+);
 </script>
