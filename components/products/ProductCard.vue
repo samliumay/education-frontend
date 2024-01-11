@@ -1,44 +1,85 @@
 <template>
-  <div class="flex flex-col rounded-[12px] bg-white p-[16px] cursor-pointer">
-    <img v-if="image" :src="image" alt="Course image" />
-    <div v-else class="aspect-video bg-gray-100 w-full rounded-[12px]" />
+  <div class="flex flex-col justify-between gap-4 rounded-[12px] bg-white">
+    <div class="flex flex-col gap-4">
+      <img
+        src="../../assets/images/products/cover_1.jpg"
+        alt="Course image"
+        class="rounded-[12px]"
+      />
 
-    <h2 class="text-[24px] font-medium my-[16px]">
-      {{ name }}
-    </h2>
+      <div class="flex flex-col gap-1">
+        <div class="flex gap-2 items-center">
+          <template v-for="(category, index) in categories" :key="category">
+            <p>{{ category }}</p>
 
-    <TagsBlock :tags="tags" />
+            <svg
+              v-if="index !== categories.length - 1"
+              width="6"
+              height="6"
+              viewBox="0 0 6 6"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="3" cy="3" r="3" fill="#6F6F6F" />
+            </svg>
+          </template>
+        </div>
 
-    <div class="flex-grow" />
+        <h2 class="text-[24px] font-medium uppercase text-brand-red">
+          {{ name }}
+        </h2>
 
-    <CategoryBlock :items="times" class="mt-[24px]">
-      <template #icon>
-        <img
-          v-if="type === 'course'"
-          src="../../assets/icons/products/course_calendar.svg"
-          alt="Schedule icon"
-          class="mr-[8px]"
-        />
-        <img
-          v-else
-          src="../../assets/icons/products/other_clock.svg"
-          alt="Schedule icon"
-          class="mr-[8px]"
-        />
-      </template>
-    </CategoryBlock>
+        <TagsBlock :tags="tags" />
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-2">
+        <div
+          v-for="schedule in scheduleGroup"
+          :key="schedule.time"
+          class="flex gap-4 items-center"
+        >
+          <p class="w-[70px]">{{ schedule.date }}</p>
+
+          <div class="flex-grow flex-shrink-0 flex items-center relative">
+            <div class="h-[1px] w-full bg-brand-gray mr-[4px]" />
+            <div class="absolute right-0 text-brand-gray text-xl">
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7.82054 20.7313C8.21107 21.1218 8.84423 21.1218 9.23476 20.7313L15.8792 14.0868C17.0505 12.9155 17.0508 11.0167 15.88 9.84497L9.3097 3.26958C8.91918 2.87905 8.28601 2.87905 7.89549 3.26958C7.50497 3.6601 7.50497 4.29327 7.89549 4.68379L14.4675 11.2558C14.8581 11.6464 14.8581 12.2795 14.4675 12.67L7.82054 19.317C7.43002 19.7076 7.43002 20.3407 7.82054 20.7313Z"
+                  fill="#6F6F6F"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <p class="w-[80px]">{{ schedule.time }}</p>
+        </div>
+      </div>
+
+      <AppButton class="mt-[24px] !bg-brand-light-gray">Подробнее</AppButton>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
-import type { Slot } from "../../types"
-import CategoryBlock from "../misc/CategoryBlock.vue"
-import TagsBlock from "../misc/TagsBlock.vue"
+import AppButton from "../AppButton.vue";
+import TagsBlock from "../misc/TagsBlock.vue";
 
 defineProps<{
-  image?: string;
   name: string;
-  times: Array<Slot>;
   tags: Array<string>;
-  type: "course" | "academy" | "workshop";
-}>()
+}>();
+
+const categories = ["Wissenschaftliche Kurse", "DE", "ABS 234"];
+const scheduleGroup = [
+  { date: "Mo 23.12", time: "16:15 UHR" },
+  { date: "Di 23.12", time: "16:15 UHR" },
+  { date: "Do 23.12", time: "10:15 UHR" },
+];
 </script>

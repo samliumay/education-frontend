@@ -27,7 +27,7 @@
   </div>
 
   <div
-    class="mt-[48px] mb-[96px] grid gap-[24px] mx-[28px] md:mx-[48px] grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
+    class="mt-[48px] grid gap-[24px] mx-[28px] md:mx-[48px] grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
   >
     <ProductCard
       v-for="workshop in workshops"
@@ -39,17 +39,21 @@
       @click="navigateTo(`/workshop/${workshop.id}`)"
     />
   </div>
+
+  <div class="mx-[28px] md:mx-[48px] flex justify-center w-full mb-10 mt-6">
+      <AppButton>Показать больше</AppButton>
+    </div>
 </template>
 <script setup lang="ts">
-import { NBreadcrumb, NBreadcrumbItem } from "naive-ui";
-import { ref } from "vue";
+import { NBreadcrumb, NBreadcrumbItem } from "naive-ui"
+import { ref } from "vue"
 
-import AppSelect from "../components/AppSelect.vue";
-import ProductCard from "../components/products/ProductCard.vue";
-import { getTagsFromProduct } from "../helpers/products";
-import { ageOptions } from "../mappers/options";
+import AppSelect from "../components/AppSelect.vue"
+import ProductCard from "../components/products/ProductCard.vue"
+import { getTagsFromProduct } from "../helpers/products"
+import { ageOptions } from "../mappers/options"
 
-const page = ref({} as any);
+const page = ref({} as any)
 
 useHead({
   title: page.value.title || "Clavis - Workshops",
@@ -67,11 +71,11 @@ useHead({
       href: page.value.canonical || "https://clavis-schule.de/",
     },
   ],
-});
+})
 
 const filters = ref({
   age: undefined,
-});
+})
 
 const { data: workshops } = await useAsyncData(
   "courses",
@@ -82,12 +86,12 @@ const { data: workshops } = await useAsyncData(
         ...Object.keys(filters.value).reduce((acc, filterKey) => {
           if (filters.value[filterKey as keyof typeof filters.value]) {
             acc[filterKey as keyof typeof filters.value] =
-              filters.value[filterKey as keyof typeof filters.value];
+              filters.value[filterKey as keyof typeof filters.value]
           }
-          return acc;
+          return acc
         }, {} as any),
       } as any)}`,
     ),
   { watch: [filters] },
-);
+)
 </script>

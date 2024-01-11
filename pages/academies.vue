@@ -48,7 +48,7 @@
     </div>
 
     <div
-      class="mt-[48px] mb-[96px] grid gap-[24px] grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
+      class="mt-[48px] grid gap-[24px] grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
     >
       <ProductCard
         v-for="academy in academies"
@@ -59,6 +59,10 @@
         :tags="getTagsFromProduct(academy)"
         @click="navigateTo(`/academy/${academy.id}`)"
       />
+    </div>
+
+    <div class="mx-[28px] md:mx-[48px] flex justify-center w-full mb-10 mt-6">
+      <AppButton>Показать больше</AppButton>
     </div>
   </div>
 </template>

@@ -38,9 +38,9 @@
     </div>
 
     <div
-      class="mt-[48px] mb-[96px] gap-[24px] mx-[48px] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
+      class="mt-[48px] gap-[24px] mx-[48px] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
     >
-      <ProductCard
+      <ProductCardV2
         v-for="course in courses"
         :key="course.id"
         :name="course.name"
@@ -50,14 +50,19 @@
         @click="navigateTo(`/course/${course.id}`)"
       />
     </div>
+
+    <div class="mx-[28px] md:mx-[48px] flex justify-center w-full mb-10 mt-6">
+      <AppButton>Показать больше</AppButton>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
 import { NBreadcrumb, NBreadcrumbItem } from "naive-ui";
 import { ref } from "vue";
 
+import AppButton from "../components/AppButton.vue";
 import AppSelect from "../components/AppSelect.vue";
-import ProductCard from "../components/products/ProductCard.vue";
+import ProductCardV2 from "../components/products/ProductCardV2.vue";
 import { getTagsFromProduct } from "../helpers/products";
 import { ageOptions, languageOptions } from "../mappers/options";
 
