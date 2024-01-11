@@ -1,6 +1,6 @@
 <template>
   <header
-    class="before:font-medium bg-white px-[18px] py-[18px] lg:px-[40px] lg:py-[28px]"
+    class="before:font-medium bg-white px-[18px] py-[18px] lg:px-[40px] lg:py-[28px] relative"
   >
     <!-- DESKTOP HEADER -->
     <div class="w-full justify-between gap-[48px] hidden lg:flex">
@@ -73,12 +73,12 @@
   </header>
 </template>
 <script setup lang="ts">
-import { ref } from "vue"
+import { ref } from "vue";
 
-import { useCartStore } from "../store/cart"
-import { useUserStore } from "../store/user"
-import AppButton from "./AppButton.vue"
-import AppSelect from './AppSelect.vue'
+import { useCartStore } from "../store/cart";
+import { useUserStore } from "../store/user";
+import AppButton from "./AppButton.vue";
+import AppSelect from "./AppSelect.vue";
 
 const routes = [
   {
@@ -93,15 +93,15 @@ const routes = [
     label: "Воркшопы",
     value: "/workshops",
   },
-]
+];
 
-const user = useUserStore()
-const cart = useCartStore()
+const user = useUserStore();
+const cart = useCartStore();
 
-cart.getCurrentOrder()
+cart.getCurrentOrder();
 
 // Language Switcher
-const currentLanguage = ref('ru')
+const currentLanguage = ref("ru");
 
 const languageOptions = [
   {
@@ -116,5 +116,5 @@ const languageOptions = [
     label: "De",
     value: "de",
   },
-]
+];
 </script>

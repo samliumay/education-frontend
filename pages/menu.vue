@@ -1,8 +1,20 @@
 <template>
-  <footer
-    class="w-full p-[28px] md:p-[48px] flex flex-col gap-10 bg-brand-light-gray"
+  <main
+    class="flex flex-col gap-10 px-8 bg-brand-light-gray lg:justify-between lg:items-end lg:flex-row h-full"
   >
-    <div class="flex justify-between gap-10 flex-col md:flex-row">
+    <nav class="flex flex-col gap-2">
+      <NuxtLink
+        v-for="path in pathGroup"
+        :key="path.route"
+        :to="path.route"
+        class="text-3xl text-brand-red font-medium sm:text-5xl lg:text-7xl"
+        :class="{ 'text-black': $route.href === path.route }"
+      >
+        {{ path.label }}
+      </NuxtLink>
+    </nav>
+
+    <div class="flex flex-col gap-8 h-fit">
       <div class="flex flex-col gap-8 flex-wrap lg:gap-16 md:flex-row">
         <div class="flex flex-col justify-between gap-4">
           <div class="flex flex-col gap-1">
@@ -54,7 +66,7 @@
           class="w-fit h-fit"
           ><img
             src="../assets/icons/socials/tiktok.svg"
-            class="w-[82px] h-[78px] md:w-[64px] md:h-[58px]"
+            class="w-[64px] h-[58px]"
             alt="tiktok"
         /></a>
         <a
@@ -64,7 +76,7 @@
           class="w-fit h-fit"
           ><img
             src="../assets/icons/socials/youtube.svg"
-            class="w-[82px] h-[78px] md:w-[64px] md:h-[58px]"
+            class="w-[64px] h-[58px]"
             alt="youtube"
         /></a>
         <a
@@ -74,7 +86,7 @@
           class="w-fit h-fit"
           ><img
             src="../assets/icons/socials/instagram.svg"
-            class="w-[82px] h-[78px] md:w-[64px] md:h-[58px]"
+            class="w-[64px] h-[58px]"
             alt="instagram"
         /></a>
         <a
@@ -84,22 +96,66 @@
           class="w-fit h-fit"
           ><img
             src="../assets/icons/socials/facebook.svg"
-            class="w-[82px] h-[78px] md:w-[64px] md:h-[58px]"
+            class="w-[64px] h-[58px]"
             alt="facebook"
         /></a>
       </div>
     </div>
-
-    <img src="../assets/icons/logo_pink.svg" class="w-full" alt="cloud" />
-
-    <div class="flex justify-between w-full flex-col md:flex-row gap-6">
-      <div class="flex gap-3 w-full justify-between md:w-fit md:justify-start">
-        <a>Privacy Policy</a>
-        <a>Legal</a>
-        <a>Terms of Service</a>
-      </div>
-
-      <p>Clavis School of Art and Science GmbH 2023 ©</p>
-    </div>
-  </footer>
+  </main>
 </template>
+<script setup lang="ts">
+useHead({
+  title: "Clavis - Menu",
+  meta: [
+    {
+      name: "description",
+      content: "That's a menu at Clavis",
+    },
+  ],
+  link: [
+    {
+      rel: "canonical",
+      href: "https://clavis-schule.de/",
+    },
+  ],
+});
+
+const pathGroup = [
+  {
+    label: "О нас",
+    route: "/",
+  },
+  {
+    label: "Курсы",
+    route: "/",
+  },
+  {
+    label: "Академии",
+    route: "/",
+  },
+  {
+    label: "Воркшопы",
+    route: "/",
+  },
+  {
+    label: "Преподаватели",
+    route: "/",
+  },
+  {
+    label: "Расписание",
+    route: "/",
+  },
+  {
+    label: "Контакты",
+    route: "/",
+  },
+  {
+    label: "Спец.предложения",
+    route: "/",
+  },
+  {
+    label: "Цены",
+    route: "/",
+  },
+];
+</script>

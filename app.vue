@@ -8,8 +8,7 @@
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>
-      <div class="grow" />
-      <AppFooter />
+      <AppFooter v-if="$route.path !== '/menu'" />
     </div>
   </n-config-provider>
 </template>
