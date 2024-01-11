@@ -40,7 +40,7 @@
     <div
       class="mt-[48px] gap-[24px] mx-[48px] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
     >
-      <ProductCardV2
+      <ProductCard
         v-for="course in courses"
         :key="course.id"
         :name="course.name"
@@ -57,16 +57,16 @@
   </div>
 </template>
 <script setup lang="ts">
-import { NBreadcrumb, NBreadcrumbItem } from "naive-ui";
-import { ref } from "vue";
+import { NBreadcrumb, NBreadcrumbItem } from "naive-ui"
+import { ref } from "vue"
 
-import AppButton from "../components/AppButton.vue";
-import AppSelect from "../components/AppSelect.vue";
-import ProductCardV2 from "../components/products/ProductCardV2.vue";
-import { getTagsFromProduct } from "../helpers/products";
-import { ageOptions, languageOptions } from "../mappers/options";
+import AppButton from "../components/AppButton.vue"
+import AppSelect from "../components/AppSelect.vue"
+import ProductCard from "../components/products/ProductCard.vue"
+import { getTagsFromProduct } from "../helpers/products"
+import { ageOptions, languageOptions } from "../mappers/options"
 
-const page = ref({} as any);
+const page = ref({} as any)
 
 useHead({
   title: page.value.title || "Clavis - Courses",
@@ -84,12 +84,12 @@ useHead({
       href: page.value.canonical || "https://clavis-schule.de/",
     },
   ],
-});
+})
 
 const filters = ref({
   language: undefined,
   age: undefined,
-});
+})
 
 const { data: courses } = await useAsyncData(
   "courses",
@@ -100,12 +100,12 @@ const { data: courses } = await useAsyncData(
         ...Object.keys(filters.value).reduce((acc, filterKey) => {
           if (filters.value[filterKey as keyof typeof filters.value]) {
             acc[filterKey as keyof typeof filters.value] =
-              filters.value[filterKey as keyof typeof filters.value];
+              filters.value[filterKey as keyof typeof filters.value]
           }
-          return acc;
+          return acc
         }, {} as any),
       } as any)}`,
     ),
   { watch: [filters] },
-);
+)
 </script>

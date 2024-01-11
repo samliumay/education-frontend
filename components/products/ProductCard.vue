@@ -68,18 +68,18 @@
   </div>
 </template>
 <script setup lang="ts">
-import AppButton from "../AppButton.vue";
-import TagsBlock from "../misc/TagsBlock.vue";
+import AppButton from "../AppButton.vue"
+import TagsBlock from "../misc/TagsBlock.vue"
 
 defineProps<{
   name: string;
   tags: Array<string>;
-}>();
+}>()
 
-const categories = ["Wissenschaftliche Kurse", "DE", "ABS 234"];
+const categories = ["Wissenschaftliche Kurse", "DE", "ABS 234"]
 const scheduleGroup = [
   { date: "Mo 23.12", time: "16:15 UHR" },
   { date: "Di 23.12", time: "16:15 UHR" },
   { date: "Do 23.12", time: "10:15 UHR" },
-];
+]
 </script>

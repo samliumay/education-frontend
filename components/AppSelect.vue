@@ -18,10 +18,10 @@
   />
 </template>
 <script setup lang="ts">
-import type { SelectOption } from "naive-ui";
-import { NSelect } from "naive-ui";
+import type { SelectOption } from "naive-ui"
+import { NSelect } from "naive-ui"
 
-import type { IEventTarget } from "../types";
+import type { IEventTarget } from "../types"
 
 withDefaults(
   defineProps<{
@@ -35,9 +35,9 @@ withDefaults(
   {
     variant: "solid",
   },
-);
+)
 
-defineEmits(["update:modelValue"]);
+defineEmits(["update:modelValue"])
 </script>
 <style>
 /* ! GLOBAL STYLES */

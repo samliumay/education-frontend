@@ -73,7 +73,7 @@
   </header>
 </template>
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref } from "vue"
 
 import { useCartStore } from "../store/cart"
 import { useUserStore } from "../store/user"
@@ -93,12 +93,12 @@ const routes = [
     label: "Воркшопы",
     value: "/workshops",
   },
-];
+]
 
-const user = useUserStore();
-const cart = useCartStore();
+const user = useUserStore()
+const cart = useCartStore()
 
-cart.getCurrentOrder();
+cart.getCurrentOrder()
 
 // Language Switcher
 const currentLanguage = ref('ru')
@@ -116,5 +116,5 @@ const languageOptions = [
     label: "De",
     value: "de",
   },
-];
+]
 </script>

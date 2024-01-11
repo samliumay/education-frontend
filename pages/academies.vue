@@ -67,16 +67,16 @@
   </div>
 </template>
 <script setup lang="ts">
-import { NBreadcrumb, NBreadcrumbItem } from "naive-ui";
-import { ref } from "vue";
+import { NBreadcrumb, NBreadcrumbItem } from "naive-ui"
+import { ref } from "vue"
 
-import AppSelect from "../components/AppSelect.vue";
-import AcademySeason from "../components/products/AcademySeason.vue";
-import ProductCard from "../components/products/ProductCard.vue";
-import { getTagsFromProduct } from "../helpers/products";
-import { ageOptions, languageOptions } from "../mappers/options";
+import AppSelect from "../components/AppSelect.vue"
+import AcademySeason from "../components/products/AcademySeason.vue"
+import ProductCard from "../components/products/ProductCard.vue"
+import { getTagsFromProduct } from "../helpers/products"
+import { ageOptions, languageOptions } from "../mappers/options"
 
-const page = ref({} as any);
+const page = ref({} as any)
 
 useHead({
   title: page.value.title || "Clavis - Academies",
@@ -94,14 +94,14 @@ useHead({
       href: page.value.canonical || "https://clavis-schule.de/",
     },
   ],
-});
+})
 
 const filters = ref({
   language: undefined,
   age: undefined,
-});
+})
 
-const selectedSeason = ref("summer" as "summer");
+const selectedSeason = ref("summer" as "summer")
 
 const { data: academies } = await useAsyncData(
   "courses",
@@ -112,12 +112,12 @@ const { data: academies } = await useAsyncData(
         ...Object.keys(filters.value).reduce((acc, filterKey) => {
           if (filters.value[filterKey as keyof typeof filters.value]) {
             acc[filterKey as keyof typeof filters.value] =
-              filters.value[filterKey as keyof typeof filters.value];
+              filters.value[filterKey as keyof typeof filters.value]
           }
-          return acc;
+          return acc
         }, {} as any),
       } as any)}`,
     ),
   { watch: [filters] },
-);
+)
 </script>
