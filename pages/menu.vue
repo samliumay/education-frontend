@@ -1,6 +1,6 @@
 <template>
   <main
-    class="flex flex-col gap-10 px-8 bg-brand-light-gray lg:justify-between lg:items-end lg:flex-row h-full"
+    class="flex flex-1 flex-col gap-10 px-8 py-5 bg-brand-light-gray lg:justify-between lg:items-end lg:flex-row h-full"
   >
     <nav class="flex flex-col gap-2">
       <NuxtLink
@@ -8,7 +8,7 @@
         :key="path.route"
         :to="path.route"
         class="text-3xl text-brand-red font-medium sm:text-5xl lg:text-7xl"
-        :class="{ 'text-black': $route.href === path.route }"
+        :class="{ '!text-black': $router?.options?.history?.state?.back === path.route }"
       >
         {{ path.label }}
       </NuxtLink>
@@ -131,11 +131,11 @@ const pathGroup = [
   },
   {
     label: "Академии",
-    route: "/",
+    route: "/academies",
   },
   {
     label: "Воркшопы",
-    route: "/",
+    route: "/workshops",
   },
   {
     label: "Преподаватели",

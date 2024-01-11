@@ -1,6 +1,7 @@
 <template>
   <header
     class="before:font-medium bg-white px-[18px] py-[18px] lg:px-[40px] lg:py-[28px] relative"
+    :class="{ '!bg-brand-light-gray': $route.name === 'menu' }"
   >
     <!-- DESKTOP HEADER -->
     <div class="w-full justify-between gap-[48px] hidden lg:flex">
@@ -10,21 +11,42 @@
           alt="Clavis logo"
           class="mr-4"
         />
-        <AppButton is-inverted class="flex gap-2 items-center">
-          <img src="../assets/icons/star.svg" alt="Stars" />
-          <p>Меню</p>
-        </AppButton>
-        <nav class="flex gap-6">
-          <NuxtLink
-            v-for="route in routes"
-            :key="route.value"
-            :to="route.value"
-            class="cursor-pointer"
-            :class="{ 'text-brand-red': $route.href === route.value }"
+
+        <!-- NORMAL NAV HEADER -->
+        <template v-if="$route.name !== 'menu'">
+          <AppButton
+            is-inverted
+            class="flex gap-2 items-center"
+            @click="navigateTo('/menu')"
           >
-            {{ route.label }}
-          </NuxtLink>
-        </nav>
+            <img src="../assets/icons/star.svg" alt="Stars" />
+            <p>Меню</p>
+          </AppButton>
+
+          <nav class="flex gap-6">
+            <NuxtLink
+              v-for="route in routes"
+              :key="route.value"
+              :to="route.value"
+              class="cursor-pointer"
+              :class="{ 'text-brand-red': $route.href === route.value }"
+            >
+              {{ route.label }}
+            </NuxtLink>
+          </nav>
+        </template>
+
+        <!-- MENU NAV HEADER -->
+        <template v-else>
+          <AppButton
+            is-inverted
+            class="flex gap-2 items-center"
+            @click="$router.go(-1)"
+          >
+            <img src="../assets/icons/close.svg" alt="Stars" />
+            <p>Закрыть</p>
+          </AppButton>
+        </template>
       </div>
 
       <div class="flex items-center gap-8">
@@ -54,10 +76,29 @@
 
     <!-- MOBILE HEADER -->
     <div class="w-full flex items-center justify-between gap-6 lg:hidden">
-      <AppButton is-inverted class="flex gap-2 items-center">
-        <img src="../assets/icons/star.svg" alt="Stars" />
-        <p>Меню</p>
-      </AppButton>
+      <!-- OPEN MENU BUTTON HEADER -->
+      <template v-if="$route.name !== 'menu'">
+        <AppButton
+          is-inverted
+          class="flex gap-2 items-center"
+          @click="navigateTo('/menu')"
+        >
+          <img src="../assets/icons/star.svg" alt="Stars" />
+          <p>Меню</p>
+        </AppButton>
+      </template>
+
+      <!-- CLOSE MENU BUTTON HEADER -->
+      <template v-else>
+        <AppButton
+          is-inverted
+          class="flex gap-2 items-center"
+          @click="$router.go(-1)"
+        >
+          <img src="../assets/icons/close.svg" alt="Stars" />
+          <p>Закрыть</p>
+        </AppButton>
+      </template>
 
       <img
         src="../assets/icons/logo_pink.svg"

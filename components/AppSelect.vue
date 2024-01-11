@@ -59,6 +59,11 @@ defineEmits(["update:modelValue"])
   font-weight: 500;
 }
 
+.select .n-base-selection-label {
+  background: transparent !important;
+  border-radius: 12px;
+}
+
 .solid .n-base-selection-label {
   background: #f2f2f2 !important;
   border-radius: 12px;
