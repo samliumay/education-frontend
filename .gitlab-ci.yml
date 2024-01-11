@@ -47,7 +47,7 @@ build container:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
     - docker-compose -f compose.yml push
 
-Deploy dev:
+deploy dev:
   stage: deploy
   image: atnartur/docker:latest
   only:
@@ -55,4 +55,4 @@ Deploy dev:
   script:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
     - docker-compose -f compose.yml pull
-    - docker-compose -f compose.yml up -d
+    - docker-compose -f compose.yml up -d --remove-orphans
