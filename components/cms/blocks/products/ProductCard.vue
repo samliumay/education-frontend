@@ -197,6 +197,4 @@ const schedule = computed(() => {
 
   return bufferArray
 })
-
-console.debug('PROPS', props)
 </script>
