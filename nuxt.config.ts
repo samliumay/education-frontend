@@ -13,6 +13,9 @@ export default defineNuxtConfig({
   alias: {
     "@": path.resolve(__dirname, "./"),
   },
+  css: [
+    "@/assets/styles/fonts.css"
+  ],
   i18n: {
     vueI18n: "./i18n.config.ts", // if you are using custom path, default
   },

@@ -8,14 +8,13 @@
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>
-      <div class="grow" />
-      <AppFooter />
+      <AppFooter v-if="$route.path !== '/menu'" />
     </div>
   </n-config-provider>
 </template>
 <script setup lang="ts">
-import AppFooter from "./components/AppFooter.vue"
-import AppHeader from "./components/AppHeader.vue"
+import AppFooter from "./components/AppFooter.vue";
+import AppHeader from "./components/AppHeader.vue";
 
 useHead({
   title: "Clavis Schule für Kunst und Wissenschaft",
@@ -62,17 +61,18 @@ useHead({
     { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
     { rel: "canonical", href: "https://clavis-schule.de/" },
   ],
-})
+});
 
 const themeOverrides = {
   common: {
     primaryColor: "rgb(34, 197, 94)",
     fontSize: "16px",
   },
-}
+};
 </script>
 <style>
 body {
+  font-family: Aeroport, sans-serif;
   background: white;
   font-size: 16px;
 }
