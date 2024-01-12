@@ -70,13 +70,12 @@
         </div>
       </div>
 
-      <AppButton class="mt-[24px] !bg-brand-light-gray">Подробнее</AppButton>
+      <AppButton class="mt-[24px] !bg-brand-light-gray" @click="goToProductInfo">Подробнее</AppButton>
     </div>
   </div>
 </template>
 <script setup lang="ts">
 import AppButton from '../AppButton.vue'
-import TagsBlock from '../misc/TagsBlock.vue'
 
 const props = defineProps<{
   name: string
@@ -84,14 +83,11 @@ const props = defineProps<{
   title_image?: string
   background_image?: string
   schedule_slots?: string
+  productType: string
+  id: number
 }>()
 
-console.debug(props)
-
-const categories = ['Wissenschaftliche Kurse', 'DE', 'ABS 234']
-const scheduleGroup = [
-  { date: 'Mo 23.12', time: '16:15 UHR' },
-  { date: 'Di 23.12', time: '16:15 UHR' },
-  { date: 'Do 23.12', time: '10:15 UHR' },
-]
+const goToProductInfo = () => {
+  navigateTo(`/${props.productType}/${props.id}`)
+}
 </script>

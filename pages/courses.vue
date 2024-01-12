@@ -42,7 +42,7 @@
     <div
       class="mt-[48px] gap-[24px] mx-[48px] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
     >
-      <PageConstructor v-if="!pending" :page-blocks="courses.items" />
+      <PageConstructor v-if="!pending" :blocks="courses.items" />
       <p v-else>Loading...</p>
     </div>
 
@@ -57,7 +57,7 @@ import { ref } from 'vue'
 
 import AppButton from '../components/AppButton.vue'
 import AppSelect from '../components/AppSelect.vue'
-import PageConstructor from '../components/PageConstructor.vue'
+import PageConstructor from '../components/cms/PageConstructor.vue'
 import { ageOptions, languageOptions } from '../mappers/options'
 
 const page = ref({} as any)

@@ -24,8 +24,9 @@
     "paths": {
       "@/*": ["/*"]
     },
-    // for eslint
-    "allowJs": true
+
+    /* Eslint */
+    "allowJs": true,
   },
   "include": [
     "**/*.ts",

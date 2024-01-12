@@ -57,4 +57,11 @@ const { data: product } = await useFetch(
   `https://api.clavis.the-o.co/api/v1/products/${route.params.id}`,
   { deep: true },
 )
+
+const { data: item } = await useFetch(
+  `https://api.clavis.the-o.co/api/v2/wagtail/products/5/?fields=*`,
+  { deep: true },
+)
+
+console.debug(item)
 </script>

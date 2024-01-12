@@ -1,8 +1,8 @@
 <template>
   <n-breadcrumb class="mt-6 mb-10 mx-[28px] md:mx-[48px]">
-    <n-breadcrumb-item сlass="text-brand-gray"
-      ><NuxtLink to="/">Главная</NuxtLink></n-breadcrumb-item
-    >
+    <n-breadcrumb-item сlass="text-brand-gray">
+      <NuxtLink to="/">Главная</NuxtLink>
+    </n-breadcrumb-item>
     <n-breadcrumb-item сlass="text-brand-gray">Воркшопы</n-breadcrumb-item>
   </n-breadcrumb>
 
@@ -44,6 +44,7 @@ import { NBreadcrumb, NBreadcrumbItem } from 'naive-ui'
 import { ref } from 'vue'
 
 import AppSelect from '../components/AppSelect.vue'
+import PageConstructor from '../components/cms/PageConstructor.vue'
 import { ageOptions } from '../mappers/options'
 
 const page = ref({} as any)

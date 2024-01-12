@@ -1,7 +1,5 @@
-import AppProductCard from '../components/products/ProductCard.vue'
-import AppSlotCardVue from '../components/AppSlotCard.vue'
+import AppProductCard from '../components/cms/blocks/products/ProductCard.vue'
 
 export const mapTypeBlock = {
-  slotCard: AppSlotCardVue,
   'products.ProductPage': AppProductCard,
 }

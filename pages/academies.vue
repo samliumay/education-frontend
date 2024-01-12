@@ -50,7 +50,11 @@
     <div
       class="mt-[48px] gap-[24px] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
     >
-      <PageConstructor v-if="!pending" :page-blocks="academies.items" />
+      <PageConstructor
+        v-if="!pending"
+        :blocks="academies.items"
+        :block-props="blockProps"
+      />
       <p v-else>Loading...</p>
     </div>
 
@@ -64,25 +68,23 @@ import { NBreadcrumb, NBreadcrumbItem } from 'naive-ui'
 import { ref } from 'vue'
 
 import AppSelect from '../components/AppSelect.vue'
+import PageConstructor from '../components/cms/PageConstructor.vue'
 import AcademySeason from '../components/products/AcademySeason.vue'
 import { ageOptions, languageOptions } from '../mappers/options'
 
-const page = ref({} as any)
-
 useHead({
-  title: page.value.title || 'Clavis - Academies',
+  title: 'Clavis - Academies',
   meta: [
     {
       name: 'description',
       content:
-        page.value.description ||
         "That's a page that contains information about all academies available at Clavis",
     },
   ],
   link: [
     {
       rel: 'canonical',
-      href: page.value.canonical || 'https://clavis-schule.de/',
+      href: 'https://clavis-schule.de/',
     },
   ],
 })
@@ -104,4 +106,8 @@ const { data: academies, pending } = await useAsyncData(
     ),
   { watch: [filters] },
 )
+
+const blockProps = {
+  type: 'academy',
+}
 </script>
