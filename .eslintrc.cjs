@@ -48,6 +48,7 @@ module.exports = {
     'vuejs-accessibility/media-has-caption': 'off',
     'vue/no-undef-components': 'off',
     // Off - block
+    'linebreak-style': 'off',
     'vue/multi-word-component-names': 'off',
     'import/order': 'off',
     'import/extensions': 'off',
