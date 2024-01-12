@@ -18,10 +18,10 @@
   </div>
 </template>
 <script setup lang="ts">
-import ArrowRight from "../../../assets/icons/arrow_right.svg"
-import { type AcademySeason } from "../../../types"
+import ArrowRight from '../../../assets/icons/arrow_right.svg'
+import { type AcademySeason } from '../../../types'
 
 defineProps<{
-  items: AcademySeason[];
+  items: AcademySeason[]
 }>()
 </script>

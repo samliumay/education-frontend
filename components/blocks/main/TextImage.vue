@@ -17,7 +17,7 @@
         {{
           item.person
             ? `${item.person.first_name} ${item.person.last_name}`
-            : ""
+            : ''
         }}
       </p>
     </div>
@@ -32,9 +32,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import { PageBlock } from "../../../types"
+import { PageBlock } from '../../../types'
 
 defineProps<{
-  item: PageBlock;
+  item: PageBlock
 }>()
 </script>

@@ -48,60 +48,60 @@
   </n-modal>
 </template>
 <script lang="ts" setup>
-import { NModal } from "naive-ui"
-import { ref } from "vue"
+import { NModal } from 'naive-ui'
+import { ref } from 'vue'
 
-import CloseIcon from "../assets/icons/Close.svg"
-import AppleIcon from "../assets/icons/sign_in/apple_icon.svg"
-import FacebookIcon from "../assets/icons/sign_in/facebook_icon.svg"
-import GoogleIcon from "../assets/icons/sign_in/google_icon.svg"
-import MailIcon from "../assets/icons/sign_in/mail_icon.svg"
-import { useUserStore } from "../store/user"
-import { LoginSteps } from "../types"
-import AppButton from "./AppButton.vue"
-import AppInput from "./AppInput.vue"
+import CloseIcon from '../assets/icons/Close.svg'
+import AppleIcon from '../assets/icons/sign_in/apple_icon.svg'
+import FacebookIcon from '../assets/icons/sign_in/facebook_icon.svg'
+import GoogleIcon from '../assets/icons/sign_in/google_icon.svg'
+import MailIcon from '../assets/icons/sign_in/mail_icon.svg'
+import { useUserStore } from '../store/user'
+import { LoginSteps } from '../types'
+import AppButton from './AppButton.vue'
+import AppInput from './AppInput.vue'
 
 defineProps<{
-  isOpen: boolean;
+  isOpen: boolean
 }>()
 
-const emit = defineEmits(["close", "next"])
+const emit = defineEmits(['close', 'next'])
 
 const userStore = useUserStore()
 
 const credentials = ref({
-  email: "",
-  password: "",
+  email: '',
+  password: '',
 })
 
 const login = async () => {
   await userStore
     .login(credentials.value.email, credentials.value.password)
-    .then(() => emit("next"))
+    .then(() => emit('next'))
 }
 
 const step = ref(LoginSteps.Options)
 
 const options = [
   {
-    label: "Почта",
+    label: 'Почта',
     icon: CloseIcon,
     onClick: () => {
       step.value = LoginSteps.Email
     },
   },
   {
-    label: "Google",
+    label: 'Google',
     icon: GoogleIcon,
     onClick: () => {},
   },
   {
-    label: "Apple",
+    label: 'Apple',
     icon: AppleIcon,
     onClick: () => {},
   },
   {
-    label: "Facebook",
+    label: 'Facebook',
     icon: FacebookIcon,
     onClick: () => {},
   },

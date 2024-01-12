@@ -27,11 +27,11 @@
           </p>
           <p>
             {{
-              order.schedule_type.includes("Academy")
+              order.schedule_type.includes('Academy')
                 ? langMapAcademy[order.schedule_type]
-                : order.schedule_type === "TERMINKARTEN"
-                  ? "Карта встреч"
-                  : "Абонемент"
+                : order.schedule_type === 'TERMINKARTEN'
+                  ? 'Карта встреч'
+                  : 'Абонемент'
             }}
           </p>
           <p class="col-span-2">
@@ -43,7 +43,7 @@
                     5,
                   )}-${slot.end.slice(0, 5)}`,
                   value: slot.id,
-                };
+                }
               })
             }}
           </p>
@@ -68,11 +68,11 @@
   </div>
 </template>
 <script setup lang="ts">
-import { langMapAcademy, langMapType } from "../../mappers/lang"
-import { type OrderItem, type Slot } from "../../types"
+import { langMapAcademy, langMapType } from '../../mappers/lang'
+import { type OrderItem, type Slot } from '../../types'
 
 defineProps<{
-  orders: OrderItem[];
-  withButton?: boolean;
+  orders: OrderItem[]
+  withButton?: boolean
 }>()
 </script>

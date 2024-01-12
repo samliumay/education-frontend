@@ -6,8 +6,8 @@
 </template>
 <script setup lang="ts">
 defineProps<{
-  title: string;
-  image_url?: string;
-  alt_text?: string;
+  title: string
+  image_url?: string
+  alt_text?: string
 }>()
 </script>

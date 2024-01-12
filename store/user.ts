@@ -1,33 +1,33 @@
-import { defineStore } from "pinia"
-import { computed, type Ref, ref } from "vue"
+import { defineStore } from 'pinia'
+import { computed, type Ref, ref } from 'vue'
 
-import { getToken, HTTP, setToken } from "../api/index"
+import { getToken, HTTP, setToken } from '../api/index'
 import {
   type FullUser,
   type OrderItem,
   type Visitor,
   type VisitorOrders,
-} from "../types"
+} from '../types'
 
-export const useUserStore = defineStore("user", () => {
-  const localUser = localStorage.getItem("user")
+export const useUserStore = defineStore('user', () => {
+  const localUser = localStorage.getItem('user')
   const initialUser = localUser
     ? JSON.parse(localUser)
     : {
         pk: undefined,
         id: undefined,
-        email: "",
-        password: "",
-        first_name: "",
-        last_name: "",
-        phone_number: "+",
-        company_name: "",
+        email: '',
+        password: '',
+        first_name: '',
+        last_name: '',
+        phone_number: '+',
+        company_name: '',
         city: undefined,
         country: undefined,
-        state: "",
-        street: "",
-        post_code: "",
-        token: "",
+        state: '',
+        street: '',
+        post_code: '',
+        token: '',
       }
   const user: Ref<FullUser> = ref(initialUser)
   const visitors: Ref<Visitor[]> = ref([])
@@ -40,11 +40,11 @@ export const useUserStore = defineStore("user", () => {
   const isLoggedIn = computed<boolean>(() => !!user.value.pk && !!getToken())
 
   const getVisitors = async () => {
-    visitors.value = await HTTP.get("/api/v1/visitors/")
+    visitors.value = await HTTP.get('/api/v1/visitors/')
   }
 
-  const postVisitor = async (visitor: Omit<Visitor, "id">) => {
-    const res = await HTTP.post("/api/v1/visitors/", visitor)
+  const postVisitor = async (visitor: Omit<Visitor, 'id'>) => {
+    const res = await HTTP.post('/api/v1/visitors/', visitor)
     getVisitors()
     return res
   }
@@ -55,17 +55,17 @@ export const useUserStore = defineStore("user", () => {
 
   const setUser = (newValue: FullUser) => {
     user.value = newValue
-    localStorage.setItem("user", JSON.stringify(newValue))
+    localStorage.setItem('user', JSON.stringify(newValue))
   }
 
   const retrieveUser = async () => {
-    setUser(await HTTP.get("/api/v1/users/me/"))
+    setUser(await HTTP.get('/api/v1/users/me/'))
     await getVisitors()
     return user.value
   }
 
   const updateUser = async (data: Partial<FullUser>) => {
-    await HTTP.patch("/api/v1/users/add_profile_info/", data)
+    await HTTP.patch('/api/v1/users/add_profile_info/', data)
   }
 
   const userPostRequest = async (payload: any, url: string) => {
@@ -89,7 +89,7 @@ export const useUserStore = defineStore("user", () => {
         email,
         password,
       },
-      "/api/v1/users/sign_in/",
+      '/api/v1/users/sign_in/',
     )
 
   const register = (
@@ -110,7 +110,7 @@ export const useUserStore = defineStore("user", () => {
         first_name: firstName,
         last_name: lastName,
       },
-      "/api/v1/users/sign_up/",
+      '/api/v1/users/sign_up/',
     )
 
   const findVisitorById = (id?: number) =>

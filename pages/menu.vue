@@ -1,6 +1,6 @@
 <template>
   <main
-    class="flex flex-1 flex-col gap-10 px-8 py-5 bg-brand-light-gray lg:justify-between lg:items-end lg:flex-row h-full"
+    class="flex flex-1 flex-col gap-10 px-8 py-5 bg-brand-light-gray lg:justify-between lg:items-start lg:flex-row h-full"
   >
     <nav class="flex flex-col gap-2">
       <NuxtLink
@@ -8,7 +8,9 @@
         :key="path.route"
         :to="path.route"
         class="text-3xl text-brand-red font-medium sm:text-5xl lg:text-7xl"
-        :class="{ '!text-black': $router?.options?.history?.state?.back === path.route }"
+        :class="{
+          '!text-black': $router?.options?.history?.state?.back === path.route,
+        }"
       >
         {{ path.label }}
       </NuxtLink>
@@ -105,57 +107,57 @@
 </template>
 <script setup lang="ts">
 useHead({
-  title: "Clavis - Menu",
+  title: 'Clavis - Menu',
   meta: [
     {
-      name: "description",
+      name: 'description',
       content: "That's a menu at Clavis",
     },
   ],
   link: [
     {
-      rel: "canonical",
-      href: "https://clavis-schule.de/",
+      rel: 'canonical',
+      href: 'https://clavis-schule.de/',
     },
   ],
-});
+})
 
 const pathGroup = [
   {
-    label: "О нас",
-    route: "/",
+    label: 'О нас',
+    route: '/',
   },
   {
-    label: "Курсы",
-    route: "/",
+    label: 'Курсы',
+    route: '/courses',
   },
   {
-    label: "Академии",
-    route: "/academies",
+    label: 'Академии',
+    route: '/academies',
   },
   {
-    label: "Воркшопы",
-    route: "/workshops",
+    label: 'Воркшопы',
+    route: '/workshops',
   },
   {
-    label: "Преподаватели",
-    route: "/",
+    label: 'Преподаватели',
+    route: '/',
   },
   {
-    label: "Расписание",
-    route: "/",
+    label: 'Расписание',
+    route: '/',
   },
   {
-    label: "Контакты",
-    route: "/",
+    label: 'Контакты',
+    route: '/',
   },
   {
-    label: "Спец.предложения",
-    route: "/",
+    label: 'Спец.предложения',
+    route: '/',
   },
   {
-    label: "Цены",
-    route: "/",
+    label: 'Цены',
+    route: '/',
   },
-];
+]
 </script>

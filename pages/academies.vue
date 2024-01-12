@@ -23,7 +23,7 @@
     <div class="w-full overflow-x-auto xl:overflow-hidden pb-3">
       <AcademySeason
         :selected="selectedSeason"
-        @update:selected="(el) => (selectedSeason = el)"
+        @update:selected="el => (selectedSeason = el)"
       />
     </div>
 
@@ -60,20 +60,20 @@
   </div>
 </template>
 <script setup lang="ts">
-import { NBreadcrumb, NBreadcrumbItem } from "naive-ui"
-import { ref } from "vue"
+import { NBreadcrumb, NBreadcrumbItem } from 'naive-ui'
+import { ref } from 'vue'
 
-import AppSelect from "../components/AppSelect.vue"
-import AcademySeason from "../components/products/AcademySeason.vue"
-import { ageOptions, languageOptions } from "../mappers/options"
+import AppSelect from '../components/AppSelect.vue'
+import AcademySeason from '../components/products/AcademySeason.vue'
+import { ageOptions, languageOptions } from '../mappers/options'
 
 const page = ref({} as any)
 
 useHead({
-  title: page.value.title || "Clavis - Academies",
+  title: page.value.title || 'Clavis - Academies',
   meta: [
     {
-      name: "description",
+      name: 'description',
       content:
         page.value.description ||
         "That's a page that contains information about all academies available at Clavis",
@@ -81,8 +81,8 @@ useHead({
   ],
   link: [
     {
-      rel: "canonical",
-      href: page.value.canonical || "https://clavis-schule.de/",
+      rel: 'canonical',
+      href: page.value.canonical || 'https://clavis-schule.de/',
     },
   ],
 })
@@ -92,16 +92,16 @@ const filters = ref({
   age: undefined,
 })
 
-const selectedSeason = ref("summer")
+const selectedSeason = ref('summer')
 
 const { data: academies, pending } = await useAsyncData(
-  "academies",
+  'academies',
   () =>
     $fetch(
       `https://api.clavis.the-o.co/api/v2/wagtail/products/?fields=*&type=Academy${
-        filters.value.language ? `&language=${filters.value.language}` : ""
-      }${filters.value.age ? `&age_group=${filters.value.age}` : ""}`,
+        filters.value.language ? `&language=${filters.value.language}` : ''
+      }${filters.value.age ? `&age_group=${filters.value.age}` : ''}`,
     ),
   { watch: [filters] },
-);
+)
 </script>

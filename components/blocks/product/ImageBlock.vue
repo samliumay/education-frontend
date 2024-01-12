@@ -4,7 +4,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { type CmsImage } from "../../../types"
+import { type CmsImage } from '../../../types'
 
 defineProps<{ image: CmsImage }>()
 </script>

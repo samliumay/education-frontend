@@ -8,10 +8,10 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { PageBlock } from "../../../types"
-import TutorCard from "../misc/TutorCard.vue"
+import type { PageBlock } from '../../../types'
+import TutorCard from '../misc/TutorCard.vue'
 
 defineProps<{
-  items: PageBlock[];
+  items: PageBlock[]
 }>()
 </script>

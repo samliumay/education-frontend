@@ -69,7 +69,7 @@
           </span>
         </NuxtLink>
         <AppButton @click="navigateTo('/profile')">
-          {{ user.isLoggedIn ? "Профиль" : "Войти" }}
+          {{ user.isLoggedIn ? 'Профиль' : 'Войти' }}
         </AppButton>
       </div>
     </div>
@@ -114,48 +114,48 @@
   </header>
 </template>
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref } from 'vue'
 
-import { useCartStore } from "../store/cart";
-import { useUserStore } from "../store/user";
-import AppButton from "./AppButton.vue";
-import AppSelect from "./AppSelect.vue";
+import { useCartStore } from '../store/cart'
+import { useUserStore } from '../store/user'
+import AppButton from './AppButton.vue'
+import AppSelect from './AppSelect.vue'
 
 const routes = [
   {
-    label: "Курсы",
-    value: "/",
+    label: 'Курсы',
+    value: '/courses',
   },
   {
-    label: "Академии",
-    value: "/academies",
+    label: 'Академии',
+    value: '/academies',
   },
   {
-    label: "Воркшопы",
-    value: "/workshops",
+    label: 'Воркшопы',
+    value: '/workshops',
   },
-];
+]
 
-const user = useUserStore();
-const cart = useCartStore();
+const user = useUserStore()
+const cart = useCartStore()
 
-cart.getCurrentOrder();
+cart.getCurrentOrder()
 
 // Language Switcher
-const currentLanguage = ref("ru");
+const currentLanguage = ref('ru')
 
 const languageOptions = [
   {
-    label: "Ru",
-    value: "ru",
+    label: 'Ru',
+    value: 'ru',
   },
   {
-    label: "En",
-    value: "en",
+    label: 'En',
+    value: 'en',
   },
   {
-    label: "De",
-    value: "de",
+    label: 'De',
+    value: 'de',
   },
-];
+]
 </script>

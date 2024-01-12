@@ -70,25 +70,25 @@
   </Teleport>
 </template>
 <script setup lang="ts">
-import { ref } from "vue"
+import { ref } from 'vue'
 
-import Close from "../assets/icons/Close.svg"
-import CourseIcon from "../assets/icons/Course.svg"
-import AppInput from "./AppInput.vue"
+import Close from '../assets/icons/Close.svg'
+import CourseIcon from '../assets/icons/Course.svg'
+import AppInput from './AppInput.vue'
 
-defineEmits(["close"])
+defineEmits(['close'])
 
 const application = ref({
   child: {
-    name: "",
-    surname: "",
-    birthdate: "",
+    name: '',
+    surname: '',
+    birthdate: '',
   },
   parent: {
-    name: "",
-    surname: "",
+    name: '',
+    surname: '',
   },
-  email: "",
-  phone: "",
+  email: '',
+  phone: '',
 })
 </script>

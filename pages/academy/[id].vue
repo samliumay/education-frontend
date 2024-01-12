@@ -11,14 +11,14 @@
   <VideoBlock class="mt-[96px] mb-[96px]" />
 </template>
 <script setup lang="ts">
-import { ref } from "vue"
+import { ref } from 'vue'
 
-import AppButton from "../../components/AppButton.vue"
-import AppSignIn from "../../components/AppSignIn.vue"
-import DescriptionBlock from "../../components/products/DescriptionBlock.vue"
-import HeaderBlock from "../../components/products/HeaderBlock.vue"
-import VideoBlock from "../../components/products/VideoBlock.vue"
-import { useUserStore } from "../../store/user"
+import AppButton from '../../components/AppButton.vue'
+import AppSignIn from '../../components/AppSignIn.vue'
+import DescriptionBlock from '../../components/products/DescriptionBlock.vue'
+import HeaderBlock from '../../components/products/HeaderBlock.vue'
+import VideoBlock from '../../components/products/VideoBlock.vue'
+import { useUserStore } from '../../store/user'
 
 const page = ref({} as any)
 const isOpen = ref(false)
@@ -36,10 +36,10 @@ const handleSignIn = () => {
 }
 
 useHead({
-  title: page.value.title || "Clavis - Academy",
+  title: page.value.title || 'Clavis - Academy',
   meta: [
     {
-      name: "description",
+      name: 'description',
       content:
         page.value.description ||
         "That's a page that contains information about a particular academy available at Clavis",
@@ -47,8 +47,8 @@ useHead({
   ],
   link: [
     {
-      rel: "canonical",
-      href: page.value.canonical || "https://clavis-schule.de/",
+      rel: 'canonical',
+      href: page.value.canonical || 'https://clavis-schule.de/',
     },
   ],
 })

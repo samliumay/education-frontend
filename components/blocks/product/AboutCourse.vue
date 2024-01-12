@@ -49,9 +49,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { PageBlock } from "../../../types"
+import type { PageBlock } from '../../../types'
 
 defineProps<{
-  items: PageBlock[];
+  items: PageBlock[]
 }>()
 </script>

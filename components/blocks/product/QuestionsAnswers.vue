@@ -16,10 +16,10 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { PageBlock } from "../../../types"
-import AccordionPanel from "../misc/AccordionPanel.vue"
+import type { PageBlock } from '../../../types'
+import AccordionPanel from '../misc/AccordionPanel.vue'
 
 defineProps<{
-  items: PageBlock[];
+  items: PageBlock[]
 }>()
 </script>

@@ -15,13 +15,13 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from "vue"
+import { ref } from 'vue'
 
-import AppDivider from "../../AppDivider.vue"
+import AppDivider from '../../AppDivider.vue'
 
 defineProps<{
-  title: string;
-  description: string;
+  title: string
+  description: string
 }>()
 
 const isOpened = ref(false)

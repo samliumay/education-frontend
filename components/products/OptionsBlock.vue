@@ -7,10 +7,10 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { Product } from "../../types"
-import SubscriptionOptions from "./SubscriptionOptions.vue"
+import type { Product } from '../../types'
+import SubscriptionOptions from './SubscriptionOptions.vue'
 
 defineProps<{
-  product: Product;
+  product: Product
 }>()
 </script>

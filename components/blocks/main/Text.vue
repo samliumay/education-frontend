@@ -4,9 +4,9 @@
   </p>
 </template>
 <script setup lang="ts">
-import { PageBlock } from "../../../types"
+import { PageBlock } from '../../../types'
 
 defineProps<{
-  item: PageBlock;
+  item: PageBlock
 }>()
 </script>

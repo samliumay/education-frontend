@@ -29,11 +29,11 @@
 <script setup lang="ts">
 defineProps<{
   tags: Array<{
-    label: string;
-    value: number | string;
-  }>;
-  selectedTags: Array<string | number>;
+    label: string
+    value: number | string
+  }>
+  selectedTags: Array<string | number>
 }>()
 
-defineEmits("update:selectedTags")
+defineEmits('update:selectedTags')
 </script>

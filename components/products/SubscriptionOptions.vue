@@ -21,8 +21,8 @@
         {{
           +(
             product.purchase_options?.find(
-              (purchaseOption) => purchaseOption.type === "Course (1 / week)",
-            )?.base_price || "88"
+              purchaseOption => purchaseOption.type === 'Course (1 / week)',
+            )?.base_price || '88'
           )
         }}
         € / месяц
@@ -56,8 +56,8 @@
         {{
           +(
             product.purchase_options?.find(
-              (purchaseOption) => purchaseOption.type === "TERMINKARTEN",
-            )?.base_price || "168"
+              purchaseOption => purchaseOption.type === 'TERMINKARTEN',
+            )?.base_price || '168'
           )
         }}
         € / единоразово
@@ -71,12 +71,12 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { Product } from "../../types"
+import type { Product } from '../../types'
 
 defineProps<{
-  product: Product;
-  value?: "subscription" | "card";
+  product: Product
+  value?: 'subscription' | 'card'
 }>()
 
-defineEmits(["select"])
+defineEmits(['select'])
 </script>

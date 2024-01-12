@@ -25,9 +25,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import { type Instructor } from "../../types"
+import { type Instructor } from '../../types'
 
 defineProps<{
-  instructor: Instructor;
+  instructor: Instructor
 }>()
 </script>

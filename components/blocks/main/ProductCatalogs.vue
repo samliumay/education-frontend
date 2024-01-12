@@ -34,29 +34,29 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from "vue"
+import { ref } from 'vue'
 
-import { PageBlock } from "../../../types"
-import ProductCard from "../misc/ProductCard.vue"
+import { PageBlock } from '../../../types'
+import ProductCard from '../misc/ProductCard.vue'
 
 defineProps<{
-  items: PageBlock[];
+  items: PageBlock[]
 }>()
 
 const catalogueOptions = [
   {
-    value: "course",
-    label: "Kurse",
+    value: 'course',
+    label: 'Kurse',
   },
   {
-    value: "academy",
-    label: "Akademie",
+    value: 'academy',
+    label: 'Akademie',
   },
   {
-    value: "workshop",
-    label: "Workshops",
+    value: 'workshop',
+    label: 'Workshops',
   },
 ]
 
-const currentCatalogue = ref("course")
+const currentCatalogue = ref('course')
 </script>

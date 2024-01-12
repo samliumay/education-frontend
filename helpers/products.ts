@@ -1,5 +1,5 @@
-import { ageMap, languageMap } from "../mappers/products"
-import type { Product } from "../types"
+import { ageMap, languageMap } from '../mappers/products'
+import type { Product } from '../types'
 
 export const getTagsFromProduct = (product: Product): Array<string> => {
   const result: string[] = []

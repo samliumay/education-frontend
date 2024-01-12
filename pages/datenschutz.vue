@@ -509,7 +509,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { NH1, NH3 } from "naive-ui"
+import { NH1, NH3 } from 'naive-ui'
 </script>
 <style scoped lang="scss">
 p,

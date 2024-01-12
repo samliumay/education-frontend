@@ -42,13 +42,13 @@
   </div>
 </template>
 <script setup lang="ts">
-import { getTagsFromProduct } from "../../../helpers/products"
-import { type PageBlock, type Product } from "../../../types"
-import CategoryBlock from "../../misc/CategoryBlock.vue"
-import TagsBlock from "../../misc/TagsBlock.vue"
+import { getTagsFromProduct } from '../../../helpers/products'
+import { type PageBlock, type Product } from '../../../types'
+import CategoryBlock from '../../misc/CategoryBlock.vue'
+import TagsBlock from '../../misc/TagsBlock.vue'
 
 defineProps<{
-  items: Array<PageBlock & { product: Product }>;
-  catalogue_type: "academy" | "course" | "workshop";
+  items: Array<PageBlock & { product: Product }>
+  catalogue_type: 'academy' | 'course' | 'workshop'
 }>()
 </script>

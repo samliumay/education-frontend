@@ -28,12 +28,12 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from "vue"
+import { ref } from 'vue'
 
-import { PageBlock } from "../../../types"
+import { PageBlock } from '../../../types'
 
 defineProps<{
-  items: PageBlock;
+  items: PageBlock
 }>()
 
 const currentIndex = ref(0)

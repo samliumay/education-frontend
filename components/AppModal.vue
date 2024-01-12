@@ -11,7 +11,7 @@
 </template>
 <script lang="ts" setup>
 defineProps<{
-  isOpen: boolean;
+  isOpen: boolean
 }>()
-defineEmits(["close"])
+defineEmits(['close'])
 </script>

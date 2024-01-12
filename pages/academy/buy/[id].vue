@@ -10,7 +10,7 @@
 
       <GetChildData
         :visitor="buyForm.visitor"
-        @update:visitor="(el) => (buyForm.visitor = el)"
+        @update:visitor="el => (buyForm.visitor = el)"
       />
 
       <AppDivider class="my-[24px]" />
@@ -74,7 +74,7 @@
               product.purchase_options?.find(
                 (purchaseOption: any) =>
                   purchaseOption.type === buyForm.schedule_type,
-              )?.base_price || "0"
+              )?.base_price || '0'
             )
           }}
           €
@@ -86,12 +86,12 @@
   </div>
 </template>
 <script setup lang="ts">
-import { NCheckbox, NRadio } from "naive-ui"
-import { ref } from "vue"
+import { NCheckbox, NRadio } from 'naive-ui'
+import { ref } from 'vue'
 
-import GetChildData from "../../../components/buy/GetChildData.vue"
-import { useCartStore } from "../../../store/cart"
-import type { OrderItem, Product } from "../../../types"
+import GetChildData from '../../../components/buy/GetChildData.vue'
+import { useCartStore } from '../../../store/cart'
+import type { OrderItem, Product } from '../../../types'
 
 const route = useRoute()
 
@@ -99,7 +99,7 @@ const cart = useCartStore()
 
 const buyForm = ref({
   academy_number_of_weeks: 0,
-  schedule_type: "Academy (1st half)",
+  schedule_type: 'Academy (1st half)',
   first: false,
   second: false,
   product: route.params.id,
@@ -125,6 +125,6 @@ const addAcademy = async () => {
     visitor: buyForm.value.visitor,
     schedule_slots: [],
   })
-  navigateTo("/cart")
+  navigateTo('/cart')
 }
 </script>

@@ -40,14 +40,14 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { PageBlock } from "../../../types"
+import type { PageBlock } from '../../../types'
 
 defineProps<{
-  items: PageBlock[];
+  items: PageBlock[]
 }>()
 </script>
 <style scoped>
 li {
-  list-style-image: url("../../../assets/icons/plus_red.svg");
+  list-style-image: url('../../../assets/icons/plus_red.svg');
 }
 </style>

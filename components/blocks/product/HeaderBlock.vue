@@ -53,7 +53,7 @@
           {{
             Array.from(
               new Set(item.schedule_slots?.map((slot: any) => slot.instructor)),
-            ).join("; ")
+            ).join('; ')
           }}
         </dt>
       </dl>
@@ -64,7 +64,7 @@
           {{
             Array.from(
               new Set(item.schedule_slots?.map((slot: any) => slot.space)),
-            ).join("; ")
+            ).join('; ')
           }}
         </dt>
       </dl>
@@ -72,13 +72,13 @@
   </div>
 </template>
 <script setup lang="ts">
-import { languageMap } from "../../../mappers/products"
-import { type PageBlock, type Product, type ProductType } from "../../../types"
-import AppButton from "../../AppButton.vue"
-import CategoryBlock from "../../misc/CategoryBlock.vue"
+import { languageMap } from '../../../mappers/products'
+import { type PageBlock, type Product, type ProductType } from '../../../types'
+import AppButton from '../../AppButton.vue'
+import CategoryBlock from '../../misc/CategoryBlock.vue'
 
 defineProps<{
-  item: PageBlock & { product: Product };
-  type: ProductType;
+  item: PageBlock & { product: Product }
+  type: ProductType
 }>()
 </script>

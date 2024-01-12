@@ -19,10 +19,9 @@
 
     <div class="mb-4">
       <div class="font-bold mb-1">E-mail</div>
-      <a
-class="block"
-href="mail:info@clavis-schule.de"
->info@clavis-schule.de</a>
+      <a class="block" href="mail:info@clavis-schule.de"
+        >info@clavis-schule.de</a
+      >
     </div>
 
     <div class="mb-4">
@@ -32,5 +31,5 @@ href="mail:info@clavis-schule.de"
   </div>
 </template>
 <script setup lang="ts">
-import { NH1 } from "naive-ui"
+import { NH1 } from 'naive-ui'
 </script>

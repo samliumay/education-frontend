@@ -75,23 +75,23 @@
   </div>
 </template>
 <script setup lang="ts">
-import AppButton from "../AppButton.vue";
-import TagsBlock from "../misc/TagsBlock.vue";
+import AppButton from '../AppButton.vue'
+import TagsBlock from '../misc/TagsBlock.vue'
 
 const props = defineProps<{
-  name: string;
-  tags: Array<string>;
-  title_image?: string;
-  background_image?: string;
-  schedule_slots?: string;
-}>();
+  name: string
+  tags: Array<string>
+  title_image?: string
+  background_image?: string
+  schedule_slots?: string
+}>()
 
-console.debug(props);
+console.debug(props)
 
-const categories = ["Wissenschaftliche Kurse", "DE", "ABS 234"];
+const categories = ['Wissenschaftliche Kurse', 'DE', 'ABS 234']
 const scheduleGroup = [
-  { date: "Mo 23.12", time: "16:15 UHR" },
-  { date: "Di 23.12", time: "16:15 UHR" },
-  { date: "Do 23.12", time: "10:15 UHR" },
-];
+  { date: 'Mo 23.12', time: '16:15 UHR' },
+  { date: 'Di 23.12', time: '16:15 UHR' },
+  { date: 'Do 23.12', time: '10:15 UHR' },
+]
 </script>
