@@ -28,8 +28,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 
-import { type CmsImage } from '../../../types/cms'
-import { getApiAddress } from '../../../utils/getApiAddress'
+import { type CmsImage } from '../../../../types/cms'
+import { getApiAddress } from '../../../../utils/getApiAddress'
 
 const props = defineProps<{ image: CmsImage }>()
 

@@ -14,6 +14,7 @@
 
       <div class="flex flex-col gap-1">
         <div class="flex gap-2 items-center">
+          <!-- TODO: Use CategoryBlock -->
           <template v-for="(category, index) in categories" :key="category">
             <p class="text-brand-gray font-medium">{{ category }}</p>
 
@@ -84,7 +85,7 @@ import type {
 } from '../../../../types/cms'
 import AppButton from '../../../AppButton.vue'
 import TagsBlock from '../../../misc/TagsBlock.vue'
-import ImageBlock from '../ImageBlock.vue'
+import ImageBlock from '../misc/ImageBlock.vue'
 
 const props = defineProps<{
   blockData: PageBlock

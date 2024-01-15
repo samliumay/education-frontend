@@ -1,8 +1,11 @@
-<template>
-  <div class="mx-[48px]">
-    <h2 class="text-[48px] font-medium mb-[48px]">КАК УСТРОЕН КУРС</h2>
+<!-- eslint-disable vue/no-v-html -->
 
-    <div
+<template>
+  <div class="mb-[48px]">
+    <h2 class="text-[48px] font-medium">КАК УСТРОЕН КУРС</h2>
+    <div v-html="sanitizedDescription" />
+
+    <!-- <div
       v-for="(item, idx) in items"
       :key="item.id"
       class="grid grid-col-2"
@@ -45,13 +48,19 @@
           />
         </div>
       </template>
-    </div>
+    </div> -->
   </div>
 </template>
 <script setup lang="ts">
-import type { PageBlock } from '../../../types'
+import DOMPurify from 'dompurify'
+import { computed } from 'vue'
 
-defineProps<{
-  items: PageBlock[]
+import type { PageBlock } from '../../../../../types/cms'
+
+const props = defineProps<{
+  item: PageBlock
 }>()
+
+// ! Avoid XSS
+const sanitizedDescription = computed(() => DOMPurify.sanitize(props.item.description))
 </script>

@@ -1,23 +1,38 @@
 <template>
-  <AppSignIn
-    :is-open="isOpen"
-    @close="isOpen = false"
-    @next="navigateTo(`/academy/buy/${route.params.id}`)"
-  />
-  <HeaderBlock class="mt-[96px]" :product="product" type="course">
-    <AppButton @click="handleSignIn"> Купить академию </AppButton>
-  </HeaderBlock>
-  <DescriptionBlock class="mt-[96px]" :product="product" />
-  <VideoBlock class="mt-[96px] mb-[96px]" />
+  <div class="flex flex-col gap-12 mx-10">
+    <AppSignIn
+      :is-open="isOpen"
+      @close="isOpen = false"
+      @next="navigateTo(`/academy/buy/${route.params.id}`)"
+    />
+
+    <n-breadcrumb class="mt-6 mb-10">
+      <n-breadcrumb-item сlass="text-brand-gray">
+        <NuxtLink to="/">Главная</NuxtLink>
+      </n-breadcrumb-item>
+      <n-breadcrumb-item сlass="text-brand-gray">
+        <NuxtLink to="/academies">Академии</NuxtLink>
+      </n-breadcrumb-item>
+      <n-breadcrumb-item сlass="text-brand-gray">
+        {{ item.name }}
+      </n-breadcrumb-item>
+    </n-breadcrumb>
+
+    <HeaderBlock v-if="!pending" :item="item" type="academy">
+      <AppButton @click="handleSignIn"> Купить академию </AppButton>
+    </HeaderBlock>
+    <AboutCourse v-if="!pending" :item="item" />
+  </div>
 </template>
 <script setup lang="ts">
+import { NBreadcrumb, NBreadcrumbItem } from 'naive-ui'
 import { ref } from 'vue'
+import { useRoute } from 'vue-router'
 
 import AppButton from '../../components/AppButton.vue'
 import AppSignIn from '../../components/AppSignIn.vue'
-import DescriptionBlock from '../../components/products/DescriptionBlock.vue'
-import HeaderBlock from '../../components/products/HeaderBlock.vue'
-import VideoBlock from '../../components/products/VideoBlock.vue'
+import AboutCourse from '../../components/cms/blocks/products/details/AboutCourse.vue'
+import HeaderBlock from '../../components/cms/blocks/products/details/HeaderBlock.vue'
 import { useUserStore } from '../../store/user'
 
 const page = ref({} as any)
@@ -53,13 +68,8 @@ useHead({
   ],
 })
 
-const { data: product } = await useFetch(
-  `https://api.clavis.the-o.co/api/v1/products/${route.params.id}`,
-  { deep: true },
-)
-
-const { data: item } = await useFetch(
-  `https://api.clavis.the-o.co/api/v2/wagtail/products/5/?fields=*`,
+const { data: item, pending } = await useFetch(
+  `https://api.clavis.the-o.co/api/v2/wagtail/products/${route.params.id}/?fields=*`,
   { deep: true },
 )
 
