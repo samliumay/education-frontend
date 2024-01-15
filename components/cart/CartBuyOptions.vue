@@ -57,8 +57,8 @@
 </template>
 <script setup lang="ts">
 defineProps<{
-  option: "paypal" | "stripe";
+  option: 'paypal' | 'stripe'
 }>()
 
-defineEmits(["selectOption"])
+defineEmits(['selectOption'])
 </script>

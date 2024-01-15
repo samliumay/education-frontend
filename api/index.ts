@@ -1,7 +1,7 @@
-import axios from "axios"
+import axios from 'axios'
 
 export const getToken = () => {
-  const token = window.localStorage.getItem("odev-token")
+  const token = window.localStorage.getItem('odev-token')
 
   if (token) {
     return token
@@ -11,26 +11,26 @@ export const getToken = () => {
 }
 
 export const setToken = (token: string) => {
-  window.localStorage.setItem("odev-token", token)
+  window.localStorage.setItem('odev-token', token)
 }
 
 export const deleteToken = () => {
-  window.localStorage.removeItem("odev-token")
+  window.localStorage.removeItem('odev-token')
 }
 
 export const apiClient = axios.create({
   // @ts-ignore
   baseURL: import.meta.env.VITE_API_URL,
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   },
-  xsrfCookieName: "csrftoken",
-  xsrfHeaderName: "X-CSRFToken",
+  xsrfCookieName: 'csrftoken',
+  xsrfHeaderName: 'X-CSRFToken',
 })
 
 apiClient.interceptors.request.use(request => {
   const token = getToken()
-  if (token && request.url !== "/login/") {
+  if (token && request.url !== '/login/') {
     request.headers.Authorization = `Token ${token}`
   }
   return request
@@ -38,7 +38,7 @@ apiClient.interceptors.request.use(request => {
 
 apiClient.interceptors.response.use(
   ({ config, data }) => {
-    if (config.url === "/login/") setToken(data.token)
+    if (config.url === '/login/') setToken(data.token)
     return data
   },
   error => {
@@ -52,23 +52,23 @@ apiClient.interceptors.response.use(
 // api methods return any type because of AxiosInstance response intercepting
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export class HTTP {
-  static get<T>(endpoint = "", params = {}): Promise<T> {
+  static get<T>(endpoint = '', params = {}): Promise<T> {
     return apiClient.get(`${endpoint}`, params)
   }
 
-  static post<T>(endpoint = "", data = {}, config = {}): Promise<T> {
+  static post<T>(endpoint = '', data = {}, config = {}): Promise<T> {
     return apiClient.post(`${endpoint}`, data, config)
   }
 
-  static patch<T>(endpoint = "", data = {}): Promise<T> {
+  static patch<T>(endpoint = '', data = {}): Promise<T> {
     return apiClient.patch(`${endpoint}`, data)
   }
 
-  static put<T>(endpoint = "", data = {}): Promise<T> {
+  static put<T>(endpoint = '', data = {}): Promise<T> {
     return apiClient.put(`${endpoint}`, data)
   }
 
-  static delete<T>(endpoint = "", params = {}): Promise<T> {
+  static delete<T>(endpoint = '', params = {}): Promise<T> {
     return apiClient.delete(`${endpoint}`, params)
   }
 }

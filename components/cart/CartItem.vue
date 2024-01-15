@@ -26,9 +26,9 @@
         <div class="bg-gray-200 px-[16px] p-[8px] rounded-[10px]">
           Опция:
           {{
-            order.schedule_type !== "TERMINKARTEN"
-              ? "Абонемент"
-              : "Карта встреч"
+            order.schedule_type !== 'TERMINKARTEN'
+              ? 'Абонемент'
+              : 'Карта встреч'
           }}
         </div>
         <div class="bg-gray-200 px-[16px] p-[8px] rounded-[10px]">
@@ -50,11 +50,11 @@
   </div>
 </template>
 <script setup lang="ts">
-import { type OrderItem } from "../../types"
+import { type OrderItem } from '../../types'
 
 defineProps<{
-  order: OrderItem;
+  order: OrderItem
 }>()
 
-defineEmits(["close"])
+defineEmits(['close'])
 </script>

@@ -7,7 +7,7 @@
         placeholder="Выберите ребенка"
         :options="userStore.getVisitorOptions"
         :value="visitor"
-        @update:value="(el) => $emit('update:visitor', el)"
+        @update:value="el => $emit('update:visitor', el)"
       />
     </template>
     <template v-else-if="step === GetChildStep.Add">
@@ -35,28 +35,28 @@
     >
       <span>{{
         step === GetChildStep.Select
-          ? "Добавить нового ребенка"
-          : "Вернуться к выбору ребенка"
+          ? 'Добавить нового ребенка'
+          : 'Вернуться к выбору ребенка'
       }}</span>
       <ArrowIcon class="relative top-[4px]" />
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import { NSelect } from "naive-ui"
-import { ref } from "vue"
+import { NSelect } from 'naive-ui'
+import { ref } from 'vue'
 
-import ArrowIcon from "../../assets/icons/arrow_short_right.svg"
-import { useUserStore } from "../../store/user"
-import { GetChildStep } from "../../types"
-import AppButton from "../AppButton.vue"
-import AppInput from "../AppInput.vue"
+import ArrowIcon from '../../assets/icons/arrow_short_right.svg'
+import { useUserStore } from '../../store/user'
+import { GetChildStep } from '../../types'
+import AppButton from '../AppButton.vue'
+import AppInput from '../AppInput.vue'
 
 defineProps<{
-  visitor?: number;
+  visitor?: number
 }>()
 
-const emit = defineEmits(["update:visitor"])
+const emit = defineEmits(['update:visitor'])
 
 const userStore = useUserStore()
 
@@ -64,14 +64,14 @@ await userStore.getVisitors()
 
 const step = ref(GetChildStep.Select)
 const newVisitor = ref({
-  first_name: "",
-  last_name: "",
-  birth_date: "",
+  first_name: '',
+  last_name: '',
+  birth_date: '',
 })
 
 const addVisitor = () => {
   userStore.postVisitor(newVisitor.value).then((res: any) => {
-    emit("update:visitor", res.id)
+    emit('update:visitor', res.id)
     step.value = GetChildStep.Select
   })
 }

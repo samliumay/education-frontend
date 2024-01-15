@@ -8,7 +8,7 @@
       <SubscriptionOptions
         :product="product"
         :value="buyForm.subscription"
-        @select="(el) => (buyForm.subscription = el)"
+        @select="el => (buyForm.subscription = el)"
       />
     </div>
 
@@ -17,7 +17,7 @@
 
       <GetChildData
         :child="buyForm.visitor"
-        @update:visitor="(el) => (buyForm.visitor = el)"
+        @update:visitor="el => (buyForm.visitor = el)"
       />
 
       <AppDivider class="my-[24px]" />
@@ -26,18 +26,18 @@
       <p class="mt-[4px] mb-[12px]">До 3 дней максимум</p>
       <SelectTagsBlock
         :tags="
-          product.schedule_slots.map((slot) => {
+          product.schedule_slots.map(slot => {
             return {
               label: `${slot.weekday.slice(0, 2)} ${slot.start.slice(
                 0,
                 5,
               )}-${slot.end.slice(0, 5)}`,
               value: slot.id,
-            };
+            }
           })
         "
         :selected-tags="buyForm.schedule_slots as number[]"
-        @update:selected-tags="(el) => (buyForm.schedule_slots = el)"
+        @update:selected-tags="el => (buyForm.schedule_slots = el)"
       />
 
       <AppDivider class="my-[24px]" />
@@ -82,7 +82,7 @@
             +(
               product.purchase_options?.find(
                 (purchaseOption: any) => purchaseOption.type === scheduleType,
-              )?.base_price || "0"
+              )?.base_price || '0'
             )
           }}
           €
@@ -96,18 +96,18 @@
   </div>
 </template>
 <script setup lang="ts">
-import { NRadio, NSpace } from "naive-ui"
-import { computed, ref } from "vue"
+import { NRadio, NSpace } from 'naive-ui'
+import { computed, ref } from 'vue'
 
-import AppButton from "../../../components/AppButton.vue"
-import AppDivider from "../../../components/AppDivider.vue"
-import AppInput from "../../../components/AppInput.vue"
-import BuyProductCard from "../../../components/buy/BuyProductCard.vue"
-import GetChildData from "../../../components/buy/GetChildData.vue"
-import SelectTagsBlock from "../../../components/misc/SelectTagsBlock.vue"
-import SubscriptionOptions from "../../../components/products/SubscriptionOptions.vue"
-import { useCartStore } from "../../../store/cart"
-import type { OrderItem } from "../../../types"
+import AppButton from '../../../components/AppButton.vue'
+import AppDivider from '../../../components/AppDivider.vue'
+import AppInput from '../../../components/AppInput.vue'
+import BuyProductCard from '../../../components/buy/BuyProductCard.vue'
+import GetChildData from '../../../components/buy/GetChildData.vue'
+import SelectTagsBlock from '../../../components/misc/SelectTagsBlock.vue'
+import SubscriptionOptions from '../../../components/products/SubscriptionOptions.vue'
+import { useCartStore } from '../../../store/cart'
+import type { OrderItem } from '../../../types'
 
 const route = useRoute()
 
@@ -115,19 +115,19 @@ const cart = useCartStore()
 
 const buyForm = ref({
   academy_number_of_weeks: 1,
-  schedule_type: "Course (1 / week)",
+  schedule_type: 'Course (1 / week)',
   first: false,
   second: false,
   product: route.params.id,
-  when: "now",
+  when: 'now',
   schedule_slots: [],
-  later: "",
-  subscription: "subscription",
+  later: '',
+  subscription: 'subscription',
   visitor: 0,
 } as Partial<OrderItem> & {
-  when: string;
-  later: string;
-  subscription?: "subscription" | "card";
+  when: string
+  later: string
+  subscription?: 'subscription' | 'card'
 })
 
 const { data: product } = await useFetch(
@@ -135,18 +135,18 @@ const { data: product } = await useFetch(
 )
 
 const scheduleType = computed(() => {
-  if (buyForm.value.subscription === "subscription") {
-    return `Course (${buyForm.value.schedule_slots?.length} / week)` as "Course (1 / week)"
+  if (buyForm.value.subscription === 'subscription') {
+    return `Course (${buyForm.value.schedule_slots?.length} / week)` as 'Course (1 / week)'
   }
-  return "TERMINKARTEN"
+  return 'TERMINKARTEN'
 })
 
 const addCourse = async () => {
-  if (buyForm.value.subscription === "subscription") {
+  if (buyForm.value.subscription === 'subscription') {
     buyForm.value.schedule_type =
-      `Course (${buyForm.value.schedule_slots?.length} / week)` as "Course (1 / week)"
+      `Course (${buyForm.value.schedule_slots?.length} / week)` as 'Course (1 / week)'
   } else {
-    buyForm.value.schedule_type = "TERMINKARTEN"
+    buyForm.value.schedule_type = 'TERMINKARTEN'
   }
   await cart.addOrderItem({
     academy_number_of_weeks: 1,
@@ -159,6 +159,6 @@ const addCourse = async () => {
     visitor: buyForm.value.visitor,
     schedule_slots: buyForm.value.schedule_slots,
   })
-  navigateTo("/cart")
+  navigateTo('/cart')
 }
 </script>

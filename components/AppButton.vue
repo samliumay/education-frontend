@@ -11,6 +11,6 @@
 </template>
 <script setup lang="ts">
 defineProps<{
-  isInverted?: boolean;
+  isInverted?: boolean
 }>()
 </script>

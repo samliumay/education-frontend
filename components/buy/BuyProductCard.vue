@@ -20,11 +20,11 @@
   </div>
 </template>
 <script setup lang="ts">
-import { getTagsFromProduct } from "../../helpers/products"
-import type { Product } from "../../types"
-import TagsBlock from "../misc/TagsBlock.vue"
+import { getTagsFromProduct } from '../../helpers/products'
+import type { Product } from '../../types'
+import TagsBlock from '../misc/TagsBlock.vue'
 
 defineProps<{
-  product: Product;
+  product: Product
 }>()
 </script>

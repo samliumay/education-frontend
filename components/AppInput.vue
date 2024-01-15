@@ -14,13 +14,13 @@
   />
 </template>
 <script setup lang="ts">
-import type { IEventTarget } from "../types"
+import type { IEventTarget } from '../types'
 
 defineProps<{
-  modelValue: string;
-  type?: string;
-  placeholder?: string;
+  modelValue: string
+  type?: string
+  placeholder?: string
 }>()
 
-defineEmits(["update:modelValue", "blur"])
+defineEmits(['update:modelValue', 'blur'])
 </script>

@@ -28,19 +28,19 @@
   </div>
 </template>
 <script setup lang="ts">
-import ArrowRight from "../../assets/icons/arrow_right.svg"
+import ArrowRight from '../../assets/icons/arrow_right.svg'
 
 defineProps<{
-  selected: "summer" | "autumn" | "winter" | "spring";
+  selected: 'summer' | 'autumn' | 'winter' | 'spring'
 }>()
 
-defineEmits(["update:selected"])
+defineEmits(['update:selected'])
 
-const seasons = ["summer", "autumn", "winter", "spring"]
+const seasons = ['summer', 'autumn', 'winter', 'spring']
 const seasonMap = {
-  summer: "Летние каникулы 2023",
-  autumn: "Осенние каникулы 2023",
-  winter: "Зимние каникулы 2024",
-  spring: "Пасхальные каникулы 2024",
+  summer: 'Летние каникулы 2023',
+  autumn: 'Осенние каникулы 2023',
+  winter: 'Зимние каникулы 2024',
+  spring: 'Пасхальные каникулы 2024',
 }
 </script>

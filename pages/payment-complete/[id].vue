@@ -3,9 +3,9 @@
     <div class="w-full bg-gray-200 rounded-xl min-h-[50vh] py-10">
       <div class="centered w-4/5 md:w-auto text-center m-auto">
         <n-h1 class="text-4xl md:text-7xl">
-          {{ $t("common.successful") }}
+          {{ $t('common.successful') }}
         </n-h1>
-        <p class="my-4">{{ $t("common.seeYou") }}</p>
+        <p class="my-4">{{ $t('common.seeYou') }}</p>
         <n-h2 class="text-4xl md:text-4xl">{{ course.name }}</n-h2>
         <div>
           <span
@@ -23,7 +23,7 @@
           </div>
           <NuxtLink to="/" class="mx-auto text-center block w-3/5">
             <n-button class="text-green-500 w-full" size="large" type="primary">
-              {{ $t("common.goHome") }}
+              {{ $t('common.goHome') }}
             </n-button>
           </NuxtLink>
         </div>
@@ -34,10 +34,10 @@
   <div v-else>Course with the given Id is not found</div>
 </template>
 <script setup lang="ts">
-import { NButton, NH1, NH2 } from "naive-ui"
-import { computed } from "vue"
+import { NButton, NH1, NH2 } from 'naive-ui'
+import { computed } from 'vue'
 
-import { useListsStore } from "../../store/lists"
+import { useListsStore } from '../../store/lists'
 
 const listsStore = useListsStore()
 

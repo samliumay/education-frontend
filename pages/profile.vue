@@ -15,11 +15,11 @@
                   {{
                     user?.user?.first_name
                       ? `${user.user.first_name} ${user.user.last_name}`
-                      : "Вы"
+                      : 'Вы'
                   }}
                 </h2>
                 <p class="text-gray-400">
-                  {{ user?.user?.email || "Ваш email" }}
+                  {{ user?.user?.email || 'Ваш email' }}
                 </p>
               </div>
             </div>
@@ -99,7 +99,7 @@
                 {{
                   visitor?.first_name
                     ? `${visitor.first_name} ${visitor.last_name}`
-                    : "Ребенок"
+                    : 'Ребенок'
                 }}
               </h2>
             </div>
@@ -175,14 +175,14 @@
   </div>
 </template>
 <script setup lang="ts">
-import { NTabPane, NTabs } from "naive-ui"
-import { ref } from "vue"
+import { NTabPane, NTabs } from 'naive-ui'
+import { ref } from 'vue'
 
-import AppButtonVue from "../components/AppButton.vue"
-import AppDivider from "../components/AppDivider.vue"
-import AppInputVue from "../components/AppInput.vue"
-import ProductsTable from "../components/profile/ProductsTable.vue"
-import { useUserStore } from "../store/user"
+import AppButtonVue from '../components/AppButton.vue'
+import AppDivider from '../components/AppDivider.vue'
+import AppInputVue from '../components/AppInput.vue'
+import ProductsTable from '../components/profile/ProductsTable.vue'
+import { useUserStore } from '../store/user'
 
 const user = useUserStore()
 
@@ -194,8 +194,8 @@ user.visitorsOrders = user.visitors.map(visitor => ({
 }))
 
 const passwordChange = ref({
-  current: "",
-  new1: "",
-  new2: "",
+  current: '',
+  new1: '',
+  new2: '',
 })
 </script>

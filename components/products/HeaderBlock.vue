@@ -53,43 +53,43 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed } from "vue"
+import { computed } from 'vue'
 
-import { getTagsFromProduct } from "../../helpers/products"
-import { ageMap, languageMap } from "../../mappers/products"
-import type { Product } from "../../types"
-import CategoryBlock from "../misc/CategoryBlock.vue"
-import TagsBlock from "../misc/TagsBlock.vue"
+import { getTagsFromProduct } from '../../helpers/products'
+import { ageMap, languageMap } from '../../mappers/products'
+import type { Product } from '../../types'
+import CategoryBlock from '../misc/CategoryBlock.vue'
+import TagsBlock from '../misc/TagsBlock.vue'
 
 const props = defineProps<{
-  product: Product;
-  type: "course" | "academy" | "workshop";
+  product: Product
+  type: 'course' | 'academy' | 'workshop'
 }>()
 
 const details = computed(() => [
   {
-    key: "Направление: ",
-    value: "Изобразительное искусство",
+    key: 'Направление: ',
+    value: 'Изобразительное искусство',
   },
   {
-    key: "Возраст: ",
+    key: 'Возраст: ',
     value: ageMap[props.product.age_group as keyof typeof ageMap],
   },
   {
-    key: "Язык: ",
+    key: 'Язык: ',
     value: languageMap[props.product.language as keyof typeof languageMap],
   },
   {
-    key: "Преподаватели: ",
+    key: 'Преподаватели: ',
     value: Array.from(
       new Set(props.product.schedule_slots?.map(slot => slot.instructor)),
-    ).join("; "),
+    ).join('; '),
   },
   {
-    key: "Кабинет: ",
+    key: 'Кабинет: ',
     value: Array.from(
       new Set(props.product.schedule_slots?.map(slot => slot.space)),
-    ).join("; "),
+    ).join('; '),
   },
 ])
 </script>

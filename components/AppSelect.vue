@@ -9,35 +9,28 @@
     :default-value="defaultValue"
     :clearable="clearable"
     :placeholder="placeholder"
-    @input="
-      $emit(
-        'update:modelValue',
-        ($event.target as unknown as IEventTarget).value,
-      )
-    "
+    @update:value="emit('update:modelValue', $event)"
   />
 </template>
 <script setup lang="ts">
-import type { SelectOption } from "naive-ui"
-import { NSelect } from "naive-ui"
-
-import type { IEventTarget } from "../types"
+import type { SelectOption } from 'naive-ui'
+import { NSelect } from 'naive-ui'
 
 withDefaults(
   defineProps<{
-    modelValue?: string;
-    options?: SelectOption[];
-    variant?: "solid" | "transparent";
-    defaultValue?: string;
-    clearable?: boolean;
-    placeholder?: string;
+    modelValue?: string
+    options?: SelectOption[]
+    variant?: 'solid' | 'transparent'
+    defaultValue?: string
+    clearable?: boolean
+    placeholder?: string
   }>(),
   {
-    variant: "solid",
+    variant: 'solid',
   },
 )
 
-defineEmits(["update:modelValue"])
+const emit = defineEmits(['update:modelValue'])
 </script>
 <style>
 /* ! GLOBAL STYLES */

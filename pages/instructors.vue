@@ -10,10 +10,10 @@
   </div>
 </template>
 <script setup lang="ts">
-import { type Ref, ref } from "vue"
+import { type Ref, ref } from 'vue'
 
-import InstructorBlock from "../components/misc/InstructorBlock.vue"
-import type { Instructor } from "../types"
+import InstructorBlock from '../components/misc/InstructorBlock.vue'
+import type { Instructor } from '../types'
 
 const instructors: Ref<Instructor[]> = ref([])
 </script>

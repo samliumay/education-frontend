@@ -8,7 +8,7 @@
           <h2 class="font-medium text-[24px] mb-[24px]">Постоянные курсы</h2>
           <template
             v-for="(course, idx) in cart?.order?.items?.filter(
-              (item) => item.product.type === 'Course',
+              item => item.product.type === 'Course',
             ) || []"
             :key="course.id"
           >
@@ -18,7 +18,7 @@
                 cart?.order?.items?.filter &&
                 idx + 1 !==
                   cart.order.items.filter(
-                    (item) => item.product.type === 'Course',
+                    item => item.product.type === 'Course',
                   ).length
               "
               class="my-[24px]"
@@ -49,7 +49,7 @@
           <h2 class="font-medium text-[24px] mb-[24px]">Академии</h2>
           <template
             v-for="(course, idx) in cart?.order?.items?.filter(
-              (item) => item.product.type === 'Academy',
+              item => item.product.type === 'Academy',
             ) || []"
             :key="course.id"
           >
@@ -59,7 +59,7 @@
                 cart?.order?.items?.filter &&
                 idx + 1 !==
                   cart.order.items.filter(
-                    (item) => item.product.type === 'Academy',
+                    item => item.product.type === 'Academy',
                   ).length
               "
               class="my-[24px]"
@@ -90,7 +90,7 @@
           <h2 class="font-medium text-[24px] mb-[24px]">Воркшопы</h2>
           <template
             v-for="(course, idx) in cart?.order?.items?.filter(
-              (item) => item.product.type === 'Workshop',
+              item => item.product.type === 'Workshop',
             ) || []"
             :key="course.id"
           >
@@ -100,7 +100,7 @@
                 cart?.order?.items?.filter &&
                 idx + 1 !==
                   cart.order.items.filter(
-                    (item) => item.product.type === 'Workshop',
+                    item => item.product.type === 'Workshop',
                   ).length
               "
               class="my-[24px]"
@@ -135,7 +135,7 @@
             {{
               cart.order.payer_first_name
                 ? `${cart.order.payer_first_name} ${cart.order.payer_last_name}`
-                : ""
+                : ''
             }}
           </h2>
           <AppButton> Изменить </AppButton>
@@ -179,7 +179,7 @@
           <CartBuyOptions
             class="mt-[24px]"
             :option="buyOption"
-            @select-option="(option) => (buyOption = option)"
+            @select-option="option => (buyOption = option)"
           />
         </div>
       </div>
@@ -216,8 +216,8 @@
             <span>Итого</span>
             <span>{{
               `${(cart?.order?.items || []).reduce((acc, item) => {
-                acc = acc + +item.calculated_price;
-                return acc;
+                acc = acc + +item.calculated_price
+                return acc
               }, 0)} €`
             }}</span>
           </p>
@@ -231,21 +231,21 @@
   </div>
 </template>
 <script setup lang="ts">
-import { type Ref, ref } from "vue"
+import { type Ref, ref } from 'vue'
 
-import AppButton from "../components/AppButton.vue"
-import AppDivider from "../components/AppDivider.vue"
-import AppInput from "../components/AppInput.vue"
-import CartBuyOptions from "../components/cart/CartBuyOptions.vue"
-import CartItem from "../components/cart/CartItem.vue"
-import { useCartStore } from "../store/cart"
-import type { AdditionalInfo } from "../types"
+import AppButton from '../components/AppButton.vue'
+import AppDivider from '../components/AppDivider.vue'
+import AppInput from '../components/AppInput.vue'
+import CartBuyOptions from '../components/cart/CartBuyOptions.vue'
+import CartItem from '../components/cart/CartItem.vue'
+import { useCartStore } from '../store/cart'
+import type { AdditionalInfo } from '../types'
 
 const additionalInfo: Ref<AdditionalInfo> = ref({} as AdditionalInfo)
 
-const buyOption: Ref<"paypal" | "stripe"> = ref("paypal")
+const buyOption: Ref<'paypal' | 'stripe'> = ref('paypal')
 
-const promocode = ref("")
+const promocode = ref('')
 
 const cart = useCartStore()
 
@@ -254,14 +254,14 @@ await cart.getCurrentOrder()
 const fullfillOrder = async () => {
   const urlObject = await cart.fulfillOrder(
     buyOption.value,
-    String(window.location).replace("cart", ""),
+    String(window.location).replace('cart', ''),
   )
   window.location.href =
-    buyOption.value === "paypal" ? urlObject.links[1] : urlObject.url
+    buyOption.value === 'paypal' ? urlObject.links[1] : urlObject.url
 }
 
 const setPromocode = async () => {
   await cart.setPromocode(promocode.value)
-  promocode.value = ""
+  promocode.value = ''
 }
 </script>
