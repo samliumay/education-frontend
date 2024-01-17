@@ -4,7 +4,7 @@
     <div class="flex justify-between items-center mx-[48px]">
       <p>{{ title }}</p>
       <img
-        src="../../../assets/icons/plus_red.svg"
+        src="/icons/plus_red.svg"
         alt="PLus icon"
         @click="isOpened = !isOpened"
       />
@@ -17,7 +17,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import AppDivider from '../../AppDivider.vue'
+import AppDivider from '../../../AppDivider.vue'
 
 defineProps<{
   title: string

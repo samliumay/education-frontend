@@ -1,6 +1,6 @@
 <template>
   <main
-    class="flex flex-1 flex-col gap-10 px-8 py-5 bg-brand-light-gray lg:justify-between lg:items-start lg:flex-row h-full"
+    class="flex flex-1 flex-col gap-10 px-8 py-6 bg-brand-light-gray lg:justify-between lg:items-start lg:flex-row h-full"
   >
     <nav class="flex flex-col gap-2">
       <NuxtLink
@@ -16,8 +16,8 @@
       </NuxtLink>
     </nav>
 
-    <div class="flex flex-col gap-8 h-fit">
-      <div class="flex flex-col gap-8 flex-wrap lg:gap-16 md:flex-row">
+    <div class="flex flex-col gap-8 h-fit self-end">
+      <div class="flex flex-col gap-8 flex-wrap lg:gap-16 md:flex-row self-end">
         <div class="flex flex-col justify-between gap-4">
           <div class="flex flex-col gap-1">
             <p class="font-bold">Телефон</p>
@@ -59,50 +59,26 @@ class="text-brand-gray font-medium"
 
       <div class="flex gap-2 w-full justify-between md:w-fit md:justify-start">
         <a
-          href="https://www.tiktok.com"
+          v-for="social in socialsLinks"
+          :key="social.alt"
+          :href="social.href"
           target="_blank"
           rel="noopener noreferrer"
           class="w-fit h-fit"
-          ><img
-            src="../assets/icons/socials/tiktok.svg"
-            class="w-[64px] h-[58px]"
-            alt="tiktok"
-        /></a>
-        <a
-          href="https://www.youtube.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="w-fit h-fit"
-          ><img
-            src="../assets/icons/socials/youtube.svg"
-            class="w-[64px] h-[58px]"
-            alt="youtube"
-        /></a>
-        <a
-          href="https://www.instagram.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="w-fit h-fit"
-          ><img
-            src="../assets/icons/socials/instagram.svg"
-            class="w-[64px] h-[58px]"
-            alt="instagram"
-        /></a>
-        <a
-          href="https://www.facebook.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="w-fit h-fit"
-          ><img
-            src="../assets/icons/socials/facebook.svg"
-            class="w-[64px] h-[58px]"
-            alt="facebook"
-        /></a>
+          >
+            <img
+              :src="social.icon"
+              class="w-[64px] h-[58px]"
+              :alt="social.alt"
+            />
+        </a>
       </div>
     </div>
   </main>
 </template>
 <script setup lang="ts">
+import { socialsLinks } from '../constants/socials'
+
 useHead({
   title: 'Clavis - Menu',
   meta: [
@@ -124,10 +100,10 @@ const pathGroup = [
     label: 'Главная',
     route: '/',
   },
-  {
-    label: 'О нас',
-    route: '/',
-  },
+  // {
+  //   label: 'О нас',
+  //   route: '/',
+  // },
   {
     label: 'Курсы',
     route: '/courses',
@@ -142,23 +118,23 @@ const pathGroup = [
   },
   {
     label: 'Преподаватели',
-    route: '/',
+    route: '/instructors',
   },
-  {
-    label: 'Расписание',
-    route: '/',
-  },
+  // {
+  //   label: 'Расписание',
+  //   route: '/',
+  // },
   {
     label: 'Контакты',
-    route: '/',
+    route: '/kontaktieren-sie-uns',
   },
-  {
-    label: 'Спец.предложения',
-    route: '/',
-  },
-  {
-    label: 'Цены',
-    route: '/',
-  },
+  // {
+  //   label: 'Спец.предложения',
+  //   route: '/',
+  // },
+  // {
+  //   label: 'Цены',
+  //   route: '/',
+  // },
 ]
 </script>

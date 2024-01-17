@@ -19,7 +19,7 @@
         </p>
 
         <img
-          src="../../assets/icons/chevron_left.svg"
+          src="/icons/chevron_left.svg"
           alt="Arrow"
           class="w-[24px] h-[24px]"
         />
@@ -28,7 +28,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import ArrowRight from '../../assets/icons/arrow_right.svg'
+import ArrowRight from '../../public/icons/arrow_right.svg'
 
 defineProps<{
   selected: 'summer' | 'autumn' | 'winter' | 'spring'

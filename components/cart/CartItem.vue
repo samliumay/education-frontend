@@ -16,7 +16,7 @@
           {{ order.product.name }}
         </h3>
         <img
-          src="../../assets/icons/Close.svg"
+          src="/icons/close.svg"
           alt="Close icon"
           @click="$emit('close')"
         />
@@ -44,7 +44,7 @@
 
       <p class="flex gap-[8px] items-center font-medium cursor-pointer">
         Выбранные дни посещения
-        <img src="../../assets/icons/chevron_down.svg" alt="Arrow down" />
+        <img src="/icons/chevron_down.svg" alt="Arrow down" />
       </p>
     </div>
   </div>

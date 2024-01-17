@@ -10,10 +10,10 @@
     <template #arrow="{ prev, next }">
       <div class="absolute flex h-full w-full top-0 left-0 justify-between items-center z-10 px-4">
         <button type="button" class="cursor-pointer px-2 transform active:scale-95" @click="prev">
-          <img src="../../../../assets/icons/chevron_left_white.svg" alt="Arrow" />
+          <img src="/icons/chevron_left_white.svg" alt="Arrow" />
         </button>
         <button type="button" class="cursor-pointer px-2" @click="next">
-          <img src="../../../../assets/icons/chevron_left_white.svg" alt="Arrow" class="transform rotate-180" />
+          <img src="/icons/chevron_left_white.svg" alt="Arrow" class="transform rotate-180" />
         </button>
       </div>
     </template>

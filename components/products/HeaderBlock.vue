@@ -23,13 +23,13 @@
         <template #icon>
           <img
             v-if="type === 'course'"
-            src="../../assets/icons/products/course_calendar.svg"
+            src="/icons/products/course_calendar.svg"
             alt="Schedule icon"
             class="mr-[8px]"
           />
           <img
             v-else
-            src="../../assets/icons/products/other_clock.svg"
+            src="/icons/products/other_clock.svg"
             alt="Schedule icon"
             class="mr-[8px]"
           />

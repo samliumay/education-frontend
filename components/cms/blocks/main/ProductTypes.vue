@@ -14,7 +14,7 @@
           <h3 class="text-5xl text-brand-red font-medium">
             {{ item.title }}
           </h3>
-          <img class="mt-1" src="../../../../assets/icons/chevron_left.svg" alt="Arrow" />
+          <img class="mt-1" src="/icons/chevron_left.svg" alt="Arrow" />
         </div>
 
         <div class="border-t-[1px] border-brand-red mt-6 mb-4" />
