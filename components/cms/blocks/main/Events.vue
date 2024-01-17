@@ -1,0 +1,26 @@
+<template>
+  <div class="mx-[28px] md:mx-[48px]">
+    <h2 class="text-[48px] mb-[48px] font-medium">Events</h2>
+
+    <div
+      v-if="items.length > 0"
+      class="grid grid-cols-3 gap-x-[24px] gap-y-[64px]"
+    >
+      <ProductCard
+        v-for="item in items"
+        :key="item.id"
+        :block-data="item"
+        :extra-props="{ type: 'academy' }"
+      />
+    </div>
+    <div v-else class="text-center text-gray-400">Keine Angebote</div>
+  </div>
+</template>
+<script setup lang="ts">
+import type { PageBlock } from '../../../../types/cms'
+import ProductCard from '../products/ProductCard.vue'
+
+defineProps<{
+  items: PageBlock[]
+}>()
+</script>
