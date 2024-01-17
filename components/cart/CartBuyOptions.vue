@@ -24,7 +24,7 @@
         <div class="flex items-center justify-center">Оплата через Paypal</div>
       </div>
 
-      <img src="../../assets/icons/pay/paypal.svg" alt="Stripe icon" />
+      <img src="/icons/pay/paypal.svg" alt="Stripe icon" />
     </div>
 
     <div
@@ -51,7 +51,7 @@
         <div class="flex items-center justify-center">Оплата через Stripe</div>
       </div>
 
-      <img src="../../assets/icons/pay/stripe.svg" alt="Stripe icon" />
+      <img src="/icons/pay/stripe.svg" alt="Stripe icon" />
     </div>
   </div>
 </template>

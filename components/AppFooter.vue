@@ -8,18 +8,18 @@
           <div class="flex flex-col gap-1">
             <p class="font-bold">Телефон</p>
             <div class="flex flex-col gap-1">
-              <a
-href="tel:+493071537477"
-class="text-brand-gray font-medium"
->+49 (0) 30 71537477</a>
-              <a
-href="tel:+493071537477"
-class="text-brand-gray font-medium"
->+49 (0) 30 71537477</a>
+              <a href="tel:+493071537477" class="text-brand-gray font-medium"
+                >+49 (0) 30 71537477</a
+              >
+              <a href="tel:+493071537477" class="text-brand-gray font-medium"
+                >+49 (0) 30 71537477</a
+              >
             </div>
           </div>
 
-          <a class="font-bold text-brand-red underline underline-offset-8">Контакты →</a>
+          <a class="font-bold text-brand-red underline underline-offset-8"
+            >Контакты →</a
+          >
         </div>
 
         <div class="flex flex-col justify-between gap-4">
@@ -31,7 +31,9 @@ class="text-brand-gray font-medium"
             </p>
           </div>
 
-          <a class="font-bold text-brand-red underline underline-offset-8">Смотреть на карте →</a>
+          <a class="font-bold text-brand-red underline underline-offset-8"
+            >Смотреть на карте →</a
+          >
         </div>
 
         <div class="flex flex-col gap-1">
@@ -39,55 +41,30 @@ class="text-brand-gray font-medium"
           <a
             class="text-brand-gray font-medium"
             href="mailto:info@clavis-schule.de"
-            >info@clavis-schule.de</a>
+            >info@clavis-schule.de</a
+          >
         </div>
       </div>
 
       <div class="flex gap-2 w-full justify-between md:w-fit md:justify-start">
         <a
-          href="https://www.tiktok.com"
+          v-for="social in socialsLinks"
+          :key="social.alt"
+          :href="social.href"
           target="_blank"
           rel="noopener noreferrer"
           class="w-fit h-fit"
-          ><img
-            src="../assets/icons/socials/tiktok.svg"
+        >
+          <img
+            :src="social.icon"
             class="w-[82px] h-[78px] md:w-[64px] md:h-[58px]"
-            alt="tiktok"
-        /></a>
-        <a
-          href="https://www.youtube.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="w-fit h-fit"
-          ><img
-            src="../assets/icons/socials/youtube.svg"
-            class="w-[82px] h-[78px] md:w-[64px] md:h-[58px]"
-            alt="youtube"
-        /></a>
-        <a
-          href="https://www.instagram.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="w-fit h-fit"
-          ><img
-            src="../assets/icons/socials/instagram.svg"
-            class="w-[82px] h-[78px] md:w-[64px] md:h-[58px]"
-            alt="instagram"
-        /></a>
-        <a
-          href="https://www.facebook.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="w-fit h-fit"
-          ><img
-            src="../assets/icons/socials/facebook.svg"
-            class="w-[82px] h-[78px] md:w-[64px] md:h-[58px]"
-            alt="facebook"
-        /></a>
+            :alt="social.alt"
+          />
+        </a>
       </div>
     </div>
 
-    <img src="../assets/icons/logo_pink.svg" class="w-full" alt="cloud" />
+    <img src="/icons/logo_pink.svg" class="w-full" alt="big logo" />
 
     <div class="flex justify-between w-full flex-col md:flex-row gap-6">
       <div class="flex gap-3 w-full justify-between md:w-fit md:justify-start">
@@ -100,3 +77,6 @@ class="text-brand-gray font-medium"
     </div>
   </footer>
 </template>
+<script setup lang="ts">
+import { socialsLinks } from '../constants/socials'
+</script>

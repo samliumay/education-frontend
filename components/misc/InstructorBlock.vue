@@ -16,7 +16,7 @@
       <h2
         class="rounded-[60px] border-white border-[1px] px-[12px] py-[8px] flex items-center gap-[8px]"
       >
-        <img src="../../assets/icons/instructors_star.svg" alt="Star icon" />
+        <img src="/icons/instructors_star.svg" alt="Star icon" />
         {{ `${instructor.first_name} ${instructor.last_name}` }}
       </h2>
     </div>
