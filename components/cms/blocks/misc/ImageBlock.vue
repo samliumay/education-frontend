@@ -13,7 +13,7 @@
     <img
       v-show="!imageBroken && !imageLoading"
       :src="imageUrl"
-      :alt="image.title"
+      :alt="image?.title ?? 'image'"
       class="h-full w-full"
       @load="imageLoading = false"
       @error="
