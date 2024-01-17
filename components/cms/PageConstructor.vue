@@ -1,12 +1,13 @@
 <template>
   <render v-if="blocks?.length > 0" />
-  <p v-else>Nothing to show</p>
+  <AppNotFound v-else />
 </template>
 <script setup lang="ts">
 import { computed, h } from 'vue'
 
 import { mapTypeBlock } from '../../mappers/cms'
 import type { PageBlock } from '../../types/cms'
+import AppNotFound from '../AppNotFound.vue'
 
 const props = defineProps<{
   blocks: PageBlock[]
