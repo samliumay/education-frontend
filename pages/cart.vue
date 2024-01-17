@@ -38,7 +38,7 @@
             >
               Перейти в каталог
               <img
-                src="../assets/icons/arrow_short_right.svg"
+                src="/icons/arrow_short_right.svg"
                 alt="Arrow Right icon"
               />
             </div>
@@ -79,7 +79,7 @@
             >
               Перейти в каталог
               <img
-                src="../assets/icons/arrow_short_right.svg"
+                src="/icons/arrow_short_right.svg"
                 alt="Arrow Right icon"
               />
             </div>
@@ -120,7 +120,7 @@
             >
               Перейти в каталог
               <img
-                src="../assets/icons/arrow_short_right.svg"
+                src="/icons/arrow_short_right.svg"
                 alt="Arrow Right icon"
               />
             </div>

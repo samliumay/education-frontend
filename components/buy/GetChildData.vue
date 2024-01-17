@@ -46,7 +46,7 @@
 import { NSelect } from 'naive-ui'
 import { ref } from 'vue'
 
-import ArrowIcon from '../../assets/icons/arrow_short_right.svg'
+import ArrowIcon from '../../public/icons/arrow_short_right.svg'
 import { useUserStore } from '../../store/user'
 import { GetChildStep } from '../../types'
 import AppButton from '../AppButton.vue'

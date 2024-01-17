@@ -7,7 +7,7 @@
     <div class="w-full justify-between gap-[48px] hidden lg:flex">
       <div class="flex items-center gap-6">
         <img
-          src="../assets/icons/logo_pink.svg"
+          src="/icons/logo_pink.svg"
           alt="Clavis logo"
           class="mr-4"
         />
@@ -19,7 +19,7 @@
             class="flex gap-2 items-center"
             @click="navigateTo('/menu')"
           >
-            <img src="../assets/icons/star.svg" alt="Stars" />
+            <img src="/icons/star.svg" alt="Stars" />
             <p>Меню</p>
           </AppButton>
 
@@ -43,8 +43,7 @@
             class="flex gap-2 items-center"
             @click="$router.go(-1)"
           >
-            <!-- <img src="../assets/icons/close.svg" alt="Stars" /> -->
-            ❌
+            <img src="/icons/cross.svg" alt="close" />
             <p>Закрыть</p>
           </AppButton>
         </template>
@@ -84,7 +83,7 @@
           class="flex gap-2 items-center"
           @click="navigateTo('/menu')"
         >
-          <img src="../assets/icons/star.svg" alt="Stars" />
+          <img src="/icons/star.svg" alt="Stars" />
           <p>Меню</p>
         </AppButton>
       </template>
@@ -96,21 +95,20 @@
           class="flex gap-2 items-center"
           @click="$router.go(-1)"
         >
-          <!-- <img src="../assets/icons/close.svg" alt="Stars" /> -->
-          ❌
+          <img src="/icons/cross.svg" alt="close" />
           <p>Закрыть</p>
         </AppButton>
       </template>
 
       <img
-        src="../assets/icons/logo_pink.svg"
+        src="/icons/logo_pink.svg"
         alt="Clavis logo"
         class="w-[80px] sm:w-[120px]"
       />
 
       <div class="flex items-center gap-4">
-        <img src="../assets/icons/cart.svg" alt="Cart" />
-        <img src="../assets/icons/exit.svg" alt="Exit" />
+        <img src="/icons/cart.svg" alt="Cart" />
+        <img src="/icons/exit.svg" alt="Exit" />
       </div>
     </div>
   </header>
