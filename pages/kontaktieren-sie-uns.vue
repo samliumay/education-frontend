@@ -19,9 +19,10 @@
 
     <div class="mb-4">
       <div class="font-bold mb-1">E-mail</div>
-      <a class="block" href="mail:info@clavis-schule.de"
-        >info@clavis-schule.de</a
-      >
+      <a
+class="block"
+href="mail:info@clavis-schule.de"
+>info@clavis-schule.de</a>
     </div>
 
     <div class="mb-4">

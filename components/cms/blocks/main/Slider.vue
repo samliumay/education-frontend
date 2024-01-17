@@ -1,40 +1,57 @@
 <template>
-  <div class="aspect-video">
+  <n-carousel show-arrow autoplay>
     <img
-      class="object-fit"
-      :src="items[currentIndex].title_img.meta.download_url"
-      :alt="items[currentIndex].title_img.title"
+      v-for="item in items"
+      :key="item.id"
+      class="w-full h-[540px] object-cover"
+      :alt="item.title"
+      :src="item.title_img.meta.download_url"
     />
-
-    <div
-      class="flex flex-col h-full w-full justify-end items-center text-white"
-    >
-      <p class="font-medium text-[20px]">{{ items[currentIndex].date }}</p>
-      <p class="font-medium text-[48px] mt-[12px] mb-[24px]">
-        {{ items[currentIndex].title }}
-      </p>
-      <div class="flex gap-[8px]">
-        <div
-          v-for="index in items.length"
-          :key="index"
-          class="w-[4px] bg-white rounded-[8px]"
-          :class="{
-            'w-[4px]': currentIndex !== index,
-            'w-[64px]': currentIndex === index,
-          }"
-        />
+    <template #arrow="{ prev, next }">
+      <div class="absolute flex h-full w-full top-0 left-0 justify-between items-center z-10 px-4">
+        <button type="button" class="cursor-pointer px-2 transform active:scale-95" @click="prev">
+          <img src="../../../../assets/icons/chevron_left_white.svg" alt="Arrow" />
+        </button>
+        <button type="button" class="cursor-pointer px-2" @click="next">
+          <img src="../../../../assets/icons/chevron_left_white.svg" alt="Arrow" class="transform rotate-180" />
+        </button>
       </div>
-    </div>
-  </div>
+    </template>
+    <template #dots="{ total, currentIndex, to }">
+      <ul
+        class="custom-dots flex w-full justify-center m-0 p-0 absolute z-20 bottom-[20px]"
+      >
+        <li
+          v-for="index of total"
+          :key="index"
+          class="inline-block w-2 h-2 mx-[3px]"
+          :class="{ ['is-active']: currentIndex === index - 1 }"
+          @click="to(index - 1)"
+        />
+      </ul>
+    </template>
+  </n-carousel>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue'
+import { NCarousel } from 'naive-ui'
 
-import { PageBlock } from '../../../types'
+import type { PageBlock } from '../../../../types/cms'
 
 defineProps<{
-  items: PageBlock
+  items: PageBlock[]
 }>()
-
-const currentIndex = ref(0)
 </script>
+<style scoped>.custom-dots li {
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.4);
+  transition:
+    width 0.3s,
+    background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.custom-dots li.is-active {
+  width: 50px;
+  background: #fff;
+}
+</style>

@@ -1,14 +1,14 @@
 <template>
-  <div class="mx-[48px]">
-    <h2 class="text-[48px] font-medium mb-[48px]">
-      Für verschiedene <br />
+  <div>
+    <h2 class="text-5xl sm:w-7/12 font-medium mb-12 mx-[28px] md:mx-[48px]">
+      Für verschiedene
       Altersgruppen
     </h2>
 
     <div
       v-for="(item, idx) in items"
       :key="item.id"
-      class="grid grid-cols-4 ml-[96px] border-y-[1px] border-black"
+      class="grid grid-cols-3 border-y-[1px] border-black px-[28px] md:px-[48px] py-4 gap-2"
       :class="{ 'relative -top-[1px]': idx !== 0 }"
     >
       <div class="flex flex-col">
@@ -21,14 +21,15 @@
         </p>
       </div>
 
-      <div class="flex-inline gap-[12px]">
+      <div class="flex justify-center gap-4">
         <a
-          v-for="option in item.options"
-          :key="option.id"
-          class="rounded-[48px] py-[8px] px-[12px] font-medium text-gray-400"
-          :href="option.title_url"
+          v-for="link in item.options"
+          :key="link.id"
+          class="rounded-[48px] py-1 px-3 font-medium text-brand-gray border-[1px] border-brand-gray h-fit flex gap-2 items-center"
+          :href="link.title_url"
         >
-          {{ option.title }}
+          <p>{{ link.title }}</p>
+          <img class="transform -rotate-90" src="../../../../assets/icons/chevron_down.svg" alt="Arrow" />
         </a>
       </div>
 
@@ -36,13 +37,14 @@
         <img
           :src="item.title_img.meta.download_url"
           :alt="item.title_img.title"
+          class="max-h-[160px]"
         />
       </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import { type PageBlock } from '../../../types'
+import type { PageBlock } from '../../../../types/cms'
 
 defineProps<{
   items: PageBlock[]

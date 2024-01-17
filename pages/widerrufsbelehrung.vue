@@ -48,9 +48,7 @@
     </p>
     <form>
       <input id="checkAgree" type="checkbox" />
-      <label for="checkAgree"
-        >Ich habe die Widerrufsbelehrung zur Kenntnis genommen.</label
-      >
+      <label for="checkAgree">Ich habe die Widerrufsbelehrung zur Kenntnis genommen.</label>
     </form>
   </div>
 </template>

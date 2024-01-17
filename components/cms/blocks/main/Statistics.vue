@@ -1,10 +1,9 @@
 <template>
   <div class="grid grid-cols-3 gap-[36px]">
     <div
-      v-for="(item, idx) in items"
+      v-for="item in items"
       :key="item.id"
-      class="flex items-center gap-[24px]"
-      :class="{ 'border-gray-300 border-r-[1px]': idx + (1 % 3) !== 0 }"
+      class="flex items-center gap-[24px] border-gray-300 border-r-[1px] last:border-0"
     >
       <p class="text-[64px] font-semibold">
         {{ item.title }}
@@ -16,7 +15,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { PageBlock } from '../../../types'
+import type { PageBlock } from '../../../../types/cms'
 
 defineProps<{
   items: PageBlock[]

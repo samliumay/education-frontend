@@ -40,7 +40,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { PageBlock } from '../../../types'
+import type { PageBlock } from '../../../../../types/cms'
 
 defineProps<{
   items: PageBlock[]

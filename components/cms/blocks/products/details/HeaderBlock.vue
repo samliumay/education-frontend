@@ -93,10 +93,8 @@ import CategoryBlock from '../../../../misc/CategoryBlock.vue'
 import TagsBlock from '../../../../misc/TagsBlock.vue'
 import ImageBlock from '../../misc/ImageBlock.vue'
 
-const props = defineProps<{
+defineProps<{
   item: PageBlock & { product: Product }
   type: ProductType
 }>()
-
-console.debug(props)
 </script>
