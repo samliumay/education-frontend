@@ -7,7 +7,7 @@
     >
       <div class="flex item-center gap-[12px]">
         <img
-          src="../../assets/icons/products/abonement_sub.svg"
+          src="/icons/products/abonement_sub.svg"
           alt="Subscription"
         />
         <dl class="flex flex-col gap-[6px]">
@@ -41,7 +41,7 @@
     >
       <div class="flex item-center gap-[12px]">
         <img
-          src="../../assets/icons/products/abonement_sub.svg"
+          src="/icons/products/abonement_sub.svg"
           alt="Subscription"
         />
         <dl class="flex flex-col gap-[6px]">

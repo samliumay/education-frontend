@@ -48,6 +48,6 @@ defineProps<{
 </script>
 <style scoped>
 li {
-  list-style-image: url('../../../assets/icons/plus_red.svg');
+  list-style-image: url('/icons/plus_red.svg');
 }
 </style>

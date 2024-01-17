@@ -27,7 +27,7 @@
         class="flex gap-2 items-start"
       >
         <img
-          src="../../../../assets/icons/star.svg"
+          src="/icons/star.svg"
           alt="Star"
           class="w-[20px] h-[20px]"
         />

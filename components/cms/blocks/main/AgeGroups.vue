@@ -29,7 +29,7 @@
           :href="link.title_url"
         >
           <p>{{ link.title }}</p>
-          <img class="transform -rotate-90" src="../../../../assets/icons/chevron_down.svg" alt="Arrow" />
+          <img class="transform -rotate-90" src="/icons/chevron_down.svg" alt="Arrow" />
         </a>
       </div>
 

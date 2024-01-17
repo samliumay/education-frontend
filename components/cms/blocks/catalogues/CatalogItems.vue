@@ -26,13 +26,13 @@
         <template #icon>
           <img
             v-if="catalogue_type === 'course'"
-            src="../../../assets/icons/products/course_calendar.svg"
+            src="/icons/products/course_calendar.svg"
             alt="Schedule icon"
             class="mr-[8px]"
           />
           <img
             v-else
-            src="../../../assets/icons/products/other_clock.svg"
+            src="/icons/products/other_clock.svg"
             alt="Schedule icon"
             class="mr-[8px]"
           />
@@ -42,10 +42,11 @@
   </div>
 </template>
 <script setup lang="ts">
-import { getTagsFromProduct } from '../../../helpers/products'
-import { type PageBlock, type Product } from '../../../types'
-import CategoryBlock from '../../misc/CategoryBlock.vue'
-import TagsBlock from '../../misc/TagsBlock.vue'
+import { getTagsFromProduct } from '../../../../helpers/products'
+import { type Product } from '../../../../types'
+import { type PageBlock } from '../../../../types/cms'
+import CategoryBlock from '../../../misc/CategoryBlock.vue'
+import TagsBlock from '../../../misc/TagsBlock.vue'
 
 defineProps<{
   items: Array<PageBlock & { product: Product }>

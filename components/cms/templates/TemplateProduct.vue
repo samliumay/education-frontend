@@ -16,7 +16,7 @@
         {{ template.name }}
       </h1>
       <img
-        src="../../../assets/icons/products/course_cloud.svg"
+        src="/icons/products/course_cloud.svg"
         class="w-[60px] md:w-[80px]"
         alt="cloud"
       />

@@ -10,7 +10,7 @@
         <template v-for="text in item.left_text" :key="text">
           <p>{{ text }}</p>
           <img
-            src="../../../../assets/icons/star.svg"
+            src="/icons/star.svg"
             alt="Star"
             class="w-[40px] h-[40px] -mb-1"
           />
@@ -22,7 +22,7 @@
         <template v-for="text in item.right_text" :key="text">
           <p>{{ text }}</p>
           <img
-            src="../../../../assets/icons/star.svg"
+            src="/icons/star.svg"
             alt="Star"
             class="w-[40px] h-[40px] -mb-1"
           />

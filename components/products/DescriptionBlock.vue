@@ -3,7 +3,7 @@
     <div class="relative">
       <h2 class="text-[48px] font-medium mr-[36px]">О курсе</h2>
       <img
-        src="../../assets/icons/products/line_pen.svg"
+        src="/icons/products/line_pen.svg"
         alt="Pen"
         class="absolute top-[45px] left-[150px]"
       />
@@ -14,7 +14,7 @@
         {{ product.description }}
       </p>
       <div class="shrink-0">
-        <img src="../../assets/icons/products/guitar.svg" alt="Guitar" />
+        <img src="/icons/products/guitar.svg" alt="Guitar" />
       </div>
     </div>
   </div>

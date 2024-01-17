@@ -19,7 +19,7 @@
       <p>
         {{ slot.weekday.slice(0, 2) }}
       </p>
-      <img src="../../../assets/icons/arrow_right__long.svg" alt="Arrow" />
+      <img src="/icons/arrow_right__long.svg" alt="Arrow" />
       <p>
         {{ slot.start }}
       </p>
@@ -31,9 +31,10 @@
   </div>
 </template>
 <script setup lang="ts">
-import { getTagsFromProduct } from '../../../helpers/products'
-import { type PageBlock, type Product } from '../../../types'
-import TagsBlock from '../../misc/TagsBlock.vue'
+import { getTagsFromProduct } from '../../../../helpers/products'
+import { type Product } from '../../../../types'
+import { type PageBlock } from '../../../../types/cms'
+import TagsBlock from '../../../misc/TagsBlock.vue'
 
 defineProps<{
   product: PageBlock & Product
