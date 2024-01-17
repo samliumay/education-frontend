@@ -37,10 +37,12 @@
         :blocks="products?.items ?? []"
         :block-props="blockProps"
       />
-      <AppLoader v-else />
+      <div v-else class="flex justify-center items-center w-full h-full py-10 col-span-full row-span-full">
+        <AppLoader />
+      </div>
     </div>
 
-    <div class="mx-[28px] md:mx-[48px] flex justify-center w-full mb-14 mt-14">
+    <div class="px-[28px] md:px-[48px] flex justify-center w-full mb-14 mt-14">
       <AppButton>Показать больше</AppButton>
     </div>
   </div>
