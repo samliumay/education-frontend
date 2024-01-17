@@ -30,7 +30,7 @@
   >
     <PageConstructor
       v-if="!pending"
-      :blocks="products.items"
+      :blocks="products?.items ?? []"
       :block-props="blockProps"
     />
     <AppLoader v-else />
@@ -88,7 +88,7 @@ const filterQuery = computed(() => {
     )
     .join('&')
 
-  return queryString
+  return `&${queryString}`
 })
 
 const api = computed(() => props.api)
@@ -96,8 +96,9 @@ const { data: products, pending } = await useAsyncData(
   `${api.value.type}`,
   () =>
     $fetch(
-      `https://api.clavis.the-o.co/api/v2/wagtail/products/?fields=*&type=${api.value.type}&${filterQuery.value}`,
+      `https://api.clavis.the-o.co/api/v2/wagtail/products/?fields=*&type=${api.value.type}${filterQuery.value}`,
     ),
   { watch: [filterQuery] },
 )
+console.debug(products)
 </script>

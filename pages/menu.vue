@@ -124,6 +124,10 @@ useHead({
 
 const pathGroup = [
   {
+    label: 'Главная',
+    route: '/',
+  },
+  {
     label: 'О нас',
     route: '/',
   },
