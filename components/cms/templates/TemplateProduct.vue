@@ -97,7 +97,7 @@ const { data: products, pending } = await useAsyncData(
   `${api.value.type}`,
   () =>
     $fetch(
-      `https://api.clavis.the-o.co/api/v2/wagtail/products/?fields=*&type=${api.value.type}${filterQuery.value}`,
+      `https://api.clavis.the-o.co/api/v2/wagtail/products/?fields=*&product_type=${api.value.type}${filterQuery.value}`,
     ),
   { watch: [filterQuery] },
 )
