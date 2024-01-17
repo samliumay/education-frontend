@@ -51,7 +51,7 @@
 import { NModal } from 'naive-ui'
 import { ref } from 'vue'
 
-import CloseIcon from '../public/icons/close.svg'
+import CloseIcon from '../public/icons/cross.svg'
 import AppleIcon from '../public/icons/sign_in/apple_icon.svg'
 import FacebookIcon from '../public/icons/sign_in/facebook_icon.svg'
 import GoogleIcon from '../public/icons/sign_in/google_icon.svg'

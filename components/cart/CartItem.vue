@@ -15,12 +15,11 @@
         <h3 class="font-medium text-[20px]">
           {{ order.product.name }}
         </h3>
-        <!-- <img
-          src="/icons/close.svg"
+        <img
+          src="/icons/cross.svg"
           alt="Close icon"
           @click="$emit('close')"
-        /> -->
-        ❌
+        />
       </div>
 
       <div class="flex gap-[12px]">

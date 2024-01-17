@@ -43,7 +43,7 @@
             class="flex gap-2 items-center"
             @click="$router.go(-1)"
           >
-            <img src="/icons/close.svg" alt="close" />
+            <img src="/icons/cross.svg" alt="close" />
             <p>Закрыть</p>
           </AppButton>
         </template>
@@ -95,7 +95,7 @@
           class="flex gap-2 items-center"
           @click="$router.go(-1)"
         >
-          <img src="/icons/close.svg" alt="close" />
+          <img src="/icons/cross.svg" alt="close" />
           <p>Закрыть</p>
         </AppButton>
       </template>

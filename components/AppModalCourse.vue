@@ -72,8 +72,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import Close from '../public/icons/close.svg'
 import CourseIcon from '../public/icons/Course.svg'
+import Close from '../public/icons/cross.svg'
 import AppInput from './AppInput.vue'
 
 defineEmits(['close'])
