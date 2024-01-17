@@ -37,11 +37,11 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { PageBlock } from '../../../../types/cms'
+// import type { PageBlock } from '../../../../types/cms'
 
-defineProps<{
-  item: PageBlock
-}>()
+// defineProps<{
+//   item: PageBlock
+// }>()
 
 const options = [
   'Die Schüler*innen lernen in kleinen Gruppen, somit können wir auf die Bedürfnisse jedes einzelnen eingehen.',

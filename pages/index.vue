@@ -20,17 +20,17 @@
   </div>
 </template>
 <script setup lang="ts">
-import Slider from '../components/cms/blocks/main/Slider.vue'
-import Statistics from '../components/cms/blocks/main/Statistics.vue'
-import Info from '../components/cms/blocks/main/Info.vue'
-import ProductTypes from '../components/cms/blocks/main/ProductTypes.vue'
 import AgeGroups from '../components/cms/blocks/main/AgeGroups.vue'
-import ProductCatalogs from '../components/cms/blocks/main/ProductCatalogs.vue'
-import Quote from '../components/cms/blocks/main/Quote.vue'
-import Ticker from '../components/cms/blocks/main/Ticker.vue'
 import Events from '../components/cms/blocks/main/Events.vue'
-import Video from '../components/cms/blocks/main/Video.vue'
+import Info from '../components/cms/blocks/main/Info.vue'
+import ProductCatalogs from '../components/cms/blocks/main/ProductCatalogs.vue'
+import ProductTypes from '../components/cms/blocks/main/ProductTypes.vue'
+import Quote from '../components/cms/blocks/main/Quote.vue'
+import Slider from '../components/cms/blocks/main/Slider.vue'
 import Socials from '../components/cms/blocks/main/Socials.vue'
+import Statistics from '../components/cms/blocks/main/Statistics.vue'
+import Ticker from '../components/cms/blocks/main/Ticker.vue'
+import Video from '../components/cms/blocks/main/Video.vue'
 
 useHead({
   title: 'Clavis - Home',
@@ -94,92 +94,109 @@ const statisticsItems = [
 ]
 
 const textItems = {
-    text: 'Clavis ist ein neues Lernzentrum für Schüler*innen verschiedener Altersgruppen, dass ein breites Spektrum an Kursen anbietet, wie z.  B. Kunst und visuelles Theater, Naturwissenschaften, Mathematik und Digitales Zeichnen'
+  text: 'Clavis ist ein neues Lernzentrum für Schüler*innen verschiedener Altersgruppen, dass ein breites Spektrum an Kursen anbietet, wie B. Kunst und visuelles Theater, Naturwissenschaften, Mathematik und Digitales Zeichnen',
 }
 
 const productTypesItems = [
   {
     id: 1,
     title: 'Kurse',
-    description: 'Lorem ipsum dolor sit amet consectetur. Tempus rhoncus diam ac est. In diam sem eget ullamcorper',
+    description:
+      'Lorem ipsum dolor sit amet consectetur. Tempus rhoncus diam ac est. In diam sem eget ullamcorper',
     title_img: {
       meta: {
-        download_url: 'https://media.istockphoto.com/id/545124972/photo/cathedral-of-holy-spirit-minsk-main-orthodox-church-belarus.jpg?s=2048x2048&w=is&k=20&c=mYBTBJcQdVWXEjGduerxC_DWrBmKckRuhPD3sKzjw2Q='
+        download_url:
+          'https://media.istockphoto.com/id/545124972/photo/cathedral-of-holy-spirit-minsk-main-orthodox-church-belarus.jpg?s=2048x2048&w=is&k=20&c=mYBTBJcQdVWXEjGduerxC_DWrBmKckRuhPD3sKzjw2Q=',
       },
-      title: 'Lorem ipsum dolor sit amet consectetur. Tempus rhoncus diam ac est. In diam sem eget ullamcorper'
+      title:
+        'Lorem ipsum dolor sit amet consectetur. Tempus rhoncus diam ac est. In diam sem eget ullamcorper',
     },
   },
   {
     id: 2,
     title: 'Akademie',
-    description: 'Lorem ipsum dolor sit amet consectetur. Purus vestibulum justo aliquam maecenas et. Sit lorem',
+    description:
+      'Lorem ipsum dolor sit amet consectetur. Purus vestibulum justo aliquam maecenas et. Sit lorem',
     title_img: {
       meta: {
-        download_url: 'https://media.istockphoto.com/id/545124972/photo/cathedral-of-holy-spirit-minsk-main-orthodox-church-belarus.jpg?s=2048x2048&w=is&k=20&c=mYBTBJcQdVWXEjGduerxC_DWrBmKckRuhPD3sKzjw2Q='
+        download_url:
+          'https://media.istockphoto.com/id/545124972/photo/cathedral-of-holy-spirit-minsk-main-orthodox-church-belarus.jpg?s=2048x2048&w=is&k=20&c=mYBTBJcQdVWXEjGduerxC_DWrBmKckRuhPD3sKzjw2Q=',
       },
-      title: 'Lorem ipsum dolor sit amet consectetur. Purus vestibulum justo aliquam maecenas et. Sit lorem'
+      title:
+        'Lorem ipsum dolor sit amet consectetur. Purus vestibulum justo aliquam maecenas et. Sit lorem',
     },
   },
   {
     id: 3,
     title: 'Workshops',
-    description: 'Lorem ipsum dolor sit amet consectetur. Interdum magnis ut fames nec ac viverra ultrices hendrerit',
+    description:
+      'Lorem ipsum dolor sit amet consectetur. Interdum magnis ut fames nec ac viverra ultrices hendrerit',
     title_img: {
       meta: {
-        download_url: 'https://media.istockphoto.com/id/545124972/photo/cathedral-of-holy-spirit-minsk-main-orthodox-church-belarus.jpg?s=2048x2048&w=is&k=20&c=mYBTBJcQdVWXEjGduerxC_DWrBmKckRuhPD3sKzjw2Q='
+        download_url:
+          'https://media.istockphoto.com/id/545124972/photo/cathedral-of-holy-spirit-minsk-main-orthodox-church-belarus.jpg?s=2048x2048&w=is&k=20&c=mYBTBJcQdVWXEjGduerxC_DWrBmKckRuhPD3sKzjw2Q=',
       },
-      title: 'Lorem ipsum dolor sit amet consectetur. Interdum magnis ut fames nec ac viverra ultrices hendrerit'
+      title:
+        'Lorem ipsum dolor sit amet consectetur. Interdum magnis ut fames nec ac viverra ultrices hendrerit',
     },
-  }
+  },
 ]
 
 const ageGroupsItems = [
   {
     id: 1,
     title: '5-7 Jahre',
-    description: 'Lorem ipsum dolor sit amet consectetur.  Orci congue faucibus risus id cras.',
+    description:
+      'Lorem ipsum dolor sit amet consectetur. Orci congue faucibus risus id cras.',
     options: [
       {
         id: 'a1',
-        title: 'Wissenschaftliche Kurseion 1',
-        title_url: 'https://media.istockphoto.com/id/1135449521/photo/minsk-gate-to-the-city.jpg?s=2048x2048&w=is&k=20&c=pR0xDY1W1ONFWWw5sMIDucjQlBl109Dc_wbj-UVtpAI='
+        title: 'Digital Art',
+        title_url:
+          'https://media.istockphoto.com/id/1135449521/photo/minsk-gate-to-the-city.jpg?s=2048x2048&w=is&k=20&c=pR0xDY1W1ONFWWw5sMIDucjQlBl109Dc_wbj-UVtpAI=',
       },
       {
         id: 'a2',
         title: 'Digital Art',
-        title_url: 'https://media.istockphoto.com/id/1135449521/photo/minsk-gate-to-the-city.jpg?s=2048x2048&w=is&k=20&c=pR0xDY1W1ONFWWw5sMIDucjQlBl109Dc_wbj-UVtpAI='
-      }
+        title_url:
+          'https://media.istockphoto.com/id/1135449521/photo/minsk-gate-to-the-city.jpg?s=2048x2048&w=is&k=20&c=pR0xDY1W1ONFWWw5sMIDucjQlBl109Dc_wbj-UVtpAI=',
+      },
     ],
     title_img: {
       meta: {
-        download_url: 'https://media.istockphoto.com/id/1135449521/photo/minsk-gate-to-the-city.jpg?s=2048x2048&w=is&k=20&c=pR0xDY1W1ONFWWw5sMIDucjQlBl109Dc_wbj-UVtpAI='
+        download_url:
+          'https://media.istockphoto.com/id/1135449521/photo/minsk-gate-to-the-city.jpg?s=2048x2048&w=is&k=20&c=pR0xDY1W1ONFWWw5sMIDucjQlBl109Dc_wbj-UVtpAI=',
       },
-      title: 'Gruppe A Bild'
-    }
+      title: 'Gruppe A Bild',
+    },
   },
   {
     id: 2,
     title: '8-11 Jahre',
-    description: 'Lorem ipsum dolor sit amet consectetur. Orci congue faucibus risus id cras.',
+    description:
+      'Lorem ipsum dolor sit amet consectetur. Orci congue faucibus risus id cras.',
     options: [
       {
         id: 'b1',
         title: 'Wissenschaftliche Kurse',
-        title_url: 'https://media.istockphoto.com/id/1135449521/photo/minsk-gate-to-the-city.jpg?s=2048x2048&w=is&k=20&c=pR0xDY1W1ONFWWw5sMIDucjQlBl109Dc_wbj-UVtpAI='
+        title_url:
+          'https://media.istockphoto.com/id/1135449521/photo/minsk-gate-to-the-city.jpg?s=2048x2048&w=is&k=20&c=pR0xDY1W1ONFWWw5sMIDucjQlBl109Dc_wbj-UVtpAI=',
       },
       {
         id: 'b2',
         title: 'Digital Art',
-        title_url: 'https://media.istockphoto.com/id/1135449521/photo/minsk-gate-to-the-city.jpg?s=2048x2048&w=is&k=20&c=pR0xDY1W1ONFWWw5sMIDucjQlBl109Dc_wbj-UVtpAI='
-      }
+        title_url:
+          'https://media.istockphoto.com/id/1135449521/photo/minsk-gate-to-the-city.jpg?s=2048x2048&w=is&k=20&c=pR0xDY1W1ONFWWw5sMIDucjQlBl109Dc_wbj-UVtpAI=',
+      },
     ],
     title_img: {
       meta: {
-        download_url: 'https://media.istockphoto.com/id/1135449521/photo/minsk-gate-to-the-city.jpg?s=2048x2048&w=is&k=20&c=pR0xDY1W1ONFWWw5sMIDucjQlBl109Dc_wbj-UVtpAI='
+        download_url:
+          'https://media.istockphoto.com/id/1135449521/photo/minsk-gate-to-the-city.jpg?s=2048x2048&w=is&k=20&c=pR0xDY1W1ONFWWw5sMIDucjQlBl109Dc_wbj-UVtpAI=',
       },
-      title: 'Gruppe B Bild'
-    }
-  }
+      title: 'Gruppe B Bild',
+    },
+  },
 ]
 
 const productCatalogsItems = []
@@ -197,13 +214,14 @@ const textImageItems = {
     },
     title: 'Title Image',
   },
-  description: 'Clavis ist ein neues Lernzentrum für Schüler*innen verschiedener Altersgruppen, dass ein breites Spektrum an Kursen anbietet, wie z. B. Kunst und visuelles Theater, Naturwissenschaften, Mathematik und Digitales Zeichnen',
+  description:
+    'Clavis ist ein neues Lernzentrum für Schüler*innen verschiedener Altersgruppen, dass ein breites Spektrum an Kursen anbietet, wie z. B. Kunst und visuelles Theater, Naturwissenschaften, Mathematik und Digitales Zeichnen',
   text_color: '#DB3B4D',
   person: {
     first_name: 'Max',
     last_name: 'Mustermann',
   },
-};
+}
 
 const secondTextImageItems = {
   quote_img: {
@@ -218,17 +236,30 @@ const secondTextImageItems = {
     },
     title: 'Title Image',
   },
-  description: 'Clavis ist ein neues Lernzentrum für Schüler*innen verschiedener Altersgruppen, dass ein breites Spektrum an Kursen anbietet, wie z. B. Kunst und visuelles Theater, Naturwissenschaften, Mathematik und Digitales Zeichnen',
+  description:
+    'Clavis ist ein neues Lernzentrum für Schüler*innen verschiedener Altersgruppen, dass ein breites Spektrum an Kursen anbietet, wie z. B. Kunst und visuelles Theater, Naturwissenschaften, Mathematik und Digitales Zeichnen',
   text_color: '#000',
   person: {
     first_name: 'Max',
     last_name: 'Mustermann',
   },
-};
+}
 
 const tickerItems = {
-  left_text: ['Эмоциональный интелект', 'Общение', 'Образование', 'Родительское сообщество'],
-  right_text: ['Искусство', 'Многоязычность', 'Гуманистический подход', 'Наука', 'Искусство', 'Многоязычность'],
+  left_text: [
+    'Эмоциональный интелект',
+    'Общение',
+    'Образование',
+    'Родительское сообщество',
+  ],
+  right_text: [
+    'Искусство',
+    'Многоязычность',
+    'Гуманистический подход',
+    'Наука',
+    'Искусство',
+    'Многоязычность',
+  ],
 }
 
 const eventsItems = []

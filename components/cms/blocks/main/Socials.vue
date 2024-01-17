@@ -29,6 +29,7 @@
           <p>
             Lorem ipsum dolor sit amet consectetur. Euismod elit enim cursus
             arcu et pretium.
+            {{ items }}
           </p>
         </div>
       </div>

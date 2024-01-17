@@ -59,6 +59,7 @@ module.exports = {
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/lines-between-class-members': 'off',
     'vue/no-side-effects-in-computed-properties': 'off',
+    'no-magic-numbers': 'off',
     // Lint - block
     'semi': ['error', 'never'],
     'no-unexpected-multiline': 'off',
@@ -174,16 +175,6 @@ module.exports = {
     'no-extra-semi': 'error',
     'no-invalid-this': 'error',
     'no-loop-func': 'error',
-    // sw, sorry
-    'no-magic-numbers': [
-      'error',
-      {
-        ignore: [0, 1, 10, 1000],
-        ignoreDefaultValues: true,
-        enforceConst: false,
-        detectObjects: false,
-      },
-    ],
     'no-new-func': 'error',
     'no-param-reassign': 'off', // error on np
     'no-redeclare': 'error',

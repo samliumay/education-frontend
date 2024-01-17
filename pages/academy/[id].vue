@@ -72,6 +72,4 @@ const { data: item, pending } = await useFetch(
   `https://api.clavis.the-o.co/api/v2/wagtail/products/${route.params.id}/?fields=*`,
   { deep: true },
 )
-
-console.debug(item)
 </script>

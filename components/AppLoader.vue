@@ -1,5 +1,5 @@
 <template>
-  <div class="loader"/>
+  <div class="loader" />
 </template>
 <style scoped>
 @keyframes spin {

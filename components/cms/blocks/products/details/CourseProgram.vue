@@ -22,8 +22,8 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { PageBlock } from '../../../types'
-import AppDivider from '../../AppDivider.vue'
+import type { PageBlock } from '../../../../../types/cms'
+import AppDivider from '../../../../AppDivider.vue'
 
 defineProps<{
   items: PageBlock[]

@@ -76,6 +76,7 @@ const filterQuery = computed(() => {
   if (!props.filters) return ''
 
   const validEntries = Object.entries(props.filters).filter(
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     ([_, value]) => typeof value === 'string' && value.trim() !== '',
   )
 
@@ -100,5 +101,4 @@ const { data: products, pending } = await useAsyncData(
     ),
   { watch: [filterQuery] },
 )
-console.debug(products)
 </script>

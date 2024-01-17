@@ -32,9 +32,7 @@
 import type { PageBlock } from '../../../../types/cms'
 import ImageBlock from '../misc/ImageBlock.vue'
 
-const props = defineProps<{
+defineProps<{
   item: PageBlock
 }>()
-
-console.debug(props)
 </script>
