@@ -6,11 +6,9 @@
     <!-- DESKTOP HEADER -->
     <div class="w-full justify-between gap-[48px] hidden lg:flex">
       <div class="flex items-center gap-6">
-        <img
-          src="/icons/logo_pink.svg"
-          alt="Clavis logo"
-          class="mr-4"
-        />
+        <NuxtLink to="/">
+          <img src="/icons/logo_pink.svg" alt="Clavis logo" class="mr-4" />
+        </NuxtLink>
 
         <!-- NORMAL NAV HEADER -->
         <template v-if="$route.name !== 'menu'">
@@ -100,11 +98,13 @@
         </AppButton>
       </template>
 
-      <img
-        src="/icons/logo_pink.svg"
-        alt="Clavis logo"
-        class="w-[80px] sm:w-[120px]"
-      />
+      <NuxtLink to="/">
+        <img
+          src="/icons/logo_pink.svg"
+          alt="Clavis logo"
+          class="w-[80px] sm:w-[120px]"
+        />
+      </NuxtLink>
 
       <div class="flex items-center gap-4">
         <img src="/icons/cart.svg" alt="Cart" />

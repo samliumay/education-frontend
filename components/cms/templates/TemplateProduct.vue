@@ -30,19 +30,26 @@
     </div>
 
     <div
-      class="mt-[48px] gap-[24px] mx-[48px] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
+      class="mt-[48px] mx-[48px] flex flex-col gap-2"
     >
       <PageConstructor
         v-if="!productsPending"
         :blocks="products?.items ?? []"
         :block-props="blockProps"
+        block-classes="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
       />
-      <div v-else class="flex justify-center items-center w-full h-full py-10 col-span-full row-span-full">
+      <div
+        v-else
+        class="flex justify-center items-center w-full h-full py-10 col-span-full row-span-full"
+      >
         <AppLoader />
       </div>
     </div>
 
-    <div class="px-[28px] md:px-[48px] flex justify-center w-full mb-14 mt-14">
+    <div
+      v-if="products?.items?.length > 0"
+      class="px-[28px] md:px-[48px] flex justify-center w-full mb-14 mt-14"
+    >
       <AppButton>Показать больше</AppButton>
     </div>
   </div>

@@ -9,7 +9,7 @@
     </div>
 
     <AgeGroups :items="ageGroupsItems" />
-    <ProductCatalogs :items="productCatalogsItems" />
+    <Catalogs :items="productCatalogsItems" />
     <Quote :item="textImageItems" />
     <Ticker :item="tickerItems" />
     <Events :items="eventsItems" />
@@ -21,9 +21,9 @@
 </template>
 <script setup lang="ts">
 import AgeGroups from '../components/cms/blocks/main/AgeGroups.vue'
+import Catalogs from '../components/cms/blocks/main/Catalogs.vue'
 import Events from '../components/cms/blocks/main/Events.vue'
 import Info from '../components/cms/blocks/main/Info.vue'
-import ProductCatalogs from '../components/cms/blocks/main/ProductCatalogs.vue'
 import ProductTypes from '../components/cms/blocks/main/ProductTypes.vue'
 import Quote from '../components/cms/blocks/main/Quote.vue'
 import Slider from '../components/cms/blocks/main/Slider.vue'
@@ -101,6 +101,7 @@ const productTypesItems = [
   {
     id: 1,
     title: 'Kurse',
+    link: '/courses',
     description:
       'Lorem ipsum dolor sit amet consectetur. Tempus rhoncus diam ac est. In diam sem eget ullamcorper',
     title_img: {
@@ -115,6 +116,7 @@ const productTypesItems = [
   {
     id: 2,
     title: 'Akademie',
+    link: '/academies',
     description:
       'Lorem ipsum dolor sit amet consectetur. Purus vestibulum justo aliquam maecenas et. Sit lorem',
     title_img: {
@@ -129,6 +131,7 @@ const productTypesItems = [
   {
     id: 3,
     title: 'Workshops',
+    link: '/workshops',
     description:
       'Lorem ipsum dolor sit amet consectetur. Interdum magnis ut fames nec ac viverra ultrices hendrerit',
     title_img: {

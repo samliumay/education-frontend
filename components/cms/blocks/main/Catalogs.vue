@@ -16,32 +16,33 @@
       </button>
     </div>
 
-    <div
-      v-if="items.length > 0"
-      class="grid grid-cols-3 gap-x-[24px] gap-y-[64px]"
-    >
-      <ProductCard
-        v-for="item in items"
-        :key="item.id"
-        :block-data="item"
-        :extra-props="{ type: 'academy' }"
-      />
-    </div>
-    <div v-else class="text-center text-gray-400">Keine Angebote</div>
-
-    <div class="mt-[64px] text-center">
-      <button
-        class="px-[64px] py-[12px] font-medium bg-brand-yellow rounded-[12px]"
-      >
-        Перейти в каталог
-      </button>
-    </div>
+    <template v-if="items.length > 0">
+      <div class="grid grid-cols-3 gap-x-[24px] gap-y-[64px]">
+        <div>
+          <ProductCard
+            v-for="item in items"
+            :key="item.id"
+            :block-data="item"
+            :extra-props="{ type: 'academy' }"
+          />
+        </div>
+      </div>
+      <div class="mt-[64px] text-center">
+        <button
+          class="px-[64px] py-[12px] font-medium bg-brand-yellow rounded-[12px]"
+        >
+          Перейти в каталог
+        </button>
+      </div>
+    </template>
+    <AppNotFound v-else />
   </div>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
 
 import type { PageBlock } from '../../../../types/cms'
+import AppNotFound from '../../../AppNotFound.vue'
 import ProductCard from '../products/ProductCard.vue'
 
 defineProps<{

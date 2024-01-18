@@ -14,6 +14,10 @@ export default {
         'brand-red': '#DB3B4D',
         'brand-gray': '#6F6F6F',
         'brand-light-gray': '#F2F2F2',
+        'brand-dark-gray': '#D9D9D9',
+      },
+      transform: {
+        'interactive': 'active:scale-95',
       },
     },
   },
