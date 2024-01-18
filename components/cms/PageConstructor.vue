@@ -30,11 +30,20 @@ const pageComponents = computed(() => {
   return []
 })
 
+// Render props
+const renderProps = computed(() => {
+  if (props.blockClasses) {
+    return { class: `${props?.blockClasses}` }
+  }
+
+  return {}
+})
+
 // Render components
 const render = computed(() =>
   h(
     'div',
-    { class: `${props.blockClasses}` },
+    renderProps.value,
     pageComponents.value.map(item => item?.()),
   ),
 )

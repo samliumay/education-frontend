@@ -5,10 +5,11 @@
     </h2>
 
     <div class="grid grid-cols-3 gap-6">
-      <div
+      <NuxtLink
         v-for="item in items"
         :key="item.id"
-        class="bg-brand-light-gray p-6 rounded-lg"
+        class="bg-brand-light-gray p-6 rounded-lg cursor-pointer transition ease-in delay-100 transform active:scale-[0.98]"
+        :to="item?.link ?? '/'"
       >
         <div class="flex items-center justify-between">
           <h3 class="text-5xl text-brand-red font-medium">
@@ -28,7 +29,7 @@
           :alt="item.title_img.title"
           class="w-full rounded-lg aspect-square"
         />
-      </div>
+      </NuxtLink>
     </div>
   </div>
 </template>

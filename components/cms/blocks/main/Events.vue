@@ -13,11 +13,12 @@
         :extra-props="{ type: 'academy' }"
       />
     </div>
-    <div v-else class="text-center text-gray-400">Keine Angebote</div>
+    <AppNotFound v-else />
   </div>
 </template>
 <script setup lang="ts">
 import type { PageBlock } from '../../../../types/cms'
+import AppNotFound from '../../../AppNotFound.vue'
 import ProductCard from '../products/ProductCard.vue'
 
 defineProps<{
