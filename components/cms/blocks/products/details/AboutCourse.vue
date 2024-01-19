@@ -3,15 +3,13 @@
 <template>
   <div class="mb-[48px]">
     <h2 class="text-[48px] font-medium">КАК УСТРОЕН КУРС</h2>
-    <div v-html="sanitizedDescription" />
-
-    <!-- <div
+    <div
       v-for="(item, idx) in items"
       :key="item.id"
       class="grid grid-col-2"
-      :class="{ 'mb-[48px]': idx + 1 !== items.length }"
+      :class="{ 'mb-[48px]': +idx + 1 !== items.length }"
     >
-      <template v-if="idx % 2 === 0">
+      <template v-if="+idx % 2 === 0">
         <div class="flex justify-center items-center">
           <img
             :src="item.title_img.meta.download_url"
@@ -48,19 +46,13 @@
           />
         </div>
       </template>
-    </div> -->
+    </div>
   </div>
 </template>
 <script setup lang="ts">
-import DOMPurify from 'dompurify'
-import { computed } from 'vue'
-
 import type { PageBlock } from '../../../../../types/cms'
 
-const props = defineProps<{
-  item: PageBlock
+defineProps<{
+  items: PageBlock
 }>()
-
-// ! Avoid XSS
-const sanitizedDescription = computed(() => DOMPurify.sanitize(props.item.description))
 </script>

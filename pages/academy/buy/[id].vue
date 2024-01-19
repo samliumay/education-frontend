@@ -107,7 +107,7 @@ const buyForm = ref({
 } as Partial<OrderItem> & { first: boolean; second: boolean })
 
 const { data: product } = (await useFetch(
-  `https://api.clavis.the-o.co/api/v1/products/${route.params.id}`,
+  `https://api.clavis.the-o.co/api/v2/products/${route.params.id}`,
   { deep: true },
 )) as { data: Product }
 

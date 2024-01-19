@@ -40,17 +40,17 @@ export const useUserStore = defineStore('user', () => {
   const isLoggedIn = computed<boolean>(() => !!user.value.pk && !!getToken())
 
   const getVisitors = async () => {
-    visitors.value = await HTTP.get('/api/v1/visitors/')
+    visitors.value = await HTTP.get('/api/v2/visitors/')
   }
 
   const postVisitor = async (visitor: Omit<Visitor, 'id'>) => {
-    const res = await HTTP.post('/api/v1/visitors/', visitor)
+    const res = await HTTP.post('/api/v2/visitors/', visitor)
     getVisitors()
     return res
   }
 
   const updateVisitor = async (id: number, data: Partial<Visitor>) => {
-    await HTTP.patch(`/api/v1/visitors/${id}/`, data)
+    await HTTP.patch(`/api/v2/visitors/${id}/`, data)
   }
 
   const setUser = (newValue: FullUser) => {
@@ -59,13 +59,13 @@ export const useUserStore = defineStore('user', () => {
   }
 
   const retrieveUser = async () => {
-    setUser(await HTTP.get('/api/v1/users/me/'))
+    setUser(await HTTP.get('/api/v2/users/me/'))
     await getVisitors()
     return user.value
   }
 
   const updateUser = async (data: Partial<FullUser>) => {
-    await HTTP.patch('/api/v1/users/add_profile_info/', data)
+    await HTTP.patch('/api/v2/users/add_profile_info/', data)
   }
 
   const userPostRequest = async (payload: any, url: string) => {
@@ -89,7 +89,7 @@ export const useUserStore = defineStore('user', () => {
         email,
         password,
       },
-      '/api/v1/users/sign_in/',
+      '/api/v2/users/sign_in/',
     )
 
   const register = (
@@ -110,7 +110,7 @@ export const useUserStore = defineStore('user', () => {
         first_name: firstName,
         last_name: lastName,
       },
-      '/api/v1/users/sign_up/',
+      '/api/v2/users/sign_up/',
     )
 
   const findVisitorById = (id?: number) =>
