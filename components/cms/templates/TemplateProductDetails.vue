@@ -6,7 +6,6 @@
     <AppSignIn
       :is-open="isOpen"
       @close="isOpen = false"
-      @next="navigateTo(`/academy/buy/${route.params.id}`)"
     />
 
     <n-breadcrumb class="mt-6 mb-10">
@@ -83,7 +82,7 @@ const handleSignIn = () => {
   if (!userStore.isLoggedIn) {
     isOpen.value = true
   } else {
-    navigateTo(`/academy/buy/${route.params.id}`)
+    navigateTo(`/product/buy/${route.params.id}`)
   }
 }
 

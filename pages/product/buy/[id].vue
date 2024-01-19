@@ -123,12 +123,16 @@ const { data: product, pending: productPending } = (await useFetch(
   { deep: true },
 )) as { data: Product }
 
-console.debug(product)
-
 const addAcademy = async () => {
   let weeks = 0
   if (buyForm.value.first) weeks++
   if (buyForm.value.second) weeks++
+
+  const schedule_slots =
+    product?.value?.schedule_slots?.length > 0
+      ? product?.value?.schedule_slots.map(item => item?.id)
+      : [11]
+
   await cart.addOrderItem({
     academy_number_of_weeks: weeks,
     product: route.params.id,
@@ -136,10 +140,10 @@ const addAcademy = async () => {
     //   product.purchase_options.find(
     //     option => buyForm.value.schedule_type === option.type,
     //   )?.id || 0,
-    purchase_option: 1,
+    purchase_option: product?.value?.purchase_options?.[0]?.id ?? 1,
     visitor: buyForm.value.visitor,
-    schedule_slots: [11],
-    product_page: 10,
+    schedule_slots,
+    product_page: product?.value?.id,
   })
   navigateTo('/cart')
 }
