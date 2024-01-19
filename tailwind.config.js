@@ -15,6 +15,7 @@ export default {
         'brand-gray': '#6F6F6F',
         'brand-light-gray': '#F2F2F2',
         'brand-dark-gray': '#D9D9D9',
+        'brand-black': '#202020',
       },
       transform: {
         'interactive': 'active:scale-95',

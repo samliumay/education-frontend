@@ -80,7 +80,7 @@ const route = useRoute()
 const userStore = useUserStore()
 
 const handleSignIn = () => {
-  if (userStore.isLoggedIn) {
+  if (!userStore.isLoggedIn) {
     isOpen.value = true
   } else {
     navigateTo(`/academy/buy/${route.params.id}`)

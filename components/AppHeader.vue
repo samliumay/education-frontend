@@ -1,4 +1,9 @@
 <template>
+  <AppSignIn
+    :is-open="isOpenSignIn"
+    @close="isOpenSignIn = false"
+  />
+
   <header
     class="before:font-medium bg-white px-[18px] py-[18px] lg:px-[40px] lg:py-[28px] relative"
     :class="{ '!bg-brand-light-gray': $route.name === 'menu' }"
@@ -66,8 +71,12 @@
             </span>
           </span>
         </NuxtLink>
-        <AppButton @click="navigateTo('/profile')">
-          {{ user.isLoggedIn ? 'Профиль' : 'Войти' }}
+
+        <AppButton v-if="user.isLoggedIn" @click="navigateTo('/profile')">
+          Профиль
+        </AppButton>
+        <AppButton v-else @click="isOpenSignIn = true">
+          Войти
         </AppButton>
       </div>
     </div>
@@ -141,9 +150,10 @@ const cart = useCartStore()
 
 cart.getCurrentOrder()
 
+const isOpenSignIn = ref(false)
+
 // Language Switcher
 const currentLanguage = ref('ru')
-
 const languageOptions = [
   {
     label: 'Ru',

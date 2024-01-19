@@ -125,6 +125,7 @@ export interface IEventTarget {
 export enum LoginSteps {
   Options,
   Email,
+  RestorePassword,
 }
 
 export type OrderItem = {

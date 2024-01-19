@@ -7,18 +7,18 @@
         <div class="bg-white rounded-[12px] p-[24px]">
           <h2 class="font-medium text-[24px] mb-[24px]">Постоянные курсы</h2>
           <template
-            v-for="(course, idx) in cart?.order?.items?.filter(
-              item => item.product.type === 'Course',
+            v-for="(course, idx) in cart?.order?.filter(
+              item => item.product_page.product_type === 'Course',
             ) || []"
             :key="course.id"
           >
             <CartItem :order="course" />
             <AppDivider
               v-if="
-                cart?.order?.items?.filter &&
+                cart?.order?.filter &&
                 idx + 1 !==
-                  cart.order.items.filter(
-                    item => item.product.type === 'Course',
+                  cart.order?.filter(
+                    item => item?.product_page?.product_type === 'Course',
                   ).length
               "
               class="my-[24px]"
@@ -26,7 +26,7 @@
           </template>
           <div
             class="bg-orange-200 rounded-[12px] p-[16px] mt-[24px] flex justify-between items-center cursor-pointer"
-            @click="navigateTo('/')"
+            @click="navigateTo('/courses')"
           >
             <div class="flex flex-col">
               <p>При выборе следующего курса цена ниже</p>
@@ -48,8 +48,8 @@
         <div class="bg-white rounded-[12px] p-[24px]">
           <h2 class="font-medium text-[24px] mb-[24px]">Академии</h2>
           <template
-            v-for="(course, idx) in cart?.order?.items?.filter(
-              item => item.product.type === 'Academy',
+            v-for="(course, idx) in cart?.order?.filter(
+              item => item?.product_page?.product_type === 'Academy',
             ) || []"
             :key="course.id"
           >
@@ -58,8 +58,8 @@
               v-if="
                 cart?.order?.items?.filter &&
                 idx + 1 !==
-                  cart.order.items.filter(
-                    item => item.product.type === 'Academy',
+                  cart?.order?.filter(
+                    item => item?.product_page?.product_type === 'Academy',
                   ).length
               "
               class="my-[24px]"
@@ -89,18 +89,18 @@
         <div class="bg-white rounded-[12px] p-[24px]">
           <h2 class="font-medium text-[24px] mb-[24px]">Воркшопы</h2>
           <template
-            v-for="(course, idx) in cart?.order?.items?.filter(
-              item => item.product.type === 'Workshop',
+            v-for="(course, idx) in cart?.order?.filter(
+              item => item?.product_page?.product_type === 'Workshop',
             ) || []"
             :key="course.id"
           >
             <CartItem :order="course" />
             <AppDivider
               v-if="
-                cart?.order?.items?.filter &&
+                cart?.order?.filter &&
                 idx + 1 !==
-                  cart.order.items.filter(
-                    item => item.product.type === 'Workshop',
+                  cart?.order?.filter(
+                    item => item?.product_page?.product_type === 'Workshop',
                   ).length
               "
               class="my-[24px]"
@@ -264,4 +264,6 @@ const setPromocode = async () => {
   await cart.setPromocode(promocode.value)
   promocode.value = ''
 }
+
+console.debug(cart?.order)
 </script>

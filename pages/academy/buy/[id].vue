@@ -1,5 +1,9 @@
 <template>
-  <div class="grid grid-cols-2 gap-[96px] my-[96px] mx-[48px]">
+  <div v-if="productPending" class="my-20 flex justify-center">
+    <AppLoader />
+  </div>
+
+  <div v-else class="grid grid-cols-2 gap-[96px] my-[96px] mx-[48px]">
     <div>
       <p class="text-[24px] font-medium mb-[16px]">Вы выбрали</p>
       <BuyProductCard :product="product" />
@@ -68,20 +72,26 @@
 
       <p class="text-[24px] font-medium">
         Итого:
-        <span class="text-green-700 mr-[8px]">
+        <span
+          v-if="product?.purchase_options?.length > 0"
+          class="text-green-700 mr-[8px]"
+        >
           {{
             +(
-              product.purchase_options?.find(
+              product?.purchase_options?.find(
                 (purchaseOption: any) =>
-                  purchaseOption.type === buyForm.schedule_type,
+                  purchaseOption?.type === buyForm?.schedule_type,
               )?.base_price || '0'
             )
           }}
           €
         </span>
+        <span v-else class="text-brand-red mr-[8px]">0 €</span>
       </p>
 
-      <AppButton @click="addAcademy"> Добавить в корзину </AppButton>
+      <AppButton class="mt-10" @click="addAcademy">
+        Добавить в корзину
+      </AppButton>
     </div>
   </div>
 </template>
@@ -89,6 +99,8 @@
 import { NCheckbox, NRadio } from 'naive-ui'
 import { ref } from 'vue'
 
+import AppLoader from '../../../components/AppLoader.vue'
+import BuyProductCard from '../../../components/buy/BuyProductCard.vue'
 import GetChildData from '../../../components/buy/GetChildData.vue'
 import { useCartStore } from '../../../store/cart'
 import type { OrderItem, Product } from '../../../types'
@@ -98,7 +110,7 @@ const route = useRoute()
 const cart = useCartStore()
 
 const buyForm = ref({
-  academy_number_of_weeks: 0,
+  academy_number_of_weeks: 1,
   schedule_type: 'Academy (1st half)',
   first: false,
   second: false,
@@ -106,10 +118,12 @@ const buyForm = ref({
   schedule_slots: [],
 } as Partial<OrderItem> & { first: boolean; second: boolean })
 
-const { data: product } = (await useFetch(
-  `https://api.clavis.the-o.co/api/v2/products/${route.params.id}`,
+const { data: product, pending: productPending } = (await useFetch(
+  `https://api.clavis.the-o.co/api/v2/wagtail/products/${route.params.id}/?fields=*`,
   { deep: true },
 )) as { data: Product }
+
+console.debug(product)
 
 const addAcademy = async () => {
   let weeks = 0
@@ -118,12 +132,14 @@ const addAcademy = async () => {
   await cart.addOrderItem({
     academy_number_of_weeks: weeks,
     product: route.params.id,
-    purchase_option:
-      product.purchase_options.find(
-        option => buyForm.value.schedule_type === option.type,
-      )?.id || 0,
+    // purchase_option:
+    //   product.purchase_options.find(
+    //     option => buyForm.value.schedule_type === option.type,
+    //   )?.id || 0,
+    purchase_option: 1,
     visitor: buyForm.value.visitor,
-    schedule_slots: [],
+    schedule_slots: [11],
+    product_page: 10,
   })
   navigateTo('/cart')
 }
