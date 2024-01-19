@@ -1,8 +1,5 @@
 <template>
-  <AppSignIn
-    :is-open="isOpenSignIn"
-    @close="isOpenSignIn = false"
-  />
+  <AppSignIn :is-open="isOpenSignIn" @close="isOpenSignIn = false" />
 
   <header
     class="before:font-medium bg-white px-[18px] py-[18px] lg:px-[40px] lg:py-[28px] relative"
@@ -59,25 +56,35 @@
           variant="transparent"
         />
 
-        <NuxtLink to="/cart" class="flex items-center cursor-pointer">
+        <NuxtLink
+          v-show="user.isLoggedIn"
+          to="/cart"
+          class="flex items-center cursor-pointer"
+        >
           <span> Корзина </span>
           <span
-            class="border-black rounded-[1000px] border-[1px] p-[12px] ml-[6px] relative"
+            class="border-black rounded-full border-[1px] p-[12px] ml-[6px] relative"
           >
             <span
               class="absolute w-full h-full flex items-center justify-center top-0 left-0"
             >
-              {{ cart?.order?.items?.length || 0 }}
+              {{ cart?.order?.length || 0 }}
             </span>
           </span>
         </NuxtLink>
 
-        <AppButton v-if="user.isLoggedIn" @click="navigateTo('/profile')">
-          Профиль
-        </AppButton>
-        <AppButton v-else @click="isOpenSignIn = true">
-          Войти
-        </AppButton>
+        <button
+          v-if="user.isLoggedIn"
+          class="bg-white rounded-full w-[50px] h-[50px] min-h-[50px] min-w-[50px] overflow-hidden border-black border-[1px]"
+          @click="navigateTo('/profile')"
+        >
+          <img
+            src="/icons/profile.svg"
+            alt="profile"
+            class="w-[50px] h-[50px]"
+          />
+        </button>
+        <AppButton v-else @click="isOpenSignIn = true"> Войти </AppButton>
       </div>
     </div>
 
@@ -116,8 +123,18 @@
       </NuxtLink>
 
       <div class="flex items-center gap-4">
-        <img src="/icons/cart.svg" alt="Cart" />
-        <img src="/icons/exit.svg" alt="Exit" />
+        <template v-if="user.isLoggedIn">
+          <NuxtLink to="/cart">
+            <img src="/icons/cart.svg" alt="Cart" />
+          </NuxtLink>
+          <NuxtLink to="/profile" class="bg-white rounded-full w-[30px] h-[30px] min-h-[30px] min-w-[30px] overflow-hidden border-black border-[1px]">
+            <img src="/icons/profile.svg" alt="Profile" class="w-[30px] h-[30px]" />
+          </NuxtLink>
+        </template>
+
+        <button @click="isOpenSignIn = true" v-else>
+          <img src="/icons/exit.svg" alt="Login" />
+        </button>
       </div>
     </div>
   </header>
@@ -125,10 +142,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import { useCartStore } from '../store/cart'
-import { useUserStore } from '../store/user'
-import AppButton from './AppButton.vue'
-import AppSelect from './AppSelect.vue'
+import { useCartStore } from '../../store/cart'
+import { useUserStore } from '../../store/user'
+import AppButton from '../AppButton.vue'
+import AppSelect from '../AppSelect.vue'
 
 const routes = [
   {

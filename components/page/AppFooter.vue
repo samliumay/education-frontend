@@ -78,5 +78,5 @@
   </footer>
 </template>
 <script setup lang="ts">
-import { socialsLinks } from '../constants/socials'
+import { socialsLinks } from '../../constants/socials'
 </script>
