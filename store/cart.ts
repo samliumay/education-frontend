@@ -30,6 +30,11 @@ export const useCartStore = defineStore('cart', () => {
     await getCurrentOrder()
   }
 
+  const deleteOrderItem = async (id: number) => {
+    await HTTP.delete(`https://api.clavis.the-o.co/api/v2/orders/items/${id}`)
+    await getCurrentOrder()
+  }
+
   return {
     order,
     getCurrentOrder,
@@ -37,5 +42,6 @@ export const useCartStore = defineStore('cart', () => {
     isDataLoading,
     fulfillOrder,
     setPromocode,
+    deleteOrderItem,
   }
 })
