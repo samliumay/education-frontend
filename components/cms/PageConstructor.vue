@@ -8,6 +8,7 @@ import { computed, h } from 'vue'
 import { mapTypeBlock } from '../../mappers/cms'
 import type { PageBlock } from '../../types/cms'
 import AppNotFound from '../AppNotFound.vue'
+import ErrorBoundaryBlock from './blocks/misc/ErrorBoundaryBlock.vue'
 
 const props = defineProps<{
   blocks: PageBlock[]
@@ -44,7 +45,7 @@ const render = computed(() =>
   h(
     'div',
     renderProps.value,
-    pageComponents.value.map(item => item?.()),
+    pageComponents.value.map(item => h(ErrorBoundaryBlock, {}, item ? [item()] : [])),
   ),
 )
 </script>

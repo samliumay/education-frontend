@@ -15,6 +15,7 @@
           <img
             :src="item.icon_img.meta.download_url"
             :alt="item.icon_img.title"
+            class="w-[100px]"
           />
           <h3 class="text-[28px] font-medium ml-[20px]">
             {{ item.title }}

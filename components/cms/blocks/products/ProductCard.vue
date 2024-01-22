@@ -79,21 +79,17 @@
 import { computed } from 'vue'
 
 import { useCatalogApi } from '../../../../composables/api/useCatalogApi'
-import type {
-  PageBlock,
-  ProductComponentExtraProps,
-} from '../../../../types/cms'
+import type { PageBlock } from '../../../../types/cms'
 import AppButton from '../../../AppButton.vue'
 import TagsBlock from '../../../misc/TagsBlock.vue'
 import ImageBlock from '../misc/ImageBlock.vue'
 
 const props = defineProps<{
   blockData: PageBlock
-  extraProps: ProductComponentExtraProps
 }>()
 
 const goToDetails = () => {
-  navigateTo(`/${props.extraProps.type}/${props.blockData?.id}`)
+  navigateTo(`/product/${props.blockData?.id}`)
 }
 
 // Catalog

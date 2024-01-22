@@ -7,7 +7,9 @@
           <h1 class="text-[36px] font-medium">
             {{ item.name }}
           </h1>
-          <CategoryBlock :items="item.schedule_slots">
+          <CategoryBlock
+            :items="item.schedule_slots"
+          >
             <template #icon>
               <img
                 v-if="type === 'course'"
@@ -26,10 +28,11 @@
         </div>
 
         <div class="flex gap-[12px]">
-          <AppButton v-if="type === 'course'">
+          <!-- <AppButton v-if="type === 'course'" class="bg-brand-red text-white">
             Попробовать бесплатно
           </AppButton>
-          <AppButton> Купить </AppButton>
+          <AppButton> Купить </AppButton> -->
+          <slot />
         </div>
       </div>
 
@@ -48,7 +51,7 @@
 
         <p>
           <span class="font-medium">Преподаватели:</span>
-          <span class="text-gray-400 ml-[8px]">
+          <template v-if="item?.schedule_slots?.length">
             {{
               Array.from(
                 new Set(
@@ -56,26 +59,30 @@
                 ),
               ).join('; ')
             }}
-          </span>
+            </template>
+            <template v-else>-</template>
         </p>
 
         <p>
           <span class="font-medium">Кабинет:</span>
           <span class="text-gray-400 ml-[8px]">
-            {{
-              Array.from(
-                new Set(item.schedule_slots?.map((slot: any) => slot.space)),
-              ).join('; ')
-            }}
+            <template v-if="item?.schedule_slots?.length">
+              {{
+                Array.from(
+                  new Set(item.schedule_slots?.map((slot: any) => slot.space)),
+                ).join('; ')
+              }}
+            </template>
+            <template v-else>-</template>
           </span>
         </p>
       </div>
     </div>
 
-    <div class="rounded-[12px] overflow-hidden relative h-[480px] w-full">
+    <div class="rounded-[12px] overflow-hidden relative h-[580px] w-full">
       <ImageBlock
         :image="item.title_image"
-        class="absolute bottom-0 right-6 w-5/12"
+        class="absolute bottom-0 right-6 h-[400px]"
       />
       <ImageBlock
         :image="item.background_image"
@@ -88,7 +95,6 @@
 import { languageMap } from '../../../../../mappers/products'
 import { type Product, type ProductType } from '../../../../../types'
 import { type PageBlock } from '../../../../../types/cms'
-import AppButton from '../../../../AppButton.vue'
 import CategoryBlock from '../../../../misc/CategoryBlock.vue'
 import TagsBlock from '../../../../misc/TagsBlock.vue'
 import ImageBlock from '../../misc/ImageBlock.vue'

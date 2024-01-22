@@ -131,7 +131,7 @@ const buyForm = ref({
 })
 
 const { data: product } = await useFetch(
-  `https://api.clavis.the-o.co/api/v1/products/${route.params.id}`,
+  `https://api.clavis.the-o.co/api/v2/products/${route.params.id}`,
 )
 
 const scheduleType = computed(() => {

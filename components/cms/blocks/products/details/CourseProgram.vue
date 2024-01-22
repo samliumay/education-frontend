@@ -12,6 +12,7 @@
         <img
           :src="item.title_img.meta.download_url"
           :alt="item.title_img.title"
+          class="w-[100px]"
         />
 
         <p class="text-gray-400">
