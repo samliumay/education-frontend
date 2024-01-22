@@ -90,8 +90,4 @@ const deleteProduct = async () => {
   await cart.deleteOrderItem(orderId.value)
   deletingProduct.value = false
 }
-
-console.debug('PROPS', props)
-console.debug('PRODUCT', product)
-console.debug('ID', id.value)
 </script>
