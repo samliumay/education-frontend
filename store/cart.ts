@@ -9,7 +9,7 @@ export const useCartStore = defineStore('cart', () => {
   const order = ref<Order>({} as Order)
 
   const getCurrentOrder = async () => {
-    order.value = await HTTP.get('/api/v2/orders/items')
+    order.value = []
     isDataLoading.value = false
   }
 
@@ -25,10 +25,7 @@ export const useCartStore = defineStore('cart', () => {
     return res
   }
 
-  const setPromocode = async (promocode: string) => {
-    await HTTP.put('/api/v2/orders/current/set_promocode', { promocode })
-    await getCurrentOrder()
-  }
+  const setPromocode = async (promocode: string) => await HTTP.put('/api/v2/orders/current/set_promocode', { promocode })
 
   const deleteOrderItem = async (id: number) => {
     await HTTP.delete(`https://api.clavis.the-o.co/api/v2/orders/items/${id}`)

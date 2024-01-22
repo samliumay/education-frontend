@@ -37,10 +37,7 @@
               class="border-black border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
             >
               Перейти в каталог
-              <img
-                src="/icons/arrow_short_right.svg"
-                alt="Arrow Right icon"
-              />
+              <img src="/icons/arrow_short_right.svg" alt="Arrow Right icon" />
             </div>
           </div>
         </div>
@@ -78,10 +75,7 @@
               class="border-black border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
             >
               Перейти в каталог
-              <img
-                src="/icons/arrow_short_right.svg"
-                alt="Arrow Right icon"
-              />
+              <img src="/icons/arrow_short_right.svg" alt="Arrow Right icon" />
             </div>
           </div>
         </div>
@@ -119,10 +113,7 @@
               @click="navigateTo('/workshops')"
             >
               Перейти в каталог
-              <img
-                src="/icons/arrow_short_right.svg"
-                alt="Arrow Right icon"
-              />
+              <img src="/icons/arrow_short_right.svg" alt="Arrow Right icon" />
             </div>
           </div>
         </div>
@@ -204,13 +195,23 @@
             />
           </template>
 
-          <AppInput
-            v-model="promocode"
-            placeholder="Введите промокод"
-            class="mt-[24px] w-full"
-            @blur="setPromocode"
-            @enter="setPromocode"
-          />
+          <div>
+            <AppInput
+              v-model="promocode"
+              placeholder="Введите промокод"
+              class="mt-[24px] w-full"
+              :disabled="promocodeStatus === 'success'"
+              @blur="setPromocode"
+              @enter="setPromocode"
+            />
+
+            <p v-if="promocodeStatus === 'success'" class="text-brand-green">
+              Промокод успешно добавлен
+            </p>
+            <p v-if="promocodeStatus === 'fail'" class="text-brand-red">
+              Неверный промокод
+            </p>
+          </div>
 
           <p class="flex justify-between font-medium text-[24px] mt-[24px]">
             <span>Итого</span>
@@ -245,8 +246,6 @@ const additionalInfo: Ref<AdditionalInfo> = ref({} as AdditionalInfo)
 
 const buyOption: Ref<'paypal' | 'stripe'> = ref('paypal')
 
-const promocode = ref('')
-
 const cart = useCartStore()
 
 await cart.getCurrentOrder()
@@ -260,8 +259,20 @@ const fullfillOrder = async () => {
     buyOption.value === 'paypal' ? urlObject.links[1] : urlObject.url
 }
 
+const promocode = ref('')
+const promocodeStatus = ref('empty')
 const setPromocode = async () => {
-  await cart.setPromocode(promocode.value)
-  promocode.value = ''
+  await cart
+    .setPromocode(promocode.value)
+    .then(() => {
+      promocodeStatus.value = 'success'
+    })
+    .catch(err => {
+      promocodeStatus.value = 'fail'
+      setTimeout(() => {
+        promocodeStatus.value = 'empty'
+      }, 2000)
+      console.error('Error adding a promocode: ', err)
+    })
 }
 </script>
