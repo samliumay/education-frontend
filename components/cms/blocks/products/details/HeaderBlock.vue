@@ -95,7 +95,6 @@
 import { languageMap } from '../../../../../mappers/products'
 import { type Product, type ProductType } from '../../../../../types'
 import { type PageBlock } from '../../../../../types/cms'
-import AppButton from '../../../../AppButton.vue'
 import CategoryBlock from '../../../../misc/CategoryBlock.vue'
 import TagsBlock from '../../../../misc/TagsBlock.vue'
 import ImageBlock from '../../misc/ImageBlock.vue'

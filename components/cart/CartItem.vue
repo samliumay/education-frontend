@@ -52,11 +52,10 @@
 <script setup lang="ts">
 import { type OrderItem } from '../../types'
 
-const props = defineProps<{
+defineProps<{
   order: OrderItem
 }>()
 
-console.debug('order', props.order)
-
 defineEmits(['close'])
+
 </script>

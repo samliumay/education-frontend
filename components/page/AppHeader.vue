@@ -132,7 +132,7 @@
           </NuxtLink>
         </template>
 
-        <button @click="isOpenSignIn = true" v-else>
+        <button v-else @click="isOpenSignIn = true">
           <img src="/icons/exit.svg" alt="Login" />
         </button>
       </div>

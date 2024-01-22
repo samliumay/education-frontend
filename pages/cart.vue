@@ -264,6 +264,4 @@ const setPromocode = async () => {
   await cart.setPromocode(promocode.value)
   promocode.value = ''
 }
-
-console.debug(cart?.order)
 </script>

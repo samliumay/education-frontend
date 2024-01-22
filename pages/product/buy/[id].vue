@@ -128,6 +128,7 @@ const addAcademy = async () => {
   if (buyForm.value.first) weeks++
   if (buyForm.value.second) weeks++
 
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   const schedule_slots =
     product?.value?.schedule_slots?.length > 0
       ? product?.value?.schedule_slots.map(item => item?.id)
