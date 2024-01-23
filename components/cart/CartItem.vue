@@ -2,27 +2,32 @@
   <div v-if="loadingProduct" class="p-4">
     <Loader />
   </div>
-  <div class="flex flex-col gap-2">
-    <div class="flex gap-[36px]">
+  <div class="flex flex-col gap-2 relative">
+    <div class="flex gap-9">
+      <button
+        v-show="!deletingProduct"
+        class="transition ease-in delay-100 transform active:scale-[0.93] absolute right-0 top-0"
+        @click="deleteProduct"
+      >
+        <img
+          src="/icons/cross.svg"
+          alt="Close icon"
+          class="w-[20px] h-[20px]"
+        />
+      </button>
+
       <Cover
         v-if="!loadingProduct"
-        class="h-[200px]"
+        class="w-4/12"
         :image-title="product?.background_image"
         :image-background="product?.title_image"
       />
 
-      <div class="flex flex-col gap-[16px]">
+      <div class="flex flex-col gap-[16px] w-6/12">
         <div class="flex justify-between">
-          <h3 class="font-medium text-[20px]">
+          <h3 class="font-medium text-3xl text-brand-red uppercase">
             {{ order?.product_page?.name ?? 'Unknown' }}
           </h3>
-          <button
-            v-show="!deletingProduct"
-            class="transition ease-in delay-100 transform active:scale-[0.93]"
-            @click="deleteProduct"
-          >
-            <img src="/icons/cross.svg" alt="Close icon" />
-          </button>
         </div>
 
         <div class="flex gap-[12px]">
@@ -34,22 +39,75 @@
               : 'Карта встреч'
           }}
         </div> -->
-          <div class="bg-gray-200 px-[16px] p-[8px] rounded-[10px]">
-            Ребенок: Иван Иванов
-            <span class="text-blue-500 ml-[8px]"> Изменить </span>
+          <div
+            class="bg-brand-light-gray px-4 p-2 rounded-full flex items-center"
+          >
+            Ребенок:
+            <AppSelect
+              placeholder="Выберите ребенка"
+              :options="userStore.getVisitorOptions"
+              :value="visitor"
+              class="min-w-[200px] -mt-[10px] h-[20px]"
+              @update:value="el => (console.debug(el))"
+            />
           </div>
         </div>
 
         <p class="font-medium text-[24px]">
-          {{ `${order?.purchase_options?.[0]?.base_price ?? 0} €` }}
+          {{ `${order?.calculated_price ?? 0} €` }}
           <span class="text-gray-400 ml-[8px]"> /мес </span>
         </p>
-
-        <p class="flex gap-[8px] items-center font-medium cursor-pointer">
-          Выбранные дни посещения
-          <img src="/icons/chevron_down.svg" alt="Arrow down" />
-        </p>
       </div>
+    </div>
+    <div>
+      <n-space vertical>
+        <div class="w-full flex gap-9">
+          <div class="w-4/12 h-1" />
+          <button
+            class="flex gap-2 items-center text-xl font-medium cursor-pointe"
+            @click="isShowDetails = !isShowDetails"
+          >
+            Выбранные дни посещения
+            <img
+              src="/icons/chevron_down.svg"
+              alt="Arrow down"
+              :class="{ '-rotate-90': !isShowDetails }"
+            />
+          </button>
+        </div>
+        <n-collapse-transition :show="isShowDetails">
+          <div class="w-full flex gap-9">
+            <div class="w-4/12 h-full" />
+            <div class="flex flex-col gap-6">
+              <div
+                v-for="item in order?.schedule_slots"
+                :key="item.key"
+                class="bg-brand-light-gray py-1 px-4 rounded-full w-fit"
+              >
+                <p class="font-medium">
+                  {{ item?.weekday ?? 'Monday' }}
+                  {{ String(item?.start ?? '00:00').slice(0, 5) }}
+                </p>
+              </div>
+
+              <div>
+                <p class="text-xl font-medium mb-2">Дата первого посещения</p>
+
+                <div class="bg-brand-light-gray py-1 px-4 rounded-full w-fit">
+                  <p class="font-medium">
+                    {{
+                      `${getNearDate(
+                        order?.schedule_slots[0]?.weekday,
+                        order?.schedule_slots[0]?.start,
+                      )}.${new Date().getFullYear()}`
+                    }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </n-collapse-transition>
+      </n-space>
     </div>
     <div v-if="deletingProduct" class="flex gap-4 items-center">
       <Loader class="!w-6 !h-6" />
@@ -58,13 +116,17 @@
   </div>
 </template>
 <script setup lang="ts">
+import { NCollapseTransition, NSpace } from 'naive-ui'
 import { computed, ref } from 'vue'
 
 import { useCartStore } from '../../store/cart'
+import { useUserStore } from '../../store/user'
 import { type OrderItem } from '../../types'
+import { getNearDate } from '../../utils/getNearDate'
 import Loader from '../AppLoader.vue'
 import Cover from '../cms/blocks/misc/Cover.vue'
 
+// Init props and emits
 const props = defineProps<{
   order: OrderItem
 }>()
@@ -90,4 +152,16 @@ const deleteProduct = async () => {
   await cart.deleteOrderItem(orderId.value)
   deletingProduct.value = false
 }
+
+// Additional details
+const isShowDetails = ref(false)
+
+// Visitors
+const userStore = useUserStore()
+await userStore.getVisitors()
+
+const visitor = ref()
+
+console.debug(props.order)
+console.debug(visitor)
 </script>
