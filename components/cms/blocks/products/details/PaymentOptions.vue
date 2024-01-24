@@ -17,7 +17,7 @@
             :alt="item.icon_img.title"
             class="w-[64px] h-[64px]"
           />
-          <h3 class="text-[28px] font-medium ml-[20px]">
+          <h3 class="text-[20px] sm:text-[28px] font-medium ml-[20px]">
             {{ item.title }}
           </h3>
         </div>

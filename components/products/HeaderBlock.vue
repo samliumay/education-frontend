@@ -1,7 +1,7 @@
 <template>
   <div class="grid grid-cols-2 gap-[24px] mx-[48px]">
     <div class="rounded-[12px] bg-white p-[36px]">
-      <h1 class="text-[36px] font-medium">
+      <h1 class="text-[24px] sm:text-[36px] font-medium">
         {{ product.name }}
       </h1>
 

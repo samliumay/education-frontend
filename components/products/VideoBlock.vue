@@ -1,7 +1,7 @@
 <template>
   <div class="grid grid-cols-2 gap-[24px] px-[48px]">
     <div class="mr-[120px]">
-      <h2 class="text-[48px] font-medium">Процесс обучения</h2>
+      <h2 class="text-[32px] sm:text-[48px] font-medium">Процесс обучения</h2>
       <p class="text-gray-400">
         В ходе курса мы пробуем множество различных материалов и техник, учимся
         смешивать материалы и получаем базовые знания по истории искусства.

@@ -6,7 +6,7 @@
       class="w-full"
     />
     <div class="text-gray-400">Wissenschaftliche Kurse • DE • ABS 234</div>
-    <h3 class="text-[48px] text-red-400 font-medium">
+    <h3 class="text-[32px] sm:text-[48px] text-red-400 font-medium">
       {{ product.title }}
     </h3>
     <TagsBlock :tags="getTagsFromProduct(product)" />

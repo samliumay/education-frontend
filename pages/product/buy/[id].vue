@@ -3,14 +3,14 @@
     <AppLoader />
   </div>
 
-  <div v-else class="grid grid-cols-2 gap-[96px] my-[96px] mx-[48px]">
+  <div v-else class="grid grid-col-1 sm:grid-cols-2 gap-[96px] my-[96px] mx-[16px] sm:mx-[48px]">
     <div>
       <p class="text-[24px] font-medium mb-[16px]">Вы выбрали</p>
       <BuyProductCard :product="product" />
     </div>
 
     <div>
-      <h2 class="text-[48px] font-medium mb-[36px]">Заполните данные</h2>
+      <h2 class="text-[32px] sm:text-[48px] font-medium mb-[36px]">Заполните данные</h2>
 
       <GetChildData
         :visitor="buyForm.visitor"
@@ -31,42 +31,44 @@
 
       <p class="text-[24px] font-medium">Выберите смену</p>
 
-      <n-radio
-        class="mt-[16px]"
-        :checked="buyForm.schedule_type === 'Academy (1st half)'"
-        value="first"
-        name="when"
-        @change="buyForm.schedule_type = 'Academy (1st half)'"
-      >
-        <div class="flex flex-col gap-[4px]">
-          <p class="font-medium">1/2 дня утром</p>
-          <p class="text-gray-400">Пн-Пт с 9:30 до 12:30</p>
-        </div>
-      </n-radio>
-      <n-radio
-        class="mt-[12px]"
-        :checked="buyForm.schedule_type === 'Academy (2nd half)'"
-        value="second"
-        name="when"
-        @change="buyForm.schedule_type = 'Academy (2nd half)'"
-      >
-        <div class="flex flex-col gap-[4px]">
-          <p class="font-medium">1/2 дня во второй половине</p>
-          <p class="text-gray-400">Пн-Пт с 9:30 до 12:30</p>
-        </div>
-      </n-radio>
-      <n-radio
-        class="mt-[12px]"
-        :checked="buyForm.schedule_type === 'Academy (full day)'"
-        value="full"
-        name="when"
-        @change="buyForm.schedule_type === 'Academy (full day)'"
-      >
-        <div class="flex flex-col gap-[4px]">
-          <p class="font-medium">Полный день</p>
-          <p class="text-gray-400">Пн-Пт с 9:30 до 12:30</p>
-        </div>
-      </n-radio>
+      <n-space vertical>
+        <n-radio
+          class="mt-[16px]"
+          :checked="buyForm.schedule_type === 'Academy (1st half)'"
+          value="first"
+          name="when"
+          @change="buyForm.schedule_type = 'Academy (1st half)'"
+        >
+          <div class="flex flex-col gap-[4px]">
+            <p class="font-medium">1/2 дня утром</p>
+            <p class="text-gray-400">Пн-Пт с 9:30 до 12:30</p>
+          </div>
+        </n-radio>
+        <n-radio
+          class="mt-[12px]"
+          :checked="buyForm.schedule_type === 'Academy (2nd half)'"
+          value="second"
+          name="when"
+          @change="buyForm.schedule_type = 'Academy (2nd half)'"
+        >
+          <div class="flex flex-col gap-[4px]">
+            <p class="font-medium">1/2 дня во второй половине</p>
+            <p class="text-gray-400">Пн-Пт с 9:30 до 12:30</p>
+          </div>
+        </n-radio>
+        <n-radio
+          class="mt-[12px]"
+          :checked="buyForm.schedule_type === 'Academy (full day)'"
+          value="full"
+          name="when"
+          @change="buyForm.schedule_type === 'Academy (full day)'"
+        >
+          <div class="flex flex-col gap-[4px]">
+            <p class="font-medium">Полный день</p>
+            <p class="text-gray-400">Пн-Пт с 9:30 до 12:30</p>
+          </div>
+        </n-radio>
+      </n-space>
 
       <AppDivider class="my-[24px]" />
 
@@ -89,14 +91,14 @@
         <span v-else class="text-brand-red mr-[8px]">0 €</span>
       </p>
 
-      <AppButton class="mt-10" @click="addAcademy">
+      <AppButton class="mt-4 sm:mt-10 w-full sm:w-auto" @click="addAcademy">
         Добавить в корзину
       </AppButton>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import { NCheckbox, NRadio } from 'naive-ui'
+import { NCheckbox, NRadio, NSpace } from 'naive-ui'
 import { ref } from 'vue'
 
 import AppLoader from '../../../components/AppLoader.vue'

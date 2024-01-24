@@ -16,20 +16,20 @@
       </NuxtLink>
     </nav>
 
-    <div class="flex flex-col gap-8 h-fit self-end">
-      <div class="flex flex-col gap-8 flex-wrap lg:gap-16 md:flex-row self-end">
+    <div class="flex flex-col gap-8 h-fit sm:self-end">
+      <div class="flex flex-col gap-8 flex-wrap lg:gap-16 md:flex-row sm:self-end">
         <div class="flex flex-col justify-between gap-4">
           <div class="flex flex-col gap-1">
             <p class="font-bold">Телефон</p>
             <div class="flex flex-col gap-1">
               <a
-href="tel:+493071537477"
-class="text-brand-gray font-medium"
->+49 (0) 30 71537477</a>
+                href="tel:+493071537477"
+                class="text-brand-gray font-medium"
+              >+49 (0) 30 71537477</a>
               <a
-href="tel:+493071537477"
-class="text-brand-gray font-medium"
->+49 (0) 30 71537477</a>
+                href="tel:+493071537477"
+                class="text-brand-gray font-medium"
+              >+49 (0) 30 71537477</a>
             </div>
           </div>
 

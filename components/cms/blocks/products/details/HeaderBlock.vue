@@ -4,7 +4,7 @@
       <div class="flex flex-col justify-between gap-10">
         <div>
           <TagsBlock :tags="[item.current_status]" />
-          <h1 class="text-[36px] font-medium">
+          <h1 class="text-[24px] sm:text-[36px] font-medium">
             {{ item.name }}
           </h1>
           <CategoryBlock

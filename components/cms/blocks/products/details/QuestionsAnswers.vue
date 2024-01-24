@@ -1,6 +1,6 @@
 <template>
   <div class="mx-[48px] py-[96px]">
-    <h2 class="text-[48px] font-medium mb-[48px]">
+    <h2 class="text-[32px] sm:text-[48px] font-medium mb-[48px]">
       ОТВЕЧАЕМ
       <br />
       НА ВОПРОСЫ

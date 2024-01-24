@@ -1,9 +1,9 @@
 <template>
-  <div class="mx-[100px] md:mx-[140px] flex flex-col gap-10">
-    <div class="flex justify-between gap-2 items-stretch">
-      <h2 class="text-5xl font-medium text-brand-red w-5/12">Clavis Schule für Kunst und Wissenschaft</h2>
-      <div class="w-[1px] bg-brand-gray" />
-      <p class="w-5/12 text-black self-center">
+  <div class="mx-[30px] sm:mx-[140px] flex flex-col gap-10">
+    <div class="flex flex-col sm:flex-row justify-between gap-2 items-stretch">
+      <h2 class="text-5xl font-medium text-brand-red sm:w-5/12">Clavis Schule für Kunst und Wissenschaft</h2>
+      <div class="w-[1px] bg-brand-gray invisible sm:visible" />
+      <p class="sm:w-5/12 text-black self-center">
         Clavis wurde mit dem Ziel ins Leben gerufen, das Interesse und die
         Neugier von Kindern und Jugendlichen zu fördern.
       </p>
@@ -20,7 +20,7 @@
       />
     </div>
 
-    <div class="flex gap-4 justify-between">
+    <div class="flex flex-col sm:flex-row gap-4 justify-between">
       <div
         v-for="option in options"
         :key="option"

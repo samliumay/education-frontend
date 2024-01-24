@@ -3,7 +3,7 @@
 
   <div class="flex flex-col gap-[12px] mt-[16px]">
     <template v-if="step === GetChildStep.Select">
-      <n-select
+      <AppSelect
         placeholder="Выберите ребенка"
         :options="userStore.getVisitorOptions"
         :value="visitor"
@@ -43,7 +43,6 @@
   </div>
 </template>
 <script setup lang="ts">
-import { NSelect } from 'naive-ui'
 import { ref } from 'vue'
 
 import ArrowIcon from '../../public/icons/arrow_short_right.svg'
@@ -51,6 +50,7 @@ import { useUserStore } from '../../store/user'
 import { GetChildStep } from '../../types'
 import AppButton from '../AppButton.vue'
 import AppInput from '../AppInput.vue'
+import AppSelect from '../AppSelect.vue'
 
 defineProps<{
   visitor?: number
