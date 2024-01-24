@@ -160,8 +160,6 @@ const isShowDetails = ref(false)
 const userStore = useUserStore()
 await userStore.getVisitors()
 
+// eslint-disable-next-line vue/require-typed-ref
 const visitor = ref()
-
-console.debug(props.order)
-console.debug(visitor)
 </script>
