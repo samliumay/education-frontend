@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-2 gap-[12px]">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px]">
     <div
       class="cursor-pointer rounded-[12px] bg-white py-[18px] px-[24px] flex items-center justify-between border-[1px]"
       :class="{

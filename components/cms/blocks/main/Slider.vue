@@ -10,7 +10,7 @@
     <template #arrow="{ prev, next, total, currentIndex }">
       <div class="w-full h-full gradient absolute top-0 left-0 z-10 flex flex-col gap-2 justify-end items-center pb-14">
         <p class="text-white text-center">{{ currentIndex + 1 }} / {{ total }}</p>
-        <h1 class="text-white text-4xl uppercase w-[680px] text-center">Lorem ipsum dolor sit amet consectetur</h1>
+        <h1 class="text-white text-4xl uppercase w-[680px] max-w-full mx-[31px] text-center">Lorem ipsum dolor sit amet consectetur</h1>
       </div>
 
       <div class="absolute flex h-full w-full top-0 left-0 justify-between items-center z-30 px-4">

@@ -17,7 +17,7 @@
       class="flex justify-between items-start mx-[28px] md:mx-[48px] flex-col xl:flex-row xl:items-center gap-5"
     >
       <div class="flex items-center gap-[18px]">
-        <h1 class="text-[38px] md:text-[48px] font-medium uppercase">
+        <h1 class="text-[38px] md:text-[32px] sm:text-[48px] font-medium uppercase">
           {{ catalog?.name ?? 'Catalog' }}
         </h1>
         <ImageBlock

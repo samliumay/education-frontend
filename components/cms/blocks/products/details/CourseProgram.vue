@@ -1,11 +1,11 @@
 <template>
   <div class="py-[96px]">
-    <h2 class="text-[48px] font-medium mb-[48px]">Программа</h2>
+    <h2 class="text-[32px] sm:text-[48px] font-medium mb-[48px]">Программа</h2>
 
     <template v-for="(item, idx) in items" :key="item.id">
       <AppDivider class="mb-[40px]" :class="{ 'mt-[40px]': idx !== 0 }" />
       <div class="grid grid-cols-6 gap-[24px] mx-[48px]">
-        <h3 class="text-[28px] font-medium">
+        <h3 class="text-[20px] sm:text-[28px] font-medium">
           {{ item.title }}
         </h3>
 

@@ -7,11 +7,11 @@
     <div
       v-for="(item, idx) in items"
       :key="item.id"
-      class="grid grid-cols-3 border-y-[1px] border-black px-[28px] md:px-[48px] py-4 gap-16"
+      class="grid grid-cols-1 sm:grid-cols-3 border-y-[1px] border-black px-[28px] md:px-[48px] py-4 gap-4 sm:gap-16"
       :class="{ 'relative -top-[1px]': idx !== 0 }"
     >
       <div class="flex flex-col">
-        <p class="text-red-400 text-[36px] font-medium mb-[32px]">
+        <p class="text-red-400 text-[24px] sm:text-[36px] font-medium mb-[16px] sm:mb-[32px]">
           {{ item.title }}
         </p>
 

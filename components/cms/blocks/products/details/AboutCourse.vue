@@ -2,7 +2,7 @@
 
 <template>
   <div class="mb-[48px]">
-    <h2 class="text-[48px] font-medium">КАК УСТРОЕН КУРС</h2>
+    <h2 class="text-[32px] sm:text-[48px] font-medium">КАК УСТРОЕН КУРС</h2>
     <div
       v-for="(item, idx) in items"
       :key="item.id"
@@ -19,7 +19,7 @@
         </div>
 
         <div>
-          <h3 class="text-[28px] text-red-400 font-medium mb-[24px]">
+          <h3 class="text-[20px] sm:text-[28px] text-red-400 font-medium mb-[24px]">
             {{ item.title }}
           </h3>
           <p class="text-gray-400">
@@ -30,7 +30,7 @@
 
       <template v-else>
         <div>
-          <h3 class="text-[28px] text-red-400 font-medium mb-[24px]">
+          <h3 class="text-[20px] sm:text-[28px] text-red-400 font-medium mb-[24px]">
             {{ item.title }}
           </h3>
           <p class="text-gray-400">

@@ -31,11 +31,13 @@ export const useUserStore = defineStore('user', () => {
       }
   const user: Ref<FullUser> = ref(initialUser)
   const visitors: Ref<Visitor[]> = ref([])
+  const ordersByVisitors: Ref<Record<number, OrderItem>> = ref({})
 
   const visitorsOrders: Ref<VisitorOrders[]> = ref([])
 
   const workshops: Ref<OrderItem[]> = ref([])
   const orders: Ref<OrderItem[]> = ref([])
+  const workshopOrders: Ref<OrderItem[]> = ref([])
 
   const isLoggedIn = computed<boolean>(() => !!user.value.pk && !!getToken())
 
@@ -125,6 +127,21 @@ export const useUserStore = defineStore('user', () => {
     })),
   )
 
+  const getOrders = async () => {
+    orders.value = await HTTP.get(`/api/v2/orders/items/history/`)
+  }
+
+  const getOrdersByVisitors = async () => {
+    ordersByVisitors.value = (await Promise.all(visitors.value.map(async visitor => ({ id: visitor.id, orders: await HTTP.get(`/api/v2/orders/items/history/?visitor=${visitor.id}`) })))).reduce((acc, newOrder) => {
+      acc[newOrder.id] = newOrder.orders
+      return acc
+    }, {} as Record<number, any>)
+  }
+
+  const getWorkshopOrders = async () => {
+    workshopOrders.value = await HTTP.get(`/api/v2/orders/items/history/?product_page__product_type=Workshop`)
+  }
+
   return {
     user,
     setUser,
@@ -142,5 +159,10 @@ export const useUserStore = defineStore('user', () => {
     orders,
     updateUser,
     updateVisitor,
+    ordersByVisitors,
+    getOrdersByVisitors,
+    getOrders,
+    workshopOrders,
+    getWorkshopOrders,
   }
 })

@@ -1,9 +1,9 @@
 <template>
-  <div class="py-24 px-12 bg-brand-light-gray">
+  <div class="py-24 px-4 sm:px-12 bg-brand-light-gray">
     <h1 class="font-medium text-5xl mb-12 uppercase">Корзина</h1>
 
-    <div class="grid grid-cols-3 gap-[24px]">
-      <div class="col-span-2 flex flex-col gap-[24px]">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-[24px]">
+      <div class="sm:col-span-2 flex flex-col gap-[24px]">
         <div class="bg-white rounded-xl p-6">
           <h2 class="font-medium text-[24px] mb-[24px]">Постоянные курсы</h2>
 
@@ -141,7 +141,7 @@
         >
           <h2 class="font-medium text-[24px] mb-6">Платежные реквизиты</h2>
 
-          <div class="grid grid-cols-2 gap-[12px] mb-[12px]">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
             <AppInput v-model="additionalInfo.first_name" placeholder="Имя" />
             <AppInput
               v-model="additionalInfo.last_name"
@@ -149,17 +149,17 @@
             />
           </div>
 
-          <div class="grid grid-cols-2 gap-[12px] mb-[12px]">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
             <AppInput v-model="additionalInfo.country" placeholder="Страна" />
             <AppInput v-model="additionalInfo.city" placeholder="Город" />
           </div>
 
-          <div class="grid grid-cols-2 gap-[12px] mb-[12px]">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
             <AppInput v-model="additionalInfo.state" placeholder="Штат" />
             <AppInput v-model="additionalInfo.street" placeholder="Улица" />
           </div>
 
-          <div class="grid grid-cols-2 gap-[12px]">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px]">
             <AppInput
               v-model="additionalInfo.post_code"
               placeholder="Почтовый индекс"

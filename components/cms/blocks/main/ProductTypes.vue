@@ -4,7 +4,7 @@
       Unsere Kursangebote für Kinder und Jugendliche
     </h2>
 
-    <div class="grid grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
       <NuxtLink
         v-for="item in items"
         :key="item.id"
