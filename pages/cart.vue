@@ -1,11 +1,12 @@
 <template>
-  <div class="mt-[96px] mx-[48px]">
-    <h1 class="font-medium text-[48px]">Корзина</h1>
+  <div class="py-24 px-12 bg-brand-light-gray">
+    <h1 class="font-medium text-5xl mb-12 uppercase">Корзина</h1>
 
     <div class="grid grid-cols-3 gap-[24px]">
       <div class="col-span-2 flex flex-col gap-[24px]">
-        <div class="bg-white rounded-[12px] p-[24px]">
+        <div class="bg-white rounded-xl p-6">
           <h2 class="font-medium text-[24px] mb-[24px]">Постоянные курсы</h2>
+
           <template
             v-for="(course, idx) in cart?.order?.filter(
               item => item.product_page.product_type === 'Course',
@@ -24,8 +25,9 @@
               class="my-[24px]"
             />
           </template>
+
           <div
-            class="bg-orange-200 rounded-[12px] p-[16px] mt-[24px] flex justify-between items-center cursor-pointer"
+            class="bg-brand-light-gray rounded-xl text-brand-red p-[16px] mt-[24px] flex justify-between items-center cursor-pointer relative overflow-hidden"
             @click="navigateTo('/courses')"
           >
             <div class="flex flex-col">
@@ -33,19 +35,21 @@
               <p>Можно выбирать разные курсы</p>
             </div>
 
+            <img
+              src="/icons/products/book.svg"
+              alt="book"
+              class="absolute -translate-x-4 left-2/4 -top-10"
+            />
+
             <div
-              class="border-black border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
+              class="border-black rounded-lg text-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
             >
               Перейти в каталог
-              <img
-                src="/icons/arrow_short_right.svg"
-                alt="Arrow Right icon"
-              />
             </div>
           </div>
         </div>
 
-        <div class="bg-white rounded-[12px] p-[24px]">
+        <div class="bg-white rounded-xl p-6">
           <h2 class="font-medium text-[24px] mb-[24px]">Академии</h2>
           <template
             v-for="(course, idx) in cart?.order?.filter(
@@ -56,7 +60,7 @@
             <CartItem :order="course" />
             <AppDivider
               v-if="
-                cart?.order?.items?.filter &&
+                cart?.order?.filter &&
                 idx + 1 !==
                   cart?.order?.filter(
                     item => item?.product_page?.product_type === 'Academy',
@@ -66,7 +70,7 @@
             />
           </template>
           <div
-            class="bg-green-200 rounded-[12px] p-[16px] mt-[24px] flex justify-between items-center cursor-pointer"
+            class="bg-brand-light-gray rounded-xl text-brand-red p-[16px] mt-[24px] flex justify-between items-center cursor-pointer relative overflow-hidden"
             @click="navigateTo('/academies')"
           >
             <div class="flex flex-col">
@@ -74,19 +78,21 @@
               <p>Можно выбирать разные академии</p>
             </div>
 
+            <img
+              src="/icons/products/cap.svg"
+              alt="cap"
+              class="absolute translate-x-10 left-2/4 -top-5"
+            />
+
             <div
-              class="border-black border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
+              class="border-black rounded-lg text-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
             >
               Перейти в каталог
-              <img
-                src="/icons/arrow_short_right.svg"
-                alt="Arrow Right icon"
-              />
             </div>
           </div>
         </div>
 
-        <div class="bg-white rounded-[12px] p-[24px]">
+        <div class="bg-white rounded-xl p-6">
           <h2 class="font-medium text-[24px] mb-[24px]">Воркшопы</h2>
           <template
             v-for="(course, idx) in cart?.order?.filter(
@@ -107,42 +113,33 @@
             />
           </template>
           <div
-            class="bg-blue-200 rounded-[12px] p-[16px] mt-[24px] flex justify-between items-center cursor-pointer"
+            class="bg-brand-light-gray rounded-xl text-brand-red p-[16px] mt-[24px] flex justify-between items-center cursor-pointer relative overflow-hidden"
           >
             <div class="flex flex-col">
               <p>При выборе следующего воркшопа цена ниже</p>
               <p>Можно выбирать разные воркшопы</p>
             </div>
 
+            <img
+              src="/icons/products/scroll.svg"
+              alt="scroll"
+              class="absolute -translate-x-4 left-2/4 -bottom-5"
+            />
+
             <div
-              class="border-black border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
+              class="border-black rounded-lg text-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
               @click="navigateTo('/workshops')"
             >
               Перейти в каталог
-              <img
-                src="/icons/arrow_short_right.svg"
-                alt="Arrow Right icon"
-              />
             </div>
           </div>
         </div>
 
         <div
-          class="bg-white rounded-[12px] p-[24px] flex justify-between items-center"
+          v-if="cart?.order?.length"
+          class="bg-white rounded-[12px] p-[24px]"
         >
-          <h2 class="font-medium text-[24px]">
-            Вы вошли как
-            {{
-              cart.order.payer_first_name
-                ? `${cart.order.payer_first_name} ${cart.order.payer_last_name}`
-                : ''
-            }}
-          </h2>
-          <AppButton> Изменить </AppButton>
-        </div>
-
-        <div class="bg-white rounded-[12px] p-[24px]">
-          <h2 class="font-medium text-[24px]">Платежные реквизиты</h2>
+          <h2 class="font-medium text-[24px] mb-6">Платежные реквизиты</h2>
 
           <div class="grid grid-cols-2 gap-[12px] mb-[12px]">
             <AppInput v-model="additionalInfo.first_name" placeholder="Имя" />
@@ -174,10 +171,12 @@
           </div>
         </div>
 
-        <div class="bg-white rounded-[12px] p-[24px]">
-          <h2 class="font-medium text-[24px]">Способ оплаты</h2>
+        <div
+          v-if="cart?.order?.length"
+          class="bg-white rounded-[12px] p-[24px]"
+        >
+          <h2 class="font-medium text-[24px] mb-6">Способ оплаты</h2>
           <CartBuyOptions
-            class="mt-[24px]"
             :option="buyOption"
             @select-option="option => (buyOption = option)"
           />
@@ -186,7 +185,40 @@
 
       <div>
         <div class="bg-white rounded-[12px] p-[24px]">
-          <h2 class="font-medium text-[24px]">Подробности заказа</h2>
+          <h2 class="font-medium text-[24px] mb-4">Подробности заказа</h2>
+
+          <div v-if="cart?.order?.length > 0" class="flex flex-col gap-4">
+            <div class="flex justify-between gap-12">
+              <p>Рисование, Живопись, Лепка: Группы 5-7</p>
+              <p class="whitespace-nowrap">168,00 €</p>
+            </div>
+
+            <AppDivider />
+
+            <div class="flex justify-between gap-12">
+              <p>Анимационная Студия: Группы 8-11</p>
+              <p class="whitespace-nowrap">88,00 €</p>
+            </div>
+
+            <AppDivider />
+
+            <div class="flex flex-col gap-4">
+              <div class="flex justify-between gap-12">
+                <p class="font-bold">Разово</p>
+                <p class="whitespace-nowrap">0,00 €</p>
+              </div>
+
+              <div class="flex justify-between gap-12">
+                <p class="font-bold">Ежемесячно</p>
+                <p class="whitespace-nowrap">156,00 €</p>
+              </div>
+
+              <div class="flex justify-between gap-12">
+                <p class="font-bold">Сумма скидки</p>
+                <p class="whitespace-nowrap">-88,00 €</p>
+              </div>
+            </div>
+          </div>
 
           <template v-for="(item, idx) in cart.order.items" :key="item.id">
             <div class="flex justify-between gap-[24px]">
@@ -204,13 +236,27 @@
             />
           </template>
 
-          <AppInput
-            v-model="promocode"
-            placeholder="Введите промокод"
-            class="mt-[24px] w-full"
-            @blur="setPromocode"
-            @enter="setPromocode"
-          />
+          <div v-if="cart?.order?.length > 0">
+            <AppInput
+              v-model="promocode"
+              placeholder="Введите промокод"
+              class="mt-[24px] w-full"
+              :disabled="promocodeStatus === 'success'"
+              @blur="setPromocode"
+              @enter="setPromocode"
+            />
+
+            <p v-if="promocodeStatus === 'success'" class="text-brand-green">
+              Промокод успешно добавлен
+            </p>
+            <p v-if="promocodeStatus === 'fail'" class="text-brand-red">
+              Неверный промокод
+            </p>
+          </div>
+          <p v-else class="text-brand-gray mt-2">
+            Для оформления заказа, выберите в корзине товары, которые хотите
+            купить
+          </p>
 
           <p class="flex justify-between font-medium text-[24px] mt-[24px]">
             <span>Итого</span>
@@ -222,7 +268,11 @@
             }}</span>
           </p>
 
-          <AppButton class="mt-[24px] w-full" @click="fullfillOrder">
+          <AppButton
+            class="mt-[24px] w-full"
+            :disabled="!cart?.order?.length"
+            @click="fullfillOrder"
+          >
             Перейти к оплате
           </AppButton>
         </div>
@@ -245,8 +295,6 @@ const additionalInfo: Ref<AdditionalInfo> = ref({} as AdditionalInfo)
 
 const buyOption: Ref<'paypal' | 'stripe'> = ref('paypal')
 
-const promocode = ref('')
-
 const cart = useCartStore()
 
 await cart.getCurrentOrder()
@@ -260,8 +308,20 @@ const fullfillOrder = async () => {
     buyOption.value === 'paypal' ? urlObject.links[1] : urlObject.url
 }
 
+const promocode = ref('')
+const promocodeStatus = ref('empty')
 const setPromocode = async () => {
-  await cart.setPromocode(promocode.value)
-  promocode.value = ''
+  await cart
+    .setPromocode(promocode.value)
+    .then(() => {
+      promocodeStatus.value = 'success'
+    })
+    .catch(err => {
+      promocodeStatus.value = 'fail'
+      setTimeout(() => {
+        promocodeStatus.value = 'empty'
+      }, 2000)
+      console.error('Error adding a promocode: ', err)
+    })
 }
 </script>

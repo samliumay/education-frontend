@@ -1,6 +1,7 @@
 <template>
   <footer
     class="w-full p-[28px] md:p-[48px] flex flex-col gap-10 bg-brand-light-gray"
+    :class="{ 'bg-white': $route.name === 'cart' }"
   >
     <div class="flex justify-between gap-10 flex-col md:flex-row">
       <div class="flex flex-col gap-8 flex-wrap lg:gap-16 md:flex-row">
@@ -8,18 +9,18 @@
           <div class="flex flex-col gap-1">
             <p class="font-bold">Телефон</p>
             <div class="flex flex-col gap-1">
-              <a
-href="tel:+493071537477"
-class="text-brand-gray font-medium"
->+49 (0) 30 71537477</a>
-              <a
-href="tel:+493071537477"
-class="text-brand-gray font-medium"
->+49 (0) 30 71537477</a>
+              <a href="tel:+493071537477" class="text-brand-gray font-medium"
+                >+49 (0) 30 71537477</a
+              >
+              <a href="tel:+493071537477" class="text-brand-gray font-medium"
+                >+49 (0) 30 71537477</a
+              >
             </div>
           </div>
 
-          <a class="font-bold text-brand-red underline underline-offset-8">Контакты →</a>
+          <a class="font-bold text-brand-red underline underline-offset-8"
+            >Контакты →</a
+          >
         </div>
 
         <div class="flex flex-col justify-between gap-4">
@@ -31,7 +32,9 @@ class="text-brand-gray font-medium"
             </p>
           </div>
 
-          <a class="font-bold text-brand-red underline underline-offset-8">Смотреть на карте →</a>
+          <a class="font-bold text-brand-red underline underline-offset-8"
+            >Смотреть на карте →</a
+          >
         </div>
 
         <div class="flex flex-col gap-1">
@@ -39,7 +42,8 @@ class="text-brand-gray font-medium"
           <a
             class="text-brand-gray font-medium"
             href="mailto:info@clavis-schule.de"
-            >info@clavis-schule.de</a>
+            >info@clavis-schule.de</a
+          >
         </div>
       </div>
 
