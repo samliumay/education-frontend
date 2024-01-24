@@ -48,7 +48,7 @@
               :options="userStore.getVisitorOptions"
               :value="visitor"
               class="min-w-[200px] -mt-[10px] h-[20px]"
-              @update:value="el => (console.debug(el))"
+              @update:value="el => (visitor = el)"
             />
           </div>
         </div>
