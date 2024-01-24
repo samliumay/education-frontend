@@ -135,7 +135,10 @@
           </div>
         </div>
 
-        <div v-if="cart?.order?.length" class="bg-white rounded-[12px] p-[24px]">
+        <div
+          v-if="cart?.order?.length"
+          class="bg-white rounded-[12px] p-[24px]"
+        >
           <h2 class="font-medium text-[24px] mb-6">Платежные реквизиты</h2>
 
           <div class="grid grid-cols-2 gap-[12px] mb-[12px]">
@@ -182,7 +185,40 @@
 
       <div>
         <div class="bg-white rounded-[12px] p-[24px]">
-          <h2 class="font-medium text-[24px]">Подробности заказа</h2>
+          <h2 class="font-medium text-[24px] mb-4">Подробности заказа</h2>
+
+          <div v-if="cart?.order?.length > 0" class="flex flex-col gap-4">
+            <div class="flex justify-between gap-12">
+              <p>Рисование, Живопись, Лепка: Группы 5-7</p>
+              <p class="whitespace-nowrap">168,00 €</p>
+            </div>
+
+            <AppDivider />
+
+            <div class="flex justify-between gap-12">
+              <p>Анимационная Студия: Группы 8-11</p>
+              <p class="whitespace-nowrap">88,00 €</p>
+            </div>
+
+            <AppDivider />
+
+            <div class="flex flex-col gap-4">
+              <div class="flex justify-between gap-12">
+                <p class="font-bold">Разово</p>
+                <p class="whitespace-nowrap">0,00 €</p>
+              </div>
+
+              <div class="flex justify-between gap-12">
+                <p class="font-bold">Ежемесячно</p>
+                <p class="whitespace-nowrap">156,00 €</p>
+              </div>
+
+              <div class="flex justify-between gap-12">
+                <p class="font-bold">Сумма скидки</p>
+                <p class="whitespace-nowrap">-88,00 €</p>
+              </div>
+            </div>
+          </div>
 
           <template v-for="(item, idx) in cart.order.items" :key="item.id">
             <div class="flex justify-between gap-[24px]">
