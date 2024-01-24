@@ -199,8 +199,6 @@ user.visitorsOrders = user.visitors.map(visitor => ({
   orders: user.ordersByVisitors[visitor.id],
 }))
 
-console.log(user.visitorsOrders)
-
 const passwordChange = ref({
   current: '',
   new1: '',
