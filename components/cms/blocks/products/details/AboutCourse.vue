@@ -1,9 +1,10 @@
 <!-- eslint-disable vue/no-v-html -->
 
 <template>
-  <div class="mb-[48px]">
-    <h2 class="text-[48px] font-medium">КАК УСТРОЕН КУРС</h2>
-    <div
+  <div class="px-10">
+    <h2 class="text-5xl uppercase font-medium mb-12">Как устроен курс</h2>
+    <div class="text-xl" v-html="sanitizedDescription" />
+    <!-- <div
       v-for="(item, idx) in items"
       :key="item.id"
       class="grid grid-col-2"
@@ -46,13 +47,18 @@
           />
         </div>
       </template>
-    </div>
+    </div> -->
   </div>
 </template>
 <script setup lang="ts">
+import DOMPurify from 'dompurify'
+import { computed } from 'vue'
+
 import type { PageBlock } from '../../../../../types/cms'
 
-defineProps<{
-  items: PageBlock
+const props = defineProps<{
+  item: PageBlock
 }>()
+
+const sanitizedDescription = computed(() => DOMPurify.sanitize(props?.item?.description ?? '<p>Unknown</p>'))
 </script>

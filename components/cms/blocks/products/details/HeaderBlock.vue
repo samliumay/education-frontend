@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-[48px]">
+  <div class="flex flex-col gap-[48px] px-10">
     <div class="flex justify-between gap-4">
       <div class="flex flex-col justify-between gap-10">
         <div>

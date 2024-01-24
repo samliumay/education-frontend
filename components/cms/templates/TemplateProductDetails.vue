@@ -2,13 +2,13 @@
   <div v-if="pending" class="my-20 flex justify-center">
     <AppLoader />
   </div>
-  <div v-else class="flex flex-col gap-12 mx-10">
+  <div v-else class="flex flex-col gap-20">
     <AppSignIn
       :is-open="isOpen"
       @close="isOpen = false"
     />
 
-    <n-breadcrumb class="mt-6 mb-10">
+    <n-breadcrumb class="mt-6 mb-10 px-10">
       <n-breadcrumb-item сlass="text-brand-gray">
         <NuxtLink to="/">Главная</NuxtLink>
       </n-breadcrumb-item>
@@ -31,7 +31,7 @@
       <ErrorBoundaryBlock />
 
       <ErrorBoundaryBlock />
-      <AboutCourse v-if="!pending" :items="aboutCourseItems" />
+      <AboutCourse v-if="!pending" :item="item" />
     </ErrorBoundaryBlock>
 
     <ErrorBoundaryBlock>
@@ -154,7 +154,7 @@ const paymentOptionsItems = [
       'Опция 2 тарифа Базовый',
       // Добавьте другие опции
     ],
-    price: '100 ₽/мес',
+    price: 'от 88,00 € / месяц',
   },
   {
     id: 'tariff-2',
@@ -171,7 +171,7 @@ const paymentOptionsItems = [
       'Опция 2 тарифа Профессиональный',
       // Добавьте другие опции
     ],
-    price: '200 ₽/мес',
+    price: '168 € / единоразово',
   },
   // Добавьте больше объектов тарифов, если это необходимо
 ]
@@ -179,7 +179,7 @@ const paymentOptionsItems = [
 const programItems = [
   {
     id: 'program-1',
-    title: 'Сессия 1',
+    title: '1. Lorem ipsum dolor sit amet',
     title_img: {
       meta: {
         download_url:
@@ -191,7 +191,7 @@ const programItems = [
   },
   {
     id: 'program-2',
-    title: 'Сессия 2',
+    title: '2. Lorem ipsum dolor sit amet',
     title_img: {
       meta: {
         download_url:
@@ -200,6 +200,18 @@ const programItems = [
       title: 'Изображение Сессии 2', // Замените на описание изображения
     },
     description: 'Описание Сессии 2 - детали сессии, спикеры, темы и т.д.',
+  },
+  {
+    id: 'program-3',
+    title: '3. Lorem ipsum dolor sit amet',
+    title_img: {
+      meta: {
+        download_url:
+          'https://media.istockphoto.com/id/1395605908/photo/aerial-top-down-amazing-lake-of-round-shape-cloudy-sky-reflected-in-clear-turquoise-water-of.jpg?s=2048x2048&w=is&k=20&c=w2wemF4apqxpqHucYy3SlQCUwW0rW1dU6rL-GcWA1b4=', // Замените на актуальный URL изображения
+      },
+      title: 'Изображение Сессии 3', // Замените на описание изображения
+    },
+    description: 'Описание Сессии 3 - детали сессии, спикеры, темы и т.д.',
   },
 ]
 
