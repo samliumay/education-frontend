@@ -1,5 +1,5 @@
 <template>
-  <h1 class="mt-[96px] text-[48px] font-medium">Преподаватели</h1>
+  <h1 class="mt-[96px] text-[32px] sm:text-[48px] font-medium">Преподаватели</h1>
 
   <div class="mt-[48px] grid grid-cols-3 gap-[24px]">
     <InstructorBlock

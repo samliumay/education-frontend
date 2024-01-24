@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-2 gap-[96px] my-[96px] mx-[48px]">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-[96px] my-[96px] mx-[48px]">
     <div>
       <p class="text-[24px] font-medium mb-[16px]">Вы выбрали</p>
       <BuyProductCard :product="product" />
@@ -13,7 +13,7 @@
     </div>
 
     <div>
-      <h2 class="text-[48px] font-medium mb-[36px]">Заполните данные</h2>
+      <h2 class="text-[32px] sm:text-[48px] font-medium mb-[36px]">Заполните данные</h2>
 
       <GetChildData
         :child="buyForm.visitor"

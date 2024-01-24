@@ -3,7 +3,7 @@
     <Loader />
   </div>
   <div class="flex flex-col gap-2 relative">
-    <div class="flex gap-9">
+    <div class="flex flex-col sm:flex-row gap-[12px] sm:gap-[36px]">
       <button
         v-show="!deletingProduct"
         class="transition ease-in delay-100 transform active:scale-[0.93] absolute right-0 top-0"
@@ -15,7 +15,6 @@
           class="w-[20px] h-[20px]"
         />
       </button>
-
       <Cover
         v-if="!loadingProduct"
         class="w-4/12"

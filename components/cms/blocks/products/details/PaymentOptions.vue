@@ -1,6 +1,6 @@
 <template>
   <div class="mx-[48px] py-[96px]">
-    <h2 class="text-[48px] font-medium">Тарифы</h2>
+    <h2 class="text-[32px] sm:text-[48px] font-medium">Тарифы</h2>
 
     <div
       class="grid gap-[24px] mt-[48px]"
@@ -17,7 +17,7 @@
             :alt="item.icon_img.title"
             class="w-[100px]"
           />
-          <h3 class="text-[28px] font-medium ml-[20px]">
+          <h3 class="text-[20px] sm:text-[28px] font-medium ml-[20px]">
             {{ item.title }}
           </h3>
         </div>

@@ -1,13 +1,13 @@
 <template>
   <div class="mx-[28px] md:mx-[48px] flex flex-col items-center">
-    <h2 class="text-[48px] mb-[48px] font-medium">Social Media</h2>
+    <h2 class="text-[32px] sm:text-[48px] mb-[48px] font-medium">Social Media</h2>
 
     <div class="flex flex-col gap-2">
-      <div class="flex gap-5 h-[260px]">
+      <div class="flex flex-col sm:flex-row gap-5 sm:h-[260px]">
         <NuxtLink
           to="https://www.tiktok.com"
           target="_blank"
-          class="flex gap-25 justify-between w-7/12 rounded-lg border-2 border-brand-dark-gray px-5 hover:bg-brand-light-gray cursor-pointer"
+          class="flex gap-25 py-2 sm:py-0 justify-between sm:w-7/12 rounded-lg border-2 border-brand-dark-gray px-5 hover:bg-brand-light-gray cursor-pointer"
         >
           <div class="flex flex-col justify-center gap-4 w-6/12">
             <div
@@ -42,7 +42,7 @@
         <NuxtLink
           to="https://www.facebook.com/ClavisSchool"
           target="_blank"
-          class="flex gap-5 justify-between w-5/12 rounded-lg border-2 border-brand-dark-gray px-5 hover:bg-brand-light-gray cursor-pointer"
+          class="flex gap-5 py-2 sm:py-0 justify-between sm:w-5/12 rounded-lg border-2 border-brand-dark-gray px-5 hover:bg-brand-light-gray cursor-pointer"
         >
           <div class="flex flex-col justify-center gap-4 w-6/12">
             <div class="w-fit h-fit">
@@ -77,11 +77,11 @@
         </NuxtLink>
       </div>
 
-      <div class="flex gap-2 h-[260px]">
+      <div class="flex flex-col sm:flex-row gap-2 sm:h-[260px]">
         <NuxtLink
           target="_blank"
           to="https://www.instagram.com/clavis_schule/"
-          class="flex gap-5 justify-between w-5/12 rounded-lg border-2 border-brand-dark-gray px-5 hover:bg-brand-light-gray cursor-pointer"
+          class="flex gap-5 py-2 sm:py-0 justify-between sm:w-5/12 rounded-lg border-2 border-brand-dark-gray px-5 hover:bg-brand-light-gray cursor-pointer"
         >
           <div class="flex flex-col justify-center gap-4 w-6/12">
             <a
@@ -123,7 +123,7 @@
         <NuxtLink
           target="_blank"
           to="https://www.youtube.com/@ClavisSchuleBerlin"
-          class="flex gap-5 justify-between w-7/12 rounded-lg border-2 border-brand-dark-gray px-5 hover:bg-brand-light-gray cursor-pointer"
+          class="flex gap-5 py-2 sm:py-0 justify-between sm:w-7/12 rounded-lg border-2 border-brand-dark-gray px-5 hover:bg-brand-light-gray cursor-pointer"
         >
           <div class="flex flex-col justify-center gap-4 w-6/12">
             <a

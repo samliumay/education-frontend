@@ -1,7 +1,7 @@
 <template>
   <div class="grid grid-cols-2 gap-[24px] px-[48px] min-h-[200px]">
     <div class="relative">
-      <h2 class="text-[48px] font-medium mr-[36px]">О курсе</h2>
+      <h2 class="text-[32px] sm:text-[48px] font-medium mr-[36px]">О курсе</h2>
       <img
         src="/icons/products/line_pen.svg"
         alt="Pen"

@@ -17,7 +17,7 @@
         <div>
           <div class="flex items-start gap-[6px]">
             <CourseIcon />
-            <h2 class="font-medium text-[36px]">
+            <h2 class="font-medium text-[24px] sm:text-[36px]">
               Рисование, Живопись, Лепка: Группы 5-7
             </h2>
           </div>
@@ -35,7 +35,7 @@
         </div>
 
         <div>
-          <h1 class="font-medium text-[48px] mb-[36px]">Заполните данные</h1>
+          <h1 class="font-medium text-[32px] sm:text-[48px] mb-[36px]">Заполните данные</h1>
 
           <div class="grid grid-cols-2 gap-[12px]">
             <AppInput

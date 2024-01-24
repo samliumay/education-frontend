@@ -1,9 +1,9 @@
 <template>
   <div class="mx-[28px] md:mx-[48px]">
-    <h2 class="text-[48px] mb-[48px] font-medium">UNSERE ANGEBOTE</h2>
+    <h2 class="text-[32px] sm:text-[48px] mb-[48px] font-medium">UNSERE ANGEBOTE</h2>
 
     <div
-      class="mb-[64px] rounded-[12px] bg-brand-light-gray grid grid-cols-3 gap-[24px] p-[8px]"
+      class="mb-[64px] rounded-[12px] bg-brand-light-gray grid grid-cols-1 sm:grid-cols-3 gap-[24px] p-[8px]"
     >
       <button
         v-for="option in catalogueOptions"
@@ -17,7 +17,7 @@
     </div>
 
     <template v-if="items.length > 0">
-      <div class="grid grid-cols-3 gap-x-[24px] gap-y-[64px]">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-[24px] gap-y-[64px]">
         <div>
           <ProductCard
             v-for="item in items"
