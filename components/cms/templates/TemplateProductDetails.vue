@@ -2,7 +2,7 @@
   <div v-if="pending" class="my-20 flex justify-center">
     <AppLoader />
   </div>
-  <div v-else class="flex flex-col gap-20">
+  <main v-else class="flex flex-col gap-2 mb-10">
     <AppSignIn :is-open="isOpen" @close="isOpen = false" />
 
     <n-breadcrumb class="mt-6 mb-10 px-10">
@@ -10,47 +10,33 @@
         <NuxtLink to="/">Главная</NuxtLink>
       </n-breadcrumb-item>
       <n-breadcrumb-item сlass="text-brand-gray">
-        <NuxtLink to="/academies">{{ item?.product_type }}</NuxtLink>
+        <NuxtLink :to="catalogPath">{{ product?.product_type }}</NuxtLink>
       </n-breadcrumb-item>
       <n-breadcrumb-item сlass="text-brand-gray">
-        {{ item?.name }}
+        {{ product?.name }}
       </n-breadcrumb-item>
     </n-breadcrumb>
 
-    <ErrorBoundaryBlock>
-      <HeaderBlock
-        v-if="!pending"
-        :item="item"
-        :type="item?.product_type?.toLocaleLowerCase()"
-      >
-        <AppButton @click="handleSignIn"> Купить продукт </AppButton>
-      </HeaderBlock>
-      <ErrorBoundaryBlock />
+    <div class="flex flex-col gap-10">
+      <ErrorBoundaryBlock>
+        <HeaderBlock
+          v-if="!pending"
+          :block-data="product"
+          :type="product?.product_type?.toLocaleLowerCase()"
+        >
+          <AppButton @click="handleSignIn">Купить продукт</AppButton>
+        </HeaderBlock>
+      </ErrorBoundaryBlock>
 
-      <ErrorBoundaryBlock />
-      <AboutCourse v-if="!pending" :item="item.body" />
-    </ErrorBoundaryBlock>
-
-    <ErrorBoundaryBlock>
-      <PaymentOptions v-if="!pending" :items="item.purchase_options" />
-    </ErrorBoundaryBlock>
-
-    <ErrorBoundaryBlock>
-      <CourseProgram v-if="!pending" :items="item.program" />
-    </ErrorBoundaryBlock>
-
-    <ErrorBoundaryBlock>
-      <AboutTutors v-if="!pending" :items="mockTutorsItems" />
-    </ErrorBoundaryBlock>
-
-    <ErrorBoundaryBlock>
-      <StudentWorks v-if="!pending" :items="item.student_works" />
-    </ErrorBoundaryBlock>
-
-    <ErrorBoundaryBlock>
-      <QuestionsAnswers v-if="!pending" :items="item.qna" />
-    </ErrorBoundaryBlock>
-  </div>
+      <ErrorBoundaryBlock v-for="(block, index) in blocksList" :key="index">
+        <component
+          :is="block.name"
+          v-if="checkIsEmpty(block.blockData)"
+          :block-data="block.blockData"
+        />
+      </ErrorBoundaryBlock>
+    </div>
+  </main>
 </template>
 <script setup lang="ts">
 import { NBreadcrumb, NBreadcrumbItem } from 'naive-ui'
@@ -58,6 +44,7 @@ import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 import { useUserStore } from '../../../store/user'
+import { checkIsEmpty } from '../../../utils/checkIsEmpty'
 import AppButton from '../../AppButton.vue'
 import AppLoader from '../../AppLoader.vue'
 import AppSignIn from '../../AppSignIn.vue'
@@ -70,31 +57,10 @@ import PaymentOptions from '../blocks/products/details/PaymentOptions.vue'
 import QuestionsAnswers from '../blocks/products/details/QuestionsAnswers.vue'
 import StudentWorks from '../blocks/products/details/StudentWorks.vue'
 
+// Init template
 const props = defineProps<{
   head?: { title: string; description: string }
 }>()
-
-const isOpen = ref(false)
-
-const route = useRoute()
-
-const userStore = useUserStore()
-
-const handleSignIn = () => {
-  if (!userStore.isLoggedIn) {
-    isOpen.value = true
-  } else {
-    navigateTo(`/product/buy/${route.params.id}`)
-  }
-}
-
-// API
-const { data: item, pending } = await useFetch(
-  `https://api.clavis.the-o.co/api/v2/wagtail/products/${route.params.id}/?fields=*`,
-  { deep: true },
-)
-
-console.debug('ITEM', item)
 
 const head = computed(() => props.head)
 useHead({
@@ -113,115 +79,42 @@ useHead({
   ],
 })
 
-const aboutCourseItems = [
-  {
-    id: '1',
-    title_img: {
-      meta: {
-        download_url:
-          'https://media.istockphoto.com/id/1395605908/photo/aerial-top-down-amazing-lake-of-round-shape-cloudy-sky-reflected-in-clear-turquoise-water-of.jpg?s=2048x2048&w=is&k=20&c=w2wemF4apqxpqHucYy3SlQCUwW0rW1dU6rL-GcWA1b4=',
-      },
-      title: 'Image 1',
-    },
-    title: 'Уделяем внимание каждому ученику',
-    description:
-      'Занятия проходят в просторной студии с интересными предметами и работами художников. Окружающая среда и дружеское общение дают возможность молодым художникам развиваться',
-  },
-  {
-    id: '2',
-    title_img: {
-      meta: {
-        download_url:
-          'https://media.istockphoto.com/id/1395605908/photo/aerial-top-down-amazing-lake-of-round-shape-cloudy-sky-reflected-in-clear-turquoise-water-of.jpg?s=2048x2048&w=is&k=20&c=w2wemF4apqxpqHucYy3SlQCUwW0rW1dU6rL-GcWA1b4=',
-      },
-      title: 'Image 2',
-    },
-    title: 'Уделяем внимание каждому ученику',
-    description:
-      'Занятия проходят в просторной студии с интересными предметами и работами художников. Окружающая среда и дружеское общение дают возможность молодым художникам развиваться',
-  },
-]
+// Flags
+const isOpen = ref(false)
 
-const paymentOptionsItems = [
-  {
-    id: 'tariff-1',
-    icon_img: {
-      meta: {
-        download_url:
-          'https://media.istockphoto.com/id/1395605908/photo/aerial-top-down-amazing-lake-of-round-shape-cloudy-sky-reflected-in-clear-turquoise-water-of.jpg?s=2048x2048&w=is&k=20&c=w2wemF4apqxpqHucYy3SlQCUwW0rW1dU6rL-GcWA1b4=', // Замените на актуальный URL иконки
-      },
-      title: 'Иконка тарифа 1', // Замените на описание иконки
-    },
-    title: 'Базовый',
-    options: [
-      'Опция 1 тарифа Базовый',
-      'Опция 2 тарифа Базовый',
-      // Добавьте другие опции
-    ],
-    price: 'от 88,00 € / месяц',
-  },
-  {
-    id: 'tariff-2',
-    icon_img: {
-      meta: {
-        download_url:
-          'https://media.istockphoto.com/id/1395605908/photo/aerial-top-down-amazing-lake-of-round-shape-cloudy-sky-reflected-in-clear-turquoise-water-of.jpg?s=2048x2048&w=is&k=20&c=w2wemF4apqxpqHucYy3SlQCUwW0rW1dU6rL-GcWA1b4=', // Замените на актуальный URL иконки
-      },
-      title: 'Иконка тарифа 2', // Замените на описание иконки
-    },
-    title: 'Профессиональный',
-    options: [
-      'Опция 1 тарифа Профессиональный',
-      'Опция 2 тарифа Профессиональный',
-      // Добавьте другие опции
-    ],
-    price: '168 € / единоразово',
-  },
-  // Добавьте больше объектов тарифов, если это необходимо
-]
+// Store
+const route = useRoute()
+const userStore = useUserStore()
 
-const programItems = [
-  {
-    id: 'program-1',
-    title: '1. Lorem ipsum dolor sit amet',
-    title_img: {
-      meta: {
-        download_url:
-          'https://media.istockphoto.com/id/1395605908/photo/aerial-top-down-amazing-lake-of-round-shape-cloudy-sky-reflected-in-clear-turquoise-water-of.jpg?s=2048x2048&w=is&k=20&c=w2wemF4apqxpqHucYy3SlQCUwW0rW1dU6rL-GcWA1b4=', // Замените на актуальный URL изображения
-      },
-      title: 'Изображение Сессии 1', // Замените на описание изображения
-    },
-    description:
-      'Занятия проходят в просторной студии с интересными предметами и работами художников. Окружающая среда и дружеское общение дают возможность молодым художникам развиваться',
-  },
-  {
-    id: 'program-2',
-    title: '2. Lorem ipsum dolor sit amet',
-    title_img: {
-      meta: {
-        download_url:
-          'https://media.istockphoto.com/id/1395605908/photo/aerial-top-down-amazing-lake-of-round-shape-cloudy-sky-reflected-in-clear-turquoise-water-of.jpg?s=2048x2048&w=is&k=20&c=w2wemF4apqxpqHucYy3SlQCUwW0rW1dU6rL-GcWA1b4=', // Замените на актуальный URL изображения
-      },
-      title: 'Изображение Сессии 2', // Замените на описание изображения
-    },
-    description:
-      'Занятия проходят в просторной студии с интересными предметами и работами художников. Окружающая среда и дружеское общение дают возможность молодым художникам развиваться',
-  },
-  {
-    id: 'program-3',
-    title: '3. Lorem ipsum dolor sit amet',
-    title_img: {
-      meta: {
-        download_url:
-          'https://media.istockphoto.com/id/1395605908/photo/aerial-top-down-amazing-lake-of-round-shape-cloudy-sky-reflected-in-clear-turquoise-water-of.jpg?s=2048x2048&w=is&k=20&c=w2wemF4apqxpqHucYy3SlQCUwW0rW1dU6rL-GcWA1b4=', // Замените на актуальный URL изображения
-      },
-      title: 'Изображение Сессии 3', // Замените на описание изображения
-    },
-    description:
-      'Занятия проходят в просторной студии с интересными предметами и работами художников. Окружающая среда и дружеское общение дают возможность молодым художникам развиваться',
-  },
-]
+// API
+const { data: product, pending } = await useFetch(
+  `https://api.clavis.the-o.co/api/v2/wagtail/products/${route.params.id}/?fields=*`,
+  { deep: true },
+)
 
+console.debug('ITEM', product)
+
+// Actions
+const handleSignIn = () => {
+  if (!userStore.isLoggedIn) {
+    isOpen.value = true
+  } else {
+    navigateTo(`/product/buy/${route.params.id}`)
+  }
+}
+
+const catalogPath = computed(() => {
+  switch (String(product.value?.product_type).toLocaleLowerCase()) {
+    case 'course':
+      return '/courses'
+    case 'academy':
+      return '/academies'
+    default:
+      return '/workshops'
+  }
+})
+
+// Mock items
 const mockTutorsItems = [
   {
     id: 'tutor-1',
@@ -251,18 +144,13 @@ const mockTutorsItems = [
   },
 ]
 
-const mockQAItems = [
-  {
-    id: 'qa-1',
-    title: 'Как начать обучение?',
-    description:
-      'Для начала обучения вам необходимо зарегистрироваться на нашем сайте, выбрать интересующий курс и пройти вступительное тестирование.',
-  },
-  {
-    id: 'qa-2',
-    title: 'Какие формы оплаты вы принимаете?',
-    description:
-      'Мы принимаем оплату через банковские карты, электронные кошельки и другие популярные платежные системы.',
-  },
-]
+// Components for render
+const blocksList = computed(() => [
+  { name: AboutCourse, blockData: product.value?.body },
+  { name: PaymentOptions, blockData: product.value?.purchase_options },
+  { name: CourseProgram, blockData: product.value?.program },
+  { name: AboutTutors, blockData: mockTutorsItems },
+  { name: StudentWorks, blockData: product.value?.student_works },
+  { name: QuestionsAnswers, blockData: product.value?.qna },
+])
 </script>

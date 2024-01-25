@@ -13,13 +13,15 @@ import type { PageBlock } from '../../../../../types/cms'
 import RichText from '../../misc/RichText.vue'
 
 const props = defineProps<{
-  item: PageBlock
+  blockData: PageBlock
 }>()
 
+console.debug("PROPS:", props)
+
 const title = computed(
-  () => props?.item?.find(item => item?.type === 'heading')?.value,
+  () => props?.blockData?.find(item => item?.type === 'heading')?.value,
 )
 const paragraph = computed(
-  () => props?.item?.find(item => item?.type === 'paragraph')?.value,
+  () => props?.blockData?.find(item => item?.type === 'paragraph')?.value,
 )
 </script>

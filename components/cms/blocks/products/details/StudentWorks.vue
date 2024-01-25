@@ -1,3 +1,5 @@
+<!-- eslint-disable vue/no-static-inline-styles -->
+
 <template>
   <div class="mx-10 student-works">
     <h2 class="text-5xl uppercase font-medium mb-12">Работы учеников</h2>
@@ -9,7 +11,7 @@
       show-arrow
     >
       <n-carousel-item
-        v-for="item in items"
+        v-for="item in blockData"
         :key="item.id"
         style="width: fit-content"
       >
@@ -66,7 +68,7 @@ import type { PageBlock } from '../../../../../types/cms'
 import ImageBlock from '../../misc/ImageBlock.vue'
 
 defineProps<{
-  items: PageBlock[]
+  blockData: PageBlock[]
 }>()
 </script>
 <style>

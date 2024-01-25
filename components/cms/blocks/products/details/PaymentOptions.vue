@@ -2,9 +2,9 @@
   <div class="bg-brand-light-gray py-16 px-10">
     <h2 class="text-5xl uppercase font-medium mb-12">Тарифы</h2>
 
-    <div class="grid gap-[24px]" :class="`grid-cols-${items?.length}`">
+    <div class="grid gap-[24px]" :class="`grid-cols-${blockData?.length}`">
       <div
-        v-for="item in items"
+        v-for="item in blockData"
         :key="item.id"
         class="bg-white p-[36px] rounded-xl border-brand-dark-gray border-[1px]"
       >
@@ -39,7 +39,7 @@ import Button from '../../../../AppButton.vue'
 import ImageBlock from '../../misc/ImageBlock.vue'
 
 defineProps<{
-  items: PageBlock[]
+  blockData: PageBlock[]
 }>()
 </script>
 <style scoped>

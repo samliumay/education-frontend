@@ -6,11 +6,11 @@
     </h2>
 
     <AccordionPanel
-      v-for="(item, idx) in items"
+      v-for="(item, idx) in blockData"
       :key="item.id"
       :title="item.question"
       :description="item.answer"
-      :class="{ 'mb-[32px]': idx + 1 !== items.length }"
+      :class="{ 'mb-[32px]': idx + 1 !== blockData.length }"
     />
   </div>
 </template>
@@ -19,6 +19,6 @@ import type { PageBlock } from '../../../../../types/cms'
 import AccordionPanel from '../../misc/AccordionPanel.vue'
 
 defineProps<{
-  items: PageBlock[]
+  blockData: PageBlock[]
 }>()
 </script>
