@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-10">
+  <div class="mx-10 student-works">
     <h2 class="text-5xl uppercase font-medium mb-12">Работы учеников</h2>
     <n-carousel
       :space-between="10"
@@ -8,86 +8,38 @@
       draggable
       show-arrow
     >
-      <n-carousel-item style="width: 30%">
-        <img
-          alt="carousel"
-          class="w-full object-cover h-[440px] rounded-xl"
-          src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel1.jpeg"
-        />
-      </n-carousel-item>
-      <n-carousel-item style="width: 20%">
-        <img
-          alt="carousel"
-          class="w-full object-cover h-[440px] rounded-xl"
-          src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel2.jpeg"
-        />
-      </n-carousel-item>
-      <n-carousel-item style="width: 30%">
-        <img
-          alt="carousel"
-          class="w-full object-cover h-[440px] rounded-xl"
-          src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel3.jpeg"
-        />
-      </n-carousel-item>
-      <n-carousel-item style="width: 40%">
-        <img
-          alt="carousel"
-          class="w-full object-cover h-[440px] rounded-xl"
-          src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel4.jpeg"
-        />
-      </n-carousel-item>
-      <n-carousel-item style="width: 30%">
-        <img
-          alt="carousel"
-          class="w-full object-cover h-[440px] rounded-xl"
-          src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel1.jpeg"
-        />
-      </n-carousel-item>
-      <n-carousel-item style="width: 20%">
-        <img
-          alt="carousel"
-          class="w-full object-cover h-[440px] rounded-xl"
-          src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel2.jpeg"
-        />
-      </n-carousel-item>
-      <n-carousel-item style="width: 30%">
-        <img
-          alt="carousel"
-          class="w-full object-cover h-[440px] rounded-xl"
-          src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel3.jpeg"
-        />
-      </n-carousel-item>
-      <n-carousel-item style="width: 40%">
-        <img
-          alt="carousel"
-          class="w-full object-cover h-[440px] rounded-xl"
-          src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel4.jpeg"
-        />
+      <n-carousel-item
+        v-for="item in items"
+        :key="item.id"
+        style="width: fit-content"
+      >
+        <ImageBlock :image="item.icon" class="h-[300px] rounded-xl overflow-hidden" />
+        <p class="mt-1">{{ item.name }}</p>
       </n-carousel-item>
 
       <template #arrow="{ prev, next }">
-        <div
-          class="w-full h-full absolute top-0 left-0 z-10 flex flex-col gap-2 justify-end items-center pb-14"
-        >
-          <div
-            class="absolute flex h-full w-full top-0 left-0 justify-between items-center z-30 px-4"
-          >
+        <div class="w-full h-full absolute top-0 left-0">
+          <div class="absolute right-0 -top-14 flex gap-4">
             <button
               type="button"
-              class="cursor-pointer px-2 transition ease-in delay-100 transform active:scale-[0.93]"
+              class="student-work__arrow-button cursor-pointer p-2 bg-brand-light-gray hover:bg-brand-yellow rounded-full transition ease-in delay-100 transform active:scale-[0.93]"
               @click="prev"
             >
-              <img src="/icons/chevron_left_white.svg" alt="Arrow" />
+              <img
+                src="/icons/chevron_down.svg"
+                alt="Arrow"
+                class="transform rotate-90 transition ease-in delay-100 active:scale-[0.93]"
+              />
             </button>
             <button
               type="button"
-              class="cursor-pointer px-2 transition ease-in delay-100 transform active:scale-[0.93]"
+              class="student-work__arrow-button cursor-pointer p-2 bg-brand-light-gray hover:bg-brand-yellow rounded-full transition ease-in delay-100 transform active:scale-[0.93]"
               @click="next"
             >
               <img
-                src="/icons/chevron_left_white.svg"
+                src="/icons/chevron_down.svg"
                 alt="Arrow"
-                class="transform rotate-180"
+                class="transform -rotate-90 transition ease-in delay-100 active:scale-[0.93]"
               />
             </button>
           </div>
@@ -95,7 +47,7 @@
       </template>
 
       <template #dots="{ total, currentIndex, to }">
-        <ul class="custom-dots">
+        <ul class="hidden">
           <li
             v-for="index of total"
             :key="index"
@@ -110,37 +62,19 @@
 <script setup lang="ts">
 import { NCarousel, NCarouselItem } from 'naive-ui'
 
-// import type { PageBlock } from '../../../../../types/cms'
+import type { PageBlock } from '../../../../../types/cms'
+import ImageBlock from '../../misc/ImageBlock.vue'
 
-// defineProps<{
-//   items: PageBlock[]
-// }>()
+defineProps<{
+  items: PageBlock[]
+}>()
 </script>
-<style scoped>
-.custom-dots {
-  display: flex;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
+<style>
+.student-works .n-carousel {
+  overflow: visible;
 }
 
-.custom-dots li {
-  display: inline-block;
-  width: 12px;
-  height: 4px;
-  margin: 0 3px;
-  border-radius: 4px;
-  background-color: rgba(255, 255, 255, 0.4);
-  transition:
-    width 0.3s,
-    background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-}
-
-.custom-dots li.is-active {
-  width: 40px;
-  background: #fff;
+.student-work__arrow-button:hover > img {
+  filter: brightness(0.1);
 }
 </style>

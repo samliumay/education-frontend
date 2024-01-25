@@ -44,7 +44,7 @@
     </ErrorBoundaryBlock>
 
     <ErrorBoundaryBlock>
-      <StudentWorks v-if="!pending" />
+      <StudentWorks v-if="!pending" :items="item.student_works" />
     </ErrorBoundaryBlock>
 
     <ErrorBoundaryBlock>
