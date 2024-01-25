@@ -2,23 +2,16 @@
   <div class="bg-brand-light-gray py-16 px-10">
     <h2 class="text-5xl uppercase font-medium mb-12">Тарифы</h2>
 
-    <div
-      class="grid gap-[24px]"
-      :class="`grid-cols-${items.length}`"
-    >
+    <div class="grid gap-[24px]" :class="`grid-cols-${items?.length}`">
       <div
         v-for="item in items"
         :key="item.id"
         class="bg-white p-[36px] rounded-xl border-brand-dark-gray border-[1px]"
       >
         <div class="flex items-center">
-          <img
-            :src="item.icon_img.meta.download_url"
-            :alt="item.icon_img.title"
-            class="w-[64px] h-[64px]"
-          />
+          <ImageBlock :image="item?.icon_img" class="w-[64px] h-[64px]" />
           <h3 class="text-[20px] sm:text-[28px] font-medium ml-[20px]">
-            {{ item.title }}
+            {{ item.schedule_type }}
           </h3>
         </div>
 
@@ -33,15 +26,17 @@
           </li>
         </ul>
 
-        <p class="text-[20px] font-medium">
-          {{ item.price }}
-        </p>
+        <p class="text-[20px] font-medium mb-10">{{ item.base_price }} €</p>
+
+        <Button class="w-full ">Забронировать</Button>
       </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
 import type { PageBlock } from '../../../../../types/cms'
+import Button from '../../../../AppButton.vue'
+import ImageBlock from '../../misc/ImageBlock.vue'
 
 defineProps<{
   items: PageBlock[]

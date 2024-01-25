@@ -28,15 +28,15 @@
       <ErrorBoundaryBlock />
 
       <ErrorBoundaryBlock />
-      <AboutCourse v-if="!pending" :item="item" />
+      <AboutCourse v-if="!pending" :item="item.body" />
     </ErrorBoundaryBlock>
 
     <ErrorBoundaryBlock>
-      <PaymentOptions v-if="!pending" :items="paymentOptionsItems" />
+      <PaymentOptions v-if="!pending" :items="item.purchase_options" />
     </ErrorBoundaryBlock>
 
     <ErrorBoundaryBlock>
-      <CourseProgram v-if="!pending" :items="programItems" />
+      <CourseProgram v-if="!pending" :items="item.program" />
     </ErrorBoundaryBlock>
 
     <ErrorBoundaryBlock>

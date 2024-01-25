@@ -2,7 +2,7 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
   <div
-    class="rich-text text-gray-400 mt-[24px] mx-10"
+    class="rich-text text-gray-400"
     v-html="sanitizedDescription"
   />
 </template>

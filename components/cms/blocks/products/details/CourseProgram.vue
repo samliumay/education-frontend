@@ -9,14 +9,13 @@
           {{ item.title }}
         </h3>
 
-        <img
-          :src="item.title_img.meta.download_url"
-          :alt="item.title_img.title"
+        <ImageBlock
+          :image="item.icon"
           class="w-[160px] translate-y-1.5"
         />
 
         <p class="text-gray-400">
-          {{ item.description }}
+          {{ item.text }}
         </p>
       </div>
     </template>
@@ -25,6 +24,7 @@
 <script setup lang="ts">
 import type { PageBlock } from '../../../../../types/cms'
 import AppDivider from '../../../../AppDivider.vue'
+import ImageBlock from '../../misc/ImageBlock.vue'
 
 defineProps<{
   items: PageBlock[]

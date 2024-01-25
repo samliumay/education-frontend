@@ -10,7 +10,7 @@
     </div>
 
     <n-collapse-transition :show="isOpened">
-      <RichText :html="description" />
+      <RichText :html="description" class="mt-[24px] mx-10" />
     </n-collapse-transition>
   </n-space>
 </template>
