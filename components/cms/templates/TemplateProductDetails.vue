@@ -3,10 +3,7 @@
     <AppLoader />
   </div>
   <div v-else class="flex flex-col gap-20">
-    <AppSignIn
-      :is-open="isOpen"
-      @close="isOpen = false"
-    />
+    <AppSignIn :is-open="isOpen" @close="isOpen = false" />
 
     <n-breadcrumb class="mt-6 mb-10 px-10">
       <n-breadcrumb-item сlass="text-brand-gray">
@@ -47,7 +44,11 @@
     </ErrorBoundaryBlock>
 
     <ErrorBoundaryBlock>
-      <QuestionsAnswersVue v-if="!pending" :items="mockQAItems" />
+      <StudentWorks v-if="!pending" />
+    </ErrorBoundaryBlock>
+
+    <ErrorBoundaryBlock>
+      <QuestionsAnswers v-if="!pending" :items="item.qna" />
     </ErrorBoundaryBlock>
   </div>
 </template>
@@ -66,7 +67,8 @@ import AboutTutors from '../blocks/products/details/AboutTutors.vue'
 import CourseProgram from '../blocks/products/details/CourseProgram.vue'
 import HeaderBlock from '../blocks/products/details/HeaderBlock.vue'
 import PaymentOptions from '../blocks/products/details/PaymentOptions.vue'
-import QuestionsAnswersVue from '../blocks/products/details/QuestionsAnswers.vue'
+import QuestionsAnswers from '../blocks/products/details/QuestionsAnswers.vue'
+import StudentWorks from '../blocks/products/details/StudentWorks.vue'
 
 const props = defineProps<{
   head?: { title: string; description: string }
@@ -91,6 +93,8 @@ const { data: item, pending } = await useFetch(
   `https://api.clavis.the-o.co/api/v2/wagtail/products/${route.params.id}/?fields=*`,
   { deep: true },
 )
+
+console.debug('ITEM', item)
 
 const head = computed(() => props.head)
 useHead({
@@ -187,7 +191,8 @@ const programItems = [
       },
       title: 'Изображение Сессии 1', // Замените на описание изображения
     },
-    description: 'Описание Сессии 1 - детали сессии, спикеры, темы и т.д.',
+    description:
+      'Занятия проходят в просторной студии с интересными предметами и работами художников. Окружающая среда и дружеское общение дают возможность молодым художникам развиваться',
   },
   {
     id: 'program-2',
@@ -199,7 +204,8 @@ const programItems = [
       },
       title: 'Изображение Сессии 2', // Замените на описание изображения
     },
-    description: 'Описание Сессии 2 - детали сессии, спикеры, темы и т.д.',
+    description:
+      'Занятия проходят в просторной студии с интересными предметами и работами художников. Окружающая среда и дружеское общение дают возможность молодым художникам развиваться',
   },
   {
     id: 'program-3',
@@ -211,7 +217,8 @@ const programItems = [
       },
       title: 'Изображение Сессии 3', // Замените на описание изображения
     },
-    description: 'Описание Сессии 3 - детали сессии, спикеры, темы и т.д.',
+    description:
+      'Занятия проходят в просторной студии с интересными предметами и работами художников. Окружающая среда и дружеское общение дают возможность молодым художникам развиваться',
   },
 ]
 
@@ -248,12 +255,14 @@ const mockQAItems = [
   {
     id: 'qa-1',
     title: 'Как начать обучение?',
-    description: 'Для начала обучения вам необходимо зарегистрироваться на нашем сайте, выбрать интересующий курс и пройти вступительное тестирование.',
+    description:
+      'Для начала обучения вам необходимо зарегистрироваться на нашем сайте, выбрать интересующий курс и пройти вступительное тестирование.',
   },
   {
     id: 'qa-2',
     title: 'Какие формы оплаты вы принимаете?',
-    description: 'Мы принимаем оплату через банковские карты, электронные кошельки и другие популярные платежные системы.',
+    description:
+      'Мы принимаем оплату через банковские карты, электронные кошельки и другие популярные платежные системы.',
   },
 ]
 </script>
