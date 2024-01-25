@@ -1,11 +1,11 @@
 <template>
   <div class="bg-white rounded-[12px] flex gap-[16px] flex-col">
     <div class="aspect-video rounded-[12px] overflow-hidden">
-      <Cover :image-title="product?.background_image" :image-background="product?.title_image" />
+      <Cover :image-title="product?.title_image" :image-background="product?.background_image" />
     </div>
 
     <div class="flex flex-col gap-[16px]">
-      <h1 class="text-[24px] font-medium">
+      <h1 class="text-2xl font-medium">
         {{ product.name }}
       </h1>
 

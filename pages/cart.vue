@@ -7,42 +7,32 @@
         <div class="bg-white rounded-xl p-6">
           <h2 class="font-medium text-[24px] mb-[24px]">Постоянные курсы</h2>
 
-          <template
-            v-for="(course, idx) in cart?.order?.filter(
-              item => item.product_page.product_type === 'Course',
-            ) || []"
-            :key="course.id"
-          >
+          <template v-for="(course, idx) in courseProducts" :key="course.id">
             <CartItem :order="course" />
             <AppDivider
-              v-if="
-                cart?.order?.filter &&
-                idx + 1 !==
-                  cart.order?.filter(
-                    item => item?.product_page?.product_type === 'Course',
-                  ).length
-              "
+              v-if="cart?.order?.filter && idx + 1 !== courseProducts.length"
               class="my-[24px]"
             />
           </template>
+          <EmptyCart v-if="!courseProducts.length" />
 
           <div
             class="bg-brand-light-gray rounded-xl text-brand-red p-[16px] mt-[24px] flex justify-between items-center cursor-pointer relative overflow-hidden"
             @click="navigateTo('/courses')"
           >
-            <div class="flex flex-col">
-              <p>При выборе следующего курса цена ниже</p>
-              <p>Можно выбирать разные курсы</p>
-            </div>
-
             <img
               src="/icons/products/book.svg"
               alt="book"
               class="absolute -translate-x-4 left-2/4 -top-10"
             />
 
+            <div class="relative flex flex-col">
+              <p>При выборе следующего курса цена ниже</p>
+              <p>Можно выбирать разные курсы</p>
+            </div>
+
             <div
-              class="border-black rounded-lg text-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
+              class="relative border-black rounded-lg text-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
             >
               Перейти в каталог
             </div>
@@ -51,41 +41,31 @@
 
         <div class="bg-white rounded-xl p-6">
           <h2 class="font-medium text-[24px] mb-[24px]">Академии</h2>
-          <template
-            v-for="(course, idx) in cart?.order?.filter(
-              item => item?.product_page?.product_type === 'Academy',
-            ) || []"
-            :key="course.id"
-          >
+          <template v-for="(course, idx) in academyProducts" :key="course.id">
             <CartItem :order="course" />
             <AppDivider
-              v-if="
-                cart?.order?.filter &&
-                idx + 1 !==
-                  cart?.order?.filter(
-                    item => item?.product_page?.product_type === 'Academy',
-                  ).length
-              "
+              v-if="cart?.order?.filter && idx + 1 !== academyProducts.length"
               class="my-[24px]"
             />
           </template>
+          <EmptyCart v-if="!academyProducts.length" />
           <div
             class="bg-brand-light-gray rounded-xl text-brand-red p-[16px] mt-[24px] flex justify-between items-center cursor-pointer relative overflow-hidden"
             @click="navigateTo('/academies')"
           >
-            <div class="flex flex-col">
-              <p>При выборе следующей академии цена ниже</p>
-              <p>Можно выбирать разные академии</p>
-            </div>
-
             <img
               src="/icons/products/cap.svg"
               alt="cap"
               class="absolute translate-x-10 left-2/4 -top-5"
             />
 
+            <div class="flex flex-col relative">
+              <p>При выборе следующей академии цена ниже</p>
+              <p>Можно выбирать разные академии</p>
+            </div>
+
             <div
-              class="border-black rounded-lg text-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
+              class="relative border-black rounded-lg text-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
             >
               Перейти в каталог
             </div>
@@ -94,40 +74,30 @@
 
         <div class="bg-white rounded-xl p-6">
           <h2 class="font-medium text-[24px] mb-[24px]">Воркшопы</h2>
-          <template
-            v-for="(course, idx) in cart?.order?.filter(
-              item => item?.product_page?.product_type === 'Workshop',
-            ) || []"
-            :key="course.id"
-          >
+          <template v-for="(course, idx) in workshopProducts" :key="course.id">
             <CartItem :order="course" />
             <AppDivider
-              v-if="
-                cart?.order?.filter &&
-                idx + 1 !==
-                  cart?.order?.filter(
-                    item => item?.product_page?.product_type === 'Workshop',
-                  ).length
-              "
+              v-if="cart?.order?.filter && idx + 1 !== workshopProducts.length"
               class="my-[24px]"
             />
           </template>
+          <EmptyCart v-if="!workshopProducts.length" />
           <div
             class="bg-brand-light-gray rounded-xl text-brand-red p-[16px] mt-[24px] flex justify-between items-center cursor-pointer relative overflow-hidden"
           >
-            <div class="flex flex-col">
-              <p>При выборе следующего воркшопа цена ниже</p>
-              <p>Можно выбирать разные воркшопы</p>
-            </div>
-
             <img
               src="/icons/products/scroll.svg"
               alt="scroll"
               class="absolute -translate-x-4 left-2/4 -bottom-5"
             />
 
+            <div class="relative flex flex-col">
+              <p>При выборе следующего воркшопа цена ниже</p>
+              <p>Можно выбирать разные воркшопы</p>
+            </div>
+
             <div
-              class="border-black rounded-lg text-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
+              class="relative border-black rounded-lg text-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
               @click="navigateTo('/workshops')"
             >
               Перейти в каталог
@@ -288,6 +258,7 @@ import AppDivider from '../components/AppDivider.vue'
 import AppInput from '../components/AppInput.vue'
 import CartBuyOptions from '../components/cart/CartBuyOptions.vue'
 import CartItem from '../components/cart/CartItem.vue'
+import EmptyCart from '../components/cart/EmptyCart.vue'
 import { useCartStore } from '../store/cart'
 import type { AdditionalInfo } from '../types'
 
@@ -296,7 +267,6 @@ const additionalInfo: Ref<AdditionalInfo> = ref({} as AdditionalInfo)
 const buyOption: Ref<'paypal' | 'stripe'> = ref('paypal')
 
 const cart = useCartStore()
-
 await cart.getCurrentOrder()
 
 const fullfillOrder = async () => {
@@ -324,4 +294,24 @@ const setPromocode = async () => {
       console.error('Error adding a promocode: ', err)
     })
 }
+
+// Products
+const courseProducts = computed(
+  () =>
+    cart?.order?.filter(item => item.product_page.product_type === 'Course') ||
+    [],
+)
+const academyProducts = computed(
+  () =>
+    cart?.order?.filter(item => item.product_page.product_type === 'Academy') ||
+    [],
+)
+const workshopProducts = computed(
+  () =>
+    cart?.order?.filter(
+      item =>
+        item.product_page.product_type === 'Workshop' ||
+        item.product_page.product_type === 'Event',
+    ) || [],
+)
 </script>

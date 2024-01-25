@@ -18,8 +18,8 @@
       <Cover
         v-if="!loadingProduct"
         class="w-4/12"
-        :image-title="product?.background_image"
-        :image-background="product?.title_image"
+        :image-title="product?.title_image"
+        :image-background="product?.background_image"
       />
 
       <div class="flex flex-col gap-[16px] w-6/12">
