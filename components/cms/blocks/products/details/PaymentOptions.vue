@@ -9,7 +9,7 @@
         class="bg-white p-[36px] rounded-xl border-brand-dark-gray border-[1px]"
       >
         <div class="flex items-center">
-          <ImageBlock :image="item?.icon_img" class="w-[64px] h-[64px]" />
+          <ImageBlock :image="item?.icon" class="w-[64px] h-[64px]" />
           <h3 class="text-[20px] sm:text-[28px] font-medium ml-[20px]">
             {{ item.schedule_type }}
           </h3>
@@ -17,12 +17,12 @@
 
         <ul class="mt-[32px] mb-[48px] pl-6">
           <li
-            v-for="(option, idx) in item.options"
-            :key="option"
+            v-for="(option, idx) in item.bullet_points"
+            :key="option.id"
             class="text-brand-gray pl-2"
             :class="{ 'mb-[12px]': idx + 1 !== item.options?.length }"
           >
-            <p class="transform -translate-y-[3px]">{{ option }}</p>
+            <p class="transform -translate-y-[3px]">{{ option.value }}</p>
           </li>
         </ul>
 

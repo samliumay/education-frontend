@@ -181,7 +181,7 @@
 </template>
 <script setup lang="ts">
 import { NTabPane, NTabs } from 'naive-ui'
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 import AppButtonVue from '../components/AppButton.vue'
@@ -213,13 +213,9 @@ const passwordChange = ref({
 })
 
 const activeTab = ref('profile')
-watch(activeTab, () => {
-  console.debug('ACTIVE TAB', activeTab.value)
-})
 
 // Live hooks
 onMounted(() => {
-  console.debug('route', route)
   if (route.query.tab) {
     activeTab.value = route.query.tab as string
   }

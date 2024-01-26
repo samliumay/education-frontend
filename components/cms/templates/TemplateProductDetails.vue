@@ -112,42 +112,12 @@ const catalogPath = computed(() => {
   }
 })
 
-// Mock items
-const mockTutorsItems = [
-  {
-    id: 'tutor-1',
-    first_name: 'Иван',
-    last_name: 'Иванов',
-    category: 'Математика',
-    title_img: {
-      meta: {
-        download_url:
-          'https://plus.unsplash.com/premium_photo-1663011158241-9b03859902df?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      },
-      title: 'Иван Иванов',
-    },
-  },
-  {
-    id: 'tutor-2',
-    first_name: 'Мария',
-    last_name: 'Петрова',
-    category: 'Физика',
-    title_img: {
-      meta: {
-        download_url:
-          'https://images.unsplash.com/photo-1597570889212-97f48e632dad?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      },
-      title: 'Мария Петрова',
-    },
-  },
-]
-
 // Components for render
 const blocksList = computed(() => [
   { name: AboutCourse, blockData: product.value?.body },
   { name: PaymentOptions, blockData: product.value?.purchase_options },
   { name: CourseProgram, blockData: product.value?.program },
-  { name: AboutTutors, blockData: mockTutorsItems },
+  { name: AboutTutors, blockData: product.value?.instructors },
   { name: StudentWorks, blockData: product.value?.student_works },
   { name: QuestionsAnswers, blockData: product.value?.qna },
 ])
