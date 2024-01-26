@@ -152,7 +152,7 @@ const login = async () => {
 
 const signUp = async () => {
   await userStore
-    .register(signUpCredentials.value.email, signUpCredentials.value.password1, signUpCredentials.value.password2)
+    .register(signUpCredentials.value)
     .catch(err => {
       if (Object.keys(err).length !== 0) {
         error.value = 'Кажется что-то пошло не так'

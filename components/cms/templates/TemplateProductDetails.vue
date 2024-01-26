@@ -17,7 +17,7 @@
       </n-breadcrumb-item>
     </n-breadcrumb>
 
-    <div class="flex flex-col">
+    <div class="flex flex-col gap-10">
       <ErrorBoundaryBlock>
         <HeaderBlock
           v-if="!pending"
