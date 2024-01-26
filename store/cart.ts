@@ -9,7 +9,7 @@ export const useCartStore = defineStore('cart', () => {
   const order = ref<Order>({} as Order)
 
   const getCurrentOrder = async () => {
-    order.value = await HTTP.get('/api/v2/orders/items')
+    order.value = await HTTP.get('/api/v2/orders/current/')
     isDataLoading.value = false
   }
 
