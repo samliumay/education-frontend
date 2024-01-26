@@ -177,12 +177,20 @@
             <h2 class="font-medium text-2xl mb-4">Подробности заказа</h2>
 
             <template v-for="(item, idx) in cart.order.items" :key="item.id">
-              <div class="flex justify-between gap-[24px]">
-                <span>
+              <div class="flex justify-between gap-[24px] mb-2">
+                <span class="font-medium">
                   {{ item.product_page?.name }}
                 </span>
                 <span>
                   {{ `${item.calculated_price} €` }}
+                </span>
+              </div>
+              <div class="flex justify-between gap-[24px]">
+                <span class="font-medium">
+                  Сумма скидки
+                </span>
+                <span>
+                  {{ `${item?.discount_amount} €` }}
                 </span>
               </div>
 
@@ -255,6 +263,8 @@ const buyOption: Ref<'paypal' | 'stripe'> = ref('paypal')
 
 const cart = useCartStore()
 await cart.getCurrentOrder()
+
+console.debug('Cart:', cart)
 
 const fullfillOrder = async () => {
   const urlObject = await cart.fulfillOrder(
