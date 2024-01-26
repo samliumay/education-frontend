@@ -22,10 +22,6 @@
         >
           {{ catalog?.name ?? 'Catalog' }}
         </h1>
-        <ImageBlock
-          :image="catalog?.icon"
-          class="w-[60px] md:w-[80px] h-[60px]"
-        />
       </div>
 
       <slot name="filters" :filters="filters" />
@@ -59,7 +55,6 @@ import { NBreadcrumb, NBreadcrumbItem } from 'naive-ui'
 import { computed } from 'vue'
 
 import AppLoader from '../../AppLoader.vue'
-import ImageBlock from '../blocks/misc/ImageBlock.vue'
 import PageConstructor from '../PageConstructor.vue'
 
 const props = defineProps<{

@@ -129,7 +129,7 @@
             :checked="buyForm.schedule_type === 'Academy (full day)'"
             value="full"
             name="when"
-            @change="buyForm.schedule_type === 'Academy (full day)'"
+            @change="buyForm.schedule_type = 'Academy (full day)'"
           >
             <div class="flex flex-col gap-[4px]">
               <p class="font-medium">Полный день</p>
