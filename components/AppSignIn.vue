@@ -137,6 +137,8 @@ const options = [
 const close = () => {
   setTimeout(() => {
     step.value = LoginSteps.Options
+    credentials.value.email = ''
+    credentials.value.password = ''
   }, 250)
   emit('close')
 }

@@ -2,9 +2,14 @@
   <AppSignIn :is-open="isOpenSignIn" @close="isOpenSignIn = false" />
 
   <header
-    class="before:font-medium bg-white px-10 py-[18px] lg:px-[40px] lg:py-[28px] relative"
+    class="relative before:font-medium bg-white px-10 py-[18px] lg:px-[40px] lg:py-[28px]"
     :class="{ '!bg-brand-light-gray': $route.name === 'menu' }"
   >
+    <ProfileMenu
+      :is-open="isOpenModalProfile"
+      @close="isOpenModalProfile = false"
+    />
+
     <!-- DESKTOP HEADER -->
     <div class="w-full justify-between gap-[48px] hidden lg:flex">
       <div class="flex items-center gap-6">
@@ -76,7 +81,7 @@
         <button
           v-if="user.isLoggedIn"
           class="bg-white rounded-full w-[50px] h-[50px] min-h-[50px] min-w-[50px] overflow-hidden border-black border-[1px]"
-          @click="navigateTo('/profile')"
+          @click="isOpenModalProfile = true"
         >
           <img
             src="/icons/profile.svg"
@@ -127,9 +132,16 @@
           <NuxtLink to="/cart">
             <img src="/icons/cart.svg" alt="Cart" />
           </NuxtLink>
-          <NuxtLink to="/profile" class="bg-white rounded-full w-[30px] h-[30px] min-h-[30px] min-w-[30px] overflow-hidden border-black border-[1px]">
-            <img src="/icons/profile.svg" alt="Profile" class="w-[30px] h-[30px]" />
-          </NuxtLink>
+          <button
+            class="bg-white rounded-full w-[30px] h-[30px] min-h-[30px] min-w-[30px] overflow-hidden border-black border-[1px]"
+            @click="isOpenModalProfile = true"
+          >
+            <img
+              src="/icons/profile.svg"
+              alt="Profile"
+              class="w-[30px] h-[30px]"
+            />
+          </button>
         </template>
 
         <button v-else @click="isOpenSignIn = true">
@@ -146,6 +158,7 @@ import { useCartStore } from '../../store/cart'
 import { useUserStore } from '../../store/user'
 import AppButton from '../AppButton.vue'
 import AppSelect from '../AppSelect.vue'
+import ProfileMenu from '../profile/ProfileMenu.vue'
 
 const routes = [
   {
@@ -162,12 +175,14 @@ const routes = [
   },
 ]
 
+// Stores
 const user = useUserStore()
 const cart = useCartStore()
-
 cart.getCurrentOrder()
 
+// Flags
 const isOpenSignIn = ref(false)
+const isOpenModalProfile = ref(false)
 
 // Language Switcher
 const currentLanguage = ref('ru')
@@ -185,4 +200,6 @@ const languageOptions = [
     value: 'de',
   },
 ]
+
+// Actions
 </script>

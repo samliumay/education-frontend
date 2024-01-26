@@ -2,7 +2,7 @@
   <div class="pt-[96px] px-[16px] sm:px-[48px] bg-[#EAEAEA]">
     <h1 class="text-[32px] sm:text-[48px] font-medium">Личный кабинет</h1>
 
-    <n-tabs type="line" animated>
+    <n-tabs v-model:value="activeTab" type="line" animated>
       <n-tab-pane name="profile" tab="Мой профиль">
         <div
           class="mt-[48px] grid grid-cols-1 sm:grid-cols-2 gap-[24px] bg-white rounded-[12px] p-[36px]"
@@ -123,7 +123,10 @@
           </div>
 
           <div class="flex justify-end mt-[24px] w-full sm:w-auto">
-            <AppButtonVue class="w-full" @click="user.updateVisitor(visitor.id, visitor)">
+            <AppButtonVue
+              class="w-full"
+              @click="user.updateVisitor(visitor.id, visitor)"
+            >
               Сохранить
             </AppButtonVue>
           </div>
@@ -137,7 +140,9 @@
         <div
           class="flex flex-col gap-[12px] bg-white p-[36px] rounded-[12px] mt-[48px] mb-[24px] overflow-x-auto"
         >
-          <div class="grid grid-cols-4 gap-[12px] font-medium p-[16px] min-w-[800px]">
+          <div
+            class="grid grid-cols-4 gap-[12px] font-medium p-[16px] min-w-[800px]"
+          >
             <p>Название</p>
             <p>Расписание</p>
             <p>Дата покупки</p>
@@ -176,7 +181,8 @@
 </template>
 <script setup lang="ts">
 import { NTabPane, NTabs } from 'naive-ui'
-import { ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 
 import AppButtonVue from '../components/AppButton.vue'
 import AppDivider from '../components/AppDivider.vue'
@@ -184,14 +190,14 @@ import AppInputVue from '../components/AppInput.vue'
 import ProductsTable from '../components/profile/ProductsTable.vue'
 import { useUserStore } from '../store/user'
 
+// Init hooks
+const route = useRoute()
+
+// Store
 const user = useUserStore()
-
 await user.getVisitors()
-
 await user.getOrdersByVisitors()
-
 await user.getOrders()
-
 await user.getWorkshopOrders()
 
 user.visitorsOrders = user.visitors.map(visitor => ({
@@ -199,9 +205,23 @@ user.visitorsOrders = user.visitors.map(visitor => ({
   orders: user.ordersByVisitors[visitor.id],
 }))
 
+// Refs
 const passwordChange = ref({
   current: '',
   new1: '',
   new2: '',
+})
+
+const activeTab = ref('profile')
+watch(activeTab, () => {
+  console.debug('ACTIVE TAB', activeTab.value)
+})
+
+// Live hooks
+onMounted(() => {
+  console.debug('route', route)
+  if (route.query.tab) {
+    activeTab.value = route.query.tab as string
+  }
 })
 </script>
