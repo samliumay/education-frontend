@@ -68,7 +68,7 @@
             <span
               class="absolute w-full h-full flex items-center justify-center top-0 left-0"
             >
-              {{ cart?.order?.length || 0 }}
+              {{ cart?.order?.items?.length || 0 }}
             </span>
           </span>
         </NuxtLink>

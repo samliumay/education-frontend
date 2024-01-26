@@ -15,6 +15,18 @@ export const languageOptions = [
     label: 'Немецкий',
     value: 'de',
   },
+  {
+    label: 'Русский/Английский',
+    value: 'ru-en',
+  },
+  {
+    label: 'Немецкий/Английский',
+    value: 'de-en',
+  },
+  {
+    label: 'Немецкий/Русский',
+    value: 'de-ru',
+  },
 ]
 
 export const ageOptions = [
