@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col gap-[48px] px-10">
-    <div class="flex justify-between gap-4">
+    <div class="flex justify-between gap-4 mr-12">
       <div class="flex flex-col justify-between gap-10">
         <div>
           <TagsBlock :tags="[blockData.current_status]" />
@@ -99,10 +99,8 @@ import CategoryBlock from '../../../../misc/CategoryBlock.vue'
 import TagsBlock from '../../../../misc/TagsBlock.vue'
 import Cover from '../../misc/Cover.vue'
 
-const props = defineProps<{
+defineProps<{
   blockData: PageBlock & { product: Product }
   type: ProductType
 }>()
-
-console.debug('HeaderBlock', props.blockData)
 </script>

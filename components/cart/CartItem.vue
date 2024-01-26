@@ -45,8 +45,8 @@
             <AppSelect
               placeholder="Выберите ребенка"
               :options="userStore.getVisitorOptions"
-              :value="visitor"
-              class="min-w-[200px] -mt-[10px] h-[20px]"
+              :value="order.visitor.id"
+              class="min-w-[200px]"
               @update:value="el => (visitor = el)"
             />
           </div>

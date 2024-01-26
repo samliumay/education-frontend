@@ -176,46 +176,10 @@
           <div class="bg-white rounded-[12px] p-[24px]">
             <h2 class="font-medium text-2xl mb-4">Подробности заказа</h2>
 
-            <div
-              v-if="cart?.order?.items?.length > 0"
-              class="flex flex-col gap-4"
-            >
-              <div class="flex justify-between gap-12">
-                <p>Рисование, Живопись, Лепка: Группы 5-7</p>
-                <p class="whitespace-nowrap">168,00 €</p>
-              </div>
-
-              <AppDivider />
-
-              <div class="flex justify-between gap-12">
-                <p>Анимационная Студия: Группы 8-11</p>
-                <p class="whitespace-nowrap">88,00 €</p>
-              </div>
-
-              <AppDivider />
-
-              <div class="flex flex-col gap-4">
-                <div class="flex justify-between gap-12">
-                  <p class="font-bold">Разово</p>
-                  <p class="whitespace-nowrap">0,00 €</p>
-                </div>
-
-                <div class="flex justify-between gap-12">
-                  <p class="font-bold">Ежемесячно</p>
-                  <p class="whitespace-nowrap">156,00 €</p>
-                </div>
-
-                <div class="flex justify-between gap-12">
-                  <p class="font-bold">Сумма скидки</p>
-                  <p class="whitespace-nowrap">-88,00 €</p>
-                </div>
-              </div>
-            </div>
-
             <template v-for="(item, idx) in cart.order.items" :key="item.id">
               <div class="flex justify-between gap-[24px]">
                 <span>
-                  {{ item.product?.name }}
+                  {{ item.product_page?.name }}
                 </span>
                 <span>
                   {{ `${item.calculated_price} €` }}

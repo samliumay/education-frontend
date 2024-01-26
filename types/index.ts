@@ -126,6 +126,7 @@ export enum LoginSteps {
   Options,
   Email,
   RestorePassword,
+  SignUp,
 }
 
 export type OrderItem = {

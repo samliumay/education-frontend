@@ -11,7 +11,7 @@
 
     <div class="w-full h-[520px] rounded-lg overflow-hidden">
       <iframe
-        src="https://www.youtube.com/embed/Wn8wvis-fVk?si=t9xg8mHBYed_1-yL"
+        src="https://www.youtube.com/embed/hEQThgfXT30?si=-94Sr6GHaCJJSMX5"
         title="YouTube video player"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

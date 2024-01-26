@@ -207,7 +207,7 @@ const productCatalogsItems = []
 const textImageItems = {
   quote_img: {
     meta: {
-      download_url: '/media/images/photo_2024-01-16_15-49-41.original.jpg',
+      download_url: '/media/images/men.original.jpg',
     },
     title: 'Quote Image',
   },
@@ -229,7 +229,7 @@ const textImageItems = {
 const secondTextImageItems = {
   quote_img: {
     meta: {
-      download_url: '/media/images/photo_2024-01-16_15-55-46.original.jpg',
+      download_url: '/media/images/men.original.jpg',
     },
     title: 'Quote Image',
   },

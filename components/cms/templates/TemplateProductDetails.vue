@@ -3,7 +3,7 @@
     <AppLoader />
   </div>
   <main v-else class="flex flex-col gap-2 mb-10">
-    <AppSignIn :is-open="isOpen" @close="isOpen = false" />
+    <AppSignIn :is-open="isOpen" @close="isOpen = false" @next="navigateTo(`/product/buy/${route.params.id}`)" />
 
     <n-breadcrumb class="mt-6 mb-10 px-10">
       <n-breadcrumb-item сlass="text-brand-gray">
@@ -17,7 +17,7 @@
       </n-breadcrumb-item>
     </n-breadcrumb>
 
-    <div class="flex flex-col gap-10">
+    <div class="flex flex-col">
       <ErrorBoundaryBlock>
         <HeaderBlock
           v-if="!pending"
