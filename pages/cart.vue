@@ -27,7 +27,7 @@
               <img
                 src="/icons/products/boxes.svg"
                 alt="book"
-                class="absolute -translate-x-4 left-2/4 -top-10"
+                class="absolute translate-x-12 left-2/4 -top-8"
               />
 
               <div class="relative flex flex-col">
@@ -63,9 +63,9 @@
               @click="navigateTo('/academies')"
             >
               <img
-                src="/icons/products/cap.svg"
-                alt="cap"
-                class="absolute translate-x-10 left-2/4 -top-5"
+                src="/icons/products/star.svg"
+                alt="star"
+                class="absolute -translate-x-10 left-2/4 -top-6"
               />
 
               <div class="flex flex-col relative">
@@ -104,8 +104,8 @@
             >
               <img
                 src="/icons/products/mountain.svg"
-                alt="scroll"
-                class="absolute -translate-x-4 left-2/4 -bottom-5"
+                alt="mountain"
+                class="absolute translate-x-12 left-2/4 -bottom-5"
               />
 
               <div class="relative flex flex-col">
@@ -174,7 +174,7 @@
       <ErrorBoundaryBlock>
         <div>
           <div class="bg-white rounded-[12px] p-[24px]">
-            <h2 class="font-medium text-[24px] mb-4">Подробности заказа</h2>
+            <h2 class="font-medium text-2xl mb-4">Подробности заказа</h2>
 
             <div
               v-if="cart?.order?.items?.length > 0"
@@ -274,7 +274,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { type Ref, ref } from 'vue'
+import { computed, type Ref, ref } from 'vue'
 
 import AppButton from '../components/AppButton.vue'
 import AppDivider from '../components/AppDivider.vue'
