@@ -1,5 +1,5 @@
 <template>
-  <div v-if="catalogLoading" class="mx-[28px] md:mx-[48px] py-20">
+  <div v-if="catalogsGroupPending" class="mx-[28px] md:mx-[48px] py-20">
     <AppLoader />
   </div>
 
@@ -17,7 +17,9 @@
       class="flex justify-between items-start mx-[28px] md:mx-[48px] flex-col xl:flex-row xl:items-center gap-5"
     >
       <div class="flex items-center gap-[18px]">
-        <h1 class="text-[38px] md:text-[32px] sm:text-[48px] font-medium uppercase">
+        <h1
+          class="text-[38px] md:text-[32px] sm:text-[48px] font-medium uppercase"
+        >
           {{ catalog?.name ?? 'Catalog' }}
         </h1>
         <ImageBlock
@@ -29,9 +31,7 @@
       <slot name="filters" :filters="filters" />
     </div>
 
-    <div
-      class="mt-[48px] mx-[48px] flex flex-col gap-2"
-    >
+    <div class="mt-[48px] mx-[48px] flex flex-col gap-2">
       <PageConstructor
         v-if="!productsPending"
         :blocks="products?.items ?? []"
@@ -116,21 +116,7 @@ const { data: catalogsGroup, pending: catalogsGroupPending } =
   await useAsyncData(`${api.value.type}_catalog_group`, () =>
     $fetch(`${address}/catalog/?type=${api.value.type}`),
   )
-
-const { data: catalog, pending: catalogPending } = await useAsyncData(
-  `${api.value.type}_catalog`,
-  () =>
-    $fetch(
-      `${address}/catalog/${catalogsGroup.value?.items[0]?.id ?? 1}/?type=${
-        api.value.type
-      }`,
-    ),
-  { watch: [catalogsGroup] },
-)
-
-const catalogLoading = computed(
-  () => catalogPending.value && catalogsGroupPending.value,
-)
+const catalog = computed(() => catalogsGroup.value?.items?.[0])
 
 // Products Cards
 const { data: products, pending: productsPending } = await useAsyncData(

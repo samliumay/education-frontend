@@ -1,22 +1,21 @@
 <template>
-  <div class="py-[96px]">
-    <h2 class="text-[32px] sm:text-[48px] font-medium mb-[48px]">Программа</h2>
+  <div>
+    <h2 class="text-5xl uppercase font-medium mb-12 px-10">Программа</h2>
 
-    <template v-for="(item, idx) in items" :key="item.id">
+    <template v-for="(item, idx) in blockData" :key="item.id">
       <AppDivider class="mb-[40px]" :class="{ 'mt-[40px]': idx !== 0 }" />
-      <div class="grid grid-cols-6 gap-[24px] mx-[48px]">
-        <h3 class="text-[20px] sm:text-[28px] font-medium">
+      <div class="grid grid-cols-[1fr,160px,1fr] gap-12 px-10">
+        <h3 class="text-[20px] sm:text-[28px] font-medium uppercase">
           {{ item.title }}
         </h3>
 
-        <img
-          :src="item.title_img.meta.download_url"
-          :alt="item.title_img.title"
-          class="w-[100px]"
+        <ImageBlock
+          :image="item.icon"
+          class="w-[160px] h-fit translate-y-1.5"
         />
 
         <p class="text-gray-400">
-          {{ item.description }}
+          {{ item.text }}
         </p>
       </div>
     </template>
@@ -25,8 +24,9 @@
 <script setup lang="ts">
 import type { PageBlock } from '../../../../../types/cms'
 import AppDivider from '../../../../AppDivider.vue'
+import ImageBlock from '../../misc/ImageBlock.vue'
 
 defineProps<{
-  items: PageBlock[]
+  blockData: PageBlock[]
 }>()
 </script>

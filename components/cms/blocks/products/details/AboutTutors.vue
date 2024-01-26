@@ -1,9 +1,11 @@
 <template>
-  <div class="mx-[48px] my-[96px]">
-    <h2 class="text-[32px] sm:text-[48px] mb-[48px] font-medium">Преподаватели</h2>
+  <div class="px-10 bg-brand-light-gray py-16 relative overflow-hidden">
+    <img src="/icons/tutors.svg" alt="Tutors" class="absolute top-20 left-0" />
 
-    <div class="grid grid-cols-3 gap-[24px]">
-      <TutorCard v-for="item in items" :key="item.id" :tutor="item" />
+    <h2 class="text-5xl uppercase font-medium mb-12 relative">Преподаватели</h2>
+
+    <div class="grid grid-cols-3 gap-[24px] relative">
+      <TutorCard v-for="item in blockData" :key="item.id" :tutor="item" />
     </div>
   </div>
 </template>
@@ -12,6 +14,6 @@ import type { PageBlock } from '../../../../../types/cms'
 import TutorCard from '../../misc/TutorCard.vue'
 
 defineProps<{
-  items: PageBlock[]
+  blockData: PageBlock[]
 }>()
 </script>

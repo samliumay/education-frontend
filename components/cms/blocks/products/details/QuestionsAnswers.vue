@@ -1,17 +1,16 @@
 <template>
-  <div class="mx-[48px] py-[96px]">
-    <h2 class="text-[32px] sm:text-[48px] font-medium mb-[48px]">
-      ОТВЕЧАЕМ
-      <br />
+  <div class="py-10">
+    <h2 class="text-5xl uppercase font-medium mb-12 mx-10">
+      ОТВЕЧАЕМ <br />
       НА ВОПРОСЫ
     </h2>
 
     <AccordionPanel
-      v-for="(item, idx) in items"
+      v-for="(item, idx) in blockData"
       :key="item.id"
-      :title="item.title"
-      :description="item.description"
-      :class="{ 'mb-[32px]': idx + 1 !== items.length }"
+      :title="item.question"
+      :description="item.answer"
+      :class="{ 'mb-[32px]': idx + 1 !== blockData.length }"
     />
   </div>
 </template>
@@ -20,6 +19,6 @@ import type { PageBlock } from '../../../../../types/cms'
 import AccordionPanel from '../../misc/AccordionPanel.vue'
 
 defineProps<{
-  items: PageBlock[]
+  blockData: PageBlock[]
 }>()
 </script>

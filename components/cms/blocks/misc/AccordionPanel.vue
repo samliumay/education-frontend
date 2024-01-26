@@ -1,23 +1,25 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
-  <div>
+  <n-space vertical>
     <AppDivider class="mb-[32px]" />
-    <div class="flex justify-between items-center mx-[48px]">
+    <div class="flex justify-between items-center mx-10">
       <p>{{ title }}</p>
-      <img
-        src="/icons/plus_red.svg"
-        alt="PLus icon"
-        @click="isOpened = !isOpened"
-      />
+      <button @click="isOpened = !isOpened">
+        <img src="/icons/plus_red.svg" alt="Plus icon" />
+      </button>
     </div>
-    <p v-if="isOpened" class="text-gray-400 mt-[24px]">
-      {{ description }}
-    </p>
-  </div>
+
+    <n-collapse-transition :show="isOpened">
+      <RichText :html="description" class="mt-[24px] mx-10" />
+    </n-collapse-transition>
+  </n-space>
 </template>
 <script setup lang="ts">
+import { NCollapseTransition, NSpace } from 'naive-ui'
 import { ref } from 'vue'
 
 import AppDivider from '../../../AppDivider.vue'
+import RichText from './RichText.vue'
 
 defineProps<{
   title: string

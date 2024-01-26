@@ -1,58 +1,25 @@
 <!-- eslint-disable vue/no-v-html -->
 
 <template>
-  <div class="mb-[48px]">
-    <h2 class="text-[32px] sm:text-[48px] font-medium">КАК УСТРОЕН КУРС</h2>
-    <div
-      v-for="(item, idx) in items"
-      :key="item.id"
-      class="grid grid-col-2"
-      :class="{ 'mb-[48px]': +idx + 1 !== items.length }"
-    >
-      <template v-if="+idx % 2 === 0">
-        <div class="flex justify-center items-center">
-          <img
-            :src="item.title_img.meta.download_url"
-            :alt="item.title_img.title"
-            class="max-w-full"
-          />
-        </div>
-
-        <div>
-          <h3 class="text-[20px] sm:text-[28px] text-red-400 font-medium mb-[24px]">
-            {{ item.title }}
-          </h3>
-          <p class="text-gray-400">
-            {{ item.description }}
-          </p>
-        </div>
-      </template>
-
-      <template v-else>
-        <div>
-          <h3 class="text-[20px] sm:text-[28px] text-red-400 font-medium mb-[24px]">
-            {{ item.title }}
-          </h3>
-          <p class="text-gray-400">
-            {{ item.description }}
-          </p>
-        </div>
-
-        <div class="flex justify-center items-center">
-          <img
-            :src="item.title_img.meta.download_url"
-            :alt="item.title_img.title"
-            class="max-w-full"
-          />
-        </div>
-      </template>
-    </div>
+  <div class="px-10">
+    <h2 class="text-5xl uppercase font-medium mb-12">{{ title }}</h2>
+    <RichText :html="paragraph" />
   </div>
 </template>
 <script setup lang="ts">
-import type { PageBlock } from '../../../../../types/cms'
+import { computed } from 'vue'
 
-defineProps<{
-  items: PageBlock
+import type { PageBlock } from '../../../../../types/cms'
+import RichText from '../../misc/RichText.vue'
+
+const props = defineProps<{
+  blockData: PageBlock
 }>()
+
+const title = computed(
+  () => props?.blockData?.find(item => item?.type === 'heading')?.value,
+)
+const paragraph = computed(
+  () => props?.blockData?.find(item => item?.type === 'paragraph')?.value,
+)
 </script>
