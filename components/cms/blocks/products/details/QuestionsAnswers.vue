@@ -1,7 +1,7 @@
 <template>
   <div class="py-10">
     <h2 class="text-5xl uppercase font-medium mb-12 mx-10">
-      ОТВЕЧАЕМ <br/>
+      ОТВЕЧАЕМ <br />
       НА ВОПРОСЫ
     </h2>
 

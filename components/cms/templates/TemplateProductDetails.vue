@@ -92,8 +92,6 @@ const { data: product, pending } = await useFetch(
   { deep: true },
 )
 
-console.debug('ITEM', product)
-
 // Actions
 const handleSignIn = () => {
   if (!userStore.isLoggedIn) {

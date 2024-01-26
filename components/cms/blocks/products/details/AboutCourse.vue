@@ -16,8 +16,6 @@ const props = defineProps<{
   blockData: PageBlock
 }>()
 
-console.debug("PROPS:", props)
-
 const title = computed(
   () => props?.blockData?.find(item => item?.type === 'heading')?.value,
 )
