@@ -95,23 +95,20 @@ export const useUserStore = defineStore('user', () => {
     )
 
   const register = (
-    email: string,
-    phoneNumber: string,
-    password1: string,
-    password2: string,
-    firstName: string,
-    lastName: string,
+    credentials:
+    {
+      email: string,
+      phone_number: string,
+      password1: string,
+      password2: string,
+      first_name: string,
+      last_name: string,
+    },
   ) =>
-    userPostRequest(
-      {
-        email,
-        username: email,
-        phone_number: phoneNumber,
-        password1,
-        password2,
-        first_name: firstName,
-        last_name: lastName,
-      },
+    userPostRequest({
+      ...credentials,
+      username: credentials.email,
+    },
       '/api/v2/users/sign_up/',
     )
 
