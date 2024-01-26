@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-v-html -->
 
 <template>
-  <div class="px-10">
+  <div class="px-10 pb-10">
     <h2 class="text-5xl uppercase font-medium mb-12">{{ title }}</h2>
     <RichText :html="paragraph" />
   </div>

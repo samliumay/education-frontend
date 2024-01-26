@@ -2,7 +2,7 @@
   <n-modal :show="isOpen" @mask-click="close">
     <div class="bg-brand-light-gray rounded-lg p-[44px] w-[600px]">
       <div class="flex justify-between mb-[36px]">
-        <h2 class="text-3xl font-medium">Войти</h2>
+        <h2 class="text-3xl font-medium">{{ step === LoginSteps.SignUp ? 'Регистрация' : 'Вход' }}</h2>
         <button
           class="bg-white border-[1px] border-brand-black w-[35px] h-[35px] rounded-full flex items-center justify-center hover:bg-brand-light-gray transition ease-in delay-100 transform active:scale-[0.93]"
           @click="close"
@@ -39,9 +39,13 @@
           type="password"
           class="mt-[12px]"
         />
-        <button class="mt-[16px]" @click="step = LoginSteps.RestorePassword">
+        <button class="mt-[16px] block" @click="step = LoginSteps.RestorePassword">
           Забыли пароль?
           <span class="text-brand-red cursor-pointer">Восстановить</span>
+        </button>
+        <button class="mt-[16px] block" @click="step = LoginSteps.SignUp">
+          Нет аккаунта?
+          <span class="text-brand-red cursor-pointer">Зарегистрироваться</span>
         </button>
       </template>
       <template v-else-if="step === LoginSteps.RestorePassword">
@@ -53,6 +57,28 @@
           Я вспомнил пароль
         </button>
       </template>
+      <template v-else-if="step === LoginSteps.SignUp">
+        <AppInput v-model="signUpCredentials.first_name" placeholder="Имя" />
+        <AppInput v-model="signUpCredentials.last_name" placeholder="Фамилия" class="mt-[12px]" />
+        <AppInput v-model="signUpCredentials.phone_number" placeholder="Номер телефона" class="mt-[12px]" />
+        <AppInput v-model="signUpCredentials.email" placeholder="E-mail" class="mt-[12px]" />
+        <AppInput
+          v-model="signUpCredentials.password1"
+          placeholder="Пароль"
+          type="password"
+          class="mt-[12px]"
+        />
+        <AppInput
+          v-model="signUpCredentials.password2"
+          placeholder="Повторите пароль"
+          type="password"
+          class="mt-[12px]"
+        />
+        <button class="mt-[16px]" @click="step = LoginSteps.Email">
+          Уже есть аккаунт?
+          <span class="text-brand-red cursor-pointer">Войти</span>
+        </button>
+      </template>
 
       <p v-if="error" class="text-brand-red mt-2 mb-2">{{ error }}</p>
 
@@ -62,6 +88,14 @@
         @click="login"
       >
         Войти
+      </AppButton>
+
+      <AppButton
+        v-if="step === LoginSteps.SignUp"
+        class="block mt-[36px] w-full"
+        @click="signUp"
+      >
+        Зарегистрироваться
       </AppButton>
     </div>
   </n-modal>
@@ -88,6 +122,15 @@ const credentials = ref({
   password: '',
 })
 
+const signUpCredentials = ref({
+  email: '',
+  password1: '',
+  password2: '',
+  first_name: '',
+  last_name: '',
+  phone_number: '',
+})
+
 const error = ref('')
 const clearError = () => {
   error.value = ''
@@ -96,6 +139,20 @@ const clearError = () => {
 const login = async () => {
   await userStore
     .login(credentials.value.email, credentials.value.password)
+    .catch(err => {
+      if (Object.keys(err).length !== 0) {
+        error.value = 'Кажется что-то пошло не так'
+        setTimeout(clearError, 2000)
+      } else {
+        emit('next')
+        emit('close')
+      }
+    })
+}
+
+const signUp = async () => {
+  await userStore
+    .register(signUpCredentials.value.email, signUpCredentials.value.password1, signUpCredentials.value.password2)
     .catch(err => {
       if (Object.keys(err).length !== 0) {
         error.value = 'Кажется что-то пошло не так'

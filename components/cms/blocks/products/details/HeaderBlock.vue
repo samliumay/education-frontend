@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col gap-[48px] px-10">
-    <div class="flex justify-between gap-4">
+    <div class="flex justify-between gap-4 mr-12">
       <div class="flex flex-col justify-between gap-10">
         <div>
           <TagsBlock :tags="[blockData.current_status]" />
@@ -51,16 +51,14 @@
 
         <p>
           <span class="font-medium">Преподаватели:</span>
-          <template v-if="blockData?.schedule_slots?.length">
-            {{
-              Array.from(
-                new Set(
-                  blockData.schedule_slots?.map((slot: any) => slot.instructor),
-                ),
-              ).join('; ')
-            }}
+          <span class="text-gray-400 ml-[8px]">
+            <template v-if="blockData?.instructors?.length">
+              {{
+                `${ blockData.instructors.map(instructor => `${instructor.instructor.first_name } ${ instructor.instructor.last_name}`).join('; ')}`
+              }}
             </template>
             <template v-else>-</template>
+          </span>
         </p>
 
         <p>

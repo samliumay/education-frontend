@@ -3,7 +3,7 @@
     <AppLoader />
   </div>
   <main v-else class="flex flex-col gap-2 mb-10">
-    <AppSignIn :is-open="isOpen" @close="isOpen = false" />
+    <AppSignIn :is-open="isOpen" @close="isOpen = false" @next="navigateTo(`/product/buy/${route.params.id}`)" />
 
     <n-breadcrumb class="mt-6 mb-10 px-10">
       <n-breadcrumb-item сlass="text-brand-gray">
@@ -17,7 +17,7 @@
       </n-breadcrumb-item>
     </n-breadcrumb>
 
-    <div class="flex flex-col gap-10">
+    <div class="flex flex-col">
       <ErrorBoundaryBlock>
         <HeaderBlock
           v-if="!pending"
@@ -129,15 +129,15 @@ const mockTutorsItems = [
   },
   {
     id: 'tutor-2',
-    first_name: 'Мария',
-    last_name: 'Петрова',
+    first_name: 'Леонид',
+    last_name: 'Ломоносов',
     category: 'Физика',
     title_img: {
       meta: {
         download_url:
           'https://images.unsplash.com/photo-1597570889212-97f48e632dad?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       },
-      title: 'Мария Петрова',
+      title: 'Леонид Ломоносов',
     },
   },
 ]
