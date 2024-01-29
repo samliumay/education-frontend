@@ -87,7 +87,6 @@
     </p>
   </main>
 </template>
-<script lang="ts" setup>
+<script setup lang="ts">
+import { NBreadcrumb, NBreadcrumbItem } from 'naive-ui'
 </script>
-<style scoped lang="scss">
-</style>
