@@ -9,6 +9,8 @@ prepare:
   stage: prepare
   script:
     - npm install
+  tags:
+    - docker
   cache:
     untracked: true
     paths:
@@ -24,6 +26,8 @@ prepare:
 # lint:
 #   image: node:16
 #   stage: test
+#   tags:
+#     - docker
 #   dependencies:
 #     - prepare
 #   script:
@@ -32,6 +36,8 @@ prepare:
 # format:
 #   image: node:16
 #   stage: test
+#   tags:
+#     - docker
 #   dependencies:
 #     - prepare
 #   script:
@@ -42,6 +48,8 @@ build:
   stage: test
   dependencies:
     - prepare
+  tags:
+    - docker
   script:
     - npm run build
 

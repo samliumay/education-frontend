@@ -15,7 +15,7 @@ RUN echo "VITE_API_URL=$VITE_API_URL" > /usr/src/.env
 
 # build necessary, even if no static files are needed,
 # since it builds the server as well
-RUN npm run build
+RUN npm run generate
 
 # Use NGINX to serve the built app
 FROM nginx:1.23.3-alpine
@@ -27,4 +27,4 @@ COPY docker/prod/nginx.conf /etc/nginx/nginx.conf
 COPY public/* /usr/src/public/
 
 # Copy build dist files to NGINX image
-COPY --from=0 /usr/src/dist /usr/src
+COPY --from=0 /usr/src/.output/public /usr/src
