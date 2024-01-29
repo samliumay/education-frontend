@@ -39,7 +39,7 @@ deploy prod:
   stage: deploy
   image: atnartur/docker:latest
   only:
-    - dev
+    - main
   tags:
     - docker-compose
     - dev
