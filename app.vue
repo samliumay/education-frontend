@@ -14,9 +14,9 @@
   </n-config-provider>
 </template>
 <script setup lang="ts">
+import AppCookieModal from './components/AppCookieModal.vue'
 import AppFooter from './components/page/AppFooter.vue'
 import AppHeader from './components/page/AppHeader.vue'
-import AppCookieModal from './components/AppCookieModal.vue'
 
 useHead({
   title: 'Clavis Schule für Kunst und Wissenschaft',
