@@ -60,6 +60,19 @@ export const useUserStore = defineStore('user', () => {
     localStorage.setItem('user', JSON.stringify(newValue))
   }
 
+  const logout = () => {
+    localStorage.clear()
+    user.value = initialUser
+    visitors.value = []
+    ordersByVisitors.value = {}
+    visitorsOrders.value = []
+    workshops.value = []
+    orders.value = []
+    workshopOrders.value = []
+
+    window.location.href = "/"
+  }
+
   const retrieveUser = async () => {
     setUser(await HTTP.get('/api/v2/users/me/'))
     await getVisitors()
@@ -144,6 +157,7 @@ export const useUserStore = defineStore('user', () => {
     setUser,
     retrieveUser,
     login,
+    logout,
     register,
     isLoggedIn,
     visitors,

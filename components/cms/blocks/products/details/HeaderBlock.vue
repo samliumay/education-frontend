@@ -7,9 +7,7 @@
           <h1 class="text-3xl sm:text-4xl font-medium mb-4 mt-4">
             {{ blockData.name }}
           </h1>
-          <CategoryBlock
-            :items="blockData.schedule_slots"
-          >
+          <CategoryBlock :items="blockData.schedule_slots">
             <template #icon>
               <img
                 v-if="type === 'course'"
@@ -50,15 +48,22 @@
         </p>
 
         <p>
-          <span class="font-medium">Преподаватели:</span>
-          <span class="text-gray-400 ml-[8px]">
-            <template v-if="blockData?.instructors?.length">
-              {{
-                `${ blockData.instructors.map(instructor => `${instructor.instructor.first_name } ${ instructor.instructor.last_name}`).join('; ')}`
-              }}
-            </template>
-            <template v-else>-</template>
-          </span>
+          <span class="font-medium">Преподаватели: </span>
+          <template v-if="blockData?.instructors?.length">
+            {{
+              Array.from(
+                new Set(
+                  blockData.instructors?.map(
+                    (item: any) =>
+                      `${item?.instructor?.first_name ?? 'John'} ${
+                        item?.instructor?.last_name ?? 'Doe'
+                      }`,
+                  ),
+                ),
+              ).join('; ')
+            }}
+          </template>
+          <template v-else>-</template>
         </p>
 
         <p>
@@ -67,7 +72,9 @@
             <template v-if="blockData?.schedule_slots?.length">
               {{
                 Array.from(
-                  new Set(blockData.schedule_slots?.map((slot: any) => slot.space)),
+                  new Set(
+                    blockData.schedule_slots?.map((slot: any) => slot.space),
+                  ),
                 ).join('; ')
               }}
             </template>
@@ -77,16 +84,11 @@
       </div>
     </div>
 
-    <div class="rounded-[12px] overflow-hidden relative h-[580px] w-full">
-      <ImageBlock
-        :image="blockData.title_image"
-        class="absolute bottom-0 right-6 h-[400px]"
-      />
-      <ImageBlock
-        :image="blockData.background_image"
-        class="w-full h-full object-cover"
-      />
-    </div>
+    <Cover
+      :image-title="blockData.title_image"
+      :image-background="blockData.background_image"
+      class="h-[500px] w-full"
+    />
   </div>
 </template>
 <script setup lang="ts">
@@ -95,7 +97,7 @@ import { type Product, type ProductType } from '../../../../../types'
 import { type PageBlock } from '../../../../../types/cms'
 import CategoryBlock from '../../../../misc/CategoryBlock.vue'
 import TagsBlock from '../../../../misc/TagsBlock.vue'
-import ImageBlock from '../../misc/ImageBlock.vue'
+import Cover from '../../misc/Cover.vue'
 
 defineProps<{
   blockData: PageBlock & { product: Product }

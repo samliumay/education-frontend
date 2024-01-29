@@ -5,7 +5,7 @@
     <h2 class="text-5xl uppercase font-medium mb-12 relative">Преподаватели</h2>
 
     <div class="grid grid-cols-3 gap-[24px] relative">
-      <TutorCard v-for="item in blockData" :key="item.id" :tutor="item" />
+      <TutorCard v-for="item in blockData" :key="item.id" :instructor="item.instructor" />
     </div>
   </div>
 </template>

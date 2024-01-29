@@ -1,16 +1,11 @@
 <template>
   <div class="flex flex-col justify-between gap-4 rounded-[12px] bg-white">
     <div class="flex flex-col gap-4">
-      <div class="rounded-[12px] overflow-hidden relative h-[260px]">
-        <ImageBlock
-          :image="blockData.title_image"
-          class="absolute bottom-0 right-6 w-5/12"
-        />
-        <ImageBlock
-          :image="blockData.background_image"
-          class="w-full h-full object-cover"
-        />
-      </div>
+      <Cover
+        class="h-[260px] w-full"
+        :image-title="blockData.title_image"
+        :image-background="blockData.background_image"
+      />
 
       <div class="flex flex-col gap-1">
         <div class="flex gap-2 items-center">
@@ -83,7 +78,7 @@ import type { PageBlock } from '../../../../types/cms'
 import { getNearDate } from '../../../../utils/getNearDate'
 import AppButton from '../../../AppButton.vue'
 import TagsBlock from '../../../misc/TagsBlock.vue'
-import ImageBlock from '../misc/ImageBlock.vue'
+import Cover from '../misc/Cover.vue'
 
 const props = defineProps<{
   blockData: PageBlock
