@@ -79,7 +79,6 @@ import { getNearDate } from '../../../../utils/getNearDate'
 import AppButton from '../../../AppButton.vue'
 import TagsBlock from '../../../misc/TagsBlock.vue'
 import Cover from '../misc/Cover.vue'
-import ImageBlock from '../misc/ImageBlock.vue'
 
 const props = defineProps<{
   blockData: PageBlock

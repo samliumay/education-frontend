@@ -264,8 +264,6 @@ const buyOption: Ref<'paypal' | 'stripe'> = ref('paypal')
 const cart = useCartStore()
 await cart.getCurrentOrder()
 
-console.debug('Cart:', cart)
-
 const fullfillOrder = async () => {
   const urlObject = await cart.fulfillOrder(
     buyOption.value,

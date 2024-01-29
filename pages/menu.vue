@@ -7,7 +7,7 @@
         v-for="path in pathGroup"
         :key="path.route"
         :to="path.route"
-        class="text-3xl text-brand-red font-medium sm:text-5xl lg:text-7xl"
+        class="text-2xl text-brand-red font-medium sm:text-5xl"
         :class="{
           '!text-black': $router?.options?.history?.state?.back === path.route,
         }"
