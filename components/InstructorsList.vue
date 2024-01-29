@@ -29,6 +29,6 @@ import { HTTP } from '../api'
 import { type Instructor } from '../types'
 
 const instructors = ref<Instructor[]>(
-  await HTTP.get<Instructor[]>('/api/v1/users/instructors/'),
+  await HTTP.get<Instructor[]>('/api/v2/users/instructors/'),
 )
 </script>

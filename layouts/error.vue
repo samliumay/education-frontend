@@ -6,10 +6,7 @@
       </n-icon>
     </div>
     <n-h2 class="flex justify-center"> {{ $t('common.notFound') }}</n-h2>
-    <NuxtLink
-      to="/"
-      class="flex justify-center"
-    >
+    <NuxtLink to="/" class="flex justify-center">
       <n-button>{{ $t('common.goToMain') }}</n-button>
     </NuxtLink>
   </div>

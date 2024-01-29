@@ -6,7 +6,7 @@ export default defineNuxtPlugin(nuxtApp => {
   if (process.server) {
     const { collect } = setup(nuxtApp.vueApp)
     const originalRenderMeta = nuxtApp.ssrContext?.renderMeta
-    nuxtApp.ssrContext = nuxtApp.ssrContext || {}
+    nuxtApp.ssrContext ||= {}
     nuxtApp.ssrContext.renderMeta = () => {
       if (!originalRenderMeta) {
         return {
@@ -16,14 +16,14 @@ export default defineNuxtPlugin(nuxtApp => {
       const originalMeta = originalRenderMeta()
       if ('then' in originalMeta) {
         return originalMeta.then(resolvedOriginalMeta => ({
-            ...resolvedOriginalMeta,
-            headTags: resolvedOriginalMeta.headTags + collect(),
-          }))
+          ...resolvedOriginalMeta,
+          headTags: resolvedOriginalMeta.headTags + collect(),
+        }))
       }
-        return {
-          ...originalMeta,
-          headTags: originalMeta.headTags + collect(),
-        }
+      return {
+        ...originalMeta,
+        headTags: originalMeta.headTags + collect(),
+      }
     }
   }
 })

@@ -1,0 +1,23 @@
+version: '3'
+
+networks:
+  traefik:
+    external: true
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: ./docker/dev/Dockerfile
+      args:
+        VITE_API_URL: https://api.clavis.the-o.co
+    image: $CI_REGISTRY_IMAGE/frontend:$CI_COMMIT_SHA
+    restart: unless-stopped
+    expose:
+      - '3000'
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.frontend.rule=Host(`clavis.the-o.co`)
+      - traefik.http.services.frontend.loadbalancer.server.port=3000
+    networks:
+      - traefik

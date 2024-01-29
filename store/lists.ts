@@ -13,10 +13,10 @@ export const useListsStore = defineStore('lists', () => {
 
   const populateLists = async () => {
     Promise.all([
-      (products.value = await HTTP.get('/api/v1/products/')),
-      (cities.value = await HTTP.get('/api/v1/users/cities/')),
-      (countries.value = await HTTP.get('/api/v1/users/countries/')),
-      (categories.value = await HTTP.get('/api/v1/products/categories/')),
+      (products.value = await HTTP.get('/api/v2/products/')),
+      (cities.value = await HTTP.get('/api/v2/users/cities/')),
+      (countries.value = await HTTP.get('/api/v2/users/countries/')),
+      (categories.value = await HTTP.get('/api/v2/products/categories/')),
     ])
     isDataLoading.value = false
   }

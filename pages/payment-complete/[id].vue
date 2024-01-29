@@ -21,15 +21,8 @@
           <div class="my-1">
             {{ course.schedule_slots[0].instructor }}
           </div>
-          <NuxtLink
-            to="/"
-            class="mx-auto text-center block w-3/5"
-          >
-            <n-button
-              class="text-green-500 w-full"
-              size="large"
-              type="primary"
-            >
+          <NuxtLink to="/" class="mx-auto text-center block w-3/5">
+            <n-button class="text-green-500 w-full" size="large" type="primary">
               {{ $t('common.goHome') }}
             </n-button>
           </NuxtLink>
@@ -38,7 +31,7 @@
     </div>
   </div>
 
-  <div v-else> Course with the given Id is not found </div>
+  <div v-else>Course with the given Id is not found</div>
 </template>
 <script setup lang="ts">
 import { NButton, NH1, NH2 } from 'naive-ui'

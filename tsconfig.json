@@ -24,8 +24,9 @@
     "paths": {
       "@/*": ["/*"]
     },
-    // for eslint
-    "allowJs": true
+
+    /* Eslint */
+    "allowJs": true,
   },
   "include": [
     "**/*.ts",
@@ -35,8 +36,8 @@
     ".eslintrc*",
     "tailwind.config.js",
     "postcss.config.js",
-    "vite.config.ts"
+    "vite.config.ts",
+    "additional.d.ts"
   ],
   "extends": "./.nuxt/tsconfig.json"
 }
-

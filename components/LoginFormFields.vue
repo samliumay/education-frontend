@@ -1,32 +1,13 @@
 <template>
-  <n-form
-    ref="formRef"
-    :rules="rules"
-  >
-    <n-alert
-      v-if="errors.non_field_errors"
-      class="my-2"
-      type="error"
-    >
+  <n-form ref="formRef" :rules="rules">
+    <n-alert v-if="errors.non_field_errors" class="my-2" type="error">
       {{ errors.non_field_errors.join(', ') }}
     </n-alert>
-    <n-form-item
-      required
-      path="email"
-      :label="$t('common.email')"
-    >
+    <n-form-item required path="email" :label="$t('common.email')">
       <n-input v-model:value="login" />
     </n-form-item>
-    <n-form-item
-      required
-      path="password"
-      :label="$t('common.password')"
-    >
-      <n-input
-        v-model:value="password"
-        type="password"
-        is-password
-      />
+    <n-form-item required path="password" :label="$t('common.password')">
+      <n-input v-model:value="password" type="password" is-password />
     </n-form-item>
   </n-form>
 </template>

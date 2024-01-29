@@ -1,19 +1,19 @@
 <template>
-  <article>
-    <n-h1>{{ $t('common.instructors') }}</n-h1>
-    <Suspense>
-      <template #fallback>
-        <div class="flex justify-center">
-          <n-spin size="large" />
-        </div>
-      </template>
-      <InstructorsList />
-    </Suspense>
-  </article>
+  <h1 class="mt-[96px] text-[32px] sm:text-[48px] font-medium">Преподаватели</h1>
+
+  <div class="mt-[48px] grid grid-cols-3 gap-[24px]">
+    <InstructorBlock
+      v-for="instructor in instructors"
+      :key="instructor.first_name + instructor.last_name"
+      :instructor="instructor"
+    />
+  </div>
 </template>
 <script setup lang="ts">
-// This component is implemented with Suspense just for experiment
-import { NH1, NSpin } from 'naive-ui'
+import { type Ref, ref } from 'vue'
 
-import InstructorsList from '../components/InstructorsList.vue'
+import InstructorBlock from '../components/misc/InstructorBlock.vue'
+import type { Instructor } from '../types'
+
+const instructors: Ref<Instructor[]> = ref([])
 </script>

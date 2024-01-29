@@ -1,71 +1,28 @@
 stages:
-  - prepare
   - test
   - build
   - deploy
 
-prepare:
-  image: node:16
-  stage: prepare
+lint:
+  image: node:18
+  stage: test
+  tags:
+    - docker
   script:
     - npm install
-  tags:
-    - docker
-  cache:
-    untracked: true
-    paths:
-      - node_modules
-  artifacts:
-    expire_in: 1 hour
-    when: always
-    untracked: true
-    paths:
-      - node_modules
-      - package-lock.json
+    - npm run lint
 
-# lint:
-#   image: node:16
-#   stage: test
-#   tags:
-#     - docker
-#   dependencies:
-#     - prepare
-#   script:
-#     - npm run lint
-
-# format:
-#   image: node:16
-#   stage: test
-#   tags:
-#     - docker
-#   dependencies:
-#     - prepare
-#   script:
-#     - npm run format:check
-
-build:
-  image: node:16
-  stage: test
-  dependencies:
-    - prepare
-  tags:
-    - docker
-  script:
-    - npm run build
-
-Build Dev:
+build container:
   stage: build
   image: atnartur/docker:latest
-  only:
-    - dev
   tags:
-  - docker
+    - docker
   script:
-    - docker-compose -f docker-compose.prod.yml build
+    - docker-compose -f compose.yml build
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-    - docker-compose -f docker-compose.prod.yml push
+    - docker-compose -f compose.yml push
 
-Deploy Dev:
+deploy dev:
   stage: deploy
   image: atnartur/docker:latest
   only:
@@ -75,31 +32,18 @@ Deploy Dev:
     - dev
   script:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-    - docker-compose -f docker-compose.prod.yml pull
-    - docker-compose -f docker-compose.prod.yml up -d
+    - docker-compose -f compose.yml pull
+    - docker-compose -f compose.yml up -d --remove-orphans
 
-
-Build Prod:
-  stage: build
-  image: atnartur/docker:latest
-  only:
-    - main
-  tags:
-    - docker
-  script:
-    - docker-compose -f docker-compose.prod.yml build
-    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-    - docker-compose -f docker-compose.prod.yml push
-
-Deploy Prod:
+deploy prod:
   stage: deploy
   image: atnartur/docker:latest
   only:
     - main
   tags:
     - docker-compose
-    - prod
+    - dev
   script:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-    - docker-compose -f docker-compose.prod.yml pull
-    - docker-compose -f docker-compose.prod.yml up -d
+    - docker-compose -f compose.yml pull
+    - docker-compose -f compose.yml up -d --remove-orphans

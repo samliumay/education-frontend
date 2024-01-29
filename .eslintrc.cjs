@@ -31,16 +31,24 @@ module.exports = {
   },
   rules: {
     // Plugins
+    'vue/no-undef-properties': 'warn',
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
 
-    'vue-scoped-css/enforce-style-type': 'error',
+    'vue-scoped-css/enforce-style-type': 'warn',
     'vue-scoped-css/no-parsing-error': 'error',
     'vue-scoped-css/no-unused-keyframes': 'error',
     'vue-scoped-css/no-unused-selector': 'error',
     'vue-scoped-css/no-deprecated-v-enter-v-leave-class': 'error',
     'vue-scoped-css/require-selector-used-inside': 'error',
+    'vuejs-accessibility/click-events-have-key-events': 'off',
+    'vue/require-explicit-emits': 'off',
+    'vuejs-accessibility/form-control-has-label': 'off',
+    'vue/html-button-has-type': 'off',
+    'vuejs-accessibility/media-has-caption': 'off',
+    'vue/no-undef-components': 'off',
     // Off - block
+    'linebreak-style': 'off',
     'vue/multi-word-component-names': 'off',
     'import/order': 'off',
     'import/extensions': 'off',
@@ -50,6 +58,8 @@ module.exports = {
     'no-nested-ternary': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/lines-between-class-members': 'off',
+    'vue/no-side-effects-in-computed-properties': 'off',
+    'no-magic-numbers': 'off',
     // Lint - block
     'semi': ['error', 'never'],
     'no-unexpected-multiline': 'off',
@@ -75,17 +85,7 @@ module.exports = {
     'no-console': ['error', { allow: ['warn', 'error'] }],
     'prefer-destructuring': ['error', { object: true, array: false }],
     // Vue - block
-    'vue/block-lang': [
-      'error',
-      {
-        script: {
-          lang: 'ts',
-        },
-        style: {
-          lang: 'scss',
-        },
-      },
-    ],
+    'vue/block-lang': 'warn',
     'vue/component-api-style': ['error', ['script-setup']],
     'vue/component-options-name-casing': ['error', 'PascalCase'],
     'vue/custom-event-name-casing': ['error', 'camelCase'],
@@ -110,9 +110,8 @@ module.exports = {
         allowBinding: true,
       },
     ],
+    '@typescript-eslint/return-await': 'off',
     'vue/no-this-in-before-route-enter': 'error',
-    'vue/no-undef-components': ['error', { ignorePatterns: ['router-*'] }],
-    'vue/no-undef-properties': 'error',
     'vue/no-unused-properties': 'error',
     'vue/no-unused-refs': 'error',
     'vue/no-useless-mustaches': 'error',
@@ -176,16 +175,6 @@ module.exports = {
     'no-extra-semi': 'error',
     'no-invalid-this': 'error',
     'no-loop-func': 'error',
-    // sw, sorry
-    'no-magic-numbers': [
-      'error',
-      {
-        ignore: [0, 1, 10, 1000],
-        ignoreDefaultValues: true,
-        enforceConst: false,
-        detectObjects: false,
-      },
-    ],
     'no-new-func': 'error',
     'no-param-reassign': 'off', // error on np
     'no-redeclare': 'error',

@@ -9,6 +9,17 @@ export default {
         '10+': '#fcbe1b',
         '12+': '#db3b4d',
         '14+': '#fcbe1b',
+
+        'brand-yellow': '#FDBE16',
+        'brand-red': '#DB3B4D',
+        'brand-gray': '#6F6F6F',
+        'brand-light-gray': '#F2F2F2',
+        'brand-dark-gray': '#D9D9D9',
+        'brand-black': '#202020',
+        'brand-green': '#1e7251',
+      },
+      transform: {
+        'interactive': 'active:scale-95',
       },
     },
   },
