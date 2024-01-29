@@ -8,11 +8,13 @@
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>
+      <AppCookieModal/>
       <AppFooter v-if="$route.path !== '/menu'" />
     </div>
   </n-config-provider>
 </template>
 <script setup lang="ts">
+import AppCookieModal from './components/AppCookieModal.vue'
 import AppFooter from './components/page/AppFooter.vue'
 import AppHeader from './components/page/AppHeader.vue'
 
