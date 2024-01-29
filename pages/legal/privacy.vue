@@ -1,9 +1,18 @@
 <template>
-  <div>
-    <n-h1 class="mb-4">Datenschutz bei Clavis-Schule</n-h1>
+  <main class="px-10 py-6">
+    <n-breadcrumb class="mb-10">
+      <n-breadcrumb-item сlass="text-brand-gray">
+        <NuxtLink to="/">Главная</NuxtLink>
+      </n-breadcrumb-item>
+      <n-breadcrumb-item сlass="text-brand-gray">
+        Privacy Policy
+      </n-breadcrumb-item>
+    </n-breadcrumb>
 
-    <n-h3>Wer wir sind</n-h3>
-    <p>
+    <h1 class="text-brand-black text-5xl mb-10 font-medium">Datenschutz bei Clavis-Schule</h1>
+
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">Wer wir sind</h2>
+    <p class="text-brand-gray mb-10">
       Die Clavis Kunst und Wissenschaft Privatschule GmbH i.G. ist eine
       Nachmittagsschule inprivater Trägerschaft. Weitere Informationen über die
       Arbeit unserer Schule finden Sie im Bereich Über uns. Ausführliche
@@ -11,8 +20,8 @@
       Impressum und alle Kontaktmöglichkeiten auf unserer Kontakt-Seite.
     </p>
 
-    <n-h3>Ihre Rechte</n-h3>
-    <p>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">Ihre Rechte</h2>
+    <p class="text-brand-gray mb-10">
       Neben der detaillierten Darstellung, welche personenbezogenen Daten wir
       sammeln, wie und warum wir sie sammeln, enthält unsere
       Datenschutzerklärung im Abschnitt „Ihre Datenschutzrechte“ unten auf
@@ -20,10 +29,10 @@
       festgeschriebenen Rechte beim Datenschutz.
     </p>
 
-    <n-h3>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">
       Welche personenbezogenen Daten wir sammeln und warum wir sie sammeln
-    </n-h3>
-    <p>
+    </h2>
+    <p class="text-brand-gray mb-10">
       Auf unserer Website erheben wir an verschiedenen Stellen personenbezogene
       Daten. Zum Beispiel, wenn Sie ein Kontakt-, Anmelde-, Feedback- oder
       Newsletter-Formular ausfüllen, wenn Sie für die Buchung von Kursen unsere
@@ -42,8 +51,8 @@
       können.
     </p>
 
-    <n-h3>Kontakt-, Anmelde-, Feedback- und Newsletterformulare</n-h3>
-    <p>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">Kontakt-, Anmelde-, Feedback- und Newsletterformulare</h2>
+    <p class="text-brand-gray mb-10">
       Wenn Sie uns per Kontaktformular, Anmelde-, Feedback- oder
       Newsletterformular personenbezogene Daten zukommen lassen, werden Ihre
       Angaben aus den Formularen inklusive der von Ihnen dort angegebenen
@@ -62,8 +71,8 @@
       unberührt.
     </p>
 
-    <n-h3>Der Clavis-Onlineshop</n-h3>
-    <p>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">Der Clavis-Onlineshop</h2>
+    <p class="text-brand-gray">
       Sie können im Onlineshop unserer Webseite Bestellungen in unserem Shop als
       registrierter Kunde tätigen. Eine Registrierung hat den Vorteil, dass Sie
       sich im Falle einer künftigen Bestellung direkt mit Ihrer E-Mail-Adresse
@@ -73,14 +82,14 @@
       gespeichert. Wenn Sie über unsere Webseite eine Bestellung tätigen, so
       erheben wir im Shop zunächst folgende Daten:
     </p>
-    <ul>
+    <ul class="text-brand-gray">
       <li>Anrede, Vorname, Nachname,</li>
       <li>eine gültige E-Mail-Adresse,</li>
       <li>Anschrift,</li>
       <li>Telefonnummer optional.</li>
     </ul>
-    <p>Die Erhebung dieser Daten erfolgt,</p>
-    <ul>
+    <p class="text-brand-gray">Die Erhebung dieser Daten erfolgt,</p>
+    <ul class="text-brand-gray">
       <li>um Sie als unseren Kunden identifizieren zu können;</li>
       <li>um Ihre Bestellung bearbeiten, erfüllen und abwickeln zu können;</li>
       <li>zur Korrespondenz mit Ihnen;</li>
@@ -94,7 +103,7 @@
       </li>
       <li>um unsere Kundendaten zu verwalten.</li>
     </ul>
-    <p>
+    <p class="text-brand-gray mb-10">
       Im Rahmen des Bestellprozesses wird eine Einwilligung von Ihnen zur
       Verarbeitung dieser Daten eingeholt. Die Datenverarbeitung erfolgt auf
       Ihre Bestellung und/oder Registrierung hin und ist nach Art. 6 Abs. 1 S. 1
@@ -110,8 +119,8 @@
       lit. a DSGVO eingewilligt haben.
     </p>
 
-    <n-h3>Zahlungsabwicklung</n-h3>
-    <p>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">Zahlungsabwicklung</h2>
+    <p class="text-brand-gray mb-10">
       Paypal Bei Bezahlung mit PayPal erfolgt die Übermittlung Ihrer Daten an
       PayPal erfolgt auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO (Einwilligung)
       und Art. 6 Abs. 1 lit. b DSGVO (Verarbeitung zur Erfüllung eines
@@ -125,8 +134,8 @@
       https://www.paypal.com/de/webapps/mpp/ua/privacy-full.
     </p>
 
-    <n-h3>Stripe</n-h3>
-    <p>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">Stripe</h2>
+    <p class="text-brand-gray mb-10">
       Wir bieten die Möglichkeit, den Zahlungsvorgang über den
       Zahlungsdienstleister Stripe, ℅ Legal Process, 510,Townsend St., San
       Francisco, CA 94103 (Stripe) abzuwickeln. Dies entspricht unserem
@@ -164,13 +173,13 @@
       Betrugsprävention erforderlich ist.
     </p>
 
-    <n-h3>Server-Log-Dateien</n-h3>
-    <p>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">Server-Log-Dateien</h2>
+    <p class="text-brand-gray">
       Der Provider dieser Website erhebt und speichert automatisch Informationen
       in so genannten Server-Log-Dateien, die Ihr Browser automatisch an uns
       übermittelt. Dies sind:
     </p>
-    <ul>
+    <ul class="text-brand-gray">
       <li>Browsertyp und Browserversion</li>
       <li>verwendetes Betriebssystem</li>
       <li>Referrer URL</li>
@@ -178,15 +187,15 @@
       <li>Uhrzeit der Serveranfrage</li>
       <li>IP-Adresse</li>
     </ul>
-    <p>
+    <p class="text-brand-gray mb-10">
       Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht
       vorgenommen. Grundlage für die Datenverarbeitung ist Art. 6 Abs. 1 lit. b
       DSGVO, der die Verarbeitung von Daten zur Erfüllung eines Vertrags oder
       vorvertraglicher Maßnahmen gestattet.
     </p>
 
-    <n-h3>Cookies</n-h3>
-    <p>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">Cookies</h2>
+    <p class="text-brand-gray">
       Diese Website erfüllt die Pflicht zum Hinweis auf den Einsatz von Cookies.
       Durch die Verwendung von Cookies können Internetseiten nutzerfreundlich,
       effektiv und sicherer gemacht werden. Dabei werden Textdateien mit
@@ -198,7 +207,7 @@
       Ihre Cookie-Einstellungen ändern können. Diese finden Sie für die
       jeweiligen Browser unter den folgenden Links:
     </p>
-    <ul>
+    <ul class="text-brand-gray">
       <li>
         Internet Explorer:
         https://support.microsoft.com/de-de/help/17442/windowsinternet-explorer-delete-manage-cookies
@@ -212,7 +221,7 @@
       </li>
       <li>Opera: http://help.opera.com/Windows/10.20/de/cookies.html</li>
     </ul>
-    <p>
+    <p class="text-brand-gray mb-10">
       Mit der Speicherung von Cookies ermöglichen Sie dieser Homepage
       inhaltliche und strukturelle Anpassung an die individuellen
       Besucherbedürfnisse. Webseiteneinstellungen werden zeitlich befristet
@@ -224,8 +233,8 @@
       in Kapitel 2, Artikel 6 der DSGVO begründet.
     </p>
 
-    <n-h3> Google Analytics </n-h3>
-    <p>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium"> Google Analytics </h2>
+    <p class="text-brand-gray mb-10">
       Soweit Sie Ihre Einwilligung erklärt haben, wird auf dieser Website Google
       Analytics eingesetzt, einen Webanalysedienst der Google Inc. („Google“).
       Die Nutzung umfasst die Betriebsart „Universal Analytics“. Hierdurch ist
@@ -252,8 +261,8 @@
       https://policies.google.com/?hl=de.
     </p>
 
-    <n-h3>Zwecke der Verarbeitung</n-h3>
-    <p>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">Zwecke der Verarbeitung</h2>
+    <p class="text-brand-gray mb-10">
       Im Auftrag des Betreibers dieser Website wird Google diese Informationen
       benutzen, um Ihre Nutzung der Website auszuwerten, um Reports über die
       Websiteaktivitäten zusammenzustellen und um weitere mit der Websitenutzung
@@ -261,30 +270,30 @@
       Websitebetreiber zu erbringen.
     </p>
 
-    <n-h3>Rechtsgrundlage</n-h3>
-    <p>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">Rechtsgrundlage</h2>
+    <p class="text-brand-gray mb-10">
       Die Rechtsgrundlage für den Einsatz von Google Analytics ist ihre
       Einwilligung gemäß Art. 6 Abs. 1 S.1 lit. a DSGVO. Empfänger / Kategorien
       von Empfängern Der Empfänger der erhobenen Daten ist Google.
     </p>
 
-    <n-h3>Übermittlung in Drittstaaten</n-h3>
-    <p>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">Übermittlung in Drittstaaten</h2>
+    <p class="text-brand-gray mb-10">
       Die personenbezogenen Daten werden unter dem EU-US Privacy Shield auf
       Grundlage des Angemessenheitsbeschlusses der Europäischen Kommission in
       die USA übermittelt. Das Zertifikat können Sie hier abrufen.
     </p>
 
-    <n-h3>Dauer der Datenspeicherung</n-h3>
-    <p>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">Dauer der Datenspeicherung</h2>
+    <p class="text-brand-gray mb-10">
       Die von uns gesendeten und mit Cookies, Nutzerkennungen (z. B. User-ID)
       oder Werbe-IDs verknüpften Daten werden nach 14 Monaten automatisch
       gelöscht. Die Löschung von Daten, deren Aufbewahrungsdauer erreicht ist,
       erfolgt automatisch einmal im Monat.
     </p>
 
-    <n-h3>Betroffenenrechte</n-h3>
-    <p>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">Betroffenenrechte</h2>
+    <p class="text-brand-gray mb-10">
       Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft
       widerrufen, indem sie die Speicherung der Cookies durch eine entsprechende
       Einstellung Ihrer Browser-Software verhindern; wir weisen Sie jedoch
@@ -301,8 +310,8 @@
       Google Analytics deaktivieren
     </p>
 
-    <n-h3>Google AdWords</n-h3>
-    <p>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">Google AdWords</h2>
+    <p class="text-brand-gray mb-10">
       Wir haben auf dieser Internetseite Google AdWords integriert. Google
       AdWords ist ein Dienst zur Internetwerbung, der es Werbetreibenden
       gestattet, sowohl Anzeigen in den Suchmaschinenergebnissen von Google als
@@ -366,8 +375,8 @@
       https://www.google.de/intl/de/policies/privacy/ abgerufen werden.
     </p>
 
-    <n-h3>Google Web Fonts</n-h3>
-    <p>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">Google Web Fonts</h2>
+    <p class="text-brand-gray mb-10">
       Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten so
       genannte Web Fonts, die von Google bereitgestellt werden. Beim Aufruf
       einer Seite lädt Ihr Browser die benötigten Web Fonts in ihren
@@ -384,8 +393,8 @@
       von Google: https://www.google.com/policies/privacy/.
     </p>
 
-    <n-h3>Google Maps</n-h3>
-    <p>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">Google Maps</h2>
+    <p class="text-brand-gray mb-10">
       Auf unserer Kontakt-Seite haben wir ein Landkarte des Dienstes “Google
       Maps” des Anbieters Google LLC, 1600 Amphitheatre Parkway, Mountain View,
       CA 94043, USA, eingebunden. Hier können zu den verarbeiteten Daten
@@ -396,9 +405,9 @@
       Google https://www.google.com/policies/privacy/.
     </p>
 
-    <n-h3>Ihre Datenschutzrechte</n-h3>
-    <p>Sie haben das Recht:</p>
-    <ul>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">Ihre Datenschutzrechte</h2>
+    <p class="text-brand-gray">Sie haben das Recht:</p>
+    <ul class="text-brand-gray mb-10">
       <li>
         gemäß Art. 15 DSGVO Auskunft über Ihre von uns verarbeiteten
         personenbezogenen Daten zu verlangen. Insbesondere können Sie Auskunft
@@ -450,8 +459,8 @@
       </li>
     </ul>
 
-    <n-h3>Widerspruchsrecht</n-h3>
-    <p>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">Widerspruchsrecht</h2>
+    <p class="text-brand-gray mb-10">
       Sofern Ihre personenbezogenen Daten auf Grundlage von berechtigten
       Interessen gemäß Art. 6 Abs. 1 S. 1 lit. f DSGVO verarbeitet werden, haben
       Sie das Recht, gemäß Art. 21 DSGVO Widerspruch gegen die Verarbeitung
@@ -463,8 +472,8 @@
       Gebrauch machen, genügt eine E- Mail an: info@clavis-schule.de
     </p>
 
-    <n-h3>Datensicherheit</n-h3>
-    <p>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">Datensicherheit</h2>
+    <p class="text-brand-gray mb-10">
       Wir verwenden innerhalb des Website-Besuchs das verbreitete SSL-Verfahren
       (Secure Socket Layer) in Verbindung mit der jeweils höchsten
       Verschlüsselungsstufe, die von Ihrem Browser unterstützt wird. In der
@@ -481,16 +490,16 @@
       technologischen Entwicklung fortlaufend verbessert.
     </p>
 
-    <n-h3>Aktualität und Änderung dieser Datenschutzerklärung</n-h3>
-    <p>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">Aktualität und Änderung dieser Datenschutzerklärung</h2>
+    <p class="text-brand-gray mb-10">
       Diese Datenschutzerklärung ist aktuell gültig und hat den Stand Mai 2018.
       Durch die Weiterentwicklung unserer Website und Angebote darüber oder
       aufgrund geänderter gesetzlicher beziehungsweise behördlicher Vorgaben
       kann es notwendig werden, diese Datenschutzerklärung zu ändern.
     </p>
 
-    <n-h3>Quellen dieser Datenschutzerklärung</n-h3>
-    <p>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">Quellen dieser Datenschutzerklärung</h2>
+    <p class="text-brand-gray mb-10">
       Um diese Datenschutzerklärung maßgeschneidert auf die Gegebenheiten
       unseres Webauftrittes im Zusammenhang mit unserem Unternehmen, der Clavis
       Kunst und Wissenschaft Privatschule GmbH i.G., formulieren zu können,
@@ -506,19 +515,15 @@
       Datenschutzerklärungs-Generator der Deutschen Gesellschaft für Datenschutz
       GmbH (DGD) in Kooperation mit dem Datenschutzanwalt Christian Solmecke.
     </p>
-  </div>
+  </main>
 </template>
 <script setup lang="ts">
-import { NH1, NH3 } from 'naive-ui'
+import { NBreadcrumb, NBreadcrumbItem } from 'naive-ui'
 </script>
 <style scoped lang="scss">
-p,
-ul {
-  margin-bottom: 0.75rem;
-}
-
 ul {
   list-style-type: disc;
   margin-left: 1rem;
+  margin-bottom: 0.75rem;
 }
 </style>
