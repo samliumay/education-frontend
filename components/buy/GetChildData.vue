@@ -22,6 +22,7 @@
       <AppInput
         v-model:model-value="newVisitor.birth_date"
         placeholder="Дата рождения ребенка"
+        type="date"
       />
       <AppButton @click="addVisitor"> Добавить ребенка </AppButton>
     </template>

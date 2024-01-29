@@ -2,7 +2,9 @@
   <n-modal :show="isOpen" @mask-click="close">
     <div class="bg-brand-light-gray rounded-lg p-[44px] w-[600px]">
       <div class="flex justify-between mb-[36px]">
-        <h2 class="text-3xl font-medium">{{ step === LoginSteps.SignUp ? 'Регистрация' : 'Вход' }}</h2>
+        <h2 class="text-3xl font-medium">
+          {{ step === LoginSteps.SignUp ? 'Регистрация' : 'Вход' }}
+        </h2>
         <button
           class="bg-white border-[1px] border-brand-black w-[35px] h-[35px] rounded-full flex items-center justify-center hover:bg-brand-light-gray transition ease-in delay-100 transform active:scale-[0.93]"
           @click="close"
@@ -32,14 +34,21 @@
         </div>
       </template>
       <template v-else-if="step === LoginSteps.Email">
-        <AppInput v-model="credentials.email" placeholder="E-mail" />
+        <AppInput
+          v-model="credentials.email"
+          placeholder="E-mail"
+          type="email"
+        />
         <AppInput
           v-model="credentials.password"
           placeholder="Пароль"
           type="password"
           class="mt-[12px]"
         />
-        <button class="mt-[16px] block" @click="step = LoginSteps.RestorePassword">
+        <button
+          class="mt-[16px] block"
+          @click="step = LoginSteps.RestorePassword"
+        >
           Забыли пароль?
           <span class="text-brand-red cursor-pointer">Восстановить</span>
         </button>
@@ -59,9 +68,24 @@
       </template>
       <template v-else-if="step === LoginSteps.SignUp">
         <AppInput v-model="signUpCredentials.first_name" placeholder="Имя" />
-        <AppInput v-model="signUpCredentials.last_name" placeholder="Фамилия" class="mt-[12px]" />
-        <AppInput v-model="signUpCredentials.phone_number" placeholder="Номер телефона" class="mt-[12px]" />
-        <AppInput v-model="signUpCredentials.email" placeholder="E-mail" class="mt-[12px]" />
+        <AppInput
+          v-model="signUpCredentials.last_name"
+          placeholder="Фамилия"
+          class="mt-[12px]"
+        />
+        <AppInput
+          v-model="signUpCredentials.phone_number"
+          maska="+49 ### ###-##-##"
+          placeholder="Номер телефона"
+          class="mt-[12px]"
+          type="tel"
+        />
+        <AppInput
+          v-model="signUpCredentials.email"
+          placeholder="E-mail"
+          class="mt-[12px]"
+          type="email"
+        />
         <AppInput
           v-model="signUpCredentials.password1"
           placeholder="Пароль"
@@ -151,17 +175,15 @@ const login = async () => {
 }
 
 const signUp = async () => {
-  await userStore
-    .register(signUpCredentials.value)
-    .catch(err => {
-      if (Object.keys(err).length !== 0) {
-        error.value = 'Кажется что-то пошло не так'
-        setTimeout(clearError, 2000)
-      } else {
-        emit('next')
-        emit('close')
-      }
-    })
+  await userStore.register(signUpCredentials.value).catch(err => {
+    if (Object.keys(err).length !== 0) {
+      error.value = 'Кажется что-то пошло не так'
+      setTimeout(clearError, 2000)
+    } else {
+      emit('next')
+      emit('close')
+    }
+  })
 }
 
 const step = ref(LoginSteps.Options)

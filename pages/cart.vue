@@ -124,6 +124,51 @@
         </ErrorBoundaryBlock>
 
         <div
+          v-if="!userStore.isLoggedIn"
+          class="bg-white rounded-[12px] p-[24px]"
+        >
+          <h2 class="font-medium text-[24px] mb-6">Регистрация</h2>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
+            <AppInput
+              v-model="registrationForm.name"
+              placeholder="Имя родителя"
+            />
+            <AppInput
+              v-model="registrationForm.surname"
+              placeholder="Фамилия родителя"
+            />
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
+            <AppInput
+              v-model="registrationForm.email"
+              placeholder="Email"
+              type="email"
+            />
+            <AppInput
+              v-model="registrationForm.phone"
+              placeholder="Телефон"
+              maska="+49 ### ###-##-##"
+              type="tel"
+            />
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
+            <AppInput
+              v-model="registrationForm.password"
+              placeholder="Пароль"
+              type="password"
+            />
+            <AppInput
+              v-model="registrationForm.repeatPassword"
+              placeholder="Повторите пароль"
+              type="password"
+            />
+          </div>
+        </div>
+
+        <div
           v-if="cart?.order?.items?.length"
           class="bg-white rounded-[12px] p-[24px]"
         >
@@ -148,10 +193,7 @@
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px]">
-            <AppInput
-              v-model="additionalInfo.post_code"
-              placeholder="Почтовый индекс"
-            />
+            <AppInput v-model="additionalInfo.post_code" placeholder="Дом" />
             <AppInput
               v-model="additionalInfo.company_name"
               placeholder="Название компании"
@@ -186,9 +228,7 @@
                 </span>
               </div>
               <div class="flex justify-between gap-[24px]">
-                <span class="font-medium">
-                  Сумма скидки
-                </span>
+                <span class="font-medium"> Сумма скидки </span>
                 <span>
                   {{ `${item?.discount_amount} €` }}
                 </span>
@@ -255,12 +295,22 @@ import CartBuyOptions from '../components/cart/CartBuyOptions.vue'
 import CartItem from '../components/cart/CartItem.vue'
 import EmptyCart from '../components/cart/EmptyCart.vue'
 import { useCartStore } from '../store/cart'
+import { useUserStore } from '../store/user'
 import type { AdditionalInfo } from '../types'
 
 const additionalInfo: Ref<AdditionalInfo> = ref({} as AdditionalInfo)
+const registrationForm = ref({
+  name: '',
+  surname: '',
+  email: '',
+  phone: '',
+  password: '',
+  repeatPassword: '',
+})
 
 const buyOption: Ref<'paypal' | 'stripe'> = ref('paypal')
 
+const userStore = useUserStore()
 const cart = useCartStore()
 await cart.getCurrentOrder()
 

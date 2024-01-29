@@ -81,7 +81,8 @@
         <AppInput
           v-if="buyForm.when === 'later'"
           v-model="buyForm.later"
-          placeholder="ДД.ММ.ГГГГ"
+          type="date"
+          placeholder="2012-12-21"
           class="mt-[16px]"
         />
       </template>

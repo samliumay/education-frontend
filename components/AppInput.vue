@@ -4,6 +4,9 @@
     :placeholder="placeholder"
     :type="type ? type : 'text'"
     :value="modelValue"
+    v-maska
+    maxlength="128"
+    :data-maska="maska"
     @input="
       $emit(
         'update:modelValue',
@@ -20,6 +23,7 @@ defineProps<{
   modelValue: string
   type?: string
   placeholder?: string
+  maska?: string
 }>()
 
 defineEmits(['update:modelValue', 'blur'])

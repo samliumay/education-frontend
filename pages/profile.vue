@@ -29,37 +29,40 @@
             <div class="flex flex-col sm:flex-row gap-[12px]">
               <div class="flex flex-col gap-[8px]">
                 <p class="font-medium">Имя</p>
-                <AppInputVue v-model="user.user.first_name" />
+                <AppInput v-model="user.user.first_name" />
               </div>
 
               <div class="flex flex-col gap-[8px]">
                 <p class="font-medium">Фамилия</p>
-                <AppInputVue v-model="user.user.last_name" />
+                <AppInput v-model="user.user.last_name" />
               </div>
             </div>
 
             <div class="flex flex-col gap-[8px]">
               <p class="font-medium">Почта</p>
-              <AppInputVue
+              <AppInput
                 v-model="user.user.email"
                 placeholder="example@example.com"
+                type="email"
               />
             </div>
 
             <div class="flex flex-col gap-[8px]">
               <p class="font-medium">Телефон</p>
-              <AppInputVue
+              <AppInput
                 v-model="user.user.phone_number"
-                placeholder="+79199099090"
+                placeholder="Номер телефона"
+                maska="+49 ### ###-##-##"
+                type="tel"
               />
             </div>
 
-            <AppButtonVue
+            <AppButton
               class="mt-[24px] w-full"
               @click="user.updateUser(user.user)"
             >
               Сохранить
-            </AppButtonVue>
+            </AppButton>
           </div>
         </div>
 
@@ -69,19 +72,17 @@
           <h2 class="text-[24px] font-medium">Смена пароля</h2>
 
           <div class="flex flex-col gap-[12px]">
-            <AppInputVue
-              v-model="passwordChange.current"
-              placeholder="Текущий пароль"
-            />
-            <AppInputVue
+            <AppInput
               v-model="passwordChange.new1"
               placeholder="Новый пароль"
+              type="password"
             />
-            <AppInputVue
+            <AppInput
               v-model="passwordChange.new2"
               placeholder="Повторите пароль"
+              type="password"
             />
-            <AppButtonVue class="mt-[24px] w-full"> Сохранить </AppButtonVue>
+            <AppButton class="mt-[24px] w-full"> Сохранить </AppButton>
           </div>
         </div>
       </n-tab-pane>
@@ -107,28 +108,28 @@
             <div class="flex flex-col sm:flex-row gap-[12px]">
               <div class="flex flex-col gap-[8px]">
                 <p class="font-medium">Имя</p>
-                <AppInputVue v-model="visitor.first_name" />
+                <AppInput v-model="visitor.first_name" />
               </div>
 
               <div class="flex flex-col gap-[8px]">
                 <p class="font-medium">Фамилия</p>
-                <AppInputVue v-model="visitor.last_name" />
+                <AppInput v-model="visitor.last_name" />
               </div>
 
               <div class="flex flex-col gap-[8px]">
                 <p class="font-medium">Дата рождения</p>
-                <AppInputVue v-model="visitor.birth_date" />
+                <AppInput v-model="visitor.birth_date" type="date" placeholder="2012-12-21" />
               </div>
             </div>
           </div>
 
           <div class="flex justify-end mt-[24px] w-full sm:w-auto">
-            <AppButtonVue
+            <AppButton
               class="w-full"
               @click="user.updateVisitor(visitor.id, visitor)"
             >
               Сохранить
-            </AppButtonVue>
+            </AppButton>
           </div>
 
           <AppDivider class="my-[36px]" />
@@ -184,9 +185,9 @@ import { NTabPane, NTabs } from 'naive-ui'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
-import AppButtonVue from '../components/AppButton.vue'
+import AppButton from '../components/AppButton.vue'
 import AppDivider from '../components/AppDivider.vue'
-import AppInputVue from '../components/AppInput.vue'
+import AppInput from '../components/AppInput.vue'
 import ProductsTable from '../components/profile/ProductsTable.vue'
 import { useUserStore } from '../store/user'
 
