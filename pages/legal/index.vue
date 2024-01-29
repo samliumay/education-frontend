@@ -1,30 +1,41 @@
 <template>
-  <div>
-    <n-h1>Clavis Schule Impressum</n-h1>
+  <main class="px-10 py-6">
+    <n-breadcrumb class="mb-10">
+      <n-breadcrumb-item сlass="text-brand-gray">
+        <NuxtLink to="/">Главная</NuxtLink>
+      </n-breadcrumb-item>
+      <n-breadcrumb-item сlass="text-brand-gray">
+        Legal
+      </n-breadcrumb-item>
+    </n-breadcrumb>
 
-    <p><strong>Clavis Kunst und Wissenschaft Privatschule GmbH i.G.</strong></p>
-    <p>
-      Vertreten durch die Geschäftsführerinnen, Frau Margarita Stroutchenkova,
-      Frau Olga Novik
-    </p>
-    <p>Immanuelkirchstraße 4</p>
-    <p>10405 Berlin</p>
-    <p>Phone Secretary: +49 (0)30 71537477</p>
-    <p>Phone Administrator: +49 (0)176 15683600</p>
-    <p>E-mail: info@clavis-schule.de</p>
-    <p>Internet: www.clavis-schule.de</p>
-    <p>UStID DE356490222</p>
+    <h1 class="text-brand-black text-5xl mb-10 font-medium">Clavis Schule Impressum</h1>
 
-    <n-h1>V.iS.d.P.</n-h1>
-    <p>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">Wer wir sind</h2>
+    <h3 class="text-brand-black mb-2">Clavis Kunst und Wissenschaft Privatschule GmbH i.G.</h3>
+    <div class="text-brand-gray mb-10">
+      <p>
+        Vertreten durch die Geschäftsführerinnen, Frau Margarita Stroutchenkova,
+        Frau Olga Novik
+      </p>
+      <p class="text-brand-black font-medium">Immanuelkirchstraße 4 10405 Berlin</p>
+      <p><span class="text-brand-black font-medium">Phone Secretary:</span> <a href="tel:+493071537477">+49 (0)30 71537477</a></p>
+      <p><span class="text-brand-black font-medium">Phone Administrator:</span> <a href="tel:+4917615683600">+49 (0)176 15683600</a></p>
+      <p><span class="text-brand-black font-medium">E-mail:</span> <a href="mailto:info@clavis-schule.de">info@clavis-schule.de</a></p>
+      <p><span class="text-brand-black font-medium">Web:</span> <a class="text-brand-red underline" href="www.clavis-schule.de">www.clavis-schule.de</a></p>
+      <p class="text-brand-black font-medium m-0">UStID DE356490222</p>
+    </div>
+
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">V.iS.d.P.</h2>
+    <p class="text-brand-gray mb-10">
       Verantwortlich im Sinne des Presserechtes für journalistische und
       redaktionelle Texte auf dieser Website: Margarita Stroutchenkova
       (Clavis-Schulleitung).
     </p>
 
-    <n-h1>Haftungsausschluss</n-h1>
-    <p><strong>Haftung für Inhalte</strong></p>
-    <p class="mb-4">
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">Haftungsausschluss</h2>
+    <h3 class="text-brand-black mb-2">Haftung für Inhalte</h3>
+    <p class="text-brand-gray mb-2">
       Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die
       Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch
       keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG
@@ -39,8 +50,8 @@
       von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend
       entfernen.
     </p>
-    <p><strong>Haftung für Links</strong></p>
-    <p class="mb-4">
+    <h3 class="text-brand-black mb-2">Haftung für Links</h3>
+    <p class="text-brand-gray mb-2">
       Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren
       Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden
       Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten
@@ -52,8 +63,8 @@
       einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von
       Rechtsverletzungen werden wir derartige Links umgehend entfernen.
     </p>
-    <p><strong>Urheberrecht</strong></p>
-    <p class="mb-4">
+    <h3 class="text-brand-black mb-2">Urheberrecht</h3>
+    <p class="text-brand-gray mb-2">
       Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen
       Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung,
       Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen
@@ -67,20 +78,16 @@
       Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend
       entfernen.
     </p>
-    <p><strong>Hinweis zur Gender-Formulierung</strong></p>
-    <p class="mb-4">
+    <h3 class="text-brand-black mb-2">Hinweis zur Gender-Formulierung</h3>
+    <p class="text-brand-gray mb-10">
       Der Lesbarkeit halber nutzen wir hauptsächlich die neutrale Form der
       Ansprache (meistens maskuline). Wir weisen darauf hin, dass die Clavis
       Kunst und Wissenschaft niemanden auf Grund von Geschlecht, Sexualität,
       Religion, Ethnie, äußerer Erscheinungen usw. diskriminiert
     </p>
-  </div>
+  </main>
 </template>
 <script lang="ts" setup>
-import { NH1 } from 'naive-ui'
 </script>
 <style scoped lang="scss">
-p {
-  margin-bottom: 0.75rem;
-}
 </style>

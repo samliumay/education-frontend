@@ -8,6 +8,7 @@
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>
+      <AppCookieModal/>
       <AppFooter v-if="$route.path !== '/menu'" />
     </div>
   </n-config-provider>
@@ -15,6 +16,7 @@
 <script setup lang="ts">
 import AppFooter from './components/page/AppFooter.vue'
 import AppHeader from './components/page/AppHeader.vue'
+import AppCookieModal from './components/AppCookieModal.vue'
 
 useHead({
   title: 'Clavis Schule für Kunst und Wissenschaft',
