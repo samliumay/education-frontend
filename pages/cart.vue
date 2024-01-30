@@ -2,7 +2,11 @@
   <div class="py-24 px-4 sm:px-12 bg-brand-light-gray">
     <h1 class="font-medium text-5xl mb-12 uppercase">Корзина</h1>
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-[24px]">
+    <form
+      ref="form"
+      class="grid grid-cols-1 sm:grid-cols-3 gap-[24px]"
+      @submit.prevent="fullfillOrder"
+    >
       <div class="sm:col-span-2 flex flex-col gap-[24px]">
         <ErrorBoundaryBlock>
           <div class="bg-white rounded-xl p-6">
@@ -175,25 +179,62 @@
           <h2 class="font-medium text-[24px] mb-6">Платежные реквизиты</h2>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
-            <AppInput v-model="additionalInfo.first_name" placeholder="Имя" />
+            <AppInput
+              v-model="additionalInfo.first_name"
+              placeholder="Имя"
+              required
+              pattern=".{2,}"
+              title="The name must contain at least two characters"
+              @blur="checkValidity"
+            />
             <AppInput
               v-model="additionalInfo.last_name"
               placeholder="Фамилия"
+              pattern=".{2,}"
+              title="Last name must contain at least two characters"
+              required
+              @blur="checkValidity"
             />
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
-            <AppInput v-model="additionalInfo.country" placeholder="Страна" />
-            <AppInput v-model="additionalInfo.city" placeholder="Город" />
+            <AppInput
+              v-model="additionalInfo.country"
+              placeholder="Страна"
+              pattern=".{2,}"
+              title="Country must contain at least two characters"
+              required
+              @blur="checkValidity"
+            />
+            <AppInput
+              v-model="additionalInfo.city"
+              placeholder="Город"
+              pattern=".{2,}"
+              title="City must contain at least two characters"
+              required
+              @blur="checkValidity"
+            />
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
             <AppInput v-model="additionalInfo.state" placeholder="Штат" />
-            <AppInput v-model="additionalInfo.street" placeholder="Улица" />
+            <AppInput
+              v-model="additionalInfo.street"
+              placeholder="Улица"
+              pattern=".{2,}"
+              title="Street must contain at least two characters"
+              required
+              @blur="checkValidity"
+            />
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px]">
-            <AppInput v-model="additionalInfo.post_code" placeholder="Дом" />
+            <AppInput
+              v-model="additionalInfo.post_code"
+              placeholder="Дом"
+              required
+              @blur="checkValidity"
+            />
             <AppInput
               v-model="additionalInfo.company_name"
               placeholder="Название компании"
@@ -262,7 +303,7 @@
               купить
             </p>
 
-            <p class="flex justify-between font-medium text-[24px] mt-[24px]">
+            <p v-show="cart?.order?.items?.length" class="flex justify-between font-medium text-[24px] mt-[24px] mb-[24px]">
               <span>Итого</span>
               <span>{{
                 `${(cart?.order?.items || []).reduce((acc, item) => {
@@ -272,21 +313,23 @@
               }}</span>
             </p>
 
+            <p v-show="!form?.checkValidity() ?? false" class="mb-2 text-brand-gray text-sm">Для оплаты, пожалуйста, заполните платёжные реквизиты ниже</p>
             <AppButton
-              class="mt-[24px] w-full"
-              :disabled="!cart?.order?.items?.length"
-              @click="fullfillOrder"
+              v-show="cart?.order?.items?.length"
+              class=" w-full"
+              type="submit"
+              :disabled="!form?.checkValidity() ?? false"
             >
               Перейти к оплате
             </AppButton>
           </div>
         </div>
       </ErrorBoundaryBlock>
-    </div>
+    </form>
   </div>
 </template>
 <script setup lang="ts">
-import { computed, type Ref, ref } from 'vue'
+import { computed, type Ref, ref, type VNodeRef } from 'vue'
 
 import AppButton from '../components/AppButton.vue'
 import AppDivider from '../components/AppDivider.vue'
@@ -298,7 +341,15 @@ import { useCartStore } from '../store/cart'
 import { useUserStore } from '../store/user'
 import type { AdditionalInfo } from '../types'
 
-const additionalInfo: Ref<AdditionalInfo> = ref({} as AdditionalInfo)
+const userStore = useUserStore()
+const cart = useCartStore()
+await cart.getCurrentOrder()
+
+const additionalInfo: Ref<AdditionalInfo> = ref({
+  first_name: userStore?.user?.first_name ?? '',
+  last_name: userStore?.user?.last_name ?? '',
+} as AdditionalInfo)
+
 const registrationForm = ref({
   name: '',
   surname: '',
@@ -309,10 +360,6 @@ const registrationForm = ref({
 })
 
 const buyOption: Ref<'paypal' | 'stripe'> = ref('paypal')
-
-const userStore = useUserStore()
-const cart = useCartStore()
-await cart.getCurrentOrder()
 
 const fullfillOrder = async () => {
   const urlObject = await cart.fulfillOrder(
@@ -361,4 +408,20 @@ const workshopProducts = computed(
         item.product_page.product_type === 'Event',
     ) || [],
 )
+
+// Form
+const checkValidity = (event: { target: { reportValidity: () => void } }) => {
+  event.target.reportValidity()
+}
+
+const form = ref<VNodeRef | undefined>(undefined)
+const isDisabledButton = computed(() => {
+  const isHaveItems = !!cart?.order?.items?.length
+  const isFilledForm = !form.value?.checkValidity() ?? false
+
+  console.debug('isHaveItems', isHaveItems)
+  console.debug('isFilledForm', isFilledForm)
+
+  return isFilledForm
+})
 </script>
