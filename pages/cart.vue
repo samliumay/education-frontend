@@ -415,13 +415,4 @@ const checkValidity = (event: { target: { reportValidity: () => void } }) => {
 }
 
 const form = ref<VNodeRef | undefined>(undefined)
-const isDisabledButton = computed(() => {
-  const isHaveItems = !!cart?.order?.items?.length
-  const isFilledForm = !form.value?.checkValidity() ?? false
-
-  console.debug('isHaveItems', isHaveItems)
-  console.debug('isFilledForm', isFilledForm)
-
-  return isFilledForm
-})
 </script>

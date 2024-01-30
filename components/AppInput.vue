@@ -1,10 +1,10 @@
 <template>
   <input
+    v-maska
     class="bg-white w-full rounded-[12px] px-[24px] py-[16px] border-gray-200 border-[1px] disabled:bg-brand-light-gray"
     :placeholder="placeholder"
     :type="type ? type : 'text'"
     :value="modelValue"
-    v-maska
     maxlength="64"
     minlength="1"
     :data-maska="maska"
