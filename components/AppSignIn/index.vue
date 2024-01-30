@@ -10,7 +10,7 @@
               step === LoginSteps.ConfirmRestorePassword
             "
             >Восстановление пароля</span>
-          <span v-else>Вход</span>
+          <span v-else>Войти</span>
         </h2>
         <button
           class="bg-white border-[1px] border-brand-black w-[35px] h-[35px] rounded-full flex items-center justify-center hover:bg-brand-light-gray transition ease-in delay-100 transform active:scale-[0.93]"

@@ -265,13 +265,13 @@
                   {{ item.product_page?.name }}
                 </span>
                 <span>
-                  {{ `${item.calculated_price} €` }}
+                  {{ `${Number(item.calculated_price ?? 0).toFixed(2)} €` }}
                 </span>
               </div>
               <div class="flex justify-between gap-[24px]">
                 <span class="font-medium"> Сумма скидки </span>
                 <span>
-                  {{ `${item?.discount_amount} €` }}
+                  {{ `${Number(item?.discount_amount ?? 0).toFixed(2)} €` }}
                 </span>
               </div>
 
@@ -308,7 +308,7 @@
               <span>{{
                 `${(cart?.order?.items || []).reduce((acc, item) => {
                   acc = acc + +item.calculated_price
-                  return acc
+                  return Number(acc ?? 0).toFixed(2)
                 }, 0)} €`
               }}</span>
             </p>
