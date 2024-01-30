@@ -2,7 +2,11 @@
   <div class="py-24 px-4 sm:px-12 bg-brand-light-gray">
     <h1 class="font-medium text-5xl mb-12 uppercase">Корзина</h1>
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-[24px]">
+    <form
+      ref="form"
+      class="grid grid-cols-1 sm:grid-cols-3 gap-[24px]"
+      @submit.prevent="fullfillOrder"
+    >
       <div class="sm:col-span-2 flex flex-col gap-[24px]">
         <ErrorBoundaryBlock>
           <div class="bg-white rounded-xl p-6">
@@ -124,33 +128,112 @@
         </ErrorBoundaryBlock>
 
         <div
+          v-if="!userStore.isLoggedIn"
+          class="bg-white rounded-[12px] p-[24px]"
+        >
+          <h2 class="font-medium text-[24px] mb-6">Регистрация</h2>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
+            <AppInput
+              v-model="registrationForm.name"
+              placeholder="Имя родителя"
+            />
+            <AppInput
+              v-model="registrationForm.surname"
+              placeholder="Фамилия родителя"
+            />
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
+            <AppInput
+              v-model="registrationForm.email"
+              placeholder="Email"
+              type="email"
+            />
+            <AppInput
+              v-model="registrationForm.phone"
+              placeholder="Телефон"
+              maska="+49 ### ###-##-##"
+              type="tel"
+            />
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
+            <AppInput
+              v-model="registrationForm.password"
+              placeholder="Пароль"
+              type="password"
+            />
+            <AppInput
+              v-model="registrationForm.repeatPassword"
+              placeholder="Повторите пароль"
+              type="password"
+            />
+          </div>
+        </div>
+
+        <div
           v-if="cart?.order?.items?.length"
           class="bg-white rounded-[12px] p-[24px]"
         >
           <h2 class="font-medium text-[24px] mb-6">Платежные реквизиты</h2>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
-            <AppInput v-model="additionalInfo.first_name" placeholder="Имя" />
+            <AppInput
+              v-model="additionalInfo.first_name"
+              placeholder="Имя"
+              required
+              pattern=".{2,}"
+              title="The name must contain at least two characters"
+              @blur="checkValidity"
+            />
             <AppInput
               v-model="additionalInfo.last_name"
               placeholder="Фамилия"
+              pattern=".{2,}"
+              title="Last name must contain at least two characters"
+              required
+              @blur="checkValidity"
             />
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
-            <AppInput v-model="additionalInfo.country" placeholder="Страна" />
-            <AppInput v-model="additionalInfo.city" placeholder="Город" />
+            <AppInput
+              v-model="additionalInfo.country"
+              placeholder="Страна"
+              pattern=".{2,}"
+              title="Country must contain at least two characters"
+              required
+              @blur="checkValidity"
+            />
+            <AppInput
+              v-model="additionalInfo.city"
+              placeholder="Город"
+              pattern=".{2,}"
+              title="City must contain at least two characters"
+              required
+              @blur="checkValidity"
+            />
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
             <AppInput v-model="additionalInfo.state" placeholder="Штат" />
-            <AppInput v-model="additionalInfo.street" placeholder="Улица" />
+            <AppInput
+              v-model="additionalInfo.street"
+              placeholder="Улица"
+              pattern=".{2,}"
+              title="Street must contain at least two characters"
+              required
+              @blur="checkValidity"
+            />
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px]">
             <AppInput
               v-model="additionalInfo.post_code"
-              placeholder="Почтовый индекс"
+              placeholder="Дом"
+              required
+              @blur="checkValidity"
             />
             <AppInput
               v-model="additionalInfo.company_name"
@@ -182,15 +265,13 @@
                   {{ item.product_page?.name }}
                 </span>
                 <span>
-                  {{ `${item.calculated_price} €` }}
+                  {{ `${Number(item.calculated_price ?? 0).toFixed(2)} €` }}
                 </span>
               </div>
               <div class="flex justify-between gap-[24px]">
-                <span class="font-medium">
-                  Сумма скидки
-                </span>
+                <span class="font-medium"> Сумма скидки </span>
                 <span>
-                  {{ `${item?.discount_amount} €` }}
+                  {{ `${Number(item?.discount_amount ?? 0).toFixed(2)} €` }}
                 </span>
               </div>
 
@@ -222,31 +303,33 @@
               купить
             </p>
 
-            <p class="flex justify-between font-medium text-[24px] mt-[24px]">
+            <p v-show="cart?.order?.items?.length" class="flex justify-between font-medium text-[24px] mt-[24px] mb-[24px]">
               <span>Итого</span>
               <span>{{
                 `${(cart?.order?.items || []).reduce((acc, item) => {
                   acc = acc + +item.calculated_price
-                  return acc
+                  return Number(acc ?? 0).toFixed(2)
                 }, 0)} €`
               }}</span>
             </p>
 
+            <p v-show="!form?.checkValidity() ?? false" class="mb-2 text-brand-gray text-sm">Для оплаты, пожалуйста, заполните платёжные реквизиты ниже</p>
             <AppButton
-              class="mt-[24px] w-full"
-              :disabled="!cart?.order?.items?.length"
-              @click="fullfillOrder"
+              v-show="cart?.order?.items?.length"
+              class=" w-full"
+              type="submit"
+              :disabled="!form?.checkValidity() ?? false"
             >
               Перейти к оплате
             </AppButton>
           </div>
         </div>
       </ErrorBoundaryBlock>
-    </div>
+    </form>
   </div>
 </template>
 <script setup lang="ts">
-import { computed, type Ref, ref } from 'vue'
+import { computed, type Ref, ref, type VNodeRef } from 'vue'
 
 import AppButton from '../components/AppButton.vue'
 import AppDivider from '../components/AppDivider.vue'
@@ -255,14 +338,28 @@ import CartBuyOptions from '../components/cart/CartBuyOptions.vue'
 import CartItem from '../components/cart/CartItem.vue'
 import EmptyCart from '../components/cart/EmptyCart.vue'
 import { useCartStore } from '../store/cart'
+import { useUserStore } from '../store/user'
 import type { AdditionalInfo } from '../types'
 
-const additionalInfo: Ref<AdditionalInfo> = ref({} as AdditionalInfo)
-
-const buyOption: Ref<'paypal' | 'stripe'> = ref('paypal')
-
+const userStore = useUserStore()
 const cart = useCartStore()
 await cart.getCurrentOrder()
+
+const additionalInfo: Ref<AdditionalInfo> = ref({
+  first_name: userStore?.user?.first_name ?? '',
+  last_name: userStore?.user?.last_name ?? '',
+} as AdditionalInfo)
+
+const registrationForm = ref({
+  name: '',
+  surname: '',
+  email: '',
+  phone: '',
+  password: '',
+  repeatPassword: '',
+})
+
+const buyOption: Ref<'paypal' | 'stripe'> = ref('paypal')
 
 const fullfillOrder = async () => {
   const urlObject = await cart.fulfillOrder(
@@ -311,4 +408,11 @@ const workshopProducts = computed(
         item.product_page.product_type === 'Event',
     ) || [],
 )
+
+// Form
+const checkValidity = (event: { target: { reportValidity: () => void } }) => {
+  event.target.reportValidity()
+}
+
+const form = ref<VNodeRef | undefined>(undefined)
 </script>

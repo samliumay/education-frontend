@@ -121,6 +121,7 @@ import { computed, ref } from 'vue'
 import { useCartStore } from '../../store/cart'
 import { useUserStore } from '../../store/user'
 import { type OrderItem } from '../../types'
+import { getApiAddress } from '../../utils/getApiAddress'
 import { getNearDate } from '../../utils/getNearDate'
 import Loader from '../AppLoader.vue'
 import Cover from '../cms/blocks/misc/Cover.vue'
@@ -139,7 +140,7 @@ const cart = useCartStore()
 // Get cover
 const id = computed(() => props.order?.product_page?.id ?? 0)
 const { data: product, pending: loadingProduct } = await useFetch(
-  `https://api.clavis.the-o.co/api/v2/wagtail/products/${id.value}/?fields=*`,
+  getApiAddress(`/api/v2/wagtail/products/${id.value}/?fields=*`),
   { deep: true },
 )
 

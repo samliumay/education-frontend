@@ -8,7 +8,7 @@
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>
-      <AppCookieModal/>
+      <AppCookieModal />
       <AppFooter v-if="$route.path !== '/menu'" />
     </div>
   </n-config-provider>

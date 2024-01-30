@@ -35,7 +35,9 @@
         </div>
 
         <div>
-          <h1 class="font-medium text-[32px] sm:text-[48px] mb-[36px]">Заполните данные</h1>
+          <h1 class="font-medium text-[32px] sm:text-[48px] mb-[36px]">
+            Заполните данные
+          </h1>
 
           <div class="grid grid-cols-2 gap-[12px]">
             <AppInput
@@ -52,6 +54,7 @@
             v-model="application.child.birthdate"
             class="mt-[12px]"
             placeholder="Дата рождения ребенка"
+            type="date"
           />
 
           <div class="grid grid-cols-2 gap-[12px] mt-[12px]">

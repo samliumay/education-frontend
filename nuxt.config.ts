@@ -22,6 +22,7 @@ export default defineNuxtConfig({
       process.env.NODE_ENV === 'production'
         ? [
             'naive-ui',
+            'maska,',
             'vueuc',
             '@css-render/vue3-ssr',
             '@juggle/resize-observer',
@@ -32,7 +33,7 @@ export default defineNuxtConfig({
     optimizeDeps: {
       include:
         process.env.NODE_ENV === 'development'
-          ? ['naive-ui', 'vueuc', 'date-fns-tz/formatInTimeZone']
+          ? ['naive-ui', 'vueuc', 'maska', 'date-fns-tz/formatInTimeZone']
           : [],
     },
   },

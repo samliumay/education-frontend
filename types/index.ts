@@ -126,6 +126,7 @@ export enum LoginSteps {
   Options,
   Email,
   RestorePassword,
+  ConfirmRestorePassword,
   SignUp,
 }
 

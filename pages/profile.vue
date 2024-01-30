@@ -25,42 +25,66 @@
             </div>
           </div>
 
-          <div class="flex flex-col gap-[12px]">
+          <form
+            ref="userForm"
+            class="flex flex-col gap-[12px]"
+            @submit.prevent="user.updateUser(user.user)"
+          >
             <div class="flex flex-col sm:flex-row gap-[12px]">
               <div class="flex flex-col gap-[8px]">
                 <p class="font-medium">Имя</p>
-                <AppInputVue v-model="user.user.first_name" />
+                <AppInput
+                  v-model="user.user.first_name"
+                  required
+                  pattern=".{2,}"
+                  title="The name must contain at least two characters"
+                  @blur="checkValidity"
+                />
               </div>
 
               <div class="flex flex-col gap-[8px]">
                 <p class="font-medium">Фамилия</p>
-                <AppInputVue v-model="user.user.last_name" />
+                <AppInput
+                  v-model="user.user.last_name"
+                  required
+                  pattern=".{2,}"
+                  title="Last name must contain at least two characters"
+                  @blur="checkValidity"
+                />
               </div>
             </div>
 
             <div class="flex flex-col gap-[8px]">
               <p class="font-medium">Почта</p>
-              <AppInputVue
+              <AppInput
                 v-model="user.user.email"
                 placeholder="example@example.com"
+                type="email"
+                required
+                @blur="checkValidity"
               />
             </div>
 
             <div class="flex flex-col gap-[8px]">
               <p class="font-medium">Телефон</p>
-              <AppInputVue
+              <AppInput
                 v-model="user.user.phone_number"
-                placeholder="+79199099090"
+                placeholder="Номер телефона"
+                maska="+49 ### ###-##-##"
+                type="tel"
+                required
+                @blur="checkValidity"
               />
             </div>
 
-            <AppButtonVue
+            <AppButton
               class="mt-[24px] w-full"
-              @click="user.updateUser(user.user)"
+              type="submit"
+              :disabled="!userForm?.checkValidity() ?? false"
             >
               Сохранить
-            </AppButtonVue>
-          </div>
+            </AppButton>
+          </form>
         </div>
 
         <div
@@ -68,73 +92,106 @@
         >
           <h2 class="text-[24px] font-medium">Смена пароля</h2>
 
-          <div class="flex flex-col gap-[12px]">
-            <AppInputVue
-              v-model="passwordChange.current"
-              placeholder="Текущий пароль"
-            />
-            <AppInputVue
-              v-model="passwordChange.new1"
+          <form
+            ref="passwordForm"
+            class="flex flex-col gap-[12px]"
+            @submit.prevent="changePassword"
+          >
+            <AppInput
+              v-model="passwordChange.new_password1"
               placeholder="Новый пароль"
+              type="password"
+              required
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+              title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+              @blur="checkValidity"
             />
-            <AppInputVue
-              v-model="passwordChange.new2"
+            <AppInput
+              v-model="passwordChange.new_password2"
               placeholder="Повторите пароль"
+              type="password"
+              required
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+              title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+              @blur="checkValidity"
             />
-            <AppButtonVue class="mt-[24px] w-full"> Сохранить </AppButtonVue>
-          </div>
+            <p v-if="passwordError" class="text-brand-red mt-2 mb-2">
+              {{ passwordError }}
+            </p>
+            <AppButton
+              type="submit"
+              class="mt-[24px] w-full"
+              :disabled="!passwordForm?.checkValidity() ?? false"
+            >
+              Сменить
+            </AppButton>
+          </form>
         </div>
       </n-tab-pane>
       <n-tab-pane name="visitors" tab="Мои дети">
         <div class="mt-[48px]" />
-        <div
-          v-for="visitor in user.visitorsOrders"
-          :key="visitor.id"
-          class="rounded-[12px] bg-white p-[36px] mb-[24px]"
-        >
-          <div class="flex flex-col sm:flex-row justify-between gap-[48px]">
-            <div class="flex items-center gap-[16px]">
-              <div class="bg-gray-200 rounded-[1000px] w-[96px] h-[96px]" />
-              <h2 class="text-[24px] font-medium">
-                {{
-                  visitor?.first_name
-                    ? `${visitor.first_name} ${visitor.last_name}`
-                    : 'Ребенок'
-                }}
-              </h2>
+        <template v-for="visitor in user.visitorsOrders" :key="visitor.id">
+          <form
+            class="rounded-[12px] bg-white p-[36px] mb-[24px]"
+            @submit.prevent="user.updateVisitor(visitor.id, visitor)"
+          >
+            <div class="flex flex-col sm:flex-row justify-between gap-[48px]">
+              <div class="flex items-center gap-[16px]">
+                <div class="bg-gray-200 rounded-[1000px] w-[96px] h-[96px]" />
+                <h2 class="text-[24px] font-medium">
+                  {{
+                    visitor?.first_name
+                      ? `${visitor.first_name} ${visitor.last_name}`
+                      : 'Ребенок'
+                  }}
+                </h2>
+              </div>
+
+              <div class="flex flex-col sm:flex-row gap-[12px]">
+                <div class="flex flex-col gap-[8px]">
+                  <p class="font-medium">Имя</p>
+                  <AppInput
+                    v-model="visitor.first_name"
+                    required
+                    pattern=".{2,}"
+                    title="The name must contain at least two characters"
+                    @blur="checkValidity"
+                  />
+                </div>
+
+                <div class="flex flex-col gap-[8px]">
+                  <p class="font-medium">Фамилия</p>
+                  <AppInput
+                    v-model="visitor.last_name"
+                    pattern=".{2,}"
+                    title="Last name must contain at least two characters"
+                    required
+                    @blur="checkValidity"
+                  />
+                </div>
+
+                <div class="flex flex-col gap-[8px]">
+                  <p class="font-medium">Дата рождения</p>
+                  <AppInput
+                    v-model="visitor.birth_date"
+                    type="date"
+                    placeholder="2012-12-21"
+                    required
+                    @blur="checkValidity"
+                  />
+                </div>
+              </div>
             </div>
 
-            <div class="flex flex-col sm:flex-row gap-[12px]">
-              <div class="flex flex-col gap-[8px]">
-                <p class="font-medium">Имя</p>
-                <AppInputVue v-model="visitor.first_name" />
-              </div>
-
-              <div class="flex flex-col gap-[8px]">
-                <p class="font-medium">Фамилия</p>
-                <AppInputVue v-model="visitor.last_name" />
-              </div>
-
-              <div class="flex flex-col gap-[8px]">
-                <p class="font-medium">Дата рождения</p>
-                <AppInputVue v-model="visitor.birth_date" />
-              </div>
+            <div class="flex justify-end mt-[24px] w-full sm:w-auto">
+              <AppButton class="w-full" type="submit"> Сохранить </AppButton>
             </div>
-          </div>
 
-          <div class="flex justify-end mt-[24px] w-full sm:w-auto">
-            <AppButtonVue
-              class="w-full"
-              @click="user.updateVisitor(visitor.id, visitor)"
-            >
-              Сохранить
-            </AppButtonVue>
-          </div>
+            <AppDivider class="my-[36px]" />
 
-          <AppDivider class="my-[36px]" />
-
-          <ProductsTable :orders="visitor.orders" with-button />
-        </div>
+            <ProductsTable :orders="visitor.orders" with-button />
+          </form>
+        </template>
       </n-tab-pane>
       <n-tab-pane name="workshops" tab="Воркшопы">
         <div
@@ -181,12 +238,12 @@
 </template>
 <script setup lang="ts">
 import { NTabPane, NTabs } from 'naive-ui'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, type VNodeRef } from 'vue'
 import { useRoute } from 'vue-router'
 
-import AppButtonVue from '../components/AppButton.vue'
+import AppButton from '../components/AppButton.vue'
 import AppDivider from '../components/AppDivider.vue'
-import AppInputVue from '../components/AppInput.vue'
+import AppInput from '../components/AppInput.vue'
 import ProductsTable from '../components/profile/ProductsTable.vue'
 import { useUserStore } from '../store/user'
 
@@ -205,14 +262,43 @@ user.visitorsOrders = user.visitors.map(visitor => ({
   orders: user.ordersByVisitors[visitor.id],
 }))
 
-// Refs
+// State
 const passwordChange = ref({
-  current: '',
-  new1: '',
-  new2: '',
+  new_password1: '',
+  new_password2: '',
 })
 
 const activeTab = ref('profile')
+
+const userForm = ref<VNodeRef | undefined>(undefined)
+const passwordForm = ref<VNodeRef | undefined>(undefined)
+
+const passwordError = ref('')
+
+// Actions
+const checkValidity = (event: { target: { reportValidity: () => void } }) => {
+  event.target.reportValidity()
+}
+
+const changePassword = async () => {
+  await user
+    .changePassword(
+      passwordChange.value.new_password1,
+      passwordChange.value.new_password2,
+    )
+    .catch(err => {
+      if (Object.keys(err).length !== 0) {
+        passwordError.value = 'Кажется, что-то пошло не так'
+        setTimeout(() => {
+          passwordError.value = ''
+        }, 2000)
+      } else {
+        passwordError.value = ''
+        passwordChange.value.new_password1 = ''
+        passwordChange.value.new_password2 = ''
+      }
+    })
+}
 
 // Live hooks
 onMounted(() => {
