@@ -108,6 +108,7 @@ import SelectTagsBlock from '../../../components/misc/SelectTagsBlock.vue'
 import SubscriptionOptions from '../../../components/products/SubscriptionOptions.vue'
 import { useCartStore } from '../../../store/cart'
 import type { OrderItem } from '../../../types'
+import { getApiAddress } from '../../../utils/getApiAddress'
 
 const route = useRoute()
 
@@ -131,7 +132,7 @@ const buyForm = ref({
 })
 
 const { data: product } = await useFetch(
-  `https://api.clavis.the-o.co/api/v2/products/${route.params.id}`,
+  getApiAddress(`/api/v2/products/${route.params.id}`),
 )
 
 const scheduleType = computed(() => {

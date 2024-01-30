@@ -20,6 +20,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
+import { getApiAddress } from '../../../../utils/getApiAddress'
 import ImageBlock from './ImageBlock.vue'
 
 // Init component
@@ -35,7 +36,7 @@ const props = defineProps<{
 // Get data
 const imageId = computed(() => props?.instructor?.profile_pic)
 const { data: image, pending } = await useFetch(
-  `https://api.clavis.the-o.co/api/v2/wagtail/images/${imageId.value}/`,
+  getApiAddress(`/api/v2/wagtail/images/${imageId.value}/`),
   {
     deep: true,
     headers: {

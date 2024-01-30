@@ -252,6 +252,7 @@ import PaymentOptions from '../../../components/cms/blocks/products/details/Paym
 import SelectTagsBlock from '../../../components/misc/SelectTagsBlock.vue'
 import { useCartStore } from '../../../store/cart'
 import type { OrderItem, Product } from '../../../types'
+import { getApiAddress } from '../../../utils/getApiAddress'
 
 const route = useRoute()
 
@@ -271,7 +272,7 @@ const buyForm = ref({
 } as Partial<OrderItem> & { first: boolean; second: boolean; comment: string; feature: string; photo: string; })
 
 const { data: product, pending: productPending } = (await useFetch(
-  `https://api.clavis.the-o.co/api/v2/wagtail/products/${route.params.id}/?fields=*`,
+  getApiAddress(`/api/v2/wagtail/products/${route.params.id}/?fields=*`),
   { deep: true },
 )) as { data: Product }
 
