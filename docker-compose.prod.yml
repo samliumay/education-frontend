@@ -10,13 +10,10 @@ services:
       context: .
       dockerfile: ./docker/prod/Dockerfile
       args:
-        VITE_API_URL: https://api.clavis.the-o.co
+        VITE_API_URL: https://devops-schuleberlin.de/
     image: $CI_REGISTRY_IMAGE/frontend:$CI_COMMIT_SHA
     restart: unless-stopped
     expose:
       - '80'
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.frontend-prod.rule=Host(`clavis.the-o.co`)
     networks:
       - traefik
