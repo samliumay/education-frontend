@@ -142,6 +142,15 @@ export const useUserStore = defineStore('user', () => {
       '/api/v2/users/auth/password/reset/confirm/',
     )
 
+  const changePassword = (
+    new_password1: string,
+    new_password2: string,
+  ) =>
+    userPostRequest(
+      { new_password1, new_password2 },
+      '/api/v2/users/auth/password/change/',
+    )
+
   const findVisitorById = (id?: number) =>
     id
       ? (visitors.value.find(visitor => visitor.id === id) as Visitor)
@@ -191,6 +200,7 @@ export const useUserStore = defineStore('user', () => {
     logout,
     resetPassword,
     confirmResetPassword,
+    changePassword,
     register,
     isLoggedIn,
     visitors,
