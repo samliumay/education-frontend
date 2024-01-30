@@ -54,6 +54,7 @@
 import { NBreadcrumb, NBreadcrumbItem } from 'naive-ui'
 import { computed } from 'vue'
 
+import { getApiAddress } from '../../../utils/getApiAddress'
 import AppLoader from '../../AppLoader.vue'
 import PageConstructor from '../PageConstructor.vue'
 
@@ -103,7 +104,7 @@ const filterQuery = computed(() => {
 
 // API
 const api = computed(() => props.api)
-const address = 'https://api.clavis.the-o.co/api/v2/wagtail'
+const address = getApiAddress('/api/v2/wagtail')
 
 // Docs https://the-o.youtrack.cloud/articles/CLAVIS-A-32/Katalogi
 // Catalog header and icon
