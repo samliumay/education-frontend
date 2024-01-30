@@ -3,6 +3,7 @@ import { ref } from 'vue'
 
 import { HTTP } from '../api/index'
 import { type Order, type OrderItem } from '../types'
+import { getApiAddress } from '../utils/getApiAddress'
 
 export const useCartStore = defineStore('cart', () => {
   const isDataLoading = ref<boolean>(true)
@@ -25,10 +26,11 @@ export const useCartStore = defineStore('cart', () => {
     return res
   }
 
-  const setPromocode = async (promocode: string) => await HTTP.put('/api/v2/orders/current/set_promocode', { promocode })
+  const setPromocode = async (promocode: string) =>
+    await HTTP.put('/api/v2/orders/current/set_promocode', { promocode })
 
   const deleteOrderItem = async (id: number) => {
-    await HTTP.delete(`https://api.clavis.the-o.co/api/v2/orders/items/${id}`)
+    await HTTP.delete(getApiAddress(`/api/v2/orders/items/${id}`))
     await getCurrentOrder()
   }
 
