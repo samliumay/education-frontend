@@ -5,7 +5,8 @@
     :type="type ? type : 'text'"
     :value="modelValue"
     v-maska
-    maxlength="128"
+    maxlength="64"
+    minlength="1"
     :data-maska="maska"
     @input="
       $emit(
@@ -13,7 +14,7 @@
         ($event.target as unknown as IEventTarget).value,
       )
     "
-    @blur="$emit('blur')"
+    @blur="event => $emit('blur', event)"
   />
 </template>
 <script setup lang="ts">
