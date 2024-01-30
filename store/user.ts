@@ -70,7 +70,7 @@ export const useUserStore = defineStore('user', () => {
     orders.value = []
     workshopOrders.value = []
 
-    window.location.href = "/"
+    window.location.href = '/'
   }
 
   const retrieveUser = async () => {
@@ -107,22 +107,48 @@ export const useUserStore = defineStore('user', () => {
       '/api/v2/users/sign_in/',
     )
 
-  const register = (
-    credentials:
-    {
-      email: string,
-      phone_number: string,
-      password1: string,
-      password2: string,
-      first_name: string,
-      last_name: string,
-    },
-  ) =>
-    userPostRequest({
-      ...credentials,
-      username: credentials.email,
-    },
+  const register = (credentials: {
+    email: string
+    phone_number: string
+    password1: string
+    password2: string
+    first_name: string
+    last_name: string
+  }) =>
+    userPostRequest(
+      {
+        ...credentials,
+        username: credentials.email,
+      },
       '/api/v2/users/sign_up/',
+    )
+
+  const resetPassword = (email: string) =>
+    userPostRequest(
+      {
+        email,
+      },
+      '/api/v2/users/auth/password/reset/',
+    )
+
+  const confirmResetPassword = (
+    new_password1: string,
+    new_password2: string,
+    uid: string,
+    token: string,
+  ) =>
+    userPostRequest(
+      { new_password1, new_password2, uid, token },
+      '/api/v2/users/auth/password/reset/confirm/',
+    )
+
+  const changePassword = (
+    new_password1: string,
+    new_password2: string,
+  ) =>
+    userPostRequest(
+      { new_password1, new_password2 },
+      '/api/v2/users/auth/password/change/',
     )
 
   const findVisitorById = (id?: number) =>
@@ -142,14 +168,28 @@ export const useUserStore = defineStore('user', () => {
   }
 
   const getOrdersByVisitors = async () => {
-    ordersByVisitors.value = (await Promise.all(visitors.value.map(async visitor => ({ id: visitor.id, orders: await HTTP.get(`/api/v2/orders/items/history/?visitor=${visitor.id}`) })))).reduce((acc, newOrder) => {
-      acc[newOrder.id] = newOrder.orders
-      return acc
-    }, {} as Record<number, any>)
+    ordersByVisitors.value = (
+      await Promise.all(
+        visitors.value.map(async visitor => ({
+          id: visitor.id,
+          orders: await HTTP.get(
+            `/api/v2/orders/items/history/?visitor=${visitor.id}`,
+          ),
+        })),
+      )
+    ).reduce(
+      (acc, newOrder) => {
+        acc[newOrder.id] = newOrder.orders
+        return acc
+      },
+      {} as Record<number, any>,
+    )
   }
 
   const getWorkshopOrders = async () => {
-    workshopOrders.value = await HTTP.get(`/api/v2/orders/items/history/?product_page__product_type=Workshop`)
+    workshopOrders.value = await HTTP.get(
+      `/api/v2/orders/items/history/?product_page__product_type=Workshop`,
+    )
   }
 
   return {
@@ -158,6 +198,9 @@ export const useUserStore = defineStore('user', () => {
     retrieveUser,
     login,
     logout,
+    resetPassword,
+    confirmResetPassword,
+    changePassword,
     register,
     isLoggedIn,
     visitors,

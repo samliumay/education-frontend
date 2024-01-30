@@ -3,7 +3,11 @@
     <AppLoader />
   </div>
   <main v-else class="flex flex-col gap-2 mb-10">
-    <AppSignIn :is-open="isOpen" @close="isOpen = false" @next="navigateTo(`/product/buy/${route.params.id}`)" />
+    <AppSignIn
+      :is-open="isOpen"
+      @close="isOpen = false"
+      @next="navigateTo(`/product/buy/${route.params.id}`)"
+    />
 
     <n-breadcrumb class="mt-6 mb-10 px-10">
       <n-breadcrumb-item сlass="text-brand-gray">
@@ -45,9 +49,10 @@ import { useRoute } from 'vue-router'
 
 import { useUserStore } from '../../../store/user'
 import { checkIsEmpty } from '../../../utils/checkIsEmpty'
+import { getApiAddress } from '../../../utils/getApiAddress'
 import AppButton from '../../AppButton.vue'
 import AppLoader from '../../AppLoader.vue'
-import AppSignIn from '../../AppSignIn.vue'
+import AppSignIn from '../../AppSignIn/index.vue'
 import ErrorBoundaryBlock from '../blocks/misc/ErrorBoundaryBlock.vue'
 import AboutCourse from '../blocks/products/details/AboutCourse.vue'
 import AboutTutors from '../blocks/products/details/AboutTutors.vue'
@@ -88,7 +93,7 @@ const userStore = useUserStore()
 
 // API
 const { data: product, pending } = await useFetch(
-  `https://api.clavis.the-o.co/api/v2/wagtail/products/${route.params.id}/?fields=*`,
+  getApiAddress(`/api/v2/wagtail/products/${route.params.id}/?fields=*`),
   { deep: true },
 )
 
