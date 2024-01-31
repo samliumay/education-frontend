@@ -81,7 +81,7 @@
             >
             <ImageBlock :image="blockData.value.media_card[2].icon" class="w-[90px] h-[90px] mb-1" />
               <div class="flex gap-3 items-center">
-                <p class="text-xl font-medium text-brand-red">{{blockData.value.media_card[2].title}}</p>
+                <p class="text-xl font-medium text-brand-red">{{ blockData.value.media_card[2].title }}</p>
                 <img
                   src="/icons/chevron_left.svg"
                   class="w-[8px] h-[18px]"
@@ -115,7 +115,7 @@
             >
             <ImageBlock :image="blockData.value.media_card[3].icon" class="w-[90px] h-[90px] mb-1" />
               <div class="flex gap-3 items-center">
-                <p class="text-xl font-medium text-brand-red">{{blockData.value.media_card[3].title}}</p>
+                <p class="text-xl font-medium text-brand-red">{{ blockData.value.media_card[3].title }}</p>
                 <img
                   src="/icons/chevron_left.svg"
                   class="w-[8px] h-[18px]"
@@ -125,7 +125,7 @@
             </a>
 
             <p class="text-brand-gray">
-              {{blockData.value.media_card[3].description}}
+              {{ blockData.value.media_card[3].description }}
             </p>
           </div>
 
@@ -139,7 +139,7 @@
 </template>
 <script setup lang="ts">
 import type { PageBlock } from '../../../../types/cms'
-import ImageBlock from '../misc/ImageBlock.vue';
+import ImageBlock from '../misc/ImageBlock.vue'
 
 defineProps<{
   blockData: PageBlock[]

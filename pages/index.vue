@@ -1,5 +1,5 @@
 <template>
-  <TemplateHome/>
+  <TemplateHome />
 </template>
 <script setup lang="ts">
 import TemplateHome from '../components/cms/templates/TemplateHome.vue'
