@@ -33,17 +33,23 @@ import { getApiAddress } from '../../../../utils/getApiAddress'
 
 const props = defineProps<{ image: CmsImage }>()
 
+console.debug('props', props)
+
 // Flags
 const imageLoading = ref(true)
 const imageBroken = ref(false)
 
 const imageUrl = computed(() => {
   const downloadUrl = props.image?.meta?.download_url
+  console.debug('downloadUrl', downloadUrl)
 
   if (!downloadUrl) {
     imageBroken.value = true
     return ''
   }
+
+  const curImg = getApiAddress(downloadUrl)
+  console.debug('curImg', curImg)
 
   return getApiAddress(downloadUrl)
 })
