@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col gap-10">
-    <h2 class="w-full sm:w-7/12 text-5xl font-medium">
+  <div class="flex flex-col m-10">
+    <h2 class="text-4xl md:text-6xl mb-8 uppercase w-full sm:w-8/12 font-medium">
       {{ blockData.value.heading }}
     </h2>
 
@@ -33,7 +33,7 @@
 import type { PageBlock } from '../../../../types/cms'
 import ImageBlock from '../misc/ImageBlock.vue'
 
-defineProps<{
+const props = defineProps<{
   blockData: PageBlock[]
 }>()
 </script>

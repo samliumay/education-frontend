@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-1 sm:grid-cols-3 gap-[24px] sm:h-[500px] relative">
+  <div class="my-10 grid grid-cols-1 sm:grid-cols-3 gap-[24px] sm:h-[500px] relative">
     <div
       class="overflow-hidden absolute w-full h-full flex items-center justify-end z-0"
     >
@@ -14,7 +14,7 @@
     </div>
 
     <div
-      class="sm:absolute flex flex-col gap-10 items-center sm:items-start justify-center sm:w-7/12 sm:pl-[48px] z-10"
+      class="sm:absolute h-full flex flex-col gap-12 items-center sm:items-start justify-center sm:w-7/12 sm:pl-[48px] z-10"
       :class="
         blockData.value.text_color
           ? `text-[${blockData.value.text_color}]`
@@ -22,16 +22,16 @@
       "
     >
       <blockquote
-        class="flex flex-col items-center sm:items-start gap-10 relative top-12 mx-2"
+        class="flex flex-col items-center sm:items-start gap-10 relative top-12"
       >
-        <p class="font-medium text-9xl leading-3">“</p>
-        <p class="font-medium text-2xl text-center sm:text-left">
+        <p class="font-medium text-9xl leading-[0]">“</p>
+        <p class="font-medium text-3xl text-center sm:text-left">
           {{ blockData.value.quote_text }}
         </p>
       </blockquote>
 
-      <p class="font-medium text-2xl mt-4 mb-2">
-        {{ blockData.value.author.name }}
+      <p class="font-medium text-xl mt-4 mb-2">
+        {{ blockData.value.author.name }} • {{ blockData.value.author.position }}
       </p>
     </div>
   </div>

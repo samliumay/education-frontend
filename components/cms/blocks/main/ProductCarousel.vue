@@ -1,22 +1,73 @@
-<template>
-  <div class="mx-[28px] md:mx-[48px]">
-    <h2 class="text-[32px] sm:text-[48px] mb-[48px] font-medium">{{blockData.value[0].title}}</h2>
+<!-- eslint-disable vue/no-static-inline-styles -->
 
-    <div
+<template>
+  <div class="m-10 product">
+    <h2 class="text-4xl md:text-6xl mb-8 uppercase font-medium">
+      {{ blockData.value[0].title }}
+    </h2>
+    <n-carousel
       v-if="blockData.value[0].cards.length > 0"
-      class="grid grid-cols-1 sm:grid-cols-3 gap-x-[24px] gap-y-[64px]"
+      :space-between="20"
+      :loop="false"
+      slides-per-view="auto"
+      draggable
+      show-arrow
     >
-      <ProductCard
+      <n-carousel-item
         v-for="item in blockData.value[0].cards"
         :key="item.id"
-        :block-data="item"
-        :extra-props="{ type: 'academy' }"
-      />
-    </div>
+        class="!w-[33%]"
+      >
+        <ProductCard class="h-full" :block-data="item" :extra-props="{ type: 'academy' }" />
+      </n-carousel-item>
+
+      <template #arrow="{ prev, next }">
+        <div class="w-full h-full absolute top-0 left-0 product-carousel">
+          <div class="absolute right-0 -top-14 flex gap-4">
+            <button
+              type="button"
+              class="student-work__arrow-button cursor-pointer p-2 bg-brand-light-gray hover:bg-brand-yellow rounded-full transition ease-in delay-100 transform active:scale-[0.93]"
+              @click="prev"
+            >
+              <img
+                src="/icons/chevron_down.svg"
+                alt="Arrow"
+                class="transform rotate-90 transition ease-in delay-100 active:scale-[0.93]"
+              />
+            </button>
+            <button
+              type="button"
+              class="student-work__arrow-button cursor-pointer p-2 bg-brand-light-gray hover:bg-brand-yellow rounded-full transition ease-in delay-100 transform active:scale-[0.93]"
+              @click="next"
+            >
+              <img
+                src="/icons/chevron_down.svg"
+                alt="Arrow"
+                class="transform -rotate-90 transition ease-in delay-100 active:scale-[0.93]"
+              />
+            </button>
+          </div>
+        </div>
+      </template>
+
+      <template #dots="{ total, currentIndex, to }">
+        <ul class="hidden">
+          <li
+            v-for="index of total"
+            :key="index"
+            :class="{ ['is-active']: currentIndex === index - 1 }"
+            @click="to(index - 1)"
+          />
+        </ul>
+      </template>
+    </n-carousel>
     <AppNotFound v-else />
   </div>
 </template>
 <script setup lang="ts">
+import { NCarousel, NCarouselItem } from 'naive-ui'
+import { onMounted, ref } from 'vue'
+
 import type { PageBlock } from '../../../../types/cms'
 import AppNotFound from '../../../AppNotFound.vue'
 import ProductCard from '../products/ProductCard.vue'
@@ -24,4 +75,31 @@ import ProductCard from '../products/ProductCard.vue'
 defineProps<{
   blockData: PageBlock
 }>()
+
+const carouselHeight = ref<number | null>(null)
+
+onMounted(() => {
+  if (process.client) {
+    setTimeout(() => {
+      const carousel = document.querySelector('.product .product-carousel')
+      if (carousel) {
+        const rect = carousel.getBoundingClientRect()
+        carouselHeight.value = Math.round(rect.height)
+      }
+    }, 1000)
+  }
+})
 </script>
+<style>
+.product .n-carousel {
+  overflow: visible;
+}
+
+.product__arrow-button:hover > img {
+  filter: brightness(0.1);
+}
+
+.product .n-carousel .n-carousel__slides .n-carousel__slide {
+  height: auto;
+}
+</style>

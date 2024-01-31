@@ -1,6 +1,6 @@
 <template>
-  <div class="mx-[28px] md:mx-[48px] flex flex-col items-center">
-    <h2 class="text-[32px] sm:text-[48px] mb-[48px] font-medium">
+  <div class="m-10 flex flex-col items-center">
+    <h2 class="text-4xl md:text-6xl mb-8 uppercase font-medium">
       {{ blockData.value.heading }}
     </h2>
 
@@ -14,7 +14,7 @@
         >
           <div class="flex flex-col justify-center gap-4 w-6/12">
             <div class="w-fit h-fit">
-              <ImageBlock :image="blockData.value.media_card[0].icon" class="w-[90px] h-[90px]" />
+              <ImageBlock :image="blockData.value.media_card[0].icon" class="w-[90px] h-[90px] mb-1" />
               <div class="flex gap-3 items-center">
                 <p class="text-xl font-medium text-brand-red">{{ blockData.value.media_card[0].title }}</p>
                 <img
@@ -43,7 +43,7 @@
         >
           <div class="flex flex-col justify-center gap-4 w-6/12">
             <div class="w-fit h-fit">
-              <ImageBlock :image="blockData.value.media_card[1].icon" class="w-[90px] h-[90px]" />
+              <ImageBlock :image="blockData.value.media_card[1].icon" class="w-[90px] h-[90px] mb-1" />
               <div class="flex gap-3 items-center">
                 <p class="text-xl font-medium text-brand-red">{{ blockData.value.media_card[1].title }}</p>
                 <img
@@ -79,7 +79,7 @@
               rel="noopener noreferrer"
               class="w-fit h-fit"
             >
-            <ImageBlock :image="blockData.value.media_card[2].icon" class="w-[90px] h-[90px]" />
+            <ImageBlock :image="blockData.value.media_card[2].icon" class="w-[90px] h-[90px] mb-1" />
               <div class="flex gap-3 items-center">
                 <p class="text-xl font-medium text-brand-red">{{blockData.value.media_card[2].title}}</p>
                 <img
@@ -96,7 +96,7 @@
           </div>
 
           <div class="flex w-fit h-fit pr-5 pt-5">
-            <ImageBlock :image="blockData.value.media_card[2].background_image" class="h-full" />
+            <ImageBlock :image="blockData.value.media_card[2].background_image" class="max-h-[110px] max-w-[75px]" />
           </div>
         </NuxtLink>
 
@@ -113,7 +113,7 @@
               rel="noopener noreferrer"
               class="w-fit h-fit"
             >
-            <ImageBlock :image="blockData.value.media_card[3].icon" class="w-[90px] h-[90px]" />
+            <ImageBlock :image="blockData.value.media_card[3].icon" class="w-[90px] h-[90px] mb-1" />
               <div class="flex gap-3 items-center">
                 <p class="text-xl font-medium text-brand-red">{{blockData.value.media_card[3].title}}</p>
                 <img

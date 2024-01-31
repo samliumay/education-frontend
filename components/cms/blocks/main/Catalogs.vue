@@ -1,6 +1,6 @@
 <template>
-  <div class="mx-[28px] md:mx-[48px]">
-    <h2 class="text-[32px] sm:text-[48px] mb-[48px] font-medium">
+  <div class="m-10">
+    <h2 class="text-4xl md:text-6xl mb-8 uppercase font-medium">
       {{ blockData.value.heading }}
     </h2>
 
@@ -18,11 +18,18 @@
       </button>
     </div>
 
-    <template v-if="blockData?.value?.catalog_list?.[currentCatalogIndex]?.cards">
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-[24px] gap-y-[64px]">
+    <template
+      v-if="blockData?.value?.catalog_list?.[currentCatalogIndex]?.cards"
+    >
+      <div
+        v-for="(option, index) in blockData?.value?.catalog_list"
+        v-show="index === currentCatalogIndex"
+        :key="option.name"
+        class="grid grid-cols-1 sm:grid-cols-3 gap-x-[24px] gap-y-[64px]"
+      >
         <ProductCard
-          v-for="item in blockData.value.catalog_list[currentCatalogIndex].cards"
-          :key="item.id"
+          v-for="item in option.cards"
+          :key="item?.id"
           :block-data="item"
           :extra-props="{ type: 'academy' }"
         />
@@ -30,6 +37,13 @@
       <div class="mt-[64px] text-center">
         <button
           class="px-[64px] py-[12px] font-medium bg-brand-yellow rounded-[12px]"
+          @click="
+            navigateTo(
+              blockData?.value?.catalog_list?.[currentCatalogIndex]
+                ?.catalog_link ?? '/',
+              { external: true },
+            )
+          "
         >
           Перейти в каталог
         </button>

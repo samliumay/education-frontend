@@ -1,11 +1,8 @@
 <template>
-  <div v-if="!pending" class="flex flex-col gap-14 mt-10 mb-20">
-    <PageConstructor :blocks="main.items[0].body" />
-  </div>
+  <TemplateHome/>
 </template>
 <script setup lang="ts">
-import PageConstructor from '../components/cms/PageConstructor.vue'
-import { getApiAddress } from '../utils/getApiAddress'
+import TemplateHome from '../components/cms/templates/TemplateHome.vue'
 
 useHead({
   title: 'Clavis - Home',
@@ -22,12 +19,4 @@ useHead({
     },
   ],
 })
-
-// API
-const { data: main, pending } = await useFetch(
-  getApiAddress(`/api/v2/wagtail/homepage/`),
-  { deep: true },
-)
-
-console.debug(main)
 </script>
