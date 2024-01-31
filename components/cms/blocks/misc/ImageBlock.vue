@@ -14,7 +14,7 @@
       v-show="!imageBroken && !imageLoading"
       :src="imageUrl"
       :alt="image?.title ?? 'image'"
-      class="h-full w-full"
+      class="h-full w-full object-cover"
       @load="imageLoading = false"
       @error="
         () => {

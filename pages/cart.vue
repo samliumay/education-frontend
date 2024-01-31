@@ -313,7 +313,7 @@
               }}</span>
             </p>
 
-            <p v-show="!form?.checkValidity() ?? false" class="mb-2 text-brand-gray text-sm">Для оплаты, пожалуйста, заполните платёжные реквизиты ниже</p>
+            <p v-show="!form?.checkValidity() ?? false" class="mb-2 text-brand-red text-sm">Для оплаты, пожалуйста, заполните платёжные реквизиты ниже</p>
             <AppButton
               v-show="cart?.order?.items?.length"
               class=" w-full"
