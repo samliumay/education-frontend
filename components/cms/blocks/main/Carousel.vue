@@ -15,7 +15,7 @@
           {{ currentIndex + 1 }} / {{ total }}
         </p>
         <h1
-          class="text-white text-4xl uppercase w-[680px] max-w-full mx-[31px] text-center"
+          class="text-white text-4xl uppercase w-[680px] max-w-full mx-[31px] text-center px-6"
         >
           {{ blockData?.value[currentIndex]?.text }}
         </h1>

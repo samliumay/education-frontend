@@ -36,7 +36,7 @@
 </template>
 <script setup lang="ts">
 import { NBreadcrumb, NBreadcrumbItem } from 'naive-ui'
-import { computed, onMounted } from 'vue'
+import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
 import { checkIsEmpty } from '../../../utils/checkIsEmpty'
@@ -78,12 +78,11 @@ useHead({
 const route = useRoute()
 
 // API
-const { data: product, pending, fetch } = useFetch(
+const { data: product, pending } = useFetch(
   getApiAddress(`/api/v2/wagtail/products/${route.params.id}/?fields=*`),
   { deep: true },
 )
 
-// Computed
 const catalogPath = computed(() => {
   switch (String(product.value?.product_type).toLocaleLowerCase()) {
     case 'course':
@@ -104,9 +103,4 @@ const blocksList = computed(() => [
   { name: StudentWorks, blockData: product.value?.student_works },
   { name: QuestionsAnswers, blockData: product.value?.qna },
 ])
-
-// Life cycle
-onMounted(async () => {
-  await fetch()
-})
 </script>

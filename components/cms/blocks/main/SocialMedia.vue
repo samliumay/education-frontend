@@ -1,16 +1,16 @@
 <template>
   <div class="m-10 flex flex-col items-center">
-    <h2 class="text-4xl md:text-6xl mb-8 uppercase font-medium">
+    <h2 class="text-4xl lg:text-6xl mb-8 uppercase font-medium">
       {{ blockData.value.heading }}
     </h2>
 
     <div class="flex flex-col gap-2">
-      <div class="flex flex-col sm:flex-row gap-5 sm:h-[260px]">
+      <div class="flex flex-col lg:flex-row gap-5 lg:h-[260px]">
         <NuxtLink
           v-if="blockData.value.media_card[0]"
           :to="blockData.value?.media_card[0]?.media_link ?? '/'"
           target="_blank"
-          class="flex gap-25 py-2 sm:py-0 justify-between sm:w-7/12 rounded-lg border-2 border-brand-dark-gray px-5 hover:bg-brand-light-gray cursor-pointer overflow-hidden"
+          class="flex gap-25 py-2 lg:py-0 justify-between lg:w-7/12 rounded-lg border-2 border-brand-dark-gray px-5 hover:bg-brand-light-gray cursor-pointer overflow-hidden"
         >
           <div class="flex flex-col justify-center gap-4 w-6/12">
             <div class="w-fit h-fit">
@@ -30,7 +30,7 @@
             </p>
           </div>
 
-          <div class="flex w-7/12 justify-end">
+          <div class="flex w-7/12 justify-end ml-1">
             <ImageBlock :image="blockData.value.media_card[0].background_image" class="h-full" />
           </div>
         </NuxtLink>
@@ -39,7 +39,7 @@
           v-if="blockData.value.media_card[1]"
           :to="blockData.value?.media_card[1]?.media_link ?? '/'"
           target="_blank"
-          class="flex gap-5 py-2 sm:py-0 justify-between sm:w-5/12 rounded-lg border-2 border-brand-dark-gray px-5 hover:bg-brand-light-gray cursor-pointer overflow-hidden"
+          class="flex gap-5 py-2 lg:py-0 justify-between lg:w-5/12 rounded-lg border-2 border-brand-dark-gray px-5 hover:bg-brand-light-gray cursor-pointer overflow-hidden"
         >
           <div class="flex flex-col justify-center gap-4 w-6/12">
             <div class="w-fit h-fit">
@@ -65,12 +65,12 @@
         </NuxtLink>
       </div>
 
-      <div class="flex flex-col sm:flex-row gap-2 sm:h-[260px]">
+      <div class="flex flex-col lg:flex-row gap-2 lg:h-[260px]">
         <NuxtLink
           v-if="blockData.value.media_card[2]"
           target="_blank"
           :to="blockData.value?.media_card[2]?.media_link ?? '/'"
-          class="flex gap-5 py-2 sm:py-0 justify-between sm:w-5/12 rounded-lg border-2 border-brand-dark-gray px-5 hover:bg-brand-light-gray cursor-pointer overflow-hidden"
+          class="flex gap-5 py-2 lg:py-0 justify-between lg:w-5/12 rounded-lg border-2 border-brand-dark-gray px-5 hover:bg-brand-light-gray cursor-pointer overflow-hidden"
         >
           <div class="flex flex-col justify-center gap-4 w-6/12">
             <a
@@ -104,7 +104,7 @@
           v-if="blockData.value.media_card[3]"
           target="_blank"
           :to="blockData.value?.media_card[3]?.media_link ?? '/'"
-          class="flex gap-5 py-2 sm:py-0 justify-between sm:w-7/12 rounded-lg border-2 border-brand-dark-gray px-5 hover:bg-brand-light-gray cursor-pointer overflow-hidden"
+          class="flex gap-5 py-2 lg:py-0 justify-between lg:w-7/12 rounded-lg border-2 border-brand-dark-gray px-5 hover:bg-brand-light-gray cursor-pointer overflow-hidden"
         >
           <div class="flex flex-col justify-center gap-4 w-6/12">
             <a

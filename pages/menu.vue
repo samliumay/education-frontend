@@ -1,6 +1,6 @@
 <template>
   <main
-    class="flex flex-1 flex-col gap-10 px-8 py-6 bg-brand-light-gray lg:justify-between lg:items-start lg:flex-row h-full"
+    class="flex flex-1 flex-col gap-10 px-10 py-6 bg-brand-light-gray lg:justify-between lg:items-start lg:flex-row h-full"
   >
     <nav class="flex flex-col gap-2">
       <NuxtLink

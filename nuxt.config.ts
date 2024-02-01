@@ -7,8 +7,8 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
     'nuxt-svgo',
-    '@nuxtjs/eslint-module',
     '@nuxtjs/i18n',
+    ...(process.env.NODE_ENV === 'production' ? ['@nuxtjs/eslint-module'] : []),
   ],
   alias: {
     '@': path.resolve(__dirname, './'),
@@ -35,6 +35,11 @@ export default defineNuxtConfig({
         process.env.NODE_ENV === 'development'
           ? ['naive-ui', 'vueuc', 'maska', 'date-fns-tz/formatInTimeZone']
           : [],
+    },
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './'),
+      },
     },
   },
 })

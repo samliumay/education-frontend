@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="w-full p-[28px] md:p-[48px] flex flex-col gap-10 bg-brand-light-gray"
+    class="w-full py-[28px] px-10 md:py-[48px] flex flex-col gap-10 bg-brand-light-gray"
     :class="{ 'bg-white': $route.name === 'cart' }"
   >
     <div class="flex justify-between gap-10 flex-col md:flex-row">

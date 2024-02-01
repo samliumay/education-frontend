@@ -7,17 +7,11 @@
   />
 </template>
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { getApiAddress } from '@/utils/getApiAddress'
 
-import { getApiAddress } from '../../../utils/getApiAddress'
 import LoaderBlock from '../blocks/misc/LoaderBlock.vue'
 import PageConstructor from '../PageConstructor.vue'
 
 // API
-const { data: main, pending, fetch } = useFetch(getApiAddress(`/api/v2/wagtail/homepage/`), { deep: true })
-
-// Life cycle
-onMounted(async () => {
-  await fetch()
-})
+const { data: main, pending } = useFetch(getApiAddress(`/api/v2/wagtail/homepage/`), { deep: true })
 </script>
