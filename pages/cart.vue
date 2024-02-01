@@ -181,7 +181,7 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
             <AppInput
               v-model="additionalInfo.first_name"
-              placeholder="Имя"
+              placeholder="First Name"
               required
               pattern=".{2,}"
               title="The name must contain at least two characters"
@@ -189,7 +189,7 @@
             />
             <AppInput
               v-model="additionalInfo.last_name"
-              placeholder="Фамилия"
+              placeholder="Last Name"
               pattern=".{2,}"
               title="Last name must contain at least two characters"
               required
@@ -199,45 +199,31 @@
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
             <AppInput
-              v-model="additionalInfo.country"
-              placeholder="Страна"
+              v-model.lazy="additionalInfo.street"
+              placeholder="Street Name"
               pattern=".{2,}"
-              title="Country must contain at least two characters"
+              title="Street name must contain at least two characters"
               required
               @blur="checkValidity"
             />
-            <AppInput
-              v-model="additionalInfo.city"
-              placeholder="Город"
-              pattern=".{2,}"
-              title="City must contain at least two characters"
-              required
-              @blur="checkValidity"
-            />
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
-            <AppInput v-model="additionalInfo.state" placeholder="Штат" />
-            <AppInput
-              v-model="additionalInfo.street"
-              placeholder="Улица"
-              pattern=".{2,}"
-              title="Street must contain at least two characters"
-              required
-              @blur="checkValidity"
-            />
+            <AppInput v-model="additionalInfo.state" required placeholder="Street Number" />
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px]">
             <AppInput
-              v-model="additionalInfo.post_code"
-              placeholder="Дом"
+              v-model.lazy="additionalInfo.post_code"
+              placeholder="PLZ (Postal Code)"
+              pattern=".{2,}"
+              title="Postal code must contain at least two characters"
               required
               @blur="checkValidity"
             />
             <AppInput
-              v-model="additionalInfo.company_name"
-              placeholder="Название компании"
+              v-model.lazy="additionalInfo.city"
+              pattern=".{2,}"
+              title="City must contain at least two characters"
+              required
+              placeholder="City"
             />
           </div>
         </div>
@@ -411,6 +397,7 @@ const workshopProducts = computed(
 
 // Form
 const checkValidity = (event: { target: { reportValidity: () => void } }) => {
+  console.debug(event.target.value)
   event.target.reportValidity()
 }
 
