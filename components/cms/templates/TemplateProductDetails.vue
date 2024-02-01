@@ -1,12 +1,6 @@
 <template>
   <LoaderBlock v-if="pending" />
   <main v-else class="flex flex-col gap-2 mb-10">
-    <AppSignIn
-      :is-open="isOpen"
-      @close="isOpen = false"
-      @next="navigateTo(`/product/buy/${route.params.id}`)"
-    />
-
     <n-breadcrumb class="mt-6 mb-10 px-10">
       <n-breadcrumb-item сlass="text-brand-gray">
         <NuxtLink to="/">Главная</NuxtLink>
@@ -26,7 +20,7 @@
           :block-data="product"
           :type="product?.product_type?.toLocaleLowerCase()"
         >
-          <AppButton @click="handleSignIn">Купить продукт</AppButton>
+          <AppButton @click="navigateTo(`/product/buy/${route.params.id}`)">Купить продукт</AppButton>
         </HeaderBlock>
       </ErrorBoundaryBlock>
 
@@ -42,14 +36,12 @@
 </template>
 <script setup lang="ts">
 import { NBreadcrumb, NBreadcrumbItem } from 'naive-ui'
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 
-import { useUserStore } from '../../../store/user'
 import { checkIsEmpty } from '../../../utils/checkIsEmpty'
 import { getApiAddress } from '../../../utils/getApiAddress'
 import AppButton from '../../AppButton.vue'
-import AppSignIn from '../../AppSignIn/index.vue'
 import ErrorBoundaryBlock from '../blocks/misc/ErrorBoundaryBlock.vue'
 import LoaderBlock from '../blocks/misc/LoaderBlock.vue'
 import AboutCourse from '../blocks/products/details/AboutCourse.vue'
@@ -82,12 +74,8 @@ useHead({
   ],
 })
 
-// Flags
-const isOpen = ref(false)
-
 // Store
 const route = useRoute()
-const userStore = useUserStore()
 
 // API
 const { data: product, pending, fetch } = useFetch(
@@ -95,15 +83,7 @@ const { data: product, pending, fetch } = useFetch(
   { deep: true },
 )
 
-// Actions
-const handleSignIn = () => {
-  if (!userStore.isLoggedIn) {
-    isOpen.value = true
-  } else {
-    navigateTo(`/product/buy/${route.params.id}`)
-  }
-}
-
+// Computed
 const catalogPath = computed(() => {
   switch (String(product.value?.product_type).toLocaleLowerCase()) {
     case 'course':

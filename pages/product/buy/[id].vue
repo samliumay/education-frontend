@@ -22,15 +22,17 @@
     </div>
 
     <div>
-      <template v-if="['Course', 'Academy'].includes(product.product_type)">
-        <h2 class="text-[32px] sm:text-[48px] font-medium mb-[36px]">Заполните данные</h2>
+      <template v-if="user.isLoggedIn">
+        <template v-if="['Course', 'Academy'].includes(product.product_type)">
+          <h2 class="text-[32px] sm:text-[48px] font-medium mb-[36px]">Заполните данные</h2>
 
-        <GetChildData
-          :visitor="buyForm.visitor"
-          @update:visitor="el => (buyForm.visitor = el)"
-        />
+          <GetChildData
+            :visitor="buyForm.visitor"
+            @update:visitor="el => (buyForm.visitor = el)"
+          />
 
-        <AppDivider class="my-[24px]" />
+          <AppDivider class="my-[24px]" />
+        </template>
       </template>
 
       <template v-if="product.product_type === 'Course'">
@@ -243,6 +245,7 @@
 <script setup lang="ts">
 import { NCheckbox, NRadio, NSpace } from 'naive-ui'
 import { ref } from 'vue'
+import { useRoute } from 'vue-router'
 
 import AppLoader from '../../../components/AppLoader.vue'
 import AppTextarea from '../../../components/AppTextarea.vue'
@@ -251,12 +254,14 @@ import GetChildData from '../../../components/buy/GetChildData.vue'
 import PaymentOptions from '../../../components/cms/blocks/products/details/PaymentOptions.vue'
 import SelectTagsBlock from '../../../components/misc/SelectTagsBlock.vue'
 import { useCartStore } from '../../../store/cart'
+import { useUserStore } from '../../../store/user'
 import type { OrderItem, Product } from '../../../types'
 import { getApiAddress } from '../../../utils/getApiAddress'
 
 const route = useRoute()
 
 const cart = useCartStore()
+const user = useUserStore()
 
 const buyForm = ref({
   academy_number_of_weeks: 1,
@@ -287,7 +292,7 @@ const addAcademy = async () => {
       ? product?.value?.schedule_slots.map(item => item?.id)
       : [11]
 
-  await cart.addOrderItem({
+  const productOrder = {
     academy_number_of_weeks: weeks || 1,
     product: route.params.id,
     // purchase_option:
@@ -299,7 +304,16 @@ const addAcademy = async () => {
     schedule_slots,
     product_page: product?.value?.id,
     comment: buyForm.value.comment,
-  })
+  }
+
+  if (user.isLoggedIn) {
+    await cart.addOrderItem(productOrder)
+  } else {
+    if (process.client) {
+      const items = localStorage.getItem('anonymousCart')
+      localStorage.setItem('anonymousCart', JSON.stringify([productOrder, ...(items ? JSON.parse(items) : [])]))
+    }
+  }
   navigateTo('/cart')
 }
 </script>
