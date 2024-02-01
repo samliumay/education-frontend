@@ -1,8 +1,5 @@
 <template>
-  <div v-if="catalogsGroupPending" class="mx-[28px] md:mx-[48px] py-20">
-    <AppLoader />
-  </div>
-
+  <LoaderBlock v-if="catalogsGroupPending" />
   <div v-else class="flex flex-col gap-2">
     <n-breadcrumb class="mt-6 mb-10 mx-[28px] md:mx-[48px]">
       <n-breadcrumb-item сlass="text-brand-gray">
@@ -56,6 +53,7 @@ import { computed } from 'vue'
 
 import { getApiAddress } from '../../../utils/getApiAddress'
 import AppLoader from '../../AppLoader.vue'
+import LoaderBlock from '../blocks/misc/LoaderBlock.vue'
 import PageConstructor from '../PageConstructor.vue'
 
 const props = defineProps<{

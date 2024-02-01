@@ -4,10 +4,10 @@
 // ! If problems arise, it is better to rewrite it in css + js
 
 <template>
-  <div class="my-16 text-4xl text-brand-red">
+  <div class="my-10 text-4xl text-brand-red">
     <marquee direction="left" behavior="scroll">
       <div class="flex gap-6 w-max">
-        <template v-for="text in item.left_text" :key="text">
+        <template v-for="text in blockData.value[0].split(' ')" :key="text">
           <p>{{ text }}</p>
           <img
             src="/icons/star.svg"
@@ -19,7 +19,7 @@
     </marquee>
     <marquee direction="right" behavior="scroll">
       <div class="flex gap-6 w-max">
-        <template v-for="text in item.right_text" :key="text">
+        <template v-for="text in blockData.value[1].split(' ')" :key="text">
           <p>{{ text }}</p>
           <img
             src="/icons/star.svg"
@@ -35,6 +35,6 @@
 import type { PageBlock } from '../../../../types/cms'
 
 defineProps<{
-  item: PageBlock
+  blockData: PageBlock
 }>()
 </script>

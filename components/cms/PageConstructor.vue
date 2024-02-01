@@ -19,13 +19,16 @@ const props = defineProps<{
 // Get components from blocks meta type
 const pageComponents = computed(() => {
   if (props.blocks?.length > 0) {
-    return props.blocks.map(
-      blockData => () =>
-        h(mapTypeBlock[blockData.meta.type], {
-          blockData,
-          extraProps: props.blockProps,
-        }),
-    )
+    return props.blocks.map(blockData => () => {
+      const blockType = blockData?.type ? blockData?.type : blockData?.meta?.type
+
+      if (!blockType) return undefined
+
+      return h(mapTypeBlock[blockType], {
+        blockData,
+        extraProps: props.blockProps,
+      })
+    })
   }
 
   return []
@@ -45,7 +48,9 @@ const render = computed(() =>
   h(
     'div',
     renderProps.value,
-    pageComponents.value.map(item => h(ErrorBoundaryBlock, {}, item ? [item()] : [])),
+    pageComponents.value.map(item =>
+      h(ErrorBoundaryBlock, {}, item ? [item()] : []),
+    ),
   ),
 )
 </script>

@@ -1,7 +1,5 @@
 <template>
-  <div v-if="pending" class="my-20 flex justify-center">
-    <AppLoader />
-  </div>
+  <LoaderBlock v-if="pending" />
   <main v-else class="flex flex-col gap-2 mb-10">
     <AppSignIn
       :is-open="isOpen"
@@ -51,9 +49,9 @@ import { useUserStore } from '../../../store/user'
 import { checkIsEmpty } from '../../../utils/checkIsEmpty'
 import { getApiAddress } from '../../../utils/getApiAddress'
 import AppButton from '../../AppButton.vue'
-import AppLoader from '../../AppLoader.vue'
 import AppSignIn from '../../AppSignIn/index.vue'
 import ErrorBoundaryBlock from '../blocks/misc/ErrorBoundaryBlock.vue'
+import LoaderBlock from '../blocks/misc/LoaderBlock.vue'
 import AboutCourse from '../blocks/products/details/AboutCourse.vue'
 import AboutTutors from '../blocks/products/details/AboutTutors.vue'
 import CourseProgram from '../blocks/products/details/CourseProgram.vue'
