@@ -1,5 +1,5 @@
 <template>
-  <LoaderBlock v-if="catalogsGroupPending" />
+  <LoaderBlock v-if="catalogsGroupPending || productsPending" />
   <div v-else class="flex flex-col gap-2">
     <n-breadcrumb class="mt-6 mb-10 mx-[28px] md:mx-[48px]">
       <n-breadcrumb-item сlass="text-brand-gray">
@@ -26,17 +26,10 @@
 
     <div class="mt-[48px] mx-[48px] flex flex-col gap-2">
       <PageConstructor
-        v-if="!productsPending"
         :blocks="products?.items ?? []"
         :block-props="blockProps"
         block-classes="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
       />
-      <div
-        v-else
-        class="flex justify-center items-center w-full h-full py-10 col-span-full row-span-full"
-      >
-        <AppLoader />
-      </div>
     </div>
 
     <div
@@ -49,10 +42,9 @@
 </template>
 <script setup lang="ts">
 import { NBreadcrumb, NBreadcrumbItem } from 'naive-ui'
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 
 import { getApiAddress } from '../../../utils/getApiAddress'
-import AppLoader from '../../AppLoader.vue'
 import LoaderBlock from '../blocks/misc/LoaderBlock.vue'
 import PageConstructor from '../PageConstructor.vue'
 
@@ -106,19 +98,26 @@ const address = getApiAddress('/api/v2/wagtail')
 
 // Docs https://the-o.youtrack.cloud/articles/CLAVIS-A-32/Katalogi
 // Catalog header and icon
-const { data: catalogsGroup, pending: catalogsGroupPending } =
-  await useAsyncData(`${api.value.type}_catalog_group`, () =>
-    $fetch(`${address}/catalog/?type=${api.value.type}`),
-  )
+const {
+  data: catalogsGroup,
+  pending: catalogsGroupPending,
+  fetch: fetchCatalogsGroup,
+} = useFetch(`${address}/catalog/?type=${api.value.type}`)
 const catalog = computed(() => catalogsGroup.value?.items?.[0])
 
 // Products Cards
-const { data: products, pending: productsPending } = await useAsyncData(
-  `${api.value.type}_products`,
-  () =>
-    $fetch(
-      `${address}/products/?fields=*&product_type=${api.value.type}${filterQuery.value}`,
-    ),
+const {
+  data: products,
+  pending: productsPending,
+  fetch: fetchProducts,
+} = useFetch(
+  `${address}/products/?fields=*&product_type=${api.value.type}${filterQuery.value}`,
   { watch: [filterQuery] },
 )
+
+// Life cycle
+onMounted(async () => {
+  await fetchCatalogsGroup()
+  await fetchProducts()
+})
 </script>

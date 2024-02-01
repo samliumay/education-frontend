@@ -42,7 +42,7 @@
 </template>
 <script setup lang="ts">
 import { NBreadcrumb, NBreadcrumbItem } from 'naive-ui'
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 import { useUserStore } from '../../../store/user'
@@ -90,7 +90,7 @@ const route = useRoute()
 const userStore = useUserStore()
 
 // API
-const { data: product, pending } = await useFetch(
+const { data: product, pending, fetch } = useFetch(
   getApiAddress(`/api/v2/wagtail/products/${route.params.id}/?fields=*`),
   { deep: true },
 )
@@ -124,4 +124,9 @@ const blocksList = computed(() => [
   { name: StudentWorks, blockData: product.value?.student_works },
   { name: QuestionsAnswers, blockData: product.value?.qna },
 ])
+
+// Life cycle
+onMounted(async () => {
+  await fetch()
+})
 </script>
