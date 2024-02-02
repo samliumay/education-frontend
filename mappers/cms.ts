@@ -1,4 +1,5 @@
 // main
+import AgeGroups from '../components/cms/blocks/main/AgeGroups.vue'
 import Carousel from '../components/cms/blocks/main/Carousel.vue'
 import CatalogCards from '../components/cms/blocks/main/CatalogCards.vue'
 import Catalogs from '../components/cms/blocks/main/Catalogs.vue'
@@ -22,4 +23,5 @@ export const mapTypeBlock = {
   "running_text": RunningText,
   "product_carousel": ProductCarousel,
   "social_media": SocialMedia,
+  "age_groups": AgeGroups,
 }
