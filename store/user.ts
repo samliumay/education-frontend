@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia'
 import { computed, type Ref, ref } from 'vue'
 
+import { VISITORS_KEY } from '@/constants/localStorage'
+
 import { getToken, HTTP, setToken } from '../api/index'
 import {
   type FullUser,
@@ -42,13 +44,30 @@ export const useUserStore = defineStore('user', () => {
   const isLoggedIn = computed<boolean>(() => !!user.value.pk && !!getToken())
 
   const getVisitors = async () => {
-    visitors.value = await HTTP.get('/api/v2/visitors/')
+    if (isLoggedIn.value) {
+      visitors.value = await HTTP.get('/api/v2/visitors/')
+    }
+
+    visitors.value = JSON.parse(window.localStorage.getItem('visitors'))
   }
 
   const postVisitor = async (visitor: Omit<Visitor, 'id'>) => {
-    const res = await HTTP.post('/api/v2/visitors/', visitor)
-    getVisitors()
-    return res
+    if (isLoggedIn.value) {
+      const res = await HTTP.post('/api/v2/visitors/', visitor)
+      getVisitors()
+      return res
+    }
+
+    const currentVisitors = JSON.parse(window.localStorage.getItem('visitors'))
+    const id = currentVisitors.length + 1
+    currentVisitors.push({ ...visitor, id })
+
+    window.localStorage.setItem(VISITORS_KEY, JSON.stringify(currentVisitors))
+    visitors.value = currentVisitors
+
+    return {
+      id,
+    }
   }
 
   const updateVisitor = async (id: number, data: Partial<Visitor>) => {
@@ -146,7 +165,10 @@ export const useUserStore = defineStore('user', () => {
     new_password1: string,
     new_password2: string,
   ) => {
-    const res = await HTTP.post('/api/v2/users/auth/password/change/', { new_password1, new_password2 })
+    const res = await HTTP.post('/api/v2/users/auth/password/change/', {
+      new_password1,
+      new_password2,
+    })
     return res
   }
 

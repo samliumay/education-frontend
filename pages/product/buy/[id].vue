@@ -3,13 +3,18 @@
     <AppLoader />
   </div>
 
-  <div v-else class="grid grid-col-1 sm:grid-cols-2 gap-[96px] my-[96px] mx-[16px] sm:mx-[48px]">
+  <div
+    v-else
+    class="grid grid-col-1 sm:grid-cols-2 gap-[96px] my-[96px] mx-[16px] sm:mx-[48px]"
+  >
     <div>
       <p class="text-[24px] font-medium mb-[16px]">Вы выбрали</p>
       <BuyProductCard :product="product" />
 
       <template v-if="product.product_type === 'Course'">
-        <p class="text-[24px] font-medium mt-[48px] mb-[16px]">Выберите опцию</p>
+        <p class="text-[24px] font-medium mt-[48px] mb-[16px]">
+          Выберите опцию
+        </p>
         <PaymentOptions
           :block-data="product.purchase_options"
           is-white-background
@@ -22,17 +27,17 @@
     </div>
 
     <div>
-      <template v-if="user.isLoggedIn">
-        <template v-if="['Course', 'Academy'].includes(product.product_type)">
-          <h2 class="text-[32px] sm:text-[48px] font-medium mb-[36px]">Заполните данные</h2>
+      <template v-if="['Course', 'Academy'].includes(product.product_type)">
+        <h2 class="text-[32px] sm:text-[48px] font-medium mb-[36px]">
+          Заполните данные
+        </h2>
 
-          <GetChildData
-            :visitor="buyForm.visitor"
-            @update:visitor="el => (buyForm.visitor = el)"
-          />
+        <GetChildData
+          :visitor="buyForm.visitor"
+          @update:visitor="el => (buyForm.visitor = el)"
+        />
 
-          <AppDivider class="my-[24px]" />
-        </template>
+        <AppDivider class="my-[24px]" />
       </template>
 
       <template v-if="product.product_type === 'Course'">
@@ -143,8 +148,13 @@
       </template>
 
       <template v-if="product.product_type === 'Workshop'">
-        <p class="text-[24px] font-medium mb-4">Введите имя и фамилию детей, которые придут на мероприятие</p>
-        <AppTextarea v-model:model-value="buyForm.comment" placeholder="Комментарий" />
+        <p class="text-[24px] font-medium mb-4">
+          Введите имя и фамилию детей, которые придут на мероприятие
+        </p>
+        <AppTextarea
+          v-model:model-value="buyForm.comment"
+          placeholder="Комментарий"
+        />
 
         <p class="text-[24px] font-medium mt-3">Выберите тариф</p>
 
@@ -159,14 +169,22 @@
           >
             <div class="flex flex-col gap-[4px]">
               <p class="font-medium">{{ purchaseOption.title }}</p>
-              <p v-for="point in purchaseOption.bullet_points" :key="point.value" class="text-gray-400">{{ point.value }}</p>
+              <p
+                v-for="point in purchaseOption.bullet_points"
+                :key="point.value"
+                class="text-gray-400"
+              >
+                {{ point.value }}
+              </p>
             </div>
           </n-radio>
         </n-space>
 
         <AppDivider class="my-[24px]" />
 
-        <p class="text-[24px] font-medium mt-3 mb-4">Есть ли у вашего ребенка особенность и тд?</p>
+        <p class="text-[24px] font-medium mt-3 mb-4">
+          Есть ли у вашего ребенка особенность и тд?
+        </p>
 
         <n-space>
           <n-radio
@@ -191,7 +209,9 @@
 
         <AppDivider class="my-[24px]" />
 
-        <p class="text-[24px] font-medium mt-3 mb-4">Даю согласие на фото моего ребенка</p>
+        <p class="text-[24px] font-medium mt-3 mb-4">
+          Даю согласие на фото моего ребенка
+        </p>
 
         <n-space>
           <n-radio
@@ -274,7 +294,13 @@ const buyForm = ref({
   comment: '',
   feature: 'yes',
   photo: 'yes',
-} as Partial<OrderItem> & { first: boolean; second: boolean; comment: string; feature: string; photo: string; })
+} as Partial<OrderItem> & {
+  first: boolean
+  second: boolean
+  comment: string
+  feature: string
+  photo: string
+})
 
 const { data: product, pending: productPending } = (await useFetch(
   getApiAddress(`/api/v2/wagtail/products/${route.params.id}/?fields=*`),
@@ -300,20 +326,13 @@ const addAcademy = async () => {
     //     option => buyForm.value.schedule_type === option.type,
     //   )?.id || 0,
     purchase_option: product?.value?.purchase_options?.[0]?.id ?? 1,
-    visitor: buyForm.value.visitor,
+    visitor: null,
     schedule_slots,
     product_page: product?.value?.id,
     comment: buyForm.value.comment,
   }
 
-  if (user.isLoggedIn) {
-    await cart.addOrderItem(productOrder)
-  } else {
-    if (process.client) {
-      const items = localStorage.getItem('anonymousCart')
-      localStorage.setItem('anonymousCart', JSON.stringify([productOrder, ...(items ? JSON.parse(items) : [])]))
-    }
-  }
+  await cart.addOrderItem(productOrder)
   navigateTo('/cart')
 }
 </script>

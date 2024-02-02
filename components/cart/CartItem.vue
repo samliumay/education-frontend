@@ -39,6 +39,7 @@
           }}
         </div> -->
           <div
+            v-if="order.visitor"
             class="bg-brand-light-gray px-4 p-2 rounded-full flex items-center"
           >
             Ребенок:

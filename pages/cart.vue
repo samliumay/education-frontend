@@ -135,12 +135,20 @@
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
             <AppInput
-              v-model="registrationForm.name"
+              v-model="registrationForm.first_name"
               placeholder="Имя родителя"
+              required
+              pattern=".{2,}"
+              title="The name must contain at least two characters"
+              @blur="checkValidity"
             />
             <AppInput
-              v-model="registrationForm.surname"
+              v-model="registrationForm.last_name"
               placeholder="Фамилия родителя"
+              required
+              pattern=".{2,}"
+              title="Last name must contain at least two characters"
+              @blur="checkValidity"
             />
           </div>
 
@@ -149,31 +157,43 @@
               v-model="registrationForm.email"
               placeholder="Email"
               type="email"
+              required
+              @blur="checkValidity"
             />
             <AppInput
-              v-model="registrationForm.phone"
+              v-model="registrationForm.phone_number"
               placeholder="Телефон"
               maska="+49 ### ###-##-##"
               type="tel"
+              required
+              @blur="checkValidity"
             />
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
             <AppInput
-              v-model="registrationForm.password"
+              v-model="registrationForm.password1"
               placeholder="Пароль"
+              required
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+              title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
               type="password"
+              @blur="checkValidity"
             />
             <AppInput
-              v-model="registrationForm.repeatPassword"
+              v-model="registrationForm.password2"
               placeholder="Повторите пароль"
               type="password"
+              required
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+              title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+              @blur="checkValidity"
             />
           </div>
         </div>
 
         <div
-          v-if="cart?.order?.items?.length"
+          v-if="cart?.order?.items?.length > 0 && userStore.isLoggedIn"
           class="bg-white rounded-[12px] p-[24px]"
         >
           <h2 class="font-medium text-[24px] mb-6">Платежные реквизиты</h2>
@@ -206,7 +226,11 @@
               required
               @blur="checkValidity"
             />
-            <AppInput v-model="additionalInfo.state" required placeholder="Street Number" />
+            <AppInput
+              v-model="additionalInfo.state"
+              required
+              placeholder="Street Number"
+            />
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px]">
@@ -289,24 +313,33 @@
               купить
             </p>
 
-            <p v-show="cart?.order?.items?.length" class="flex justify-between font-medium text-[24px] mt-[24px] mb-[24px]">
+            <p
+              v-show="cart?.order?.items?.length"
+              class="flex justify-between font-medium text-[24px] mt-[24px] mb-[24px]"
+            >
               <span>Итого</span>
               <span>{{
                 `${(cart?.order?.items || []).reduce((acc, item) => {
-                  acc = acc + +item.calculated_price
-                  return Number(acc ?? 0).toFixed(2)
+                  const newAcc =
+                    Number(acc ?? 0) + Number(item.calculated_price ?? 0)
+                  return Number(newAcc ?? 0).toFixed(2)
                 }, 0)} €`
               }}</span>
             </p>
 
-            <p v-show="!form?.checkValidity() ?? false" class="mb-2 text-brand-red text-sm">Для оплаты, пожалуйста, заполните платёжные реквизиты ниже</p>
+            <p
+              v-show="!form?.checkValidity() ?? false"
+              class="mb-2 text-brand-red text-sm"
+            >
+              {{ infoText }}
+            </p>
             <AppButton
               v-show="cart?.order?.items?.length"
-              class=" w-full"
+              class="w-full"
               type="submit"
               :disabled="!form?.checkValidity() ?? false"
             >
-              Перейти к оплате
+              {{ userStore.isLoggedIn ? 'Оформить заказ' : 'Регистрация' }}
             </AppButton>
           </div>
         </div>
@@ -336,25 +369,7 @@ const additionalInfo: Ref<AdditionalInfo> = ref({
   last_name: userStore?.user?.last_name ?? '',
 } as AdditionalInfo)
 
-const registrationForm = ref({
-  name: '',
-  surname: '',
-  email: '',
-  phone: '',
-  password: '',
-  repeatPassword: '',
-})
-
 const buyOption: Ref<'paypal' | 'stripe'> = ref('paypal')
-
-const fullfillOrder = async () => {
-  const urlObject = await cart.fulfillOrder(
-    buyOption.value,
-    String(window.location).replace('cart', ''),
-  )
-  window.location.href =
-    buyOption.value === 'paypal' ? urlObject.links[1] : urlObject.url
-}
 
 const promocode = ref('')
 const promocodeStatus = ref('empty')
@@ -397,9 +412,64 @@ const workshopProducts = computed(
 
 // Form
 const checkValidity = (event: { target: { reportValidity: () => void } }) => {
-  console.debug(event.target.value)
   event.target.reportValidity()
 }
 
 const form = ref<VNodeRef | undefined>(undefined)
+
+const infoText = computed(() => {
+  if (userStore.isLoggedIn) {
+    return 'Для оплаты, пожалуйста, заполните платёжные реквизиты ниже'
+  }
+
+  return 'Пожалуйста, зарегистрируйтесь или войдите в свой аккаунт для оплаты'
+})
+
+// Registration
+const registrationForm = ref({
+  first_name: '',
+  last_name: '',
+  email: '',
+  phone_number: '',
+  password1: '',
+  password2: '',
+})
+
+const registrationError = ref('')
+
+const clearError = () => {
+  registrationError.value = ''
+}
+
+const signUp = async () => {
+  await userStore.register(registrationForm.value).catch(err => {
+    if (Object.keys(err).length !== 0) {
+      registrationError.value = 'Кажется, что-то пошло не так'
+      setTimeout(clearError, 2000)
+    } else {
+      registrationError.value = ''
+
+      registrationForm.value.email = ''
+      registrationForm.value.password1 = ''
+      registrationForm.value.password2 = ''
+      registrationForm.value.first_name = ''
+      registrationForm.value.last_name = ''
+      registrationForm.value.phone_number = ''
+    }
+  })
+}
+
+const fullfillOrder = async () => {
+  if (!userStore.isLoggedIn) {
+    await signUp()
+    return null
+  }
+
+  const urlObject = await cart.fulfillOrder(
+    buyOption.value,
+    String(window.location).replace('cart', ''),
+  )
+  window.location.href =
+    buyOption.value === 'paypal' ? urlObject.links[1] : urlObject.url
+}
 </script>
