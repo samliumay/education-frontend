@@ -23,7 +23,7 @@ export const useCartStore = defineStore('cart', () => {
 
   const fulfillOrder = async (gateway: string, successUrl: string) => {
     const res = (await HTTP.post(
-      `/api/v2/orders/fulfill/?payment_gateway=${gateway}&success_url=${successUrl}`,
+      `/api/v2/orders/fulfill/?payment_gateway=${gateway}&success_url=${successUrl}&cart_id=${cartId.value}`,
     )) as any
     getCurrentOrder()
     return res
