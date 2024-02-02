@@ -41,7 +41,7 @@
         </a>
       </div>
 
-      <div class="flex md:justify-center items-center opacity-100 md:opacity-50 image-hover">
+      <div class="flex md:justify-center items-center opacity-100 md:opacity-40 image-hover">
         <ImageBlock :image="blockData.value.icon" class="h-[160px]" />
       </div>
     </div>
@@ -51,11 +51,10 @@
 import ImageBlock from '@/components/cms/blocks/misc/ImageBlock.vue'
 import type { PageBlock } from '@/types/cms'
 
-const props = defineProps<{
+defineProps<{
   blockData: PageBlock[]
 }>()
 
-console.debug(props.blockData)
 </script>
 <style scoped>
 .item-hover:hover .image-hover {

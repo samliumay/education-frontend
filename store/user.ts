@@ -142,14 +142,13 @@ export const useUserStore = defineStore('user', () => {
       '/api/v2/users/auth/password/reset/confirm/',
     )
 
-  const changePassword = (
+  const changePassword = async (
     new_password1: string,
     new_password2: string,
-  ) =>
-    userPostRequest(
-      { new_password1, new_password2 },
-      '/api/v2/users/auth/password/change/',
-    )
+  ) => {
+    const res = await HTTP.post('/api/v2/users/auth/password/change/', { new_password1, new_password2 })
+    return res
+  }
 
   const findVisitorById = (id?: number) =>
     id
