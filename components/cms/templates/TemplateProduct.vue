@@ -10,21 +10,9 @@
       </n-breadcrumb-item>
     </n-breadcrumb>
 
-    <!-- <div
-      class="flex flex-col lg:flex-row lg:items-center mx-10 xl:flex-row xl:items-center gap-5"
-    >
-      <div class="flex items-center gap-[18px]">
-        <h1
-          class="text-[38px] md:text-[32px] sm:text-[48px] font-medium uppercase"
-        >
-          {{ catalog?.name ?? 'Catalog' }}
-        </h1>
-      </div>
-    </div> -->
-
     <slot name="filters" :title="catalog?.name ?? 'Catalog'" />
 
-    <LoaderBlock v-if="productsPending" />
+    <LoaderBlock v-if="isLoadingBlocks" />
     <div v-else class="mt-[48px] mx-[48px] flex flex-col gap-2">
       <PageConstructor
         :blocks="blocks"
@@ -34,9 +22,9 @@
     </div>
 
     <div class="px-[28px] md:px-[48px] flex justify-center w-full mb-14 mt-14">
-      <AppButton v-if="isShowAddMoreItemsButton" @click="addMoreItems"
-        >Показать больше</AppButton
-      >
+      <AppButton v-if="isShowAddMoreItemsButton" @click="addMoreItems">
+        Показать больше
+      </AppButton>
     </div>
   </div>
 </template>
@@ -84,11 +72,34 @@ const { data: catalogsGroup, pending: catalogsGroupPending } = useFetch(
 const catalog = computed(() => catalogsGroup.value?.items?.[0])
 
 // Products Cards
-const productUrl = computed(() => `${address}/products/?fields=*&product_type=${api.value.type}`)
+const productUrl = computed(
+  () => `${address}/products/?fields=*&product_type=${api.value.type}`,
+)
 // eslint-disable-next-line vue/no-setup-props-destructure
-const { data: products, pending: productsPending } = useFetch(productUrl.value,
+const { data: products, pending: productsPending } = useFetch(
+  productUrl.value,
   { watch: [props.filters], query: props.filters },
 )
+
+const events = ref([])
+const loadingEvents = ref([])
+if (api.value.type === 'Workshop') {
+  const { data: eventsItems, pending } = useFetch(
+    `${address}/products/?fields=*&product_type=Event`,
+    { watch: [props.filters], query: props.filters },
+  )
+
+  events.value = eventsItems.value
+  loadingEvents.value = pending.value
+}
+
+const isLoadingBlocks = computed(() => {
+  if (api.value.type === 'Workshop') {
+    return loadingEvents.value && productsPending.value
+  }
+
+  return productsPending.va
+})
 
 // Add more items
 const defaultItemsCount = 3
@@ -101,10 +112,16 @@ const addMoreItems = () => {
 const blocks = computed(() => {
   const items = products?.value?.items ?? []
 
+  if (events?.value?.items) {
+    items.push(...events.value.items)
+  }
+
   return items.slice(0, itemsOnPage.value)
 })
 
 const isShowAddMoreItemsButton = computed(
-  () => products?.value?.items?.length > itemsOnPage.value && !productsPending.value
+  () =>
+    products?.value?.items?.length > itemsOnPage.value &&
+    !productsPending.value,
 )
 </script>

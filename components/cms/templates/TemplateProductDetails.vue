@@ -20,7 +20,12 @@
           :block-data="product"
           :type="product?.product_type?.toLocaleLowerCase()"
         >
-          <AppButton @click="navigateTo(`/product/buy/${route.params.id}`)">Купить продукт</AppButton>
+          <AppButton
+            v-show="product?.product_type !== 'Event'"
+            @click="navigateTo(`/product/buy/${route.params.id}`)"
+          >
+            Купить продукт
+          </AppButton>
         </HeaderBlock>
       </ErrorBoundaryBlock>
 
