@@ -40,7 +40,7 @@ const { data: image, pending } = await useFetch(
   {
     deep: true,
     headers: {
-      Authorization: 'Token f26dcfe588f64dd942c18451edab0a52a5d95a08',
+      Authorization: 'Token ab09aca4ef07f510bb919bf24040997d4372b9d5',
     },
   },
 )

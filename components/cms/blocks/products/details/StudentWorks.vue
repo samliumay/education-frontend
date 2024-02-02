@@ -2,7 +2,7 @@
 
 <template>
   <div class="mx-10 student-works">
-    <h2 class="text-5xl uppercase font-medium mb-12">Работы учеников</h2>
+    <h2 class="text-3xl sm:text-4xl md:text-5xl uppercase font-medium mb-20 lg:mb-14">Работы учеников</h2>
     <n-carousel
       :space-between="10"
       :loop="false"

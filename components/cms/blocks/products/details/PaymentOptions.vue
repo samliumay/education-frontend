@@ -11,12 +11,12 @@
 
     <div
       class="grid gap-[24px]"
-      :class="`grid-cols-${Math.max(blockData?.length, cols || 3)}`"
+      :class="`grid-cols-1 lg:grid-cols-${Math.max(blockData?.length, cols || 3)}`"
     >
       <div
         v-for="item in blockData"
         :key="item.id"
-        class="bg-white p-[36px] rounded-xl border-[1px] flex flex-col justify-between"
+        class="bg-white p-[30px] rounded-xl border-[1px] flex flex-col justify-between"
         :class="
           selectOption === item.id ? 'border-black' : 'border-brand-dark-gray'
         "
@@ -25,7 +25,7 @@
         <div>
           <div class="flex items-center">
             <ImageBlock :image="item?.icon" class="w-[64px] h-[64px]" />
-            <h3 class="text-[20px] sm:text-[28px] font-medium ml-[20px]">
+            <h3 class="text-[20px] sm:text-[26px] font-medium ml-[20px]">
               {{ item.title }}
             </h3>
           </div>

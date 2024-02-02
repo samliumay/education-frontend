@@ -1,6 +1,6 @@
 <template>
   <div class="py-10">
-    <h2 class="text-5xl uppercase font-medium mb-12 mx-10">
+    <h2 class="text-3xl sm:text-4xl md:text-5xl uppercase font-medium mb-12 mx-10">
       ОТВЕЧАЕМ <br />
       НА ВОПРОСЫ
     </h2>

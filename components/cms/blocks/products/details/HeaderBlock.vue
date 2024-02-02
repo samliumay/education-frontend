@@ -1,10 +1,10 @@
 <template>
   <div class="flex flex-col gap-[48px] px-10">
-    <div class="flex justify-between gap-4 mr-12">
+    <div class="flex flex-col md:flex-row justify-between gap-4 mr-12">
       <div class="flex flex-col justify-between gap-10">
         <div>
           <TagsBlock :tags="[blockData.current_status]" />
-          <h1 class="text-3xl sm:text-4xl font-medium mb-4 mt-4">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-medium mb-4 mt-4">
             {{ blockData.name }}
           </h1>
           <CategoryBlock :items="blockData.schedule_slots">
@@ -87,7 +87,7 @@
     <Cover
       :image-title="blockData.title_image"
       :image-background="blockData.background_image"
-      class="h-[500px] w-full"
+      class="h-[300px] md:h-[500px] w-full"
     />
   </div>
 </template>

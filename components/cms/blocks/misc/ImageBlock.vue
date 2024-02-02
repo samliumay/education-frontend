@@ -14,7 +14,7 @@
       v-show="!imageBroken && !imageLoading"
       :src="imageUrl"
       :alt="image?.title ?? 'image'"
-      class="h-full w-full object-cover"
+      :class="`h-full w-full object-cover ${imageClass ?? ''}`"
       @load="imageLoading = false"
       @error="
         () => {
@@ -31,7 +31,7 @@ import { computed, ref } from 'vue'
 import { type CmsImage } from '../../../../types/cms'
 import { getApiAddress } from '../../../../utils/getApiAddress'
 
-const props = defineProps<{ image: CmsImage }>()
+const props = defineProps<{ image: CmsImage; imageClass?: string }>()
 
 // Flags
 const imageLoading = ref(true)
