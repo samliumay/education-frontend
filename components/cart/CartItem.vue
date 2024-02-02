@@ -30,23 +30,22 @@
         </div>
 
         <div class="flex gap-[12px]">
-          <!-- <div class="bg-gray-200 px-[16px] p-[8px] rounded-[10px]">
+          <div class="bg-brand-light-gray px-[16px] p-[8px] rounded-full">
           Опция:
           {{
             order.schedule_type !== 'TERMINKARTEN'
               ? 'Абонемент'
               : 'Карта встреч'
           }}
-        </div> -->
+        </div>
           <div
-            v-if="order.visitor"
             class="bg-brand-light-gray px-4 p-2 rounded-full flex items-center"
           >
             Ребенок:
             <AppSelect
               placeholder="Выберите ребенка"
               :options="userStore.getVisitorOptions"
-              :value="order.visitor.id"
+              :value="order?.visitor?.id ?? 1"
               class="min-w-[200px]"
               @update:value="el => (visitor = el)"
             />

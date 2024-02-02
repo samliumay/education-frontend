@@ -49,6 +49,7 @@
       </AppButton>
     </form>
     <div
+      v-show="isShowAddChild"
       class="flex items-center gap-[8px] cursor-pointer"
       @click="
         step === GetChildStep.Add
@@ -66,7 +67,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, type VNodeRef } from 'vue'
+import { computed, ref, type VNodeRef } from 'vue'
 
 import ArrowIcon from '../../public/icons/arrow_short_right.svg'
 import { useUserStore } from '../../store/user'
@@ -93,6 +94,15 @@ const newVisitor = ref({
   first_name: '',
   last_name: '',
   birth_date: '',
+})
+
+// Completed
+const isShowAddChild = computed(() => {
+  if (!userStore.isLoggedIn && userStore.getVisitorOptions.length >= 1) {
+    return false
+  }
+
+  return true
 })
 
 // Actions
