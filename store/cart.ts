@@ -13,12 +13,18 @@ export const useCartStore = defineStore('cart', () => {
   const cartId = ref<string | null>(null)
 
   const getCurrentOrder = async () => {
-    order.value = await HTTP.get(`/api/v2/orders/current/?cart_id=${cartId.value}`)
+    order.value = await HTTP.get(
+      `/api/v2/orders/current/?cart_id=${cartId.value}`,
+    )
     isDataLoading.value = false
   }
 
   const addOrderItem = async (orderItem: Partial<OrderItem>) => {
     await HTTP.post(`/api/v2/orders/items/?cart_id=${cartId.value}`, orderItem)
+  }
+
+  const updateOrderItem = async (id: number, orderItem: Partial<OrderItem>) => {
+    await HTTP.patch(`/api/v2/orders/items/${id}/?cart_id=${cartId.value}`, orderItem)
   }
 
   const fulfillOrder = async (gateway: string, successUrl: string) => {
@@ -61,5 +67,6 @@ export const useCartStore = defineStore('cart', () => {
     setPromocode,
     deleteOrderItem,
     init,
+    updateOrderItem,
   }
 })

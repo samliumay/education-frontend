@@ -457,6 +457,23 @@ const signUp = async () => {
       registrationForm.value.phone_number = ''
     }
   })
+
+  if (!registrationError.value) {
+    if (process.client) {
+      const visitors = JSON.parse(
+        window.localStorage.getItem('visitors') || '[]',
+      )
+      console.debug(visitors)
+      await userStore.postVisitor(visitors[0])
+
+      // Update visitors for items in cart
+      const ids = cart?.order?.items?.map(item => item.id)
+      await Promise.all(
+        ids.map(id => cart.updateOrderItem(id, { visitor: visitors[0].id })),
+      )
+      await cart.getCurrentOrder()
+    }
+  }
 }
 
 const fullfillOrder = async () => {

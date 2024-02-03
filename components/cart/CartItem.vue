@@ -30,14 +30,14 @@
         </div>
 
         <div class="flex gap-[12px]">
-          <div class="bg-brand-light-gray px-[16px] p-[8px] rounded-full">
+          <!-- <div class="bg-brand-light-gray px-[16px] p-[8px] rounded-full">
           Опция:
           {{
             order.schedule_type !== 'TERMINKARTEN'
               ? 'Абонемент'
               : 'Карта встреч'
           }}
-        </div>
+          </div> -->
           <div
             class="bg-brand-light-gray px-4 p-2 rounded-full flex items-center"
           >
