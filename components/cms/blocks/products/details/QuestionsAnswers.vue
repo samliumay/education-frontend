@@ -1,5 +1,5 @@
 <template>
-  <div class="py-10">
+  <div class="py-10" data-cms="products-details-questions-answers">
     <h2 class="text-3xl sm:text-4xl md:text-5xl uppercase font-medium mb-12 mx-10">
       ОТВЕЧАЕМ <br />
       НА ВОПРОСЫ

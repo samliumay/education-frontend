@@ -1,5 +1,5 @@
 <template>
-  <div class="m-10 flex flex-col items-center">
+  <div class="m-10 flex flex-col items-center" data-cms="main-social-media">
     <h2 class="text-4xl lg:text-6xl mb-8 uppercase font-medium">
       {{ blockData.value.heading }}
     </h2>

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-[48px] px-10">
+  <div class="flex flex-col gap-[48px] px-10" data-cms="product-details-header-block">
     <div class="flex flex-col md:flex-row justify-between gap-4 mr-12">
       <div class="flex flex-col justify-between gap-10">
         <div>

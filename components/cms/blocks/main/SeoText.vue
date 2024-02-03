@@ -1,5 +1,5 @@
 <template>
-  <div class="m-10">
+  <div class="m-10" data-cms="main-seo-text">
     <h2 class="text-3xl md:text-5xl uppercase mb-8 font-medium text-brand-red">
       {{ blockData.value.heading }}
     </h2>

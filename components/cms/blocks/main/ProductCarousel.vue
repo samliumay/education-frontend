@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-static-inline-styles -->
 
 <template>
-  <div class="m-10 product">
+  <div class="m-10 product" data-cms="main-product-carousel">
     <h2 class="text-4xl lg:text-6xl mb-8 uppercase font-medium">
       {{ blockData.value[0].title }}
     </h2>

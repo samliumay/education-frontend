@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-[30px] sm:mx-[140px] flex flex-col gap-10">
+  <div class="mx-[30px] sm:mx-[140px] flex flex-col gap-10" data-cms="main-video">
     <div class="flex flex-col sm:flex-row justify-between gap-2 items-stretch">
       <h2 class="text-5xl font-medium text-brand-red sm:w-5/12">Clavis Schule für Kunst und Wissenschaft</h2>
       <div class="w-[1px] bg-brand-gray invisible sm:visible" />

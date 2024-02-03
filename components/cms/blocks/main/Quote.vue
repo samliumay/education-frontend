@@ -1,6 +1,7 @@
 <template>
   <div
     class="my-10 px-10 py-10 flex flex-col items-center justify-center lg:justify-start lg:flex-row gap-10 lg:h-[500px] relative"
+    data-cms="main-quote"
   >
     <div
       class="overflow-hidden absolute top-0 left-0 w-full h-full flex items-center justify-end z-0"

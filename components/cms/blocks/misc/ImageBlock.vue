@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div data-cms="misc-image-block">
     <!-- Fallback -->
     <div v-if="imageBroken" class="bg-brand-yellow h-full w-full" />
 

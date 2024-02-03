@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-v-html -->
 
 <template>
-  <div class="px-10 about-course">
+  <div class="px-10 about-course" data-cms="products-details-about-course">
     <div
       v-for="(item, index) in items"
       :key="items.heading"

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="text-3xl sm:text-4xl md:text-5xl uppercase font-medium mb-12 px-10">Программа</h2>
+    <h2 class="text-3xl sm:text-4xl md:text-5xl uppercase font-medium mb-12 px-10" data-cms="products-details-course-program">Программа</h2>
 
     <template v-for="(item, idx) in blockData" :key="item.id">
       <AppDivider class="mb-[40px]" :class="{ 'mt-[40px]': idx !== 0 }" />

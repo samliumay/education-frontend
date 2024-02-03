@@ -1,5 +1,5 @@
 <template>
-  <n-carousel show-arrow autoplay>
+  <n-carousel show-arrow autoplay data-cms="main-carousel">
     <ImageBlock
       v-for="item in blockData?.value"
       :key="item.photo.id"

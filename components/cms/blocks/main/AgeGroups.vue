@@ -1,5 +1,5 @@
 <template>
-  <div class="my-10">
+  <div class="my-10" data-cms="main-age-groups">
     <h2
       class="text-4xl md:text-6xl mb-8 uppercase w-full font-medium mx-10"
     >

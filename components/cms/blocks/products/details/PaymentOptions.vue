@@ -4,6 +4,7 @@
       (isWhiteBackground ? 'bg-white' : 'bg-brand-light-gray') +
       (!withoutTitle ? ' py-16 px-10' : '')
     "
+    data-cms="products-details-payment-options"
   >
     <h2 v-if="!withoutTitle" class="text-5xl uppercase font-medium mb-12">
       Тарифы
