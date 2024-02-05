@@ -38,10 +38,9 @@
           <form
             ref="form"
             class="flex flex-col gap-2 mt-10 relative"
-            @submit.prevent="signUp"
-            v-if="!userStore.isLoggedIn"
+            @submit.prevent="sendModalCourse"
           >
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px]">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-[12px]">
               <AppInput
                 v-model="registrationForm.first_name"
                 placeholder="Имя родителя"
@@ -60,7 +59,7 @@
               />
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px]">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-[12px]">
               <AppInput
                 v-model="registrationForm.email"
                 placeholder="Email"
@@ -69,32 +68,11 @@
                 @blur="checkValidity"
               />
               <AppInput
-                v-model="registrationForm.phone_number"
+                v-model="registrationForm.phone"
                 placeholder="Телефон"
                 maska="+49 ### ###-##-##"
                 type="tel"
                 required
-                @blur="checkValidity"
-              />
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px]">
-              <AppInput
-                v-model="registrationForm.password1"
-                placeholder="Пароль"
-                required
-                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                type="password"
-                @blur="checkValidity"
-              />
-              <AppInput
-                v-model="registrationForm.password2"
-                placeholder="Повторите пароль"
-                type="password"
-                required
-                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                 @blur="checkValidity"
               />
             </div>
@@ -107,15 +85,6 @@
               Оформить
             </AppButton>
           </form>
-
-          <AppButton
-              v-else
-              class="w-full mt-10"
-              type="submit"
-              @click="$emit('close')"
-            >
-              Оформить
-            </AppButton>
         </div>
       </div>
     </div>
@@ -127,23 +96,24 @@ import { useRoute } from 'vue-router'
 
 import BuyProductCard from '@/components/buy/BuyProductCard.vue'
 import GetChildData from '@/components/buy/GetChildData.vue'
+import { useCartStore } from '@/store/cart'
 import { useUserStore } from '@/store/user'
 import { getApiAddress } from '@/utils/getApiAddress'
 
 import AppInput from './AppInput.vue'
 
 // Init component
-defineEmits(['close'])
+const emit = defineEmits(['close'])
 
 // Init hooks
 const route = useRoute()
 
 // Store
 const userStore = useUserStore()
+const cartStore = useCartStore()
 
 // State
 const visitor = ref(null)
-
 
 // Get data
 const { data: product, pending: productPending } = await useFetch(
@@ -156,33 +126,16 @@ const registrationForm = ref({
   first_name: '',
   last_name: '',
   email: '',
-  phone_number: '',
-  password1: '',
-  password2: '',
+  phone: '',
 })
 
-const registrationError = ref('')
-
-const clearError = () => {
-  registrationError.value = ''
-}
-
-const signUp = async () => {
-  await userStore.register(registrationForm.value).catch(err => {
-    if (Object.keys(err).length !== 0) {
-      registrationError.value = 'Кажется, что-то пошло не так'
-      setTimeout(clearError, 2000)
-    } else {
-      registrationError.value = ''
-
-      registrationForm.value.email = ''
-      registrationForm.value.password1 = ''
-      registrationForm.value.password2 = ''
-      registrationForm.value.first_name = ''
-      registrationForm.value.last_name = ''
-      registrationForm.value.phone_number = ''
-    }
-  })
+const sendModalCourse = async () => {
+  // await cartStore.sendVisitRequest({
+  //   product_page: route.params.id,
+  //   children: [userStore.visitors.find((el) => el.id === visitor.value)],
+  //   adults: [registrationForm.value],
+  // })
+  emit('close')
 }
 
 // Form
