@@ -7,7 +7,7 @@
     "
     data-cms="products-details-payment-options"
   >
-    <div class="absolute left-1/2 transform -translate-x-1/2 top-0 mx-0 w-screen h-full bg-brand-light-gray" />
+    <div v-if="!isWhiteBackground" class="absolute left-1/2 transform -translate-x-1/2 top-0 mx-0 w-screen h-full bg-brand-light-gray" />
     <h2 v-if="!withoutTitle" class="relative text-5xl uppercase font-medium mb-12">
       Тарифы
     </h2>

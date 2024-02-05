@@ -30,14 +30,6 @@
         </div>
 
         <div class="flex gap-[12px]">
-          <!-- <div class="bg-brand-light-gray px-[16px] p-[8px] rounded-full">
-          Опция:
-          {{
-            order.schedule_type !== 'TERMINKARTEN'
-              ? 'Абонемент'
-              : 'Карта встреч'
-          }}
-          </div> -->
           <div
             class="bg-brand-light-gray px-4 p-2 rounded-full flex items-center"
           >
@@ -47,7 +39,7 @@
               :options="userStore.getVisitorOptions"
               :value="order?.visitor?.id ?? 1"
               class="min-w-[200px]"
-              @update:value="el => (visitor = el)"
+              @update:value="updateVisitor"
             />
           </div>
         </div>
@@ -162,4 +154,10 @@ await userStore.getVisitors()
 
 // eslint-disable-next-line vue/require-typed-ref
 const visitor = ref()
+
+const updateVisitor = async(el) => {
+  await cart.updateOrderItem(orderId.value, { visitor: el })
+  await cart.getCurrentOrder()
+  visitor.value = el
+}
 </script>

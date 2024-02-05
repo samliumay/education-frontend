@@ -26,10 +26,9 @@
         </div>
 
         <div class="flex gap-[12px]">
-          <!-- <AppButton v-if="type === 'course'" class="bg-brand-red text-white">
+          <AppButton v-if="type === 'course'" class="!bg-brand-red text-white">
             Попробовать бесплатно
           </AppButton>
-          <AppButton> Купить </AppButton> -->
           <slot />
         </div>
       </div>
