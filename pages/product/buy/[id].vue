@@ -313,7 +313,7 @@ const addAcademy = async () => {
   if (buyForm.value.first) weeks++
   if (buyForm.value.second) weeks++
 
-  console.debug(user.isLoggedIn ? buyForm.visitor : null)
+  console.debug(user.isLoggedIn ? buyForm.value.visitor : null)
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const schedule_slots =

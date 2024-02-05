@@ -12,7 +12,7 @@
 
     <slot name="filters" :title="catalog?.name ?? 'Catalog'" />
 
-    <LoaderBlock v-if="isLoadingBlocks" />
+    <LoaderBlock v-if="productsPending" />
     <div v-else class="mt-[48px] mx-[48px] flex flex-col gap-2">
       <PageConstructor
         :blocks="blocks"
@@ -72,34 +72,18 @@ const { data: catalogsGroup, pending: catalogsGroupPending } = useFetch(
 const catalog = computed(() => catalogsGroup.value?.items?.[0])
 
 // Products Cards
-const productUrl = computed(
-  () => `${address}/products/?fields=*&product_type=${api.value.type}`,
-)
-// eslint-disable-next-line vue/no-setup-props-destructure
-const { data: products, pending: productsPending } = useFetch(
-  productUrl.value,
-  { watch: [props.filters], query: props.filters },
-)
-
-const events = ref([])
-const loadingEvents = ref([])
-if (api.value.type === 'Workshop') {
-  const { data: eventsItems, pending } = useFetch(
-    `${address}/products/?fields=*&product_type=Event`,
-    { watch: [props.filters], query: props.filters },
-  )
-
-  events.value = eventsItems.value
-  loadingEvents.value = pending.value
-}
-
-const isLoadingBlocks = computed(() => {
+const catalogType = computed(() => {
   if (api.value.type === 'Workshop') {
-    return loadingEvents.value && productsPending.value
+    return 'Workshop,Event'
   }
 
-  return productsPending.va
+  return api.value.type
 })
+// eslint-disable-next-line vue/no-setup-props-destructure
+const { data: products, pending: productsPending } = useFetch(
+  `${address}/products/?fields=*&product_type=${catalogType.value}`,
+  { watch: [props.filters], query: props.filters },
+)
 
 // Add more items
 const defaultItemsCount = 3
@@ -111,11 +95,6 @@ const addMoreItems = () => {
 
 const blocks = computed(() => {
   const items = products?.value?.items ?? []
-
-  if (events?.value?.items) {
-    items.push(...events.value.items)
-  }
-
   return items.slice(0, itemsOnPage.value)
 })
 
