@@ -1,34 +1,38 @@
 <template>
-  <div>
-    <h2 class="text-5xl sm:w-7/12 font-medium mb-12 mx-[28px] md:mx-[48px]">
-      Für verschiedene Altersgruppen
+  <div class="my-10" data-cms="main-age-groups">
+    <h2
+      class="text-4xl md:text-6xl mb-8 uppercase w-full font-medium mx-10"
+    >
+      {{ blockData.value.title }}
     </h2>
 
     <div
-      v-for="(item, idx) in items"
+      v-for="(item, idx) in blockData.value.tags"
       :key="item.id"
-      class="grid grid-cols-1 sm:grid-cols-3 border-y-[1px] border-black px-[28px] md:px-[48px] py-4 gap-4 sm:gap-16"
+      class="item-hover grid grid-cols-1 md:grid-cols-3 border-t-[1px] last:border-b-[1px] border-black px-10 py-4 gap-4 md:gap-16 hover:bg-brand-light-gray"
       :class="{ 'relative -top-[1px]': idx !== 0 }"
     >
       <div class="flex flex-col">
-        <p class="text-red-400 text-[24px] sm:text-[36px] font-medium mb-[16px] sm:mb-[32px]">
-          {{ item.title }}
+        <p
+          class="text-red-400 text-[24px] md:text-[36px] font-medium mb-[16px] md:mb-[32px]"
+        >
+          {{ item.inner_text }}
         </p>
 
         <p class="text-gray-400">
-          {{ item.description }}
+          {{ item.inner_text }}
         </p>
       </div>
 
       <div class="flex flex-wrap justify-start gap-4">
         <a
-          v-for="link in item.options"
+          v-for="link in [item.link]"
           :key="link.id"
           class="rounded-[48px] py-1 px-3 font-medium text-brand-gray border-[1px] border-brand-gray h-fit flex gap-2
           items-center transition ease-in delay-100 transform active:scale-[0.93]"
-          :href="link.title_url"
+          :href="link"
         >
-          <p>{{ link.title }}</p>
+          <p>{{ link }}</p>
           <img
             class="transform -rotate-90"
             src="/icons/chevron_down.svg"
@@ -37,20 +41,23 @@
         </a>
       </div>
 
-      <div class="flex justify-center items-center">
-        <img
-          :src="item.title_img.meta.download_url"
-          :alt="item.title_img.title"
-          class="max-h-[160px]"
-        />
+      <div class="flex md:justify-center items-center opacity-100 md:opacity-40 image-hover">
+        <ImageBlock :image="blockData.value.icon" class="h-[160px]" />
       </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import type { PageBlock } from '../../../../types/cms'
+import ImageBlock from '@/components/cms/blocks/misc/ImageBlock.vue'
+import type { PageBlock } from '@/types/cms'
 
 defineProps<{
-  items: PageBlock[]
+  blockData: PageBlock[]
 }>()
+
 </script>
+<style scoped>
+.item-hover:hover .image-hover {
+  opacity: 1;
+}
+</style>

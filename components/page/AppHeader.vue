@@ -2,7 +2,7 @@
   <AppSignIn :is-open="isOpenSignIn" @close="isOpenSignIn = false" />
 
   <header
-    class="relative before:font-medium bg-white px-10 py-[18px] lg:px-[40px] lg:py-[28px]"
+    class="relative before:font-medium bg-white px-10 py-[18px] lg:py-[28px]"
     :class="{ '!bg-brand-light-gray': $route.name === 'menu' }"
   >
     <ProfileMenu
@@ -61,11 +61,7 @@
           variant="transparent"
         />
 
-        <NuxtLink
-          v-show="user.isLoggedIn"
-          to="/cart"
-          class="flex items-center cursor-pointer"
-        >
+        <NuxtLink to="/cart" class="flex items-center cursor-pointer">
           <span> Корзина </span>
           <span
             class="border-black rounded-full border-[1px] p-[12px] ml-[6px] relative"
@@ -128,10 +124,11 @@
       </NuxtLink>
 
       <div class="flex items-center gap-4">
+        <NuxtLink to="/cart">
+          <img src="/icons/cart.svg" alt="Cart" />
+        </NuxtLink>
+
         <template v-if="user.isLoggedIn">
-          <NuxtLink to="/cart">
-            <img src="/icons/cart.svg" alt="Cart" />
-          </NuxtLink>
           <button
             class="bg-white rounded-full w-[30px] h-[30px] min-h-[30px] min-w-[30px] overflow-hidden border-black border-[1px]"
             @click="isOpenModalProfile = true"
@@ -143,7 +140,6 @@
             />
           </button>
         </template>
-
         <button v-else @click="isOpenSignIn = true">
           <img src="/icons/exit.svg" alt="Login" />
         </button>

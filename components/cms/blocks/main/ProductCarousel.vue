@@ -1,8 +1,8 @@
 <!-- eslint-disable vue/no-static-inline-styles -->
 
 <template>
-  <div class="m-10 product">
-    <h2 class="text-4xl md:text-6xl mb-8 uppercase font-medium">
+  <div class="m-10 product" data-cms="main-product-carousel">
+    <h2 class="text-4xl lg:text-6xl mb-8 uppercase font-medium">
       {{ blockData.value[0].title }}
     </h2>
     <n-carousel
@@ -16,7 +16,7 @@
       <n-carousel-item
         v-for="item in blockData.value[0].cards"
         :key="item.id"
-        class="!w-[33%]"
+        class="!w-[100%] lg:!w-[33%]"
       >
         <ProductCard class="h-full" :block-data="item" :extra-props="{ type: 'academy' }" />
       </n-carousel-item>

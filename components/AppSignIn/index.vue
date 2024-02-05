@@ -1,6 +1,6 @@
 <template>
   <n-modal :show="isOpen" @mask-click="close">
-    <div class="bg-brand-light-gray rounded-lg p-[44px] w-[600px]">
+    <div class="bg-brand-light-gray rounded-lg p-[44px] md:left-auto md:w-[600px] w-[90%]">
       <div class="flex justify-between mb-[36px]">
         <h2 class="text-3xl font-medium">
           <span v-if="step === LoginSteps.SignUp">Регистрация</span>

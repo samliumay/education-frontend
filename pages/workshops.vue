@@ -1,13 +1,28 @@
 <template>
   <TemplateProduct v-bind="templateProps">
-    <template #filters>
-      <div class="flex items-center gap-[12px] w-[200px]">
-        <AppSelect
-          v-model:value="filters.age_group"
-          placeholder="Возраст"
-          clearable
-          :options="ageOptions"
-        />
+    <template #filters="{ title }">
+      <div
+        class="flex flex-col md:flex-row md:items-center mx-10 gap-5"
+      >
+        <div class="flex items-center gap-[18px]">
+          <h1
+            class="text-[38px] md:text-[32px] sm:text-[48px] font-medium uppercase"
+          >
+            {{ title }}
+          </h1>
+        </div>
+
+        <div
+          class="flex justify-start md:justify-end flex-wrap w-full items-center gap-[12px]"
+        >
+          <AppSelect
+            v-model:value="filters.age_group"
+            placeholder="Возраст"
+            clearable
+            :options="ageOptions"
+            class="sm:max-w-[135px] sm:min-w-[100px]"
+          />
+        </div>
       </div>
     </template>
   </TemplateProduct>

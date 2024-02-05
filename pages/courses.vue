@@ -1,22 +1,44 @@
 <template>
   <TemplateProduct v-bind="templateProps">
-    <template #filters>
-      <div class="overflow-x-scroll w-full pb-3 md:overflow-hidden xl:w-fit">
-        <div class="flex items-center gap-[12px] w-[800px]">
-          <AppSelect placeholder="Направление" disabled />
+    <template #filters="{ title }">
+      <div
+        class="flex flex-col lg:flex-row lg:items-center mx-10 gap-5"
+      >
+        <div class="flex items-center gap-[18px]">
+          <h1
+            class="text-[38px] md:text-[32px] sm:text-[48px] font-medium uppercase"
+          >
+            {{ title }}
+          </h1>
+        </div>
+
+        <div
+          class="flex justify-start lg:justify-end flex-wrap w-full items-center gap-[12px]"
+        >
+          <!-- <AppSelect
+          placeholder="Направление"
+          disabled
+          class="max-w-[160px] min-w-[120px]"
+        /> -->
           <AppSelect
             v-model:value="filters.language"
             placeholder="Язык"
             clearable
             :options="languageOptions"
+            class="max-w-[160px] min-w-[120px]"
           />
           <AppSelect
             v-model:value="filters.age_group"
             placeholder="Возраст"
             clearable
             :options="ageOptions"
+            class="max-w-[160px] min-w-[120px]"
           />
-          <AppSelect placeholder="Филиал" disabled />
+          <!-- <AppSelect
+          placeholder="Филиал"
+          disabled
+          class="max-w-[160px] min-w-[120px]"
+        /> -->
         </div>
       </div>
     </template>

@@ -118,6 +118,9 @@
             <p v-if="passwordError" class="text-brand-red mt-2 mb-2">
               {{ passwordError }}
             </p>
+            <p v-if="passwordChanged" class="text-brand-gray mt-2 mb-2">
+              {{ passwordChanged }}
+            </p>
             <AppButton
               type="submit"
               class="mt-[24px] w-full"
@@ -274,6 +277,7 @@ const userForm = ref<VNodeRef | undefined>(undefined)
 const passwordForm = ref<VNodeRef | undefined>(undefined)
 
 const passwordError = ref('')
+const passwordChanged = ref('')
 
 // Actions
 const checkValidity = (event: { target: { reportValidity: () => void } }) => {
@@ -291,13 +295,19 @@ const changePassword = async () => {
         passwordError.value = 'Кажется, что-то пошло не так'
         setTimeout(() => {
           passwordError.value = ''
-        }, 2000)
-      } else {
-        passwordError.value = ''
-        passwordChange.value.new_password1 = ''
-        passwordChange.value.new_password2 = ''
+        }, 3000)
       }
     })
+
+  if (passwordError.value === '') {
+    passwordChanged.value = 'Успешно изменено!'
+    setTimeout(() => {
+      passwordChanged.value = ''
+      passwordError.value = ''
+      passwordChange.value.new_password1 = ''
+      passwordChange.value.new_password2 = ''
+    }, 3000)
+  }
 }
 
 // Live hooks

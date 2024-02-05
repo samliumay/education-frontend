@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-4 gap-[24px]">
+  <div class="grid grid-cols-4 gap-[24px]" data-cms="catalogues-academy-seasons">
     <div
       v-for="item in items"
       :key="item.title"

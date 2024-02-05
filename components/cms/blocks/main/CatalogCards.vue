@@ -1,10 +1,10 @@
 <template>
-  <div class="flex flex-col m-10">
+  <div class="flex flex-col m-10" data-cms="main-catalog-cards">
     <h2 class="text-4xl md:text-6xl mb-8 uppercase w-full sm:w-8/12 font-medium">
       {{ blockData.value.heading }}
     </h2>
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
       <NuxtLink
         v-for="card in blockData.value.cards"
         :key="card.description"
