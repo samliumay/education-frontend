@@ -1,5 +1,5 @@
 <template>
-  <AppModalCourse v-if="isOpenModalCourse" @close="isOpenModalCourse = false" />
+  <AppModalCourse v-if="isOpenModalCourse" :is-open="isOpenModalCourse" @close="isOpenModalCourse = false" />
   <div
     class="flex flex-col gap-[48px] px-10"
     data-cms="product-details-header-block"

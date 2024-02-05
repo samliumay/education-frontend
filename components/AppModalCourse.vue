@@ -1,10 +1,5 @@
 <template>
-  <Teleport to="body">
-    <div
-      class="top-0 left-0 w-screen h-screen bg-brand-black bg-opacity-30 fixed"
-      @click="$emit('close')"
-    />
-
+  <n-modal :show="isOpen" @mask-click="$emit('close')">
     <div
       class="fixed w-[96%] h-[96%] bg-white rounded-md top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 overflow-y-auto"
     >
@@ -19,7 +14,6 @@
             Закрыть
             <button
               class="bg-white border-[1px] border-brand-black w-[35px] h-[35px] rounded-full flex items-center justify-center hover:bg-brand-light-gray transition ease-in delay-100 transform active:scale-[0.93]"
-              @click="close"
             >
               <img
                 src="/icons/cross.svg"
@@ -98,9 +92,10 @@
         </div>
       </div>
     </div>
-  </Teleport>
+  </n-modal>
 </template>
 <script setup lang="ts">
+import { NModal } from 'naive-ui'
 import { ref, type VNodeRef } from 'vue'
 import { useRoute } from 'vue-router'
 
@@ -114,6 +109,10 @@ import AppInput from './AppInput.vue'
 
 // Init component
 const emit = defineEmits(['close'])
+defineProps<{
+  isOpen: boolean
+}>()
+
 
 // Init hooks
 const route = useRoute()
