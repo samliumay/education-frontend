@@ -155,7 +155,7 @@ await userStore.getVisitors()
 // eslint-disable-next-line vue/require-typed-ref
 const visitor = ref()
 
-const updateVisitor = async(el) => {
+const updateVisitor = async el => {
   await cart.updateOrderItem(orderId.value, { visitor: el })
   await cart.getCurrentOrder()
   visitor.value = el

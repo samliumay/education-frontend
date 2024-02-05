@@ -101,27 +101,26 @@ import { useRoute } from 'vue-router'
 
 import BuyProductCard from '@/components/buy/BuyProductCard.vue'
 import GetChildData from '@/components/buy/GetChildData.vue'
-import { useCartStore } from '@/store/cart'
-import { useUserStore } from '@/store/user'
+// import { useCartStore } from '@/store/cart'
+// import { useUserStore } from '@/store/user'
 import { getApiAddress } from '@/utils/getApiAddress'
 
 import AppInput from './AppInput.vue'
 
-// Init component
-const emit = defineEmits(['close'])
 defineProps<{
   isOpen: boolean
 }>()
-
-
+// Init component
+const emit = defineEmits(['close'])
 // Init hooks
 const route = useRoute()
 
 // Store
-const userStore = useUserStore()
-const cartStore = useCartStore()
+// const userStore = useUserStore()
+// const cartStore = useCartStore()
 
 // State
+// eslint-disable-next-line vue/require-typed-ref
 const visitor = ref(null)
 
 // Get data
@@ -138,6 +137,7 @@ const registrationForm = ref({
   phone: '',
 })
 
+// eslint-disable-next-line require-await
 const sendModalCourse = async () => {
   // await cartStore.sendVisitRequest({
   //   product_page: route.params.id,

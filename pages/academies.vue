@@ -118,7 +118,7 @@ const { data: branches, branchesPending } = useFetch(
 )
 const branchesOptions = computed(() =>
   branches.value
-    ? branches.value.map((branch) => ({
+    ? branches.value.map(branch => ({
         label: branch.name,
         value: branch.id,
       }))
@@ -130,7 +130,7 @@ const { data: categories, categoriesPending } = useFetch(
 )
 const categoriesOptions = computed(() =>
   categories.value
-    ? categories.value.map((category) => ({
+    ? categories.value.map(category => ({
         label: category.name,
         value: category.id,
       }))
