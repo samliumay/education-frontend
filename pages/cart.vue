@@ -1,10 +1,13 @@
 <template>
-  <div class="py-24 px-4 sm:px-12 bg-brand-light-gray">
-    <h1 class="font-medium text-5xl mb-12 uppercase">Корзина</h1>
+  <div class="relative py-24 px-4 sm:px-12 bg-brand-light-gray">
+    <div
+      class="absolute left-1/2 transform -translate-x-1/2 top-0 mx-0 w-screen h-full bg-brand-light-gray"
+    />
+    <h1 class="font-medium text-5xl mb-12 uppercase relative">Корзина</h1>
 
     <form
       ref="form"
-      class="grid grid-cols-1 lg:grid-cols-3 gap-[24px]"
+      class="grid grid-cols-1 lg:grid-cols-3 gap-[24px] relative"
       @submit.prevent="fullfillOrder"
     >
       <div class="sm:col-span-2 flex flex-col gap-[24px]">

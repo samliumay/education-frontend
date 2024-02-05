@@ -10,7 +10,7 @@
       <ImageBlockByID
         :id="item.image.value"
         class="h-[200px] rounded-xl overflow-hidden lg:w-1/2"
-        image-class="'!object-contain'"
+        image-class="!object-contain"
         :class="{
           'order-2 lg:order-1': index % 2 === 0,
           'order-1 lg:order-2': index % 2 !== 0,

@@ -1,17 +1,19 @@
 <template>
   <div
+  class="relative"
     :class="
       (isWhiteBackground ? 'bg-white' : 'bg-brand-light-gray') +
       (!withoutTitle ? ' py-16 px-10' : '')
     "
     data-cms="products-details-payment-options"
   >
-    <h2 v-if="!withoutTitle" class="text-5xl uppercase font-medium mb-12">
+    <div class="absolute left-1/2 transform -translate-x-1/2 top-0 mx-0 w-screen h-full bg-brand-light-gray" />
+    <h2 v-if="!withoutTitle" class="relative text-5xl uppercase font-medium mb-12">
       Тарифы
     </h2>
 
     <div
-      class="grid gap-[24px]"
+      class="grid gap-[24px] relative"
       :class="`grid-cols-1 lg:grid-cols-${Math.max(blockData?.length, cols || 3)}`"
     >
       <div

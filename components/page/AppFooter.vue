@@ -1,27 +1,30 @@
 <template>
   <footer
-    class="w-full py-[28px] px-10 md:py-[48px] flex flex-col gap-10 bg-brand-light-gray"
+    class="w-full py-[28px] px-10 md:py-[48px] flex flex-col gap-10 bg-brand-light-gray relative"
     :class="{ 'bg-white': $route.name === 'cart' }"
   >
-    <div class="flex justify-between gap-10 flex-col md:flex-row">
+    <div
+      class="absolute left-1/2 transform -translate-x-1/2 top-0 mx-0 w-screen h-full bg-brand-light-gray"
+      :class="{ 'bg-white': $route.name === 'cart' }"
+    />
+    <div class="relative flex justify-between gap-10 flex-col md:flex-row">
       <div class="flex flex-col gap-8 flex-wrap lg:gap-16 md:flex-row">
         <div class="flex flex-col justify-between gap-4">
           <div class="flex flex-col gap-1">
             <p class="font-bold">Телефон</p>
             <div class="flex flex-col gap-1">
-              <a
-                href="tel:+493071537477"
-                class="text-brand-gray font-medium"
-              >+49 (0) 30 71537477</a>
-              <a
-                href="tel:+493071537477"
-                class="text-brand-gray font-medium"
-              >+49 (0) 30 71537477</a>
+              <a href="tel:+493071537477" class="text-brand-gray font-medium"
+                >+49 (0) 30 71537477</a
+              >
+              <a href="tel:+493071537477" class="text-brand-gray font-medium"
+                >+49 (0) 30 71537477</a
+              >
             </div>
           </div>
 
-          <a class="font-bold text-brand-red underline underline-offset-8">Контакты
-            →</a>
+          <a class="font-bold text-brand-red underline underline-offset-8"
+            >Контакты →</a
+          >
         </div>
 
         <div class="flex flex-col justify-between gap-4">
@@ -33,8 +36,9 @@
             </p>
           </div>
 
-          <a class="font-bold text-brand-red underline underline-offset-8">Смотреть
-            на карте →</a>
+          <a class="font-bold text-brand-red underline underline-offset-8"
+            >Смотреть на карте →</a
+          >
         </div>
 
         <div class="flex flex-col gap-1">
@@ -42,7 +46,8 @@
           <a
             class="text-brand-gray font-medium"
             href="mailto:info@clavis-schule.de"
-          >info@clavis-schule.de</a>
+            >info@clavis-schule.de</a
+          >
         </div>
       </div>
 
@@ -64,13 +69,21 @@
       </div>
     </div>
 
-    <img src="/icons/logo_pink.svg" class="w-full" alt="big logo" />
+    <img src="/icons/logo_pink.svg" class="relative w-full" alt="big logo" />
 
-    <div class="flex justify-between w-full flex-col md:flex-row gap-6">
+    <div
+      class="relative flex justify-between w-full flex-col md:flex-row gap-6"
+    >
       <div class="flex gap-3 w-full justify-between md:w-fit md:justify-start">
-        <NuxtLink class="w-fit inline-block" to="/legal/privacy"><span>Privacy Policy</span></NuxtLink>
-        <NuxtLink class="w-fit inline-block" to="/legal"><span>Legal</span></NuxtLink>
-        <NuxtLink class="w-fit inline-block" to="/legal/terms"><span>Terms of Service</span></NuxtLink>
+        <NuxtLink class="w-fit inline-block" to="/legal/privacy"
+          ><span>Privacy Policy</span></NuxtLink
+        >
+        <NuxtLink class="w-fit inline-block" to="/legal"
+          ><span>Legal</span></NuxtLink
+        >
+        <NuxtLink class="w-fit inline-block" to="/legal/terms"
+          ><span>Terms of Service</span></NuxtLink
+        >
       </div>
 
       <p>Clavis School of Art and Science GmbH 2023 ©</p>
