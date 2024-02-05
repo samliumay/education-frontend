@@ -463,7 +463,6 @@ const signUp = async () => {
       const visitors = JSON.parse(
         window.localStorage.getItem('visitors') || '[]',
       )
-      console.debug(visitors)
       await userStore.postVisitor(visitors[0])
 
       // Update visitors for items in cart
@@ -476,6 +475,7 @@ const signUp = async () => {
   }
 }
 
+// eslint-disable-next-line consistent-return
 const fullfillOrder = async () => {
   if (!userStore.isLoggedIn) {
     await signUp()

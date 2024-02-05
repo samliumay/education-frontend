@@ -4,13 +4,13 @@
   <div class="px-10 about-course" data-cms="products-details-about-course">
     <div
       v-for="(item, index) in items"
-      :key="items.heading"
+      :key="item?.heading"
       class="mb-10 lg:flex lg:items-center"
     >
       <ImageBlockByID
         :id="item.image.value"
         class="h-[200px] rounded-xl overflow-hidden lg:w-1/2"
-        :image-class="'!object-contain'"
+        image-class="'!object-contain'"
         :class="{
           'order-2 lg:order-1': index % 2 === 0,
           'order-1 lg:order-2': index % 2 !== 0,
@@ -58,6 +58,7 @@ type OutputType = {
 
 const transformArray = (input: InputType[]): OutputType[] => {
   const output: OutputType[] = []
+  // eslint-disable-next-line id-length
   for (let i = 0; i < input.length; i += 3) {
     const image = input[i].type === 'image' ? input[i] : null
     const heading =

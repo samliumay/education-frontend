@@ -57,7 +57,6 @@
 </template>
 <script setup lang="ts">
 import type { PageBlock } from '../../../../../types/cms'
-import Button from '../../../../AppButton.vue'
 import ImageBlock from '../../misc/ImageBlock.vue'
 
 defineProps<{

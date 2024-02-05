@@ -274,14 +274,12 @@ import GetChildData from '../../../components/buy/GetChildData.vue'
 import PaymentOptions from '../../../components/cms/blocks/products/details/PaymentOptions.vue'
 import SelectTagsBlock from '../../../components/misc/SelectTagsBlock.vue'
 import { useCartStore } from '../../../store/cart'
-import { useUserStore } from '../../../store/user'
 import type { OrderItem, Product } from '../../../types'
 import { getApiAddress } from '../../../utils/getApiAddress'
 
 const route = useRoute()
 
 const cart = useCartStore()
-const user = useUserStore()
 
 const buyForm = ref({
   academy_number_of_weeks: 1,

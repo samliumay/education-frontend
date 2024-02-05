@@ -44,9 +44,6 @@ import { NBreadcrumb, NBreadcrumbItem } from 'naive-ui'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
-import { useCartStore } from '@/store/cart'
-import { useUserStore } from '@/store/user'
-
 import { checkIsEmpty } from '../../../utils/checkIsEmpty'
 import { getApiAddress } from '../../../utils/getApiAddress'
 import AppButton from '../../AppButton.vue'

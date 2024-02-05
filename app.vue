@@ -12,13 +12,10 @@
   </n-config-provider>
 </template>
 <script setup lang="ts">
-import { onMounted } from 'vue';
 import AppCookieModal from './components/AppCookieModal.vue'
 import AppFooter from './components/page/AppFooter.vue'
 import AppHeader from './components/page/AppHeader.vue'
-import { CART_ID_KEY, VISITORS_KEY } from './constants/localStorage';
-import { useCartStore } from './store/cart';
-import { useUserStore } from './store/user';
+import { useCartStore } from './store/cart'
 
 useHead({
   title: 'Clavis Schule für Kunst und Wissenschaft',
