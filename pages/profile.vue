@@ -1,15 +1,23 @@
 <template>
-  <div class="pt-[96px] px-[16px] sm:px-[48px] bg-[#EAEAEA]">
-    <h1 class="text-[32px] sm:text-[48px] font-medium">{{ $t('profile.title') }}</h1>
+  <div class="relative pt-[96px] px-[16px] sm:px-[48px] bg-brand-light-gray">
+    <div
+      class="absolute left-1/2 transform -translate-x-1/2 top-0 mx-0 w-screen h-full bg-brand-light-gray"
+    />
 
-    <n-tabs v-model:value="activeTab" type="line" animated>
+    <h1 class="text-[32px] sm:text-[48px] font-medium relative">
+      {{ $t('profile.title') }}
+    </h1>
+
+    <n-tabs v-model:value="activeTab" class="relative" type="line" animated>
       <n-tab-pane name="profile" :tab="$t('common.profileMenu.profile')">
         <div
           class="mt-[48px] grid grid-cols-1 sm:grid-cols-2 gap-[24px] bg-white rounded-[12px] p-[36px]"
         >
           <div>
             <div class="flex items-center gap-[16px]">
-              <div class="bg-gray-200 rounded-[1000px] w-[96px] h-[96px]" />
+              <div
+                class="bg-brand-light-gray rounded-[1000px] w-[96px] h-[96px]"
+              />
               <div>
                 <h2 class="text-[24px] font-medium">
                   {{
@@ -90,7 +98,9 @@
         <div
           class="my-[24px] grid grid-cols-1 sm:grid-cols-2 gap-[24px] bg-white rounded-[12px] p-[36px]"
         >
-          <h2 class="text-[24px] font-medium">{{ $t('common.actions.resetPassword') }}</h2>
+          <h2 class="text-[24px] font-medium">
+            {{ $t('common.actions.resetPassword') }}
+          </h2>
 
           <form
             ref="passwordForm"
@@ -133,6 +143,21 @@
       </n-tab-pane>
       <n-tab-pane name="visitors" :tab="$t('common.profileMenu.children')">
         <div class="mt-[48px]" />
+        <div class="bg-white flex flex-col justify-between gap-10 md:flex-row rounded-[12px] p-[36px] mb-[24px]">
+          <p class="max-w-[50%]">
+            По всем возникшим вопросам обращайтесь по телефону или напиши на
+            почту. Мы работаем <span class="text-brand-red">пн-пт c 9 до 18</span>
+          </p>
+          <div>
+            <p class="text-brand-black font-medium">Телефон</p>
+            <p class="text-brand-gray">+49 (0)30 71537477</p>
+            <p class="text-brand-gray">+49 (0)30 71537477</p>
+          </div>
+          <div>
+            <p class="text-brand-black font-medium">Почта</p>
+            <p class="text-brand-gray">info@clavis-schule.de</p>
+          </div>
+        </div>
         <template v-for="visitor in user.visitorsOrders" :key="visitor.id">
           <form
             class="rounded-[12px] bg-white p-[36px] mb-[24px]"
@@ -140,7 +165,9 @@
           >
             <div class="flex flex-col sm:flex-row justify-between gap-[48px]">
               <div class="flex items-center gap-[16px]">
-                <div class="bg-gray-200 rounded-[1000px] w-[96px] h-[96px]" />
+                <div
+                  class="bg-brand-dark-gray rounded-[1000px] w-[96px] h-[96px]"
+                />
                 <h2 class="text-[24px] font-medium">
                   {{
                     visitor?.first_name || visitor?.last_name
@@ -187,7 +214,9 @@
             </div>
 
             <div class="flex justify-end mt-[24px] w-full sm:w-auto">
-              <AppButton class="w-full" type="submit"> {{ $t('common.actions.save') }} </AppButton>
+              <AppButton class="w-full" type="submit">
+                {{ $t('common.actions.save') }}
+              </AppButton>
             </div>
 
             <AppDivider class="my-[36px]" />
@@ -215,17 +244,19 @@
             <div
               v-for="workshop in user.workshopOrders"
               :key="workshop.id"
-              class="grid grid-cols-4 gap-[12px] bg-gray-200 p-[16px] min-w-[800px]"
+              class="grid grid-cols-4 gap-[12px] bg-brand-light-gray p-[16px] min-w-[800px]"
             >
               <p>{{ workshop.product.name }}</p>
               <p />
               <p>{{ new Date().toDateString() }}</p>
-              <p class="text-blue-500 cursor-pointer">{{ $t('common.actions.look') }}</p>
+              <p class="text-blue-500 cursor-pointer">
+                {{ $t('common.actions.look') }}
+              </p>
             </div>
           </template>
 
           <template v-else>
-            <div class="px-[16px] bg-gray-200 py-[20px] rounded-[12px]">
+            <div class="px-[16px] bg-brand-light-gray py-[20px] rounded-[12px]">
               {{ $t('common.tableOptions.noActiveWorkshops') }}
             </div>
           </template>
@@ -317,3 +348,18 @@ onMounted(() => {
   }
 })
 </script>
+<style>
+.n-tabs.n-tabs--line-type .n-tabs-tab.n-tabs-tab--active,
+.n-tabs.n-tabs--bar-type .n-tabs-tab.n-tabs-tab--active {
+  color: #db3b4d !important;
+}
+
+.n-tabs .n-tabs-bar {
+  background-color: #db3b4d !important;
+}
+
+.n-tabs.n-tabs--line-type .n-tabs-tab:hover,
+.n-tabs.n-tabs--bar-type .n-tabs-tab:hover {
+  color: #db3b4d !important;
+}
+</style>
