@@ -13,7 +13,7 @@
     </h2>
 
     <div
-      class="grid gap-[24px]"
+      class="grid gap-[24px] relative"
       :class="`grid-cols-1 lg:grid-cols-${Math.max(
         blockData?.length,
         cols || 3,

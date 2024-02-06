@@ -1,13 +1,13 @@
 <!-- eslint-disable vuejs-accessibility/no-distracting-elements -->
 
-// ! Warning: There may be problems with this component, since its support has
-ended. // ! If problems arise, it is better to rewrite it in css + js
+// ! Warning: There may be problems with this component, since its support has ended.
+// ! If problems arise, it is better to rewrite it in css + js
 
 <template>
   <div class="my-10 text-4xl text-brand-red" data-cms="main-running-text">
     <marquee direction="left" behavior="scroll">
       <div class="flex gap-6 w-max">
-        <template v-for="text in blockData.value[0].split(' ')" :key="text">
+        <template v-for="text in blockData.value.row1[0].split(' ')" :key="text">
           <p>{{ text }}</p>
           <img
             src="/icons/star.svg"
@@ -19,7 +19,7 @@ ended. // ! If problems arise, it is better to rewrite it in css + js
     </marquee>
     <marquee direction="right" behavior="scroll">
       <div class="flex gap-6 w-max">
-        <template v-for="text in blockData.value[1].split(' ')" :key="text">
+        <template v-for="text in blockData.value.row2[0].split(' ')" :key="text">
           <p>{{ text }}</p>
           <img
             src="/icons/star.svg"

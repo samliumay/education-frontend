@@ -5,7 +5,7 @@
   >
     <div
       class="absolute left-1/2 transform -translate-x-1/2 top-0 mx-0 w-screen h-full bg-brand-light-gray"
-      :class="{ 'bg-white': $route.name === 'cart' }"
+      :class="{ 'bg-white': $route.name === 'cart' || $route.name === 'profile' }"
     />
     <div class="relative flex justify-between gap-10 flex-col md:flex-row">
       <div class="flex flex-col gap-8 flex-wrap lg:gap-16 md:flex-row">

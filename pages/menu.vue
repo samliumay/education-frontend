@@ -106,7 +106,7 @@ const pathGroup = computed(() => [
   },
   {
     label: t('common.aboutUs'),
-    route: '/aboutus',
+    route: '/about-us',
   },
   {
     label: t('common.types.courses'),

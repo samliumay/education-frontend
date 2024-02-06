@@ -1,7 +1,7 @@
 <template>
   <n-modal :show="isOpen" @mask-click="$emit('close')">
     <div
-      class="fixed w-[96%] h-[96%] bg-white rounded-md top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 overflow-y-auto"
+      class="fixed w-[70%] h-[70%] bg-white rounded-md top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 overflow-y-auto"
     >
       <div class="flex flex-col">
         <div
@@ -24,19 +24,11 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-[44px] m-10">
-          <div v-if="!productPending">
-            <p class="text-[24px] font-medium mb-[16px]">Вы выбрали</p>
-            <BuyProductCard :product="product" />
-          </div>
-
+        <div class="flex flex-col gap-10 m-10">
           <div>
-            <h1 class="font-medium text-4xl mb-10">Заполните заявку</h1>
-
-            <GetChildData
-              :visitor="visitor"
-              @update:visitor="el => (visitor = el)"
-            />
+            <h1 class="font-medium text-4xl mb-10">
+              Заполните заявку
+            </h1>
 
             <form
               ref="form"
@@ -80,12 +72,26 @@
                 />
               </div>
 
+              <AppInput
+                  v-model="registrationForm.position"
+                  placeholder="Позиция, которая интересует"
+                  required
+                  @blur="checkValidity"
+                />
+              <AppTextarea
+                v-model="registrationForm.message"
+                placeholder="Доп.информация"
+                type="text"
+                required
+                @blur="checkValidity"
+              />
+
               <AppButton
                 class="w-full mt-10"
                 type="submit"
                 :disabled="!form?.checkValidity() ?? false"
               >
-                Оформить
+                Отправить
               </AppButton>
             </form>
           </div>
@@ -97,15 +103,13 @@
 <script setup lang="ts">
 import { NModal } from 'naive-ui'
 import { ref, type VNodeRef } from 'vue'
-import { useRoute } from 'vue-router'
 
-import BuyProductCard from '@/components/buy/BuyProductCard.vue'
-import GetChildData from '@/components/buy/GetChildData.vue'
+// import { useRoute } from 'vue-router'
 // import { useCartStore } from '@/store/cart'
 // import { useUserStore } from '@/store/user'
-import { getApiAddress } from '@/utils/getApiAddress'
-
+// import { getApiAddress } from '@/utils/getApiAddress'
 import AppInput from './AppInput.vue'
+import AppTextarea from './AppTextarea.vue'
 
 defineProps<{
   isOpen: boolean
@@ -113,7 +117,7 @@ defineProps<{
 // Init component
 const emit = defineEmits(['close'])
 // Init hooks
-const route = useRoute()
+// const route = useRoute()
 
 // Store
 // const userStore = useUserStore()
@@ -121,13 +125,13 @@ const route = useRoute()
 
 // State
 // eslint-disable-next-line vue/require-typed-ref
-const visitor = ref(null)
+// const visitor = ref(null)
 
 // Get data
-const { data: product, pending: productPending } = await useFetch(
-  getApiAddress(`/api/v2/wagtail/products/${route.params.id ?? 12}/?fields=*`),
-  { deep: true },
-)
+// const { data: product, pending: productPending } = await useFetch(
+//   getApiAddress(`/api/v2/wagtail/products/${route.params.id ?? 12}/?fields=*`),
+//   { deep: true },
+// )
 
 // Registration
 const registrationForm = ref({
@@ -135,6 +139,8 @@ const registrationForm = ref({
   last_name: '',
   email: '',
   phone: '',
+  message: '',
+  position: '',
 })
 
 // eslint-disable-next-line require-await

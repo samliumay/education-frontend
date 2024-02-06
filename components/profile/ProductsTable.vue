@@ -16,7 +16,7 @@
         <div
           v-for="order in orders"
           :key="order.id"
-          class="grid px-[16px] bg-gray-200 gap-[12px] py-[20px] rounded-[12px] min-w-[800px]"
+          class="grid px-[16px] bg-brand-light-gray gap-[12px] py-[20px] rounded-[12px] min-w-[800px]"
           :class="{ 'grid-cols-8': withButton, 'grid-cols-7': !withButton }"
         >
           <p class="col-span-2">
@@ -60,7 +60,7 @@
     </template>
 
     <template v-else>
-      <div class="px-[16px] bg-gray-200 py-[20px] rounded-[12px]">
+      <div class="px-[16px] bg-brand-light-graypy-[20px] rounded-[12px]">
         {{ $t('common.tableOptions.noActiveCourses') }}
       </div>
     </template>
