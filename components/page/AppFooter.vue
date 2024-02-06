@@ -41,6 +41,7 @@
           <a
             href="https://www.google.de/maps/place/Immanuelkirchstra%C3%9Fe+4,+10405+Berlin,+Germany/@52.5328744,13.4202195,17z/data=!3m1!4b1!4m6!3m5!1s0x47a84e04f5f870f5:0x94001fd73aa5fe97!8m2!3d52.5328712!4d13.4227998!16s%2Fg%2F11c5f7h2pg?entry=ttu"
             target="_blank"
+            rel="noopener noreferrer"
             class="font-bold text-brand-red underline underline-offset-8"
             >{{ $t('common.info.onMap') }} →</a
           >
