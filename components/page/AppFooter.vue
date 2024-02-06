@@ -13,18 +13,21 @@
           <div class="flex flex-col gap-1">
             <p class="font-bold">{{ $t('common.info.phone') }}</p>
             <div class="flex flex-col gap-1">
-              <a
-href="tel:+493071537477"
-class="text-brand-gray font-medium"
->+49 (0) 30 71537477</a>
-              <a
-href="tel:+493071537477"
-class="text-brand-gray font-medium"
->+49 (0) 30 71537477</a>
+              <a href="tel:+493071537477" class="text-brand-gray font-medium"
+                >+49 (0) 30 71537477</a
+              >
+              <a href="tel:+493071537477" class="text-brand-gray font-medium"
+                >+49 (0) 30 71537477</a
+              >
             </div>
           </div>
 
-          <a class="font-bold text-brand-red underline underline-offset-8">{{ $t('common.info.contacts') }} →</a>
+          <NuxtLink
+            to="/contacts"
+            class="font-bold text-brand-red underline underline-offset-8"
+          >
+            {{ $t('common.info.contacts') }} →
+          </NuxtLink>
         </div>
 
         <div class="flex flex-col justify-between gap-4">
@@ -35,7 +38,12 @@ class="text-brand-gray font-medium"
             </p>
           </div>
 
-          <a class="font-bold text-brand-red underline underline-offset-8">{{ $t('common.info.onMap') }} →</a>
+          <a
+            href="https://www.google.de/maps/place/Immanuelkirchstra%C3%9Fe+4,+10405+Berlin,+Germany/@52.5328744,13.4202195,17z/data=!3m1!4b1!4m6!3m5!1s0x47a84e04f5f870f5:0x94001fd73aa5fe97!8m2!3d52.5328712!4d13.4227998!16s%2Fg%2F11c5f7h2pg?entry=ttu"
+            target="_blank"
+            class="font-bold text-brand-red underline underline-offset-8"
+            >{{ $t('common.info.onMap') }} →</a
+          >
         </div>
 
         <div class="flex flex-col gap-1">
@@ -43,7 +51,8 @@ class="text-brand-gray font-medium"
           <a
             class="text-brand-gray font-medium"
             href="mailto:info@clavis-schule.de"
-            >info@clavis-schule.de</a>
+            >info@clavis-schule.de</a
+          >
         </div>
       </div>
 
@@ -71,24 +80,15 @@ class="text-brand-gray font-medium"
       class="relative flex justify-between w-full flex-col md:flex-row gap-6"
     >
       <div class="flex gap-3 w-full justify-between md:w-fit md:justify-start">
-        <NuxtLink
-class="w-fit inline-block"
-to="/legal/privacy"
->
-<span>{{ $t('common.info.privacy') }}</span>
-</NuxtLink>
-        <NuxtLink
-class="w-fit inline-block"
-to="/legal"
->
-<span>{{ $t('common.info.legal') }}</span>
-</NuxtLink>
-        <NuxtLink
-class="w-fit inline-block"
-to="/legal/terms"
->
-<span>{{ $t('common.info.serviceTerms') }}</span>
-</NuxtLink>
+        <NuxtLink class="w-fit inline-block" to="/legal/privacy">
+          <span>{{ $t('common.info.privacy') }}</span>
+        </NuxtLink>
+        <NuxtLink class="w-fit inline-block" to="/legal">
+          <span>{{ $t('common.info.legal') }}</span>
+        </NuxtLink>
+        <NuxtLink class="w-fit inline-block" to="/legal/terms">
+          <span>{{ $t('common.info.serviceTerms') }}</span>
+        </NuxtLink>
       </div>
 
       <p>{{ $t('common.info.schoolCopyright') }}</p>
