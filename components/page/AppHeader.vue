@@ -5,13 +5,19 @@
     class="relative before:font-medium bg-white px-10 py-[18px] lg:py-[28px]"
     :class="{ '!bg-brand-light-gray': $route.name === 'menu' }"
   >
+    <div
+      v-show="$route.name === 'menu'"
+      class="absolute left-1/2 transform -translate-x-1/2 top-0 mx-0 w-screen h-full bg-brand-light-gray"
+      :class="{ 'bg-white': $route.name === 'cart' }"
+    />
+
     <ProfileMenu
       :is-open="isOpenModalProfile"
       @close="isOpenModalProfile = false"
     />
 
     <!-- DESKTOP HEADER -->
-    <div class="w-full justify-between gap-[48px] hidden lg:flex">
+    <div class="relative -full justify-between gap-[48px] hidden lg:flex">
       <div class="flex items-center gap-6">
         <NuxtLink to="/">
           <img src="/icons/logo_pink.svg" alt="Clavis logo" class="mr-4" />
@@ -92,7 +98,7 @@
     </div>
 
     <!-- MOBILE HEADER -->
-    <div class="w-full flex items-center justify-between gap-6 lg:hidden">
+    <div class="relative w-full flex items-center justify-between gap-6 lg:hidden">
       <!-- OPEN MENU BUTTON HEADER -->
       <template v-if="$route.name !== 'menu'">
         <AppButton

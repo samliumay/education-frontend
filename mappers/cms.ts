@@ -9,6 +9,7 @@ import Quote from '../components/cms/blocks/main/Quote.vue'
 import RunningText from '../components/cms/blocks/main/RunningText.vue'
 import SeoText from '../components/cms/blocks/main/SeoText.vue'
 import SocialMedia from '../components/cms/blocks/main/SocialMedia.vue'
+import Video from '../components/cms/blocks/main/Video.vue'
 // catalog
 import AppProductCard from '../components/cms/blocks/products/ProductCard.vue'
 
@@ -24,4 +25,5 @@ export const mapTypeBlock = {
   "product_carousel": ProductCarousel,
   "social_media": SocialMedia,
   "age_groups": AgeGroups,
+  "video_block": Video,
 }

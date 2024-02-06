@@ -5,7 +5,7 @@
     </h2>
 
     <div
-      class="mb-[64px] rounded-[12px] bg-brand-light-gray grid grid-cols-1 sm:grid-cols-3 gap-[24px] p-[8px]"
+      class="mb-[64px] rounded-[12px] bg-brand-light-gray grid grid-cols-1 lg:grid-cols-3 gap-[24px] p-[8px]"
     >
       <button
         v-for="(option, index) in blockData?.value?.catalog_list"
@@ -25,7 +25,7 @@
         v-for="(option, index) in blockData?.value?.catalog_list"
         v-show="index === currentCatalogIndex"
         :key="option.name"
-        class="grid grid-cols-1 sm:grid-cols-3 gap-x-[24px] gap-y-[64px]"
+        class="grid grid-cols-1 lg:grid-cols-3 gap-x-[24px] gap-y-[64px]"
       >
         <ProductCard
           v-for="item in option.cards"

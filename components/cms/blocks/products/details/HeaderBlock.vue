@@ -1,4 +1,9 @@
 <template>
+  <AppModalCourse
+    v-if="isOpenModalCourse"
+    :is-open="isOpenModalCourse"
+    @close="isOpenModalCourse = false"
+  />
   <div
     class="flex flex-col gap-[48px] px-10"
     data-cms="product-details-header-block"
@@ -29,10 +34,13 @@
         </div>
 
         <div class="flex gap-[12px]">
-          <!-- <AppButton v-if="type === 'course'" class="bg-brand-red text-white">
+          <AppButton
+            v-if="type === 'course' || type === 'event'"
+            class="!bg-brand-red text-white"
+            @click="isOpenModalCourse = true"
+          >
             Попробовать бесплатно
           </AppButton>
-          <AppButton> Купить </AppButton> -->
           <slot />
         </div>
       </div>
@@ -95,6 +103,10 @@
   </div>
 </template>
 <script setup lang="ts">
+import { ref } from 'vue'
+
+import AppModalCourse from '@/components/AppModalCourse.vue'
+
 import { type Product, type ProductType } from '../../../../../types'
 import { type PageBlock } from '../../../../../types/cms'
 import CategoryBlock from '../../../../misc/CategoryBlock.vue'
@@ -105,4 +117,6 @@ defineProps<{
   blockData: PageBlock & { product: Product }
   type: ProductType
 }>()
+
+const isOpenModalCourse = ref(false)
 </script>

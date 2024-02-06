@@ -1,8 +1,13 @@
 <template>
   <main
-    class="flex flex-1 flex-col gap-10 px-10 py-6 bg-brand-light-gray lg:justify-between lg:items-start lg:flex-row h-full"
+    class="relative flex flex-1 flex-col gap-10 px-10 py-6 bg-brand-light-gray lg:justify-between lg:items-start lg:flex-row h-full"
   >
-    <nav class="flex flex-col gap-2">
+  <div
+      class="absolute left-1/2 transform -translate-x-1/2 top-0 mx-0 w-screen h-full bg-brand-light-gray"
+      :class="{ 'bg-white': $route.name === 'cart' }"
+    />
+
+    <nav class="relative flex flex-col gap-2">
       <NuxtLink
         v-for="path in pathGroup"
         :key="path.route"
@@ -16,10 +21,8 @@
       </NuxtLink>
     </nav>
 
-    <div class="flex flex-col gap-8 h-fit sm:self-end">
-      <div
-        class="flex flex-col gap-8 flex-wrap lg:gap-16 md:flex-row sm:self-end"
-      >
+    <div class="relative flex flex-col gap-8 h-fit sm:self-end">
+      <div class="flex flex-col gap-8 flex-wrap lg:gap-16 md:flex-row sm:self-end">
         <div class="flex flex-col justify-between gap-4">
           <div class="flex flex-col gap-1">
             <p class="font-bold">{{ $t('common.info.phone') }}</p>
@@ -75,6 +78,7 @@
 </template>
 <script setup lang="ts">
 import { computed } from 'vue';
+
 import { socialsLinks } from '../constants/socials'
 
 useHead({

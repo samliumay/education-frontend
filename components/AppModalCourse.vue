@@ -1,97 +1,156 @@
 <template>
-  <Teleport to="body">
-    <div class="w-full h-full bg-gray-500" @click="$emit('close')" />
+  <n-modal :show="isOpen" @mask-click="$emit('close')">
     <div
-      class="w-[calc(100% - 20px)] h-[calc(100% - 20px)] bg-gray-200 fixed top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4"
+      class="fixed w-[96%] h-[96%] bg-white rounded-md top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 overflow-y-auto"
     >
-      <div
-        class="flex justify-end items-center border-b-[1px] border-black py-[16px]"
-      >
-        <div class="flex gap-[20px] items-center" @click="$emit('close')">
-          Закрыть
-          <Close />
-        </div>
-      </div>
-
-      <div class="grid grid-cols-2 gap-[44px] pt-[36px] px-[36px]">
-        <div>
-          <div class="flex items-start gap-[6px]">
-            <CourseIcon />
-            <h2 class="font-medium text-[24px] sm:text-[36px]">
-              Рисование, Живопись, Лепка: Группы 5-7
-            </h2>
+      <div class="flex flex-col">
+        <div
+          class="flex justify-end items-center border-b-[1px] border-black py-[16px]"
+        >
+          <div
+            class="flex gap-[20px] items-center mr-10"
+            @click="$emit('close')"
+          >
+            Закрыть
+            <button
+              class="bg-white border-[1px] border-brand-black w-[35px] h-[35px] rounded-full flex items-center justify-center hover:bg-brand-light-gray transition ease-in delay-100 transform active:scale-[0.93]"
+            >
+              <img
+                src="/icons/cross.svg"
+                alt="close"
+                class="w-[15px] h-[15px]"
+              />
+            </button>
           </div>
-
-          <p class="font-medium mt-[36px]">
-            Создаём проект города, рисуем мифических существ или рисуем пейзажи
-            в японском стиле.
-            <br />
-            Узнаём интересные факты из истории искусства — от производства
-            красок в древности до световых инсталляций в музеях современного
-            искусства.
-            <br />
-            Мы пробуем разные техники и форматы и по ходу дела учимся
-          </p>
         </div>
 
-        <div>
-          <h1 class="font-medium text-[32px] sm:text-[48px] mb-[36px]">
-            Заполните данные
-          </h1>
-
-          <div class="grid grid-cols-2 gap-[12px]">
-            <AppInput
-              v-model="application.child.name"
-              placeholder="Имя ребенка"
-            />
-            <AppInput
-              v-model="application.child.surname"
-              placeholder="Фамилия ребенка"
-            />
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-[44px] m-10">
+          <div v-if="!productPending">
+            <p class="text-[24px] font-medium mb-[16px]">Вы выбрали</p>
+            <BuyProductCard :product="product" />
           </div>
 
-          <AppInput
-            v-model="application.child.birthdate"
-            class="mt-[12px]"
-            placeholder="Дата рождения ребенка"
-            type="date"
-          />
+          <div>
+            <h1 class="font-medium text-4xl mb-10">Заполните заявку</h1>
 
-          <div class="grid grid-cols-2 gap-[12px] mt-[12px]">
-            <AppInput
-              v-model="application.parent.name"
-              placeholder="Имя родителя"
+            <GetChildData
+              :visitor="visitor"
+              @update:visitor="el => (visitor = el)"
             />
-            <AppInput
-              v-model="application.parent.surname"
-              placeholder="Фамилия родителя"
-            />
+
+            <form
+              ref="form"
+              class="flex flex-col gap-2 mt-10 relative"
+              @submit.prevent="sendModalCourse"
+            >
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-[12px]">
+                <AppInput
+                  v-model="registrationForm.first_name"
+                  placeholder="Имя родителя"
+                  required
+                  pattern=".{2,}"
+                  title="The name must contain at least two characters"
+                  @blur="checkValidity"
+                />
+                <AppInput
+                  v-model="registrationForm.last_name"
+                  placeholder="Фамилия родителя"
+                  required
+                  pattern=".{2,}"
+                  title="Last name must contain at least two characters"
+                  @blur="checkValidity"
+                />
+              </div>
+
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-[12px]">
+                <AppInput
+                  v-model="registrationForm.email"
+                  placeholder="Email"
+                  type="email"
+                  required
+                  @blur="checkValidity"
+                />
+                <AppInput
+                  v-model="registrationForm.phone"
+                  placeholder="Телефон"
+                  maska="+49 ### ###-##-##"
+                  type="tel"
+                  required
+                  @blur="checkValidity"
+                />
+              </div>
+
+              <AppButton
+                class="w-full mt-10"
+                type="submit"
+                :disabled="!form?.checkValidity() ?? false"
+              >
+                Оформить
+              </AppButton>
+            </form>
           </div>
         </div>
       </div>
     </div>
-  </Teleport>
+  </n-modal>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue'
+import { NModal } from 'naive-ui'
+import { ref, type VNodeRef } from 'vue'
+import { useRoute } from 'vue-router'
 
-import CourseIcon from '../public/icons/Course.svg'
-import Close from '../public/icons/cross.svg'
+import BuyProductCard from '@/components/buy/BuyProductCard.vue'
+import GetChildData from '@/components/buy/GetChildData.vue'
+// import { useCartStore } from '@/store/cart'
+// import { useUserStore } from '@/store/user'
+import { getApiAddress } from '@/utils/getApiAddress'
+
 import AppInput from './AppInput.vue'
 
-defineEmits(['close'])
+defineProps<{
+  isOpen: boolean
+}>()
+// Init component
+const emit = defineEmits(['close'])
+// Init hooks
+const route = useRoute()
 
-const application = ref({
-  child: {
-    name: '',
-    surname: '',
-    birthdate: '',
-  },
-  parent: {
-    name: '',
-    surname: '',
-  },
+// Store
+// const userStore = useUserStore()
+// const cartStore = useCartStore()
+
+// State
+// eslint-disable-next-line vue/require-typed-ref
+const visitor = ref(null)
+
+// Get data
+const { data: product, pending: productPending } = await useFetch(
+  getApiAddress(`/api/v2/wagtail/products/${route.params.id}/?fields=*`),
+  { deep: true },
+)
+
+// Registration
+const registrationForm = ref({
+  first_name: '',
+  last_name: '',
   email: '',
   phone: '',
 })
+
+// eslint-disable-next-line require-await
+const sendModalCourse = async () => {
+  // await cartStore.sendVisitRequest({
+  //   product_page: route.params.id,
+  //   children: [userStore.visitors.find((el) => el.id === visitor.value)],
+  //   adults: [registrationForm.value],
+  // })
+  emit('close')
+}
+
+// Form
+const checkValidity = (event: { target: { reportValidity: () => void } }) => {
+  event.target.reportValidity()
+}
+
+const form = ref<VNodeRef | undefined>(undefined)
 </script>

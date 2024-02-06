@@ -205,4 +205,4 @@ export type AcademySeason = {
   image_url: string | null
 }
 
-export type ProductType = 'course' | 'academy' | 'workshop'
+export type ProductType = 'course' | 'academy' | 'workshop' | 'event'

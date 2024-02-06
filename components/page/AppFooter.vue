@@ -1,9 +1,13 @@
 <template>
   <footer
-    class="w-full py-[28px] px-10 md:py-[48px] flex flex-col gap-10 bg-brand-light-gray"
+    class="w-full py-[28px] px-10 md:py-[48px] flex flex-col gap-10 bg-brand-light-gray relative"
     :class="{ 'bg-white': $route.name === 'cart' }"
   >
-    <div class="flex justify-between gap-10 flex-col md:flex-row">
+    <div
+      class="absolute left-1/2 transform -translate-x-1/2 top-0 mx-0 w-screen h-full bg-brand-light-gray"
+      :class="{ 'bg-white': $route.name === 'cart' }"
+    />
+    <div class="relative flex justify-between gap-10 flex-col md:flex-row">
       <div class="flex flex-col gap-8 flex-wrap lg:gap-16 md:flex-row">
         <div class="flex flex-col justify-between gap-4">
           <div class="flex flex-col gap-1">
@@ -61,9 +65,11 @@ class="text-brand-gray font-medium"
       </div>
     </div>
 
-    <img src="/icons/logo_pink.svg" class="w-full" alt="big logo" />
+    <img src="/icons/logo_pink.svg" class="relative w-full" alt="big logo" />
 
-    <div class="flex justify-between w-full flex-col md:flex-row gap-6">
+    <div
+      class="relative flex justify-between w-full flex-col md:flex-row gap-6"
+    >
       <div class="flex gap-3 w-full justify-between md:w-fit md:justify-start">
         <NuxtLink
 class="w-fit inline-block"

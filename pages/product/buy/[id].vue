@@ -274,12 +274,14 @@ import GetChildData from '../../../components/buy/GetChildData.vue'
 import PaymentOptions from '../../../components/cms/blocks/products/details/PaymentOptions.vue'
 import SelectTagsBlock from '../../../components/misc/SelectTagsBlock.vue'
 import { useCartStore } from '../../../store/cart'
+import { useUserStore } from '../../../store/user'
 import type { OrderItem, Product } from '../../../types'
 import { getApiAddress } from '../../../utils/getApiAddress'
 
 const route = useRoute()
 
 const cart = useCartStore()
+const user = useUserStore()
 
 const buyForm = ref({
   academy_number_of_weeks: 1,
@@ -292,6 +294,7 @@ const buyForm = ref({
   comment: '',
   feature: 'yes',
   photo: 'yes',
+  visitor: null,
 } as Partial<OrderItem> & {
   first: boolean
   second: boolean
@@ -324,7 +327,7 @@ const addAcademy = async () => {
     //     option => buyForm.value.schedule_type === option.type,
     //   )?.id || 0,
     purchase_option: product?.value?.purchase_options?.[0]?.id ?? 1,
-    visitor: null,
+    visitor: user.isLoggedIn ? buyForm.value.visitor : null,
     schedule_slots,
     product_page: product?.value?.id,
     comment: buyForm.value.comment,

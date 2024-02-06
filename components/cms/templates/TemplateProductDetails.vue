@@ -24,7 +24,7 @@
             v-show="product?.product_type !== 'Event'"
             @click="navigateTo(`/product/buy/${route.params.id}`)"
           >
-            Купить продукт
+            Купить
           </AppButton>
         </HeaderBlock>
       </ErrorBoundaryBlock>

@@ -1,8 +1,7 @@
 <template>
-  <div
-    class="px-10 bg-brand-light-gray py-16 relative overflow-hidden"
-    data-cms="products-details-about-tutors"
-  >
+  <div class="px-10 bg-brand-light-gray py-16 relative" data-cms="products-details-about-tutors">
+    <div class="absolute left-1/2 transform -translate-x-1/2 top-0 mx-0 w-screen h-full bg-brand-light-gray" />
+
     <img src="/icons/tutors.svg" alt="Tutors" class="absolute top-20 left-0" />
 
     <h2
