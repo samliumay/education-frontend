@@ -28,7 +28,10 @@ export const useCartStore = defineStore('cart', () => {
   }
 
   const updateOrderItem = async (id: number, orderItem: Partial<OrderItem>) => {
-    await HTTP.patch(`/api/v2/orders/items/${id}/?cart_id=${cartId.value}`, orderItem)
+    await HTTP.patch(
+      `/api/v2/orders/items/${id}/?cart_id=${cartId.value}`,
+      orderItem,
+    )
   }
 
   const fulfillOrder = async (gateway: string, successUrl: string) => {

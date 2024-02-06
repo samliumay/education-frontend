@@ -1,5 +1,8 @@
 <template>
-  <div class="flex flex-col justify-between gap-4 rounded-[12px] bg-white" data-cms="product-card">
+  <div
+    class="flex flex-col justify-between gap-4 rounded-[12px] bg-white"
+    data-cms="product-card"
+  >
     <div class="flex flex-col gap-4">
       <Cover
         class="h-[260px] w-full"
@@ -65,7 +68,7 @@
       </div>
 
       <AppButton class="mt-[24px] !bg-brand-light-gray" @click="goToDetails">
-        Подробнее
+        {{ $t('common.moreDetails') }}
       </AppButton>
     </div>
   </div>

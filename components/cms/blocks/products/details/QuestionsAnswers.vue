@@ -1,8 +1,9 @@
 <template>
   <div class="py-10" data-cms="products-details-questions-answers">
-    <h2 class="text-3xl sm:text-4xl md:text-5xl uppercase font-medium mb-12 mx-10">
-      ОТВЕЧАЕМ <br />
-      НА ВОПРОСЫ
+    <h2
+      class="uppercase text-3xl sm:text-4xl md:text-5xl font-medium mb-12 mx-10"
+    >
+      {{ $t('blocks.product.qna') }}
     </h2>
 
     <AccordionPanel

@@ -1,16 +1,20 @@
 <template>
   <n-modal :show="isOpen" @mask-click="close">
-    <div class="bg-brand-light-gray rounded-lg p-[44px] md:left-auto md:w-[600px] w-[90%]">
+    <div
+      class="bg-brand-light-gray rounded-lg p-[44px] md:left-auto md:w-[600px] w-[90%]"
+    >
       <div class="flex justify-between mb-[36px]">
         <h2 class="text-3xl font-medium">
-          <span v-if="step === LoginSteps.SignUp">Регистрация</span>
+          <span v-if="step === LoginSteps.SignUp">{{
+            $t('user.registration')
+          }}</span>
           <span
             v-else-if="
               step === LoginSteps.RestorePassword ||
               step === LoginSteps.ConfirmRestorePassword
             "
-            >Восстановление пароля</span>
-          <span v-else>Войти</span>
+            >{{ $t('user.passwordRestore') }}</span>
+          <span v-else>{{ $t('common.actions.signIn') }}</span>
         </h2>
         <button
           class="bg-white border-[1px] border-brand-black w-[35px] h-[35px] rounded-full flex items-center justify-center hover:bg-brand-light-gray transition ease-in delay-100 transform active:scale-[0.93]"

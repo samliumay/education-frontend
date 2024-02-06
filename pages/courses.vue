@@ -23,14 +23,14 @@
           />
           <AppSelect
             v-model:value="filters.language"
-            placeholder="Язык"
+            :placeholder="$t('common.filters.language')"
             clearable
             :options="languageOptions"
             class="max-w-[160px] min-w-[120px]"
           />
           <AppSelect
             v-model:value="filters.age_group"
-            placeholder="Возраст"
+            :placeholder="$t('common.filters.age')"
             clearable
             :options="ageOptions"
             class="max-w-[160px] min-w-[120px]"

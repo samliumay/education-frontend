@@ -14,9 +14,14 @@
         >
           <div class="flex flex-col justify-center gap-4 w-6/12">
             <div class="w-fit h-fit">
-              <ImageBlock :image="blockData.value.media_card[0].icon" class="w-[90px] h-[90px] mb-1" />
+              <ImageBlock
+                :image="blockData.value.media_card[0].icon"
+                class="w-[90px] h-[90px] mb-1"
+              />
               <div class="flex gap-3 items-center">
-                <p class="text-xl font-medium text-brand-red">{{ blockData.value.media_card[0].title }}</p>
+                <p class="text-xl font-medium text-brand-red">
+                  {{ blockData.value.media_card[0].title }}
+                </p>
                 <img
                   src="/icons/chevron_left.svg"
                   class="w-[8px] h-[18px]"
@@ -31,7 +36,10 @@
           </div>
 
           <div class="flex w-7/12 justify-end ml-1">
-            <ImageBlock :image="blockData.value.media_card[0].background_image" class="h-full" />
+            <ImageBlock
+              :image="blockData.value.media_card[0].background_image"
+              class="h-full"
+            />
           </div>
         </NuxtLink>
 
@@ -43,9 +51,14 @@
         >
           <div class="flex flex-col justify-center gap-4 w-6/12">
             <div class="w-fit h-fit">
-              <ImageBlock :image="blockData.value.media_card[1].icon" class="w-[90px] h-[90px] mb-1" />
+              <ImageBlock
+                :image="blockData.value.media_card[1].icon"
+                class="w-[90px] h-[90px] mb-1"
+              />
               <div class="flex gap-3 items-center">
-                <p class="text-xl font-medium text-brand-red">{{ blockData.value.media_card[1].title }}</p>
+                <p class="text-xl font-medium text-brand-red">
+                  {{ blockData.value.media_card[1].title }}
+                </p>
                 <img
                   src="/icons/chevron_left.svg"
                   class="w-[8px] h-[18px]"
@@ -60,7 +73,10 @@
           </div>
 
           <div class="flex w-5/12 justify-end pt-8 pr-5">
-            <ImageBlock :image="blockData.value.media_card[1].background_image" class="h-full" />
+            <ImageBlock
+              :image="blockData.value.media_card[1].background_image"
+              class="h-full"
+            />
           </div>
         </NuxtLink>
       </div>
@@ -79,9 +95,14 @@
               rel="noopener noreferrer"
               class="w-fit h-fit"
             >
-            <ImageBlock :image="blockData.value.media_card[2].icon" class="w-[90px] h-[90px] mb-1" />
+              <ImageBlock
+                :image="blockData.value.media_card[2].icon"
+                class="w-[90px] h-[90px] mb-1"
+              />
               <div class="flex gap-3 items-center">
-                <p class="text-xl font-medium text-brand-red">{{ blockData.value.media_card[2].title }}</p>
+                <p class="text-xl font-medium text-brand-red">
+                  {{ blockData.value.media_card[2].title }}
+                </p>
                 <img
                   src="/icons/chevron_left.svg"
                   class="w-[8px] h-[18px]"
@@ -96,7 +117,10 @@
           </div>
 
           <div class="flex w-fit h-fit pr-5 pt-5">
-            <ImageBlock :image="blockData.value.media_card[2].background_image" class="max-h-[110px] max-w-[75px]" />
+            <ImageBlock
+              :image="blockData.value.media_card[2].background_image"
+              class="max-h-[110px] max-w-[75px]"
+            />
           </div>
         </NuxtLink>
 
@@ -113,9 +137,14 @@
               rel="noopener noreferrer"
               class="w-fit h-fit"
             >
-            <ImageBlock :image="blockData.value.media_card[3].icon" class="w-[90px] h-[90px] mb-1" />
+              <ImageBlock
+                :image="blockData.value.media_card[3].icon"
+                class="w-[90px] h-[90px] mb-1"
+              />
               <div class="flex gap-3 items-center">
-                <p class="text-xl font-medium text-brand-red">{{ blockData.value.media_card[3].title }}</p>
+                <p class="text-xl font-medium text-brand-red">
+                  {{ blockData.value.media_card[3].title }}
+                </p>
                 <img
                   src="/icons/chevron_left.svg"
                   class="w-[8px] h-[18px]"
@@ -130,7 +159,10 @@
           </div>
 
           <div class="flex w-5/12 justify-end">
-            <ImageBlock :image="blockData.value.media_card[3].background_image" class="h-full" />
+            <ImageBlock
+              :image="blockData.value.media_card[3].background_image"
+              class="h-full"
+            />
           </div>
         </NuxtLink>
       </div>

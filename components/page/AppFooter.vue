@@ -11,7 +11,7 @@
       <div class="flex flex-col gap-8 flex-wrap lg:gap-16 md:flex-row">
         <div class="flex flex-col justify-between gap-4">
           <div class="flex flex-col gap-1">
-            <p class="font-bold">Телефон</p>
+            <p class="font-bold">{{ $t('common.info.phone') }}</p>
             <div class="flex flex-col gap-1">
               <a
 href="tel:+493071537477"
@@ -24,23 +24,32 @@ class="text-brand-gray font-medium"
             </div>
           </div>
 
-          <a class="font-bold text-brand-red underline underline-offset-8">Контакты →</a>
+          <NuxtLink
+            to="/contacts"
+            class="font-bold text-brand-red underline underline-offset-8"
+          >
+            {{ $t('common.info.contacts') }} →
+          </NuxtLink>
         </div>
 
         <div class="flex flex-col justify-between gap-4">
           <div class="flex flex-col gap-1">
-            <p class="font-bold">Адрес</p>
+            <p class="font-bold">{{ $t('common.info.address') }}</p>
             <p class="text-brand-gray font-medium">
-              Иммануэлькирхштрассе 4 <br />
-              10405 Берлин
+              {{ $t('common.info.actualAddress') }}
             </p>
           </div>
 
-          <a class="font-bold text-brand-red underline underline-offset-8">Смотреть на карте →</a>
+          <a
+            href="https://www.google.de/maps/place/Immanuelkirchstra%C3%9Fe+4,+10405+Berlin,+Germany/@52.5328744,13.4202195,17z/data=!3m1!4b1!4m6!3m5!1s0x47a84e04f5f870f5:0x94001fd73aa5fe97!8m2!3d52.5328712!4d13.4227998!16s%2Fg%2F11c5f7h2pg?entry=ttu"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-bold text-brand-red underline underline-offset-8"
+            >{{ $t('common.info.onMap') }} →</a>
         </div>
 
         <div class="flex flex-col gap-1">
-          <p class="font-bold">Почта</p>
+          <p class="font-bold">{{ $t('common.info.mail') }}</p>
           <a
             class="text-brand-gray font-medium"
             href="mailto:info@clavis-schule.de"
@@ -72,27 +81,18 @@ class="text-brand-gray font-medium"
       class="relative flex justify-between w-full flex-col md:flex-row gap-6"
     >
       <div class="flex gap-3 w-full justify-between md:w-fit md:justify-start">
-        <NuxtLink
-class="w-fit inline-block"
-to="/legal/privacy"
->
-<span>Privacy Policy</span>
-</NuxtLink>
-        <NuxtLink
-class="w-fit inline-block"
-to="/legal"
->
-<span>Legal</span>
-</NuxtLink>
-        <NuxtLink
-class="w-fit inline-block"
-to="/legal/terms"
->
-<span>Terms of Service</span>
-</NuxtLink>
+        <NuxtLink class="w-fit inline-block" to="/legal/privacy">
+          <span>{{ $t('common.info.privacy') }}</span>
+        </NuxtLink>
+        <NuxtLink class="w-fit inline-block" to="/legal">
+          <span>{{ $t('common.info.legal') }}</span>
+        </NuxtLink>
+        <NuxtLink class="w-fit inline-block" to="/legal/terms">
+          <span>{{ $t('common.info.serviceTerms') }}</span>
+        </NuxtLink>
       </div>
 
-      <p>Clavis School of Art and Science GmbH 2023 ©</p>
+      <p>{{ $t('common.info.schoolCopyright') }}</p>
     </div>
   </footer>
 </template>

@@ -17,9 +17,11 @@
 <script lang="ts" setup>
 const emit = defineEmits(['goToEmailStep'])
 
+const { t } = useI18n()
+
 const options = [
   {
-    label: 'Почта',
+    label: t('common.info.mail'),
     icon: '/icons/sign_in/mail_icon.svg',
     onClick: () => emit('goToEmailStep'),
   },

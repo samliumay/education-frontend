@@ -7,6 +7,6 @@
       alt="Not found Icon"
       class="w-[95px] h-[95px]"
     />
-    <p class="text-2xl font-medium">Корзина пуста</p>
+    <p class="text-2xl font-medium">{{ $t('cart.isEmpty') }}</p>
   </div>
 </template>

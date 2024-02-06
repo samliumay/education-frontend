@@ -21,7 +21,9 @@
             class="h-[14px] w-[14px] rounded-[1000px] bg-green-600"
           />
         </div>
-        <div class="flex items-center justify-center">Оплата через Paypal</div>
+        <div class="flex items-center justify-center">
+          {{ $t('cart.payment.paypal') }}
+        </div>
       </div>
 
       <img src="/icons/pay/paypal.svg" alt="Stripe icon" />
@@ -48,7 +50,9 @@
             class="h-[14px] w-[14px] rounded-[1000px] bg-green-600"
           />
         </div>
-        <div class="flex items-center justify-center">Оплата через Stripe</div>
+        <div class="flex items-center justify-center">
+          {{ $t('cart.payment.stripe') }}
+        </div>
       </div>
 
       <img src="/icons/pay/stripe.svg" alt="Stripe icon" />

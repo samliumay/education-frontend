@@ -2,22 +2,22 @@
   <form ref="form" @submit.prevent="confirmRestore">
     <AppInput
       v-model="restoreCredentials.password1"
-      placeholder="Пароль"
+      :placeholder="$t('user.password')"
       type="password"
       class="mt-[12px]"
       required
       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-      title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+      :title="$t('user.passwordValidation')"
       @blur="checkValidity"
     />
     <AppInput
       v-model="restoreCredentials.password2"
-      placeholder="Повторите пароль"
+      :placeholder="$t('user.repeatPassword')"
       type="password"
       class="mt-[12px]"
       required
       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-      title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+      :title="$t('user.passwordValidation')"
       @blur="checkValidity"
     />
 
@@ -28,7 +28,7 @@
       type="submit"
       :disabled="!form?.checkValidity() ?? false"
     >
-      Восстановить
+      {{ $t('common.actions.restore') }}
     </AppButton>
   </form>
 </template>
@@ -43,6 +43,8 @@ const emit = defineEmits(['close'])
 
 // Store
 const userStore = useUserStore()
+
+const { t } = useI18n()
 
 // State
 const error = ref('')
@@ -72,7 +74,7 @@ const confirmRestore = async () => {
     )
     .catch(err => {
       if (Object.keys(err).length !== 0) {
-        error.value = 'Кажется, что-то пошло не так'
+        error.value = t('common.somethingWrong')
         setTimeout(clearError, 2000)
       } else {
         error.value = ''

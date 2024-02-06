@@ -25,11 +25,7 @@
         :key="option"
         class="flex gap-2 items-start"
       >
-        <img
-          src="/icons/star.svg"
-          alt="Star"
-          class="w-[20px] h-[20px]"
-        />
+        <img src="/icons/star.svg" alt="Star" class="w-[20px] h-[20px]" />
         <p>{{ option }}</p>
       </div>
     </div>

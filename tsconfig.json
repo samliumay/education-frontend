@@ -26,7 +26,7 @@
     },
 
     /* Eslint */
-    "allowJs": true,
+    "allowJs": true
   },
   "include": [
     "**/*.ts",

@@ -45,7 +45,7 @@
             )
           "
         >
-          Перейти в каталог
+          {{ $t('blocks.main.toCatalogue') }}
         </button>
       </div>
     </template>

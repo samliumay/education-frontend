@@ -31,7 +31,7 @@
     </div>
   </div>
 
-  <div v-else>Course with the given Id is not found</div>
+  <div v-else>{{ $t('common.courseNotFound') }}</div>
 </template>
 <script setup lang="ts">
 import { NButton, NH1, NH2 } from 'naive-ui'

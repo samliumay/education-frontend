@@ -13,5 +13,8 @@ import LoaderBlock from '../blocks/misc/LoaderBlock.vue'
 import PageConstructor from '../PageConstructor.vue'
 
 // API
-const { data: main, pending } = useFetch(getApiAddress(`/api/v2/wagtail/homepage/`), { deep: true })
+const { data: main, pending } = useFetch(
+  getApiAddress(`/api/v2/wagtail/homepage/`),
+  { deep: true },
+)
 </script>

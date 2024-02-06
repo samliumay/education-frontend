@@ -3,10 +3,10 @@
     <n-alert v-if="errors.non_field_errors" class="my-2" type="error">
       {{ errors.non_field_errors.join(', ') }}
     </n-alert>
-    <n-form-item required path="email" :label="$t('common.email')">
+    <n-form-item required path="email" label="E-mail">
       <n-input v-model:value="login" />
     </n-form-item>
-    <n-form-item required path="password" :label="$t('common.password')">
+    <n-form-item required path="password" :label="$t('user.password')">
       <n-input v-model:value="password" type="password" is-password />
     </n-form-item>
   </n-form>
@@ -33,6 +33,8 @@ interface Emits {
   (e: 'submited'): void
 }
 
+const { t } = useI18n()
+
 const login = ref('')
 const password = ref('')
 
@@ -56,7 +58,7 @@ const rules = computed<FormRules>(() =>
         email: {
           required: true,
           validator: () => emailRegex.test(login.value),
-          message: 'Invalid email',
+          message: t('user.invalidEmail'),
           trigger: ['input', 'blur'],
         },
       } as FormRules),

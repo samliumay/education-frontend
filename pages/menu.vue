@@ -25,7 +25,7 @@
       <div class="flex flex-col gap-8 flex-wrap lg:gap-16 md:flex-row sm:self-end">
         <div class="flex flex-col justify-between gap-4">
           <div class="flex flex-col gap-1">
-            <p class="font-bold">Телефон</p>
+            <p class="font-bold">{{ $t('common.info.phone') }}</p>
             <div class="flex flex-col gap-1">
               <a
                 href="tel:+493071537477"
@@ -38,23 +38,22 @@
             </div>
           </div>
 
-          <a class="font-bold text-brand-red underline underline-offset-8">Контакты →</a>
+          <a class="font-bold text-brand-red underline underline-offset-8">{{ $t('common.info.contacts') }} →</a>
         </div>
 
         <div class="flex flex-col justify-between gap-4">
           <div class="flex flex-col gap-1">
-            <p class="font-bold">Адрес</p>
+            <p class="font-bold">{{ $t('common.info.address') }}</p>
             <p class="text-brand-gray font-medium">
-              Иммануэлькирхштрассе 4 <br />
-              10405 Берлин
+              {{ $t('common.info.actualAddress') }}
             </p>
           </div>
 
-          <a class="font-bold text-brand-red underline underline-offset-8">Смотреть на карте →</a>
+          <a class="font-bold text-brand-red underline underline-offset-8">{{ $t('common.info.onMap') }} →</a>
         </div>
 
         <div class="flex flex-col gap-1">
-          <p class="font-bold">Почта</p>
+          <p class="font-bold">{{ $t('common.info.mail') }}</p>
           <a
             class="text-brand-gray font-medium"
             href="mailto:info@clavis-schule.de"
@@ -70,18 +69,16 @@
           target="_blank"
           rel="noopener noreferrer"
           class="w-fit h-fit"
-          >
-            <img
-              :src="social.icon"
-              class="w-[64px] h-[58px]"
-              :alt="social.alt"
-            />
+        >
+          <img :src="social.icon" class="w-[64px] h-[58px]" :alt="social.alt" />
         </a>
       </div>
     </div>
   </main>
 </template>
 <script setup lang="ts">
+import { computed } from 'vue'
+
 import { socialsLinks } from '../constants/socials'
 
 useHead({
@@ -100,29 +97,31 @@ useHead({
   ],
 })
 
-const pathGroup = [
+const { t } = useI18n()
+
+const pathGroup = computed(() => [
   {
-    label: 'Главная',
+    label: t('common.main'),
     route: '/',
   },
-  // {
-  //   label: 'О нас',
-  //   route: '/',
-  // },
   {
-    label: 'Курсы',
+    label: t('common.aboutUs'),
+    route: '/aboutus',
+  },
+  {
+    label: t('common.types.courses'),
     route: '/courses',
   },
   {
-    label: 'Академии',
+    label: t('common.types.academies'),
     route: '/academies',
   },
   {
-    label: 'Воркшопы',
+    label: t('common.types.workshops'),
     route: '/workshops',
   },
   {
-    label: 'Преподаватели',
+    label: t('common.tutors'),
     route: '/instructors',
   },
   // {
@@ -130,16 +129,20 @@ const pathGroup = [
   //   route: '/',
   // },
   {
-    label: 'Контакты',
-    route: '/kontaktieren-sie-uns',
+    label: t('common.info.contacts'),
+    route: '/contacts',
   },
-  // {
-  //   label: 'Спец.предложения',
-  //   route: '/',
-  // },
+  {
+    label: t('common.specialOffer'),
+    route: '/special_offer',
+  },
+  {
+    label: t('common.schoolOffer'),
+    route: '/school_offer',
+  },
   // {
   //   label: 'Цены',
   //   route: '/',
   // },
-]
+])
 </script>

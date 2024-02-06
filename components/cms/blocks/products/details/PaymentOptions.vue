@@ -13,8 +13,11 @@
     </h2>
 
     <div
-      class="grid gap-[24px] relative"
-      :class="`grid-cols-1 lg:grid-cols-${Math.max(blockData?.length, cols || 3)}`"
+      class="grid gap-[24px]"
+      :class="`grid-cols-1 lg:grid-cols-${Math.max(
+        blockData?.length,
+        cols || 3,
+      )}`"
     >
       <div
         v-for="item in blockData"

@@ -115,7 +115,7 @@ export type Instructor = {
   first_name: string
   last_name: string
   job: string
-  photo: string
+  photo: string[]
 }
 
 export interface IEventTarget {
