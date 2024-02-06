@@ -97,12 +97,11 @@
 <script setup lang="ts">
 import { NModal } from 'naive-ui'
 import { ref, type VNodeRef } from 'vue'
-import { useRoute } from 'vue-router'
 
+// import { useRoute } from 'vue-router'
 // import { useCartStore } from '@/store/cart'
 // import { useUserStore } from '@/store/user'
-import { getApiAddress } from '@/utils/getApiAddress'
-
+// import { getApiAddress } from '@/utils/getApiAddress'
 import AppInput from './AppInput.vue'
 import AppTextarea from './AppTextarea.vue'
 
@@ -112,7 +111,7 @@ defineProps<{
 // Init component
 const emit = defineEmits(['close'])
 // Init hooks
-const route = useRoute()
+// const route = useRoute()
 
 // Store
 // const userStore = useUserStore()
@@ -120,13 +119,13 @@ const route = useRoute()
 
 // State
 // eslint-disable-next-line vue/require-typed-ref
-const visitor = ref(null)
+// const visitor = ref(null)
 
 // Get data
-const { data: product, pending: productPending } = await useFetch(
-  getApiAddress(`/api/v2/wagtail/products/${route.params.id ?? 12}/?fields=*`),
-  { deep: true },
-)
+// const { data: product, pending: productPending } = await useFetch(
+//   getApiAddress(`/api/v2/wagtail/products/${route.params.id ?? 12}/?fields=*`),
+//   { deep: true },
+// )
 
 // Registration
 const registrationForm = ref({

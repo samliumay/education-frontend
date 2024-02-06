@@ -56,16 +56,13 @@
   </n-modal>
 </template>
 <script setup lang="ts">
-import { NModal, NCalendar } from 'naive-ui'
+import { NCalendar, NModal } from 'naive-ui'
 import { ref, type VNodeRef } from 'vue'
-import { useRoute } from 'vue-router'
+// import { useRoute } from 'vue-router'
 
 // import { useCartStore } from '@/store/cart'
 // import { useUserStore } from '@/store/user'
-import { getApiAddress } from '@/utils/getApiAddress'
-
-import AppInput from './AppInput.vue'
-import AppTextarea from './AppTextarea.vue'
+// import { getApiAddress } from '@/utils/getApiAddress'
 
 defineProps<{
   isOpen: boolean
@@ -74,35 +71,35 @@ defineProps<{
 const emit = defineEmits(['close'])
 
 // Init hooks
-const route = useRoute()
+// const route = useRoute()
 
 // Store
 // const userStore = useUserStore()
 // const cartStore = useCartStore()
 
 // State
-// eslint-disable-next-line vue/require-typed-ref
-const visitor = ref(null)
+// const visitor = ref(null)
 const value = ref(new Date())
+// eslint-disable-next-line @typescript-eslint/no-shadow
 const handleUpdateValue = (value: Date) => {
-  console.log(value)
+  value.value = value
 }
 
 // Get data
-const { data: product, pending: productPending } = await useFetch(
-  getApiAddress(`/api/v2/wagtail/products/${route.params.id ?? 12}/?fields=*`),
-  { deep: true },
-)
+// const { data: product, pending: productPending } = await useFetch(
+//   getApiAddress(`/api/v2/wagtail/products/${route.params.id ?? 12}/?fields=*`),
+//   { deep: true },
+// )
 
-// Registration
-const registrationForm = ref({
-  first_name: '',
-  last_name: '',
-  email: '',
-  phone: '',
-  message: '',
-  position: '',
-})
+// // Registration
+// const registrationForm = ref({
+//   first_name: '',
+//   last_name: '',
+//   email: '',
+//   phone: '',
+//   message: '',
+//   position: '',
+// })
 
 // eslint-disable-next-line require-await
 const sendModalCourse = async () => {
@@ -115,9 +112,9 @@ const sendModalCourse = async () => {
 }
 
 // Form
-const checkValidity = (event: { target: { reportValidity: () => void } }) => {
-  event.target.reportValidity()
-}
+// const checkValidity = (event: { target: { reportValidity: () => void } }) => {
+//   event.target.reportValidity()
+// }
 
 const form = ref<VNodeRef | undefined>(undefined)
 </script>

@@ -31,7 +31,7 @@
         ullamcorper feugiat sit pretium elementum. Risus mauris diam aliquam
         massa luctus rutrum. Maecenas neque auctor sit justo pharetra magna.
       </p>
-      <button @click="isOpenModalBackCall = true" class="rounded-[12px] bg-brand-yellow py-3 px-6 w-full sm:w-auto mt-4">
+      <button class="rounded-[12px] bg-brand-yellow py-3 px-6 w-full sm:w-auto mt-4" @click="isOpenModalBackCall = true">
         {{ $t('schoolOffer.application') }}
       </button>
     </div>
@@ -132,9 +132,10 @@
 </template>
 <script setup lang="ts">
 import { NBreadcrumb, NBreadcrumbItem } from 'naive-ui'
+import { ref } from 'vue'
 
-import AboutTutors from '../components/cms/blocks/products/details/AboutTutors.vue'
-import StudentWorks from '../components/cms/blocks/products/details/StudentWorks.vue'
+// import AboutTutors from '../components/cms/blocks/products/details/AboutTutors.vue'
+// import StudentWorks from '../components/cms/blocks/products/details/StudentWorks.vue'
 
 const courseOptions = [
   {
@@ -159,8 +160,8 @@ const courseOptions = [
   },
 ]
 
-const instructors: any[] = []
-const studentWorks: any[] = []
+// const instructors: any[] = []
+// const studentWorks: any[] = []
 
 const isOpenModalBackCall = ref(false)
 </script>

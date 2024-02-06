@@ -26,7 +26,7 @@ export default defineNuxtConfig({
             'vueuc',
             '@css-render/vue3-ssr',
             '@juggle/resize-observer',
-            'vue3-google-map'
+            'vue3-google-map',
           ]
         : ['@juggle/resize-observer'],
   },

@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-static-inline-styles -->
 <template>
   <n-breadcrumb class="mt-6 mb-10 px-10">
     <n-breadcrumb-item сlass="text-brand-gray">
@@ -44,8 +45,8 @@
         <img src="/icons/chevron_left.svg" alt="Arrow" />
       </div>
       <div
-      @click="isOpenModalCalendar = true"
-        class="bg-brand-light-gray rounded-[12px] p-3 sm:p-6 text-brand-red flex justify-between"
+      class="bg-brand-light-gray rounded-[12px] p-3 sm:p-6 text-brand-red flex justify-between"
+        @click="isOpenModalCalendar = true"
       >
         <span> {{ $t('common.contacts.meeting') }} </span>
         <img src="/icons/chevron_left.svg" alt="Arrow" />

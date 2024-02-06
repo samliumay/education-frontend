@@ -34,9 +34,7 @@
 <script setup lang="ts">
 import type { PageBlock } from '../../../../types/cms'
 
-const props = defineProps<{
+defineProps<{
   blockData: PageBlock
 }>()
-
-console.debug('RunningText', props.blockData)
 </script>
