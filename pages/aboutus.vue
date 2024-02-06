@@ -1,3 +1,4 @@
+<!-- eslint-disable vuejs-accessibility/alt-text -->
 <template>
   <div class="bg-brand-green px-3 sm:px-10 relative overflow-hidden text-white pb-6 sm:pb-[96px]">
     <n-breadcrumb class="mt-6 mb-10">

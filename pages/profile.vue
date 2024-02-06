@@ -218,7 +218,7 @@
               class="grid grid-cols-4 gap-[12px] bg-gray-200 p-[16px] min-w-[800px]"
             >
               <p>{{ workshop.product.name }}</p>
-              <p></p>
+              <p />
               <p>{{ new Date().toDateString() }}</p>
               <p class="text-blue-500 cursor-pointer">{{ $t('common.actions.look') }}</p>
             </div>

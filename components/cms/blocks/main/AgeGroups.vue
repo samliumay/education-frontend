@@ -50,11 +50,9 @@
 import ImageBlock from '@/components/cms/blocks/misc/ImageBlock.vue'
 import type { PageBlock } from '@/types/cms'
 
-const props = defineProps<{
+defineProps<{
   blockData: PageBlock[]
 }>()
-
-console.debug(props.blockData)
 </script>
 <style scoped>
 .item-hover:hover .image-hover {
