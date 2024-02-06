@@ -156,7 +156,7 @@
   </header>
 </template>
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 
 import { useCartStore } from '../../store/cart'
 import { useUserStore } from '../../store/user'
@@ -219,4 +219,8 @@ watch(
     setLocale()
   },
 )
+
+onMounted(() => {
+  locale.value = localStorage.getItem('locale') || 'ru'
+})
 </script>

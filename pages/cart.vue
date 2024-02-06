@@ -3,7 +3,9 @@
     <div
       class="absolute left-1/2 transform -translate-x-1/2 top-0 mx-0 w-screen h-full bg-brand-light-gray"
     />
-    <h1 class="font-medium text-5xl mb-12 uppercase relative">Корзина</h1>
+    <h1 class="font-medium text-5xl mb-12 uppercase relative">
+      {{ $t('cart.title') }}
+    </h1>
 
     <form
       ref="form"
@@ -13,7 +15,9 @@
       <div class="sm:col-span-2 flex flex-col gap-[24px]">
         <ErrorBoundaryBlock>
           <div class="bg-white rounded-xl p-6">
-            <h2 class="font-medium text-[24px] mb-[24px]">Постоянные курсы</h2>
+            <h2 class="font-medium text-[24px] mb-[24px]">
+              {{ $t('cart.courses') }}
+            </h2>
 
             <template v-for="(course, idx) in courseProducts" :key="course.id">
               <CartItem :order="course" />
@@ -38,14 +42,14 @@
               />
 
               <div class="relative flex flex-col">
-                <p>При выборе следующего курса цена ниже</p>
-                <p>Можно выбирать разные курсы</p>
+                <p>{{ $t('cart.choosingNextCourse') }}</p>
+                <p>{{ $t('cart.chooseDifferentCourse') }}</p>
               </div>
 
               <div
                 class="relative border-black rounded-lg text-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
               >
-                Перейти в каталог
+                {{ $t('cart.goToCatalog') }}
               </div>
             </div>
           </div>
@@ -53,7 +57,9 @@
 
         <ErrorBoundaryBlock>
           <div class="bg-white rounded-xl p-6">
-            <h2 class="font-medium text-[24px] mb-[24px]">Академии</h2>
+            <h2 class="font-medium text-[24px] mb-[24px]">
+              {{ $t('cart.academies') }}
+            </h2>
             <template v-for="(course, idx) in academyProducts" :key="course.id">
               <CartItem :order="course" />
               <AppDivider
@@ -76,14 +82,14 @@
               />
 
               <div class="flex flex-col relative">
-                <p>При выборе следующей академии цена ниже</p>
-                <p>Можно выбирать разные академии</p>
+                <p>{{ $t('cart.choosingNextAcademy') }}</p>
+                <p>{{ $t('cart.chooseDifferentAcademy') }}</p>
               </div>
 
               <div
                 class="relative border-black rounded-lg text-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
               >
-                Перейти в каталог
+                {{ $t('cart.goToCatalog') }}
               </div>
             </div>
           </div>
@@ -91,7 +97,9 @@
 
         <ErrorBoundaryBlock>
           <div class="bg-white rounded-xl p-6">
-            <h2 class="font-medium text-[24px] mb-[24px]">Воркшопы</h2>
+            <h2 class="font-medium text-[24px] mb-[24px]">
+              {{ $t('cart.workshops') }}
+            </h2>
             <template
               v-for="(course, idx) in workshopProducts"
               :key="course.id"
@@ -116,15 +124,15 @@
               />
 
               <div class="relative flex flex-col">
-                <p>При выборе следующего воркшопа цена ниже</p>
-                <p>Можно выбирать разные воркшопы</p>
+                <p>{{ $t('cart.choosingNextWorkshop') }}</p>
+                <p>{{ $t('cart.chooseDifferentWorkshop') }}</p>
               </div>
 
               <div
                 class="relative border-black rounded-lg text-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
                 @click="navigateTo('/workshops')"
               >
-                Перейти в каталог
+                {{ $t('cart.goToCatalog') }}
               </div>
             </div>
           </div>
@@ -134,12 +142,12 @@
           v-if="!userStore.isLoggedIn"
           class="bg-white rounded-[12px] p-[24px]"
         >
-          <h2 class="font-medium text-[24px] mb-6">Регистрация</h2>
+          <h2 class="font-medium text-[24px] mb-6">{{ $t('cart.registerDetails.title') }}</h2>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
             <AppInput
               v-model="registrationForm.first_name"
-              placeholder="Имя родителя"
+              :placeholder="$t('cart.registerDetails.name')"
               required
               pattern=".{2,}"
               title="The name must contain at least two characters"
@@ -147,7 +155,7 @@
             />
             <AppInput
               v-model="registrationForm.last_name"
-              placeholder="Фамилия родителя"
+              :placeholder="$t('cart.registerDetails.surname')"
               required
               pattern=".{2,}"
               title="Last name must contain at least two characters"
@@ -165,7 +173,7 @@
             />
             <AppInput
               v-model="registrationForm.phone_number"
-              placeholder="Телефон"
+              :placeholder="$t('cart.registerDetails.phone')"
               maska="+49 ### ###-##-##"
               type="tel"
               required
@@ -176,7 +184,7 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
             <AppInput
               v-model="registrationForm.password1"
-              placeholder="Пароль"
+              :placeholder="$t('cart.registerDetails.password')"
               required
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
               title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
@@ -185,7 +193,7 @@
             />
             <AppInput
               v-model="registrationForm.password2"
-              placeholder="Повторите пароль"
+              :placeholder="$t('cart.registerDetails.repeatPassword')"
               type="password"
               required
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
@@ -199,12 +207,12 @@
           v-if="cart?.order?.items?.length > 0 && userStore.isLoggedIn"
           class="bg-white rounded-[12px] p-[24px]"
         >
-          <h2 class="font-medium text-[24px] mb-6">Платежные реквизиты</h2>
+          <h2 class="font-medium text-[24px] mb-6">{{ $t('cart.paymentDetails.title') }}</h2>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
             <AppInput
               v-model="additionalInfo.first_name"
-              placeholder="First Name"
+              :placeholder="$t('cart.paymentDetails.name')"
               required
               pattern=".{2,}"
               title="The name must contain at least two characters"
@@ -212,7 +220,7 @@
             />
             <AppInput
               v-model="additionalInfo.last_name"
-              placeholder="Last Name"
+              :placeholder="$t('cart.paymentDetails.surname')"
               pattern=".{2,}"
               title="Last name must contain at least two characters"
               required
@@ -223,7 +231,7 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
             <AppInput
               v-model.lazy="additionalInfo.street"
-              placeholder="Street Name"
+              :placeholder="$t('cart.paymentDetails.streetName')"
               pattern=".{2,}"
               title="Street name must contain at least two characters"
               required
@@ -232,14 +240,14 @@
             <AppInput
               v-model="additionalInfo.state"
               required
-              placeholder="Street Number"
+              :placeholder="$t('cart.paymentDetails.streetNumber')"
             />
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px]">
             <AppInput
               v-model.lazy="additionalInfo.post_code"
-              placeholder="PLZ (Postal Code)"
+              :placeholder="$t('cart.paymentDetails.postalCode')"
               pattern=".{2,}"
               title="Postal code must contain at least two characters"
               required
@@ -250,7 +258,7 @@
               pattern=".{2,}"
               title="City must contain at least two characters"
               required
-              placeholder="City"
+              :placeholder="$t('cart.paymentDetails.city')"
             />
           </div>
         </div>
@@ -259,7 +267,9 @@
           v-if="cart?.order?.items?.length"
           class="bg-white rounded-[12px] p-[24px]"
         >
-          <h2 class="font-medium text-[24px] mb-6">Способ оплаты</h2>
+          <h2 class="font-medium text-[24px] mb-6">
+            {{ $t('cart.payment.title') }}
+          </h2>
           <CartBuyOptions
             :option="buyOption"
             @select-option="option => (buyOption = option)"
@@ -270,7 +280,7 @@
       <ErrorBoundaryBlock>
         <div>
           <div class="bg-white rounded-[12px] p-[24px]">
-            <h2 class="font-medium text-2xl mb-4">Подробности заказа</h2>
+            <h2 class="font-medium text-2xl mb-4">{{ $t('cart.order.title') }}</h2>
 
             <template v-for="(item, idx) in cart.order.items" :key="item.id">
               <div class="flex justify-between gap-[24px] mb-2">
@@ -282,7 +292,7 @@
                 </span>
               </div>
               <div class="flex justify-between gap-[24px]">
-                <span class="font-medium"> Сумма скидки </span>
+                <span class="font-medium"> {{ $t('cart.order.discountAmount') }} </span>
                 <span>
                   {{ `${Number(item?.discount_amount ?? 0).toFixed(2)} €` }}
                 </span>
@@ -297,7 +307,7 @@
             <div v-if="cart?.order?.items?.length > 0">
               <AppInput
                 v-model="promocode"
-                placeholder="Введите промокод"
+                :placeholder="$t('cart.promocode.input')"
                 class="mt-[24px] w-full"
                 :disabled="promocodeStatus === 'success'"
                 @blur="setPromocode"
@@ -305,22 +315,21 @@
               />
 
               <p v-if="promocodeStatus === 'success'" class="text-brand-green">
-                Промокод успешно добавлен
+                {{ $t('cart.promocode.success') }}
               </p>
               <p v-if="promocodeStatus === 'fail'" class="text-brand-red">
-                Неверный промокод
+                {{ $t('cart.promocode.fail') }}
               </p>
             </div>
             <p v-else class="text-brand-gray mt-2">
-              Для оформления заказа, выберите в корзине товары, которые хотите
-              купить
+              {{ $t('cart.order.total') }}
             </p>
 
             <p
               v-show="cart?.order?.items?.length"
               class="flex justify-between font-medium text-[24px] mt-[24px] mb-[24px]"
             >
-              <span>Итого</span>
+              <span>{{ $t('cart.order.discountAmount') }}</span>
               <span>{{
                 `${(cart?.order?.items || []).reduce((acc, item) => {
                   const newAcc =
@@ -342,7 +351,7 @@
               type="submit"
               :disabled="!form?.checkValidity() ?? false"
             >
-              {{ userStore.isLoggedIn ? 'Оформить заказ' : 'Регистрация' }}
+              {{ userStore.isLoggedIn ? $t('cart.button.checkout') : $t('cart.button.register') }}
             </AppButton>
           </div>
         </div>
@@ -352,6 +361,7 @@
 </template>
 <script setup lang="ts">
 import { computed, type Ref, ref, type VNodeRef } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 import AppButton from '../components/AppButton.vue'
 import AppDivider from '../components/AppDivider.vue'
@@ -362,6 +372,8 @@ import EmptyCart from '../components/cart/EmptyCart.vue'
 import { useCartStore } from '../store/cart'
 import { useUserStore } from '../store/user'
 import type { AdditionalInfo } from '../types'
+
+const { t } = useI18n()
 
 const userStore = useUserStore()
 const cart = useCartStore()
@@ -422,10 +434,10 @@ const form = ref<VNodeRef | undefined>(undefined)
 
 const infoText = computed(() => {
   if (userStore.isLoggedIn) {
-    return 'Для оплаты, пожалуйста, заполните платёжные реквизиты ниже'
+    return t('cart.order.fillOutPaymentDetails')
   }
 
-  return 'Пожалуйста, зарегистрируйтесь или войдите в свой аккаунт для оплаты'
+  return t('cart.order.pleaseRegister')
 })
 
 // Registration
@@ -447,7 +459,7 @@ const clearError = () => {
 const signUp = async () => {
   await userStore.register(registrationForm.value).catch(err => {
     if (Object.keys(err).length !== 0) {
-      registrationError.value = 'Кажется, что-то пошло не так'
+      registrationError.value = t('common.somethingWrong')
       setTimeout(clearError, 2000)
     } else {
       registrationError.value = ''
