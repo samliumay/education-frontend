@@ -1,7 +1,7 @@
 <!-- eslint-disable vuejs-accessibility/no-distracting-elements -->
 
-// ! Warning: There may be problems with this component, since its support has ended.
-// ! If problems arise, it is better to rewrite it in css + js
+// ! Warning: There may be problems with this component, since its support has
+ended. // ! If problems arise, it is better to rewrite it in css + js
 
 <template>
   <div class="my-10 text-4xl text-brand-red" data-cms="main-running-text">

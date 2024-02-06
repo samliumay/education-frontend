@@ -1,4 +1,4 @@
-import type { mapTypeBlock } from "mappers/cms"
+import type { mapTypeBlock } from 'mappers/cms'
 
 export type PageBlockMeta = {
   type: keyof typeof mapTypeBlock

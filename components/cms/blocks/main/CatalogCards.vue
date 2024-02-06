@@ -1,6 +1,8 @@
 <template>
   <div class="flex flex-col m-10" data-cms="main-catalog-cards">
-    <h2 class="text-4xl md:text-6xl mb-8 uppercase w-full sm:w-8/12 font-medium">
+    <h2
+      class="text-4xl md:text-6xl mb-8 uppercase w-full sm:w-8/12 font-medium"
+    >
       {{ blockData.value.heading }}
     </h2>
 
@@ -24,7 +26,10 @@
           {{ card.description }}
         </p>
 
-        <ImageBlock :image="card.photo" class="w-full aspect-square rounded-lg overflow-hidden" />
+        <ImageBlock
+          :image="card.photo"
+          class="w-full aspect-square rounded-lg overflow-hidden"
+        />
       </NuxtLink>
     </div>
   </div>

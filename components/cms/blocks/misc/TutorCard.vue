@@ -14,7 +14,9 @@
       {{ instructor.subject }}
     </p> -->
 
-    <p class="text-red-400 underline" role="navigation">Подробнее →</p>
+    <p class="text-red-400 underline" role="navigation">
+      {{ $t('common.moreDetails') }} →
+    </p>
   </div>
 </template>
 <script setup lang="ts">

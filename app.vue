@@ -1,7 +1,9 @@
 <!-- eslint-disable vue-scoped-css/enforce-style-type -->
 <template>
   <n-config-provider :theme-overrides="themeOverrides">
-    <div class="min-h-[100vh] max-w-[1440px] mx-auto bg-white flex flex-col overflow-x-hidden relative">
+    <div
+      class="min-h-[100vh] max-w-[1440px] mx-auto bg-white flex flex-col overflow-x-hidden relative"
+    >
       <AppHeader />
       <NuxtLayout>
         <NuxtPage />

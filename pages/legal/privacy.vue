@@ -9,7 +9,9 @@
       </n-breadcrumb-item>
     </n-breadcrumb>
 
-    <h1 class="text-brand-black text-5xl mb-10 font-medium">Datenschutz bei Clavis-Schule</h1>
+    <h1 class="text-brand-black text-5xl mb-10 font-medium">
+      Datenschutz bei Clavis-Schule
+    </h1>
 
     <h2 class="text-brand-black text-4xl mb-6 font-medium">Wer wir sind</h2>
     <p class="text-brand-gray mb-10">
@@ -51,7 +53,9 @@
       können.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">Kontakt-, Anmelde-, Feedback- und Newsletterformulare</h2>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+      Kontakt-, Anmelde-, Feedback- und Newsletterformulare
+    </h2>
     <p class="text-brand-gray mb-10">
       Wenn Sie uns per Kontaktformular, Anmelde-, Feedback- oder
       Newsletterformular personenbezogene Daten zukommen lassen, werden Ihre
@@ -71,7 +75,9 @@
       unberührt.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">Der Clavis-Onlineshop</h2>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+      Der Clavis-Onlineshop
+    </h2>
     <p class="text-brand-gray">
       Sie können im Onlineshop unserer Webseite Bestellungen in unserem Shop als
       registrierter Kunde tätigen. Eine Registrierung hat den Vorteil, dass Sie
@@ -119,7 +125,9 @@
       lit. a DSGVO eingewilligt haben.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">Zahlungsabwicklung</h2>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+      Zahlungsabwicklung
+    </h2>
     <p class="text-brand-gray mb-10">
       Paypal Bei Bezahlung mit PayPal erfolgt die Übermittlung Ihrer Daten an
       PayPal erfolgt auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO (Einwilligung)
@@ -173,7 +181,9 @@
       Betrugsprävention erforderlich ist.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">Server-Log-Dateien</h2>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+      Server-Log-Dateien
+    </h2>
     <p class="text-brand-gray">
       Der Provider dieser Website erhebt und speichert automatisch Informationen
       in so genannten Server-Log-Dateien, die Ihr Browser automatisch an uns
@@ -233,7 +243,7 @@
       in Kapitel 2, Artikel 6 der DSGVO begründet.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium"> Google Analytics </h2>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">Google Analytics</h2>
     <p class="text-brand-gray mb-10">
       Soweit Sie Ihre Einwilligung erklärt haben, wird auf dieser Website Google
       Analytics eingesetzt, einen Webanalysedienst der Google Inc. („Google“).
@@ -261,7 +271,9 @@
       https://policies.google.com/?hl=de.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">Zwecke der Verarbeitung</h2>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+      Zwecke der Verarbeitung
+    </h2>
     <p class="text-brand-gray mb-10">
       Im Auftrag des Betreibers dieser Website wird Google diese Informationen
       benutzen, um Ihre Nutzung der Website auszuwerten, um Reports über die
@@ -277,14 +289,18 @@
       von Empfängern Der Empfänger der erhobenen Daten ist Google.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">Übermittlung in Drittstaaten</h2>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+      Übermittlung in Drittstaaten
+    </h2>
     <p class="text-brand-gray mb-10">
       Die personenbezogenen Daten werden unter dem EU-US Privacy Shield auf
       Grundlage des Angemessenheitsbeschlusses der Europäischen Kommission in
       die USA übermittelt. Das Zertifikat können Sie hier abrufen.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">Dauer der Datenspeicherung</h2>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+      Dauer der Datenspeicherung
+    </h2>
     <p class="text-brand-gray mb-10">
       Die von uns gesendeten und mit Cookies, Nutzerkennungen (z. B. User-ID)
       oder Werbe-IDs verknüpften Daten werden nach 14 Monaten automatisch
@@ -292,7 +308,9 @@
       erfolgt automatisch einmal im Monat.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">Betroffenenrechte</h2>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+      Betroffenenrechte
+    </h2>
     <p class="text-brand-gray mb-10">
       Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft
       widerrufen, indem sie die Speicherung der Cookies durch eine entsprechende
@@ -405,7 +423,9 @@
       Google https://www.google.com/policies/privacy/.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">Ihre Datenschutzrechte</h2>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+      Ihre Datenschutzrechte
+    </h2>
     <p class="text-brand-gray">Sie haben das Recht:</p>
     <ul class="text-brand-gray mb-10">
       <li>
@@ -459,7 +479,9 @@
       </li>
     </ul>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">Widerspruchsrecht</h2>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+      Widerspruchsrecht
+    </h2>
     <p class="text-brand-gray mb-10">
       Sofern Ihre personenbezogenen Daten auf Grundlage von berechtigten
       Interessen gemäß Art. 6 Abs. 1 S. 1 lit. f DSGVO verarbeitet werden, haben
@@ -490,7 +512,9 @@
       technologischen Entwicklung fortlaufend verbessert.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">Aktualität und Änderung dieser Datenschutzerklärung</h2>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+      Aktualität und Änderung dieser Datenschutzerklärung
+    </h2>
     <p class="text-brand-gray mb-10">
       Diese Datenschutzerklärung ist aktuell gültig und hat den Stand Mai 2018.
       Durch die Weiterentwicklung unserer Website und Angebote darüber oder
@@ -498,7 +522,9 @@
       kann es notwendig werden, diese Datenschutzerklärung zu ändern.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">Quellen dieser Datenschutzerklärung</h2>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+      Quellen dieser Datenschutzerklärung
+    </h2>
     <p class="text-brand-gray mb-10">
       Um diese Datenschutzerklärung maßgeschneidert auf die Gegebenheiten
       unseres Webauftrittes im Zusammenhang mit unserem Unternehmen, der Clavis

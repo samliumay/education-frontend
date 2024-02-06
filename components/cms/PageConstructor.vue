@@ -20,7 +20,9 @@ const props = defineProps<{
 const pageComponents = computed(() => {
   if (props.blocks?.length > 0) {
     return props.blocks.map(blockData => () => {
-      const blockType = blockData?.type ? blockData?.type : blockData?.meta?.type
+      const blockType = blockData?.type
+        ? blockData?.type
+        : blockData?.meta?.type
 
       if (!blockType) return undefined
 

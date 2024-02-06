@@ -3,10 +3,10 @@
   <div v-else class="flex flex-col gap-2">
     <n-breadcrumb class="mt-6 mb-10 mx-10">
       <n-breadcrumb-item сlass="text-brand-gray">
-        <NuxtLink to="/">Главная</NuxtLink>
+        <NuxtLink to="/">{{ $t('common.main') }}</NuxtLink>
       </n-breadcrumb-item>
       <n-breadcrumb-item сlass="text-brand-gray">
-        {{ catalog?.name ?? 'Catalog' }}
+        {{ catalog?.name ?? $t('common.catalogue') }}
       </n-breadcrumb-item>
     </n-breadcrumb>
 
@@ -23,7 +23,7 @@
 
     <div class="px-[28px] md:px-[48px] flex justify-center w-full mb-14 mt-14">
       <AppButton v-if="isShowAddMoreItemsButton" @click="addMoreItems">
-        Показать больше
+        {{ $t('common.showMore') }}
       </AppButton>
     </div>
   </div>

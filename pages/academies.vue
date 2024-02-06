@@ -15,10 +15,12 @@
           @update:selected="updateSeason"
         />
         <div class="flex flex-col md:hidden mb-2">
-          <h3 class="text-brand-black mb-2 text-2xl font-medium">Выберете сезон</h3>
+          <h3 class="text-brand-black mb-2 text-2xl font-medium">
+            {{ $t('common.actions.chooseSeason') }}
+          </h3>
           <AppSelect
             v-model:value="filters.season"
-            placeholder="Сезон"
+            :placeholder="$t('common.filters.season')"
             :options="seasonsOptions"
             class="w-full"
           />
@@ -33,14 +35,14 @@
         /> -->
           <AppSelect
             v-model:value="filters.language"
-            placeholder="Язык"
+            :placeholder="$t('common.filters.language')"
             clearable
             :options="languageOptions"
             class="max-w-[135px] min-w-[100px]"
           />
           <AppSelect
             v-model:value="filters.age_group"
-            placeholder="Возраст"
+            :placeholder="$t('common.filters.age')"
             clearable
             :options="ageOptions"
             class="max-w-[135px] min-w-[120px]"

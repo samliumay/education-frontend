@@ -1,9 +1,9 @@
 <template>
   <div class="pt-[96px] px-[16px] sm:px-[48px] bg-[#EAEAEA]">
-    <h1 class="text-[32px] sm:text-[48px] font-medium">Личный кабинет</h1>
+    <h1 class="text-[32px] sm:text-[48px] font-medium">{{ $t('profile.title') }}</h1>
 
     <n-tabs v-model:value="activeTab" type="line" animated>
-      <n-tab-pane name="profile" tab="Мой профиль">
+      <n-tab-pane name="profile" :tab="$t('common.profileMenu.profile')">
         <div
           class="mt-[48px] grid grid-cols-1 sm:grid-cols-2 gap-[24px] bg-white rounded-[12px] p-[36px]"
         >
@@ -15,11 +15,11 @@
                   {{
                     user?.user?.first_name
                       ? `${user.user.first_name} ${user.user.last_name}`
-                      : 'Вы'
+                      : $t('common.you')
                   }}
                 </h2>
                 <p class="text-gray-400">
-                  {{ user?.user?.email || 'Ваш email' }}
+                  {{ user?.user?.email || '' }}
                 </p>
               </div>
             </div>
@@ -32,30 +32,30 @@
           >
             <div class="flex flex-col sm:flex-row gap-[12px]">
               <div class="flex flex-col gap-[8px]">
-                <p class="font-medium">Имя</p>
+                <p class="font-medium">{{ $t('user.first_name') }}</p>
                 <AppInput
                   v-model="user.user.first_name"
                   required
                   pattern=".{2,}"
-                  title="The name must contain at least two characters"
+                  :title="$t('user.nameRule')"
                   @blur="checkValidity"
                 />
               </div>
 
               <div class="flex flex-col gap-[8px]">
-                <p class="font-medium">Фамилия</p>
+                <p class="font-medium">{{ $t('user.last_name') }}</p>
                 <AppInput
                   v-model="user.user.last_name"
                   required
                   pattern=".{2,}"
-                  title="Last name must contain at least two characters"
+                  :title="$t('user.lastNameRule')"
                   @blur="checkValidity"
                 />
               </div>
             </div>
 
             <div class="flex flex-col gap-[8px]">
-              <p class="font-medium">Почта</p>
+              <p class="font-medium">{{ $t('common.info.mail') }}</p>
               <AppInput
                 v-model="user.user.email"
                 placeholder="example@example.com"
@@ -66,10 +66,10 @@
             </div>
 
             <div class="flex flex-col gap-[8px]">
-              <p class="font-medium">Телефон</p>
+              <p class="font-medium">{{ $t('common.info.phone') }}</p>
               <AppInput
                 v-model="user.user.phone_number"
-                placeholder="Номер телефона"
+                :placeholder="$t('user.phone_number')"
                 maska="+49 ### ###-##-##"
                 type="tel"
                 required
@@ -82,7 +82,7 @@
               type="submit"
               :disabled="!userForm?.checkValidity() ?? false"
             >
-              Сохранить
+              {{ $t('common.actions.save') }}
             </AppButton>
           </form>
         </div>
@@ -90,7 +90,7 @@
         <div
           class="my-[24px] grid grid-cols-1 sm:grid-cols-2 gap-[24px] bg-white rounded-[12px] p-[36px]"
         >
-          <h2 class="text-[24px] font-medium">Смена пароля</h2>
+          <h2 class="text-[24px] font-medium">{{ $t('common.actions.resetPassword') }}</h2>
 
           <form
             ref="passwordForm"
@@ -99,20 +99,20 @@
           >
             <AppInput
               v-model="passwordChange.new_password1"
-              placeholder="Новый пароль"
+              :placeholder="$t('user.newPassword')"
               type="password"
               required
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-              title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+              :title="$t('user.passwordValidation')"
               @blur="checkValidity"
             />
             <AppInput
               v-model="passwordChange.new_password2"
-              placeholder="Повторите пароль"
+              :placeholder="$t('user.repeatPassword')"
               type="password"
               required
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-              title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+              :title="$t('user.passwordValidation')"
               @blur="checkValidity"
             />
             <p v-if="passwordError" class="text-brand-red mt-2 mb-2">
@@ -126,12 +126,12 @@
               class="mt-[24px] w-full"
               :disabled="!passwordForm?.checkValidity() ?? false"
             >
-              Сменить
+              {{ $t('common.actions.change') }}
             </AppButton>
           </form>
         </div>
       </n-tab-pane>
-      <n-tab-pane name="visitors" tab="Мои дети">
+      <n-tab-pane name="visitors" :tab="$t('common.profileMenu.children')">
         <div class="mt-[48px]" />
         <template v-for="visitor in user.visitorsOrders" :key="visitor.id">
           <form
@@ -143,38 +143,38 @@
                 <div class="bg-gray-200 rounded-[1000px] w-[96px] h-[96px]" />
                 <h2 class="text-[24px] font-medium">
                   {{
-                    visitor?.first_name
+                    visitor?.first_name || visitor?.last_name
                       ? `${visitor.first_name} ${visitor.last_name}`
-                      : 'Ребенок'
+                      : ''
                   }}
                 </h2>
               </div>
 
               <div class="flex flex-col sm:flex-row gap-[12px]">
                 <div class="flex flex-col gap-[8px]">
-                  <p class="font-medium">Имя</p>
+                  <p class="font-medium">{{ $t('user.first_name') }}</p>
                   <AppInput
                     v-model="visitor.first_name"
                     required
                     pattern=".{2,}"
-                    title="The name must contain at least two characters"
+                    :title="$t('user.nameRule')"
                     @blur="checkValidity"
                   />
                 </div>
 
                 <div class="flex flex-col gap-[8px]">
-                  <p class="font-medium">Фамилия</p>
+                  <p class="font-medium">{{ $t('user.last_name') }}</p>
                   <AppInput
                     v-model="visitor.last_name"
                     pattern=".{2,}"
-                    title="Last name must contain at least two characters"
+                    :title="$t('user.lastNameRule')"
                     required
                     @blur="checkValidity"
                   />
                 </div>
 
                 <div class="flex flex-col gap-[8px]">
-                  <p class="font-medium">Дата рождения</p>
+                  <p class="font-medium">{{ $t('user.birthdate') }}</p>
                   <AppInput
                     v-model="visitor.birth_date"
                     type="date"
@@ -187,7 +187,7 @@
             </div>
 
             <div class="flex justify-end mt-[24px] w-full sm:w-auto">
-              <AppButton class="w-full" type="submit"> Сохранить </AppButton>
+              <AppButton class="w-full" type="submit"> {{ $t('common.actions.save') }} </AppButton>
             </div>
 
             <AppDivider class="my-[36px]" />
@@ -196,17 +196,17 @@
           </form>
         </template>
       </n-tab-pane>
-      <n-tab-pane name="workshops" tab="Воркшопы">
+      <n-tab-pane name="workshops" :tab="$t('common.profileMenu.workshops')">
         <div
           class="flex flex-col gap-[12px] bg-white p-[36px] rounded-[12px] mt-[48px] mb-[24px] overflow-x-auto"
         >
           <div
             class="grid grid-cols-4 gap-[12px] font-medium p-[16px] min-w-[800px]"
           >
-            <p>Название</p>
-            <p>Расписание</p>
-            <p>Дата покупки</p>
-            <p>Комментарий</p>
+            <p>{{ $t('common.tableOptions.title') }}</p>
+            <p>{{ $t('common.tableOptions.schedule') }}</p>
+            <p>{{ $t('common.tableOptions.date') }}</p>
+            <p>{{ $t('common.tableOptions.comment') }}</p>
           </div>
 
           <template
@@ -218,20 +218,20 @@
               class="grid grid-cols-4 gap-[12px] bg-gray-200 p-[16px] min-w-[800px]"
             >
               <p>{{ workshop.product.name }}</p>
-              <p>Вт 12:55</p>
+              <p></p>
               <p>{{ new Date().toDateString() }}</p>
-              <p class="text-blue-500 cursor-pointer">Смотреть</p>
+              <p class="text-blue-500 cursor-pointer">{{ $t('common.actions.look') }}</p>
             </div>
           </template>
 
           <template v-else>
             <div class="px-[16px] bg-gray-200 py-[20px] rounded-[12px]">
-              Нет активных воркшопов
+              {{ $t('common.tableOptions.noActiveWorkshops') }}
             </div>
           </template>
         </div>
       </n-tab-pane>
-      <n-tab-pane name="sales" tab="История покупок">
+      <n-tab-pane name="sales" :tab="$t('common.profileMenu.history')">
         <div class="bg-white p-[36px] rounded-[12px] mt-[48px] mb-[24px]">
           <ProductsTable :orders="user.orders" />
         </div>

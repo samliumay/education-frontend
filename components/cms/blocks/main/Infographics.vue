@@ -1,5 +1,8 @@
 <template>
-  <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-4 mb-10 mx-10" data-cms="main-infographics">
+  <div
+    class="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-4 mb-10 mx-10"
+    data-cms="main-infographics"
+  >
     <div
       v-for="item in blockData.value"
       :key="item.id"

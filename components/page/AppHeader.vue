@@ -25,7 +25,7 @@
             @click="navigateTo('/menu')"
           >
             <img src="/icons/star.svg" alt="Stars" />
-            <p>Меню</p>
+            <p>{{ $t('common.menu') }}</p>
           </AppButton>
 
           <nav class="flex gap-6">
@@ -49,7 +49,7 @@
             @click="$router.go(-1)"
           >
             <img src="/icons/cross.svg" alt="close" />
-            <p>Закрыть</p>
+            <p>{{ $t('common.actions.close') }}</p>
           </AppButton>
         </template>
       </div>
@@ -62,7 +62,7 @@
         />
 
         <NuxtLink to="/cart" class="flex items-center cursor-pointer">
-          <span> Корзина </span>
+          <span> {{ $t('common.cart') }} </span>
           <span
             class="border-black rounded-full border-[1px] p-[12px] ml-[6px] relative"
           >
@@ -85,7 +85,9 @@
             class="w-[50px] h-[50px]"
           />
         </button>
-        <AppButton v-else @click="isOpenSignIn = true"> Войти </AppButton>
+        <AppButton v-else @click="isOpenSignIn = true">
+          {{ $t('common.actions.signIn') }}
+        </AppButton>
       </div>
     </div>
 
@@ -99,7 +101,7 @@
           @click="navigateTo('/menu')"
         >
           <img src="/icons/star.svg" alt="Stars" />
-          <p>Меню</p>
+          <p>{{ $t('common.menu') }}</p>
         </AppButton>
       </template>
 
@@ -111,7 +113,7 @@
           @click="$router.go(-1)"
         >
           <img src="/icons/cross.svg" alt="close" />
-          <p>Закрыть</p>
+          <p>{{ $t('common.actions.close') }}</p>
         </AppButton>
       </template>
 
@@ -148,7 +150,7 @@
   </header>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 
 import { useCartStore } from '../../store/cart'
 import { useUserStore } from '../../store/user'
@@ -156,20 +158,22 @@ import AppButton from '../AppButton.vue'
 import AppSelect from '../AppSelect.vue'
 import ProfileMenu from '../profile/ProfileMenu.vue'
 
-const routes = [
+const { t, locale } = useI18n({ useScope: 'global' })
+
+const routes = computed(() => [
   {
-    label: 'Курсы',
+    label: t('common.types.courses'),
     value: '/courses',
   },
   {
-    label: 'Академии',
+    label: t('common.types.academies'),
     value: '/academies',
   },
   {
-    label: 'Воркшопы',
+    label: t('common.types.workshops'),
     value: '/workshops',
   },
-]
+])
 
 // Stores
 const user = useUserStore()
@@ -181,21 +185,32 @@ const isOpenSignIn = ref(false)
 const isOpenModalProfile = ref(false)
 
 // Language Switcher
-const currentLanguage = ref('ru')
+const currentLanguage = ref(localStorage.getItem('locale') || 'ru')
 const languageOptions = [
   {
-    label: 'Ru',
+    label: 'RU',
     value: 'ru',
   },
   {
-    label: 'En',
+    label: 'EN',
     value: 'en',
   },
   {
-    label: 'De',
+    label: 'DE',
     value: 'de',
   },
 ]
 
 // Actions
+const setLocale = () => {
+  localStorage.setItem('locale', currentLanguage.value)
+  locale.value = currentLanguage.value
+}
+
+watch(
+  () => currentLanguage.value,
+  () => {
+    setLocale()
+  },
+)
 </script>

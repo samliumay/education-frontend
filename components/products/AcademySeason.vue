@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col">
-    <h3 class="mb-4 font-medium">Выберите сезон:</h3>
+    <h3 class="mb-4 font-medium">{{ $t('common.actions.chooseSeason') }}</h3>
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-[24px]">
       <div
         v-for="season in seasons"

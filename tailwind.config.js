@@ -19,7 +19,7 @@ export default {
         'brand-green': '#1e7251',
       },
       transform: {
-        'interactive': 'active:scale-95',
+        interactive: 'active:scale-95',
       },
     },
   },

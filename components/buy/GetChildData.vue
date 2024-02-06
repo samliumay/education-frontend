@@ -1,10 +1,10 @@
 <template>
-  <p class="text-[24px] font-medium">Введите данные ребенка</p>
+  <p class="text-[24px] font-medium">{{ $t('common.children.enterData') }}</p>
 
   <div class="flex flex-col gap-[12px] mt-[16px]">
     <template v-if="step === GetChildStep.Select">
       <AppSelect
-        placeholder="Выберите ребенка"
+        :placeholder="$t('common.children.selectChild')"
         :options="userStore.getVisitorOptions"
         :value="visitor"
         @update:value="el => $emit('update:visitor', el)"
@@ -17,24 +17,24 @@
     >
       <AppInput
         v-model:model-value="newVisitor.first_name"
-        placeholder="Имя ребенка"
+        :placeholder="$t('common.children.name')"
         required
         pattern=".{2,}"
-        title="The name must contain at least two characters"
+        :title="$t('user.nameRule')"
         @blur="checkValidity"
       />
       <AppInput
         v-model:model-value="newVisitor.last_name"
-        placeholder="Фамилия ребенка"
+        :placeholder="$t('common.children.surname')"
         required
         class="mt-[12px]"
         pattern=".{2,}"
-        title="Last name must contain at least two characters"
+        :title="$t('user.lastNameRule')"
         @blur="checkValidity"
       />
       <AppInput
         v-model:model-value="newVisitor.birth_date"
-        placeholder="Дата рождения ребенка"
+        :placeholder="$t('common.children.birthdate')"
         type="date"
         required
         class="mt-[12px]"
@@ -45,7 +45,7 @@
         class="mt-[36px] w-full"
         :disabled="!form?.checkValidity() ?? false"
       >
-        Добавить ребенка
+        {{ $t('common.children.addChild') }}
       </AppButton>
     </form>
     <div
@@ -59,8 +59,8 @@
     >
       <span>{{
         step === GetChildStep.Select
-          ? 'Добавить нового ребенка'
-          : 'Вернуться к выбору ребенка'
+          ? $t('common.children.addNewChild')
+          : $t('common.children.backToSelect')
       }}</span>
       <ArrowIcon class="relative top-[4px]" />
     </div>

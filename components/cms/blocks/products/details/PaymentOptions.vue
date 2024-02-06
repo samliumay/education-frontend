@@ -12,7 +12,10 @@
 
     <div
       class="grid gap-[24px]"
-      :class="`grid-cols-1 lg:grid-cols-${Math.max(blockData?.length, cols || 3)}`"
+      :class="`grid-cols-1 lg:grid-cols-${Math.max(
+        blockData?.length,
+        cols || 3,
+      )}`"
     >
       <div
         v-for="item in blockData"

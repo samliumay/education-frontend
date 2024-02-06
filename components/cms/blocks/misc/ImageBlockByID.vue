@@ -13,7 +13,7 @@ import { getApiAddress } from '../../../../utils/getApiAddress'
 import ImageBlock from './ImageBlock.vue'
 
 // Init component
-const props = defineProps<{ id: number, imageClass?: string }>()
+const props = defineProps<{ id: number; imageClass?: string }>()
 
 // Get data
 const imageId = computed(() => props?.id)

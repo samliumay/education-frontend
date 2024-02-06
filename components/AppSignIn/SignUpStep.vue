@@ -2,17 +2,17 @@
   <form ref="form" @submit.prevent="signUp">
     <AppInput
       v-model="signUpCredentials.first_name"
-      placeholder="Имя"
+      :placeholder="$t('user.first_name')"
       required
       pattern=".{2,}"
-      title="The name must contain at least two characters"
+      :title="$t('user.nameRule')"
       @blur="checkValidity"
     />
     <AppInput
       v-model="signUpCredentials.last_name"
-      placeholder="Фамилия"
+      :placeholder="$t('user.last_name')"
       pattern=".{2,}"
-      title="Last name must contain at least two characters"
+      title="$t('user.lastNameRule')"
       class="mt-[12px]"
       required
       @blur="checkValidity"
@@ -20,7 +20,7 @@
     <AppInput
       v-model="signUpCredentials.phone_number"
       maska="+49 ### ###-##-##"
-      placeholder="Номер телефона"
+      :placeholder="$t('user.phone_number')"
       class="mt-[12px]"
       type="tel"
       required
@@ -36,27 +36,32 @@
     />
     <AppInput
       v-model="signUpCredentials.password1"
-      placeholder="Пароль"
+      :placeholder="$t('user.password')"
       type="password"
       class="mt-[12px]"
       required
       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-      title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+      :title="$t('user.passwordValidation')"
       @blur="checkValidity"
     />
     <AppInput
       v-model="signUpCredentials.password2"
-      placeholder="Повторите пароль"
+      :placeholder="$t('user.repeatPassword')"
       type="password"
       class="mt-[12px]"
       required
       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-      title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+      :title="$t('user.passwordValidation')"
       @blur="checkValidity"
     />
     <div class="mt-[16px]">
-      Уже есть аккаунт?
-      <button class="text-brand-red cursor-pointer" @click="$emit('goToEmailStep')">Войти</button>
+      {{ $t('user.hasAccount') }}
+      <button
+        class="text-brand-red cursor-pointer"
+        @click="$emit('goToEmailStep')"
+      >
+        {{ $t('common.actions.signIn') }}
+      </button>
     </div>
 
     <p v-if="error" class="text-brand-red mt-2 mb-2">{{ error }}</p>
@@ -66,9 +71,9 @@
       type="submit"
       :disabled="!form?.checkValidity() ?? false"
     >
-      Зарегистрироваться
+      {{ $t('common.actions.signUp') }}
     </AppButton>
-</form>
+  </form>
 </template>
 <script lang="ts" setup>
 import { ref, type VNodeRef } from 'vue'
@@ -81,6 +86,8 @@ const emit = defineEmits(['close', 'goToEmailStep'])
 
 // Store
 const userStore = useUserStore()
+
+const { t } = useI18n()
 
 // State
 const error = ref('')
@@ -108,7 +115,7 @@ const clearError = () => {
 const signUp = async () => {
   await userStore.register(signUpCredentials.value).catch(err => {
     if (Object.keys(err).length !== 0) {
-      error.value = 'Кажется, что-то пошло не так'
+      error.value = t('common.somethingWrong')
       setTimeout(clearError, 2000)
     } else {
       error.value = ''

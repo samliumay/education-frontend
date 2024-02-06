@@ -1,5 +1,8 @@
 <template>
-  <div class="flex flex-col gap-[48px] px-10" data-cms="product-details-header-block">
+  <div
+    class="flex flex-col gap-[48px] px-10"
+    data-cms="product-details-header-block"
+  >
     <div class="flex flex-col md:flex-row justify-between gap-4 mr-12">
       <div class="flex flex-col justify-between gap-10">
         <div>
@@ -36,19 +39,19 @@
 
       <div class="flex flex-col gap-1 pt-12">
         <p>
-          <span class="font-medium">Возраст:</span>
+          <span class="font-medium">{{ $t('blocks.product.age') }}</span>
           <span class="text-gray-400 ml-[8px]">{{ blockData.age_group }}</span>
         </p>
 
         <p>
-          <span class="font-medium">Язык:</span>
+          <span class="font-medium">{{ $t('blocks.product.language') }}</span>
           <span class="text-gray-400 ml-[8px]">
-            {{ languageMap[blockData.language as keyof typeof languageMap] }}
+            {{ $t(`common.languages.${blockData.language}`) }}
           </span>
         </p>
 
         <p>
-          <span class="font-medium">Преподаватели: </span>
+          <span class="font-medium">{{ $t('blocks.product.tutors') }}</span>
           <template v-if="blockData?.instructors?.length">
             {{
               Array.from(
@@ -67,7 +70,7 @@
         </p>
 
         <p>
-          <span class="font-medium">Кабинет:</span>
+          <span class="font-medium">{{ $t('blocks.product.place') }}</span>
           <span class="text-gray-400 ml-[8px]">
             <template v-if="blockData?.schedule_slots?.length">
               {{
@@ -92,7 +95,6 @@
   </div>
 </template>
 <script setup lang="ts">
-import { languageMap } from '../../../../../mappers/products'
 import { type Product, type ProductType } from '../../../../../types'
 import { type PageBlock } from '../../../../../types/cms'
 import CategoryBlock from '../../../../misc/CategoryBlock.vue'

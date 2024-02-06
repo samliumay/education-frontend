@@ -1,11 +1,10 @@
-import { ageMap, languageMap } from '../mappers/products'
 import type { Product } from '../types'
 
-export const getTagsFromProduct = (product: Product): Array<string> => {
+export const getTagsFromProduct = (product: Product, t): Array<string> => {
   const result: string[] = []
   // @ts-ignore
-  result.push(ageMap[product.age_group])
+  result.push(t(`common.ages.${product.age_group}`))
   // @ts-ignore
-  result.push(languageMap[product.language])
+  result.push(t(`common.languages.${product.language}`))
   return result
 }

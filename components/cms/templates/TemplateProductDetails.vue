@@ -3,7 +3,7 @@
   <main v-else class="flex flex-col gap-2 mb-10">
     <n-breadcrumb class="mt-6 mb-10 px-10">
       <n-breadcrumb-item сlass="text-brand-gray">
-        <NuxtLink to="/">Главная</NuxtLink>
+        <NuxtLink to="/">{{ $t('common.main') }}</NuxtLink>
       </n-breadcrumb-item>
       <n-breadcrumb-item сlass="text-brand-gray">
         <NuxtLink :to="catalogPath">{{ product?.product_type }}</NuxtLink>

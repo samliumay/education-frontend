@@ -1,9 +1,7 @@
 <template>
   <TemplateProduct v-bind="templateProps">
     <template #filters="{ title }">
-      <div
-        class="flex flex-col lg:flex-row lg:items-center mx-10 gap-5"
-      >
+      <div class="flex flex-col lg:flex-row lg:items-center mx-10 gap-5">
         <div class="flex items-center gap-[18px]">
           <h1
             class="text-[38px] md:text-[32px] sm:text-[48px] font-medium uppercase"
@@ -22,14 +20,14 @@
         /> -->
           <AppSelect
             v-model:value="filters.language"
-            placeholder="Язык"
+            :placeholder="$t('common.filters.language')"
             clearable
             :options="languageOptions"
             class="max-w-[160px] min-w-[120px]"
           />
           <AppSelect
             v-model:value="filters.age_group"
-            placeholder="Возраст"
+            :placeholder="$t('common.filters.age')"
             clearable
             :options="ageOptions"
             class="max-w-[160px] min-w-[120px]"
