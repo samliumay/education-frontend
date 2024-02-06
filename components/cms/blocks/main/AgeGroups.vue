@@ -1,11 +1,11 @@
 <template>
   <div class="my-10" data-cms="main-age-groups">
     <h2 class="text-4xl md:text-6xl mb-8 uppercase w-full font-medium mx-10">
-      Für verschiedene Altersgruppen
+      {{ blockData.value.heading }}
     </h2>
 
     <div
-      v-for="(item, idx) in blockData.value"
+      v-for="(item, idx) in blockData.value.blocks"
       :key="item.description"
       class="item-hover grid grid-cols-1 md:grid-cols-3 border-t-[1px] last:border-b-[1px] border-black px-10 py-4 gap-4 md:gap-16 hover:bg-brand-light-gray"
       :class="{ 'relative -top-[1px]': idx !== 0 }"
@@ -22,7 +22,7 @@
         </p>
       </div>
 
-      <div class="flex flex-wrap justify-start gap-4">
+      <div class="flex flex-wrap justify-start content-start gap-4">
         <a
           v-for="tag in item.tags"
           :key="tag.link"
@@ -50,9 +50,11 @@
 import ImageBlock from '@/components/cms/blocks/misc/ImageBlock.vue'
 import type { PageBlock } from '@/types/cms'
 
-defineProps<{
+const props = defineProps<{
   blockData: PageBlock[]
 }>()
+
+console.debug(props.blockData)
 </script>
 <style scoped>
 .item-hover:hover .image-hover {
