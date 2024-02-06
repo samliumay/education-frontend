@@ -46,6 +46,7 @@ export const useUserStore = defineStore('user', () => {
   const getVisitors = async () => {
     if (isLoggedIn.value) {
       visitors.value = await HTTP.get('/api/v2/visitors/')
+      return null
     }
 
     visitors.value = JSON.parse(window.localStorage.getItem('visitors'))

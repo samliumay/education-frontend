@@ -13,3 +13,10 @@ defineProps<{
   blockData: PageBlock[]
 }>()
 </script>
+<style scoped>
+@media (min-width: 1024px) {
+  p {
+    column-count: 2;
+  }
+}
+</style>

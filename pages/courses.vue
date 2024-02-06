@@ -1,9 +1,7 @@
 <template>
   <TemplateProduct v-bind="templateProps">
     <template #filters="{ title }">
-      <div
-        class="flex flex-col lg:flex-row lg:items-center mx-10 gap-5"
-      >
+      <div class="flex flex-col lg:flex-row lg:items-center mx-10 gap-5">
         <div class="flex items-center gap-[18px]">
           <h1
             class="text-[38px] md:text-[32px] sm:text-[48px] font-medium uppercase"
@@ -15,11 +13,14 @@
         <div
           class="flex justify-start lg:justify-end flex-wrap w-full items-center gap-[12px]"
         >
-          <!-- <AppSelect
-          placeholder="Направление"
-          disabled
-          class="max-w-[160px] min-w-[120px]"
-        /> -->
+          <AppSelect
+            v-show="!categoriesPending"
+            v-model:value="filters.category"
+            placeholder="Направление"
+            clearable
+            class="max-w-[160px] min-w-[120px]"
+            :options="categoriesOptions"
+          />
           <AppSelect
             v-model:value="filters.language"
             placeholder="Язык"
@@ -34,11 +35,14 @@
             :options="ageOptions"
             class="max-w-[160px] min-w-[120px]"
           />
-          <!-- <AppSelect
-          placeholder="Филиал"
-          disabled
-          class="max-w-[160px] min-w-[120px]"
-        /> -->
+          <AppSelect
+            v-show="!branchesPending"
+            v-model:value="filters.branch"
+            placeholder="Филиал"
+            clearable
+            class="max-w-[160px] min-w-[120px]"
+            :options="branchesOptions"
+          />
         </div>
       </div>
     </template>
@@ -54,6 +58,8 @@ import { ageOptions, languageOptions } from '../mappers/options'
 const filters = ref({
   language: null,
   age_group: null,
+  branch: null,
+  category: null,
 })
 
 const templateProps = computed(() => ({
@@ -68,4 +74,29 @@ const templateProps = computed(() => ({
     type: 'сourse',
   },
 }))
+
+// API
+const { data: branches, branchesPending } = useFetch(
+  getApiAddress(`/api/v2/products/branches/`),
+)
+const branchesOptions = computed(() =>
+  branches.value
+    ? branches.value.map(branch => ({
+        label: branch.name,
+        value: branch.id,
+      }))
+    : [],
+)
+
+const { data: categories, categoriesPending } = useFetch(
+  getApiAddress(`/api/v2/products/categories/`),
+)
+const categoriesOptions = computed(() =>
+  categories.value
+    ? categories.value.map(category => ({
+        label: category.name,
+        value: category.id,
+      }))
+    : [],
+)
 </script>
