@@ -144,7 +144,7 @@
       <n-tab-pane name="visitors" :tab="$t('common.profileMenu.children')">
         <div class="mt-[48px]" />
         <div class="bg-white flex flex-col justify-between gap-10 md:flex-row rounded-[12px] p-[36px] mb-[24px]">
-          <p class="max-w-[50%]">
+          <p>
             По всем возникшим вопросам обращайтесь по телефону или напиши на
             почту. Мы работаем <span class="text-brand-red">пн-пт c 9 до 18</span>
           </p>
@@ -177,7 +177,7 @@
                 </h2>
               </div>
 
-              <div class="flex flex-col sm:flex-row gap-[12px]">
+              <div class="flex flex-col lg:flex-row gap-[12px]">
                 <div class="flex flex-col gap-[8px]">
                   <p class="font-medium">{{ $t('user.first_name') }}</p>
                   <AppInput
@@ -227,7 +227,7 @@
       </n-tab-pane>
       <n-tab-pane name="workshops" :tab="$t('common.profileMenu.workshops')">
         <div
-          class="flex flex-col gap-[12px] bg-white p-[36px] rounded-[12px] mt-[48px] mb-[24px] overflow-x-auto"
+          class="flex flex-col gap-[12px] bg-white p-[36px] rounded-[12px] mt-[48px] mb-[24px]"
         >
           <div
             class="grid grid-cols-4 gap-[12px] font-medium p-[16px] min-w-[800px]"
