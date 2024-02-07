@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --host",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "lint": "eslint .",
@@ -41,6 +41,8 @@
     "dompurify": "^3.0.8",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-vue-scoped-css": "^2.5.1",
-    "pinia": "^2.1.7"
+    "maska": "^2.1.11",
+    "pinia": "^2.1.7",
+    "vue3-google-map": "^0.19.0"
   }
 }

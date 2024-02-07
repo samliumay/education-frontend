@@ -19,7 +19,9 @@
       über Verträge im Fernabsatz und im elektronischen Geschäftsverkehr.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">1. Geltungsbereich</h2>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+      1. Geltungsbereich
+    </h2>
     <p class="text-brand-gray mb-2">
       Die Clavis Kunst und Wissenschaft Privatschule GmbH (nachfolgend Clavis)
       erbringt alle Leistungen ausschließlich auf der Grundlage nachfolgender
@@ -34,21 +36,45 @@
       begründen keine Ansprüche für nachfolgende Vertragsverhältnisse.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">2. Vertragspartner*innen</h2>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+      2. Vertragspartner*innen
+    </h2>
     <div class="text-brand-gray mb-10">
       <p>
-        Ein Vertrag kommt mit der Clavis Kunst und Wissenschaft Privatschule GmbH
-        – im Folgenden „Veranstalter“/“Clavis“ – mit Sitz in Berlin zustande.
+        Ein Vertrag kommt mit der Clavis Kunst und Wissenschaft Privatschule
+        GmbH – im Folgenden „Veranstalter“/“Clavis“ – mit Sitz in Berlin
+        zustande.
       </p>
-      <p><span class="text-brand-black font-medium">Geschäftsführer/innen:</span> Margarita Stroutchenkov, Olga Novik</p>
-      <p class="text-brand-black font-medium">Immanuelkirchstraße 4 10405 Berlin</p>
-      <p><span class="text-brand-black font-medium">Telefon:</span> <a href="tel:+493071537477">+49 (0)30 71537477</a></p>
-      <p><span class="text-brand-black font-medium">E-mail:</span> <a href="mailto:info@clavis-schule.de">info@clavis-schule.de</a></p>
-      <p><span class="text-brand-black font-medium">Web:</span> <a class="text-brand-red underline" href="www.clavis-schule.de">www.clavis-schule.de</a></p>
+      <p>
+        <span class="text-brand-black font-medium">Geschäftsführer/innen:</span>
+        Margarita Stroutchenkov, Olga Novik
+      </p>
+      <p class="text-brand-black font-medium">
+        Immanuelkirchstraße 4 10405 Berlin
+      </p>
+      <p>
+        <span class="text-brand-black font-medium">Telefon:</span>
+        <a href="tel:+493071537477">+49 (0)30 71537477</a>
+      </p>
+      <p>
+        <span class="text-brand-black font-medium">E-mail:</span>
+        <a href="mailto:info@clavis-schule.de">info@clavis-schule.de</a>
+      </p>
+      <p>
+        <span class="text-brand-black font-medium">Web:</span>
+        <a
+class="text-brand-red underline"
+href="www.clavis-schule.de"
+>www.clavis-schule.de</a>
+      </p>
     </div>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">3. Vertragssprache, Speicherung Vertragstext</h2>
-    <p class="text-brand-gray mb-10">Der Vertragsschluss erfolgt ausschließlich in deutscher Sprache.</p>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+      3. Vertragssprache, Speicherung Vertragstext
+    </h2>
+    <p class="text-brand-gray mb-10">
+      Der Vertragsschluss erfolgt ausschließlich in deutscher Sprache.
+    </p>
 
     <h2 class="text-brand-black text-4xl mb-6 font-medium">4. Kurse</h2>
     <h3 class="text-brand-black mb-2">4.1. Vertragsgegenstand</h3>
@@ -105,7 +131,9 @@
       Erstattung der Teilnahmekosten.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">5. Ferienakademien</h2>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+      5. Ferienakademien
+    </h2>
     <h3 class="text-brand-black mb-2">5.1. Vertragsgegenstand</h3>
     <p class="text-brand-gray">
       Vertragsgegenstand ist das Angebot kreativer Ferienkurse für Kinder und
@@ -182,7 +210,9 @@
       Erstattung der Teilnahmekosten.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">6. WIDERRUFSBELEHRUNG</h2>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+      6. WIDERRUFSBELEHRUNG
+    </h2>
     <h3 class="text-brand-black mb-2">6.1. Widerrufsrecht</h3>
     <div class="text-brand-gray mb-2">
       <p>
@@ -192,10 +222,21 @@
         Um Ihr Widerrufsrecht auszuüben, müssen Sie uns,
       </p>
       <p>Clavis Kunst und Wissenschaft Privatschule GmbH</p>
-      <p class="text-brand-black font-medium">Immanuelkirchstraße 4 10405 Berlin</p>
-      <p><span class="text-brand-black font-medium">Telefon:</span> <a href="tel:+493071537477">+49 (0)30 71537477</a></p>
-      <p><span class="text-brand-black font-medium">E-mail:</span> <a href="mailto:info@clavis-schule.de">info@clavis-schule.de</a></p>
-      <p><span class="text-brand-black font-medium">Web:</span> <a class="text-brand-red underline">www.clavis-schule.de</a></p>
+      <p class="text-brand-black font-medium">
+        Immanuelkirchstraße 4 10405 Berlin
+      </p>
+      <p>
+        <span class="text-brand-black font-medium">Telefon:</span>
+        <a href="tel:+493071537477">+49 (0)30 71537477</a>
+      </p>
+      <p>
+        <span class="text-brand-black font-medium">E-mail:</span>
+        <a href="mailto:info@clavis-schule.de">info@clavis-schule.de</a>
+      </p>
+      <p>
+        <span class="text-brand-black font-medium">Web:</span>
+        <a class="text-brand-red underline">www.clavis-schule.de</a>
+      </p>
       <p>
         mittels einer eindeutigen Erklärung (z. B. ein mit der Post versandter
         Brief oder per E-Mail) über Ihren Entschluss, diesen Vertrag zu
@@ -228,7 +269,9 @@
       Vertrag vorgesehenen Dienstleistungen/Veranstaltungen entspricht.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">7. Rechte und Pflichten der Vertragspartner</h2>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+      7. Rechte und Pflichten der Vertragspartner
+    </h2>
     <h3 class="text-brand-black mb-2">7.1 Pflichten des Veranstalters</h3>
     <p class="text-brand-gray">
       Clavis lässt das Kind nach Entrichtung der Gebühren zum Unterricht zu.
@@ -238,7 +281,9 @@
       wissenschaftlich-methodische Anleitung im Unterricht sowie den Zugang zu
       den für den Unterricht notwendigen Grundmaterialien.
     </p>
-    <h3 class="text-brand-black mb-2">7.2. Pflichten des Buchenden/Erziehungsberechtigten</h3>
+    <h3 class="text-brand-black mb-2">
+      7.2. Pflichten des Buchenden/Erziehungsberechtigten
+    </h3>
     <p class="text-brand-gray">
       Der Erziehungsberechtigte/Buchende verpflichtet sich sein Kind pünktlich
       zum Unterricht zu bringen und es pünktlich zum Unterrichtsende abzuholen.
@@ -322,7 +367,9 @@
       auf Schadenersatz.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">10. Infektionsschutz, Hausordnung</h2>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+      10. Infektionsschutz, Hausordnung
+    </h2>
     <p class="text-brand-gray">
       Die Belehrung für Eltern und sonstige Erziehungsberechtigte gemäß § 34
       Abs. 5 Satz 2 Infektionsschutzgesetz (IfSG) ist Vertragsbestandteil; diese
@@ -338,7 +385,9 @@
       Geschäftsbedingungen.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">11. Schlussbestimmungen</h2>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+      11. Schlussbestimmungen
+    </h2>
     <p class="text-brand-gray mb-10">
       Der/ die Vertragspartner*innen ist verpflichtet, jede Änderung
       vertragsrelevanter Daten (Name, Adresse, E-Mail, Bankverbindung) Clavis
@@ -347,10 +396,16 @@
       zu tragen.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">12. Gerichtsstand</h2>
-    <p class="text-brand-gray mb-10">Der Gerichtsstand bestimmt sich nach den gesetzlichen Bestimmungen.</p>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+      12. Gerichtsstand
+    </h2>
+    <p class="text-brand-gray mb-10">
+      Der Gerichtsstand bestimmt sich nach den gesetzlichen Bestimmungen.
+    </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">13. Salvatorische Klausel</h2>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+      13. Salvatorische Klausel
+    </h2>
     <p class="text-brand-gray mb-10">
       Ist eine der vorstehenden Bestimmungen aufgrund gesetzlicher Bestimmungen,
       Vorschriften oder Gesetzesänderungen ganz oder teilweise unwirksam,
@@ -358,12 +413,14 @@
       in vollem Umfang.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">14. Streitbeilegung</h2>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+      14. Streitbeilegung
+    </h2>
     <p class="text-brand-gray">
       Die Europäische Kommission stellt eine Plattform zur
       Online-Streitbeilegung (OS) bereit, die Sie hier finden
-      <a href="https://ec.europa.eu/consumers/odr/">https://ec.europa.eu/consumers/odr/</a>. Verbraucher haben die Möglichkeit,
-      diese Plattform für die Beilegung ihrer Streitigkeiten zu nutzen.
+      <a href="https://ec.europa.eu/consumers/odr/">https://ec.europa.eu/consumers/odr/</a>. Verbraucher haben die Möglichkeit, diese Plattform für die Beilegung
+      ihrer Streitigkeiten zu nutzen.
     </p>
     <p class="text-brand-gray mb-10">
       Clavis Kunst und Wissenschaft Privatschule GmbH, Berlin, Stand Dezember

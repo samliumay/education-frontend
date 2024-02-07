@@ -1,27 +1,30 @@
 <template>
-  <div class="grid grid-cols-4 gap-[24px] min-w-[1100px]">
-    <div
-      v-for="season in seasons"
-      :key="season"
-      class="relative min-h-[140px] rounded-[12px] bg-brand-light-gray p-[16px] cursor-pointer flex flex-col justify-between"
-      :class="{ 'border-black border-[1px]': selected === season }"
-      @click="$emit('update:selected', season)"
-    >
-      <h2 class="text-[24px] font-medium mr-[40px] text-brand-red">
-        {{ seasonMap[season as keyof typeof seasonMap] }}
-      </h2>
+  <div class="flex flex-col">
+    <h3 class="mb-4 font-medium">{{ $t('common.actions.chooseSeason') }}</h3>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-[24px]">
+      <div
+        v-for="season in seasons"
+        :key="season"
+        class="relative min-h-[140px] rounded-[12px] bg-brand-light-gray p-[16px] cursor-pointer flex flex-col justify-between"
+        :class="{ 'border-black border-[1px]': selected === season }"
+        @click="$emit('update:selected', season)"
+      >
+        <h2 class="relative text-2xl font-medium mr-[40px] text-brand-black">
+          {{ seasonMap[season as keyof typeof seasonMap].text }}
+        </h2>
 
-      <div class="w-full flex items-center justify-between">
-        <p class="flex items-center gap-[8px]">
-          12.04
-          <ArrowRight />
-          16.04
-        </p>
+        <div class="relative w-full flex items-center justify-between">
+          <p class="flex items-center gap-[8px]">
+            {{ seasonMap[season as keyof typeof seasonMap].dateStart }}
+            <ArrowRight />
+            {{ seasonMap[season as keyof typeof seasonMap].dateEnd }}
+          </p>
+        </div>
 
         <img
-          src="/icons/chevron_left.svg"
+          :src="seasonMap[season as keyof typeof seasonMap].image"
           alt="Arrow"
-          class="w-[24px] h-[24px]"
+          class="w-[30%] h-[30%] absolute bottom-2 right-1"
         />
       </div>
     </div>
@@ -31,16 +34,36 @@
 import ArrowRight from '../../public/icons/arrow_right.svg'
 
 defineProps<{
-  selected: 'summer' | 'autumn' | 'winter' | 'spring'
+  selected: 'Summer' | 'Autumn' | 'Winter' | 'Spring'
 }>()
 
 defineEmits(['update:selected'])
 
-const seasons = ['summer', 'autumn', 'winter', 'spring']
+const seasons = ['Summer', 'Autumn', 'Winter', 'Spring']
 const seasonMap = {
-  summer: 'Летние каникулы 2023',
-  autumn: 'Осенние каникулы 2023',
-  winter: 'Зимние каникулы 2024',
-  spring: 'Пасхальные каникулы 2024',
+  Summer: {
+    text: 'Летние каникулы 2023',
+    dateStart: '17.07',
+    dateEnd: '25.08',
+    image: '/icons/products/academy_summer.svg',
+  },
+  Autumn: {
+    text: 'Осенние каникулы 2023',
+    dateStart: '23.10',
+    dateEnd: '03.11',
+    image: '/icons/products/academy_autumn.svg',
+  },
+  Winter: {
+    text: 'Зимние каникулы 2023',
+    dateStart: '05.02',
+    dateEnd: '09.02',
+    image: '/icons/products/academy_winter.svg',
+  },
+  Spring: {
+    text: 'Весенние каникулы 2023',
+    dateStart: '25.03',
+    dateEnd: '05.04',
+    image: '/icons/products/academy_spring.svg',
+  },
 }
 </script>

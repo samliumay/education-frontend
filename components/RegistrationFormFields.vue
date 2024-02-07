@@ -7,24 +7,24 @@
     class="grid grid-cols-1 md:grid-cols-2 gap-2"
     :rules="rules"
   >
-    <n-form-item required path="email" :label="$t('common.email')">
+    <n-form-item required path="email" label="E-mail">
       <n-input v-model:value="login" />
     </n-form-item>
-    <n-form-item required path="phone_number" :label="$t('common.phone')">
+    <n-form-item required path="phone_number" :label="$t('user.phone_number')">
       <n-input v-model:value="phoneNumber" />
     </n-form-item>
-    <n-form-item required path="password1" :label="$t('common.password1')">
+    <n-form-item required path="password1" :label="$t('user.password')">
       <n-input v-model:value="password1" type="password" is-password />
     </n-form-item>
 
-    <n-form-item required path="password2" :label="$t('common.password2')">
+    <n-form-item required path="password2" :label="$t('user.repeatPassword')">
       <n-input v-model:value="password2" type="password" is-password />
     </n-form-item>
 
-    <n-form-item required path="first_name" :label="$t('common.first_name')">
+    <n-form-item required path="first_name" :label="$t('user.first_name')">
       <n-input v-model:value="firstName" />
     </n-form-item>
-    <n-form-item required path="last_name" :label="$t('common.last_name')">
+    <n-form-item required path="last_name" :label="$t('user.last_name')">
       <n-input v-model:value="lastName" />
     </n-form-item>
   </n-form>

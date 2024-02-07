@@ -115,7 +115,7 @@ export type Instructor = {
   first_name: string
   last_name: string
   job: string
-  photo: string
+  photo: string[]
 }
 
 export interface IEventTarget {
@@ -126,6 +126,7 @@ export enum LoginSteps {
   Options,
   Email,
   RestorePassword,
+  ConfirmRestorePassword,
   SignUp,
 }
 
@@ -204,4 +205,4 @@ export type AcademySeason = {
   image_url: string | null
 }
 
-export type ProductType = 'course' | 'academy' | 'workshop'
+export type ProductType = 'course' | 'academy' | 'workshop' | 'event'

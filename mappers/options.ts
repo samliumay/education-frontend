@@ -1,6 +1,6 @@
 export const languageOptions = [
   {
-    label: 'Все языки',
+    label: 'Двуязычный',
     value: 'bi',
   },
   {
@@ -45,5 +45,24 @@ export const ageOptions = [
   {
     label: 'от 14 лет',
     value: '14+',
+  },
+]
+
+export const seasonsOptions = [
+  {
+    label: 'Зимние каникулы 2023',
+    value: 'Winter',
+  },
+  {
+    label: 'Весенние каникулы 2023',
+    value: 'Spring',
+  },
+  {
+    label: 'Летние каникулы 2023',
+    value: 'Summer',
+  },
+  {
+    label: 'Осенние каникулы 2023',
+    value: 'Autumn',
   },
 ]

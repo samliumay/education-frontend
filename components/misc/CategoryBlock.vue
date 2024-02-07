@@ -7,7 +7,7 @@
         {{ idx + 1 !== items.length ? '•&nbsp;' : '' }}
       </span>
     </template>
-    <span v-else>Unknown</span>
+    <span v-else>{{ $t('common.unknown') }}</span>
   </div>
 </template>
 <script setup lang="ts">

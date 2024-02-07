@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white rounded-[12px]">
+  <div class="bg-white rounded-[12px] p-4">
     <div class="aspect-square rounded-[12px] overflow-hidden h-[400px]">
       <img
         v-if="instructor.photo"
@@ -10,18 +10,20 @@
       <div v-else class="h-full w-full bg-gray-300" />
     </div>
 
-    <div
-      class="relative text-[24px] font-medium -rotate-[30deg] ml-[24px] bg-green-700 rounded-[60px] p-[8px] -top-[40px]"
-    >
-      <h2
-        class="rounded-[60px] border-white border-[1px] px-[12px] py-[8px] flex items-center gap-[8px]"
+    <div class="flex flex-col items-center mt-6">
+      <p
+        class="text-center text-brand-red text-[20px] sm:text-[24px] font-medium"
       >
-        <img src="/icons/instructors_star.svg" alt="Star icon" />
         {{ `${instructor.first_name} ${instructor.last_name}` }}
-      </h2>
+      </p>
+      <p class="mt-4 font-medium">
+        {{ instructor.job }}
+      </p>
+      <p class="text-brand-red text-medium underline">
+        Подробнее
+        <img src="/icons/arrow_right.svg" alt="Arrow" class="ml-1" />
+      </p>
     </div>
-
-    <div class="flex justify-center items-center" />
   </div>
 </template>
 <script setup lang="ts">

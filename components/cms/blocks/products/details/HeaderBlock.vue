@@ -1,10 +1,18 @@
 <template>
-  <div class="flex flex-col gap-[48px] px-10">
-    <div class="flex justify-between gap-4 mr-12">
+  <AppModalCourse
+    v-if="isOpenModalCourse"
+    :is-open="isOpenModalCourse"
+    @close="isOpenModalCourse = false"
+  />
+  <div
+    class="flex flex-col gap-[48px] px-10"
+    data-cms="product-details-header-block"
+  >
+    <div class="flex flex-col md:flex-row justify-between gap-4 mr-12">
       <div class="flex flex-col justify-between gap-10">
         <div>
           <TagsBlock :tags="[blockData.current_status]" />
-          <h1 class="text-3xl sm:text-4xl font-medium mb-4 mt-4">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-medium mb-4 mt-4">
             {{ blockData.name }}
           </h1>
           <CategoryBlock :items="blockData.schedule_slots">
@@ -26,29 +34,32 @@
         </div>
 
         <div class="flex gap-[12px]">
-          <!-- <AppButton v-if="type === 'course'" class="bg-brand-red text-white">
+          <AppButton
+            v-if="type === 'course' || type === 'event'"
+            class="!bg-brand-red text-white"
+            @click="isOpenModalCourse = true"
+          >
             Попробовать бесплатно
           </AppButton>
-          <AppButton> Купить </AppButton> -->
           <slot />
         </div>
       </div>
 
       <div class="flex flex-col gap-1 pt-12">
         <p>
-          <span class="font-medium">Возраст:</span>
+          <span class="font-medium">{{ $t('blocks.product.age') }}</span>
           <span class="text-gray-400 ml-[8px]">{{ blockData.age_group }}</span>
         </p>
 
         <p>
-          <span class="font-medium">Язык:</span>
+          <span class="font-medium">{{ $t('blocks.product.language') }}</span>
           <span class="text-gray-400 ml-[8px]">
-            {{ languageMap[blockData.language as keyof typeof languageMap] }}
+            {{ $t(`common.languages.${blockData.language}`) }}
           </span>
         </p>
 
         <p>
-          <span class="font-medium">Преподаватели: </span>
+          <span class="font-medium">{{ $t('blocks.product.tutors') }}</span>
           <template v-if="blockData?.instructors?.length">
             {{
               Array.from(
@@ -67,7 +78,7 @@
         </p>
 
         <p>
-          <span class="font-medium">Кабинет:</span>
+          <span class="font-medium">{{ $t('blocks.product.place') }}</span>
           <span class="text-gray-400 ml-[8px]">
             <template v-if="blockData?.schedule_slots?.length">
               {{
@@ -87,12 +98,15 @@
     <Cover
       :image-title="blockData.title_image"
       :image-background="blockData.background_image"
-      class="h-[500px] w-full"
+      class="h-[300px] md:h-[500px] w-full"
     />
   </div>
 </template>
 <script setup lang="ts">
-import { languageMap } from '../../../../../mappers/products'
+import { ref } from 'vue'
+
+import AppModalCourse from '@/components/AppModalCourse.vue'
+
 import { type Product, type ProductType } from '../../../../../types'
 import { type PageBlock } from '../../../../../types/cms'
 import CategoryBlock from '../../../../misc/CategoryBlock.vue'
@@ -103,4 +117,6 @@ defineProps<{
   blockData: PageBlock & { product: Product }
   type: ProductType
 }>()
+
+const isOpenModalCourse = ref(false)
 </script>

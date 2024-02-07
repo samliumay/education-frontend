@@ -4,10 +4,7 @@
       :image="imageTitle"
       class="absolute -bottom-[20%] right-[5%] w-6/12"
     />
-    <ImageBlock
-      :image="imageBackground"
-      class="w-full h-full object-cover"
-    />
+    <ImageBlock :image="imageBackground" class="w-full h-full object-cover" />
   </div>
 </template>
 <script setup lang="ts">
