@@ -1,7 +1,5 @@
 <template>
-  <div v-if="pending" class="my-20 flex justify-center">
-    <AppLoader />
-  </div>
+  <LoaderBlock v-if="pending"/>
   <main v-else class="flex flex-col gap-2 mb-10">
     <n-breadcrumb class="mt-6 mb-10 px-10">
       <n-breadcrumb-item сlass="text-brand-gray">
@@ -31,8 +29,9 @@ import { NBreadcrumb, NBreadcrumbItem } from 'naive-ui'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
+import { getApiAddress } from '@/utils/getApiAddress'
+
 import { checkIsEmpty } from '../../../utils/checkIsEmpty'
-import AppLoader from '../../AppLoader.vue'
 import Courses from '../blocks/instructor/Courses.vue'
 import Header from '../blocks/instructor/Header.vue'
 import Video from '../blocks/instructor/Video.vue'
@@ -66,9 +65,11 @@ const route = useRoute()
 
 // API
 const { data: instructor, pending } = await useFetch(
-  `https://api.clavis.the-o.co/api/v2/wagtail/products/${route.params.id}/?fields=*`,
+  getApiAddress(`/api/v2/wagtail/instructors/${route.params.id}/`),
   { deep: true },
 )
+
+console.debug('instructor', instructor)
 
 // Components for render
 const blocksList = computed(() => [

@@ -15,7 +15,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { PageBlock } from '../../../../types/cms'
+import { type PageBlock } from '../../../../types/cms'
 import ProductCard from '../products/ProductCard.vue'
 
 defineProps<{
