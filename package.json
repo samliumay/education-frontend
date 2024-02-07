@@ -35,6 +35,7 @@
   "dependencies": {
     "@css-render/vue3-ssr": "^0.15.12",
     "@pinia/nuxt": "^0.5.1",
+    "@sentry/vue": "^7.100.1",
     "@vicons/fa": "^0.12.0",
     "@vue/eslint-config-airbnb-with-typescript": "^7.0.0",
     "axios": "^1.6.1",
