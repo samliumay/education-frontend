@@ -7,8 +7,8 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
     'nuxt-svgo',
-    '@nuxtjs/eslint-module',
     '@nuxtjs/i18n',
+    ...(process.env.NODE_ENV === 'production' ? ['@nuxtjs/eslint-module'] : []),
   ],
   alias: {
     '@': path.resolve(__dirname, './'),
@@ -22,9 +22,11 @@ export default defineNuxtConfig({
       process.env.NODE_ENV === 'production'
         ? [
             'naive-ui',
+            'maska,',
             'vueuc',
             '@css-render/vue3-ssr',
             '@juggle/resize-observer',
+            'vue3-google-map',
           ]
         : ['@juggle/resize-observer'],
   },
@@ -32,8 +34,13 @@ export default defineNuxtConfig({
     optimizeDeps: {
       include:
         process.env.NODE_ENV === 'development'
-          ? ['naive-ui', 'vueuc', 'date-fns-tz/formatInTimeZone']
+          ? ['naive-ui', 'vueuc', 'maska', 'date-fns-tz/formatInTimeZone']
           : [],
+    },
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './'),
+      },
     },
   },
 })

@@ -1,37 +1,51 @@
 <template>
-  <div class="mx-[28px] md:mx-[48px]">
-    <h2 class="text-[32px] sm:text-[48px] mb-[48px] font-medium">UNSERE ANGEBOTE</h2>
+  <div class="m-10" data-cms="main-catalogs">
+    <h2 class="text-4xl md:text-6xl mb-8 uppercase font-medium">
+      {{ blockData.value.heading }}
+    </h2>
 
     <div
-      class="mb-[64px] rounded-[12px] bg-brand-light-gray grid grid-cols-1 sm:grid-cols-3 gap-[24px] p-[8px]"
+      class="mb-[64px] rounded-[12px] bg-brand-light-gray grid grid-cols-1 lg:grid-cols-3 gap-[24px] p-[8px]"
     >
       <button
-        v-for="option in catalogueOptions"
-        :key="option.value"
+        v-for="(option, index) in blockData?.value?.catalog_list"
+        :key="option.name"
         class="font-medium rounded-[12px] py-2"
-        :class="{ 'bg-brand-yellow': option.value === currentCatalogue }"
-        @click="currentCatalogue = option.value"
+        :class="{ 'bg-brand-yellow': index === currentCatalogIndex }"
+        @click="currentCatalogIndex = index"
       >
-        {{ option.label }}
+        {{ option.name }}
       </button>
     </div>
 
-    <template v-if="items.length > 0">
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-[24px] gap-y-[64px]">
-        <div>
-          <ProductCard
-            v-for="item in items"
-            :key="item.id"
-            :block-data="item"
-            :extra-props="{ type: 'academy' }"
-          />
-        </div>
+    <template
+      v-if="blockData?.value?.catalog_list?.[currentCatalogIndex]?.cards"
+    >
+      <div
+        v-for="(option, index) in blockData?.value?.catalog_list"
+        v-show="index === currentCatalogIndex"
+        :key="option.name"
+        class="grid grid-cols-1 lg:grid-cols-3 gap-x-[24px] gap-y-[64px]"
+      >
+        <ProductCard
+          v-for="item in option.cards"
+          :key="item?.id"
+          :block-data="item"
+          :extra-props="{ type: 'academy' }"
+        />
       </div>
       <div class="mt-[64px] text-center">
         <button
           class="px-[64px] py-[12px] font-medium bg-brand-yellow rounded-[12px]"
+          @click="
+            navigateTo(
+              blockData?.value?.catalog_list?.[currentCatalogIndex]
+                ?.catalog_link ?? '/',
+              { external: true },
+            )
+          "
         >
-          Перейти в каталог
+          {{ $t('blocks.main.toCatalogue') }}
         </button>
       </div>
     </template>
@@ -46,23 +60,9 @@ import AppNotFound from '../../../AppNotFound.vue'
 import ProductCard from '../products/ProductCard.vue'
 
 defineProps<{
-  items: PageBlock[]
+  blockData: PageBlock
 }>()
 
-const catalogueOptions = [
-  {
-    value: 'course',
-    label: 'Kurse',
-  },
-  {
-    value: 'academy',
-    label: 'Akademie',
-  },
-  {
-    value: 'workshop',
-    label: 'Workshops',
-  },
-]
-
-const currentCatalogue = ref('course')
+// eslint-disable-next-line vue/no-setup-props-destructure
+const currentCatalogIndex = ref(0)
 </script>

@@ -1,29 +1,42 @@
 <template>
-  <div class="grid grid-cols-1 sm:grid-cols-3 gap-[24px] sm:h-[500px] relative">
+  <div
+    class="my-10 px-10 py-10 flex flex-col items-center justify-center lg:justify-start lg:flex-row gap-10 lg:h-[500px] relative"
+    data-cms="main-quote"
+  >
     <div
-      class="overflow-hidden absolute w-full h-full flex items-center justify-end z-0"
+      class="overflow-hidden absolute top-0 left-0 w-full h-full flex items-center justify-end z-0"
     >
-      <ImageBlock :image="item.quote_img" class="absolute w-3/12 sm:mr-[48px]" />
-      <ImageBlock :image="item.title_img" class="w-full h-full object-cover" />
+      <ImageBlock
+        :image="blockData.value.background_image"
+        class="w-full h-full object-cover"
+      />
     </div>
 
+    <ImageBlock
+      :image="blockData.value.author.photo"
+      class="relative w-3/12 lg:mr-[48px] lg:absolute lg:right-0"
+    />
+
     <div
-      class="sm:absolute flex flex-col gap-10 items-center sm:items-start justify-center sm:w-7/12 sm:pl-[48px] z-10"
-      :class="item.text_color ? `text-[${item.text_color}]` : 'text-brand-red'"
+      class="lg:absolute h-full flex flex-col gap-12 items-center lg:items-start justify-center lg:w-7/12 lg:pl-[48px] z-10"
+      :class="
+        blockData.value.text_color
+          ? `text-[${blockData.value.text_color}]`
+          : 'text-brand-red'
+      "
     >
-      <blockquote class="flex flex-col items-center sm:items-start gap-10 relative top-12 mx-2">
-        <p class="font-medium text-9xl leading-3">“</p>
-        <p class="font-medium text-2xl text-center sm:text-left">
-          {{ item.description }}
+      <blockquote
+        class="flex flex-col items-center lg:items-start gap-10 relative top-12"
+      >
+        <p class="font-medium text-9xl leading-[0]">“</p>
+        <p class="font-medium text-3xl text-center lg:text-left">
+          {{ blockData.value.quote_text }}
         </p>
       </blockquote>
 
-      <p class="font-medium text-2xl mt-4 mb-2">
-        {{
-          item.person
-            ? `${item.person.first_name} ${item.person.last_name}`
-            : ''
-        }}
+      <p class="font-medium text-xl mt-4 mb-2">
+        {{ blockData.value.author.name }} •
+        {{ blockData.value.author.position }}
       </p>
     </div>
   </div>
@@ -33,6 +46,6 @@ import type { PageBlock } from '../../../../types/cms'
 import ImageBlock from '../misc/ImageBlock.vue'
 
 defineProps<{
-  item: PageBlock
+  blockData: PageBlock
 }>()
 </script>

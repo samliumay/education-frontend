@@ -25,36 +25,30 @@
       <div class="flex flex-col gap-[16px] w-6/12">
         <div class="flex justify-between">
           <h3 class="font-medium text-3xl text-brand-red uppercase">
-            {{ order?.product_page?.name ?? 'Unknown' }}
+            {{ order?.product_page?.name ?? $t('cart.unknown') }}
           </h3>
         </div>
 
         <div class="flex gap-[12px]">
-          <!-- <div class="bg-gray-200 px-[16px] p-[8px] rounded-[10px]">
-          Опция:
-          {{
-            order.schedule_type !== 'TERMINKARTEN'
-              ? 'Абонемент'
-              : 'Карта встреч'
-          }}
-        </div> -->
           <div
             class="bg-brand-light-gray px-4 p-2 rounded-full flex items-center"
           >
             Ребенок:
             <AppSelect
-              placeholder="Выберите ребенка"
+              :placeholder="$t('common.children.selectChild')"
               :options="userStore.getVisitorOptions"
-              :value="order.visitor.id"
+              :value="order?.visitor?.id ?? 1"
               class="min-w-[200px]"
-              @update:value="el => (visitor = el)"
+              @update:value="updateVisitor"
             />
           </div>
         </div>
 
         <p class="font-medium text-[24px]">
           {{ `${order?.calculated_price ?? 0} €` }}
-          <span class="text-gray-400 ml-[8px]"> /мес </span>
+          <span class="text-gray-400 ml-[8px]">
+            {{ $t('cart.perMonth') }}
+          </span>
         </p>
       </div>
     </div>
@@ -66,7 +60,7 @@
             class="flex gap-2 items-center text-xl font-medium cursor-pointe"
             @click="isShowDetails = !isShowDetails"
           >
-            Выбранные дни посещения
+            {{ $t('cart.selectedDays') }}
             <img
               src="/icons/chevron_down.svg"
               alt="Arrow down"
@@ -84,13 +78,15 @@
                 class="bg-brand-light-gray py-1 px-4 rounded-full w-fit"
               >
                 <p class="font-medium">
-                  {{ item?.weekday ?? 'Monday' }}
+                  {{ item?.weekday ?? $t('common.weekdays.monday') }}
                   {{ String(item?.start ?? '00:00').slice(0, 5) }}
                 </p>
               </div>
 
               <div>
-                <p class="text-xl font-medium mb-2">Дата первого посещения</p>
+                <p class="text-xl font-medium mb-2">
+                  {{ $t('cart.firstAppointment') }}
+                </p>
 
                 <div class="bg-brand-light-gray py-1 px-4 rounded-full w-fit">
                   <p class="font-medium">
@@ -110,7 +106,7 @@
     </div>
     <div v-if="deletingProduct" class="flex gap-4 items-center">
       <Loader class="!w-6 !h-6" />
-      <p class="text text-brand-red">Deleting...</p>
+      <p class="text text-brand-red">{{ $t('common.status.delete') }}</p>
     </div>
   </div>
 </template>
@@ -162,4 +158,10 @@ await userStore.getVisitors()
 
 // eslint-disable-next-line vue/require-typed-ref
 const visitor = ref()
+
+const updateVisitor = async el => {
+  await cart.updateOrderItem(orderId.value, { visitor: el })
+  await cart.getCurrentOrder()
+  visitor.value = el
+}
 </script>

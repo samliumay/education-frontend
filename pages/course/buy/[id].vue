@@ -13,7 +13,9 @@
     </div>
 
     <div>
-      <h2 class="text-[32px] sm:text-[48px] font-medium mb-[36px]">Заполните данные</h2>
+      <h2 class="text-[32px] sm:text-[48px] font-medium mb-[36px]">
+        Заполните данные
+      </h2>
 
       <GetChildData
         :child="buyForm.visitor"

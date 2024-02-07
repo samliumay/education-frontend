@@ -1,8 +1,12 @@
 <!-- eslint-disable vue/no-static-inline-styles -->
 
 <template>
-  <div class="mx-10 student-works">
-    <h2 class="text-5xl uppercase font-medium mb-12">Работы учеников</h2>
+  <div class="mx-10 student-works" data-cms="products-details-student-works">
+    <h2
+      class="text-3xl sm:text-4xl md:text-5xl uppercase font-medium mb-20 lg:mb-14"
+    >
+      {{ $t('blocks.product.studentWorks') }}
+    </h2>
     <n-carousel
       :space-between="10"
       :loop="false"
@@ -15,7 +19,10 @@
         :key="item.id"
         style="width: fit-content"
       >
-        <ImageBlock :image="item.icon" class="h-[300px] rounded-xl overflow-hidden" />
+        <ImageBlock
+          :image="item.icon"
+          class="h-[300px] rounded-xl overflow-hidden"
+        />
         <p class="mt-1">{{ item.name }}</p>
       </n-carousel-item>
 

@@ -6,10 +6,7 @@
       @click="$emit('select', 'subscription')"
     >
       <div class="flex item-center gap-[12px]">
-        <img
-          src="/icons/products/abonement_sub.svg"
-          alt="Subscription"
-        />
+        <img src="/icons/products/abonement_sub.svg" alt="Subscription" />
         <dl class="flex flex-col gap-[6px]">
           <dt class="text-[24px] font-medium">Абонемент</dt>
           <dd class="font-medium text-gray-400">Можно отменить</dd>
@@ -40,10 +37,7 @@
       @click="$emit('select', 'card')"
     >
       <div class="flex item-center gap-[12px]">
-        <img
-          src="/icons/products/abonement_sub.svg"
-          alt="Subscription"
-        />
+        <img src="/icons/products/abonement_sub.svg" alt="Subscription" />
         <dl class="flex flex-col gap-[6px]">
           <dt class="text-[24px] font-medium">Карта встреч</dt>
           <dd class="font-medium text-gray-400">

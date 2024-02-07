@@ -2,16 +2,22 @@
   <AppSignIn :is-open="isOpenSignIn" @close="isOpenSignIn = false" />
 
   <header
-    class="relative before:font-medium bg-white px-10 py-[18px] lg:px-[40px] lg:py-[28px]"
+    class="relative before:font-medium bg-white px-10 py-[18px] lg:py-[28px]"
     :class="{ '!bg-brand-light-gray': $route.name === 'menu' }"
   >
+    <div
+      v-show="$route.name === 'menu'"
+      class="absolute left-1/2 transform -translate-x-1/2 top-0 mx-0 w-screen h-full bg-brand-light-gray"
+      :class="{ 'bg-white': $route.name === 'cart' }"
+    />
+
     <ProfileMenu
       :is-open="isOpenModalProfile"
       @close="isOpenModalProfile = false"
     />
 
     <!-- DESKTOP HEADER -->
-    <div class="w-full justify-between gap-[48px] hidden lg:flex">
+    <div class="relative -full justify-between gap-[48px] hidden lg:flex">
       <div class="flex items-center gap-6">
         <NuxtLink to="/">
           <img src="/icons/logo_pink.svg" alt="Clavis logo" class="mr-4" />
@@ -25,7 +31,7 @@
             @click="navigateTo('/menu')"
           >
             <img src="/icons/star.svg" alt="Stars" />
-            <p>Меню</p>
+            <p>{{ $t('common.menu') }}</p>
           </AppButton>
 
           <nav class="flex gap-6">
@@ -49,7 +55,7 @@
             @click="$router.go(-1)"
           >
             <img src="/icons/cross.svg" alt="close" />
-            <p>Закрыть</p>
+            <p>{{ $t('common.actions.close') }}</p>
           </AppButton>
         </template>
       </div>
@@ -61,12 +67,8 @@
           variant="transparent"
         />
 
-        <NuxtLink
-          v-show="user.isLoggedIn"
-          to="/cart"
-          class="flex items-center cursor-pointer"
-        >
-          <span> Корзина </span>
+        <NuxtLink to="/cart" class="flex items-center cursor-pointer">
+          <span> {{ $t('common.cart') }} </span>
           <span
             class="border-black rounded-full border-[1px] p-[12px] ml-[6px] relative"
           >
@@ -89,12 +91,14 @@
             class="w-[50px] h-[50px]"
           />
         </button>
-        <AppButton v-else @click="isOpenSignIn = true"> Войти </AppButton>
+        <AppButton v-else @click="isOpenSignIn = true">
+          {{ $t('common.actions.signIn') }}
+        </AppButton>
       </div>
     </div>
 
     <!-- MOBILE HEADER -->
-    <div class="w-full flex items-center justify-between gap-6 lg:hidden">
+    <div class="relative w-full flex items-center justify-between gap-6 lg:hidden">
       <!-- OPEN MENU BUTTON HEADER -->
       <template v-if="$route.name !== 'menu'">
         <AppButton
@@ -103,7 +107,7 @@
           @click="navigateTo('/menu')"
         >
           <img src="/icons/star.svg" alt="Stars" />
-          <p>Меню</p>
+          <p>{{ $t('common.menu') }}</p>
         </AppButton>
       </template>
 
@@ -115,7 +119,7 @@
           @click="$router.go(-1)"
         >
           <img src="/icons/cross.svg" alt="close" />
-          <p>Закрыть</p>
+          <p>{{ $t('common.actions.close') }}</p>
         </AppButton>
       </template>
 
@@ -128,10 +132,11 @@
       </NuxtLink>
 
       <div class="flex items-center gap-4">
+        <NuxtLink to="/cart">
+          <img src="/icons/cart.svg" alt="Cart" />
+        </NuxtLink>
+
         <template v-if="user.isLoggedIn">
-          <NuxtLink to="/cart">
-            <img src="/icons/cart.svg" alt="Cart" />
-          </NuxtLink>
           <button
             class="bg-white rounded-full w-[30px] h-[30px] min-h-[30px] min-w-[30px] overflow-hidden border-black border-[1px]"
             @click="isOpenModalProfile = true"
@@ -143,7 +148,6 @@
             />
           </button>
         </template>
-
         <button v-else @click="isOpenSignIn = true">
           <img src="/icons/exit.svg" alt="Login" />
         </button>
@@ -152,7 +156,7 @@
   </header>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 
 import { useCartStore } from '../../store/cart'
 import { useUserStore } from '../../store/user'
@@ -160,20 +164,22 @@ import AppButton from '../AppButton.vue'
 import AppSelect from '../AppSelect.vue'
 import ProfileMenu from '../profile/ProfileMenu.vue'
 
-const routes = [
+const { t, locale } = useI18n({ useScope: 'global' })
+
+const routes = computed(() => [
   {
-    label: 'Курсы',
+    label: t('common.types.courses'),
     value: '/courses',
   },
   {
-    label: 'Академии',
+    label: t('common.types.academies'),
     value: '/academies',
   },
   {
-    label: 'Воркшопы',
+    label: t('common.types.workshops'),
     value: '/workshops',
   },
-]
+])
 
 // Stores
 const user = useUserStore()
@@ -185,21 +191,36 @@ const isOpenSignIn = ref(false)
 const isOpenModalProfile = ref(false)
 
 // Language Switcher
-const currentLanguage = ref('ru')
+const currentLanguage = ref(localStorage.getItem('locale') || 'ru')
 const languageOptions = [
   {
-    label: 'Ru',
+    label: 'RU',
     value: 'ru',
   },
   {
-    label: 'En',
+    label: 'EN',
     value: 'en',
   },
   {
-    label: 'De',
+    label: 'DE',
     value: 'de',
   },
 ]
 
 // Actions
+const setLocale = () => {
+  localStorage.setItem('locale', currentLanguage.value)
+  locale.value = currentLanguage.value
+}
+
+watch(
+  () => currentLanguage.value,
+  () => {
+    setLocale()
+  },
+)
+
+onMounted(() => {
+  locale.value = localStorage.getItem('locale') || 'ru'
+})
 </script>

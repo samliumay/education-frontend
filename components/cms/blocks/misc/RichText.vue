@@ -1,10 +1,7 @@
 <!-- eslint-disable vue-scoped-css/enforce-style-type -->
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <div
-    class="rich-text text-gray-400"
-    v-html="sanitizedDescription"
-  />
+  <div class="rich-text text-gray-400" v-html="sanitizedDescription" />
 </template>
 <script setup lang="ts">
 import DOMPurify from 'dompurify'
@@ -20,7 +17,7 @@ const sanitizedDescription = computed(() =>
 </script>
 <style>
 .rich-text a {
-  color: #DB3B4D;
+  color: #db3b4d;
   text-decoration: underline;
 }
 </style>

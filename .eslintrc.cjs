@@ -81,6 +81,7 @@ module.exports = {
     'vue/quote-props': 'off',
     'vue/singleline-html-element-content-newline': 'off',
     'vue/html-indent': 'off',
+    'consistent-return': 'off',
     // eslint - block
     'no-console': ['error', { allow: ['warn', 'error'] }],
     'prefer-destructuring': ['error', { object: true, array: false }],

@@ -1,152 +1,241 @@
 <template>
-  <div class="pt-[96px] px-[16px] sm:px-[48px] bg-[#EAEAEA]">
-    <h1 class="text-[32px] sm:text-[48px] font-medium">Личный кабинет</h1>
+  <div class="relative pt-[96px] px-[16px] sm:px-[48px] bg-brand-light-gray">
+    <div
+      class="absolute left-1/2 transform -translate-x-1/2 top-0 mx-0 w-screen h-full bg-brand-light-gray"
+    />
 
-    <n-tabs v-model:value="activeTab" type="line" animated>
-      <n-tab-pane name="profile" tab="Мой профиль">
+    <h1 class="text-[32px] sm:text-[48px] font-medium relative">
+      {{ $t('profile.title') }}
+    </h1>
+
+    <n-tabs v-model:value="activeTab" class="relative" type="line" animated>
+      <n-tab-pane name="profile" :tab="$t('common.profileMenu.profile')">
         <div
           class="mt-[48px] grid grid-cols-1 sm:grid-cols-2 gap-[24px] bg-white rounded-[12px] p-[36px]"
         >
           <div>
             <div class="flex items-center gap-[16px]">
-              <div class="bg-gray-200 rounded-[1000px] w-[96px] h-[96px]" />
+              <div
+                class="bg-brand-light-gray rounded-[1000px] w-[96px] h-[96px]"
+              />
               <div>
                 <h2 class="text-[24px] font-medium">
                   {{
                     user?.user?.first_name
                       ? `${user.user.first_name} ${user.user.last_name}`
-                      : 'Вы'
+                      : $t('common.you')
                   }}
                 </h2>
                 <p class="text-gray-400">
-                  {{ user?.user?.email || 'Ваш email' }}
+                  {{ user?.user?.email || '' }}
                 </p>
               </div>
             </div>
           </div>
 
-          <div class="flex flex-col gap-[12px]">
+          <form
+            ref="userForm"
+            class="flex flex-col gap-[12px]"
+            @submit.prevent="user.updateUser(user.user)"
+          >
             <div class="flex flex-col sm:flex-row gap-[12px]">
               <div class="flex flex-col gap-[8px]">
-                <p class="font-medium">Имя</p>
-                <AppInputVue v-model="user.user.first_name" />
+                <p class="font-medium">{{ $t('user.first_name') }}</p>
+                <AppInput
+                  v-model="user.user.first_name"
+                  required
+                  pattern=".{2,}"
+                  :title="$t('user.nameRule')"
+                  @blur="checkValidity"
+                />
               </div>
 
               <div class="flex flex-col gap-[8px]">
-                <p class="font-medium">Фамилия</p>
-                <AppInputVue v-model="user.user.last_name" />
+                <p class="font-medium">{{ $t('user.last_name') }}</p>
+                <AppInput
+                  v-model="user.user.last_name"
+                  required
+                  pattern=".{2,}"
+                  :title="$t('user.lastNameRule')"
+                  @blur="checkValidity"
+                />
               </div>
             </div>
 
             <div class="flex flex-col gap-[8px]">
-              <p class="font-medium">Почта</p>
-              <AppInputVue
+              <p class="font-medium">{{ $t('common.info.mail') }}</p>
+              <AppInput
                 v-model="user.user.email"
                 placeholder="example@example.com"
+                type="email"
+                required
+                @blur="checkValidity"
               />
             </div>
 
             <div class="flex flex-col gap-[8px]">
-              <p class="font-medium">Телефон</p>
-              <AppInputVue
+              <p class="font-medium">{{ $t('common.info.phone') }}</p>
+              <AppInput
                 v-model="user.user.phone_number"
-                placeholder="+79199099090"
+                :placeholder="$t('user.phone_number')"
+                maska="+49 ### ###-##-##"
+                type="tel"
+                required
+                @blur="checkValidity"
               />
             </div>
 
-            <AppButtonVue
+            <AppButton
               class="mt-[24px] w-full"
-              @click="user.updateUser(user.user)"
+              type="submit"
+              :disabled="!userForm?.checkValidity() ?? false"
             >
-              Сохранить
-            </AppButtonVue>
-          </div>
+              {{ $t('common.actions.save') }}
+            </AppButton>
+          </form>
         </div>
 
         <div
           class="my-[24px] grid grid-cols-1 sm:grid-cols-2 gap-[24px] bg-white rounded-[12px] p-[36px]"
         >
-          <h2 class="text-[24px] font-medium">Смена пароля</h2>
+          <h2 class="text-[24px] font-medium">
+            {{ $t('common.actions.resetPassword') }}
+          </h2>
 
-          <div class="flex flex-col gap-[12px]">
-            <AppInputVue
-              v-model="passwordChange.current"
-              placeholder="Текущий пароль"
+          <form
+            ref="passwordForm"
+            class="flex flex-col gap-[12px]"
+            @submit.prevent="changePassword"
+          >
+            <AppInput
+              v-model="passwordChange.new_password1"
+              :placeholder="$t('user.newPassword')"
+              type="password"
+              required
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+              :title="$t('user.passwordValidation')"
+              @blur="checkValidity"
             />
-            <AppInputVue
-              v-model="passwordChange.new1"
-              placeholder="Новый пароль"
+            <AppInput
+              v-model="passwordChange.new_password2"
+              :placeholder="$t('user.repeatPassword')"
+              type="password"
+              required
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+              :title="$t('user.passwordValidation')"
+              @blur="checkValidity"
             />
-            <AppInputVue
-              v-model="passwordChange.new2"
-              placeholder="Повторите пароль"
-            />
-            <AppButtonVue class="mt-[24px] w-full"> Сохранить </AppButtonVue>
-          </div>
-        </div>
-      </n-tab-pane>
-      <n-tab-pane name="visitors" tab="Мои дети">
-        <div class="mt-[48px]" />
-        <div
-          v-for="visitor in user.visitorsOrders"
-          :key="visitor.id"
-          class="rounded-[12px] bg-white p-[36px] mb-[24px]"
-        >
-          <div class="flex flex-col sm:flex-row justify-between gap-[48px]">
-            <div class="flex items-center gap-[16px]">
-              <div class="bg-gray-200 rounded-[1000px] w-[96px] h-[96px]" />
-              <h2 class="text-[24px] font-medium">
-                {{
-                  visitor?.first_name
-                    ? `${visitor.first_name} ${visitor.last_name}`
-                    : 'Ребенок'
-                }}
-              </h2>
-            </div>
-
-            <div class="flex flex-col sm:flex-row gap-[12px]">
-              <div class="flex flex-col gap-[8px]">
-                <p class="font-medium">Имя</p>
-                <AppInputVue v-model="visitor.first_name" />
-              </div>
-
-              <div class="flex flex-col gap-[8px]">
-                <p class="font-medium">Фамилия</p>
-                <AppInputVue v-model="visitor.last_name" />
-              </div>
-
-              <div class="flex flex-col gap-[8px]">
-                <p class="font-medium">Дата рождения</p>
-                <AppInputVue v-model="visitor.birth_date" />
-              </div>
-            </div>
-          </div>
-
-          <div class="flex justify-end mt-[24px] w-full sm:w-auto">
-            <AppButtonVue
-              class="w-full"
-              @click="user.updateVisitor(visitor.id, visitor)"
+            <p v-if="passwordError" class="text-brand-red mt-2 mb-2">
+              {{ passwordError }}
+            </p>
+            <p v-if="passwordChanged" class="text-brand-gray mt-2 mb-2">
+              {{ passwordChanged }}
+            </p>
+            <AppButton
+              type="submit"
+              class="mt-[24px] w-full"
+              :disabled="!passwordForm?.checkValidity() ?? false"
             >
-              Сохранить
-            </AppButtonVue>
-          </div>
-
-          <AppDivider class="my-[36px]" />
-
-          <ProductsTable :orders="visitor.orders" with-button />
+              {{ $t('common.actions.change') }}
+            </AppButton>
+          </form>
         </div>
       </n-tab-pane>
-      <n-tab-pane name="workshops" tab="Воркшопы">
+      <n-tab-pane name="visitors" :tab="$t('common.profileMenu.children')">
+        <div class="mt-[48px]" />
+        <div class="bg-white flex flex-col justify-between gap-10 md:flex-row rounded-[12px] p-[36px] mb-[24px]">
+          <p>
+            По всем возникшим вопросам обращайтесь по телефону или напиши на
+            почту. Мы работаем <span class="text-brand-red">пн-пт c 9 до 18</span>
+          </p>
+          <div>
+            <p class="text-brand-black font-medium">Телефон</p>
+            <p class="text-brand-gray">+49 (0)30 71537477</p>
+            <p class="text-brand-gray">+49 (0)30 71537477</p>
+          </div>
+          <div>
+            <p class="text-brand-black font-medium">Почта</p>
+            <p class="text-brand-gray">info@clavis-schule.de</p>
+          </div>
+        </div>
+        <template v-for="visitor in user.visitorsOrders" :key="visitor.id">
+          <form
+            class="rounded-[12px] bg-white p-[36px] mb-[24px]"
+            @submit.prevent="user.updateVisitor(visitor.id, visitor)"
+          >
+            <div class="flex flex-col sm:flex-row justify-between gap-[48px]">
+              <div class="flex items-center gap-[16px]">
+                <div
+                  class="bg-brand-dark-gray rounded-[1000px] w-[96px] h-[96px]"
+                />
+                <h2 class="text-[24px] font-medium">
+                  {{
+                    visitor?.first_name || visitor?.last_name
+                      ? `${visitor.first_name} ${visitor.last_name}`
+                      : ''
+                  }}
+                </h2>
+              </div>
+
+              <div class="flex flex-col lg:flex-row gap-[12px]">
+                <div class="flex flex-col gap-[8px]">
+                  <p class="font-medium">{{ $t('user.first_name') }}</p>
+                  <AppInput
+                    v-model="visitor.first_name"
+                    required
+                    pattern=".{2,}"
+                    :title="$t('user.nameRule')"
+                    @blur="checkValidity"
+                  />
+                </div>
+
+                <div class="flex flex-col gap-[8px]">
+                  <p class="font-medium">{{ $t('user.last_name') }}</p>
+                  <AppInput
+                    v-model="visitor.last_name"
+                    pattern=".{2,}"
+                    :title="$t('user.lastNameRule')"
+                    required
+                    @blur="checkValidity"
+                  />
+                </div>
+
+                <div class="flex flex-col gap-[8px]">
+                  <p class="font-medium">{{ $t('user.birthdate') }}</p>
+                  <AppInput
+                    v-model="visitor.birth_date"
+                    type="date"
+                    placeholder="2012-12-21"
+                    required
+                    @blur="checkValidity"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="flex justify-end mt-[24px] w-full sm:w-auto">
+              <AppButton class="w-full" type="submit">
+                {{ $t('common.actions.save') }}
+              </AppButton>
+            </div>
+
+            <AppDivider class="my-[36px]" />
+
+            <ProductsTable :orders="visitor.orders" with-button />
+          </form>
+        </template>
+      </n-tab-pane>
+      <n-tab-pane name="workshops" :tab="$t('common.profileMenu.workshops')">
         <div
-          class="flex flex-col gap-[12px] bg-white p-[36px] rounded-[12px] mt-[48px] mb-[24px] overflow-x-auto"
+          class="flex flex-col gap-[12px] bg-white p-[36px] rounded-[12px] mt-[48px] mb-[24px]"
         >
           <div
             class="grid grid-cols-4 gap-[12px] font-medium p-[16px] min-w-[800px]"
           >
-            <p>Название</p>
-            <p>Расписание</p>
-            <p>Дата покупки</p>
-            <p>Комментарий</p>
+            <p>{{ $t('common.tableOptions.title') }}</p>
+            <p>{{ $t('common.tableOptions.schedule') }}</p>
+            <p>{{ $t('common.tableOptions.date') }}</p>
+            <p>{{ $t('common.tableOptions.comment') }}</p>
           </div>
 
           <template
@@ -155,23 +244,25 @@
             <div
               v-for="workshop in user.workshopOrders"
               :key="workshop.id"
-              class="grid grid-cols-4 gap-[12px] bg-gray-200 p-[16px] min-w-[800px]"
+              class="grid grid-cols-4 gap-[12px] bg-brand-light-gray p-[16px] min-w-[800px]"
             >
               <p>{{ workshop.product.name }}</p>
-              <p>Вт 12:55</p>
+              <p />
               <p>{{ new Date().toDateString() }}</p>
-              <p class="text-blue-500 cursor-pointer">Смотреть</p>
+              <p class="text-blue-500 cursor-pointer">
+                {{ $t('common.actions.look') }}
+              </p>
             </div>
           </template>
 
           <template v-else>
-            <div class="px-[16px] bg-gray-200 py-[20px] rounded-[12px]">
-              Нет активных воркшопов
+            <div class="px-[16px] bg-brand-light-gray py-[20px] rounded-[12px]">
+              {{ $t('common.tableOptions.noActiveWorkshops') }}
             </div>
           </template>
         </div>
       </n-tab-pane>
-      <n-tab-pane name="sales" tab="История покупок">
+      <n-tab-pane name="sales" :tab="$t('common.profileMenu.history')">
         <div class="bg-white p-[36px] rounded-[12px] mt-[48px] mb-[24px]">
           <ProductsTable :orders="user.orders" />
         </div>
@@ -181,12 +272,12 @@
 </template>
 <script setup lang="ts">
 import { NTabPane, NTabs } from 'naive-ui'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, type VNodeRef } from 'vue'
 import { useRoute } from 'vue-router'
 
-import AppButtonVue from '../components/AppButton.vue'
+import AppButton from '../components/AppButton.vue'
 import AppDivider from '../components/AppDivider.vue'
-import AppInputVue from '../components/AppInput.vue'
+import AppInput from '../components/AppInput.vue'
 import ProductsTable from '../components/profile/ProductsTable.vue'
 import { useUserStore } from '../store/user'
 
@@ -205,14 +296,50 @@ user.visitorsOrders = user.visitors.map(visitor => ({
   orders: user.ordersByVisitors[visitor.id],
 }))
 
-// Refs
+// State
 const passwordChange = ref({
-  current: '',
-  new1: '',
-  new2: '',
+  new_password1: '',
+  new_password2: '',
 })
 
 const activeTab = ref('profile')
+
+const userForm = ref<VNodeRef | undefined>(undefined)
+const passwordForm = ref<VNodeRef | undefined>(undefined)
+
+const passwordError = ref('')
+const passwordChanged = ref('')
+
+// Actions
+const checkValidity = (event: { target: { reportValidity: () => void } }) => {
+  event.target.reportValidity()
+}
+
+const changePassword = async () => {
+  await user
+    .changePassword(
+      passwordChange.value.new_password1,
+      passwordChange.value.new_password2,
+    )
+    .catch(err => {
+      if (Object.keys(err).length !== 0) {
+        passwordError.value = 'Кажется, что-то пошло не так'
+        setTimeout(() => {
+          passwordError.value = ''
+        }, 3000)
+      }
+    })
+
+  if (passwordError.value === '') {
+    passwordChanged.value = 'Успешно изменено!'
+    setTimeout(() => {
+      passwordChanged.value = ''
+      passwordError.value = ''
+      passwordChange.value.new_password1 = ''
+      passwordChange.value.new_password2 = ''
+    }, 3000)
+  }
+}
 
 // Live hooks
 onMounted(() => {
@@ -221,3 +348,18 @@ onMounted(() => {
   }
 })
 </script>
+<style>
+.n-tabs.n-tabs--line-type .n-tabs-tab.n-tabs-tab--active,
+.n-tabs.n-tabs--bar-type .n-tabs-tab.n-tabs-tab--active {
+  color: #db3b4d !important;
+}
+
+.n-tabs .n-tabs-bar {
+  background-color: #db3b4d !important;
+}
+
+.n-tabs.n-tabs--line-type .n-tabs-tab:hover,
+.n-tabs.n-tabs--bar-type .n-tabs-tab:hover {
+  color: #db3b4d !important;
+}
+</style>

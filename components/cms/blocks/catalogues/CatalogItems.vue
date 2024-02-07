@@ -1,5 +1,8 @@
 <template>
-  <div class="mt-[48px] mb-[48px] grid grid-cols-3 gap-[24px] mx-[48px]">
+  <div
+    class="mt-[48px] mb-[48px] grid grid-cols-3 gap-[24px] mx-[48px]"
+    data-cms="catalogues-items"
+  >
     <div
       v-for="item in items"
       :key="item.product.id"

@@ -4,25 +4,44 @@
       <n-breadcrumb-item сlass="text-brand-gray">
         <NuxtLink to="/">Главная</NuxtLink>
       </n-breadcrumb-item>
-      <n-breadcrumb-item сlass="text-brand-gray">
-        Legal
-      </n-breadcrumb-item>
+      <n-breadcrumb-item сlass="text-brand-gray"> Legal </n-breadcrumb-item>
     </n-breadcrumb>
 
-    <h1 class="text-brand-black text-5xl mb-10 font-medium">Clavis Schule Impressum</h1>
+    <h1 class="text-brand-black text-5xl mb-10 font-medium">
+      Clavis Schule Impressum
+    </h1>
 
     <h2 class="text-brand-black text-4xl mb-6 font-medium">Wer wir sind</h2>
-    <h3 class="text-brand-black mb-2">Clavis Kunst und Wissenschaft Privatschule GmbH i.G.</h3>
+    <h3 class="text-brand-black mb-2">
+      Clavis Kunst und Wissenschaft Privatschule GmbH i.G.
+    </h3>
     <div class="text-brand-gray mb-10">
       <p>
         Vertreten durch die Geschäftsführerinnen, Frau Margarita Stroutchenkova,
         Frau Olga Novik
       </p>
-      <p class="text-brand-black font-medium">Immanuelkirchstraße 4 10405 Berlin</p>
-      <p><span class="text-brand-black font-medium">Phone Secretary:</span> <a href="tel:+493071537477">+49 (0)30 71537477</a></p>
-      <p><span class="text-brand-black font-medium">Phone Administrator:</span> <a href="tel:+4917615683600">+49 (0)176 15683600</a></p>
-      <p><span class="text-brand-black font-medium">E-mail:</span> <a href="mailto:info@clavis-schule.de">info@clavis-schule.de</a></p>
-      <p><span class="text-brand-black font-medium">Web:</span> <a class="text-brand-red underline" href="www.clavis-schule.de">www.clavis-schule.de</a></p>
+      <p class="text-brand-black font-medium">
+        Immanuelkirchstraße 4 10405 Berlin
+      </p>
+      <p>
+        <span class="text-brand-black font-medium">Phone Secretary:</span>
+        <a href="tel:+493071537477">+49 (0)30 71537477</a>
+      </p>
+      <p>
+        <span class="text-brand-black font-medium">Phone Administrator:</span>
+        <a href="tel:+4917615683600">+49 (0)176 15683600</a>
+      </p>
+      <p>
+        <span class="text-brand-black font-medium">E-mail:</span>
+        <a href="mailto:info@clavis-schule.de">info@clavis-schule.de</a>
+      </p>
+      <p>
+        <span class="text-brand-black font-medium">Web:</span>
+        <a
+class="text-brand-red underline"
+href="www.clavis-schule.de"
+>www.clavis-schule.de</a>
+      </p>
       <p class="text-brand-black font-medium m-0">UStID DE356490222</p>
     </div>
 
@@ -33,7 +52,9 @@
       (Clavis-Schulleitung).
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">Haftungsausschluss</h2>
+    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+      Haftungsausschluss
+    </h2>
     <h3 class="text-brand-black mb-2">Haftung für Inhalte</h3>
     <p class="text-brand-gray mb-2">
       Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die

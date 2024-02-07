@@ -27,7 +27,7 @@
           </NuxtLink>
         </template>
         <button class="w-fit h-fit hover:text-brand-red" @click="logout">
-          Выход
+          {{ $t('common.actions.exit') }}
         </button>
       </nav>
     </div>
@@ -48,6 +48,8 @@ const emit = defineEmits(['close'])
 // Store
 const userStore = useUserStore()
 
+const { t } = useI18n()
+
 // Actions
 const close = () => {
   emit('close')
@@ -62,19 +64,26 @@ const logout = () => {
 const linksGroup = [
   {
     path: '/profile',
-    label: 'Мой Профиль',
+    label: t('common.profileMenu.profile'),
   },
   {
     path: '/profile?tab=visitors',
-    label: 'Мои дети',
+    label: t('common.profileMenu.children'),
   },
   {
     path: '/profile?tab=workshops',
-    label: 'Мои воркшопы',
+    label: t('common.profileMenu.workshops'),
   },
   {
     path: '/profile?tab=sales',
-    label: 'История покупок',
+    label: t('common.profileMenu.history'),
   },
 ]
 </script>
+<style>
+.n-modal-body-wrapper {
+  max-width: 1440px !important;
+  margin: auto !important;
+  padding-right: 50px;
+}
+</style>

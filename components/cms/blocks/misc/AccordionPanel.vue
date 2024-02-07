@@ -2,7 +2,10 @@
 <template>
   <n-space vertical>
     <AppDivider class="mb-[32px]" />
-    <div class="flex justify-between items-center mx-10 cursor-pointer" @click="isOpened = !isOpened">
+    <div
+      class="flex justify-between items-center mx-10 cursor-pointer"
+      @click="isOpened = !isOpened"
+    >
       <p>{{ title }}</p>
       <button>
         <img src="/icons/plus_red.svg" alt="Plus icon" />

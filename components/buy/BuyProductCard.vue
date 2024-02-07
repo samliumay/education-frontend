@@ -1,7 +1,10 @@
 <template>
   <div class="bg-white rounded-[12px] flex gap-[16px] flex-col">
     <div class="aspect-video rounded-[12px] overflow-hidden">
-      <Cover :image-title="product?.title_image" :image-background="product?.background_image" />
+      <Cover
+        :image-title="product?.title_image"
+        :image-background="product?.background_image"
+      />
     </div>
 
     <div class="flex flex-col gap-[16px]">
@@ -9,7 +12,7 @@
         {{ product.name }}
       </h1>
 
-      <TagsBlock :tags="getTagsFromProduct(product)" />
+      <TagsBlock :tags="getTagsFromProduct(product, $t)" />
     </div>
   </div>
 </template>

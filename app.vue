@@ -1,15 +1,17 @@
 <!-- eslint-disable vue-scoped-css/enforce-style-type -->
-<!-- eslint-disable vue/block-lang -->
-<!-- eslint-disable vue/block-lang -->
 <template>
   <n-config-provider :theme-overrides="themeOverrides">
-    <div class="min-h-[100vh] flex flex-col overflow-x-hidden relative">
-      <AppHeader />
-      <NuxtLayout>
-        <NuxtPage />
-      </NuxtLayout>
-      <AppCookieModal/>
-      <AppFooter v-if="$route.path !== '/menu'" />
+    <div class="flex justify-center items-start overflow-x-hidden">
+      <div
+        class="min-h-[100vh] max-w-[1440px] mx-auto bg-white flex flex-col overflow-x-visible relative"
+      >
+        <AppHeader />
+        <NuxtLayout>
+          <NuxtPage />
+        </NuxtLayout>
+        <AppCookieModal />
+        <AppFooter v-if="$route.path !== '/menu'" />
+      </div>
     </div>
   </n-config-provider>
 </template>
@@ -17,6 +19,7 @@
 import AppCookieModal from './components/AppCookieModal.vue'
 import AppFooter from './components/page/AppFooter.vue'
 import AppHeader from './components/page/AppHeader.vue'
+import { useCartStore } from './store/cart'
 
 useHead({
   title: 'Clavis Schule für Kunst und Wissenschaft',
@@ -71,6 +74,10 @@ const themeOverrides = {
     fontSize: '16px',
   },
 }
+
+// Init anonymous user
+const cart = useCartStore()
+cart.init()
 </script>
 <style>
 body {

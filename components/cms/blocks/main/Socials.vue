@@ -1,6 +1,8 @@
 <template>
   <div class="mx-[28px] md:mx-[48px] flex flex-col items-center">
-    <h2 class="text-[32px] sm:text-[48px] mb-[48px] font-medium">Social Media</h2>
+    <h2 class="text-[32px] sm:text-[48px] mb-[48px] font-medium">
+      {{ $t('blocks.main.social') }}
+    </h2>
 
     <div class="flex flex-col gap-2">
       <div class="flex flex-col sm:flex-row gap-5 sm:h-[260px]">
@@ -10,9 +12,7 @@
           class="flex gap-25 py-2 sm:py-0 justify-between sm:w-7/12 rounded-lg border-2 border-brand-dark-gray px-5 hover:bg-brand-light-gray cursor-pointer"
         >
           <div class="flex flex-col justify-center gap-4 w-6/12">
-            <div
-              class="w-fit h-fit"
-            >
+            <div class="w-fit h-fit">
               <img
                 src="/icons/socials/tiktok.svg"
                 class="w-[90px] h-[90px]"
