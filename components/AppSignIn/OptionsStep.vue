@@ -15,10 +15,16 @@
   </div>
 </template>
 <script lang="ts" setup>
+// Init component
 const emit = defineEmits(['goToEmailStep'])
 
+// Init hooks
 const { t } = useI18n()
 
+// Constants
+const redirectUrl = 'http://localhost:3000'
+
+// Options
 const options = [
   {
     label: t('common.info.mail'),
@@ -28,17 +34,19 @@ const options = [
   {
     label: 'Google',
     icon: '/icons/sign_in/google_icon.svg',
-    onClick: () => {},
+    onClick: () => {
+      if (process.client) {
+        window.open(
+          `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${redirectUrl}&prompt=consent&response_type=code&client_id=464713450575-ecsmsdjo2oql1nsjuvnepeat0usf8vgp.apps.googleusercontent.com&scope=openid%20email%20profile&access_type=offline`,
+          '_blank',
+        )
+      }
+    },
   },
-  {
-    label: 'Apple',
-    icon: '/icons/sign_in/apple_icon.svg',
-    onClick: () => {},
-  },
-  {
-    label: 'Facebook',
-    icon: '/icons/sign_in/facebook_icon.svg',
-    onClick: () => {},
-  },
+  // {
+  //   label: 'Facebook',
+  //   icon: '/icons/sign_in/facebook_icon.svg',
+  //   onClick: () => {},
+  // },
 ]
 </script>
