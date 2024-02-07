@@ -34,6 +34,14 @@ export const de = {
       language: 'Sprache',
       age: 'Alter',
       season: 'Jahreszeit',
+      direction: 'Richtung',
+      branch: 'Zweig',
+      seasons: {
+        winter: 'Winterferien 2024',
+        spring: 'Frühlingsferien 2024',
+        summer: 'Sommerferien 2024',
+        autumn: 'Herbstferien 2024',
+      },
     },
     actions: {
       close: 'Schließen',

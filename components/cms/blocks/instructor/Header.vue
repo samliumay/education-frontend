@@ -1,12 +1,12 @@
 <template>
-  <div class="grid grid-cols-3 gap-30 px-3 sm:px-10">
-    <div class="hidden sm:block col-span-1 mr-10">
+  <div class="m-10 grid grid-cols-1 lg:grid-cols-3 gap-30 px-3 lg:px-10">
+    <div class="hidden lg:block col-span-1 mr-10">
       <ImageBlock
         :image="blockData?.title_image"
         class="w-full h-[450px] object-cover rounded-md overflow-hidden"
       />
     </div>
-    <div class="sm:col-span-2 ml-20">
+    <div class="lg:col-span-2 lg:ml-16">
       <n-breadcrumb>
         <n-breadcrumb-item сlass="text-brand-gray">
           <NuxtLink to="/">{{ $t('common.main') }}</NuxtLink>
@@ -20,21 +20,21 @@
       </n-breadcrumb>
 
       <h1
-        class="text-[32px] sm:text-[48px] text-brand-red mt-4 sm:mt-12 font-medium"
+        class="text-3xl lg:text-4xl text-brand-red mt-4 lg:mt-12 font-medium"
       >
         {{ `${blockData?.name}` }}
       </h1>
-      <h2 class="text-[16px] sm:text-[20px] font-medium mt-3">
+      <h2 class="text-[16px] lg:text-[20px] font-medium mt-3">
         {{ blockData?.speciality }}
       </h2>
-      <AppDivider class="my-4 sm:my-9" />
+      <AppDivider class="my-4 lg:my-9" />
       <p>
         <RichText :html="blockData?.description" />
       </p>
     </div>
-    <div class="block sm:hidden col-span-1">
-      <!-- <Gallery :photos="instructor?.gallery_images" /> -->
-    </div>
+    <!-- <div class="block lg:hidden col-span-1">
+      <Gallery :photos="instructor?.gallery_images" />
+    </div> -->
   </div>
 </template>
 <script setup lang="ts">

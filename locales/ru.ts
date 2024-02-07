@@ -34,6 +34,14 @@ export const ru = {
       language: 'Язык',
       age: 'Возраст',
       season: 'Сезон',
+      direction: 'Направление',
+      branch: 'Филиал',
+      seasons: {
+        winter: 'Зимние каникулы 2024',
+        spring: 'Весенние каникулы 2024',
+        summer: 'Летние каникулы 2024',
+        autumn: 'Осенние каникулы 2024',
+      },
     },
     actions: {
       close: 'Закрыть',

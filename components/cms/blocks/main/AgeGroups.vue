@@ -12,7 +12,7 @@
     >
       <div class="flex flex-col">
         <p
-          class="text-red-400 text-[24px] md:text-[36px] font-medium mb-[16px] md:mb-[32px]"
+          class="text-brand-red text-[24px] md:text-[36px] font-medium mb-[16px] md:mb-[32px]"
         >
           {{ item.title }}
         </p>

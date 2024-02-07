@@ -1,6 +1,6 @@
 <template>
   <div
-    class="my-10 px-10 py-10 flex flex-col items-center justify-center lg:justify-start lg:flex-row gap-10 lg:h-[500px] relative"
+    class="m-10 px-10 py-10 flex flex-col items-center justify-center lg:justify-start lg:flex-row gap-10 lg:h-[500px] relative rounded-md overflow-hidden"
     data-cms="main-quote"
   >
     <div

@@ -32,6 +32,7 @@
 </template>
 <script setup lang="ts">
 import ArrowRight from '../../public/icons/arrow_right.svg'
+import { useI18n } from 'vue-i18n'
 
 defineProps<{
   selected: 'Summer' | 'Autumn' | 'Winter' | 'Spring'
@@ -39,28 +40,30 @@ defineProps<{
 
 defineEmits(['update:selected'])
 
+const { t } = useI18n()
+
 const seasons = ['Summer', 'Autumn', 'Winter', 'Spring']
 const seasonMap = {
   Summer: {
-    text: 'Летние каникулы 2023',
+    text: t('common.filters.seasons.summer'),
     dateStart: '17.07',
     dateEnd: '25.08',
     image: '/icons/products/academy_summer.svg',
   },
   Autumn: {
-    text: 'Осенние каникулы 2023',
+    text: t('common.filters.seasons.autumn'),
     dateStart: '23.10',
     dateEnd: '03.11',
     image: '/icons/products/academy_autumn.svg',
   },
   Winter: {
-    text: 'Зимние каникулы 2023',
+    text: t('common.filters.seasons.winter'),
     dateStart: '05.02',
     dateEnd: '09.02',
     image: '/icons/products/academy_winter.svg',
   },
   Spring: {
-    text: 'Весенние каникулы 2023',
+    text: t('common.filters.seasons.spring'),
     dateStart: '25.03',
     dateEnd: '05.04',
     image: '/icons/products/academy_spring.svg',

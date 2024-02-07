@@ -1,7 +1,6 @@
 <!-- eslint-disable vue/no-static-inline-styles -->
-
 <template>
-  <div class="mx-10 student-works" data-cms="products-details-student-works">
+  <div class="m-10 student-works" data-cms="instructor-student-works">
     <h2
       class="text-3xl sm:text-4xl md:text-5xl uppercase font-medium mb-20 lg:mb-14"
     >

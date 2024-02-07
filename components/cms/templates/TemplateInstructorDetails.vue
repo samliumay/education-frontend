@@ -1,7 +1,7 @@
 <template>
   <LoaderBlock v-if="pending" />
   <main v-else class="flex flex-col gap-2 mb-10">
-    <div class="flex flex-col gap-10">
+    <div class="flex flex-col">
       <ErrorBoundaryBlock v-for="(block, index) in blocksList" :key="index">
         <component
           :is="block.name"
