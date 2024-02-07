@@ -3,11 +3,11 @@
     <h2
       class="uppercase text-[36px] sm:text-[56px] font-semibold mb-4 sm:mb-12"
     >
-      {{ $t('blocks.tutorCourses') }}
+      {{ blockData.heading }}
     </h2>
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6">
       <ProductCard
-        v-for="product in products"
+        v-for="product in blockData.cards"
         :key="product.id"
         :block-data="product"
       />
@@ -18,7 +18,7 @@
 import { type PageBlock } from '../../../../types/cms'
 import ProductCard from '../products/ProductCard.vue'
 
-defineProps<{
-  products: PageBlock[]
+const props = defineProps<{
+  blockData: PageBlock[]
 }>()
 </script>

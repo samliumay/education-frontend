@@ -1,18 +1,6 @@
 <template>
-  <LoaderBlock v-if="pending"/>
+  <LoaderBlock v-if="pending" />
   <main v-else class="flex flex-col gap-2 mb-10">
-    <n-breadcrumb class="mt-6 mb-10 px-10">
-      <n-breadcrumb-item сlass="text-brand-gray">
-        <NuxtLink to="/">{{ $t('common.main') }}</NuxtLink>
-      </n-breadcrumb-item>
-      <n-breadcrumb-item сlass="text-brand-gray">
-        <NuxtLink to="/instructors">{{ $t('common.tutors') }}</NuxtLink>
-      </n-breadcrumb-item>
-      <n-breadcrumb-item сlass="text-brand-gray">
-        {{ `${instructor?.first_name} ${instructor?.last_name}` }}
-      </n-breadcrumb-item>
-    </n-breadcrumb>
-
     <div class="flex flex-col gap-10">
       <ErrorBoundaryBlock v-for="(block, index) in blocksList" :key="index">
         <component
@@ -25,7 +13,6 @@
   </main>
 </template>
 <script setup lang="ts">
-import { NBreadcrumb, NBreadcrumbItem } from 'naive-ui'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
@@ -36,7 +23,8 @@ import Courses from '../blocks/instructor/Courses.vue'
 import Header from '../blocks/instructor/Header.vue'
 import Video from '../blocks/instructor/Video.vue'
 import ErrorBoundaryBlock from '../blocks/misc/ErrorBoundaryBlock.vue'
-import StudentWorks from '../blocks/products/details/StudentWorks.vue'
+import LoaderBlock from '../blocks/misc/LoaderBlock.vue'
+import StudentWorks from '../blocks/instructor/StudentWorks.vue'
 
 // Init template
 const props = defineProps<{
@@ -60,6 +48,9 @@ useHead({
   ],
 })
 
+// Init hooks
+const { t } = useI18n()
+
 // Store
 const route = useRoute()
 
@@ -69,13 +60,47 @@ const { data: instructor, pending } = await useFetch(
   { deep: true },
 )
 
-console.debug('instructor', instructor)
+const courses = computed(() => {
+  if (!pending.value) {
+    return instructor.value.body.find(block => block.type === 'teaches_in')
+      .value
+  }
+
+  return {
+    heading: t('blocks.tutorCourses'),
+    cards: [],
+  }
+})
+
+const studentWorks = computed(() => {
+  if (!pending.value) {
+    return instructor.value.body.find(block => block.type === 'art_block').value
+  }
+
+  return {
+    heading: null,
+    cards: [],
+  }
+})
+console.debug('studentWorks:', studentWorks.value)
+
+const video = computed(() => {
+  if (!pending.value) {
+    return instructor.value.body.find(block => block.type === 'video_block')
+      .value
+  }
+
+  return {
+    title: null,
+    video_url: '',
+  }
+})
 
 // Components for render
 const blocksList = computed(() => [
   { name: Header, blockData: instructor.value },
-  { name: Courses, blockData: instructor.value?.courses },
-  { name: StudentWorks, blockData: instructor.value?.student_works },
-  { name: Video, blockData: instructor.value?.video?.url },
+  { name: Courses, blockData: courses.value },
+  { name: StudentWorks, blockData: studentWorks.value },
+  { name: Video, blockData: video.value },
 ])
 </script>

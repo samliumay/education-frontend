@@ -5,10 +5,10 @@
     <h2
       class="uppercase text-[36px] sm:text-[56px] font-semibold mb-4 sm:mb-12"
     >
-      {{ $t('common.video') }}
+      {{ blockData.title ? blockData.title : $t('common.video') }}
     </h2>
     <iframe
-      :src="url"
+      :src="blockData.video_url"
       title="YouTube video player"
       frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -18,7 +18,9 @@
   </div>
 </template>
 <script setup lang="ts">
-defineProps<{
-  url: string
+const props = defineProps<{
+  blockData: { video_url: string }
 }>()
+
+console.debug(props.blockData)
 </script>

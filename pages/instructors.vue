@@ -43,7 +43,7 @@ const instructorConverter = wrongInstructor => {
     last_name: name[1],
     subject: wrongInstructor.speciality,
     profile_pic: wrongInstructor?.title_image?.id,
-    id: wrongInstructor.instructor.id,
+    id: wrongInstructor.id,
   }
 }
 </script>
