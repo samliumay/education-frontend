@@ -144,21 +144,22 @@
       <n-tab-pane name="visitors" :tab="$t('common.profileMenu.children')">
         <div class="mt-[48px]" />
         <div
-          class="bg-white flex flex-col justify-between gap-10 md:flex-row rounded-[12px] p-[36px] mb-[24px]"
+          class="bg-white mb-6 mt-3 lg:mt-6 rounded-[12px] border-[1px] p-4 lg:p-8 grid grid-cols-1 lg:grid-cols-4 gap-3 sm:gap-6"
         >
-          <p>
-            По всем возникшим вопросам обращайтесь по телефону или напиши на
-            почту. Мы работаем
-            <span class="text-brand-red">пн-пт c 9 до 18</span>
+          <p class="font-semibold text-[20px] col-span-2">
+            {{ $t('schoolOffer.questions') }}
+            <span class="text-brand-red">{{
+              $t('schoolOffer.workhours')
+            }}</span>
           </p>
           <div>
-            <p class="text-brand-black font-medium">Телефон</p>
-            <p class="text-brand-gray">+49 (0)30 71537477</p>
-            <p class="text-brand-gray">+49 (0)30 71537477</p>
+            <p class="font-medium text-[20px]">{{ $t('common.info.phone') }}</p>
+            <p class="text-[20px] mt-2 text-gray-400">+49 (0)30 71537477</p>
+            <p class="text-[20px] mt-2 text-gray-400">+49 (0)30 71537477</p>
           </div>
           <div>
-            <p class="text-brand-black font-medium">Почта</p>
-            <p class="text-brand-gray">info@clavis-schule.de</p>
+            <p class="font-medium text-[20px]">{{ $t('common.info.mail') }}</p>
+            <p class="text-[20px] mt-2 text-gray-400">info@clavis-schule.de</p>
           </div>
         </div>
         <template v-for="visitor in user.visitorsOrders" :key="visitor.id">
@@ -179,7 +180,11 @@
 
               <AppDivider class="my-[36px]" />
 
-              <ProductsTable class="w-full" :orders="visitor.orders" with-button />
+              <ProductsTable
+                class="w-full"
+                :orders="visitor.orders"
+                with-button
+              />
             </div>
           </div>
         </template>

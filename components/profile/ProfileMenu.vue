@@ -35,8 +35,10 @@
 </template>
 <script setup lang="ts">
 import { NModal } from 'naive-ui'
+import { useI18n } from 'vue-i18n'
 
 import { useUserStore } from '../../store/user'
+import { computed } from 'vue';
 
 // Init
 defineProps<{
@@ -61,7 +63,7 @@ const logout = () => {
 }
 
 // Render links
-const linksGroup = [
+const linksGroup = computed(() => [
   {
     path: '/profile',
     label: t('common.profileMenu.profile'),
@@ -78,7 +80,7 @@ const linksGroup = [
     path: '/profile?tab=sales',
     label: t('common.profileMenu.history'),
   },
-]
+])
 </script>
 <style>
 .n-modal-body-wrapper {
