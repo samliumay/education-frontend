@@ -28,6 +28,14 @@ export const en = {
       city: 'Berlin',
       address: 'Immanuelkirchstraße 4 10405',
     },
+    modals: {
+      fillApplication: 'Fill in the form',
+      youChoosed: 'You choosed',
+      positionInterested: 'Position you are interested in',
+      additionalInfo: 'Additional Information',
+      calendar: 'Calendar',
+      requestCallback: 'Request for a call back',
+    },
     cookies:
       'By using our site you are consenting to the use of cookies. For more information please refer to our',
     filters: {
@@ -55,6 +63,7 @@ export const en = {
       resetPassword: 'Reset the password',
       change: 'Change',
       look: 'Open',
+      send: 'Send',
     },
     subscription: {
       abonement: 'Subscription',

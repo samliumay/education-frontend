@@ -11,7 +11,7 @@
             class="flex gap-[20px] items-center mr-10"
             @click="$emit('close')"
           >
-            Закрыть
+            {{ $t('common.actions.close') }}
             <button
               class="bg-white border-[1px] border-brand-black w-[35px] h-[35px] rounded-full flex items-center justify-center hover:bg-brand-light-gray transition ease-in delay-100 transform active:scale-[0.93]"
             >
@@ -27,7 +27,7 @@
         <div class="flex flex-col gap-10 m-10">
           <div>
             <h1 class="font-medium text-4xl mb-10">
-              Заполните заявку
+              {{ $t('common.modals.fillApplication') }}
             </h1>
 
             <form
@@ -38,7 +38,7 @@
               <div class="grid grid-cols-1 lg:grid-cols-2 gap-[12px]">
                 <AppInput
                   v-model="registrationForm.first_name"
-                  placeholder="Имя родителя"
+                  :placeholder="$t('cart.registerDetails.name')"
                   required
                   pattern=".{2,}"
                   title="The name must contain at least two characters"
@@ -46,7 +46,7 @@
                 />
                 <AppInput
                   v-model="registrationForm.last_name"
-                  placeholder="Фамилия родителя"
+                  :placeholder="$t('cart.registerDetails.surname')"
                   required
                   pattern=".{2,}"
                   title="Last name must contain at least two characters"
@@ -57,14 +57,14 @@
               <div class="grid grid-cols-1 lg:grid-cols-2 gap-[12px]">
                 <AppInput
                   v-model="registrationForm.email"
-                  placeholder="Email"
+                  :placeholder="$t('cart.registerDetails.email')"
                   type="email"
                   required
                   @blur="checkValidity"
                 />
                 <AppInput
                   v-model="registrationForm.phone"
-                  placeholder="Телефон"
+                  :placeholder="$t('cart.registerDetails.phone')"
                   maska="+49 ### ###-##-##"
                   type="tel"
                   required
@@ -73,14 +73,14 @@
               </div>
 
               <AppInput
-                  v-model="registrationForm.position"
-                  placeholder="Позиция, которая интересует"
-                  required
-                  @blur="checkValidity"
-                />
+                v-model="registrationForm.position"
+                :placeholder="$t('common.modals.positionInterested')"
+                required
+                @blur="checkValidity"
+              />
               <AppTextarea
                 v-model="registrationForm.message"
-                placeholder="Доп.информация"
+                :placeholder="$t('common.modals.additionalInfo')"
                 type="text"
                 required
                 @blur="checkValidity"
@@ -91,7 +91,7 @@
                 type="submit"
                 :disabled="!form?.checkValidity() ?? false"
               >
-                Отправить
+              {{ $t('common.actions.send') }}
               </AppButton>
             </form>
           </div>
@@ -108,8 +108,8 @@ import { ref, type VNodeRef } from 'vue'
 // import { useCartStore } from '@/store/cart'
 // import { useUserStore } from '@/store/user'
 // import { getApiAddress } from '@/utils/getApiAddress'
-import AppInput from './AppInput.vue'
-import AppTextarea from './AppTextarea.vue'
+import AppInput from '@/components/AppInput.vue'
+import AppTextarea from '@/components/AppTextarea.vue'
 
 defineProps<{
   isOpen: boolean

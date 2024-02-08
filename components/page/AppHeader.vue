@@ -134,6 +134,13 @@
       </NuxtLink>
 
       <div class="flex items-center gap-4">
+        <AppSelect
+          v-model:value="currentLanguage"
+          :options="languageOptions"
+          variant="transparent"
+          class="w-[60px]"
+        />
+
         <NuxtLink to="/cart">
           <img src="/icons/cart.svg" alt="Cart" />
         </NuxtLink>

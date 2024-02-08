@@ -28,6 +28,14 @@ export const de = {
       city: 'Berlin',
       address: 'Immanuelkirchstraße 4 10405',
     },
+    modals: {
+      fillApplication: 'Fülle das Formular aus',
+      youChoosed: 'Du wählst',
+      positionInterested: 'Position, die Sie interessiert',
+      additionalInfo: 'Weitere Informationen',
+      calendar: 'Kalender',
+      requestCallback: 'Bitte um Rückruf',
+    },
     cookies:
       'Durch die Nutzung unserer Website stimmen Sie der Verwendung von Cookies zu. Weitere Informationen finden Sie in unserem',
     filters: {
@@ -55,6 +63,7 @@ export const de = {
       resetPassword: 'Kennwort ändern',
       change: 'Ändern',
       look: 'Suchen',
+      send: 'Schicken',
     },
     subscription: {
       abonement: 'Abonnement',
@@ -100,10 +109,10 @@ export const de = {
       '14+': 'от 14 Jahre',
     },
     languages: {
-      "bi": 'Alle Sprachen',
-      "ru": 'Russisch',
-      "en": 'Englisch',
-      "de": 'Deutsch',
+      bi: 'Alle Sprachen',
+      ru: 'Russisch',
+      en: 'Englisch',
+      de: 'Deutsch',
       'ru-en': 'Russisch/Englisch',
       'de-en': 'Deutsch/Englisch',
       'de-ru': 'Deutsch/Russisch',
@@ -167,16 +176,20 @@ export const de = {
     choosingNextCourse: 'Tipp: Jede weitere Buchung wird für Sie günstiger!',
     chooseDifferentCourse: 'Jetzt Kurse zu reduzierten Preisen sichern!',
     choosingNextAcademy: 'Tipp: Jede weitere Buchung wird für Sie günstiger!',
-    chooseDifferentAcademy: 'Jetzt Akademiekurse zu reduzierten Preisen sichern!',
+    chooseDifferentAcademy:
+      'Jetzt Akademiekurse zu reduzierten Preisen sichern!',
     choosingNextWorkshop: 'Tipp: Jede weitere Buchung wird für Sie günstiger! ',
     chooseDifferentWorkshop: 'Jetzt Workshops zu reduzierten Preisen sichern!',
     order: {
       title: 'Bestelldetails',
-      subtitle: 'Ihr Warenkorb ist momentan leer. Fügen Sie Kurse, Akademiekurse oder Workshops hinzu, um fortzufahren.',
+      subtitle:
+        'Ihr Warenkorb ist momentan leer. Fügen Sie Kurse, Akademiekurse oder Workshops hinzu, um fortzufahren.',
       total: 'Gesamt',
       discountAmount: 'Rabattbetrag',
-      fillOutPaymentDetails: 'Für die Zahlung füllen Sie bitte die untenstehenden Zahlungsdetails aus',
-      pleaseRegister: 'Bitte registrieren Sie sich oder loggen Sie sich in Ihr Konto ein, um zu bezahlen',
+      fillOutPaymentDetails:
+        'Für die Zahlung füllen Sie bitte die untenstehenden Zahlungsdetails aus',
+      pleaseRegister:
+        'Bitte registrieren Sie sich oder loggen Sie sich in Ihr Konto ein, um zu bezahlen',
     },
     button: {
       checkout: 'Kostenpflichtig buchen',
@@ -211,9 +224,9 @@ export const de = {
     },
   },
   mappers: {
-    "Course": 'Kurs',
-    "Academy": 'Akademie',
-    "Workshop": 'Werkstatt',
+    Course: 'Kurs',
+    Academy: 'Akademie',
+    Workshop: 'Werkstatt',
     'Academy (1st half)': '1/2 Morgen',
     'Academy (2nd half)': '1/2 Abend',
     'Academy (full day)': 'Den ganzen Tag',
@@ -245,10 +258,13 @@ export const de = {
     application: 'Reichen Sie Ihre Bewerbung ein',
     ourOffer: 'Was bieten wir an',
     courseSelect: 'Kursauswahl',
-    seminarOffer: 'Wir bieten alle unsere Kurse auch als Workshops für Schulen an. Das Seminar kann entweder bei Ihnen vor Ort oder in unseren Räumlichkeiten stattfinden.',
+    seminarOffer:
+      'Wir bieten alle unsere Kurse auch als Workshops für Schulen an. Das Seminar kann entweder bei Ihnen vor Ort oder in unseren Räumlichkeiten stattfinden.',
     program: 'AGs und Ferienkurse',
-    programOffer: 'Wir freuen uns, mit Schulen zusammenzuarbeiten, um ihre Tages- oder Ferienprogramme an unserem Standort oder an ihrem Standort durchzuführen.',
-    questions: 'Bei Fragen rufen Sie uns bitte an oder schreiben Sie uns eine E-Mail. Wir arbeiten',
+    programOffer:
+      'Wir freuen uns, mit Schulen zusammenzuarbeiten, um ihre Tages- oder Ferienprogramme an unserem Standort oder an ihrem Standort durchzuführen.',
+    questions:
+      'Bei Fragen rufen Sie uns bitte an oder schreiben Sie uns eine E-Mail. Wir arbeiten',
     workhours: 'Mo-Fr von 9 bis 18 Uhr',
   },
   profile: {

@@ -31,7 +31,10 @@
         ullamcorper feugiat sit pretium elementum. Risus mauris diam aliquam
         massa luctus rutrum. Maecenas neque auctor sit justo pharetra magna.
       </p>
-      <button class="rounded-[12px] bg-brand-yellow py-3 px-6 w-full sm:w-auto mt-4" @click="isOpenModalBackCall = true">
+      <button
+        class="rounded-[12px] bg-brand-yellow py-3 px-6 w-full sm:w-auto mt-4"
+        @click="isOpenModalBackCall = true"
+      >
         {{ $t('schoolOffer.application') }}
       </button>
     </div>
@@ -112,7 +115,8 @@
       class="mb-6 sm:mb-24 mt-3 sm:mt-6 rounded-[12px] border-[1px] p-4 sm:p-8 grid grid-cols-1 sm:grid-cols-4 gap-3 sm:gap-6"
     >
       <p class="font-semibold text-[20px] col-span-2">
-        {{ $t('schoolOffer.questions') }} <span class="text-brand-red">{{ $t('schoolOffer.workhours') }}</span>
+        {{ $t('schoolOffer.questions') }}
+        <span class="text-brand-red">{{ $t('schoolOffer.workhours') }}</span>
       </p>
       <div>
         <p class="font-medium text-[20px]">{{ $t('common.info.phone') }}</p>
@@ -133,6 +137,8 @@
 <script setup lang="ts">
 import { NBreadcrumb, NBreadcrumbItem } from 'naive-ui'
 import { ref } from 'vue'
+
+import AppModalBackCall from '../components/modals/AppModalBackCall.vue'
 
 // import AboutTutors from '../components/cms/blocks/products/details/AboutTutors.vue'
 // import StudentWorks from '../components/cms/blocks/products/details/StudentWorks.vue'
