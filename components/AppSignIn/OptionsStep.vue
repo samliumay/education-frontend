@@ -22,7 +22,7 @@ const emit = defineEmits(['goToEmailStep'])
 const { t } = useI18n()
 
 // Constants
-const redirectUrl = 'http://localhost:3000'
+const redirectUrl = 'https://clavis.the-o.co'
 
 // Options
 const options = [
