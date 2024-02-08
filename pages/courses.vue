@@ -16,7 +16,7 @@
           <AppSelect
             v-show="!categoriesPending"
             v-model:value="filters.category"
-            placeholder="Направление"
+            :placeholder="$t('common.filters.direction')"
             clearable
             class="max-w-[160px] min-w-[120px]"
             :options="categoriesOptions"
@@ -38,7 +38,7 @@
           <AppSelect
             v-show="!branchesPending"
             v-model:value="filters.branch"
-            placeholder="Филиал"
+            :placeholder="$t('common.filters.branch')"
             clearable
             class="max-w-[160px] min-w-[120px]"
             :options="branchesOptions"

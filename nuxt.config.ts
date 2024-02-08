@@ -30,6 +30,17 @@ export default defineNuxtConfig({
           ]
         : ['@juggle/resize-observer'],
   },
+  runtimeConfig: {
+    public: {
+      sentry: {
+        dsn:
+          process.env.NODE_ENV === 'production'
+            ? process.env.SENTRY_DSN_PRODUCTION
+            : process.env.SENTRY_DSN_DEVELOPMENT,
+        environment: process.env.NODE_ENV,
+      },
+    },
+  },
   vite: {
     optimizeDeps: {
       include:

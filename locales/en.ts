@@ -34,6 +34,14 @@ export const en = {
       language: 'Language',
       age: 'Age',
       season: 'Season',
+      direction: 'Direction',
+      branch: 'Branch',
+      seasons: {
+        winter: 'Winter holidays 2024',
+        spring: 'Spring holidays 2024',
+        summer: 'Summer holidays 2024',
+        autumn: 'Autumn holidays 2024',
+      },
     },
     actions: {
       close: 'Close',

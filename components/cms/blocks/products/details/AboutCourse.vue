@@ -7,7 +7,7 @@
       :key="item?.heading"
       class="mb-10 lg:flex lg:items-center"
     >
-      <ImageBlockByID
+      <!-- <ImageBlockByID
         :id="item.image.value"
         class="h-[200px] rounded-xl overflow-hidden lg:w-1/2"
         image-class="!object-contain"
@@ -15,7 +15,7 @@
           'order-2 lg:order-1': index % 2 === 0,
           'order-1 lg:order-2': index % 2 !== 0,
         }"
-      />
+      /> -->
       <div
         class="lg:w-1/2"
         :class="{
@@ -37,7 +37,6 @@
 import { computed } from 'vue'
 
 import type { PageBlock } from '../../../../../types/cms'
-import ImageBlockByID from '../../misc/ImageBlockByID.vue'
 import RichText from '../../misc/RichText.vue'
 
 const props = defineProps<{

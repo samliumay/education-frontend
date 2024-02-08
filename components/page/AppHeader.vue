@@ -91,14 +91,16 @@
             class="w-[50px] h-[50px]"
           />
         </button>
-        <AppButton v-else @click="isOpenSignIn = true">
+        <AppButton v-else class="min-w-[100px]" @click="isOpenSignIn = true">
           {{ $t('common.actions.signIn') }}
         </AppButton>
       </div>
     </div>
 
     <!-- MOBILE HEADER -->
-    <div class="relative w-full flex items-center justify-between gap-6 lg:hidden">
+    <div
+      class="relative w-full flex items-center justify-between gap-6 lg:hidden"
+    >
       <!-- OPEN MENU BUTTON HEADER -->
       <template v-if="$route.name !== 'menu'">
         <AppButton

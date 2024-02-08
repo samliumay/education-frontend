@@ -26,6 +26,10 @@
           {{ card.description }}
         </p>
 
+        <p class="text-brand-black text-2xl font-medium mb-3">
+          {{ card.price_info }}
+        </p>
+
         <ImageBlock
           :image="card.photo"
           class="w-full aspect-square rounded-lg overflow-hidden"

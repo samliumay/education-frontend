@@ -15,7 +15,7 @@
         >
           <AppSelect
             v-model:value="filters.age_group"
-            placeholder="Возраст"
+            :placeholder="$t('common.filters.age')"
             clearable
             :options="ageOptions"
             class="sm:max-w-[135px] sm:min-w-[100px]"

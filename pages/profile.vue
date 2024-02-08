@@ -143,10 +143,13 @@
       </n-tab-pane>
       <n-tab-pane name="visitors" :tab="$t('common.profileMenu.children')">
         <div class="mt-[48px]" />
-        <div class="bg-white flex flex-col justify-between gap-10 md:flex-row rounded-[12px] p-[36px] mb-[24px]">
+        <div
+          class="bg-white flex flex-col justify-between gap-10 md:flex-row rounded-[12px] p-[36px] mb-[24px]"
+        >
           <p>
             По всем возникшим вопросам обращайтесь по телефону или напиши на
-            почту. Мы работаем <span class="text-brand-red">пн-пт c 9 до 18</span>
+            почту. Мы работаем
+            <span class="text-brand-red">пн-пт c 9 до 18</span>
           </p>
           <div>
             <p class="text-brand-black font-medium">Телефон</p>
@@ -159,11 +162,8 @@
           </div>
         </div>
         <template v-for="visitor in user.visitorsOrders" :key="visitor.id">
-          <form
-            class="rounded-[12px] bg-white p-[36px] mb-[24px]"
-            @submit.prevent="user.updateVisitor(visitor.id, visitor)"
-          >
-            <div class="flex flex-col sm:flex-row justify-between gap-[48px]">
+          <div class="rounded-[12px] bg-white p-[36px] mb-[24px]">
+            <div class="flex flex-col justify-between gap-6">
               <div class="flex items-center gap-[16px]">
                 <div
                   class="bg-brand-dark-gray rounded-[1000px] w-[96px] h-[96px]"
@@ -177,52 +177,11 @@
                 </h2>
               </div>
 
-              <div class="flex flex-col lg:flex-row gap-[12px]">
-                <div class="flex flex-col gap-[8px]">
-                  <p class="font-medium">{{ $t('user.first_name') }}</p>
-                  <AppInput
-                    v-model="visitor.first_name"
-                    required
-                    pattern=".{2,}"
-                    :title="$t('user.nameRule')"
-                    @blur="checkValidity"
-                  />
-                </div>
+              <AppDivider class="my-[36px]" />
 
-                <div class="flex flex-col gap-[8px]">
-                  <p class="font-medium">{{ $t('user.last_name') }}</p>
-                  <AppInput
-                    v-model="visitor.last_name"
-                    pattern=".{2,}"
-                    :title="$t('user.lastNameRule')"
-                    required
-                    @blur="checkValidity"
-                  />
-                </div>
-
-                <div class="flex flex-col gap-[8px]">
-                  <p class="font-medium">{{ $t('user.birthdate') }}</p>
-                  <AppInput
-                    v-model="visitor.birth_date"
-                    type="date"
-                    placeholder="2012-12-21"
-                    required
-                    @blur="checkValidity"
-                  />
-                </div>
-              </div>
+              <ProductsTable class="w-full" :orders="visitor.orders" with-button />
             </div>
-
-            <div class="flex justify-end mt-[24px] w-full sm:w-auto">
-              <AppButton class="w-full" type="submit">
-                {{ $t('common.actions.save') }}
-              </AppButton>
-            </div>
-
-            <AppDivider class="my-[36px]" />
-
-            <ProductsTable :orders="visitor.orders" with-button />
-          </form>
+          </div>
         </template>
       </n-tab-pane>
       <n-tab-pane name="workshops" :tab="$t('common.profileMenu.workshops')">

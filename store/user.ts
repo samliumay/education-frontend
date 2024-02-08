@@ -214,6 +214,20 @@ export const useUserStore = defineStore('user', () => {
     )
   }
 
+  const googleAuth = async (code: string) => {
+    const res = await HTTP.post('/api/v2/users/auth/sso/google/', {
+      code,
+    })
+    return res
+  }
+
+  const facebookAuth = async (code: string) => {
+    const res = await HTTP.post('/api/v2/users/auth/sso/facebook/', {
+      code,
+    })
+    return res
+  }
+
   return {
     user,
     setUser,
@@ -240,5 +254,7 @@ export const useUserStore = defineStore('user', () => {
     getOrders,
     workshopOrders,
     getWorkshopOrders,
+    googleAuth,
+    facebookAuth,
   }
 })
