@@ -9,15 +9,20 @@
     </h1>
 
     <LoaderBlock v-if="pending" class="relative" />
-    <div
-      v-else
-      class="relative mt-4 sm:mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px]"
-    >
-      <TutorCard
-        v-for="instructor in instructors.items"
-        :key="instructor.name"
-        :instructor="instructorConverter(instructor)"
-      />
+    <div v-else class="flex relative w-full h-full">
+      <img class="absolute top-20" src="/icons/tutors-bg.svg" alt="tutors" />
+      <div
+        class="w-full h-full relative mt-4 sm:mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px]"
+      >
+        <template
+          v-for="(instructor, index) in instructors.items"
+          :key="instructor.name"
+        >
+          <div v-if="(index - 2) % 10 === 0" class="hidden lg:block" />
+          <TutorCard :instructor="instructorConverter(instructor)" />
+          <div v-if="(index - 6) % 10 === 0" class="hidden lg:block" />
+        </template>
+      </div>
     </div>
   </div>
 </template>
@@ -35,8 +40,6 @@ const { data: instructors, pending } = useFetch(
 
 const instructorConverter = wrongInstructor => {
   const name = wrongInstructor.name.split(' ')
-
-  console.debug(wrongInstructor)
 
   return {
     first_name: name[0],
