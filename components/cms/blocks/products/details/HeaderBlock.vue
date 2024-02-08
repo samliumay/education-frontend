@@ -12,7 +12,9 @@
       <div class="flex flex-col justify-between gap-10">
         <div>
           <TagsBlock :tags="[blockData.current_status]" />
-          <h1 class="text-3xl sm:text-4xl md:text-5xl font-medium mb-4 mt-4">
+          <h1
+            class="text-3xl sm:text-4xl md:text-5xl font-medium mb-4 mt-4 max-w-[70%]"
+          >
             {{ blockData.name }}
           </h1>
           <CategoryBlock :items="blockData.schedule_slots">
@@ -105,7 +107,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import AppModalCourse from '@/components/AppModalCourse.vue'
+import AppModalCourse from '@/components/modals/AppModalCourse.vue'
 
 import { type Product, type ProductType } from '../../../../../types'
 import { type PageBlock } from '../../../../../types/cms'
