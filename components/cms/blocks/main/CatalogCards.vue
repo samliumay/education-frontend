@@ -42,9 +42,7 @@
 import type { PageBlock } from '../../../../types/cms'
 import ImageBlock from '../misc/ImageBlock.vue'
 
-const props = defineProps<{
+defineProps<{
   blockData: PageBlock[]
 }>()
-
-console.debug(props.blockData)
 </script>

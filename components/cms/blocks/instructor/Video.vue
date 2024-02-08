@@ -18,9 +18,7 @@
   </div>
 </template>
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
   blockData: { video_url: string }
 }>()
-
-console.debug(props.blockData)
 </script>

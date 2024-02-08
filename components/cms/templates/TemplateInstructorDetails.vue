@@ -21,10 +21,10 @@ import { getApiAddress } from '@/utils/getApiAddress'
 import { checkIsEmpty } from '../../../utils/checkIsEmpty'
 import Courses from '../blocks/instructor/Courses.vue'
 import Header from '../blocks/instructor/Header.vue'
+import StudentWorks from '../blocks/instructor/StudentWorks.vue'
 import Video from '../blocks/instructor/Video.vue'
 import ErrorBoundaryBlock from '../blocks/misc/ErrorBoundaryBlock.vue'
 import LoaderBlock from '../blocks/misc/LoaderBlock.vue'
-import StudentWorks from '../blocks/instructor/StudentWorks.vue'
 
 // Init template
 const props = defineProps<{
@@ -82,7 +82,6 @@ const studentWorks = computed(() => {
     cards: [],
   }
 })
-console.debug('studentWorks:', studentWorks.value)
 
 const video = computed(() => {
   if (!pending.value) {

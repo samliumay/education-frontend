@@ -31,8 +31,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import ArrowRight from '../../public/icons/arrow_right.svg'
 import { useI18n } from 'vue-i18n'
+
+import ArrowRight from '../../public/icons/arrow_right.svg'
 
 defineProps<{
   selected: 'Summer' | 'Autumn' | 'Winter' | 'Spring'

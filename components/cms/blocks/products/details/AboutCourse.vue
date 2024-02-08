@@ -37,7 +37,6 @@
 import { computed } from 'vue'
 
 import type { PageBlock } from '../../../../../types/cms'
-import ImageBlockByID from '../../misc/ImageBlockByID.vue'
 import RichText from '../../misc/RichText.vue'
 
 const props = defineProps<{

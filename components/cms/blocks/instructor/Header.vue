@@ -42,7 +42,7 @@ import { NBreadcrumb, NBreadcrumbItem } from 'naive-ui'
 
 import type { Instructor } from '../../../../types/index'
 import AppDivider from '../../../AppDivider.vue'
-import Gallery from '../../../misc/Gallery.vue'
+// import Gallery from '../../../misc/Gallery.vue'
 import ImageBlock from '../misc/ImageBlock.vue'
 import RichText from '../misc/RichText.vue'
 

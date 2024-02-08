@@ -4,9 +4,8 @@ import { useUserStore } from '../store/user'
 export default defineNuxtRouteMiddleware(to => {
   if (process.client) {
     const userStorage = useUserStore()
-    
+
     if (to?.query?.code) {
-      console.debug(to)
       userStorage.googleAuth(to.query.code)
     }
   }

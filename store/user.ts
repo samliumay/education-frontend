@@ -255,5 +255,6 @@ export const useUserStore = defineStore('user', () => {
     workshopOrders,
     getWorkshopOrders,
     googleAuth,
+    facebookAuth,
   }
 })

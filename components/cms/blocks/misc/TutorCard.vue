@@ -36,8 +36,6 @@ const props = defineProps<{
   }
 }>()
 
-console.debug(props.instructor)
-
 // Get data
 const imageId = computed(() => props?.instructor?.profile_pic)
 const { data: image, pending } = await useFetch(

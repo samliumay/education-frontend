@@ -18,7 +18,7 @@
 import { type PageBlock } from '../../../../types/cms'
 import ProductCard from '../products/ProductCard.vue'
 
-const props = defineProps<{
+defineProps<{
   blockData: PageBlock[]
 }>()
 </script>

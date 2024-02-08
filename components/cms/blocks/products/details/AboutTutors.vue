@@ -30,9 +30,7 @@
 import type { PageBlock } from '../../../../../types/cms'
 import TutorCard from '../../misc/TutorCard.vue'
 
-const props = defineProps<{
+defineProps<{
   blockData: PageBlock[]
 }>()
-
-console.debug(props.blockData)
 </script>
