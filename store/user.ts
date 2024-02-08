@@ -215,10 +215,7 @@ export const useUserStore = defineStore('user', () => {
   }
 
   const googleAuth = async (code: string) => {
-    const res = await HTTP.post('/api/v2/users/auth/sso/google/', {
-      code,
-    })
-    return res
+    await userPostRequest({ code }, '/api/v2/users/auth/sso/google/')
   }
 
   const facebookAuth = async (code: string) => {
