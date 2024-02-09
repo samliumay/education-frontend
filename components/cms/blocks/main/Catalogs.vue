@@ -1,5 +1,5 @@
 <template>
-  <div class="m-10" data-cms="main-catalogs">
+  <div class="block-padding" data-cms="main-catalogs">
     <h2 class="text-4xl md:text-6xl mb-8 uppercase font-medium">
       {{ blockData.value.heading }}
     </h2>

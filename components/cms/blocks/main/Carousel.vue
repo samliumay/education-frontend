@@ -1,5 +1,5 @@
 <template>
-  <div class="px-10">
+  <div class="block-padding-x">
     <n-carousel class="rounded-md" show-arrow autoplay data-cms="main-carousel">
       <ImageBlock
         v-for="item in blockData?.value"

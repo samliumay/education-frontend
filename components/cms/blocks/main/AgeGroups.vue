@@ -1,13 +1,15 @@
 <template>
-  <div class="my-10" data-cms="main-age-groups">
-    <h2 class="text-4xl md:text-6xl mb-8 uppercase w-full font-medium mx-10">
+  <div class="block-padding-y" data-cms="main-age-groups">
+    <h2
+      class="text-4xl md:text-6xl mb-8 uppercase w-full font-medium block-padding-x"
+    >
       {{ blockData.value.heading }}
     </h2>
 
     <div
       v-for="(item, idx) in blockData.value.blocks"
       :key="item.description"
-      class="item-hover grid grid-cols-1 md:grid-cols-3 border-t-[1px] last:border-b-[1px] border-black px-10 py-4 gap-4 md:gap-16 hover:bg-brand-light-gray"
+      class="item-hover grid grid-cols-1 md:grid-cols-3 border-t-[1px] last:border-b-[1px] border-black block-padding-x py-4 gap-4 md:gap-16 hover:bg-brand-light-gray"
       :class="{ 'relative -top-[1px]': idx !== 0 }"
     >
       <div class="flex flex-col">

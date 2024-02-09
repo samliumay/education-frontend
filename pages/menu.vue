@@ -1,6 +1,6 @@
 <template>
   <main
-    class="relative flex flex-1 flex-col gap-10 px-10 py-6 bg-brand-light-gray lg:justify-between lg:items-start lg:flex-row h-full"
+    class="block-padding relative flex flex-1 flex-col gap-10 bg-brand-light-gray lg:justify-between lg:items-start lg:flex-row h-full"
   >
     <div
       class="absolute left-1/2 transform -translate-x-1/2 top-0 mx-0 w-screen h-full bg-brand-light-gray"

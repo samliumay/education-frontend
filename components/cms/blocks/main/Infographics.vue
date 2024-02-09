@@ -1,6 +1,6 @@
 <template>
   <div
-    class="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-4 mb-10 mx-10"
+    class="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-4 mb-10 block-padding-x"
     data-cms="main-infographics"
   >
     <div

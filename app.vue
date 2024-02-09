@@ -3,7 +3,7 @@
   <n-config-provider :theme-overrides="themeOverrides">
     <div class="flex justify-center items-start overflow-x-hidden">
       <div
-        class="min-h-[100vh] max-w-[1440px] mx-auto bg-white flex flex-col overflow-x-visible relative"
+        class="min-h-[100vh] max-w-[1440px] w-full mx-auto bg-white flex flex-col overflow-x-visible relative"
       >
         <AppHeader />
         <NuxtLayout>
@@ -84,5 +84,30 @@ body {
   font-family: Aeroport, sans-serif;
   background: white;
   font-size: 16px;
+}
+
+/* Global classes */
+.block-padding-x {
+  @apply px-4 md:px-10;
+}
+
+.block-padding-y {
+  @apply py-4 md:py-10;
+}
+
+.block-padding {
+  @apply block-padding-x block-padding-y;
+}
+
+.block-margin-x {
+  @apply mx-4 md:mx-10;
+}
+
+.block-margin-y {
+  @apply my-4 md:my-10;
+}
+
+.block-margin {
+  @apply block-margin-x block-margin-y;
 }
 </style>

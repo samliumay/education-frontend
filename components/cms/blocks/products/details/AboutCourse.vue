@@ -1,15 +1,19 @@
 <!-- eslint-disable vue/no-v-html -->
 
 <template>
-  <div class="px-10 about-course" data-cms="products-details-about-course">
+  <div
+    v-if="blockData?.[1]?.value?.length"
+    class="px-10 about-course"
+    data-cms="products-details-about-course"
+  >
     <h2
       class="text-3xl sm:text-4xl md:text-5xl uppercase font-medium mb-12 relative"
     >
-      {{ props?.blockData?.[0]?.value }}
+      {{ blockData?.[0]?.value }}
     </h2>
 
     <div
-      v-for="(item, index) in props?.blockData?.[1]?.value"
+      v-for="(item, index) in blockData?.[1]?.value"
       :key="item?.title"
       class="mb-10 lg:flex lg:items-center"
     >
@@ -40,15 +44,11 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed } from 'vue'
-
 import type { PageBlock } from '../../../../../types/cms'
 import ImageBlockByID from '../../misc/ImageBlockByID.vue'
 import RichText from '../../misc/RichText.vue'
 
-const props = defineProps<{
+defineProps<{
   blockData: PageBlock
 }>()
-
-console.debug(props)
 </script>

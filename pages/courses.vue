@@ -1,7 +1,7 @@
 <template>
   <TemplateProduct v-bind="templateProps">
     <template #filters="{ title }">
-      <div class="flex flex-col lg:flex-row lg:items-center mx-10 gap-5">
+      <div class="flex flex-col lg:flex-row lg:items-center block-padding-x gap-5">
         <div class="flex items-center gap-[18px]">
           <h1
             class="text-[38px] md:text-[32px] sm:text-[48px] font-medium uppercase"

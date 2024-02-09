@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col m-10" data-cms="main-catalog-cards">
+  <div class="flex flex-col block-padding" data-cms="main-catalog-cards">
     <h2
       class="text-4xl md:text-6xl mb-8 uppercase w-full sm:w-8/12 font-medium"
     >

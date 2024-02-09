@@ -8,6 +8,8 @@
         class="h-[260px] w-full"
         :image-title="blockData.title_image"
         :image-background="blockData.background_image"
+        :category="String(blockData?.product_type).toLocaleLowerCase()"
+        :age-group="String(blockData?.age_group).toLocaleLowerCase()"
       />
 
       <div class="flex flex-col gap-1">
@@ -86,6 +88,8 @@ import Cover from '../misc/Cover.vue'
 const props = defineProps<{
   blockData: PageBlock
 }>()
+
+console.debug('props', props.blockData)
 
 const goToDetails = () => {
   navigateTo(`/product/${props.blockData?.id}`)

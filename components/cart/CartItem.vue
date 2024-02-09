@@ -20,6 +20,8 @@
         class="w-4/12"
         :image-title="product?.title_image"
         :image-background="product?.background_image"
+        :category="String(product?.product_type).toLocaleLowerCase()"
+        :age-group="String(product?.age_group).toLocaleLowerCase()"
       />
 
       <div class="flex flex-col gap-[16px] w-6/12">
