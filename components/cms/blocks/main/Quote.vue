@@ -28,7 +28,7 @@
       <blockquote
         class="flex flex-col items-center lg:items-start gap-8 relative top-12"
       >
-        <img src="icons/quotes.svg" class="w-[64px] h-[64px]" alt="quotes" />
+        <img src="/icons/quotes.svg" class="w-[64px] h-[64px]" alt="quotes" />
         <p class="font-medium text-3xl text-center lg:text-left">
           {{ blockData.value.quote_text }}
         </p>
