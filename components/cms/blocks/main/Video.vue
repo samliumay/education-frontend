@@ -1,9 +1,11 @@
 <template>
   <div class="mx-10 lg:mx-[140px] flex flex-col gap-10" data-cms="main-video">
     <div class="flex flex-col lg:flex-row justify-between gap-2 items-stretch">
-      <h2 class="text-5xl font-medium text-brand-red sm:w-5/12">{{ blockData.value.title }}</h2>
+      <h2 class="text-5xl font-medium text-brand-red sm:w-5/12">
+        {{ blockData.value.title }}
+      </h2>
       <div class="w-[1px] bg-brand-gray invisible sm:visible" />
-      <p class="text-black lg:self-center lg:w-5/12">
+      <p class="text-brand-black lg:self-center lg:w-5/12">
         {{ blockData.value.description }}
       </p>
     </div>

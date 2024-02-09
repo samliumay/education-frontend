@@ -2,7 +2,7 @@
   <n-select
     :value="modelValue"
     :options="options"
-    class="min-w-[65px] !border-0 select"
+    class="min-w-[65px] !border-0 select text-lg"
     :class="{
       solid: variant === 'solid',
     }"
@@ -50,6 +50,7 @@ const emit = defineEmits(['update:modelValue'])
 
 .select .n-base-selection-input__content {
   font-weight: 500;
+  font-size: 18px;
 }
 
 .select .n-base-selection-label {

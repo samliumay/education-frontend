@@ -2,7 +2,7 @@
   <main
     class="relative flex flex-1 flex-col gap-10 px-10 py-6 bg-brand-light-gray lg:justify-between lg:items-start lg:flex-row h-full"
   >
-  <div
+    <div
       class="absolute left-1/2 transform -translate-x-1/2 top-0 mx-0 w-screen h-full bg-brand-light-gray"
       :class="{ 'bg-white': $route.name === 'cart' }"
     />
@@ -14,7 +14,8 @@
         :to="path.route"
         class="uppercase text-2xl text-brand-red font-medium sm:text-5xl"
         :class="{
-          '!text-black': $router?.options?.history?.state?.back === path.route,
+          '!text-brand-black':
+            $router?.options?.history?.state?.back === path.route,
         }"
       >
         {{ path.label }}
@@ -22,23 +23,25 @@
     </nav>
 
     <div class="relative flex flex-col gap-8 h-fit sm:self-end">
-      <div class="flex flex-col gap-8 flex-wrap lg:gap-16 md:flex-row sm:self-end">
+      <div
+        class="flex flex-col gap-8 flex-wrap lg:gap-16 md:flex-row sm:self-end"
+      >
         <div class="flex flex-col justify-between gap-4">
           <div class="flex flex-col gap-1">
             <p class="font-bold">{{ $t('common.info.phone') }}</p>
             <div class="flex flex-col gap-1">
-              <a
-                href="tel:+493071537477"
-                class="text-brand-gray font-medium"
-              >+49 (0) 30 71537477</a>
-              <a
-                href="tel:+493071537477"
-                class="text-brand-gray font-medium"
-              >+49 (0) 30 71537477</a>
+              <a href="tel:+493071537477" class="text-brand-gray font-medium"
+                >+49 (0) 30 71537477</a
+              >
+              <a href="tel:+493071537477" class="text-brand-gray font-medium"
+                >+49 (0) 30 71537477</a
+              >
             </div>
           </div>
 
-          <a class="font-bold text-brand-red underline underline-offset-8">{{ $t('common.info.contacts') }} →</a>
+          <a class="font-bold text-brand-red underline underline-offset-8"
+            >{{ $t('common.info.contacts') }} →</a
+          >
         </div>
 
         <div class="flex flex-col justify-between gap-4">
@@ -49,7 +52,9 @@
             </p>
           </div>
 
-          <a class="font-bold text-brand-red underline underline-offset-8">{{ $t('common.info.onMap') }} →</a>
+          <a class="font-bold text-brand-red underline underline-offset-8"
+            >{{ $t('common.info.onMap') }} →</a
+          >
         </div>
 
         <div class="flex flex-col gap-1">
@@ -57,7 +62,8 @@
           <a
             class="text-brand-gray font-medium"
             href="mailto:info@clavis-schule.de"
-            >info@clavis-schule.de</a>
+            >info@clavis-schule.de</a
+          >
         </div>
       </div>
 
