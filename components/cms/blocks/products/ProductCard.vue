@@ -30,7 +30,7 @@
           </template>
         </div>
 
-        <h2 class="text-[24px] font-medium uppercase text-brand-red">
+        <h2 class="text-2xl font-medium uppercase text-brand-red">
           {{ blockData.name }}
         </h2>
 
@@ -45,7 +45,7 @@
           :key="item.id"
           class="flex gap-4 items-center"
         >
-          <p class="whitespace-nowrap">{{ item.start }}</p>
+          <p class="whitespace-nowrap font-medium">{{ item.start }}</p>
 
           <div class="flex-grow flex-shrink-0 flex items-center relative">
             <div class="h-[1px] w-full bg-brand-gray mr-[4px]" />
@@ -65,7 +65,7 @@
             </div>
           </div>
 
-          <p class="whitespace-nowrap">{{ item.end }}</p>
+          <p class="whitespace-nowrap font-medium">{{ item.end }}</p>
         </div>
       </div>
 

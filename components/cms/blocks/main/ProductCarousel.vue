@@ -2,9 +2,9 @@
 
 <template>
   <div class="m-10 product" data-cms="main-product-carousel">
-    <h2 class="text-4xl lg:text-6xl mb-8 uppercase font-medium">
+    <AppHeading>
       {{ blockData.value[0].title }}
-    </h2>
+    </AppHeading>
     <n-carousel
       v-if="blockData.value[0].cards.length > 0"
       :space-between="20"
@@ -71,6 +71,8 @@
 <script setup lang="ts">
 import { NCarousel, NCarouselItem } from 'naive-ui'
 import { onMounted, ref } from 'vue'
+
+import AppHeading from '@/components/AppHeading.vue'
 
 import type { PageBlock } from '../../../../types/cms'
 import AppNotFound from '../../../AppNotFound.vue'

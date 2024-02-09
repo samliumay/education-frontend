@@ -3,9 +3,9 @@
     class="block-padding flex flex-col items-center"
     data-cms="main-social-media"
   >
-    <h2 class="text-4xl lg:text-6xl mb-8 uppercase font-medium">
+    <AppHeading>
       {{ blockData.value.heading }}
-    </h2>
+    </AppHeading>
 
     <div class="flex flex-col gap-2">
       <div class="flex flex-col lg:flex-row gap-5 lg:h-[260px]">
@@ -173,6 +173,8 @@
   </div>
 </template>
 <script setup lang="ts">
+import AppHeading from '@/components/AppHeading.vue'
+
 import type { PageBlock } from '../../../../types/cms'
 import ImageBlock from '../misc/ImageBlock.vue'
 

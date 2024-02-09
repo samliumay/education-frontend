@@ -1,5 +1,5 @@
 <template>
-  <div class="block-padding-x">
+  <div class="block-padding-x mb-4">
     <n-carousel class="rounded-md" show-arrow autoplay data-cms="main-carousel">
       <ImageBlock
         v-for="item in blockData?.value"
@@ -12,11 +12,11 @@
         <div
           class="w-full h-full gradient absolute top-0 left-0 z-10 flex flex-col gap-2 justify-end items-center pb-14"
         >
-          <p class="text-white text-center">
+          <p class="text-white text-center text-base xl:text-lg font-medium">
             {{ currentIndex + 1 }} / {{ total }}
           </p>
           <h1
-            class="text-white text-4xl font-bold uppercase w-[680px] max-w-full mx-[31px] text-center px-6"
+            class="text-white text-4xl xl:text-5xl font-bold uppercase w-[680px] max-w-full mx-[31px] text-center px-6"
           >
             {{ blockData?.value[currentIndex]?.text }}
           </h1>

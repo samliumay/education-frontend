@@ -1,8 +1,8 @@
 <template>
   <div class="block-padding" data-cms="main-catalogs">
-    <h2 class="text-4xl md:text-6xl mb-8 uppercase font-medium">
+    <AppHeading>
       {{ blockData.value.heading }}
-    </h2>
+    </AppHeading>
 
     <div
       class="mb-[64px] rounded-[12px] bg-brand-light-gray grid grid-cols-1 lg:grid-cols-3 gap-[24px] p-[8px]"
@@ -10,7 +10,7 @@
       <button
         v-for="(option, index) in blockData?.value?.catalog_list"
         :key="option.name"
-        class="font-medium rounded-[12px] py-2"
+        class="font-medium rounded-[12px] py-2 text-base xl:text-lg"
         :class="{ 'bg-brand-yellow': index === currentCatalogIndex }"
         @click="currentCatalogIndex = index"
       >
@@ -36,7 +36,7 @@
       </div>
       <div class="mt-[64px] text-center">
         <button
-          class="px-[64px] py-[12px] font-medium bg-brand-yellow rounded-[12px]"
+          class="px-[64px] py-[12px] font-medium text-base xl:text-lg bg-brand-yellow rounded-[12px]"
           @click="
             navigateTo(
               blockData?.value?.catalog_list?.[currentCatalogIndex]
@@ -54,6 +54,8 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
+
+import AppHeading from '@/components/AppHeading.vue'
 
 import type { PageBlock } from '../../../../types/cms'
 import AppNotFound from '../../../AppNotFound.vue'

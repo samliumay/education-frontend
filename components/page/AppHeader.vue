@@ -31,7 +31,7 @@
             @click="navigateTo('/menu')"
           >
             <img src="/icons/star.svg" alt="Stars" />
-            <p class="text-lg">{{ $t('common.menu') }}</p>
+            <p class="text-base xl:text-lg">{{ $t('common.menu') }}</p>
           </AppButton>
 
           <nav class="flex gap-4">
@@ -39,7 +39,7 @@
               v-for="route in routes"
               :key="route.value"
               :to="route.value"
-              class="cursor-pointer hover:text-brand-red text-lg"
+              class="cursor-pointer hover:text-brand-red text-base xl:text-lg"
               :class="{ 'text-brand-red': $route.href === route.value }"
             >
               {{ route.label }}
@@ -65,10 +65,13 @@
           v-model:value="currentLanguage"
           :options="languageOptions"
           variant="transparent"
-          class="text-lg w-[50px]"
+          class="w-[50px]"
         />
 
-        <NuxtLink to="/cart" class="flex items-center cursor-pointer text-lg">
+        <NuxtLink
+          to="/cart"
+          class="flex items-center cursor-pointer text-base xl:text-lg"
+        >
           <span class="hover:text-brand-red"> {{ $t('common.cart') }} </span>
           <span
             class="border-black rounded-full border-[1px] p-[12px] ml-[6px] relative"

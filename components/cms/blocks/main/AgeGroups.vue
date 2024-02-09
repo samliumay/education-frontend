@@ -1,10 +1,8 @@
 <template>
   <div class="block-padding-y" data-cms="main-age-groups">
-    <h2
-      class="text-4xl md:text-6xl mb-8 uppercase w-full font-medium block-padding-x"
-    >
+    <AppHeading class="block-padding-x">
       {{ blockData.value.heading }}
-    </h2>
+    </AppHeading>
 
     <div
       v-for="(item, idx) in blockData.value.blocks"
@@ -19,7 +17,7 @@
           {{ item.title }}
         </p>
 
-        <p class="text-gray-400">
+        <p class="brand-gray font-medium">
           {{ item.description }}
         </p>
       </div>
@@ -43,12 +41,13 @@
       <div
         class="flex md:justify-center items-center opacity-100 md:opacity-40 image-hover"
       >
-        <ImageBlock :image="item.icon" class="h-[160px]" />
+        <ImageBlock :image="item.icon" class="h-[130px]" />
       </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
+import AppHeading from '@/components/AppHeading.vue'
 import ImageBlock from '@/components/cms/blocks/misc/ImageBlock.vue'
 import type { PageBlock } from '@/types/cms'
 

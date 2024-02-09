@@ -1,10 +1,8 @@
 <template>
   <div class="flex flex-col block-padding" data-cms="main-catalog-cards">
-    <h2
-      class="text-4xl md:text-6xl mb-8 uppercase w-full sm:w-8/12 font-medium"
-    >
+    <AppHeading>
       {{ blockData.value.heading }}
-    </h2>
+    </AppHeading>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
       <NuxtLink
@@ -39,6 +37,8 @@
   </div>
 </template>
 <script setup lang="ts">
+import AppHeading from '@/components/AppHeading.vue'
+
 import type { PageBlock } from '../../../../types/cms'
 import ImageBlock from '../misc/ImageBlock.vue'
 

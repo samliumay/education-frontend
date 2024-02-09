@@ -92,7 +92,7 @@ body {
 }
 
 .block-padding-y {
-  @apply py-4 md:py-10;
+  @apply py-4 md:py-14;
 }
 
 .block-padding {
@@ -100,7 +100,7 @@ body {
 }
 
 .block-margin-x {
-  @apply mx-4 md:mx-10;
+  @apply mx-4 md:mx-14;
 }
 
 .block-margin-y {

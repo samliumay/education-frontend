@@ -26,15 +26,15 @@
       "
     >
       <blockquote
-        class="flex flex-col items-center lg:items-start gap-10 relative top-12"
+        class="flex flex-col items-center lg:items-start gap-8 relative top-12"
       >
-        <p class="font-medium text-9xl leading-[0]">“</p>
+        <img src="icons/quotes.svg" class="w-[64px] h-[64px]" alt="quotes" />
         <p class="font-medium text-3xl text-center lg:text-left">
           {{ blockData.value.quote_text }}
         </p>
       </blockquote>
 
-      <p class="font-medium text-xl mt-4 mb-2">
+      <p class="font-medium text-xl mt-8 mb-2">
         {{ blockData.value.author.name }} •
         {{ blockData.value.author.position }}
       </p>

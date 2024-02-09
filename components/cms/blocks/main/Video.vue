@@ -1,14 +1,14 @@
 <template>
   <div
-    class="block-padding-x lg:mx-[140px] flex flex-col gap-10"
+    class="block-padding lg:mx-[140px] flex flex-col gap-10"
     data-cms="main-video"
   >
     <div class="flex flex-col lg:flex-row justify-between gap-2 items-stretch">
-      <h2 class="text-5xl font-medium text-brand-red sm:w-5/12">
+      <h2 class="text-4xl font-medium text-brand-red sm:w-5/12">
         {{ blockData.value.title }}
       </h2>
       <div class="w-[1px] bg-brand-gray invisible sm:visible" />
-      <p class="text-brand-black lg:self-center lg:w-5/12">
+      <p class="font-medium text-base xl:text-lg text-brand-black lg:self-center lg:w-5/12">
         {{ blockData.value.description }}
       </p>
     </div>
@@ -37,6 +37,8 @@
   </div>
 </template>
 <script setup lang="ts">
+import AppHeading from '@/components/AppHeading.vue'
+
 import type { PageBlock } from '../../../../types/cms'
 
 defineProps<{
