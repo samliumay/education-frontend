@@ -88,6 +88,5 @@ const linksGroup = computed(() => [
 .n-modal-body-wrapper {
   max-width: 1440px !important;
   margin: auto !important;
-  padding-right: 50px;
 }
 </style>
