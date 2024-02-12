@@ -89,8 +89,6 @@ const props = defineProps<{
   blockData: PageBlock
 }>()
 
-console.debug('props', props.blockData)
-
 const goToDetails = () => {
   navigateTo(`/product/${props.blockData?.id}`)
 }

@@ -37,8 +37,6 @@
   </div>
 </template>
 <script setup lang="ts">
-import AppHeading from '@/components/AppHeading.vue'
-
 import type { PageBlock } from '../../../../types/cms'
 
 defineProps<{

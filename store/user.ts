@@ -212,7 +212,6 @@ export const useUserStore = defineStore('user', () => {
     workshopOrders.value = await HTTP.get(
       `/api/v2/orders/items/history/?product_type=Workshop`,
     )
-    console.debug(workshopOrders.value)
   }
 
   const googleAuth = async (code: string) => {

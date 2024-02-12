@@ -60,8 +60,9 @@ import AppDivider from '@/components/AppDivider.vue'
 
 defineProps<{
   isOpen: boolean
+  // eslint-disable-next-line vue/no-unused-properties
   order: unknown
 }>()
 
-const emit = defineEmits(['close'])
+defineEmits(['close'])
 </script>

@@ -95,8 +95,8 @@ const isOpenPaymentModal = ref(false)
 const order = ref({})
 
 // Actions
-const openPaymentModal = (order) => {
-  order.value = order
+const openPaymentModal = item => {
+  order.value = item
   isOpenPaymentModal.value = true
 }
 </script>

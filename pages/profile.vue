@@ -215,7 +215,6 @@
                   :key="workshop.id"
                   class="grid grid-cols-4 gap-[12px] bg-brand-light-gray p-[16px]"
                 >
-                  {{ console.debug(workshop) }}
                   <p>{{ workshop.product_page?.name }}</p>
                   <p>
                     {{
