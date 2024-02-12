@@ -1,171 +1,151 @@
 <!-- eslint-disable vuejs-accessibility/alt-text -->
 <template>
-  <div class="bg-brand-green px-3 sm:px-10 relative overflow-hidden text-white pb-6 sm:pb-[96px]">
-    <n-breadcrumb class="mt-6 mb-10">
-      <n-breadcrumb-item сlass="text-brand-gray">
-        <NuxtLink to="/">Главная</NuxtLink>
-      </n-breadcrumb-item>
-      <n-breadcrumb-item сlass="text-brand-gray"> О нас </n-breadcrumb-item>
-    </n-breadcrumb>
-
-    <h1 class="text-[48px] sm:text-[72px] leading-tight">
-      Clavis Berlin - Kunstschule und Wissenschafts für Kinder und Jugendliche
-    </h1>
-
-    <div class="grid grid-cols-2">
-      <div />
-      <p>
-        Clavis ist ein neues Lernzentrum für Schüler*innen verschiedener
-        Altersgruppen, dass ein breites Spektrum an Kursen anbietet, wie z. B.
-        Kunst und visuelles Theater, Naturwissenschaften, Mathematik und
-        Digitales Zeichnen
-      </p>
-    </div>
-
+  <div
+    class="bg-brand-green px-3 md:px-10 relative overflow-hidden text-white pb-6 md:pb-[96px] overflow-hidden"
+  >
     <img
       src="/icons/aboutus/header_arcs.svg"
       alt="Arcs"
-      class="absolute bottom-0 left-1/2 -translate-x-full translate-y-1/4"
+      class="absolute bottom-0 left-1/2 -translate-x-1/2 md:-translate-x-full translate-y-1/4"
     />
+
+    <div class="relative mt-6 mb-10">
+      <n-breadcrumb>
+        <n-breadcrumb-item сlass="text-brand-gray">
+          <NuxtLink to="/">{{ $t('common.main') }} / </NuxtLink>
+        </n-breadcrumb-item>
+        <n-breadcrumb-item сlass="text-brand-gray">
+          {{ $t('common.aboutUs') }}
+        </n-breadcrumb-item>
+      </n-breadcrumb>
+    </div>
+
+    <!-- Header -->
+    <h1 class="relative text-[48px] md:text-[72px] leading-tight">
+      {{ $t('aboutUs.title') }}
+    </h1>
+
+    <div class="relative w-full mt-20 mb-14 md:mt-0 md:mb-0 md:pl-[50%]">
+      <p>
+        {{ $t('aboutUs.subtitle') }}
+      </p>
+    </div>
   </div>
 
+  <!-- About us -->
   <h2
-    class="flex items-center justify-centr text-brand-red font-medium text-[28px] sm:text-[36px] mt-6 sm:mt-36 px-3 sm:px-10"
+    class="flex items-center justify-center text-center text-brand-red font-medium text-[28px] md:text-[36px] mt-8 md:mt-36 px-3 md:px-10"
   >
-    Unser Ziel ist es, die außerschulischen Fähigkeiten und Interessen unserer
-    Schüler*innen zu fördern, indem wir ihnen die Möglichkeit geben, im Rahmen
-    einzigartiger Lehrpläne und auf Basis modernster pädagogischer Methodiken
-    frei und aus eigenem Antrieb zu lernen
+    {{ $t('aboutUs.target') }}
   </h2>
 
-  <div class="mt-6 sm:mt-24">
-    <h2 class="font-semibold text-[36px] sm:text-[56px] mb-[48px]">
-      Unsere Angebote
+  <!-- Offers -->
+  <div class="px-3 md:px-10 mt-6 md:mt-24 mb-10">
+    <h2 class="font-semibold text-[36px] md:text-[56px] mb-[48px]">
+      {{ $t('aboutUs.offers.title') }}
     </h2>
 
-    <div class="grid grid-cols-2">
-      <div class="flex justify-center items-center">
-        <img src="/icons/aboutus/pen.svg" alt="Pen" />
-      </div>
-      <div>
-        <h3 class="text-brand-red text-[28px] sm:text-[36px] mb-6">
-          Bildende Kunst
-        </h3>
-        <h4 class="text-gray-500 font-medium mb-1">
-          Entfaltung künstlerischer Fähigkeiten
-        </h4>
-        <p class="text-gray-400">
-          In unseren Kursen zur bildenden Kunst liegt der Fokus darauf, die
-          Kreativität, Vorstellungskraft und Selbstständigkeit der Kinder zu
-          fördern. Wir vermitteln ihnen nicht nur künstlerische Techniken und
-          den Umgang mit verschiedenen Materialien, sondern unterstützen sie
-          auch dabei, Ausdauer zu entwickeln und Projekte erfolgreich
-          abzuschließen.
-        </p>
-        <h4 class="text-gray-500 font-medium mb-1">
-          Mehr als nur Kunstunterricht
-        </h4>
-        <p class="text-gray-400">
-          Unser Konzept geht über den traditionellen Kunstunterricht hinaus. Wir
-          organisieren künstlerische Veranstaltungen und Ausflüge, die den
-          Kindern praktische Einblicke in die Kunstwelt bieten. Zusätzlich
-          stellen wir die im Unterricht entstandenen Werke in Ausstellungen vor
-          und bieten Kreativ-Workshops an, um das Lernerlebnis zu bereichern.
-        </p>
+    <div class="flex flex-col gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="flex justify-center items-center">
+          <img src="/icons/aboutus/pen.svg" alt="Pen" />
+        </div>
+        <div>
+          <h3 class="text-brand-red text-[28px] sm:text-[36px] mb-6">
+            {{ $t('aboutUs.offers.first.title') }}
+          </h3>
+          <h4 class="text-gray-500 font-medium mb-1">
+            {{ $t('aboutUs.offers.first.subtitle1') }}
+          </h4>
+          <p class="text-gray-400">
+            {{ $t('aboutUs.offers.first.text1') }}
+          </p>
+          <h4 class="text-gray-500 font-medium mb-1">
+            {{ $t('aboutUs.offers.first.subtitle2') }}
+          </h4>
+          <p class="text-gray-400">
+            {{ $t('aboutUs.offers.first.text2') }}
+          </p>
+        </div>
       </div>
 
-      <div>
-        <h3 class="text-brand-red text-[28px] sm:text-[36px] mb-6">
-          Theater: Kreativität auf der Bühne
-        </h3>
-        <h4 class="text-gray-500 font-medium mb-1">
-          Kinder als Hauptautoren ihrer Stücke
-        </h4>
-        <p class="text-gray-400">
-          In unseren Theaterkursen sind die Kinder die treibende Kraft hinter
-          dem kreativen Prozess. Aus ersten Ideen und Impulsen entwickeln sie
-          zusammenhängende Geschichten, die in Bühnenkonzepte umgesetzt werden.
-          Dies fördert ihre individuelle Kreativität und hilft ihnen, neue
-          Perspektiven einzunehmen und sich selbst sowie ihre Umwelt besser zu
-          verstehen.
-        </p>
-        <h4 class="text-gray-500 font-medium mb-1">
-          Mehrsprachiges Theatererlebnis
-        </h4>
-        <p class="text-gray-400">
-          Unsere Theaterkurse sind auch ein Ort der sprachlichen Vielfalt.
-          Verschiedene Sprachen werden genutzt, um die Kinder zum spontanen und
-          kreativen Ausdruck zu ermutigen und das Verständnis für andere zu
-          fördern.
-        </p>
-      </div>
-      <div class="flex justify-center items-center">
-        <img src="/icons/aboutus/stars.svg" alt="Stars" />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="flex justify-center items-center md:order-2">
+          <img src="/icons/aboutus/stars.svg" alt="Stars" />
+        </div>
+        <div>
+          <h3 class="text-brand-red text-[28px] sm:text-[36px] mb-6">
+            {{ $t('aboutUs.offers.second.title') }}
+          </h3>
+          <h4 class="text-gray-500 font-medium mb-1">
+            {{ $t('aboutUs.offers.second.subtitle1') }}
+          </h4>
+          <p class="text-gray-400">
+            {{ $t('aboutUs.offers.second.text1') }}
+          </p>
+          <h4 class="text-gray-500 font-medium mb-1">
+            {{ $t('aboutUs.offers.second.subtitle2') }}
+          </h4>
+          <p class="text-gray-400">
+            {{ $t('aboutUs.offers.second.text2') }}
+          </p>
+        </div>
       </div>
 
-      <div class="flex justify-center items-center">
-        <img src="/icons/aboutus/book.svg" alt="Book" />
-      </div>
-      <div>
-        <h3 class="text-brand-red text-[28px] sm:text-[36px] mb-6">
-          Sprachen: Spielerischer Spracherwerb
-        </h3>
-        <h4 class="text-gray-500 font-medium mb-1">
-          Aktives und kommunikatives Lernen
-        </h4>
-        <p class="text-gray-400">
-          Unser Sprachkursprogramm konzentriert sich auf spielerische und
-          kommunikative Lehrmethoden. Wir nutzen Theaterspiele,
-          Improvisationsübungen und Dialoge, um den Kindern zu helfen, Stress zu
-          überwinden und Freude an der neuen Sprache und der Kommunikation zu
-          finden.
-        </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="flex justify-center items-center">
+          <img src="/icons/aboutus/book.svg" alt="Book" />
+        </div>
+        <div>
+          <h3 class="text-brand-red text-[28px] sm:text-[36px] mb-6">
+            {{ $t('aboutUs.offers.third.title') }}
+          </h3>
+          <h4 class="text-gray-500 font-medium mb-1">
+            {{ $t('aboutUs.offers.third.subtitle1') }}
+          </h4>
+          <p class="text-gray-400">
+            {{ $t('aboutUs.offers.third.text1') }}
+          </p>
+        </div>
       </div>
 
-      <div>
-        <h3 class="text-brand-red text-[28px] sm:text-[36px] mb-6">
-          Mathematik & Naturwissenschaften: Denken fördern
-        </h3>
-        <h4 class="text-gray-500 font-medium mb-1">
-          Mathematik als Schlüssel zur intellektuellen Entwicklung
-        </h4>
-        <p class="text-gray-400">
-          In unseren Mathematikkursen legen wir Wert darauf, den Schülern
-          beizubringen, wie sie Probleme systematisch angehen und lösen können.
-          Wir fördern die Entwicklung organisierter Denkweisen und die
-          Fähigkeit, Probleme bewusst zu behandeln.
-        </p>
-        <h4 class="text-gray-500 font-medium mb-1">
-          Ein ganzheitlicher Ansatz
-        </h4>
-        <p class="text-gray-400">
-          Unsere Kurse in Mathematik und Naturwissenschaften umfassen Fleiß,
-          Beobachtung der Phänomene unserer Welt und das Konstruieren. Wir
-          unterstützen die Kinder darin, Fragen zu stellen und nach Lösungen zu
-          suchen, was eine grundlegende Fähigkeit für ihr weiteres Leben
-          darstellt.
-        </p>
-      </div>
-      <div class="flex justify-center items-center">
-        <img src="/icons/aboutus/planet.svg" alt="Planet" />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="flex justify-center items-center md:order-2">
+          <img src="/icons/aboutus/planet.svg" alt="Planet" />
+        </div>
+        <div>
+          <h3 class="text-brand-red text-[28px] sm:text-[36px] mb-6">
+            {{ $t('aboutUs.offers.fourth.title') }}
+          </h3>
+          <h4 class="text-gray-500 font-medium mb-1">
+            {{ $t('aboutUs.offers.fourth.subtitle1') }}
+          </h4>
+          <p class="text-gray-400">
+            {{ $t('aboutUs.offers.fourth.text1') }}
+          </p>
+          <h4 class="text-gray-500 font-medium mb-1">
+            {{ $t('aboutUs.offers.fourth.subtitle2') }}
+          </h4>
+          <p class="text-gray-400">
+            {{ $t('aboutUs.offers.fourth.text2') }}
+          </p>
+        </div>
       </div>
     </div>
   </div>
 
-  <Ticker :item="tickerItems" class="mt-24 mb-12" />
-
-  <AboutTutors :block-data="instructors" />
-
-  <div class="grid grid-cols-2 mt-8">
+  <!-- Principles -->
+  <div
+    class="grid grid-cols-1 gap-6 md:gap-0 md:grid-cols-2 mt-8 mb-10 mx-3 md:mx-10"
+  >
     <div>
-      <h2 class="font-semibold text-[36px] sm:text-[56px] mb-[48px] ml-10">
-        Werte
-        <br />
-        & Grundsätze
+      <h2 class="font-semibold text-[36px] md:text-[56px] mb-[48px] md:ml-10">
+        {{ $t('aboutUs.principles.title') }}
       </h2>
       <img class="block ml-2" src="/icons/aboutus/dots.svg" />
     </div>
-    <div class="grid grid-cols-2 gap-6 pr-2">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:pr-2">
       <div class="rounded-[12px] bg-brand-light-gray p-4">
         <div class="flex items-center justify-center aspect-square">
           <img src="/icons/aboutus/heart.svg" alt="Heart" />
@@ -174,7 +154,7 @@
         <AppDivider class="my-4 px-4" />
 
         <p class="font-semibold">
-          Wir überwinden Sprachbarrieren durch gemeinsame Interessen
+          {{ $t('aboutUs.principles.item1') }}
         </p>
       </div>
       <div class="rounded-[12px] bg-brand-light-gray p-4">
@@ -185,13 +165,12 @@
         <AppDivider class="my-4 px-4" />
 
         <p class="font-semibold">
-          Wir wollen ein optimales Lernumfeld mit bestmöglichen Lernbedingungen
-          schaffen
+          {{ $t('aboutUs.principles.item2') }}
         </p>
       </div>
     </div>
 
-    <div class="grid grid-cols-2 gap-6 pl-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:pl-10">
       <div class="rounded-[12px] bg-brand-light-gray p-4">
         <div class="flex items-center justify-center aspect-square">
           <img src="/icons/aboutus/books.svg" alt="Books" />
@@ -200,7 +179,7 @@
         <AppDivider class="my-4 px-4" />
 
         <p class="font-semibold">
-          Toleranz und gegenseitiger Respekt sind die Grundlage unseres Handelns
+          {{ $t('aboutUs.principles.item3') }}
         </p>
       </div>
       <div class="rounded-[12px] bg-brand-light-gray p-4">
@@ -211,242 +190,200 @@
         <AppDivider class="my-4 px-4" />
 
         <p class="font-semibold">
-          Wir setzen uns für Fairness, Integration und transparente
-          Kommunikation ein
+          {{ $t('aboutUs.principles.item4') }}
         </p>
       </div>
     </div>
 
-    <div class="relative">
+    <div class="relative py-32 md:py-0">
       <img
         class="absolute top-1/2 left-1/2 w-4/5 -translate-x-1/2 -translate-y-1/2 z-0"
         alt="Border"
         src="/icons/aboutus/border.svg"
       />
       <div
-        class="absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col items-center justify-center gap-6"
+        class="md:absolute top-1/2 left-1/2 w-full md:-translate-x-1/2 md:-translate-y-1/2 z-10 flex flex-col items-center justify-center gap-6"
       >
         <img src="/icons/aboutus/quotes.svg" alt="Quotes" />
-        <p class="font-semibold text-[20px] sm:text-[24px] w-3/5">
-          Lernen ist Erfahrung. Alles andere ist einfach nur Information
+        <p class="font-semibold text-[20px] md:text-[24px] w-3/5">
+          {{ $t('aboutUs.principles.quote.text') }}
         </p>
-        <p class="text-gray-400">Albert Einstein</p>
+        <p class="text-gray-400">{{ $t('aboutUs.principles.quote.author') }}</p>
       </div>
     </div>
   </div>
 
-  <Ticker :item="tickerItems" class="mt-24 mb-12" />
+  <!-- Approach -->
+  <div
+    class="flex flex-col gap-6 lg:gap-0 lg:flex-row aspect-square mx-10 relative mt-3 lg:mt-10"
+  >
+    <h2
+      class="lg:order-10 lg:text-[56px] lg:absolute lg:-translate-y-1/2 lg:-translate-x-1/2 font-semibold text-[36px] top-1/2 left-1/2"
+    >
+      {{ $t('aboutUs.approach.title') }}
+    </h2>
 
-  <div class="aspect-square px-10 relative mt-3 sm:mt-10">
     <div
-      class="border-[1px] border-brand-red rounded-[1000px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  h-full w-full border-dashed absolute z-0"
+      class="hidden lg:block border-[1px] border-brand-red rounded-[1000px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-full w-full border-dashed absolute z-0"
     />
     <div
-      class="z-10 top-1/4 -translate-y-1/4 absolute rounded-[12px] bg-brand-light-gray p-6"
+      class="lg:-translate-y-1/4 lg:absolute z-10 top-1/4 rounded-[12px] bg-brand-light-gray p-6"
     >
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
-        <span class="text-brand-red text-[20px] sm:text-[24px] ml-1">
-          Interdisziplinär
+        <span class="text-brand-red text-[20px] lg:text-[24px] ml-1">
+          {{ $t('aboutUs.approach.item1.title') }}
         </span>
       </p>
       <p class="mt-4 text-[18px]">
-        Themen werden fächerübergreifend unterrichtet
+        {{ $t('aboutUs.approach.item1.text') }}
       </p>
     </div>
+
     <div
-      class="z-10 top-1/4 -translate-y-1/4 right-0 absolute rounded-[12px] bg-brand-light-gray p-6"
+      class="lg:absolute lg:-translate-y-1/4 z-10 top-1/4 right-0 rounded-[12px] bg-brand-light-gray p-6"
     >
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
-        <span class="text-brand-red text-[20px] sm:text-[24px] ml-1">
-          Lernen erlernen
+        <span class="text-brand-red text-[20px] lg:text-[24px] ml-1">
+          {{ $t('aboutUs.approach.item2.title') }}
         </span>
       </p>
-      <p class="mt-4 text-[18px]">Eigenständig und selbstbewusst lernen</p>
+      <p class="mt-4 text-[18px]">{{ $t('aboutUs.approach.item2.text') }}</p>
     </div>
+
     <div
-      class="z-10 bottom-1/4 translate-y-1/4 absolute rounded-[12px] bg-brand-light-gray p-6"
+      class="lg:translate-y-1/4 lg:absolute z-10 bottom-1/4 rounded-[12px] bg-brand-light-gray p-6"
     >
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
-        <span class="text-brand-red text-[20px] sm:text-[24px] ml-1">
-          Problem & historisch orientiert
-        </span>
-      </p>
-      <p class="mt-4 text-[18px]">
-        Lehrmethoden basierend auf anschaulichen Beispielen
-      </p>
-    </div>
-    <div
-      class="z-10 bottom-1/4 translate-y-1/4 right-0 absolute rounded-[12px] bg-brand-light-gray p-6"
-    >
-      <p class="flex items-center">
-        <img src="/icons/star.svg" alt="Star" />
-        <span class="text-brand-red text-[20px] sm:text-[24px] ml-1">
-          Multilingual
+        <span class="text-brand-red text-[20px] lg:text-[24px] ml-1">
+          {{ $t('aboutUs.approach.item3.title') }}
         </span>
       </p>
       <p class="mt-4 text-[18px]">
-        Durch Mehrsprachigkeit Aufgeschlossenheit lernen
+        {{ $t('aboutUs.approach.item3.text') }}
       </p>
     </div>
+
     <div
-      class="z-10 bottom-0 translate-y-1/2 left-1/2 -translate-x-1/2 absolute rounded-[12px] bg-brand-light-gray p-6"
+      class="lg:translate-y-1/4 lg:absolute z-10 bottom-1/4 right-0 rounded-[12px] bg-brand-light-gray p-6"
     >
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
-        <span class="text-brand-red text-[20px] sm:text-[24px] ml-1">
-          Multisensorisch
+        <span class="text-brand-red text-[20px] lg:text-[24px] ml-1">
+          {{ $t('aboutUs.approach.item3.title') }}
         </span>
       </p>
-      <p class="mt-4 text-[18px]">Mit allen Sinnen lernen</p>
+      <p class="mt-4 text-[18px]">
+        {{ $t('aboutUs.approach.item3.text') }}
+      </p>
     </div>
-    <h2
-      class="font-semibold text-[36px] sm:text-[56px] absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2"
+
+    <div
+      class="lg:-translate-x-1/2 lg:absolute lg:translate-y-1/2 z-10 bottom-0 left-1/2 rounded-[12px] bg-brand-light-gray p-6"
     >
-      Methodologischer
-      <br />
-      Ansatz
-    </h2>
+      <p class="flex items-center">
+        <img src="/icons/star.svg" alt="Star" />
+        <span class="text-brand-red text-[20px] lg:text-[24px] ml-1">
+          {{ $t('aboutUs.approach.item4.title') }}
+        </span>
+      </p>
+      <p class="mt-4 text-[18px]">{{ $t('aboutUs.approach.item4.text') }}</p>
+    </div>
   </div>
 
+  <!-- Values -->
   <div class="mt-24 bg-brand-light-gray pt-12 pb-8">
     <h2
-      class="font-semibold text-[36px] sm:text-[56px] mb-[48px] px-3 sm:px-10"
+      class="font-semibold text-[36px] md:text-[56px] mb-[48px] px-3 md:px-10"
     >
-      Unsere Ansätze und Werte bei Clavis Berlin
+      {{ $t('aboutUs.values.title') }}
     </h2>
 
     <AppDivider class="mb-12" />
 
-    <div class="grid grid-cols-3 px-3 sm:px-10 gap-6">
-      <h3 class="text-brand-red text-[28px] sm:text-[36px]">
-        Sicherheit: Ein sicheres Umfeld für unsere Schüler
+    <div class="grid grid-cols-1 md:grid-cols-3 px-3 md:px-10 gap-6">
+      <h3 class="text-brand-red text-[28px] md:text-[36px]">
+        {{ $t('aboutUs.values.item1.title') }}
       </h3>
       <div class="col-span-2 mr-8">
         <h4 class="text-gray-500 font-medium mb-1">
-          Kindgerechte und sichere Räumlichkeiten
+          {{ $t('aboutUs.values.item1.subtitle1') }}
         </h4>
         <p class="text-gray-400 mb-1">
-          Alle unsere Räumlichkeiten sind kindgerecht gestaltet und erfüllen
-          hohe Sicherheitsstandards. Wir legen großen Wert auf die regelmäßige
-          Überprüfung und Einhaltung von Sicherheitsmaßnahmen. Alle zwei Jahre
-          führen wir umfassende Kontrollen durch, um sicherzustellen, dass
-          unsere Einrichtungen den neuesten Sicherheitsanforderungen
-          entsprechen.
+          {{ $t('aboutUs.values.item1.text1') }}
         </p>
         <h4 class="text-gray-500 font-medium mb-1">
-          Brandschutz und individuelle
+          {{ $t('aboutUs.values.item1.subtitle2') }}
         </h4>
         <p class="text-gray-400 mb-1">
-          Sicherheitsvereinbarungen In all unseren Räumlichkeiten sind
-          professionell installierte Rauchmelder und Feuerlöscher vorhanden.
-          Zudem bieten wir im Rahmen des Teilnehmervertrages eine
-          Zusatzvereinbarung an, die es Eltern ermöglicht, individuelle
-          Regelungen für das Abholen ihrer Kinder zu treffen.
+          {{ $t('aboutUs.values.item1.text2') }}
         </p>
       </div>
     </div>
 
     <AppDivider class="mb-12 mt-12" />
 
-    <div class="grid grid-cols-3 px-3 sm:px-10 gap-6">
-      <h3 class="text-brand-red text-[28px] sm:text-[36px]">
-        Verpflegung: Gesunde Ernährung im Fokus
+    <div class="grid grid-cols-1 md:grid-cols-3 px-3 md:px-10 gap-6">
+      <h3 class="text-brand-red text-[28px] md:text-[36px]">
+        {{ $t('aboutUs.values.item2.title') }}
       </h3>
       <div class="col-span-2 mr-8">
         <h4 class="text-gray-500 font-medium mb-1">
-          Förderung von Gedächtnis und Konzentration
+          {{ $t('aboutUs.values.item2.subtitle1') }}
         </h4>
         <p class="text-gray-400 mb-1">
-          Eine gesunde und ausgewogene Ernährung ist entscheidend für die
-          kognitive Entwicklung und das Wohlbefinden unserer Schüler. Wir bieten
-          qualitativ hochwertige Produkte an, die frei von Konservierungs- und
-          Zusatzstoffen sind, um Gedächtnis und Konzentration zu unterstützen.
+          {{ $t('aboutUs.values.item2.text1') }}
         </p>
         <h4 class="text-gray-500 font-medium mb-1">
-          Gesunde Alternativen zu Süßigkeiten
+          {{ $t('aboutUs.values.item2.subtitle2') }}
         </h4>
         <p class="text-gray-400 mb-1">
-          Um den Konsum von Süßigkeiten zu reduzieren, stellen wir gesunde
-          Alternativen wie getrocknete Früchte zur Verfügung. Dies fördert ein
-          bewusstes Ernährungsverhalten bei unseren Schülern.
+          {{ $t('aboutUs.values.item2.text2') }}
         </p>
       </div>
     </div>
 
     <AppDivider class="mb-12 mt-12" />
 
-    <div class="grid grid-cols-3 px-3 sm:px-10 gap-6">
-      <h3 class="text-brand-red text-[28px] sm:text-[36px]">
-        Datenschutz, Fotografie & Video: Verantwortungsvoller Umgang mit Daten
+    <div class="grid grid-cols-1 md:grid-cols-3 px-3 md:px-10 gap-6">
+      <h3 class="text-brand-red text-[28px] md:text-[36px]">
+        {{ $t('aboutUs.values.item3.title') }}
       </h3>
       <div class="col-span-2 mr-8">
         <h4 class="text-gray-500 font-medium mb-1">
-          Einhaltung der Datenschutzbestimmungen
+          {{ $t('aboutUs.values.item3.subtitle1') }}
         </h4>
         <p class="text-gray-400 mb-1">
-          Unsere Unterlagen und Veröffentlichungen werden regelmäßig von einem
-          internen Datenschutzbeauftragten überprüft, um die Einhaltung aller
-          Datenschutzbestimmungen sicherzustellen.
+          {{ $t('aboutUs.values.item3.text1') }}
         </p>
         <h4 class="text-gray-500 font-medium mb-1">
-          Umgang mit Foto- und Videoaufnahmen
+          {{ $t('aboutUs.values.item3.subtitle2') }}
         </h4>
         <p class="text-gray-400 mb-1">
-          Foto- und Videoaufnahmen vom Unterricht werden nur mit ausdrücklicher
-          Erlaubnis der Eltern gemacht und ausschließlich für die
-          Öffentlichkeitsarbeit der Schule verwendet.
+          {{ $t('aboutUs.values.item3.text2') }}
         </p>
       </div>
     </div>
 
     <AppDivider class="mb-12 mt-12" />
 
-    <div class="grid grid-cols-3 px-3 sm:px-10 gap-6">
-      <h3 class="text-brand-red text-[28px] sm:text-[36px]">
-        Versicherung & Haftbarkeit: Umfassender Schutz
+    <div class="grid grid-cols-1 md:grid-cols-3 px-3 md:px-10 gap-6">
+      <h3 class="text-brand-red text-[28px] md:text-[36px]">
+        {{ $t('aboutUs.values.item4.title') }}
       </h3>
       <div class="col-span-2 mr-8">
         <h4 class="text-gray-500 font-medium mb-1">
-          Betriebshaftpflichtversicherung und erweiterte
+          {{ $t('aboutUs.values.item4.subtitle1') }}
         </h4>
         <p class="text-gray-400 mb-1">
-          Führungszeugnisse Unsere Schule ist durch eine
-          Betriebshaftpflichtversicherung abgesichert. Zudem verfügen unser
-          Personal und alle Dozierenden über aktuelle erweiterte
-          Führungszeugnisse, was ein weiterer Beleg für unser Engagement für
-          Sicherheit und Verantwortung ist.
+          {{ $t('aboutUs.values.item4.text1') }}
         </p>
       </div>
     </div>
   </div>
-
-  <Socials class="mb-6" />
 </template>
 <script setup lang="ts">
 import AppDivider from '../components/AppDivider.vue'
-import Socials from '../components/cms/blocks/main/Socials.vue'
-import Ticker from '../components/cms/blocks/main/Ticker.vue'
-import AboutTutors from '../components/cms/blocks/products/details/AboutTutors.vue'
-
-const tickerItems = {
-  left_text: [
-    'Эмоциональный интелект',
-    'Общение',
-    'Образование',
-    'Родительское сообщество',
-  ],
-  right_text: [
-    'Искусство',
-    'Многоязычность',
-    'Гуманистический подход',
-    'Наука',
-    'Искусство',
-    'Многоязычность',
-  ],
-}
-
-const instructors = []
 </script>

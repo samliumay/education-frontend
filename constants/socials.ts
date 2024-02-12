@@ -1,9 +1,9 @@
 export const socialsLinks = [
-  // {
-  //   href: 'https://www.tiktok.com',
-  //   icon: '/icons/socials/tiktok.svg',
-  //   alt: 'tiktok',
-  // },
+  {
+    href: 'https://www.tiktok.com',
+    icon: '/icons/socials/tiktok.svg',
+    alt: 'tiktok',
+  },
   {
     href: 'https://www.youtube.com/@ClavisSchuleBerlin',
     icon: '/icons/socials/youtube.svg',

@@ -9,7 +9,7 @@
     </h1>
 
     <LoaderBlock v-if="pending" class="relative" />
-    <div v-else class="flex relative w-full h-full">
+    <div v-else class="flex relative w-full h-full overflow-hidden">
       <img class="absolute top-20" src="/icons/tutors-bg.svg" alt="tutors" />
       <div
         class="w-full h-full relative mt-4 sm:mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px]"

@@ -1,7 +1,7 @@
 <template>
   <LoaderBlock v-if="catalogsGroupPending" />
   <div v-else class="flex flex-col gap-2">
-    <n-breadcrumb class="mt-6 mb-10 mx-10">
+    <n-breadcrumb class="mt-4 block-padding">
       <n-breadcrumb-item сlass="text-brand-gray">
         <NuxtLink to="/">{{ $t('common.main') }}</NuxtLink>
       </n-breadcrumb-item>
@@ -13,7 +13,7 @@
     <slot name="filters" :title="catalog?.name ?? 'Catalog'" />
 
     <LoaderBlock v-if="productsPending" />
-    <div v-else class="mt-[48px] mx-[48px] flex flex-col gap-2">
+    <div v-else class="block-padding flex flex-col gap-2">
       <PageConstructor
         :blocks="blocks"
         :block-props="blockProps"

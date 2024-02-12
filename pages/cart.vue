@@ -47,7 +47,7 @@
               </div>
 
               <div
-                class="relative border-black rounded-lg text-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
+                class="relative border-black rounded-lg text-brand-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
               >
                 {{ $t('cart.goToCatalog') }}
               </div>
@@ -87,7 +87,7 @@
               </div>
 
               <div
-                class="relative border-black rounded-lg text-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
+                class="relative border-black rounded-lg text-brand-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
               >
                 {{ $t('cart.goToCatalog') }}
               </div>
@@ -129,7 +129,7 @@
               </div>
 
               <div
-                class="relative border-black rounded-lg text-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
+                class="relative border-black rounded-lg text-brand-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
                 @click="navigateTo('/workshops')"
               >
                 {{ $t('cart.goToCatalog') }}
@@ -142,7 +142,9 @@
           v-if="!userStore.isLoggedIn"
           class="bg-white rounded-[12px] p-[24px]"
         >
-          <h2 class="font-medium text-[24px] mb-6">{{ $t('cart.registerDetails.title') }}</h2>
+          <h2 class="font-medium text-[24px] mb-6">
+            {{ $t('cart.registerDetails.title') }}
+          </h2>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
             <AppInput
@@ -207,7 +209,9 @@
           v-if="cart?.order?.items?.length > 0 && userStore.isLoggedIn"
           class="bg-white rounded-[12px] p-[24px]"
         >
-          <h2 class="font-medium text-[24px] mb-6">{{ $t('cart.paymentDetails.title') }}</h2>
+          <h2 class="font-medium text-[24px] mb-6">
+            {{ $t('cart.paymentDetails.title') }}
+          </h2>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
             <AppInput
@@ -280,7 +284,9 @@
       <ErrorBoundaryBlock>
         <div>
           <div class="bg-white rounded-[12px] p-[24px]">
-            <h2 class="font-medium text-2xl mb-4">{{ $t('cart.order.title') }}</h2>
+            <h2 class="font-medium text-2xl mb-4">
+              {{ $t('cart.order.title') }}
+            </h2>
 
             <template v-for="(item, idx) in cart.order.items" :key="item.id">
               <div class="flex justify-between gap-[24px] mb-2">
@@ -292,7 +298,9 @@
                 </span>
               </div>
               <div class="flex justify-between gap-[24px]">
-                <span class="font-medium"> {{ $t('cart.order.discountAmount') }} </span>
+                <span class="font-medium">
+                  {{ $t('cart.order.discountAmount') }}
+                </span>
                 <span>
                   {{ `${Number(item?.discount_amount ?? 0).toFixed(2)} €` }}
                 </span>
@@ -351,7 +359,11 @@
               type="submit"
               :disabled="!form?.checkValidity() ?? false"
             >
-              {{ userStore.isLoggedIn ? $t('cart.button.checkout') : $t('cart.button.register') }}
+              {{
+                userStore.isLoggedIn
+                  ? $t('cart.button.checkout')
+                  : $t('cart.button.register')
+              }}
             </AppButton>
           </div>
         </div>

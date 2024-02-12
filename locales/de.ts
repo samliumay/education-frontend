@@ -28,6 +28,19 @@ export const de = {
       city: 'Berlin',
       address: 'Immanuelkirchstraße 4 10405',
     },
+    modals: {
+      fillApplication: 'Fülle das Formular aus',
+      youChoosed: 'Du wählst',
+      positionInterested: 'Position, die Sie interessiert',
+      additionalInfo: 'Weitere Informationen',
+      calendar: 'Kalender',
+      requestCallback: 'Bitte um Rückruf',
+      comment: 'Kommentar',
+      editSubscription: 'Abonnement bearbeiten',
+      cancelSubscription: 'Abonnement beenden',
+      subscriptionPaymentPayPal: 'PayPal-Abonnementzahlung',
+      autopayPayPal: 'PayPal automatisch bezahlen',
+    },
     cookies:
       'Durch die Nutzung unserer Website stimmen Sie der Verwendung von Cookies zu. Weitere Informationen finden Sie in unserem',
     filters: {
@@ -55,6 +68,9 @@ export const de = {
       resetPassword: 'Kennwort ändern',
       change: 'Ändern',
       look: 'Suchen',
+      send: 'Schicken',
+      pay: 'Zahlen',
+      turnOn: 'Anmachen',
     },
     subscription: {
       abonement: 'Abonnement',
@@ -69,6 +85,7 @@ export const de = {
       noActiveCourses: 'Keine aktiven Kurse',
       noActiveWorkshops: 'Keine aktiven Workshops',
       comment: 'Ein Kommentar',
+      status: 'Status',
     },
     profileMenu: {
       profile: 'Mein Profil',
@@ -167,16 +184,20 @@ export const de = {
     choosingNextCourse: 'Tipp: Jede weitere Buchung wird für Sie günstiger!',
     chooseDifferentCourse: 'Jetzt Kurse zu reduzierten Preisen sichern!',
     choosingNextAcademy: 'Tipp: Jede weitere Buchung wird für Sie günstiger!',
-    chooseDifferentAcademy: 'Jetzt Akademiekurse zu reduzierten Preisen sichern!',
+    chooseDifferentAcademy:
+      'Jetzt Akademiekurse zu reduzierten Preisen sichern!',
     choosingNextWorkshop: 'Tipp: Jede weitere Buchung wird für Sie günstiger! ',
     chooseDifferentWorkshop: 'Jetzt Workshops zu reduzierten Preisen sichern!',
     order: {
       title: 'Bestelldetails',
-      subtitle: 'Ihr Warenkorb ist momentan leer. Fügen Sie Kurse, Akademiekurse oder Workshops hinzu, um fortzufahren.',
+      subtitle:
+        'Ihr Warenkorb ist momentan leer. Fügen Sie Kurse, Akademiekurse oder Workshops hinzu, um fortzufahren.',
       total: 'Gesamt',
       discountAmount: 'Rabattbetrag',
-      fillOutPaymentDetails: 'Für die Zahlung füllen Sie bitte die untenstehenden Zahlungsdetails aus',
-      pleaseRegister: 'Bitte registrieren Sie sich oder loggen Sie sich in Ihr Konto ein, um zu bezahlen',
+      fillOutPaymentDetails:
+        'Für die Zahlung füllen Sie bitte die untenstehenden Zahlungsdetails aus',
+      pleaseRegister:
+        'Bitte registrieren Sie sich oder loggen Sie sich in Ihr Konto ein, um zu bezahlen',
     },
     button: {
       checkout: 'Kostenpflichtig buchen',
@@ -245,13 +266,134 @@ export const de = {
     application: 'Reichen Sie Ihre Bewerbung ein',
     ourOffer: 'Was bieten wir an',
     courseSelect: 'Kursauswahl',
-    seminarOffer: 'Wir bieten alle unsere Kurse auch als Workshops für Schulen an. Das Seminar kann entweder bei Ihnen vor Ort oder in unseren Räumlichkeiten stattfinden.',
+    seminarOffer:
+      'Wir bieten alle unsere Kurse auch als Workshops für Schulen an. Das Seminar kann entweder bei Ihnen vor Ort oder in unseren Räumlichkeiten stattfinden.',
     program: 'AGs und Ferienkurse',
-    programOffer: 'Wir freuen uns, mit Schulen zusammenzuarbeiten, um ihre Tages- oder Ferienprogramme an unserem Standort oder an ihrem Standort durchzuführen.',
-    questions: 'Bei Fragen rufen Sie uns bitte an oder schreiben Sie uns eine E-Mail. Wir arbeiten',
+    programOffer:
+      'Wir freuen uns, mit Schulen zusammenzuarbeiten, um ihre Tages- oder Ferienprogramme an unserem Standort oder an ihrem Standort durchzuführen.',
+    questions:
+      'Bei Fragen rufen Sie uns bitte an oder schreiben Sie uns eine E-Mail. Wir arbeiten',
     workhours: 'Mo-Fr von 9 bis 18 Uhr',
   },
   profile: {
     title: 'Mein Profil',
+  },
+  aboutUs: {
+    title:
+      'Clavis Berlin - Kunstschule und Wissenschafts für Kinder und Jugendliche',
+    subtitle:
+      'Clavis ist ein neues Lernzentrum für Schüler*innen verschiedener Altersgruppen, dass ein breites Spektrum an Kursen anbietet wie z. B.Kunst und visuelles Theater, Naturwissenschaften, Mathematik und Digitales Zeichnen',
+    target:
+      'Unser Ziel ist es, die außerschulischen Fähigkeiten und Interessen unserer Schüler*innen zu fördern, indem wir ihnen die Möglichkeit geben, im Rahmen einzigartiger Lehrpläne und auf Basis modernster pädagogischer Methodiken frei und aus eigenem Antrieb zu lernen',
+    offers: {
+      title: 'Unsere Angebote',
+      first: {
+        title: 'Bildende Kunst',
+        subtitle1: 'Entfaltung künstlerischer Fähigkeiten',
+        text1:
+          'In unseren Kursen zur bildenden Kunst liegt der Fokus darauf, die Kreativität, Vorstellungskraft und Selbstständigkeit der Kinder zu fördern. Wir vermitteln ihnen nicht nur künstlerische Techniken und den Umgang mit verschiedenen Materialien, sondern unterstützen sie auch dabei, Ausdauer zu entwickeln und Projekte erfolgreich abzuschließen.',
+        subtitle2: 'Mehr als nur Kunstunterricht',
+        text2:
+          'Unser Konzept geht über den traditionellen Kunstunterricht hinaus. Wir organisieren künstlerische Veranstaltungen und Ausflüge, die den Kindern praktische Einblicke in die Kunstwelt bieten. Zusätzlich stellen wir die im Unterricht entstandenen Werke in Ausstellungen vor und bieten Kreativ-Workshops an, um das Lernerlebnis zubereichern.',
+      },
+      second: {
+        title: 'Theater: Kreativität auf der Bühnet',
+        subtitle1: 'Kinder als Hauptautoren ihrer Stücke',
+        text1:
+          'In unseren Theaterkursen sind die Kinder die treibende Kraft hinter dem kreativen Prozess. Aus ersten Ideen und Impulsen entwickeln sie zusammenhängende Geschichten, die in Bühnenkonzepte umgesetzt werden. Dies fördert ihre individuelle Kreativität und hilft ihnen, neue Perspektiven einzunehmen und sich selbst sowie ihre Umwelt besser zu verstehen.',
+        subtitle2: 'Mehrsprachiges Theatererlebnis',
+        text2:
+          'Unsere Theaterkurse sind auch ein Ort der sprachlichen Vielfalt. Verschiedene Sprachen werden genutzt, um die Kinder zum spontanen und kreativen Ausdruck zu ermutigen und das Verständnis für andere zu fördern.',
+      },
+      third: {
+        title: 'Sprachen: Spielerischer Spracherwerb',
+        subtitle1: 'Aktives und kommunikatives Lernen',
+        text1:
+          'Unser Sprachkursprogramm konzentriert sich auf spielerische und kommunikative Lehrmethoden. Wir nutzen Theaterspiele, Improvisationsübungen und Dialoge, um den Kindern zu helfen, Stress zu überwinden und Freude an der neuen Sprache und der Kommunikation zu finden.',
+      },
+      fourth: {
+        title: 'Mathematik & Naturwissenschaften: Denken fördern',
+        subtitle1: 'Mathematik als Schlüssel zur intellektuellen Entwicklung',
+        text1:
+          'In unseren Mathematikkursen legen wir Wert darauf, den Schülern beizubringen, wie sie Probleme systematisch angehen und lösen können. Wir fördern die Entwicklung organisierter Denkweisen und die Fähigkeit, Probleme bewusst zu behandeln.',
+        subtitle2: 'Ein ganzheitlicher Ansatz',
+        text2:
+          'Unsere Kurse in Mathematik und Naturwissenschaften umfassen Fleiß, Beobachtung der Phänomene unserer Welt und das Konstruieren. Wir unterstützen die Kinder darin, Fragen zu stellen und nach Lösungen zu suchen, was eine grundlegende Fähigkeit für ihr weiteres Leben darstellt.',
+      },
+    },
+    principles: {
+      title: 'Werte & Grundsätze',
+      item1: 'Wir überwinden Sprachbarrieren durch gemeinsame Interessen',
+      item2:
+        'Wir wollen ein optimales Lernumfeld mit bestmöglichen Lernbedingungen schaffen',
+      item3:
+        'Toleranz und gegenseitiger Respekt sind die Grundlage unseres Handelns',
+      item4:
+        'Wir setzen uns für Fairness, Integration und transparente Kommunikation ein',
+      quote: {
+        text: 'Lernen ist Erfahrung. Alles andere ist einfach nur Information',
+        author: 'Albert Einstein',
+      },
+    },
+    approach: {
+      title: 'Methodologischer Ansatz',
+      item1: {
+        text: 'Interdisziplinär',
+        title: 'Themen werden fächerübergreifend unterrichtet',
+      },
+      item2: {
+        text: 'Lernen erlernen',
+        title: 'Eigenständig und selbstbewusst lernen',
+      },
+      item3: {
+        text: 'Problem & historisch orientiert',
+        title: 'Lehrmethoden basierend auf anschaulichen Beispielen',
+      },
+      item4: {
+        text: 'Multilingual',
+        title: 'Durch Mehrsprachigkeit Aufgeschlossenheit lernen',
+      },
+      item5: {
+        text: 'Multisensorisch',
+        title: 'Mit allen Sinnen lernen',
+      },
+    },
+    values: {
+      title: 'Unsere Ansätze und Werte bei Clavis Berlin',
+      item1: {
+        title: 'Sicherheit: Ein sicheres Umfeld für unsere Schüler',
+        subtitle1: 'Kindgerechte und sichere Räumlichkeiten',
+        text1:
+          'Alle unsere Räumlichkeiten sind kindgerecht gestaltet und erfüllen hohe Sicherheitsstandards. Wir legen großen Wert auf die regelmäßige Überprüfung und Einhaltung von Sicherheitsmaßnahmen. Alle zwei Jahre führen wir umfassende Kontrollen durch, um sicherzustellen, dass unsere Einrichtungen den neuesten Sicherheitsanforderungen entsprechen.',
+        subtitle2: 'Brandschutz und individuelle',
+        text2:
+          'Sicherheitsvereinbarungen In all unseren Räumlichkeiten sind professionell installierte Rauchmelder und Feuerlöscher vorhanden. Zudem bieten wir im Rahmen des Teilnehmervertrages eine Zusatzvereinbarung an, die es Eltern ermöglicht, individuelle Regelungen für das Abholen ihrer Kinder zu treffen.',
+      },
+      item2: {
+        title: 'Verpflegung: Gesunde Ernährung im Fokus',
+        subtitle1: 'Förderung von Gedächtnis und Konzentration',
+        text1:
+          'Eine gesunde und ausgewogene Ernährung ist entscheidend für die kognitive Entwicklung und das Wohlbefinden unserer Schüler. Wir bieten qualitativ hochwertige Produkte an, die frei von Konservierungs- und Zusatzstoffen sind, um Gedächtnis und Konzentration zu unterstützen.',
+        subtitle2: 'Gesunde Alternativen zu Süßigkeiten',
+        text2:
+          'Um den Konsum von Süßigkeiten zu reduzieren, stellen wir gesunde Alternativen wie getrocknete Früchte zur Verfügung. Dies fördert ein bewusstes Ernährungsverhalten bei unseren Schülern.',
+      },
+      item3: {
+        title:
+          'Datenschutz, Fotografie & Video: Verantwortungsvoller Umgang mit Daten',
+        subtitle1: 'Einhaltung der Datenschutzbestimmungen',
+        text1:
+          'Unsere Unterlagen und Veröffentlichungen werden regelmäßig von einem internen Datenschutzbeauftragten überprüft, um die Einhaltung aller Datenschutzbestimmungen sicherzustellen.',
+        subtitle2: 'Umgang mit Foto- und Videoaufnahmen',
+        text2:
+          'Foto- und Videoaufnahmen vom Unterricht werden nur mit ausdrücklicher Erlaubnis der Eltern gemacht und ausschließlich für die Öffentlichkeitsarbeit der Schule verwendet.',
+      },
+      item4: {
+        title: 'Versicherung & Haftbarkeit: Umfassender Schutz',
+        subtitle1: 'Betriebshaftpflichtversicherung und erweiterte',
+        text1:
+          'Führungszeugnisse Unsere Schule ist durch eine Betriebshaftpflichtversicherung abgesichert. Zudem verfügen unser Personal und alle Dozierenden über aktuelle erweiterte Führungszeugnisse, was ein weiterer Beleg für unser Engagement für Sicherheit und Verantwortung ist.',
+      },
+    },
   },
 }

@@ -31,6 +31,7 @@
   </div>
 </template>
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import ArrowRight from '../../public/icons/arrow_right.svg'
@@ -44,7 +45,7 @@ defineEmits(['update:selected'])
 const { t } = useI18n()
 
 const seasons = ['Summer', 'Autumn', 'Winter', 'Spring']
-const seasonMap = {
+const seasonMap = computed(() => ({
   Summer: {
     text: t('common.filters.seasons.summer'),
     dateStart: '17.07',
@@ -69,5 +70,5 @@ const seasonMap = {
     dateEnd: '05.04',
     image: '/icons/products/academy_spring.svg',
   },
-}
+}))
 </script>

@@ -1,8 +1,8 @@
 <template>
-  <div class="mx-[28px] md:mx-[48px] flex flex-col items-center">
-    <h2 class="text-[32px] sm:text-[48px] mb-[48px] font-medium">
+  <div class="mx-[28px] md:mx-[48px] flex flex-col items-center justify-center">
+    <AppHeading>
       {{ $t('blocks.main.social') }}
-    </h2>
+    </AppHeading>
 
     <div class="flex flex-col gap-2">
       <div class="flex flex-col sm:flex-row gap-5 sm:h-[260px]">
@@ -166,6 +166,7 @@
   </div>
 </template>
 <script setup lang="ts">
+import AppHeading from '@/components/AppHeading.vue'
 // import type { PageBlock } from '../../../../types/cms'
 
 // defineProps<{

@@ -6,11 +6,13 @@
       <div class="flex gap-4">
         <div><img src="/icons/profile.svg" alt="user icon" /></div>
         <div>
-          <p>
+          <p class="font-medium text-brand-black">
             {{ userStore.user?.first_name || 'John' }}
             {{ userStore.user?.last_name || 'Doe' }}
           </p>
-          <p>{{ userStore.user?.email ?? 'mail not found' }}</p>
+          <p class="text-brand-gray font-medium">
+            {{ userStore.user?.email ?? 'mail not found' }}
+          </p>
         </div>
       </div>
 
@@ -35,6 +37,8 @@
 </template>
 <script setup lang="ts">
 import { NModal } from 'naive-ui'
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 import { useUserStore } from '../../store/user'
 
@@ -61,7 +65,7 @@ const logout = () => {
 }
 
 // Render links
-const linksGroup = [
+const linksGroup = computed(() => [
   {
     path: '/profile',
     label: t('common.profileMenu.profile'),
@@ -78,7 +82,7 @@ const linksGroup = [
     path: '/profile?tab=sales',
     label: t('common.profileMenu.history'),
   },
-]
+])
 </script>
 <style>
 .n-modal-body-wrapper {

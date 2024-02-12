@@ -8,6 +8,8 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     'nuxt-svgo',
     '@nuxtjs/i18n',
+    '@nuxtjs/sitemap',
+    'nuxt-simple-robots',
     ...(process.env.NODE_ENV === 'production' ? ['@nuxtjs/eslint-module'] : []),
   ],
   alias: {
