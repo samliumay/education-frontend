@@ -210,8 +210,19 @@ export const useUserStore = defineStore('user', () => {
 
   const getWorkshopOrders = async () => {
     workshopOrders.value = await HTTP.get(
-      `/api/v2/orders/items/history/?product_page__product_type=Workshop`,
+      `/api/v2/orders/items/history/?product_type=Workshop`,
     )
+  }
+
+  const googleAuth = async (code: string) => {
+    await userPostRequest({ code }, '/api/v2/users/auth/sso/google/')
+  }
+
+  const facebookAuth = async (code: string) => {
+    const res = await HTTP.post('/api/v2/users/auth/sso/facebook/', {
+      code,
+    })
+    return res
   }
 
   return {
@@ -240,5 +251,7 @@ export const useUserStore = defineStore('user', () => {
     getOrders,
     workshopOrders,
     getWorkshopOrders,
+    googleAuth,
+    facebookAuth,
   }
 })

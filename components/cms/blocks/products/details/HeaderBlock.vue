@@ -12,7 +12,9 @@
       <div class="flex flex-col justify-between gap-10">
         <div>
           <TagsBlock :tags="[blockData.current_status]" />
-          <h1 class="text-3xl sm:text-4xl md:text-5xl font-medium mb-4 mt-4">
+          <h1
+            class="text-3xl sm:text-4xl md:text-5xl font-medium mb-4 mt-4 max-w-[70%]"
+          >
             {{ blockData.name }}
           </h1>
           <CategoryBlock :items="blockData.schedule_slots">
@@ -99,13 +101,15 @@
       :image-title="blockData.title_image"
       :image-background="blockData.background_image"
       class="h-[300px] md:h-[500px] w-full"
+      :category="type"
+      :age-group="blockData?.age_group"
     />
   </div>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import AppModalCourse from '@/components/AppModalCourse.vue'
+import AppModalCourse from '@/components/modals/AppModalCourse.vue'
 
 import { type Product, type ProductType } from '../../../../../types'
 import { type PageBlock } from '../../../../../types/cms'

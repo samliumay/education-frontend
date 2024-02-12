@@ -6,10 +6,8 @@
     <div class="flex flex-wrap text-lg font-medium">
       <p>{{ $t('common.cookies') }}&nbsp;</p>
       <NuxtLink class="text-brand-red" to="/legal/privacy">
-{{
-        $t('common.info.privacy')
-      }}
-</NuxtLink>
+        {{ $t('common.info.privacy') }}
+      </NuxtLink>
     </div>
 
     <button

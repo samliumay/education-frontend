@@ -3,7 +3,7 @@
     <slot />
 
     <template #error="{ error }">
-      <div class="bg-red-200 rounded-lg p-10 flex flex-col gap-2">
+      <div class="bg-red-200 rounded-lg block-padding flex flex-col gap-2">
         <h3 class="text-2xl">{{ $t('common.somethingWrong') }}</h3>
         <p>{{ `${$t('common.error')} ${error}` }}</p>
       </div>

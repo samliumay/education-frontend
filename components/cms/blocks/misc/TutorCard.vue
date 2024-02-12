@@ -10,14 +10,14 @@
     <p class="mt-[24px] text-[20px] text-red-400">
       {{ `${instructor.first_name} ${instructor.last_name}` }}
     </p>
-    <!-- <p class="font-medium mb-6">
+    <p v-show="instructor.subject" class="font-medium mb-6">
       {{ instructor.subject }}
-    </p> -->
-
-    <p class="text-red-400 underline" role="navigation">
-      {{ $t('common.moreDetails') }} →
     </p>
-  </div>
+
+    <NuxtLink :to="`/instructor/${instructor.id}`" class="text-red-400 underline" role="navigation">
+      {{ $t('common.moreDetails') }} →
+    </NuxtLink>
+</div>
 </template>
 <script setup lang="ts">
 import { computed } from 'vue'
@@ -32,6 +32,7 @@ const props = defineProps<{
     last_name: string
     subject: string
     profile_pic: number
+    id: number
   }
 }>()
 

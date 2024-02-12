@@ -18,6 +18,7 @@
     "@nuxt/devtools": "latest",
     "@nuxtjs/eslint-module": "^4.1.0",
     "@nuxtjs/i18n": "^8.0.0-rc.5",
+    "@nuxtjs/sitemap": "^5.1.0",
     "@nuxtjs/tailwindcss": "^6.9.4",
     "@types/dompurify": "^3.0.5",
     "eslint": "^8.53.0",
@@ -26,6 +27,7 @@
     "husky": "^8.0.3",
     "naive-ui": "^2.35.0",
     "nuxt": "^3.8.1",
+    "nuxt-simple-robots": "^4.0.0-rc.14",
     "nuxt-svgo": "^3.6.0",
     "prettier": "^3.1.0",
     "sass": "^1.69.5",
@@ -35,6 +37,7 @@
   "dependencies": {
     "@css-render/vue3-ssr": "^0.15.12",
     "@pinia/nuxt": "^0.5.1",
+    "@sentry/vue": "^7.100.1",
     "@vicons/fa": "^0.12.0",
     "@vue/eslint-config-airbnb-with-typescript": "^7.0.0",
     "axios": "^1.6.1",
@@ -42,6 +45,7 @@
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-vue-scoped-css": "^2.5.1",
     "maska": "^2.1.11",
+    "normalize-url": "^8.0.0",
     "pinia": "^2.1.7",
     "vue3-google-map": "^0.19.0"
   }
