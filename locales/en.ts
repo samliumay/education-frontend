@@ -35,6 +35,11 @@ export const en = {
       additionalInfo: 'Additional Information',
       calendar: 'Calendar',
       requestCallback: 'Request for a call back',
+      comment: 'Comment',
+      editSubscription: 'Editing subscription',
+      cancelSubscription: 'Cancel subscription',
+      subscriptionPaymentPayPal: 'PayPal subscription payment',
+      autopayPayPal: 'Autopay PayPal',
     },
     cookies:
       'By using our site you are consenting to the use of cookies. For more information please refer to our',
@@ -64,6 +69,8 @@ export const en = {
       change: 'Change',
       look: 'Open',
       send: 'Send',
+      pay: 'Pay',
+      turnOn: 'Turn on',
     },
     subscription: {
       abonement: 'Subscription',
@@ -78,6 +85,7 @@ export const en = {
       noActiveCourses: 'No active courses',
       noActiveWorkshops: 'No active workshops',
       comment: 'Comment',
+      status: 'Status',
     },
     profileMenu: {
       profile: 'My profile',
@@ -316,8 +324,7 @@ export const en = {
       item1: 'We overcome language barriers through shared interests',
       item2:
         'We want to create an optimal learning environment with the best possible learning conditions',
-      item3:
-        'Tolerance and mutual respect are the basis of our actions',
+      item3: 'Tolerance and mutual respect are the basis of our actions',
       item4:
         'We are committed to fairness, integration and transparent communication',
       quote: {
@@ -353,28 +360,36 @@ export const en = {
       item1: {
         title: 'Safety: A safe environment for our students',
         subtitle1: 'Child-friendly and safe spaces',
-        text1: 'All of our rooms are designed to be child-friendly and meet high safety standards. We attach great importance to regular checking and compliance with security measures. We carry out comprehensive inspections every two years to ensure that our facilities meet the latest safety requirements.',
+        text1:
+          'All of our rooms are designed to be child-friendly and meet high safety standards. We attach great importance to regular checking and compliance with security measures. We carry out comprehensive inspections every two years to ensure that our facilities meet the latest safety requirements.',
         subtitle2: 'Fire protection and individual',
-        text2: 'Safety arrangements All of our premises have professionally installed smoke detectors and fire extinguishers. We also offer an additional agreement as part of the participant contract that allows parents to make individual arrangements for picking up their children.',
+        text2:
+          'Safety arrangements All of our premises have professionally installed smoke detectors and fire extinguishers. We also offer an additional agreement as part of the participant contract that allows parents to make individual arrangements for picking up their children.',
       },
       item2: {
         title: 'Food: Focus on healthy eating',
         subtitle1: 'Promote memory and concentration',
-        text1: 'A healthy and balanced diet is crucial for the cognitive development and well-being of our students. We offer high quality products that are free of preservatives and additives to support memory and concentration.',
+        text1:
+          'A healthy and balanced diet is crucial for the cognitive development and well-being of our students. We offer high quality products that are free of preservatives and additives to support memory and concentration.',
         subtitle2: 'Healthy alternatives to sweets',
-        text2: 'To reduce the consumption of sweets, we provide healthy alternatives such as dried fruits. This promotes conscious eating habits among our students.',
+        text2:
+          'To reduce the consumption of sweets, we provide healthy alternatives such as dried fruits. This promotes conscious eating habits among our students.',
       },
       item3: {
-        title: 'Data protection, photography & video: Responsible handling of data',
+        title:
+          'Data protection, photography & video: Responsible handling of data',
         subtitle1: 'Compliance with data protection regulations',
-        text1: 'Our documents and publications are regularly checked by an internal data protection officer to ensure compliance with all data protection regulations.',
+        text1:
+          'Our documents and publications are regularly checked by an internal data protection officer to ensure compliance with all data protection regulations.',
         subtitle2: 'Handling photo and video recordings',
-        text2: 'Photos and video recordings of lessons are only taken with the express permission of the parents and are used exclusively for the school`s public relations work.',
+        text2:
+          'Photos and video recordings of lessons are only taken with the express permission of the parents and are used exclusively for the school`s public relations work.',
       },
       item4: {
         title: 'Insurance & Liability: Comprehensive protection',
         subtitle1: 'Public liability insurance and extended',
-        text1: 'Certificates of good conduct Our school is covered by public liability insurance. In addition, our staff and all lecturers have current advanced certificates of good conduct, which is further evidence of our commitment to safety and responsibility.',
+        text1:
+          'Certificates of good conduct Our school is covered by public liability insurance. In addition, our staff and all lecturers have current advanced certificates of good conduct, which is further evidence of our commitment to safety and responsibility.',
       },
     },
   },

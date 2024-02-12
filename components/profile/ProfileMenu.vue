@@ -6,11 +6,13 @@
       <div class="flex gap-4">
         <div><img src="/icons/profile.svg" alt="user icon" /></div>
         <div>
-          <p>
+          <p class="font-medium text-brand-black">
             {{ userStore.user?.first_name || 'John' }}
             {{ userStore.user?.last_name || 'Doe' }}
           </p>
-          <p>{{ userStore.user?.email ?? 'mail not found' }}</p>
+          <p class="text-brand-gray font-medium">
+            {{ userStore.user?.email ?? 'mail not found' }}
+          </p>
         </div>
       </div>
 
@@ -38,7 +40,7 @@ import { NModal } from 'naive-ui'
 import { useI18n } from 'vue-i18n'
 
 import { useUserStore } from '../../store/user'
-import { computed } from 'vue';
+import { computed } from 'vue'
 
 // Init
 defineProps<{

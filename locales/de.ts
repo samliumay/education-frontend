@@ -35,6 +35,11 @@ export const de = {
       additionalInfo: 'Weitere Informationen',
       calendar: 'Kalender',
       requestCallback: 'Bitte um Rückruf',
+      comment: 'Kommentar',
+      editSubscription: 'Abonnement bearbeiten',
+      cancelSubscription: 'Abonnement beenden',
+      subscriptionPaymentPayPal: 'PayPal-Abonnementzahlung',
+      autopayPayPal: 'PayPal automatisch bezahlen',
     },
     cookies:
       'Durch die Nutzung unserer Website stimmen Sie der Verwendung von Cookies zu. Weitere Informationen finden Sie in unserem',
@@ -64,6 +69,8 @@ export const de = {
       change: 'Ändern',
       look: 'Suchen',
       send: 'Schicken',
+      pay: 'Zahlen',
+      turnOn: 'Anmachen',
     },
     subscription: {
       abonement: 'Abonnement',
@@ -78,6 +85,7 @@ export const de = {
       noActiveCourses: 'Keine aktiven Kurse',
       noActiveWorkshops: 'Keine aktiven Workshops',
       comment: 'Ein Kommentar',
+      status: 'Status',
     },
     profileMenu: {
       profile: 'Mein Profil',
@@ -355,28 +363,36 @@ export const de = {
       item1: {
         title: 'Sicherheit: Ein sicheres Umfeld für unsere Schüler',
         subtitle1: 'Kindgerechte und sichere Räumlichkeiten',
-        text1: 'Alle unsere Räumlichkeiten sind kindgerecht gestaltet und erfüllen hohe Sicherheitsstandards. Wir legen großen Wert auf die regelmäßige Überprüfung und Einhaltung von Sicherheitsmaßnahmen. Alle zwei Jahre führen wir umfassende Kontrollen durch, um sicherzustellen, dass unsere Einrichtungen den neuesten Sicherheitsanforderungen entsprechen.',
+        text1:
+          'Alle unsere Räumlichkeiten sind kindgerecht gestaltet und erfüllen hohe Sicherheitsstandards. Wir legen großen Wert auf die regelmäßige Überprüfung und Einhaltung von Sicherheitsmaßnahmen. Alle zwei Jahre führen wir umfassende Kontrollen durch, um sicherzustellen, dass unsere Einrichtungen den neuesten Sicherheitsanforderungen entsprechen.',
         subtitle2: 'Brandschutz und individuelle',
-        text2: 'Sicherheitsvereinbarungen In all unseren Räumlichkeiten sind professionell installierte Rauchmelder und Feuerlöscher vorhanden. Zudem bieten wir im Rahmen des Teilnehmervertrages eine Zusatzvereinbarung an, die es Eltern ermöglicht, individuelle Regelungen für das Abholen ihrer Kinder zu treffen.',
+        text2:
+          'Sicherheitsvereinbarungen In all unseren Räumlichkeiten sind professionell installierte Rauchmelder und Feuerlöscher vorhanden. Zudem bieten wir im Rahmen des Teilnehmervertrages eine Zusatzvereinbarung an, die es Eltern ermöglicht, individuelle Regelungen für das Abholen ihrer Kinder zu treffen.',
       },
       item2: {
         title: 'Verpflegung: Gesunde Ernährung im Fokus',
         subtitle1: 'Förderung von Gedächtnis und Konzentration',
-        text1: 'Eine gesunde und ausgewogene Ernährung ist entscheidend für die kognitive Entwicklung und das Wohlbefinden unserer Schüler. Wir bieten qualitativ hochwertige Produkte an, die frei von Konservierungs- und Zusatzstoffen sind, um Gedächtnis und Konzentration zu unterstützen.',
+        text1:
+          'Eine gesunde und ausgewogene Ernährung ist entscheidend für die kognitive Entwicklung und das Wohlbefinden unserer Schüler. Wir bieten qualitativ hochwertige Produkte an, die frei von Konservierungs- und Zusatzstoffen sind, um Gedächtnis und Konzentration zu unterstützen.',
         subtitle2: 'Gesunde Alternativen zu Süßigkeiten',
-        text2: 'Um den Konsum von Süßigkeiten zu reduzieren, stellen wir gesunde Alternativen wie getrocknete Früchte zur Verfügung. Dies fördert ein bewusstes Ernährungsverhalten bei unseren Schülern.',
+        text2:
+          'Um den Konsum von Süßigkeiten zu reduzieren, stellen wir gesunde Alternativen wie getrocknete Früchte zur Verfügung. Dies fördert ein bewusstes Ernährungsverhalten bei unseren Schülern.',
       },
       item3: {
-        title: 'Datenschutz, Fotografie & Video: Verantwortungsvoller Umgang mit Daten',
+        title:
+          'Datenschutz, Fotografie & Video: Verantwortungsvoller Umgang mit Daten',
         subtitle1: 'Einhaltung der Datenschutzbestimmungen',
-        text1: 'Unsere Unterlagen und Veröffentlichungen werden regelmäßig von einem internen Datenschutzbeauftragten überprüft, um die Einhaltung aller Datenschutzbestimmungen sicherzustellen.',
+        text1:
+          'Unsere Unterlagen und Veröffentlichungen werden regelmäßig von einem internen Datenschutzbeauftragten überprüft, um die Einhaltung aller Datenschutzbestimmungen sicherzustellen.',
         subtitle2: 'Umgang mit Foto- und Videoaufnahmen',
-        text2: 'Foto- und Videoaufnahmen vom Unterricht werden nur mit ausdrücklicher Erlaubnis der Eltern gemacht und ausschließlich für die Öffentlichkeitsarbeit der Schule verwendet.',
+        text2:
+          'Foto- und Videoaufnahmen vom Unterricht werden nur mit ausdrücklicher Erlaubnis der Eltern gemacht und ausschließlich für die Öffentlichkeitsarbeit der Schule verwendet.',
       },
       item4: {
         title: 'Versicherung & Haftbarkeit: Umfassender Schutz',
         subtitle1: 'Betriebshaftpflichtversicherung und erweiterte',
-        text1: 'Führungszeugnisse Unsere Schule ist durch eine Betriebshaftpflichtversicherung abgesichert. Zudem verfügen unser Personal und alle Dozierenden über aktuelle erweiterte Führungszeugnisse, was ein weiterer Beleg für unser Engagement für Sicherheit und Verantwortung ist.',
+        text1:
+          'Führungszeugnisse Unsere Schule ist durch eine Betriebshaftpflichtversicherung abgesichert. Zudem verfügen unser Personal und alle Dozierenden über aktuelle erweiterte Führungszeugnisse, was ein weiterer Beleg für unser Engagement für Sicherheit und Verantwortung ist.',
       },
     },
   },
