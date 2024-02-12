@@ -4,6 +4,8 @@
       <Cover
         :image-title="product?.title_image"
         :image-background="product?.background_image"
+        :category="String(product?.product_type).toLocaleLowerCase()"
+        :age-group="String(product?.age_group).toLocaleLowerCase()"
       />
     </div>
 

@@ -1,7 +1,9 @@
 <template>
   <TemplateProduct v-bind="templateProps">
     <template #filters="{ title }">
-      <div class="flex flex-col md:flex-row md:items-center mx-10 gap-5">
+      <div
+        class="flex flex-col md:flex-row md:items-center block-padding-x gap-5"
+      >
         <div class="flex items-center gap-[18px]">
           <h1
             class="text-[38px] md:text-[32px] sm:text-[48px] font-medium uppercase"
@@ -15,7 +17,7 @@
         >
           <AppSelect
             v-model:value="filters.age_group"
-            placeholder="Возраст"
+            :placeholder="$t('common.filters.age')"
             clearable
             :options="ageOptions"
             class="sm:max-w-[135px] sm:min-w-[100px]"

@@ -8,6 +8,8 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     'nuxt-svgo',
     '@nuxtjs/i18n',
+    '@nuxtjs/sitemap',
+    'nuxt-simple-robots',
     ...(process.env.NODE_ENV === 'production' ? ['@nuxtjs/eslint-module'] : []),
   ],
   alias: {
@@ -29,6 +31,17 @@ export default defineNuxtConfig({
             'vue3-google-map',
           ]
         : ['@juggle/resize-observer'],
+  },
+  runtimeConfig: {
+    public: {
+      sentry: {
+        dsn:
+          process.env.NODE_ENV === 'production'
+            ? process.env.SENTRY_DSN_PRODUCTION
+            : process.env.SENTRY_DSN_DEVELOPMENT,
+        environment: process.env.NODE_ENV,
+      },
+    },
   },
   vite: {
     optimizeDeps: {

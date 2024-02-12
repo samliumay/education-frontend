@@ -32,34 +32,34 @@
   />
 
   <div class="pz-3 m-10 mb-20">
-    <h1 class="uppercase text-[36px] sm:text-[56px] mb-4 sm:mb-12">
+    <h1 class="uppercase text-[36px] lg:text-[56px] mb-4 lg:mb-12">
       {{ $t('common.contacts.contactUs') }}
     </h1>
 
-    <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 sm:gap-6">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-3 lg:gap-6">
       <div
-        class="bg-brand-light-gray rounded-[12px] p-3 sm:p-6 text-brand-red flex justify-between"
+        class="bg-brand-light-gray rounded-[12px] p-3 lg:p-6 text-brand-red flex justify-between"
         @click="isOpenModalCourse = true"
       >
         <span> {{ $t('common.contacts.tryout') }} </span>
         <img src="/icons/chevron_left.svg" alt="Arrow" />
       </div>
       <div
-      class="bg-brand-light-gray rounded-[12px] p-3 sm:p-6 text-brand-red flex justify-between"
+        class="bg-brand-light-gray rounded-[12px] p-3 lg:p-6 text-brand-red flex justify-between"
         @click="isOpenModalCalendar = true"
       >
         <span> {{ $t('common.contacts.meeting') }} </span>
         <img src="/icons/chevron_left.svg" alt="Arrow" />
       </div>
       <div
-        class="bg-brand-light-gray rounded-[12px] p-3 sm:p-6 text-brand-red flex justify-between"
+        class="bg-brand-light-gray rounded-[12px] p-3 lg:p-6 text-brand-red flex justify-between"
         @click="isOpenModalBackCall = true"
       >
         <span> {{ $t('common.contacts.call') }} </span>
         <img src="/icons/chevron_left.svg" alt="Arrow" />
       </div>
       <div
-        class="bg-brand-light-gray rounded-[12px] p-3 sm:p-6 text-brand-red flex justify-between"
+        class="bg-brand-light-gray rounded-[12px] p-3 lg:p-6 text-brand-red flex justify-between"
         @click="isOpenModalApplication = true"
       >
         <span> {{ $t('common.contacts.workUs') }} </span>
@@ -67,62 +67,62 @@
       </div>
     </div>
 
-    <AppDivider class="mt-8 mb-4 sm:mt-24 sm:mb-12" />
+    <AppDivider class="mt-8 mb-4 lg:mt-24 lg:mb-12" />
 
-    <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 sm:gap-6">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-3 lg:gap-6">
       <div>
-        <h3 class="text-[28px] sm:text-[36px] font-medium mb-3 sm:mb-6">
+        <h3 class="text-[28px] lg:text-[36px] font-medium mb-3 lg:mb-6">
           E-mail
         </h3>
-        <p class="text-brand-red text-[20px] sm:text-[24px] font-medium">
+        <p class="text-brand-red text-[20px] lg:text-[24px] font-medium">
           info@clavis-schule.de
         </p>
       </div>
 
       <div>
-        <h3 class="text-[28px] sm:text-[36px] font-medium mb-3 sm:mb-6">
+        <h3 class="text-[28px] lg:text-[36px] font-medium mb-3 lg:mb-6">
           {{ $t('common.contacts.main') }}
         </h3>
-        <p class="text-brand-red text-[20px] sm:text-[24px] font-medium">
+        <p class="text-brand-red text-[20px] lg:text-[24px] font-medium">
           +49 (0)30 71537477
         </p>
         <p
-          class="text-brand-red text-[20px] sm:text-[24px] font-medium mb-3 sm:mb-4"
+          class="text-brand-red text-[20px] lg:text-[24px] font-medium mb-3 lg:mb-4"
         >
           +49 (0)30 71537477
         </p>
       </div>
 
       <div>
-        <h3 class="text-[28px] sm:text-[36px] font-medium mb-3 sm:mb-6">
+        <h3 class="text-[28px] lg:text-[36px] font-medium mb-3 lg:mb-6">
           {{ $t('common.contacts.main') }}
         </h3>
-        <p class="text-brand-red text-[20px] sm:text-[24px] font-medium">
+        <p class="text-brand-red text-[20px] lg:text-[24px] font-medium">
           +49 (0)30 71537477
         </p>
       </div>
 
       <div>
-        <h3 class="text-[28px] sm:text-[36px] font-medium mb-3 sm:mb-6">
+        <h3 class="text-[28px] lg:text-[36px] font-medium mb-3 lg:mb-6">
           {{ $t('common.contacts.secretariat') }}
         </h3>
-        <p class="text-brand-red text-[20px] sm:text-[24px] font-medium">
+        <p class="text-brand-red text-[20px] lg:text-[24px] font-medium">
           +49 (0)30 71537477
         </p>
       </div>
     </div>
 
-    <div class="flex gap-12 flex-col sm:flex-row">
-      <div class="hidden sm:block">
-        <h2 class="uppercase text-[36px] sm:text-[56px] mb-3 sm:mb-6">
+    <div class="flex gap-12 flex-col lg:flex-row">
+      <div class="hidden lg:block">
+        <h2 class="uppercase text-[36px] lg:text-[56px] mb-3 lg:mb-6">
           {{ $t('common.contacts.city') }}
         </h2>
-        <p class="text-[28px] sm:text-[36px] font-medium text-gray-500">
+        <p class="text-[28px] lg:text-[36px] font-medium text-gray-500">
           {{ $t('common.contacts.address') }}
         </p>
         <img src="/icons/logo_lion.svg" alt="Logo" class="mt-12" />
       </div>
-      <div class="w-full">
+      <div class="w-full h-[350px] mt-10 lg:mt-0 lg:h-auto">
         <GoogleMap
           api-key="AIzaSyCdhWBS1I_Qi5qs5wljaBYIYRGBc0yIBYE"
           style="width: 100%; height: 100%"
@@ -132,11 +132,11 @@
           <Marker :options="{ position: center }" />
         </GoogleMap>
       </div>
-      <div class="flex flex-col sm:hidden">
-        <h2 class="uppercase text-[36px] sm:text-[56px] mb-3 sm:mb-6">
+      <div class="flex flex-col lg:hidden">
+        <h2 class="uppercase text-[36px] lg:text-[56px] mb-3 lg:mb-6">
           {{ $t('common.contacts.city') }}
         </h2>
-        <p class="text-[28px] sm:text-[36px] font-medium text-gray-500">
+        <p class="text-[28px] lg:text-[36px] font-medium text-gray-500">
           {{ $t('common.contacts.address') }}
         </p>
         <img src="/icons/logo_lion.svg" alt="Logo" class="mt-12 self-end" />
@@ -150,10 +150,10 @@ import { ref } from 'vue'
 import { GoogleMap, Marker } from 'vue3-google-map'
 
 import AppDivider from '../components/AppDivider.vue'
-import AppModalApplication from '../components/AppModalApplication.vue'
-import AppModalBackCall from '../components/AppModalBackCall.vue'
-import AppModalCalendar from '../components/AppModalCalendar.vue'
-import AppModalCourse from '../components/AppModalCourse.vue'
+import AppModalApplication from '../components/modals/AppModalApplication.vue'
+import AppModalBackCall from '../components/modals/AppModalBackCall.vue'
+import AppModalCalendar from '../components/modals/AppModalCalendar.vue'
+import AppModalCourse from '../components/modals/AppModalCourse.vue'
 
 const isOpenModalCourse = ref(false)
 const isOpenModalBackCall = ref(false)

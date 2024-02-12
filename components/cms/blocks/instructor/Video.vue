@@ -1,14 +1,14 @@
 <template>
   <div
-    class="px-3 sm:px-10 pt-6 pb-4 sm:pt-24 sm:pb-12 flex flex-col items-center"
+    class="m-10 flex flex-col items-center"
   >
     <h2
-      class="uppercase text-[36px] sm:text-[56px] font-semibold mb-4 sm:mb-12"
+      class="text-3xl sm:text-4xl md:text-5xl uppercase font-medium mb-20 lg:mb-14"
     >
-      {{ $t('common.video') }}
+      {{ blockData.title ? blockData.title : $t('common.video') }}
     </h2>
     <iframe
-      :src="url"
+      :src="blockData.video_url"
       title="YouTube video player"
       frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -19,6 +19,6 @@
 </template>
 <script setup lang="ts">
 defineProps<{
-  url: string
+  blockData: { video_url: string }
 }>()
 </script>

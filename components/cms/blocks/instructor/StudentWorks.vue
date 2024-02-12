@@ -1,32 +1,32 @@
 <!-- eslint-disable vue/no-static-inline-styles -->
-
 <template>
-  <div class="m-10 product" data-cms="main-product-carousel">
-    <AppHeading>
-      {{ blockData.value[0].title }}
-    </AppHeading>
+  <div class="m-10 student-works" data-cms="instructor-student-works">
+    <h2
+      class="text-3xl sm:text-4xl md:text-5xl uppercase font-medium mb-20 lg:mb-14"
+    >
+      {{ blockData?.heading || $t('blocks.product.studentWorks') }}
+    </h2>
     <n-carousel
-      v-if="blockData.value[0].cards.length > 0"
-      :space-between="20"
+      :space-between="10"
       :loop="false"
       slides-per-view="auto"
       draggable
       show-arrow
     >
       <n-carousel-item
-        v-for="item in blockData.value[0].cards"
-        :key="item.id"
-        class="!w-[100%] lg:!w-[33%]"
+        v-for="item in blockData.content"
+        :key="item"
+        style="width: fit-content"
       >
-        <ProductCard
-          class="h-full"
-          :block-data="item"
-          :extra-props="{ type: 'academy' }"
+        <ImageBlockById
+          :id="item"
+          class="h-[300px] rounded-xl overflow-hidden"
         />
+        <p class="mt-1">{{ item.name }}</p>
       </n-carousel-item>
 
       <template #arrow="{ prev, next }">
-        <div class="w-full h-full absolute top-0 left-0 product-carousel">
+        <div class="w-full h-full absolute top-0 left-0">
           <div class="absolute right-0 -top-14 flex gap-4">
             <button
               type="button"
@@ -65,47 +65,24 @@
         </ul>
       </template>
     </n-carousel>
-    <AppNotFound v-else />
   </div>
 </template>
 <script setup lang="ts">
 import { NCarousel, NCarouselItem } from 'naive-ui'
-import { onMounted, ref } from 'vue'
 
-import AppHeading from '@/components/AppHeading.vue'
-
-import type { PageBlock } from '../../../../types/cms'
-import AppNotFound from '../../../AppNotFound.vue'
-import ProductCard from '../products/ProductCard.vue'
+import type { PageBlock } from '../../../../../types/cms'
+import ImageBlockById from '../../blocks/misc/ImageBlockByID'
 
 defineProps<{
-  blockData: PageBlock
+  blockData: PageBlock[]
 }>()
-
-const carouselHeight = ref<number | null>(null)
-
-onMounted(() => {
-  if (process.client) {
-    setTimeout(() => {
-      const carousel = document.querySelector('.product .product-carousel')
-      if (carousel) {
-        const rect = carousel.getBoundingClientRect()
-        carouselHeight.value = Math.round(rect.height)
-      }
-    }, 1000)
-  }
-})
 </script>
 <style>
-.product .n-carousel {
+.student-works .n-carousel {
   overflow: visible;
 }
 
-.product__arrow-button:hover > img {
+.student-work__arrow-button:hover > img {
   filter: brightness(0.1);
-}
-
-.product .n-carousel .n-carousel__slides .n-carousel__slide {
-  height: auto;
 }
 </style>

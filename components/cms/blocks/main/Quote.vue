@@ -1,6 +1,6 @@
 <template>
   <div
-    class="my-10 px-10 py-10 flex flex-col items-center justify-center lg:justify-start lg:flex-row gap-10 lg:h-[500px] relative"
+    class="block-padding block-margin flex flex-col items-center justify-center lg:justify-start lg:flex-row gap-10 lg:h-[500px] relative rounded-md overflow-hidden"
     data-cms="main-quote"
   >
     <div
@@ -26,15 +26,15 @@
       "
     >
       <blockquote
-        class="flex flex-col items-center lg:items-start gap-10 relative top-12"
+        class="flex flex-col items-center lg:items-start gap-8 relative top-12"
       >
-        <p class="font-medium text-9xl leading-[0]">“</p>
+        <img src="/icons/quotes.svg" class="w-[64px] h-[64px]" alt="quotes" />
         <p class="font-medium text-3xl text-center lg:text-left">
           {{ blockData.value.quote_text }}
         </p>
       </blockquote>
 
-      <p class="font-medium text-xl mt-4 mb-2">
+      <p class="font-medium text-xl mt-8 mb-2">
         {{ blockData.value.author.name }} •
         {{ blockData.value.author.position }}
       </p>

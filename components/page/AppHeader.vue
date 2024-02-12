@@ -2,7 +2,7 @@
   <AppSignIn :is-open="isOpenSignIn" @close="isOpenSignIn = false" />
 
   <header
-    class="relative before:font-medium bg-white px-10 py-[18px] lg:py-[28px]"
+    class="w-full relative before:font-medium bg-white py-[18px] lg:py-[28px] block-padding-x"
     :class="{ '!bg-brand-light-gray': $route.name === 'menu' }"
   >
     <div
@@ -31,15 +31,15 @@
             @click="navigateTo('/menu')"
           >
             <img src="/icons/star.svg" alt="Stars" />
-            <p>{{ $t('common.menu') }}</p>
+            <p class="text-base xl:text-lg">{{ $t('common.menu') }}</p>
           </AppButton>
 
-          <nav class="flex gap-6">
+          <nav class="flex gap-4">
             <NuxtLink
               v-for="route in routes"
               :key="route.value"
               :to="route.value"
-              class="cursor-pointer"
+              class="cursor-pointer hover:text-brand-red text-base xl:text-lg"
               :class="{ 'text-brand-red': $route.href === route.value }"
             >
               {{ route.label }}
@@ -60,15 +60,19 @@
         </template>
       </div>
 
-      <div class="flex items-center gap-8">
+      <div class="flex items-center gap-6">
         <AppSelect
           v-model:value="currentLanguage"
           :options="languageOptions"
           variant="transparent"
+          class="w-[50px]"
         />
 
-        <NuxtLink to="/cart" class="flex items-center cursor-pointer">
-          <span> {{ $t('common.cart') }} </span>
+        <NuxtLink
+          to="/cart"
+          class="flex items-center cursor-pointer text-base xl:text-lg"
+        >
+          <span class="hover:text-brand-red"> {{ $t('common.cart') }} </span>
           <span
             class="border-black rounded-full border-[1px] p-[12px] ml-[6px] relative"
           >
@@ -91,14 +95,20 @@
             class="w-[50px] h-[50px]"
           />
         </button>
-        <AppButton v-else @click="isOpenSignIn = true">
+        <AppButton
+          v-else
+          class="min-w-[100px] text-xl"
+          @click="isOpenSignIn = true"
+        >
           {{ $t('common.actions.signIn') }}
         </AppButton>
       </div>
     </div>
 
     <!-- MOBILE HEADER -->
-    <div class="relative w-full flex items-center justify-between gap-6 lg:hidden">
+    <div
+      class="relative w-full flex items-center justify-between gap-6 lg:hidden"
+    >
       <!-- OPEN MENU BUTTON HEADER -->
       <template v-if="$route.name !== 'menu'">
         <AppButton
@@ -132,6 +142,13 @@
       </NuxtLink>
 
       <div class="flex items-center gap-4">
+        <AppSelect
+          v-model:value="currentLanguage"
+          :options="languageOptions"
+          variant="transparent"
+          class="w-[60px]"
+        />
+
         <NuxtLink to="/cart">
           <img src="/icons/cart.svg" alt="Cart" />
         </NuxtLink>

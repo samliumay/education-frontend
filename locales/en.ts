@@ -28,12 +28,33 @@ export const en = {
       city: 'Berlin',
       address: 'Immanuelkirchstraße 4 10405',
     },
+    modals: {
+      fillApplication: 'Fill in the form',
+      youChoosed: 'You choosed',
+      positionInterested: 'Position you are interested in',
+      additionalInfo: 'Additional Information',
+      calendar: 'Calendar',
+      requestCallback: 'Request for a call back',
+      comment: 'Comment',
+      editSubscription: 'Editing subscription',
+      cancelSubscription: 'Cancel subscription',
+      subscriptionPaymentPayPal: 'PayPal subscription payment',
+      autopayPayPal: 'Autopay PayPal',
+    },
     cookies:
       'By using our site you are consenting to the use of cookies. For more information please refer to our',
     filters: {
       language: 'Language',
       age: 'Age',
       season: 'Season',
+      direction: 'Direction',
+      branch: 'Branch',
+      seasons: {
+        winter: 'Winter holidays 2024',
+        spring: 'Spring holidays 2024',
+        summer: 'Summer holidays 2024',
+        autumn: 'Autumn holidays 2024',
+      },
     },
     actions: {
       close: 'Close',
@@ -47,6 +68,9 @@ export const en = {
       resetPassword: 'Reset the password',
       change: 'Change',
       look: 'Open',
+      send: 'Send',
+      pay: 'Pay',
+      turnOn: 'Turn on',
     },
     subscription: {
       abonement: 'Subscription',
@@ -61,6 +85,7 @@ export const en = {
       noActiveCourses: 'No active courses',
       noActiveWorkshops: 'No active workshops',
       comment: 'Comment',
+      status: 'Status',
     },
     profileMenu: {
       profile: 'My profile',
@@ -164,10 +189,12 @@ export const en = {
     chooseDifferentWorkshop: 'You can choose different workshops',
     order: {
       title: 'Order details',
-      subtitle: 'To place an order, select the items you want to buy from your cart',
+      subtitle:
+        'To place an order, select the items you want to buy from your cart',
       total: 'Total',
       discountAmount: 'Discount amount',
-      fillOutPaymentDetails: 'For payment, please fill out the payment details below',
+      fillOutPaymentDetails:
+        'For payment, please fill out the payment details below',
       pleaseRegister: 'Please register or log in to your account to pay',
     },
     button: {
@@ -237,13 +264,133 @@ export const en = {
     application: 'Submit your application',
     ourOffer: 'What do we offer',
     courseSelect: 'Course selection',
-    seminarOffer: 'We also offer all of our courses as workshops for schools. The seminar can take place either at your place or at our premises.',
+    seminarOffer:
+      'We also offer all of our courses as workshops for schools. The seminar can take place either at your place or at our premises.',
     program: 'AGs and holiday courses',
-    programOffer: 'We are happy to partner with schools to host their daytime or holiday programs at our location or at their location.',
-    questions: 'If you have any questions, please call or write by email. We are working at',
+    programOffer:
+      'We are happy to partner with schools to host their daytime or holiday programs at our location or at their location.',
+    questions:
+      'If you have any questions, please call or write by email. We are working at',
     workhours: 'Mon-Fri from 9 to 18',
   },
   profile: {
     title: 'My Profile',
+  },
+  aboutUs: {
+    title:
+      'Clavis Berlin - art school and science for children and young people',
+    subtitle:
+      'Clavis is a new learning center for students of different age groups that offers a wide range of courses such as: B.Art and visual theater, science, mathematics and digital drawing',
+    target:
+      'Our goal is to promote the extracurricular skills and interests of our students by giving them the opportunity to learn freely and on their own initiative within the framework of unique curricula and based on the most modern pedagogical methodologies',
+    offers: {
+      title: 'Our offers',
+      first: {
+        title: 'Fine arts',
+        subtitle1: 'Development of artistic abilities',
+        text1:
+          'Our visual arts courses focus on encouraging children`s creativity, imagination and independence. We not only teach them artistic techniques and how to use different materials, but also help them develop perseverance and successfully complete projects.',
+        subtitle2: 'More than just art lessons',
+        text2:
+          'Our concept goes beyond traditional art lessons. We organize artistic events and excursions that offer children practical insights into the art world. In addition, we present the works created in class in exhibitions and offer creative workshops to enrich the learning experience.',
+      },
+      second: {
+        title: 'Theater: creativity on stage',
+        subtitle1: 'Children as the main authors of their plays',
+        text1:
+          'In our theater courses, children are the driving force behind the creative process. From initial ideas and impulses, they develop coherent stories that are implemented into stage concepts. This promotes their individual creativity and helps them to take on new perspectives and better understand themselves and their environment.',
+        subtitle2: 'Multilingual theater experience',
+        text2:
+          'Our theater courses are also a place of linguistic diversity. Different languages are used to encourage children to express themselves spontaneously and creatively and to promote understanding of others.',
+      },
+      third: {
+        title: 'Languages: Playful language acquisition',
+        subtitle1: 'Active and communicative learning',
+        text1:
+          'Our language course program focuses on playful and communicative teaching methods. We use theater games, improvisation exercises and dialogues to help children overcome stress and find joy in the new language and communication.',
+      },
+      fourth: {
+        title: 'Mathematics and Science: Promoting Thinking',
+        subtitle1: 'Mathematics as a key to intellectual development',
+        text1:
+          'In our mathematics courses, we emphasize teaching students how to systematically approach and solve problems. We promote the development of organized ways of thinking and the ability to deal with problems consciously.',
+        subtitle2: 'A holistic approach',
+        text2:
+          'Our courses in mathematics and science include hard work, observation of the phenomena of our world and construction. We support the children in asking questions and looking for solutions, which is a fundamental skill for the rest of their lives.',
+      },
+    },
+    principles: {
+      title: 'Values & Principles',
+      item1: 'We overcome language barriers through shared interests',
+      item2:
+        'We want to create an optimal learning environment with the best possible learning conditions',
+      item3: 'Tolerance and mutual respect are the basis of our actions',
+      item4:
+        'We are committed to fairness, integration and transparent communication',
+      quote: {
+        text: 'Learning is experience. Everything else is just information',
+        author: 'Albert Einstein',
+      },
+    },
+    approach: {
+      title: 'Methodological approach',
+      item1: {
+        text: 'Interdisciplinary',
+        title: 'Topics are taught across disciplines',
+      },
+      item2: {
+        text: 'Learn to learn',
+        title: 'Learn independently and confidently',
+      },
+      item3: {
+        text: 'Problem & historically oriented',
+        title: 'Teaching methods based on illustrative examples',
+      },
+      item4: {
+        text: 'Multilingual',
+        title: 'Learn open-mindedness through multilingualism',
+      },
+      item5: {
+        text: 'Multisensory',
+        title: 'Learn with all your senses',
+      },
+    },
+    values: {
+      title: 'Our approaches and values at Clavis Berlin',
+      item1: {
+        title: 'Safety: A safe environment for our students',
+        subtitle1: 'Child-friendly and safe spaces',
+        text1:
+          'All of our rooms are designed to be child-friendly and meet high safety standards. We attach great importance to regular checking and compliance with security measures. We carry out comprehensive inspections every two years to ensure that our facilities meet the latest safety requirements.',
+        subtitle2: 'Fire protection and individual',
+        text2:
+          'Safety arrangements All of our premises have professionally installed smoke detectors and fire extinguishers. We also offer an additional agreement as part of the participant contract that allows parents to make individual arrangements for picking up their children.',
+      },
+      item2: {
+        title: 'Food: Focus on healthy eating',
+        subtitle1: 'Promote memory and concentration',
+        text1:
+          'A healthy and balanced diet is crucial for the cognitive development and well-being of our students. We offer high quality products that are free of preservatives and additives to support memory and concentration.',
+        subtitle2: 'Healthy alternatives to sweets',
+        text2:
+          'To reduce the consumption of sweets, we provide healthy alternatives such as dried fruits. This promotes conscious eating habits among our students.',
+      },
+      item3: {
+        title:
+          'Data protection, photography & video: Responsible handling of data',
+        subtitle1: 'Compliance with data protection regulations',
+        text1:
+          'Our documents and publications are regularly checked by an internal data protection officer to ensure compliance with all data protection regulations.',
+        subtitle2: 'Handling photo and video recordings',
+        text2:
+          'Photos and video recordings of lessons are only taken with the express permission of the parents and are used exclusively for the school`s public relations work.',
+      },
+      item4: {
+        title: 'Insurance & Liability: Comprehensive protection',
+        subtitle1: 'Public liability insurance and extended',
+        text1:
+          'Certificates of good conduct Our school is covered by public liability insurance. In addition, our staff and all lecturers have current advanced certificates of good conduct, which is further evidence of our commitment to safety and responsibility.',
+      },
+    },
   },
 }

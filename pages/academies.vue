@@ -1,7 +1,7 @@
 <template>
   <TemplateProduct v-bind="templateProps">
     <template #filters="{ title }">
-      <div class="flex flex-col lg:items-start mx-10 gap-5">
+      <div class="flex flex-col lg:items-start block-padding-x gap-5">
         <div class="flex items-center gap-[18px]">
           <h1
             class="text-[38px] md:text-[32px] sm:text-[48px] font-medium uppercase"
@@ -32,7 +32,7 @@
             v-show="!categoriesPending"
             v-model:value="filters.category"
             class="max-w-[135px] min-w-[120px]"
-            placeholder="Направление"
+            :placeholder="$t('common.filters.direction')"
             clearable
             :options="categoriesOptions"
           />
@@ -53,7 +53,7 @@
           <AppSelect
             v-show="!branchesPending"
             v-model:value="filters.branch"
-            placeholder="Филиал"
+            :placeholder="$t('common.filters.branch')"
             class="max-w-[135px] min-w-[120px]"
             clearable
             :options="branchesOptions"

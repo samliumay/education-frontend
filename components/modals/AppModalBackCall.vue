@@ -11,7 +11,7 @@
             class="flex gap-[20px] items-center mr-10"
             @click="$emit('close')"
           >
-            Закрыть
+            {{ $t('common.actions.close') }}
             <button
               class="bg-white border-[1px] border-brand-black w-[35px] h-[35px] rounded-full flex items-center justify-center hover:bg-brand-light-gray transition ease-in delay-100 transform active:scale-[0.93]"
             >
@@ -26,27 +26,66 @@
 
         <div class="flex flex-col gap-10 m-10">
           <div>
-            <h1 class="font-medium text-4xl mb-10">Календарь</h1>
+            <h1 class="font-medium text-4xl mb-10">
+              {{ $t('common.modals.requestCallback') }}
+            </h1>
 
             <form
               ref="form"
               class="flex flex-col gap-2 mt-10 relative"
               @submit.prevent="sendModalCourse"
             >
-              <n-calendar
-                v-model:value="value"
-                #="{ year, month, date }"
-                @update:value="handleUpdateValue"
-              >
-                {{ year }}-{{ month }}-{{ date }}
-              </n-calendar>
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-[12px]">
+                <AppInput
+                  v-model="registrationForm.first_name"
+                  :placeholder="$t('cart.registerDetails.name')"
+                  required
+                  pattern=".{2,}"
+                  title="The name must contain at least two characters"
+                  @blur="checkValidity"
+                />
+                <AppInput
+                  v-model="registrationForm.last_name"
+                  :placeholder="$t('cart.registerDetails.surname')"
+                  required
+                  pattern=".{2,}"
+                  title="Last name must contain at least two characters"
+                  @blur="checkValidity"
+                />
+              </div>
+
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-[12px]">
+                <AppInput
+                  v-model="registrationForm.email"
+                  :placeholder="$t('cart.registerDetails.email')"
+                  type="email"
+                  required
+                  @blur="checkValidity"
+                />
+                <AppInput
+                  v-model="registrationForm.phone"
+                  :placeholder="$t('cart.registerDetails.phone')"
+                  maska="+49 ### ###-##-##"
+                  type="tel"
+                  required
+                  @blur="checkValidity"
+                />
+              </div>
+
+              <AppTextarea
+                v-model="registrationForm.message"
+                :placeholder="$t('common.modals.additionalInfo')"
+                type="text"
+                required
+                @blur="checkValidity"
+              />
 
               <AppButton
                 class="w-full mt-10"
                 type="submit"
                 :disabled="!form?.checkValidity() ?? false"
               >
-                Отправить
+                {{ $t('common.actions.send') }}
               </AppButton>
             </form>
           </div>
@@ -56,20 +95,21 @@
   </n-modal>
 </template>
 <script setup lang="ts">
-import { NCalendar, NModal } from 'naive-ui'
+import { NModal } from 'naive-ui'
 import { ref, type VNodeRef } from 'vue'
-// import { useRoute } from 'vue-router'
 
+// import { useRoute } from 'vue-router'
 // import { useCartStore } from '@/store/cart'
 // import { useUserStore } from '@/store/user'
 // import { getApiAddress } from '@/utils/getApiAddress'
+import AppInput from '@/components/AppInput.vue'
+import AppTextarea from '@/components/AppTextarea.vue'
 
 defineProps<{
   isOpen: boolean
 }>()
 // Init component
 const emit = defineEmits(['close'])
-
 // Init hooks
 // const route = useRoute()
 
@@ -78,12 +118,8 @@ const emit = defineEmits(['close'])
 // const cartStore = useCartStore()
 
 // State
+// eslint-disable-next-line vue/require-typed-ref
 // const visitor = ref(null)
-const value = ref(new Date())
-// eslint-disable-next-line @typescript-eslint/no-shadow
-const handleUpdateValue = (value: Date) => {
-  value.value = value
-}
 
 // Get data
 // const { data: product, pending: productPending } = await useFetch(
@@ -91,15 +127,14 @@ const handleUpdateValue = (value: Date) => {
 //   { deep: true },
 // )
 
-// // Registration
-// const registrationForm = ref({
-//   first_name: '',
-//   last_name: '',
-//   email: '',
-//   phone: '',
-//   message: '',
-//   position: '',
-// })
+// Registration
+const registrationForm = ref({
+  first_name: '',
+  last_name: '',
+  email: '',
+  phone: '',
+  message: '',
+})
 
 // eslint-disable-next-line require-await
 const sendModalCourse = async () => {
@@ -112,9 +147,9 @@ const sendModalCourse = async () => {
 }
 
 // Form
-// const checkValidity = (event: { target: { reportValidity: () => void } }) => {
-//   event.target.reportValidity()
-// }
+const checkValidity = (event: { target: { reportValidity: () => void } }) => {
+  event.target.reportValidity()
+}
 
 const form = ref<VNodeRef | undefined>(undefined)
 </script>

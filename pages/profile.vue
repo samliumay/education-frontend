@@ -1,14 +1,26 @@
 <template>
   <div class="relative pt-[96px] px-[16px] sm:px-[48px] bg-brand-light-gray">
+    <AppModalComments
+      v-if="isOpenModalComment"
+      :is-open="isOpenModalComment"
+      :comment="comment"
+      @close="isOpenModalComment = false"
+    />
+
     <div
       class="absolute left-1/2 transform -translate-x-1/2 top-0 mx-0 w-screen h-full bg-brand-light-gray"
     />
 
-    <h1 class="text-[32px] sm:text-[48px] font-medium relative">
+    <h1 class="text-4xl md:text-6xl mb-8 uppercase w-fit font-bold relative">
       {{ $t('profile.title') }}
     </h1>
 
-    <n-tabs v-model:value="activeTab" class="relative" type="line" animated>
+    <n-tabs
+      v-model:value="activeTab"
+      class="relative overflow-hidden"
+      type="line"
+      animated
+    >
       <n-tab-pane name="profile" :tab="$t('common.profileMenu.profile')">
         <div
           class="mt-[48px] grid grid-cols-1 sm:grid-cols-2 gap-[24px] bg-white rounded-[12px] p-[36px]"
@@ -40,7 +52,9 @@
           >
             <div class="flex flex-col sm:flex-row gap-[12px]">
               <div class="flex flex-col gap-[8px]">
-                <p class="font-medium">{{ $t('user.first_name') }}</p>
+                <p class="font-medium text-base xl:text-lg">
+                  {{ $t('user.first_name') }}
+                </p>
                 <AppInput
                   v-model="user.user.first_name"
                   required
@@ -51,7 +65,9 @@
               </div>
 
               <div class="flex flex-col gap-[8px]">
-                <p class="font-medium">{{ $t('user.last_name') }}</p>
+                <p class="font-medium text-base xl:text-lg">
+                  {{ $t('user.last_name') }}
+                </p>
                 <AppInput
                   v-model="user.user.last_name"
                   required
@@ -63,7 +79,9 @@
             </div>
 
             <div class="flex flex-col gap-[8px]">
-              <p class="font-medium">{{ $t('common.info.mail') }}</p>
+              <p class="font-medium text-base xl:text-lg">
+                {{ $t('common.info.mail') }}
+              </p>
               <AppInput
                 v-model="user.user.email"
                 placeholder="example@example.com"
@@ -74,7 +92,9 @@
             </div>
 
             <div class="flex flex-col gap-[8px]">
-              <p class="font-medium">{{ $t('common.info.phone') }}</p>
+              <p class="font-medium text-base xl:text-lg">
+                {{ $t('common.info.phone') }}
+              </p>
               <AppInput
                 v-model="user.user.phone_number"
                 :placeholder="$t('user.phone_number')"
@@ -143,27 +163,10 @@
       </n-tab-pane>
       <n-tab-pane name="visitors" :tab="$t('common.profileMenu.children')">
         <div class="mt-[48px]" />
-        <div class="bg-white flex flex-col justify-between gap-10 md:flex-row rounded-[12px] p-[36px] mb-[24px]">
-          <p>
-            По всем возникшим вопросам обращайтесь по телефону или напиши на
-            почту. Мы работаем <span class="text-brand-red">пн-пт c 9 до 18</span>
-          </p>
-          <div>
-            <p class="text-brand-black font-medium">Телефон</p>
-            <p class="text-brand-gray">+49 (0)30 71537477</p>
-            <p class="text-brand-gray">+49 (0)30 71537477</p>
-          </div>
-          <div>
-            <p class="text-brand-black font-medium">Почта</p>
-            <p class="text-brand-gray">info@clavis-schule.de</p>
-          </div>
-        </div>
+        <ContactsBlock />
         <template v-for="visitor in user.visitorsOrders" :key="visitor.id">
-          <form
-            class="rounded-[12px] bg-white p-[36px] mb-[24px]"
-            @submit.prevent="user.updateVisitor(visitor.id, visitor)"
-          >
-            <div class="flex flex-col sm:flex-row justify-between gap-[48px]">
+          <div class="rounded-[12px] bg-white p-[36px] mb-[24px]">
+            <div class="flex flex-col justify-between gap-6">
               <div class="flex items-center gap-[16px]">
                 <div
                   class="bg-brand-dark-gray rounded-[1000px] w-[96px] h-[96px]"
@@ -177,89 +180,73 @@
                 </h2>
               </div>
 
-              <div class="flex flex-col lg:flex-row gap-[12px]">
-                <div class="flex flex-col gap-[8px]">
-                  <p class="font-medium">{{ $t('user.first_name') }}</p>
-                  <AppInput
-                    v-model="visitor.first_name"
-                    required
-                    pattern=".{2,}"
-                    :title="$t('user.nameRule')"
-                    @blur="checkValidity"
-                  />
-                </div>
+              <AppDivider class="my-[36px]" />
 
-                <div class="flex flex-col gap-[8px]">
-                  <p class="font-medium">{{ $t('user.last_name') }}</p>
-                  <AppInput
-                    v-model="visitor.last_name"
-                    pattern=".{2,}"
-                    :title="$t('user.lastNameRule')"
-                    required
-                    @blur="checkValidity"
-                  />
-                </div>
-
-                <div class="flex flex-col gap-[8px]">
-                  <p class="font-medium">{{ $t('user.birthdate') }}</p>
-                  <AppInput
-                    v-model="visitor.birth_date"
-                    type="date"
-                    placeholder="2012-12-21"
-                    required
-                    @blur="checkValidity"
-                  />
-                </div>
-              </div>
+              <ProductsTable
+                class="w-full"
+                :orders="visitor.orders"
+                with-button
+              />
             </div>
-
-            <div class="flex justify-end mt-[24px] w-full sm:w-auto">
-              <AppButton class="w-full" type="submit">
-                {{ $t('common.actions.save') }}
-              </AppButton>
-            </div>
-
-            <AppDivider class="my-[36px]" />
-
-            <ProductsTable :orders="visitor.orders" with-button />
-          </form>
+          </div>
         </template>
       </n-tab-pane>
       <n-tab-pane name="workshops" :tab="$t('common.profileMenu.workshops')">
         <div
           class="flex flex-col gap-[12px] bg-white p-[36px] rounded-[12px] mt-[48px] mb-[24px]"
         >
-          <div
-            class="grid grid-cols-4 gap-[12px] font-medium p-[16px] min-w-[800px]"
-          >
-            <p>{{ $t('common.tableOptions.title') }}</p>
-            <p>{{ $t('common.tableOptions.schedule') }}</p>
-            <p>{{ $t('common.tableOptions.date') }}</p>
-            <p>{{ $t('common.tableOptions.comment') }}</p>
+          <div class="overflow-x-scroll">
+            <div class="min-w-[900px] w-full">
+              <div class="grid grid-cols-4 gap-[12px] font-medium p-[16px]">
+                <p>{{ $t('common.tableOptions.title') }}</p>
+                <p>{{ $t('common.tableOptions.schedule') }}</p>
+                <p>{{ $t('common.tableOptions.date') }}</p>
+                <p>{{ $t('common.tableOptions.comment') }}</p>
+              </div>
+
+              <template
+                v-if="
+                  user.workshopOrders?.length &&
+                  user.workshopOrders?.length !== 0
+                "
+              >
+                <div
+                  v-for="workshop in user.workshopOrders"
+                  :key="workshop.id"
+                  class="grid grid-cols-4 gap-[12px] bg-brand-light-gray p-[16px]"
+                >
+                  <p>{{ workshop.product_page?.name }}</p>
+                  <p>
+                    {{
+                      workshop.product_page.schedule_slots
+                        .map(slot => {
+                          return `${slot.weekday.slice(
+                            0,
+                            2,
+                          )} ${slot.start.slice(0, 5)}-${slot.end.slice(0, 5)}`
+                        })
+                        .join('; ')
+                    }}
+                  </p>
+                  <p>{{ new Date().toDateString() }}</p>
+                  <button
+                    class="w-fit text-brand-black active:text-brand-red cursor-pointer underline underline-offset-8"
+                    @click="openCommentModal(workshop)"
+                  >
+                    {{ $t('common.actions.look') }} →
+                  </button>
+                </div>
+              </template>
+
+              <template v-else>
+                <div
+                  class="px-[16px] bg-brand-light-gray py-[20px] rounded-[12px]"
+                >
+                  {{ $t('common.tableOptions.noActiveWorkshops') }}
+                </div>
+              </template>
+            </div>
           </div>
-
-          <template
-            v-if="user.workshops?.length && user.workshops?.length !== 0"
-          >
-            <div
-              v-for="workshop in user.workshopOrders"
-              :key="workshop.id"
-              class="grid grid-cols-4 gap-[12px] bg-brand-light-gray p-[16px] min-w-[800px]"
-            >
-              <p>{{ workshop.product.name }}</p>
-              <p />
-              <p>{{ new Date().toDateString() }}</p>
-              <p class="text-blue-500 cursor-pointer">
-                {{ $t('common.actions.look') }}
-              </p>
-            </div>
-          </template>
-
-          <template v-else>
-            <div class="px-[16px] bg-brand-light-gray py-[20px] rounded-[12px]">
-              {{ $t('common.tableOptions.noActiveWorkshops') }}
-            </div>
-          </template>
         </div>
       </n-tab-pane>
       <n-tab-pane name="sales" :tab="$t('common.profileMenu.history')">
@@ -274,6 +261,9 @@
 import { NTabPane, NTabs } from 'naive-ui'
 import { onMounted, ref, type VNodeRef } from 'vue'
 import { useRoute } from 'vue-router'
+
+import ContactsBlock from '@/components/misc/ContactsBlock.vue'
+import AppModalComments from '@/components/modals/AppModalComments.vue'
 
 import AppButton from '../components/AppButton.vue'
 import AppDivider from '../components/AppDivider.vue'
@@ -310,7 +300,15 @@ const passwordForm = ref<VNodeRef | undefined>(undefined)
 const passwordError = ref('')
 const passwordChanged = ref('')
 
+const comment = ref('Nothing...')
+const isOpenModalComment = ref(false)
+
 // Actions
+const openCommentModal = workshop => {
+  comment.value = workshop.comment
+  isOpenModalComment.value = true
+}
+
 const checkValidity = (event: { target: { reportValidity: () => void } }) => {
   event.target.reportValidity()
 }
@@ -349,6 +347,10 @@ onMounted(() => {
 })
 </script>
 <style>
+.n-tabs .n-tabs-tab .n-tabs-tab__label {
+  font-size: 16px;
+}
+
 .n-tabs.n-tabs--line-type .n-tabs-tab.n-tabs-tab--active,
 .n-tabs.n-tabs--bar-type .n-tabs-tab.n-tabs-tab--active {
   color: #db3b4d !important;
