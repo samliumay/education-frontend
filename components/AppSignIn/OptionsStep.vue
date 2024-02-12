@@ -15,18 +15,14 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { getSiteAddress } from '@/utils/getSiteAddress'
-
 // Init component
 const emit = defineEmits(['goToEmailStep'])
 
 // Init hooks
 const { t } = useI18n()
 
-const clientId = () =>
-  import.meta.env.DEV
-    ? import.meta.env.VITE_GOOGLE_SSO_CLIENT_ID_DEVELOPMENT
-    : import.meta.env.VITE_GOOGLE_SSO_CLIENT_ID_PRODUCTION
+const clientId = import.meta.env.VITE_GOOGLE_SSO_CLIENT_ID
+const siteAddress = import.meta.env.VITE_SITE_URL
 
 // Options
 const options = [
@@ -41,7 +37,7 @@ const options = [
     onClick: () => {
       if (process.client) {
         window.open(
-          `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${getSiteAddress()}&prompt=consent&response_type=code&client_id=${clientId()}&scope=openid%20email%20profile&access_type=offline`,
+          `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${siteAddress}&prompt=consent&response_type=code&client_id=${clientId}&scope=openid%20email%20profile&access_type=offline`,
           '_blank',
         )
       }
