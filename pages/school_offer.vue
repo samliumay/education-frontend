@@ -1,6 +1,6 @@
 <template>
   <n-breadcrumb class="mt-6 mb-10 px-10">
-    <n-breadcrumb-item сlass="text-brand-gray">
+    <n-breadcrumb-item class="text-brand-gray">
       <NuxtLink to="/">{{ $t('common.main') }}</NuxtLink>
     </n-breadcrumb-item>
     <n-breadcrumb-item сlass="text-brand-gray">
