@@ -51,6 +51,8 @@ const emit = defineEmits(['update:modelValue'])
 .select .n-base-selection-input__content {
   font-weight: 500;
   font-size: 16px;
+  font-weight: 500 !important;
+  color: #202020;
 }
 
 .select .n-base-selection-label {
