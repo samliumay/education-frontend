@@ -1,9 +1,19 @@
 <template>
-  <AppModalCourse
-    v-if="isOpenModalCourse"
-    :is-open="isOpenModalCourse"
-    @close="isOpenModalCourse = false"
-  />
+  <template v-if="type === 'special'">
+    <AppModalSpecial
+      v-if="isOpenModalCourse"
+      :is-open="isOpenModalCourse"
+      :item-id="id"
+      @close="isOpenModalCourse = false"
+    />
+  </template>
+  <template v-else>
+    <AppModalCourse
+      v-if="isOpenModalCourse"
+      :is-open="isOpenModalCourse"
+      @close="isOpenModalCourse = false"
+    />
+  </template>
   <div
     class="flex flex-col gap-[48px] px-10"
     data-cms="product-details-header-block"
@@ -37,11 +47,15 @@
 
         <div class="flex gap-[12px]">
           <AppButton
-            v-if="type === 'course' || type === 'event'"
+            v-if="type === 'course' || type === 'event' || type === 'special'"
             class="!bg-brand-red text-white"
             @click="isOpenModalCourse = true"
           >
-            Попробовать бесплатно
+            {{
+              type === 'special'
+                ? $t('common.actions.submitApplication')
+                : $t('common.actions.tryFree')
+            }}
           </AppButton>
           <slot />
         </div>
@@ -110,6 +124,7 @@
 import { ref } from 'vue'
 
 import AppModalCourse from '@/components/modals/AppModalCourse.vue'
+import AppModalSpecial from '@/components/modals/AppModalSpecial.vue'
 
 import { type Product, type ProductType } from '../../../../../types'
 import { type PageBlock } from '../../../../../types/cms'
@@ -120,6 +135,7 @@ import Cover from '../../misc/Cover.vue'
 defineProps<{
   blockData: PageBlock & { product: Product }
   type: ProductType
+  id?: number
 }>()
 
 const isOpenModalCourse = ref(false)

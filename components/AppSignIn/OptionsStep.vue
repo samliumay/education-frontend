@@ -21,8 +21,8 @@ const emit = defineEmits(['goToEmailStep'])
 // Init hooks
 const { t } = useI18n()
 
-// Constants
-const redirectUrl = 'https://clavis.the-o.co'
+const clientId = import.meta.env.VITE_GOOGLE_SSO_CLIENT_ID
+const siteAddress = import.meta.env.VITE_SITE_URL
 
 // Options
 const options = [
@@ -37,7 +37,7 @@ const options = [
     onClick: () => {
       if (process.client) {
         window.open(
-          `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${redirectUrl}&prompt=consent&response_type=code&client_id=464713450575-ecsmsdjo2oql1nsjuvnepeat0usf8vgp.apps.googleusercontent.com&scope=openid%20email%20profile&access_type=offline`,
+          `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${siteAddress}&prompt=consent&response_type=code&client_id=${clientId}&scope=openid%20email%20profile&access_type=offline`,
           '_blank',
         )
       }

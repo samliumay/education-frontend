@@ -41,8 +41,32 @@ export const en = {
       subscriptionPaymentPayPal: 'PayPal subscription payment',
       autopayPayPal: 'Autopay PayPal',
     },
-    cookies:
-      'By using our site you are consenting to the use of cookies. For more information please refer to our',
+    cookies: {
+      title: 'Privacy Settings',
+      paragraph1:
+        'We use cookies on our website. Some of them are essential, while others help us to improve this website and your experience',
+      paragraph2:
+        'If you are under 16 years old and would like to give your consent to volunteer services, you must ask your legal guardian for permission.',
+      paragraph3:
+        'We use cookies and other technologies on our website. Some of them are essential, while others help us to improve this website and your experience. Personal data may be processed (e.g. IP addresses), e.g. B. for personalized ads and content or ad and content measurement. For more information about how we use your data, please see our Privacy Policy. You can revoke or adjust your selection at any time under Settings.',
+      options: {
+        essential: {
+          label: 'Essential',
+          text: 'Essential cookies enable basic functions and are necessary for the website to function properly.',
+          link: 'View cookie information',
+        },
+        statistics: {
+          label: 'Statistics',
+          text: 'Statistics cookies collect information anonymously. This information helps us understand how our visitors use our website.',
+          link: 'View cookie information',
+        },
+        externalMedia: {
+          label: 'External media',
+          text: 'Content from video and social media platforms is blocked by default. If cookies from external media are accepted, access to this content no longer requires manual consent.',
+          link: 'View cookie information',
+        },
+      },
+    },
     filters: {
       language: 'Language',
       age: 'Age',
@@ -71,6 +95,11 @@ export const en = {
       send: 'Send',
       pay: 'Pay',
       turnOn: 'Turn on',
+      acceptAll: 'Accept all',
+      acceptEssential: 'Only accept essential cookies',
+      tryFree: 'Try for free',
+      submitApplication: 'Submit your application',
+      buy: 'Buy',
     },
     subscription: {
       abonement: 'Subscription',
