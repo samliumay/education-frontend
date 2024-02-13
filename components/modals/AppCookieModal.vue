@@ -25,7 +25,7 @@
         <div class="flex flex-col gap-2">
           <div class="bg-brand-light-gray flex flex-col gap-4 p-4 rounded-md">
             <div class="flex justify-between">
-              <n-checkbox :checked="true" :disabled="true">
+              <n-checkbox checked disabled>
                 {{ $t('common.cookies.options.essential.label') }}
               </n-checkbox>
               <NuxtLink class="text-brand-black underline underline-offset-">
@@ -39,9 +39,11 @@
 
           <div class="bg-brand-light-gray flex flex-col gap-4 p-4 rounded-md">
             <div class="flex justify-between">
-              <n-checkbox v-model:checked="checkboxStatistic">{{
+              <n-checkbox v-model:checked="checkboxStatistic">
+{{
                 $t('common.cookies.options.statistics.label')
-              }}</n-checkbox>
+              }}
+</n-checkbox>
               <NuxtLink class="text-brand-black underline underline-offset-">
                 {{ $t('common.cookies.options.statistics.link') }}
               </NuxtLink>
@@ -53,9 +55,11 @@
 
           <div class="bg-brand-light-gray flex flex-col gap-4 p-4 rounded-md">
             <div class="flex justify-between">
-              <n-checkbox v-model:checked="checkboxExternalMedia">{{
+              <n-checkbox v-model:checked="checkboxExternalMedia">
+{{
                 $t('common.cookies.options.externalMedia.label')
-              }}</n-checkbox>
+              }}
+</n-checkbox>
               <NuxtLink class="text-brand-black underline underline-offset-">
                 {{ $t('common.cookies.options.externalMedia.link') }}
               </NuxtLink>
@@ -67,9 +71,11 @@
         </div>
 
         <div class="flex w-full gap-4">
-          <AppButton class="w-1/2" @click="close">{{
+          <AppButton class="w-1/2" @click="close">
+{{
             $t('common.actions.acceptEssential')
-          }}</AppButton>
+          }}
+</AppButton>
           <AppButton class="w-1/2" @click="closeAndAcceptAll">
             {{ $t('common.actions.acceptAll') }}
           </AppButton>

@@ -39,6 +39,6 @@ const props = defineProps<{
 // Get data
 const imageId = computed(() => props?.instructor?.profile_pic)
 const { data: image, pending } = await useFetch(
-  getApiAddress(`/api/v2/wagtail/images/${imageId.value}/`)
+  getApiAddress(`/api/v2/wagtail/images/${imageId.value}/`),
 )
 </script>
