@@ -1,6 +1,6 @@
 <template>
-  <TemplateProductDetails />
+  <TemplateSpecialOffer />
 </template>
 <script setup lang="ts">
-import TemplateProductDetails from '../components/cms/templates/TemplateProductDetails.vue'
+import TemplateSpecialOffer from '../components/cms/templates/TemplateSpecialOffer.vue'
 </script>
