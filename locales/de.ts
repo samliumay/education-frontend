@@ -41,8 +41,32 @@ export const de = {
       subscriptionPaymentPayPal: 'PayPal-Abonnementzahlung',
       autopayPayPal: 'PayPal automatisch bezahlen',
     },
-    cookies:
-      'Durch die Nutzung unserer Website stimmen Sie der Verwendung von Cookies zu. Weitere Informationen finden Sie in unserem',
+    cookies: {
+      title: 'Datenschutzeinstellungen',
+      paragraph1:
+        'Wir nutzen Cookies auf unserer Website. Einige von ihnen sind essenziell, während andere uns helfen, diese Website und Ihre Erfahrung zu verbessern',
+      paragraph2:
+        'Wenn Sie unter 16 Jahre alt sind und Ihre Zustimmung zu freiwilligen Diensten geben möchten, müssen Sie Ihre Erziehungsberechtigten um Erlaubnis bitten.',
+      paragraph3:
+        'Wir verwenden Cookies und andere Technologien auf unserer Website. Einige von ihnen sind essenziell, während andere uns helfen, diese Website und Ihre Erfahrung zu verbessern. Personenbezogene Daten können verarbeitet werden (z. B. IP-Adressen), z. B. für personalisierte Anzeigen und Inhalte oder Anzeigen- und Inhaltsmessung. Weitere Informationen über die Verwendung Ihrer Daten finden Sie in unserer Datenschutzerklärung. Sie können Ihre Auswahl jederzeit unter Einstellungen widerrufen oder anpassen.',
+      options: {
+        essential: {
+          label: 'Essenziell',
+          text: 'Essenzielle Cookies ermöglichen grundlegende Funktionen und sind für die einwandfreie Funktion der Website erforderlich.',
+          link: 'Cookie-Informationen anzeigen',
+        },
+        statistics: {
+          label: 'Statistiken',
+          text: 'Statistik Cookies erfassen Informationen anonym. Diese Informationen helfen uns zu verstehen, wie unsere Besucher unsere Website nutzen.',
+          link: 'Cookie-Informationen anzeigen',
+        },
+        externalMedia: {
+          label: 'Externe Medien',
+          text: 'Inhalte von Videoplattformen und Social-Media-Plattformen werden standardmäßig blockiert. Wenn Cookies von externen Medien akzeptiert werden, bedarf der Zugriff auf diese Inhalte keiner manuellen Zustimmung mehr.',
+          link: 'Cookie-Informationen anzeigen',
+        },
+      },
+    },
     filters: {
       language: 'Sprache',
       age: 'Alter',
@@ -71,6 +95,8 @@ export const de = {
       send: 'Schicken',
       pay: 'Zahlen',
       turnOn: 'Anmachen',
+      acceptAll: 'Alle akzeptieren',
+      acceptEssential: 'Nur essentielle Cookies akzeptieren',
     },
     subscription: {
       abonement: 'Abonnement',

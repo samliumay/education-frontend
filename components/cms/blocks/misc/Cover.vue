@@ -29,7 +29,7 @@ const imageStyles = computed(() => {
   }
 
   if (props.category === 'course') {
-    return 'h-full -bottom-0 -left-[24%]'
+    return 'h-full -bottom-0 -left-[20%]'
   }
 
   return 'h-[90%] -bottom-[10%] right-[5%]'
