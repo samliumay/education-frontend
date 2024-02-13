@@ -1,5 +1,5 @@
 <template>
-  <div class="relative py-24 px-4 sm:px-12 bg-brand-light-gray">
+  <div class="relative py-24 px-4 md:px-12 bg-brand-light-gray">
     <div
       class="absolute left-1/2 transform -translate-x-1/2 top-0 mx-0 w-screen h-full bg-brand-light-gray"
     />
@@ -12,7 +12,7 @@
       class="grid grid-cols-1 lg:grid-cols-3 gap-[24px] relative"
       @submit.prevent="fullfillOrder"
     >
-      <div class="sm:col-span-2 flex flex-col gap-[24px]">
+      <div class="md:col-span-2 flex flex-col gap-[24px]">
         <ErrorBoundaryBlock>
           <div class="bg-white rounded-xl p-6">
             <h2 class="font-medium text-[24px] mb-[24px]">
@@ -146,7 +146,7 @@
             {{ $t('cart.registerDetails.title') }}
           </h2>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-[12px] mb-[12px]">
             <AppInput
               v-model="registrationForm.first_name"
               :placeholder="$t('cart.registerDetails.name')"
@@ -165,7 +165,7 @@
             />
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-[12px] mb-[12px]">
             <AppInput
               v-model="registrationForm.email"
               placeholder="Email"
@@ -183,7 +183,7 @@
             />
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-[12px] mb-[12px]">
             <AppInput
               v-model="registrationForm.password1"
               :placeholder="$t('cart.registerDetails.password')"
@@ -213,7 +213,7 @@
             {{ $t('cart.paymentDetails.title') }}
           </h2>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-[12px] mb-[12px]">
             <AppInput
               v-model="additionalInfo.first_name"
               :placeholder="$t('cart.paymentDetails.name')"
@@ -232,7 +232,7 @@
             />
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px] mb-[12px]">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-[12px] mb-[12px]">
             <AppInput
               v-model.lazy="additionalInfo.street"
               :placeholder="$t('cart.paymentDetails.streetName')"
@@ -248,7 +248,7 @@
             />
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-[12px]">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-[12px]">
             <AppInput
               v-model.lazy="additionalInfo.post_code"
               :placeholder="$t('cart.paymentDetails.postalCode')"
@@ -349,7 +349,7 @@
 
             <p
               v-show="!form?.checkValidity() ?? false"
-              class="mb-2 text-brand-red text-sm"
+              class="mb-2 text-brand-red text-md"
             >
               {{ infoText }}
             </p>

@@ -5,7 +5,7 @@
   >
     <div class="flex flex-col gap-4">
       <Cover
-        class="h-[260px] w-full"
+        class="xl:h-[220px] lg:h-[260px] w-full"
         :image-title="blockData.title_image"
         :image-background="blockData.background_image"
         :category="String(blockData?.product_type).toLocaleLowerCase()"
