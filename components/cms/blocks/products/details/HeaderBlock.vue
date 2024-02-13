@@ -100,7 +100,7 @@
     <Cover
       :image-title="blockData.title_image"
       :image-background="blockData.background_image"
-      class="h-[300px] md:h-[500px] w-full"
+      class="xl:h-[680px] lg:h-[540px] w-full"
       :category="type"
       :age-group="blockData?.age_group"
     />
