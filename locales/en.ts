@@ -97,6 +97,9 @@ export const en = {
       turnOn: 'Turn on',
       acceptAll: 'Accept all',
       acceptEssential: 'Only accept essential cookies',
+      tryFree: 'Try for free',
+      submitApplication: 'Submit your application',
+      buy: 'Buy',
     },
     subscription: {
       abonement: 'Subscription',

@@ -97,6 +97,9 @@ export const de = {
       turnOn: 'Anmachen',
       acceptAll: 'Alle akzeptieren',
       acceptEssential: 'Nur essentielle Cookies akzeptieren',
+      tryFree: 'Kostenlos testen',
+      submitApplication: 'Reichen Sie Ihre Bewerbung ein',
+      buy: 'Kaufen',
     },
     subscription: {
       abonement: 'Abonnement',
