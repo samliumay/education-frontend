@@ -11,7 +11,7 @@
             class="flex gap-[20px] items-center mr-10"
             @click="$emit('close')"
           >
-          {{ $t('common.actions.close') }}
+            {{ $t('common.actions.close') }}
             <button
               class="bg-white border-[1px] border-brand-black w-[35px] h-[35px] rounded-full flex items-center justify-center hover:bg-brand-light-gray transition ease-in delay-100 transform active:scale-[0.93]"
             >
@@ -26,12 +26,16 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-[44px] m-10">
           <div v-if="!productPending">
-            <p class="text-[24px] font-medium mb-[16px]">{{ $t('common.modals.youChoosed') }}</p>
+            <p class="text-[24px] font-medium mb-[16px]">
+              {{ $t('common.modals.youChoosed') }}
+            </p>
             <BuyProductCard :product="product" />
           </div>
 
           <div>
-            <h1 class="font-medium text-4xl mb-10">{{ $t('common.modals.fillApplication') }}</h1>
+            <h1 class="font-medium text-4xl mb-10">
+              {{ $t('common.modals.fillApplication') }}
+            </h1>
 
             <GetChildData
               :visitor="visitor"
@@ -80,12 +84,25 @@
                 />
               </div>
 
+              <div class="w-full mt-5 flex gap-4">
+                <NCheckbox v-model:checked="checkbox" required class="pt-1" />
+                <p>
+                  {{ $t('common.modals.registerInService') }}
+                  <NuxtLink
+                    to="/legal"
+                    class="underline underline-offset-8 cursor-pointer text-brand-black hover:text-brand-red"
+                  >
+                    {{ $t('common.modals.termsOfAgreement') }}
+                  </NuxtLink>
+                </p>
+              </div>
+
               <AppButton
                 class="w-full mt-10"
                 type="submit"
-                :disabled="!form?.checkValidity() ?? false"
+                :disabled="!(form?.checkValidity() && checkbox)"
               >
-              {{ $t('common.actions.send') }}
+                {{ $t('common.actions.send') }}
               </AppButton>
             </form>
           </div>
@@ -95,15 +112,13 @@
   </n-modal>
 </template>
 <script setup lang="ts">
-import { NModal } from 'naive-ui'
+import { NCheckbox, NModal } from 'naive-ui'
 import { ref, type VNodeRef } from 'vue'
 import { useRoute } from 'vue-router'
 
 import AppInput from '@/components/AppInput.vue'
 import BuyProductCard from '@/components/buy/BuyProductCard.vue'
 import GetChildData from '@/components/buy/GetChildData.vue'
-// import { useCartStore } from '@/store/cart'
-// import { useUserStore } from '@/store/user'
 import { getApiAddress } from '@/utils/getApiAddress'
 
 defineProps<{
@@ -111,16 +126,14 @@ defineProps<{
 }>()
 // Init component
 const emit = defineEmits(['close'])
+
 // Init hooks
 const route = useRoute()
-
-// Store
-// const userStore = useUserStore()
-// const cartStore = useCartStore()
 
 // State
 // eslint-disable-next-line vue/require-typed-ref
 const visitor = ref(null)
+const checkbox = ref(false)
 
 // Get data
 const { data: product, pending: productPending } = await useFetch(
@@ -136,13 +149,7 @@ const registrationForm = ref({
   phone: '',
 })
 
-// eslint-disable-next-line require-await
-const sendModalCourse = async () => {
-  // await cartStore.sendVisitRequest({
-  //   product_page: route.params.id,
-  //   children: [userStore.visitors.find((el) => el.id === visitor.value)],
-  //   adults: [registrationForm.value],
-  // })
+const sendModalCourse = () => {
   emit('close')
 }
 

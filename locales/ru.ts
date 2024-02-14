@@ -40,6 +40,8 @@ export const ru = {
       cancelSubscription: 'Отмена абонемента',
       subscriptionPaymentPayPal: 'Оплата подписки PayPal',
       autopayPayPal: 'Автоплатёж PayPal',
+      registerInService: 'Регистрируясь в сервисе, вы принимаете',
+      termsOfAgreement: 'условия соглашения и политики конфиденциальности',
     },
     cookies: {
       title: 'Настройки конфиденциальности',
@@ -96,7 +98,7 @@ export const ru = {
       pay: 'Оплатить',
       turnOn: 'Включить',
       acceptAll: 'Принять все',
-      acceptEssential: 'Принимать только необходимые файлы cookie',
+      acceptEssential: 'Принимать только необходимые файлы cookie'
     },
     subscription: {
       abonement: 'Абонемент',
@@ -143,10 +145,10 @@ export const ru = {
       '14+': 'от 14 лет',
     },
     languages: {
-      "bi": 'Все языки',
-      "ru": 'Русский',
-      "en": 'Английский',
-      "de": 'Немецкий',
+      bi: 'Все языки',
+      ru: 'Русский',
+      en: 'Английский',
+      de: 'Немецкий',
       'ru-en': 'Русский/Английский',
       'de-en': 'Немецкий/Английский',
       'de-ru': 'Немецкий/Русский',
@@ -257,9 +259,9 @@ export const ru = {
     },
   },
   mappers: {
-    "Course": 'Курс',
-    "Academy": 'Академия',
-    "Workshop": 'Воркшоп',
+    Course: 'Курс',
+    Academy: 'Академия',
+    Workshop: 'Воркшоп',
     'Academy (1st half)': '1/2 утро',
     'Academy (2nd half)': '1/2 вечер',
     'Academy (full day)': 'Весь день',

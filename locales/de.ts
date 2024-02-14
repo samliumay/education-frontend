@@ -22,7 +22,7 @@ export const de = {
       tryout: 'Probekurs vereinbaren',
       meeting: 'Termin vereinbaren',
       call: 'Rückruf vereinbaren',
-      workUs: 'Работайте с нами',
+      workUs: 'Arbeite mit uns',
       main: 'Schulleitung',
       secretariat: 'Sekretariat',
       city: 'Berlin',
@@ -40,6 +40,10 @@ export const de = {
       cancelSubscription: 'Abonnement beenden',
       subscriptionPaymentPayPal: 'PayPal-Abonnementzahlung',
       autopayPayPal: 'PayPal automatisch bezahlen',
+      registerInService:
+        'Durch die Registrierung im Dienst akzeptieren Sie die',
+      termsOfAgreement:
+        'Bedingungen der Vereinbarung und der Datenschutzrichtlinie',
     },
     cookies: {
       title: 'Datenschutzeinstellungen',
@@ -143,10 +147,10 @@ export const de = {
       '14+': 'от 14 Jahre',
     },
     languages: {
-      "bi": 'Alle Sprachen',
-      "ru": 'Russisch',
-      "en": 'Englisch',
-      "de": 'Deutsch',
+      bi: 'Alle Sprachen',
+      ru: 'Russisch',
+      en: 'Englisch',
+      de: 'Deutsch',
       'ru-en': 'Russisch/Englisch',
       'de-en': 'Deutsch/Englisch',
       'de-ru': 'Deutsch/Russisch',
@@ -258,9 +262,9 @@ export const de = {
     },
   },
   mappers: {
-    "Course": 'Kurs',
-    "Academy": 'Akademie',
-    "Workshop": 'Werkstatt',
+    Course: 'Kurs',
+    Academy: 'Akademie',
+    Workshop: 'Werkstatt',
     'Academy (1st half)': '1/2 Morgen',
     'Academy (2nd half)': '1/2 Abend',
     'Academy (full day)': 'Den ganzen Tag',

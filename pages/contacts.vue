@@ -1,3 +1,4 @@
+<!-- eslint-disable no-return-assign -->
 <!-- eslint-disable vue/no-static-inline-styles -->
 <template>
   <n-breadcrumb class="mt-6 mb-10 px-10">
@@ -37,20 +38,20 @@
     </h1>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-3 lg:gap-6">
-      <div
+      <!-- <div
         class="bg-brand-light-gray rounded-[12px] p-3 lg:p-6 text-brand-red flex justify-between"
         @click="isOpenModalCourse = true"
       >
         <span> {{ $t('common.contacts.tryout') }} </span>
         <img src="/icons/chevron_left.svg" alt="Arrow" />
-      </div>
-      <div
+      </div> -->
+      <!-- <div
         class="bg-brand-light-gray rounded-[12px] p-3 lg:p-6 text-brand-red flex justify-between"
         @click="isOpenModalCalendar = true"
       >
         <span> {{ $t('common.contacts.meeting') }} </span>
         <img src="/icons/chevron_left.svg" alt="Arrow" />
-      </div>
+      </div> -->
       <div
         class="bg-brand-light-gray rounded-[12px] p-3 lg:p-6 text-brand-red flex justify-between"
         @click="isOpenModalBackCall = true"
@@ -63,7 +64,11 @@
         @click="isOpenModalApplication = true"
       >
         <span> {{ $t('common.contacts.workUs') }} </span>
-        <img src="/icons/chevron_left.svg" alt="Arrow" />
+        <img
+          src="/icons/chevron_left.svg"
+          alt="Arrow"
+          class="w-[14px] h-[14px]"
+        />
       </div>
     </div>
 
@@ -155,10 +160,32 @@ import AppModalBackCall from '../components/modals/AppModalBackCall.vue'
 import AppModalCalendar from '../components/modals/AppModalCalendar.vue'
 import AppModalCourse from '../components/modals/AppModalCourse.vue'
 
+const { t } = useI18n()
+
 const isOpenModalCourse = ref(false)
 const isOpenModalBackCall = ref(false)
 const isOpenModalApplication = ref(false)
 const isOpenModalCalendar = ref(false)
+
+// Modals
+const modalsButtons = [
+  {
+    text: t('common.contacts.tryout'),
+    action: () => (isOpenModalCourse.value = true),
+  },
+  {
+    text: t('common.contacts.meeting'),
+    action: () => (isOpenModalCalendar.value = true),
+  },
+  {
+    text: t('common.contacts.call'),
+    action: () => (isOpenModalBackCall.value = true),
+  },
+  {
+    text: t('common.contacts.workUs'),
+    action: () => (isOpenModalApplication.value = true),
+  },
+]
 
 // Map
 const center = { lat: 52.53300499134639, lng: 13.422762249077477 }
