@@ -3,7 +3,7 @@
     <Loader />
   </div>
   <div class="flex flex-col gap-2 relative">
-    <div class="flex flex-col sm:flex-row gap-[12px] sm:gap-[36px]">
+    <div class="flex flex-col md:flex-row gap-[12px] md:gap-[36px]">
       <button
         v-show="!deletingProduct"
         class="transition ease-in delay-100 transform active:scale-[0.93] absolute right-0 top-0"
@@ -17,7 +17,7 @@
       </button>
       <Cover
         v-if="!loadingProduct"
-        class="w-4/12"
+        class="xl:w-[260px] xl:h-[140px] lg:w-[220px] lg:h-[110px] md:w-[280px] md:h-[140px]"
         :image-title="product?.title_image"
         :image-background="product?.background_image"
         :category="String(product?.product_type).toLocaleLowerCase()"
@@ -57,7 +57,9 @@
     <div>
       <n-space vertical>
         <div class="w-full flex gap-9">
-          <div class="w-4/12 h-1" />
+          <div
+            class="hidden xl:w-[260px] xl:block lg:w-[220px] lg:block md:w-[280px] md:block"
+          />
           <button
             class="flex gap-2 items-center text-xl font-medium cursor-pointe"
             @click="isShowDetails = !isShowDetails"
@@ -72,7 +74,9 @@
         </div>
         <n-collapse-transition :show="isShowDetails">
           <div class="w-full flex gap-9">
-            <div class="w-4/12 h-full" />
+            <div
+              class="hidden xl:w-[260px] xl:block lg:w-[220px] lg:block md:w-[280px] md:block"
+            />
             <div class="flex flex-col gap-6">
               <div
                 v-for="item in order?.schedule_slots"

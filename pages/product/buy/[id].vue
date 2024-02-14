@@ -5,7 +5,7 @@
 
   <div
     v-else
-    class="grid grid-col-1 sm:grid-cols-2 gap-[96px] my-[96px] mx-[16px] sm:mx-[48px]"
+    class="grid grid-col-1 lg:grid-cols-2 gap-[96px] my-[96px] mx-[16px] lg:mx-[48px]"
   >
     <div>
       <p class="text-[24px] font-medium mb-[16px]">Вы выбрали</p>
@@ -28,7 +28,7 @@
 
     <div>
       <template v-if="['Course', 'Academy'].includes(product.product_type)">
-        <h2 class="text-[32px] sm:text-[48px] font-medium mb-[36px]">
+        <h2 class="text-[32px] lg:text-[48px] font-medium mb-[36px]">
           Заполните данные
         </h2>
 
@@ -256,7 +256,7 @@
         <span v-else class="text-brand-red mr-[8px]">0 €</span>
       </p>
 
-      <AppButton class="mt-4 sm:mt-10 w-full sm:w-auto" @click="addAcademy">
+      <AppButton class="mt-4 lg:mt-10 w-full lg:w-auto" @click="addAcademy">
         Добавить в корзину
       </AppButton>
     </div>
