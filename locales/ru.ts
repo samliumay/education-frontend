@@ -94,9 +94,12 @@ export const ru = {
       look: 'Смотреть',
       send: 'Отправить',
       pay: 'Оплатить',
+      buy: 'Купить',
       turnOn: 'Включить',
       acceptAll: 'Принять все',
       acceptEssential: 'Принимать только необходимые файлы cookie',
+      tryFree: 'Попробовать бесплатно',
+      submitApplication: 'Оставить заявку',
     },
     subscription: {
       abonement: 'Абонемент',
