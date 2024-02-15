@@ -1,4 +1,3 @@
-<!-- eslint-disable no-return-assign -->
 <!-- eslint-disable vue/no-static-inline-styles -->
 <template>
   <n-breadcrumb class="mt-6 mb-10 px-10">
@@ -38,36 +37,17 @@
     </h1>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-3 lg:gap-6">
-      <!-- <div
-        class="bg-brand-light-gray rounded-[12px] p-3 lg:p-6 text-brand-red flex justify-between"
-        @click="isOpenModalCourse = true"
-      >
-        <span> {{ $t('common.contacts.tryout') }} </span>
-        <img src="/icons/chevron_left.svg" alt="Arrow" />
-      </div> -->
-      <!-- <div
-        class="bg-brand-light-gray rounded-[12px] p-3 lg:p-6 text-brand-red flex justify-between"
-        @click="isOpenModalCalendar = true"
-      >
-        <span> {{ $t('common.contacts.meeting') }} </span>
-        <img src="/icons/chevron_left.svg" alt="Arrow" />
-      </div> -->
       <div
+        v-for="modal in modalsButtons"
+        :key="modal.text"
         class="bg-brand-light-gray rounded-[12px] p-3 lg:p-6 text-brand-red flex justify-between"
-        @click="isOpenModalBackCall = true"
+        @click="modal.action"
       >
-        <span> {{ $t('common.contacts.call') }} </span>
-        <img src="/icons/chevron_left.svg" alt="Arrow" />
-      </div>
-      <div
-        class="bg-brand-light-gray rounded-[12px] p-3 lg:p-6 text-brand-red flex justify-between"
-        @click="isOpenModalApplication = true"
-      >
-        <span> {{ $t('common.contacts.workUs') }} </span>
+        <span class="text-xl lg:text-2xl font-medium"> {{ modal.text }} </span>
         <img
           src="/icons/chevron_left.svg"
           alt="Arrow"
-          class="w-[14px] h-[14px]"
+          class="w-[14px] h-[14px] mt-2"
         />
       </div>
     </div>
@@ -117,17 +97,22 @@
       </div>
     </div>
 
-    <div class="flex gap-12 flex-col lg:flex-row">
+    <div class="flex gap-12 flex-col lg:flex-row mt-12">
       <div class="hidden lg:block">
         <h2 class="uppercase text-[36px] lg:text-[56px] mb-3 lg:mb-6">
           {{ $t('common.contacts.city') }}
         </h2>
-        <p class="text-[28px] lg:text-[36px] font-medium text-gray-500">
+        <p
+          class="text-[28px] lg:text-[36px] font-medium whitespace-nowrap text-brand-red"
+        >
           {{ $t('common.contacts.address') }}
+        </p>
+        <p class="text-[28px] lg:text-[36px] font-medium text-gray-500">
+          {{ $t('common.contacts.index') }}
         </p>
         <img src="/icons/logo_lion.svg" alt="Logo" class="mt-12" />
       </div>
-      <div class="w-full h-[350px] mt-10 lg:mt-0 lg:h-auto">
+      <div class="w-full h-[320px] mt-10 lg:mt-0 lg:h-auto">
         <GoogleMap
           api-key="AIzaSyCdhWBS1I_Qi5qs5wljaBYIYRGBc0yIBYE"
           style="width: 100%; height: 100%"
@@ -141,8 +126,13 @@
         <h2 class="uppercase text-[36px] lg:text-[56px] mb-3 lg:mb-6">
           {{ $t('common.contacts.city') }}
         </h2>
-        <p class="text-[28px] lg:text-[36px] font-medium text-gray-500">
+        <p
+          class="text-[28px] lg:text-[36px] font-medium whitespace-nowrap text-brand-red"
+        >
           {{ $t('common.contacts.address') }}
+        </p>
+        <p class="text-[28px] lg:text-[36px] font-medium text-gray-500">
+          {{ $t('common.contacts.index') }}
         </p>
         <img src="/icons/logo_lion.svg" alt="Logo" class="mt-12 self-end" />
       </div>
@@ -151,7 +141,7 @@
 </template>
 <script setup lang="ts">
 import { NBreadcrumb, NBreadcrumbItem } from 'naive-ui'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { GoogleMap, Marker } from 'vue3-google-map'
 
 import AppDivider from '../components/AppDivider.vue'
@@ -168,7 +158,7 @@ const isOpenModalApplication = ref(false)
 const isOpenModalCalendar = ref(false)
 
 // Modals
-const modalsButtons = [
+const modalsButtons = computed(() => [
   {
     text: t('common.contacts.tryout'),
     action: () => (isOpenModalCourse.value = true),
@@ -185,7 +175,7 @@ const modalsButtons = [
     text: t('common.contacts.workUs'),
     action: () => (isOpenModalApplication.value = true),
   },
-]
+])
 
 // Map
 const center = { lat: 52.53300499134639, lng: 13.422762249077477 }

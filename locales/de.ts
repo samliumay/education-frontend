@@ -26,7 +26,8 @@ export const de = {
       main: 'Schulleitung',
       secretariat: 'Sekretariat',
       city: 'Berlin',
-      address: 'Immanuelkirchstraße 4 10405',
+      address: 'Immanuelkirchstraße 4',
+      index: '10405',
     },
     modals: {
       fillApplication: 'Fülle das Formular aus',

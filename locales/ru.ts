@@ -26,7 +26,8 @@ export const ru = {
       main: 'Директор',
       secretariat: 'Секретариат',
       city: 'Берлин',
-      address: 'Иммануэлькирхштрассе 4 10405',
+      address: 'Иммануэлькирхштрассе 4',
+      index: '10405',
     },
     modals: {
       fillApplication: 'Заполните анкету',

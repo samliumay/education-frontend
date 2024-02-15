@@ -26,7 +26,8 @@ export const en = {
       main: 'Principal',
       secretariat: 'Office',
       city: 'Berlin',
-      address: 'Immanuelkirchstraße 4 10405',
+      address: 'Immanuelkirchstraße 4',
+      index: '10405',
     },
     modals: {
       fillApplication: 'Fill in the form',
