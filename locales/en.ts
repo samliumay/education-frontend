@@ -17,6 +17,7 @@ export const en = {
     notFound: 'Nothing found',
     courseNotFound: 'Course with the given Id is not found',
     you: 'You',
+    canceled: 'Canceled',
     contacts: {
       contactUs: 'Contact us',
       tryout: 'Arrange a trial course',

@@ -5,7 +5,7 @@
     <Cover
       :image-title="product?.title_image"
       :image-background="product?.background_image"
-      class="xl:w-[180px] xl:min-w-[180px] xl:h-auto lg:w-[140px] lg:min-w-[140px] lg:h-[70px] w-[200px] min-w-[200px] rounded-[12px] overflow-hidden"
+      class="xl:w-[180px] xl:min-w-[180px] xl:h-auto lg:w-[140px] lg:min-w-[140px] lg:h-[70px] rounded-[12px] overflow-hidden"
     />
 
     <div class="flex flex-col justify-between gap-[16px] h-fit">

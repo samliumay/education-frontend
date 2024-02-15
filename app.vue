@@ -1,6 +1,6 @@
 <!-- eslint-disable vue-scoped-css/enforce-style-type -->
 <template>
-  <n-config-provider :theme-overrides="themeOverrides">
+  <n-config-provider :theme-overrides="themeOverrides" :locale="naiveLocale[locale].locale" :date-locale="naiveLocale[locale].date">
     <div class="flex justify-center items-start overflow-x-hidden">
       <div
         class="min-h-[100vh] max-w-[1440px] w-full mx-auto bg-white flex flex-col overflow-x-visible relative"
@@ -16,10 +16,14 @@
   </n-config-provider>
 </template>
 <script setup lang="ts">
+import { dateDeDE, dateEnUS, dateRuRU, deDE, enUS, ruRU } from 'naive-ui'
+
 import AppCookieModal from './components/modals/AppCookieModal.vue'
 import AppFooter from './components/page/AppFooter.vue'
 import AppHeader from './components/page/AppHeader.vue'
 import { useCartStore } from './store/cart'
+
+const { locale } = useI18n({ useScope: 'global' })
 
 useHead({
   title: 'Clavis Schule für Kunst und Wissenschaft',
@@ -72,6 +76,21 @@ const themeOverrides = {
   common: {
     primaryColor: 'rgb(34, 197, 94)',
     fontSize: '16px',
+  },
+}
+
+const naiveLocale = {
+  ru: {
+    locale: ruRU,
+    date: dateRuRU,
+  },
+  en: {
+    locale: enUS,
+    date: dateEnUS,
+  },
+  de: {
+    locale: deDE,
+    date: dateDeDE,
   },
 }
 

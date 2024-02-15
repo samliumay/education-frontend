@@ -8,7 +8,7 @@
       :key="item.id"
       class="flex items-center gap-[24px] pb-[24px] lg:pb-0 border-gray-300 border-b-[1px] lg:border-b-0 lg:border-r-[1px] last:border-0"
     >
-      <p class="text-6xl xl:text-7xl font-bold">
+      <p class="text-[56px] xl:text-7xl font-bold">
         {{ item.big_text }}
       </p>
       <p class="text-brand-gray font-medium text-base xl:text-lg">

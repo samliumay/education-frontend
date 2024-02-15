@@ -17,6 +17,7 @@ export const ru = {
     notFound: 'Ничего не найдено',
     courseNotFound: 'Курс с данным идентификатором не найден',
     you: 'Вы',
+    canceled: 'Отменен',
     contacts: {
       contactUs: 'Свяжитесь с нами',
       tryout: 'Организовать пробный курс',
