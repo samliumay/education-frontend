@@ -261,7 +261,6 @@ import { NTabPane, NTabs } from 'naive-ui'
 import { onMounted, ref, type VNodeRef } from 'vue'
 import { useRoute } from 'vue-router'
 
-import ContactsBlock from '@/components/misc/ContactsBlock.vue'
 import AppModalComments from '@/components/modals/AppModalComments.vue'
 
 import AppButton from '../components/AppButton.vue'
