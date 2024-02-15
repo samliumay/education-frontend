@@ -62,7 +62,7 @@ module.exports = {
     'no-magic-numbers': 'off',
     'no-return-assign': 'off',
     // Lint - block
-    semi: ['error', 'never'],
+    'semi': ['error', 'never'],
     'no-unexpected-multiline': 'off',
     'quote-props': ['error', 'consistent'],
     'implicit-arrow-linebreak': 'off',
@@ -71,7 +71,7 @@ module.exports = {
     'arrow-parens': ['error', 'as-needed'],
     'object-curly-newline': 'off',
     'nonblock-statement-body-position': 'off',
-    curly: 'off',
+    'curly': 'off',
     'no-confusing-arrow': 'off',
     '@typescript-eslint/semi': ['error', 'never'],
     '@typescript-eslint/indent': 'off',
@@ -144,7 +144,7 @@ module.exports = {
     // eslint block
     'getter-return': 'error',
     'accessor-pairs': 'warn', // not critical
-    camelcase: [
+    'camelcase': [
       'warn',
       {
         properties: 'never',
@@ -153,7 +153,7 @@ module.exports = {
         ignoreGlobals: true,
       },
     ],
-    complexity: ['error', 11], // tunned on 3 projects. may be less
+    'complexity': ['error', 11], // tunned on 3 projects. may be less
     'consistent-this': ['error', 'that'],
     'default-param-last': 'error',
     'func-style': ['error', 'expression'],
