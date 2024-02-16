@@ -10,7 +10,7 @@ services:
       context: .
       dockerfile: ./docker/prod/Dockerfile
       args:
-        VITE_API_URL: https://devops-schuleberlin.de/
+        VITE_API_URL: https://devops-schuleberlin.de
     image: $CI_REGISTRY_IMAGE/frontend:$CI_COMMIT_SHA
     restart: unless-stopped
     expose:

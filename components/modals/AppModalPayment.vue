@@ -1,7 +1,7 @@
 <template>
   <n-modal :show="isOpen" @mask-click="$emit('close')">
     <div
-      class="fixed w-[70%] h-fit bg-white rounded-md top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 overflow-y-auto"
+      class="fixed w-[90%] md:w-[70%] h-fit bg-white rounded-md top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 overflow-y-auto"
     >
       <div class="flex flex-col">
         <div

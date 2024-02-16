@@ -58,7 +58,7 @@
             <p>
               {{ new Date().toDateString() }}
             </p>
-            <p class="text-brand-gray">Отменён</p>
+            <p class="text-brand-gray">{{ $t('common.canceled') }}</p>
             <button
               v-if="withButton"
               class="py-[8px] w-fit h-fit"

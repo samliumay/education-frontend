@@ -17,6 +17,7 @@ export const de = {
     notFound: 'Nichts gefunden',
     courseNotFound: 'Der Kurs mit der angegebenen ID wurde nicht gefunden',
     you: 'Du',
+    canceled: 'Abgesagt',
     contacts: {
       contactUs: 'Kontaktieren Sie uns',
       tryout: 'Probekurs vereinbaren',
@@ -102,6 +103,9 @@ export const de = {
       turnOn: 'Anmachen',
       acceptAll: 'Alle akzeptieren',
       acceptEssential: 'Nur essentielle Cookies akzeptieren',
+      tryFree: 'Kostenlos testen',
+      submitApplication: 'Reichen Sie Ihre Bewerbung ein',
+      buy: 'Kaufen',
     },
     subscription: {
       abonement: 'Abonnement',

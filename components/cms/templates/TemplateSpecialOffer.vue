@@ -6,47 +6,39 @@
         <NuxtLink to="/">{{ $t('common.main') }}</NuxtLink>
       </n-breadcrumb-item>
       <n-breadcrumb-item сlass="text-brand-gray">
-        <NuxtLink :to="catalogPath">{{ product?.product_type }}</NuxtLink>
-      </n-breadcrumb-item>
-      <n-breadcrumb-item сlass="text-brand-gray">
-        {{ product?.name }}
+        <NuxtLink>{{ $t('common.specialOffer') }}</NuxtLink>
       </n-breadcrumb-item>
     </n-breadcrumb>
 
-    <div class="flex flex-col gap-10">
+    <div v-if="!checkIsEmpty(special)" class="flex flex-col gap-10">
       <ErrorBoundaryBlock>
         <HeaderBlock
           v-if="!pending"
-          :block-data="product"
-          :type="product?.product_type?.toLocaleLowerCase()"
-        >
-          <AppButton
-            v-show="product?.product_type !== 'Event'"
-            @click="navigateTo(`/product/buy/${route.params.id}`)"
-          >
-            {{ $t('common.actions.buy') }}
-          </AppButton>
-        </HeaderBlock>
+          :id="special.id"
+          :block-data="special"
+          type="special"
+        />
       </ErrorBoundaryBlock>
 
       <ErrorBoundaryBlock v-for="(block, index) in blocksList" :key="index">
         <component
           :is="block.name"
-          v-if="checkIsEmpty(block.blockData)"
+          v-if="!checkIsEmpty(block.blockData)"
           :block-data="block.blockData"
         />
       </ErrorBoundaryBlock>
     </div>
+    <AppNotFound v-else />
   </main>
 </template>
 <script setup lang="ts">
 import { NBreadcrumb, NBreadcrumbItem } from 'naive-ui'
 import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+
+import AppNotFound from '@/components/AppNotFound.vue'
 
 import { checkIsEmpty } from '../../../utils/checkIsEmpty'
 import { getApiAddress } from '../../../utils/getApiAddress'
-import AppButton from '../../AppButton.vue'
 import ErrorBoundaryBlock from '../blocks/misc/ErrorBoundaryBlock.vue'
 import LoaderBlock from '../blocks/misc/LoaderBlock.vue'
 import AboutCourse from '../blocks/products/details/AboutCourse.vue'
@@ -79,32 +71,24 @@ useHead({
   ],
 })
 
-const route = useRoute()
-
 // API
-const { data: product, pending } = useFetch(
-  getApiAddress(`/api/v2/wagtail/products/${route.params.id}/?fields=*`),
+const { data: specials, pending } = useFetch(
+  getApiAddress(`/api/v2/wagtail/special-offers/?fields=*`),
   { deep: true },
 )
+const special = computed(() => {
+  if (!pending.value) return specials.value?.items?.[0]
 
-const catalogPath = computed(() => {
-  switch (String(product.value?.product_type).toLocaleLowerCase()) {
-    case 'course':
-      return '/courses'
-    case 'academy':
-      return '/academies'
-    default:
-      return '/workshops'
-  }
+  return {}
 })
 
 // Components for render
 const blocksList = computed(() => [
-  { name: AboutCourse, blockData: product.value?.body },
-  { name: PaymentOptions, blockData: product.value?.purchase_options },
-  { name: CourseProgram, blockData: product.value?.program },
-  { name: AboutTutors, blockData: product.value?.instructors },
-  { name: StudentWorks, blockData: product.value?.student_works },
-  { name: QuestionsAnswers, blockData: product.value?.qna },
+  { name: AboutCourse, blockData: special.value?.body },
+  { name: PaymentOptions, blockData: special.value?.purchase_options },
+  { name: CourseProgram, blockData: special.value?.program },
+  { name: AboutTutors, blockData: special.value?.instructors },
+  { name: StudentWorks, blockData: special.value?.student_works },
+  { name: QuestionsAnswers, blockData: special.value?.qna },
 ])
 </script>

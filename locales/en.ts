@@ -17,6 +17,7 @@ export const en = {
     notFound: 'Nothing found',
     courseNotFound: 'Course with the given Id is not found',
     you: 'You',
+    canceled: 'Canceled',
     contacts: {
       contactUs: 'Contact us',
       tryout: 'Arrange a trial course',
@@ -100,6 +101,9 @@ export const en = {
       turnOn: 'Turn on',
       acceptAll: 'Accept all',
       acceptEssential: 'Only accept essential cookies',
+      tryFree: 'Try for free',
+      submitApplication: 'Submit your application',
+      buy: 'Buy',
     },
     subscription: {
       abonement: 'Subscription',
