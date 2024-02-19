@@ -9,6 +9,7 @@ export const de = {
     video: 'Video',
     error: 'Fehler:',
     somethingWrong: 'Hoppla! Es scheint, als wäre etwas schief gelaufen.',
+    wrongCredentials: 'Ungültige E-Mail oder Passwort',
     moreDetails: 'Mehr Details',
     showMore: 'Zeig mehr',
     school: 'Clavis Schule für Kunst und Wissenschaft',
@@ -27,7 +28,8 @@ export const de = {
       main: 'Schulleitung',
       secretariat: 'Sekretariat',
       city: 'Berlin',
-      address: 'Immanuelkirchstraße 4 10405',
+      address: 'Immanuelkirchstraße 4',
+      index: '10405',
     },
     modals: {
       fillApplication: 'Fülle das Formular aus',
@@ -41,6 +43,10 @@ export const de = {
       cancelSubscription: 'Abonnement beenden',
       subscriptionPaymentPayPal: 'PayPal-Abonnementzahlung',
       autopayPayPal: 'PayPal automatisch bezahlen',
+      registerInService:
+        'Durch die Registrierung im Dienst akzeptieren Sie die',
+      termsOfAgreement:
+        'Bedingungen der Vereinbarung und der Datenschutzrichtlinie',
     },
     cookies: {
       title: 'Datenschutzeinstellungen',

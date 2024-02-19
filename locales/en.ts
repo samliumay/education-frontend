@@ -9,6 +9,7 @@ export const en = {
     video: 'Video',
     error: 'Error:',
     somethingWrong: 'Oops! It seems like something went wrong.',
+    wrongCredentials: 'Incorrect e-mail or password',
     moreDetails: 'More details',
     showMore: 'Show more',
     school: 'Clavis School of Arts and Sciences',
@@ -27,7 +28,8 @@ export const en = {
       main: 'Principal',
       secretariat: 'Office',
       city: 'Berlin',
-      address: 'Immanuelkirchstraße 4 10405',
+      address: 'Immanuelkirchstraße 4',
+      index: '10405',
     },
     modals: {
       fillApplication: 'Fill in the form',
@@ -41,6 +43,8 @@ export const en = {
       cancelSubscription: 'Cancel subscription',
       subscriptionPaymentPayPal: 'PayPal subscription payment',
       autopayPayPal: 'Autopay PayPal',
+      registerInService: 'By registering in the service, you accept',
+      termsOfAgreement: 'the terms of the agreement and privacy policy',
     },
     cookies: {
       title: 'Privacy Settings',

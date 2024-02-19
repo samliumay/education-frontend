@@ -60,6 +60,7 @@
                   required
                   pattern=".{2,}"
                   :title="$t('user.nameRule')"
+                  is-gray
                   @blur="checkValidity"
                 />
               </div>
@@ -73,6 +74,7 @@
                   required
                   pattern=".{2,}"
                   :title="$t('user.lastNameRule')"
+                  is-gray
                   @blur="checkValidity"
                 />
               </div>
@@ -87,6 +89,7 @@
                 placeholder="example@example.com"
                 type="email"
                 required
+                is-gray
                 @blur="checkValidity"
               />
             </div>
@@ -100,7 +103,9 @@
                 :placeholder="$t('user.phone_number')"
                 maska="+49 ### ###-##-##"
                 type="tel"
+                pattern=".{17,}"
                 required
+                is-gray
                 @blur="checkValidity"
               />
             </div>

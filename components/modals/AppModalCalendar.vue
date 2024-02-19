@@ -41,10 +41,23 @@
                 {{ year }}-{{ month }}-{{ date }}
               </n-calendar>
 
+              <div class="w-full mt-5 flex gap-4">
+                <NCheckbox v-model:checked="checkbox" required class="pt-1" />
+                <p>
+                  {{ $t('common.modals.registerInService') }}
+                  <NuxtLink
+                    to="/legal"
+                    class="underline underline-offset-8 cursor-pointer text-brand-black hover:text-brand-red"
+                  >
+                    {{ $t('common.modals.termsOfAgreement') }}
+                  </NuxtLink>
+                </p>
+              </div>
+
               <AppButton
                 class="w-full mt-10"
                 type="submit"
-                :disabled="!form?.checkValidity() ?? false"
+                :disabled="!(form?.checkValidity() && checkbox)"
               >
               {{ $t('common.actions.send') }}
               </AppButton>
@@ -56,13 +69,8 @@
   </n-modal>
 </template>
 <script setup lang="ts">
-import { NCalendar, NModal } from 'naive-ui'
+import { NCalendar, NCheckbox, NModal } from 'naive-ui'
 import { ref, type VNodeRef } from 'vue'
-// import { useRoute } from 'vue-router'
-
-// import { useCartStore } from '@/store/cart'
-// import { useUserStore } from '@/store/user'
-// import { getApiAddress } from '@/utils/getApiAddress'
 
 defineProps<{
   isOpen: boolean
@@ -70,51 +78,18 @@ defineProps<{
 // Init component
 const emit = defineEmits(['close'])
 
-// Init hooks
-// const route = useRoute()
-
-// Store
-// const userStore = useUserStore()
-// const cartStore = useCartStore()
-
 // State
-// const visitor = ref(null)
 const value = ref(new Date())
+const checkbox = ref(false)
+
 // eslint-disable-next-line @typescript-eslint/no-shadow
 const handleUpdateValue = (value: Date) => {
   value.value = value
 }
 
-// Get data
-// const { data: product, pending: productPending } = await useFetch(
-//   getApiAddress(`/api/v2/wagtail/products/${route.params.id ?? 12}/?fields=*`),
-//   { deep: true },
-// )
-
-// // Registration
-// const registrationForm = ref({
-//   first_name: '',
-//   last_name: '',
-//   email: '',
-//   phone: '',
-//   message: '',
-//   position: '',
-// })
-
-// eslint-disable-next-line require-await
-const sendModalCourse = async () => {
-  // await cartStore.sendVisitRequest({
-  //   product_page: route.params.id,
-  //   children: [userStore.visitors.find((el) => el.id === visitor.value)],
-  //   adults: [registrationForm.value],
-  // })
+const sendModalCourse = () => {
   emit('close')
 }
-
-// Form
-// const checkValidity = (event: { target: { reportValidity: () => void } }) => {
-//   event.target.reportValidity()
-// }
 
 const form = ref<VNodeRef | undefined>(undefined)
 </script>

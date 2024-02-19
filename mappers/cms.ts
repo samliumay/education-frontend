@@ -23,6 +23,7 @@ export const mapTypeBlock = {
   "quote_block": Quote,
   "running_text": RunningText,
   "product_carousel": ProductCarousel,
+  "catalog_list": ProductCarousel,
   "social_media": SocialMedia,
   "age_groups": AgeGroups,
   "video_block": Video,
