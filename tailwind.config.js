@@ -12,6 +12,7 @@ export default {
 
         'brand-yellow': '#FDBE16',
         'brand-red': '#DB3B4D',
+        'brand-pink': '#FFBFC0',
         'brand-gray': '#6F6F6F',
         'brand-light-gray': '#F2F2F2',
         'brand-dark-gray': '#D9D9D9',

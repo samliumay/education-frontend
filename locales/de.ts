@@ -9,6 +9,7 @@ export const de = {
     video: 'Video',
     error: 'Fehler:',
     somethingWrong: 'Hoppla! Es scheint, als wäre etwas schief gelaufen.',
+    wrongCredentials: 'Ungültige E-Mail oder Passwort',
     moreDetails: 'Mehr Details',
     showMore: 'Zeig mehr',
     school: 'Clavis Schule für Kunst und Wissenschaft',

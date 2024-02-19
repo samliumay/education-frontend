@@ -79,8 +79,14 @@ const login = async () => {
     .login(credentials.value.email, credentials.value.password)
     .catch(err => {
       if (Object.keys(err).length !== 0) {
-        error.value = t('common.somethingWrong')
-        setTimeout(clearError, 2000)
+        console.error(err)
+        if (err.non_field_errors) {
+          error.value = t('common.wrongCredentials')
+          setTimeout(clearError, 2000)
+        } else {
+          error.value = t('common.somethingWrong')
+          setTimeout(clearError, 2000)
+        }
       } else {
         credentials.value.email = ''
         credentials.value.password = ''

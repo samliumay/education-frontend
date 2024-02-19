@@ -3,7 +3,7 @@
 <template>
   <div class="m-10 product" data-cms="main-product-carousel">
     <AppHeading>
-      {{ blockData.value[0].title }}
+      {{ blockData.value[0].title || blockData.value[0].name }}
     </AppHeading>
     <n-carousel
       v-if="blockData.value[0].cards.length > 0"

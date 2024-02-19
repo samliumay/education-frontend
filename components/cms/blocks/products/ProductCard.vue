@@ -30,7 +30,7 @@
           </template>
         </div>
 
-        <h2 class="text-2xl font-medium uppercase text-brand-red">
+        <h2 class="text-2xl md:text-4xl font-medium uppercase text-brand-red">
           {{ blockData.name }}
         </h2>
 

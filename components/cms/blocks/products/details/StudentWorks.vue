@@ -9,9 +9,9 @@
     </h2>
     <n-carousel
       :space-between="10"
+      :current-index="currentIndex"
       :loop="false"
       slides-per-view="auto"
-      draggable
       show-arrow
     >
       <n-carousel-item
@@ -26,13 +26,12 @@
         <p class="mt-1">{{ item.name }}</p>
       </n-carousel-item>
 
-      <template #arrow="{ prev, next }">
-        <div class="w-full h-full absolute top-0 left-0">
-          <div class="absolute right-0 -top-14 flex gap-4">
+      <template #arrow>
+        <div class="absolute -top-14 right-0 flex gap-4">
             <button
               type="button"
               class="student-work__arrow-button cursor-pointer p-2 bg-brand-light-gray hover:bg-brand-yellow rounded-full transition ease-in delay-100 transform active:scale-[0.93]"
-              @click="prev"
+              @click="next"
             >
               <img
                 src="/icons/chevron_down.svg"
@@ -43,7 +42,7 @@
             <button
               type="button"
               class="student-work__arrow-button cursor-pointer p-2 bg-brand-light-gray hover:bg-brand-yellow rounded-full transition ease-in delay-100 transform active:scale-[0.93]"
-              @click="next"
+              @click="prev"
             >
               <img
                 src="/icons/chevron_down.svg"
@@ -51,7 +50,6 @@
                 class="transform -rotate-90 transition ease-in delay-100 active:scale-[0.93]"
               />
             </button>
-          </div>
         </div>
       </template>
 
@@ -70,19 +68,30 @@
 </template>
 <script setup lang="ts">
 import { NCarousel, NCarouselItem } from 'naive-ui'
+import { ref } from 'vue'
 
 import type { PageBlock } from '../../../../../types/cms'
 import ImageBlock from '../../misc/ImageBlock.vue'
 
-defineProps<{
+const props = defineProps<{
   blockData: PageBlock[]
 }>()
-</script>
-<style>
-.student-works .n-carousel {
-  overflow: visible;
+
+const currentIndex = ref(0)
+
+const next = () => {
+  if (props.blockData.length - currentIndex.value < props.blockData.length) {
+    currentIndex.value++
+  }
 }
 
+const prev = () => {
+  if (currentIndex.value > -props.blockData.length + 1) {
+    currentIndex.value--
+  }
+}
+</script>
+<style>
 .student-work__arrow-button:hover > img {
   filter: brightness(0.1);
 }

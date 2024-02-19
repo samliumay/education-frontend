@@ -9,6 +9,7 @@ export const ru = {
     video: 'Видео',
     error: 'Ошибка:',
     somethingWrong: 'Упс! Кажется, что-то пошло не так.',
+    wrongCredentials: 'Неверный e-mail или пароль',
     moreDetails: 'Подробнее',
     showMore: 'Показать больше',
     school: 'Школа искусств и наук "Клавис"',
