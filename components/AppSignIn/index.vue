@@ -41,6 +41,7 @@
       <SignUpStep
         v-else-if="step === LoginSteps.SignUp"
         @go-to-email-step="step = LoginSteps.Email"
+        @close="close"
       />
       <ConfirmRestorePasswordStep
         v-else-if="step === LoginSteps.ConfirmRestorePassword"

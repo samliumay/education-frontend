@@ -2,7 +2,7 @@
 <template>
   <div class="m-10 student-works" data-cms="instructor-student-works">
     <h2
-      class="text-3xl sm:text-4xl md:text-5xl uppercase font-medium mb-20 lg:mb-14"
+      class="text-3xl sm:text-4xl md:text-[56px] uppercase font-medium mb-20 lg:mb-14"
     >
       {{ blockData?.heading || $t('blocks.product.studentWorks') }}
     </h2>

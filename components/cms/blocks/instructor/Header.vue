@@ -20,11 +20,11 @@
       </n-breadcrumb>
 
       <h1
-        class="text-3xl lg:text-4xl text-brand-red mt-4 lg:mt-12 font-medium"
+        class="text-3xl lg:[text-56px] text-brand-red mt-4 lg:mt-12 font-medium"
       >
         {{ `${blockData?.name}` }}
       </h1>
-      <h2 class="text-[16px] lg:text-[20px] font-medium mt-3">
+      <h2 class="text-[18px] lg:text-[20px] font-medium mt-3">
         {{ blockData?.speciality }}
       </h2>
       <AppDivider class="my-4 lg:my-9" />

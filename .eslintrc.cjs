@@ -60,6 +60,7 @@ module.exports = {
     '@typescript-eslint/lines-between-class-members': 'off',
     'vue/no-side-effects-in-computed-properties': 'off',
     'no-magic-numbers': 'off',
+    'no-return-assign': 'off',
     // Lint - block
     'semi': ['error', 'never'],
     'no-unexpected-multiline': 'off',

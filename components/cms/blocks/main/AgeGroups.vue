@@ -17,7 +17,7 @@
           {{ item.title }}
         </p>
 
-        <p class="brand-gray font-medium">
+        <p class="text-brand-gray font-medium">
           {{ item.description }}
         </p>
       </div>

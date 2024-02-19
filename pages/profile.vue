@@ -11,7 +11,7 @@
       class="absolute left-1/2 transform -translate-x-1/2 top-0 mx-0 w-screen h-full bg-brand-light-gray"
     />
 
-    <h1 class="text-4xl md:text-6xl mb-8 uppercase w-fit font-bold relative">
+    <h1 class="text-4xl md:text-[56px] mb-8 uppercase w-fit font-bold relative">
       {{ $t('profile.title') }}
     </h1>
 
@@ -60,6 +60,7 @@
                   required
                   pattern=".{2,}"
                   :title="$t('user.nameRule')"
+                  is-gray
                   @blur="checkValidity"
                 />
               </div>
@@ -73,6 +74,7 @@
                   required
                   pattern=".{2,}"
                   :title="$t('user.lastNameRule')"
+                  is-gray
                   @blur="checkValidity"
                 />
               </div>
@@ -87,6 +89,7 @@
                 placeholder="example@example.com"
                 type="email"
                 required
+                is-gray
                 @blur="checkValidity"
               />
             </div>
@@ -100,7 +103,9 @@
                 :placeholder="$t('user.phone_number')"
                 maska="+49 ### ###-##-##"
                 type="tel"
+                pattern=".{17,}"
                 required
+                is-gray
                 @blur="checkValidity"
               />
             </div>
@@ -163,7 +168,6 @@
       </n-tab-pane>
       <n-tab-pane name="visitors" :tab="$t('common.profileMenu.children')">
         <div class="mt-[48px]" />
-        <ContactsBlock />
         <template v-for="visitor in user.visitorsOrders" :key="visitor.id">
           <div class="rounded-[12px] bg-white p-[36px] mb-[24px]">
             <div class="flex flex-col justify-between gap-6">
@@ -262,7 +266,6 @@ import { NTabPane, NTabs } from 'naive-ui'
 import { onMounted, ref, type VNodeRef } from 'vue'
 import { useRoute } from 'vue-router'
 
-import ContactsBlock from '@/components/misc/ContactsBlock.vue'
 import AppModalComments from '@/components/modals/AppModalComments.vue'
 
 import AppButton from '../components/AppButton.vue'

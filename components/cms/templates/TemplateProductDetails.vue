@@ -32,7 +32,7 @@
       <ErrorBoundaryBlock v-for="(block, index) in blocksList" :key="index">
         <component
           :is="block.name"
-          v-if="checkIsEmpty(block.blockData)"
+          v-if="!checkIsEmpty(block.blockData)"
           :block-data="block.blockData"
         />
       </ErrorBoundaryBlock>

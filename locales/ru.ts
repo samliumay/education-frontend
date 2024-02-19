@@ -9,6 +9,7 @@ export const ru = {
     video: 'Видео',
     error: 'Ошибка:',
     somethingWrong: 'Упс! Кажется, что-то пошло не так.',
+    wrongCredentials: 'Неверный e-mail или пароль',
     moreDetails: 'Подробнее',
     showMore: 'Показать больше',
     school: 'Школа искусств и наук "Клавис"',
@@ -17,6 +18,7 @@ export const ru = {
     notFound: 'Ничего не найдено',
     courseNotFound: 'Курс с данным идентификатором не найден',
     you: 'Вы',
+    canceled: 'Отменен',
     contacts: {
       contactUs: 'Свяжитесь с нами',
       tryout: 'Организовать пробный курс',
@@ -26,7 +28,8 @@ export const ru = {
       main: 'Директор',
       secretariat: 'Секретариат',
       city: 'Берлин',
-      address: 'Иммануэлькирхштрассе 4 10405',
+      address: 'Иммануэлькирхштрассе 4',
+      index: '10405',
     },
     modals: {
       fillApplication: 'Заполните анкету',
@@ -40,6 +43,8 @@ export const ru = {
       cancelSubscription: 'Отмена абонемента',
       subscriptionPaymentPayPal: 'Оплата подписки PayPal',
       autopayPayPal: 'Автоплатёж PayPal',
+      registerInService: 'Регистрируясь в сервисе, вы принимаете',
+      termsOfAgreement: 'условия соглашения и политики конфиденциальности',
     },
     cookies: {
       title: 'Настройки конфиденциальности',

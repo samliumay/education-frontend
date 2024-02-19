@@ -3,7 +3,7 @@
     class="m-10 flex flex-col items-center"
   >
     <h2
-      class="text-3xl sm:text-4xl md:text-5xl uppercase font-medium mb-20 lg:mb-14"
+      class="text-3xl sm:text-4xl md:text-[56px] uppercase font-medium mb-20 lg:mb-14"
     >
       {{ blockData.title ? blockData.title : $t('common.video') }}
     </h2>
