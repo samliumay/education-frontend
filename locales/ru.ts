@@ -3,6 +3,7 @@ export const ru = {
     main: 'Главная',
     tutors: 'Преподаватели',
     aboutUs: 'О нас',
+    prices: 'Цены',
     specialOffer: 'Спец. предложение',
     schoolOffer: 'Предложения для школ',
     catalogue: 'Каталог',

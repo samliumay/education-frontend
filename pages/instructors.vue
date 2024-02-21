@@ -32,11 +32,9 @@ import { getApiAddress } from '@/utils/getApiAddress'
 import LoaderBlock from '../components/cms/blocks/misc/LoaderBlock.vue'
 import TutorCard from '../components/cms/blocks/misc/TutorCard.vue'
 
-const { locale } = useI18n({ useScope: 'global' })
-
 // API
 const { data: instructors, pending } = useFetch(
-  getApiAddress(`/api/v2/wagtail/instructors/?locale=${locale.value}`),
+  getApiAddress(`/api/v2/wagtail/instructors/`),
   { deep: true },
 )
 

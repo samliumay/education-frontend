@@ -143,9 +143,9 @@ const pathGroup = computed(() => [
     label: t('common.schoolOffer'),
     route: '/school_offer',
   },
-  // {
-  //   label: 'Цены',
-  //   route: '/',
-  // },
+  {
+    label: t('common.prices'),
+    route: '/prices',
+  },
 ])
 </script>

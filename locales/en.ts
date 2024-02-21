@@ -3,6 +3,7 @@ export const en = {
     main: 'Home',
     tutors: 'Instructors',
     aboutUs: 'About us',
+    prices: 'Prices',
     specialOffer: 'Special offer',
     schoolOffer: 'Offers for schools',
     catalogue: 'Catalog',

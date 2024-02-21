@@ -30,7 +30,7 @@
         :key="item.id"
         class="p-[30px] rounded-xl border-[1px] flex flex-col justify-between"
         :class="
-          selectOption === item.id
+          selectOption === item.id && item.id !== undefined
             ? 'border-black bg-brand-light-gray'
             : 'border-brand-dark-gray bg-white'
         "
@@ -47,11 +47,11 @@
           <ul class="mt-[32px] mb-[48px] pl-6">
             <li
               v-for="(option, idx) in item.bullet_points"
-              :key="option.id"
+              :key="option"
               class="text-brand-gray pl-2 text-lg"
               :class="{ 'mb-[12px]': idx + 1 !== item.bullet_points?.length }"
             >
-              <p class="transform -translate-y-[3px]">{{ option.value }}</p>
+              <p class="transform -translate-y-[3px]">{{ option }}</p>
             </li>
           </ul>
 
@@ -59,7 +59,7 @@
             class="text-[24px] font-medium"
             :class="{ 'mb-10': !withoutTitle }"
           >
-            {{ item.base_price }} €
+            {{ item.price_text }} €
           </p>
         </div>
 
