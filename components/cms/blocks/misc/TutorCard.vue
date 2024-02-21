@@ -8,7 +8,7 @@
       class="w-full aspect-square rounded-xl overflow-hidden"
     />
     <p class="mt-[24px] text-[20px] text-brand-red">
-      {{ instructor.name ? instructor.name :`${instructor.first_name} ${instructor.last_name}` }}
+      {{ instructor.name ? instructor.name : `${instructor.first_name} ${instructor.last_name}` }}
     </p>
     <p v-show="instructor.subject" class="font-medium mb-6">
       {{ instructor.subject }}
