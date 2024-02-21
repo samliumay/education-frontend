@@ -1,5 +1,6 @@
 export const de = {
   common: {
+    recommend: 'Wir empfehlen',
     main: 'Clavis',
     tutors: 'Lehrer',
     aboutUs: 'Über uns',

@@ -527,6 +527,6 @@ const fullfillOrder = async () => {
     String(window.location).replace('cart', ''),
   )
   window.location.href =
-    buyOption.value === 'paypal' ? urlObject.links[1] : urlObject.url
+    buyOption.value === 'paypal' ? urlObject.links[1].href : urlObject.url
 }
 </script>
