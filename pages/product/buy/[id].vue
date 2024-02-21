@@ -259,7 +259,7 @@
       </p>
 
       <AppButton
-        class="mt-4 lg:mt-10 w-full lg:w-auto flex justify-center items-center text-lg"
+        class="mt-4 lg:mt-10 w-full lg:w-auto flex justify-center items-center text-lg gap-3"
         @click="addAcademy"
       >
         Добавить в корзину

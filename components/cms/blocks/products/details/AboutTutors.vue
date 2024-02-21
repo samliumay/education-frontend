@@ -21,7 +21,7 @@
       <TutorCard
         v-for="item in blockData"
         :key="item.id"
-        :instructor="{ ...item.instructor, id: item?.id ?? 1 }"
+        :instructor="{ ...item.instructor, ...item, id: item?.id ?? 1 }"
       />
     </div>
   </div>

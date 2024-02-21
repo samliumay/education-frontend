@@ -65,7 +65,7 @@ const blocksList = computed(() => [
   { name: Offering, blockData: product.value?.items[0].offering_block[0] },
   {
     name: AboutTutors,
-    blockData: product.value?.items[0].instructors_block[0],
+    blockData: product.value?.items[0].instructors_block[0].value.instructors,
   },
   {
     name: StudentWorks,

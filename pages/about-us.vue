@@ -135,7 +135,7 @@
   </div>
 
   <LoadingBlock v-if="pendingInstructors" />
-  <AboutTutors v-else :block-data="instructors" />
+  <AboutTutors v-else :block-data="instructors.items" />
 
   <!-- Principles -->
   <div
