@@ -49,7 +49,7 @@ useHead({
 })
 
 // Init hooks
-const { t } = useI18n()
+const { t } = useI18n({ useScope: 'global' })
 
 // Store
 const route = useRoute()
@@ -61,9 +61,12 @@ const { data: instructor, pending } = await useFetch(
 )
 
 const courses = computed(() => {
-  if (!pending.value) {
-    return instructor.value.body.find(block => block.type === 'teaches_in')
-      .value
+  const result = instructor?.value?.body?.find(
+    block => block.type === 'teaches_in',
+  )?.value
+
+  if (!pending.value && result !== undefined) {
+    return result
   }
 
   return {
@@ -73,8 +76,12 @@ const courses = computed(() => {
 })
 
 const studentWorks = computed(() => {
-  if (!pending.value) {
-    return instructor.value.body.find(block => block.type === 'art_block').value
+  const result = instructor?.value?.body?.find(
+    block => block.type === 'art_block',
+  )?.value
+
+  if (!pending.value && result !== undefined) {
+    return result
   }
 
   return {
@@ -84,9 +91,12 @@ const studentWorks = computed(() => {
 })
 
 const video = computed(() => {
-  if (!pending.value) {
-    return instructor.value.body.find(block => block.type === 'video_block')
-      .value
+  const result = instructor?.value?.body?.find(
+    block => block.type === 'video_block',
+  )?.value
+
+  if (!pending.value && result !== undefined) {
+    return result
   }
 
   return {

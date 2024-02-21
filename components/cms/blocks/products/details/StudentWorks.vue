@@ -28,28 +28,28 @@
 
       <template #arrow>
         <div class="absolute -top-14 right-0 flex gap-4">
-            <button
-              type="button"
-              class="student-work__arrow-button cursor-pointer p-2 bg-brand-light-gray hover:bg-brand-yellow rounded-full transition ease-in delay-100 transform active:scale-[0.93]"
-              @click="next"
-            >
-              <img
-                src="/icons/chevron_down.svg"
-                alt="Arrow"
-                class="transform rotate-90 transition ease-in delay-100 active:scale-[0.93]"
-              />
-            </button>
-            <button
-              type="button"
-              class="student-work__arrow-button cursor-pointer p-2 bg-brand-light-gray hover:bg-brand-yellow rounded-full transition ease-in delay-100 transform active:scale-[0.93]"
-              @click="prev"
-            >
-              <img
-                src="/icons/chevron_down.svg"
-                alt="Arrow"
-                class="transform -rotate-90 transition ease-in delay-100 active:scale-[0.93]"
-              />
-            </button>
+          <button
+            type="button"
+            class="student-work__arrow-button cursor-pointer p-2 bg-brand-light-gray hover:bg-brand-yellow rounded-full transition ease-in delay-100 transform active:scale-[0.93]"
+            @click="next"
+          >
+            <img
+              src="/icons/chevron_down.svg"
+              alt="Arrow"
+              class="transform rotate-90 transition ease-in delay-100 active:scale-[0.93]"
+            />
+          </button>
+          <button
+            type="button"
+            class="student-work__arrow-button cursor-pointer p-2 bg-brand-light-gray hover:bg-brand-yellow rounded-full transition ease-in delay-100 transform active:scale-[0.93]"
+            @click="prev"
+          >
+            <img
+              src="/icons/chevron_down.svg"
+              alt="Arrow"
+              class="transform -rotate-90 transition ease-in delay-100 active:scale-[0.93]"
+            />
+          </button>
         </div>
       </template>
 

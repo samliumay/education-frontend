@@ -22,7 +22,7 @@ const emit = defineEmits(['goToEmailStep'])
 const { t } = useI18n()
 
 const clientId = import.meta.env.VITE_GOOGLE_SSO_CLIENT_ID
-const siteAddress = import.meta.env.VITE_SITE_URL
+const siteAddress = import.meta.env?.VITE_SITE_URL || window.location.origin
 
 // Options
 const options = [

@@ -71,11 +71,21 @@ useHead({
   ],
 })
 
+const { locale } = useI18n({ useScope: 'global' })
+
 // API
-const { data: specials, pending } = useFetch(
-  getApiAddress(`/api/v2/wagtail/special-offers/?fields=*`),
-  { deep: true },
+const { data: specials, pending } = await useAsyncData(
+  'products',
+  () =>
+    $fetch(getApiAddress(`/api/v2/wagtail/special-offers/`), {
+      params: {
+        locale: locale.value,
+        fields: '*',
+      },
+    }),
+  { watch: [locale], deep: true },
 )
+
 const special = computed(() => {
   if (!pending.value) return specials.value?.items?.[0]
 

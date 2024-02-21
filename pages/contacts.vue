@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/no-static-inline-styles -->
 <template>
-  <n-breadcrumb class="mt-6 mb-10 px-10">
+  <n-breadcrumb class="mt-6 mb-10 px-10 text-[16px]">
     <n-breadcrumb-item сlass="text-brand-gray">
       <NuxtLink to="/">{{ $t('common.main') }}</NuxtLink>
     </n-breadcrumb-item>
@@ -40,14 +40,14 @@
       <div
         v-for="modal in modalsButtons"
         :key="modal.text"
-        class="bg-brand-light-gray rounded-[12px] p-3 lg:p-6 text-brand-red flex justify-between"
+        class="bg-brand-light-gray rounded-[12px] p-3 lg:p-6 text-brand-red flex justify-between cursor-pointer"
         @click="modal.action"
       >
-        <span class="text-xl lg:text-2xl font-medium"> {{ modal.text }} </span>
+        <span class="text-2xl font-medium"> {{ modal.text }} </span>
         <img
           src="/icons/chevron_left.svg"
           alt="Arrow"
-          class="w-[14px] h-[14px] mt-2"
+          class="w-[14px] h-[14px] mt-3"
         />
       </div>
     </div>
@@ -126,9 +126,7 @@
         <h2 class="uppercase text-[36px] lg:text-[56px] mb-3 lg:mb-6">
           {{ $t('common.contacts.city') }}
         </h2>
-        <p
-          class="text-[28px] lg:text-[36px] font-medium whitespace-nowrap text-brand-red"
-        >
+        <p class="text-[28px] lg:text-[36px] font-medium text-brand-red">
           {{ $t('common.contacts.address') }}
         </p>
         <p class="text-[28px] lg:text-[36px] font-medium text-gray-500">

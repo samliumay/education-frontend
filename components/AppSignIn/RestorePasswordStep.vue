@@ -50,8 +50,12 @@ const isSended = ref(false)
 const form = ref<VNodeRef | undefined>(undefined)
 
 // Actions
-const checkValidity = (event: { target: { reportValidity: () => void } }) => {
+const checkValidity = (event: {
+  target: { reportValidity: () => void }
+  relatedTarget: { focus: () => void }
+}) => {
   event.target.reportValidity()
+  event.relatedTarget.focus()
 }
 
 const clearError = () => {

@@ -1,5 +1,5 @@
 <template>
-  <main class="px-10 py-6">
+  <main class="px-2 md:px-[270px] py-6">
     <n-breadcrumb class="mb-10">
       <n-breadcrumb-item сlass="text-brand-gray">
         <NuxtLink to="/">Главная</NuxtLink>
@@ -11,7 +11,9 @@
       Clavis Schule Impressum
     </h1>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">Wer wir sind</h2>
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
+      Wer wir sind
+    </h2>
     <h3 class="text-brand-black mb-2">
       Clavis Kunst und Wissenschaft Privatschule GmbH i.G.
     </h3>
@@ -45,14 +47,16 @@ href="www.clavis-schule.de"
       <p class="text-brand-black font-medium m-0">UStID DE356490222</p>
     </div>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">V.iS.d.P.</h2>
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
+      V.iS.d.P.
+    </h2>
     <p class="text-brand-gray mb-10">
       Verantwortlich im Sinne des Presserechtes für journalistische und
       redaktionelle Texte auf dieser Website: Margarita Stroutchenkova
       (Clavis-Schulleitung).
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
       Haftungsausschluss
     </h2>
     <h3 class="text-brand-black mb-2">Haftung für Inhalte</h3>

@@ -64,11 +64,23 @@ useHead({
 const api = computed(() => props.api)
 const address = getApiAddress('/api/v2/wagtail')
 
+const { locale } = useI18n({ useScope: 'global' })
+
 // Docs https://the-o.youtrack.cloud/articles/CLAVIS-A-32/Katalogi
 // Catalog header and icon
-const { data: catalogsGroup, pending: catalogsGroupPending } = useFetch(
-  `${address}/catalog/?type=${api.value.type}`,
-)
+const { data: catalogsGroup, pending: catalogsGroupPending } =
+  await useAsyncData(
+    'catalogs',
+    () =>
+      $fetch(getApiAddress(`${address}/catalog/`), {
+        params: {
+          locale: locale.value,
+          type: api.value.type,
+        },
+      }),
+    { watch: [locale], deep: true },
+  )
+
 const catalog = computed(() => catalogsGroup.value?.items?.[0])
 
 // Products Cards
@@ -80,9 +92,18 @@ const catalogType = computed(() => {
   return api.value.type
 })
 // eslint-disable-next-line vue/no-setup-props-destructure
-const { data: products, pending: productsPending } = useFetch(
-  `${address}/products/?fields=*&product_type=${catalogType.value}`,
-  { watch: [props.filters], query: props.filters },
+const { data: products, pending: productsPending } = await useAsyncData(
+  'products',
+  () =>
+    $fetch(`${address}/products/`, {
+      params: {
+        locale: locale.value,
+        fields: '*',
+        product_type: catalogType.value,
+        ...props.filters,
+      },
+    }),
+  { watch: [locale, props.filters], deep: true },
 )
 
 // Add more items

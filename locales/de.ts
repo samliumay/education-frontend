@@ -34,6 +34,7 @@ export const de = {
     modals: {
       fillApplication: 'Fülle das Formular aus',
       youChoosed: 'Du wählst',
+      chooseOption: 'Wähle eine Option',
       positionInterested: 'Position, die Sie interessiert',
       additionalInfo: 'Weitere Informationen',
       calendar: 'Kalender',
@@ -231,7 +232,7 @@ export const de = {
       total: 'Gesamt',
       discountAmount: 'Rabattbetrag',
       fillOutPaymentDetails:
-        'Für die Zahlung füllen Sie bitte die untenstehenden Zahlungsdetails aus',
+        'Für die Zahlung füllen Sie bitte die untenstehenden Zahlungsdetails',
       pleaseRegister:
         'Bitte registrieren Sie sich oder loggen Sie sich in Ihr Konto ein, um zu bezahlen',
     },

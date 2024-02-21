@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="m-10 flex flex-col items-center"
-  >
+  <div class="m-10 flex flex-col items-center">
     <h2
       class="text-3xl sm:text-4xl md:text-[56px] uppercase font-medium mb-20 lg:mb-14"
     >
