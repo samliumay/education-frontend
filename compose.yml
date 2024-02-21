@@ -11,6 +11,7 @@ services:
       dockerfile: ./docker/dev/Dockerfile
       args:
         VITE_API_URL: https://api.clavis.the-o.co
+        VITE_GOOGLE_SSO_CLIENT_ID: $VITE_GOOGLE_SSO_CLIENT_ID
     image: $CI_REGISTRY_IMAGE/frontend:$CI_COMMIT_SHA
     restart: unless-stopped
     expose:
