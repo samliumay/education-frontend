@@ -21,7 +21,7 @@ const emit = defineEmits(['goToEmailStep'])
 // Init hooks
 const { t } = useI18n()
 
-const clientId = import.meta.env.VITE_GOOGLE_SSO_CLIENT_ID || '464713450575-ecsmsdjo2oql1nsjuvnepeat0usf8vgp.apps.googleusercontent.com'
+const clientId = /*import.meta.env.VITE_GOOGLE_SSO_CLIENT_ID ||*/ '464713450575-ecsmsdjo2oql1nsjuvnepeat0usf8vgp.apps.googleusercontent.com'
 const siteAddress = import.meta.env?.VITE_SITE_URL || window.location.origin
 
 // Options
