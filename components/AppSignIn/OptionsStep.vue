@@ -36,8 +36,11 @@ const options = [
     icon: '/icons/sign_in/google_icon.svg',
     onClick: () => {
       if (process.client) {
+        const link = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${siteAddress}&prompt=consent&response_type=code&client_id=${clientId}&scope=openid%20email%20profile&access_type=offline`
+        // eslint-disable-next-line no-console
+        console.log(clientId, ' ', link)
         window.open(
-          `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${siteAddress}&prompt=consent&response_type=code&client_id=${clientId}&scope=openid%20email%20profile&access_type=offline`,
+          link,
           '_blank',
         )
       }
