@@ -20,6 +20,7 @@ import AppCookieModal from './components/modals/AppCookieModal.vue'
 import AppFooter from './components/page/AppFooter.vue'
 import AppHeader from './components/page/AppHeader.vue'
 import { useCartStore } from './store/cart'
+import { useUserStore } from './store/user'
 
 useHead({
   title: 'Clavis Schule für Kunst und Wissenschaft',
@@ -75,9 +76,19 @@ const themeOverrides = {
   },
 }
 
+const route = useRoute()
+
 // Init anonymous user
 const cart = useCartStore()
 cart.init()
+
+if (process.client) {
+  const userStorage = useUserStore()
+
+  if (route?.params?.code) {
+    userStorage.googleAuth(route.params.code)
+  }
+}
 </script>
 <style>
 body {
