@@ -11,7 +11,7 @@
             class="flex gap-[20px] items-center mr-10"
             @click="$emit('close')"
           >
-          {{ $t('common.actions.close') }}
+            {{ $t('common.actions.close') }}
             <button
               class="bg-white border-[1px] border-brand-black w-[35px] h-[35px] rounded-full flex items-center justify-center hover:bg-brand-light-gray transition ease-in delay-100 transform active:scale-[0.93]"
             >
@@ -26,20 +26,27 @@
 
         <div class="flex flex-col gap-10 m-10">
           <div>
-            <h1 class="font-medium text-4xl mb-10">{{ $t('common.modals.calendar') }}</h1>
+            <h1 class="font-medium text-4xl mb-10">
+              {{ $t('common.modals.calendar') }}
+            </h1>
 
             <form
               ref="form"
               class="flex flex-col gap-2 mt-10 relative"
               @submit.prevent="sendModalCourse"
             >
-              <n-calendar
-                v-model:value="value"
-                #="{ year, month, date }"
-                @update:value="handleUpdateValue"
+              <n-config-provider
+                :locale="naiveLocale[locale].locale"
+                :date-locale="naiveLocale[locale].date"
               >
-                {{ year }}-{{ month }}-{{ date }}
-              </n-calendar>
+                <n-calendar
+                  v-model:value="value"
+                  #="{ year, month, date }"
+                  @update:value="handleUpdateValue"
+                >
+                  {{ year }}-{{ month }}-{{ date }}
+                </n-calendar>
+              </n-config-provider>
 
               <div class="w-full mt-5 flex gap-4">
                 <NCheckbox v-model:checked="checkbox" required class="pt-1" />
@@ -59,7 +66,7 @@
                 type="submit"
                 :disabled="!(form?.checkValidity() && checkbox)"
               >
-              {{ $t('common.actions.send') }}
+                {{ $t('common.actions.send') }}
               </AppButton>
             </form>
           </div>
@@ -69,7 +76,18 @@
   </n-modal>
 </template>
 <script setup lang="ts">
-import { NCalendar, NCheckbox, NModal } from 'naive-ui'
+import {
+  dateDeDE,
+  dateEnUS,
+  dateRuRU,
+  deDE,
+  enUS,
+  NCalendar,
+  NCheckbox,
+  NConfigProvider,
+  NModal,
+  ruRU,
+} from 'naive-ui'
 import { ref, type VNodeRef } from 'vue'
 
 defineProps<{
@@ -78,6 +96,8 @@ defineProps<{
 // Init component
 const emit = defineEmits(['close'])
 
+const { locale } = useI18n({ useScope: 'global' })
+
 // State
 const value = ref(new Date())
 const checkbox = ref(false)
@@ -85,6 +105,21 @@ const checkbox = ref(false)
 // eslint-disable-next-line @typescript-eslint/no-shadow
 const handleUpdateValue = (value: Date) => {
   value.value = value
+}
+
+const naiveLocale = {
+  ru: {
+    locale: ruRU,
+    date: dateRuRU,
+  },
+  en: {
+    locale: enUS,
+    date: dateEnUS,
+  },
+  de: {
+    locale: deDE,
+    date: dateDeDE,
+  },
 }
 
 const sendModalCourse = () => {

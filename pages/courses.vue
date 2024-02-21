@@ -1,7 +1,9 @@
 <template>
   <TemplateProduct v-bind="templateProps">
     <template #filters="{ title }">
-      <div class="flex flex-col lg:flex-row lg:items-center block-padding-x gap-5">
+      <div
+        class="flex flex-col lg:flex-row lg:items-center block-padding-x gap-5"
+      >
         <div class="flex items-center gap-[18px]">
           <h1
             class="text-[38px] md:text-[32px] sm:text-[48px] font-medium uppercase"
@@ -51,9 +53,13 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 
+import { getApiAddress } from '@/utils/getApiAddress'
+
 import AppSelect from '../components/AppSelect.vue'
 import TemplateProduct from '../components/cms/templates/TemplateProduct.vue'
 import { ageOptions, languageOptions } from '../mappers/options'
+
+const { locale } = useI18n({ useScope: 'global' })
 
 const filters = ref({
   language: null,
@@ -88,9 +94,17 @@ const branchesOptions = computed(() =>
     : [],
 )
 
-const { data: categories, categoriesPending } = useFetch(
-  getApiAddress(`/api/v2/products/categories/`),
+const { data: categories, pending: categoriesPending } = await useAsyncData(
+  'categories',
+  () =>
+    $fetch(getApiAddress(`/api/v2/products/categories/`), {
+      params: {
+        locale: locale.value,
+      },
+    }),
+  { watch: [locale] },
 )
+
 const categoriesOptions = computed(() =>
   categories.value
     ? categories.value.map(category => ({

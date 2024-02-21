@@ -8,7 +8,9 @@
         {{ blockData.value.title }}
       </h2>
       <div class="w-[1px] bg-brand-gray invisible sm:visible" />
-      <p class="font-medium text-base xl:text-lg text-brand-black lg:self-center lg:w-5/12">
+      <p
+        class="font-medium text-base xl:text-lg text-brand-black lg:self-center lg:w-5/12"
+      >
         {{ blockData.value.description }}
       </p>
     </div>

@@ -138,12 +138,22 @@ defineEmits(['close'])
 // Init store
 const cart = useCartStore()
 
+const { locale } = useI18n({ useScope: 'global' })
+
 // APIs
 // Get cover
 const id = computed(() => props.order?.product_page?.id ?? 0)
-const { data: product, pending: loadingProduct } = await useFetch(
-  getApiAddress(`/api/v2/wagtail/products/${id.value}/?fields=*`),
-  { deep: true },
+
+const { data: product, pending: loadingProduct } = await useAsyncData(
+  'products',
+  () =>
+    $fetch(getApiAddress(`/api/v2/wagtail/products/${id.value}/`), {
+      params: {
+        locale: locale.value,
+        fields: '*',
+      },
+    }),
+  { watch: [locale], deep: true },
 )
 
 // Delete item

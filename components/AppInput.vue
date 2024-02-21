@@ -1,8 +1,11 @@
 <template>
   <input
     v-maska
-    class="w-full rounded-[12px] px-[24px] py-[16px] border-gray-200 border-[1px] "
-    :class="{ 'bg-brand-light-gray': isGray && modelValue, 'bg-white disabled:bg-brand-light-gray': !isGray || !modelValue }"
+    class="w-full rounded-[12px] px-[24px] py-[16px] border-gray-200 border-[1px] text-[16px]"
+    :class="{
+      'bg-brand-light-gray': isGray && modelValue,
+      'bg-white disabled:bg-brand-light-gray': !isGray || !modelValue,
+    }"
     :placeholder="placeholder"
     :type="type ? type : 'text'"
     :value="modelValue"

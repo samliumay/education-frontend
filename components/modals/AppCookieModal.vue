@@ -40,10 +40,8 @@
           <div class="bg-brand-light-gray flex flex-col gap-4 p-4 rounded-md">
             <div class="flex justify-between">
               <n-checkbox v-model:checked="checkboxStatistic">
-{{
-                $t('common.cookies.options.statistics.label')
-              }}
-</n-checkbox>
+                {{ $t('common.cookies.options.statistics.label') }}
+              </n-checkbox>
               <NuxtLink class="text-brand-black underline underline-offset-">
                 {{ $t('common.cookies.options.statistics.link') }}
               </NuxtLink>
@@ -56,10 +54,8 @@
           <div class="bg-brand-light-gray flex flex-col gap-4 p-4 rounded-md">
             <div class="flex justify-between">
               <n-checkbox v-model:checked="checkboxExternalMedia">
-{{
-                $t('common.cookies.options.externalMedia.label')
-              }}
-</n-checkbox>
+                {{ $t('common.cookies.options.externalMedia.label') }}
+              </n-checkbox>
               <NuxtLink class="text-brand-black underline underline-offset-">
                 {{ $t('common.cookies.options.externalMedia.link') }}
               </NuxtLink>
@@ -72,10 +68,8 @@
 
         <div class="flex w-full gap-4">
           <AppButton class="w-1/2" @click="close">
-{{
-            $t('common.actions.acceptEssential')
-          }}
-</AppButton>
+            {{ $t('common.actions.acceptEssential') }}
+          </AppButton>
           <AppButton class="w-1/2" @click="closeAndAcceptAll">
             {{ $t('common.actions.acceptAll') }}
           </AppButton>

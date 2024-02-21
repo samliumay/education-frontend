@@ -1,19 +1,19 @@
 <template>
   <div
-    class="bg-white border-brand-dark-gray p-4 border-[1px] rounded-[12px] flex gap-6"
+    class="bg-white border-brand-dark-gray p-4 border-[1px] rounded-[12px] flex flex-col md:flex-row gap-6"
   >
     <Cover
       :image-title="product?.title_image"
       :image-background="product?.background_image"
-      class="xl:w-[180px] xl:min-w-[180px] xl:h-auto lg:w-[140px] lg:min-w-[140px] lg:h-[70px] rounded-[12px] overflow-hidden"
+      class="aspect-[2/1] xl:w-[180px] xl:min-w-[180px] xl:h-auto lg:w-[140px] lg:min-w-[140px] lg:h-[70px] rounded-[12px] overflow-hidden"
     />
 
     <div class="flex flex-col justify-between gap-[16px] h-fit">
-      <h1 class="text-2xl font-medium uppercase text-brand-red">
+      <h1 class="text-xl md:text-2xl font-medium uppercase text-brand-red">
         {{ product.name }}
       </h1>
 
-      <TagsBlock :tags="getTagsFromProduct(product, $t)" />
+      <TagsBlock :tags="getTagsFromProduct(product, $t)" white-bg />
     </div>
   </div>
 </template>

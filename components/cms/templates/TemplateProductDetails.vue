@@ -81,10 +81,19 @@ useHead({
 
 const route = useRoute()
 
+const { locale } = useI18n({ useScope: 'global' })
+
 // API
-const { data: product, pending } = useFetch(
-  getApiAddress(`/api/v2/wagtail/products/${route.params.id}/?fields=*`),
-  { deep: true },
+const { data: product, pending } = await useAsyncData(
+  'products',
+  () =>
+    $fetch(getApiAddress(`/api/v2/wagtail/products/${route.params.id}/`), {
+      params: {
+        locale: locale.value,
+        fields: '*',
+      },
+    }),
+  { watch: [locale], deep: true },
 )
 
 const catalogPath = computed(() => {

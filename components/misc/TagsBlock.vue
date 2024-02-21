@@ -4,7 +4,8 @@
       v-for="tag in tags"
       v-show="tag"
       :key="tag"
-      class="bg-gray-100 rounded-[90px] font-medium text-center px-[12px] py-[4px] text-sm"
+      class="rounded-[90px] font-medium text-center px-[12px] py-[4px]"
+      :class="whiteBg ? 'bg-white' : 'bg-gray-100'"
     >
       {{ tag }}
     </div>
@@ -13,5 +14,6 @@
 <script setup lang="ts">
 defineProps<{
   tags: Array<string>
+  whiteBg?: boolean
 }>()
 </script>

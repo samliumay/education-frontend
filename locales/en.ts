@@ -34,6 +34,7 @@ export const en = {
     modals: {
       fillApplication: 'Fill in the form',
       youChoosed: 'You choosed',
+      chooseOption: 'Select an option',
       positionInterested: 'Position you are interested in',
       additionalInfo: 'Additional Information',
       calendar: 'Calendar',
@@ -227,8 +228,7 @@ export const en = {
         'To place an order, select the items you want to buy from your cart',
       total: 'Total',
       discountAmount: 'Discount amount',
-      fillOutPaymentDetails:
-        'For payment, please fill out the payment details below',
+      fillOutPaymentDetails: 'For payment, please fill out the payment details',
       pleaseRegister: 'Please register or log in to your account to pay',
     },
     button: {

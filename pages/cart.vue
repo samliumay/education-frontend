@@ -3,7 +3,7 @@
     <div
       class="absolute left-1/2 transform -translate-x-1/2 top-0 mx-0 w-screen h-full bg-brand-light-gray"
     />
-    <h1 class="font-medium text-5xl mb-12 uppercase relative">
+    <h1 class="font-medium text-3xl md:text-6xl mb-12 uppercase relative">
       {{ $t('cart.title') }}
     </h1>
 
@@ -153,6 +153,7 @@
               required
               pattern=".{2,}"
               title="The name must contain at least two characters"
+              autocomplete="off"
               @blur="checkValidity"
             />
             <AppInput
@@ -161,6 +162,7 @@
               required
               pattern=".{2,}"
               title="Last name must contain at least two characters"
+              autocomplete="off"
               @blur="checkValidity"
             />
           </div>
@@ -171,6 +173,7 @@
               placeholder="Email"
               type="email"
               required
+              autocomplete="off"
               @blur="checkValidity"
             />
             <AppInput
@@ -179,6 +182,7 @@
               maska="+49 ### ###-##-##"
               type="tel"
               required
+              autocomplete="off"
               @blur="checkValidity"
             />
           </div>
@@ -191,6 +195,7 @@
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
               title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
               type="password"
+              autocomplete="off"
               @blur="checkValidity"
             />
             <AppInput
@@ -200,6 +205,7 @@
               required
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
               title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+              autocomplete="off"
               @blur="checkValidity"
             />
           </div>
@@ -297,14 +303,6 @@
                   {{ `${Number(item.calculated_price ?? 0).toFixed(2)} €` }}
                 </span>
               </div>
-              <div class="flex justify-between gap-[24px]">
-                <span class="font-medium">
-                  {{ $t('cart.order.discountAmount') }}
-                </span>
-                <span>
-                  {{ `${Number(item?.discount_amount ?? 0).toFixed(2)} €` }}
-                </span>
-              </div>
 
               <AppDivider
                 v-if="idx + 1 !== cart.order.items.length"
@@ -329,15 +327,26 @@
                 {{ $t('cart.promocode.fail') }}
               </p>
             </div>
-            <p v-else class="text-brand-gray mt-2">
-              {{ $t('cart.order.total') }}
+
+            <p
+              v-show="cart?.order?.items?.length"
+              class="flex justify-between font-medium text-[24px] mt-[24px] mb-[12px]"
+            >
+              <span>{{ $t('cart.order.discountAmount') }}</span>
+              <span class="text-brand-green">{{
+                `-${(cart?.order?.items || []).reduce((acc, item) => {
+                  const newAcc =
+                    Number(acc ?? 0) + Number(item.discount_amount ?? 0)
+                  return Number(newAcc ?? 0).toFixed(2)
+                }, 0)} €`
+              }}</span>
             </p>
 
             <p
               v-show="cart?.order?.items?.length"
-              class="flex justify-between font-medium text-[24px] mt-[24px] mb-[24px]"
+              class="flex justify-between font-medium text-[24px] mb-[24px]"
             >
-              <span>{{ $t('cart.order.discountAmount') }}</span>
+              <span>{{ $t('cart.order.total') }}</span>
               <span>{{
                 `${(cart?.order?.items || []).reduce((acc, item) => {
                   const newAcc =
@@ -438,8 +447,12 @@ const workshopProducts = computed(
 )
 
 // Form
-const checkValidity = (event: { target: { reportValidity: () => void } }) => {
+const checkValidity = (event: {
+  target: { reportValidity: () => void }
+  relatedTarget: { focus: () => void }
+}) => {
   event.target.reportValidity()
+  event.relatedTarget.focus()
 }
 
 const form = ref<VNodeRef | undefined>(undefined)
