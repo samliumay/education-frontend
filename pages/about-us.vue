@@ -9,7 +9,7 @@
       class="absolute bottom-0 left-1/2 -translate-x-1/2 md:-translate-x-full translate-y-1/4"
     />
 
-    <div class="relative mt-6 mb-10">
+    <div class="relative mt-6 mb-4">
       <n-breadcrumb>
         <n-breadcrumb-item сlass="text-brand-gray">
           <NuxtLink to="/">{{ $t('common.main') }} / </NuxtLink>
@@ -21,11 +21,11 @@
     </div>
 
     <!-- Header -->
-    <h1 class="relative text-[48px] md:text-[72px] leading-tight">
+    <h1 class="relative text-[48px] md:text-[72px] leading-none">
       {{ $t('aboutUs.title') }}
     </h1>
 
-    <div class="relative w-full mt-20 mb-14 md:mt-0 md:mb-0 md:pl-[50%]">
+    <div class="relative w-full mt-10 mb-14 md:mt-10 md:mb-14 md:pl-[50%]">
       <p>
         {{ $t('aboutUs.subtitle') }}
       </p>

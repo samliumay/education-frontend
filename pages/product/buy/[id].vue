@@ -99,10 +99,10 @@
       <template v-if="product.product_type === 'Academy'">
         <p class="text-[20px] font-medium">Выберите неделю</p>
         <n-checkbox v-model:checked="buyForm.first" class="mt-[16px]">
-          1 неделя программы (25.03-28.03)
+          1 неделя программы
         </n-checkbox>
         <n-checkbox v-model:checked="buyForm.second" class="mt-[12px]">
-          2 неделя программы (02.04-05.04)
+          2 неделя программы
         </n-checkbox>
 
         <AppDivider class="my-[24px]" />
