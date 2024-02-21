@@ -23,7 +23,7 @@
         <div>
           <TagsBlock :tags="[blockData.current_status]" />
           <h1
-            class="text-3xl sm:text-4xl md:text-5xl font-medium mb-4 mt-4 max-w-[70%]"
+            class="text-3xl sm:text-4xl md:text-5xl font-medium mb-4 mt-4 max-w-[90%]"
           >
             {{ blockData.name }}
           </h1>

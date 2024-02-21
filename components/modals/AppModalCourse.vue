@@ -65,24 +65,21 @@
                   @blur="checkValidity"
                 />
               </div>
-
-              <div class="grid grid-cols-1 lg:grid-cols-2 gap-[12px]">
-                <AppInput
-                  v-model="registrationForm.email"
-                  :placeholder="$t('cart.registerDetails.email')"
-                  type="email"
-                  required
-                  @blur="checkValidity"
-                />
-                <AppInput
-                  v-model="registrationForm.phone"
-                  :placeholder="$t('cart.registerDetails.phone')"
-                  maska="+49 ### ###-##-##"
-                  type="tel"
-                  required
-                  @blur="checkValidity"
-                />
-              </div>
+              <AppInput
+                v-model="registrationForm.email"
+                :placeholder="$t('cart.registerDetails.email')"
+                type="email"
+                required
+                @blur="checkValidity"
+              />
+              <AppInput
+                v-model="registrationForm.phone"
+                :placeholder="$t('cart.registerDetails.phone')"
+                maska="+49 ### ###-##-##"
+                type="tel"
+                required
+                @blur="checkValidity"
+              />
 
               <div class="w-full mt-5 flex gap-4">
                 <NCheckbox v-model:checked="checkbox" required class="pt-1" />
@@ -135,10 +132,19 @@ const route = useRoute()
 const visitor = ref(null)
 const checkbox = ref(false)
 
+const { locale } = useI18n({ useScope: 'global' })
+
 // Get data
-const { data: product, pending: productPending } = await useFetch(
-  getApiAddress(`/api/v2/wagtail/products/${route.params.id ?? 12}/?fields=*`),
-  { deep: true },
+const { data: product, pending: productPending } = await useAsyncData(
+  'products',
+  () =>
+    $fetch(getApiAddress(`/api/v2/wagtail/products/${route.params.id}/`), {
+      params: {
+        locale: locale.value,
+        fields: '*',
+      },
+    }),
+  { watch: [locale], deep: true },
 )
 
 // Registration
@@ -154,8 +160,12 @@ const sendModalCourse = () => {
 }
 
 // Form
-const checkValidity = (event: { target: { reportValidity: () => void } }) => {
+const checkValidity = (event: {
+  target: { reportValidity: () => void }
+  relatedTarget: { focus: () => void }
+}) => {
   event.target.reportValidity()
+  event.relatedTarget.focus()
 }
 
 const form = ref<VNodeRef | undefined>(undefined)

@@ -1,8 +1,10 @@
 export const ru = {
   common: {
+    recommend: 'Рекомендуем',
     main: 'Главная',
     tutors: 'Преподаватели',
     aboutUs: 'О нас',
+    prices: 'Цены',
     specialOffer: 'Спец. предложение',
     schoolOffer: 'Предложения для школ',
     catalogue: 'Каталог',
@@ -32,8 +34,9 @@ export const ru = {
       index: '10405',
     },
     modals: {
-      fillApplication: 'Заполните анкету',
+      fillApplication: 'Заполните заявку',
       youChoosed: 'Вы выбрали',
+      chooseOption: 'Выберите опцию',
       positionInterested: 'Позиция, которая интересует',
       additionalInfo: 'Дополнительная информация',
       calendar: 'Календарь',
@@ -228,7 +231,7 @@ export const ru = {
       total: 'Итого',
       discountAmount: 'Сумма скидки',
       fillOutPaymentDetails:
-        'Для оплаты, пожалуйста, заполните платёжные реквизиты ниже',
+        'Для оплаты, пожалуйста, заполните платёжные реквизиты',
       pleaseRegister:
         'Пожалуйста, зарегистрируйтесь или войдите в свой аккаунт для оплаты',
     },

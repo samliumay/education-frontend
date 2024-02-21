@@ -11,7 +11,7 @@
             class="flex gap-[20px] items-center mr-10"
             @click="$emit('close')"
           >
-          {{ $t('common.actions.close') }}
+            {{ $t('common.actions.close') }}
             <button
               class="bg-white border-[1px] border-brand-black w-[35px] h-[35px] rounded-full flex items-center justify-center hover:bg-brand-light-gray transition ease-in delay-100 transform active:scale-[0.93]"
             >
@@ -26,12 +26,16 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-[44px] m-10">
           <div v-if="!productPending">
-            <p class="text-[24px] font-medium mb-[16px]">{{ $t('common.modals.youChoosed') }}</p>
+            <p class="text-[24px] font-medium mb-[16px]">
+              {{ $t('common.modals.youChoosed') }}
+            </p>
             <BuyProductCard :product="product" />
           </div>
 
           <div>
-            <h1 class="font-medium text-4xl mb-10">{{ $t('common.modals.fillApplication') }}</h1>
+            <h1 class="font-medium text-4xl mb-10">
+              {{ $t('common.modals.fillApplication') }}
+            </h1>
 
             <GetChildData
               :visitor="visitor"
@@ -85,7 +89,7 @@
                 type="submit"
                 :disabled="!form?.checkValidity() ?? false"
               >
-              {{ $t('common.actions.send') }}
+                {{ $t('common.actions.send') }}
               </AppButton>
             </form>
           </div>
@@ -121,11 +125,21 @@ const emit = defineEmits(['close'])
 // eslint-disable-next-line vue/require-typed-ref
 const visitor = ref(null)
 
+const { locale } = useI18n({ useScope: 'global' })
+
 // Get data
 const itemId = computed(() => props.itemId)
-const { data: product, pending: productPending } = await useFetch(
-  getApiAddress(`/api/v2/wagtail/special-offers/${itemId.value}/?fields=*`),
-  { deep: true },
+
+const { data: product, pending: productPending } = await useAsyncData(
+  'specialOffers',
+  () =>
+    $fetch(getApiAddress(`/api/v2/wagtail/special-offers/${itemId.value}/`), {
+      params: {
+        locale: locale.value,
+        fields: '*',
+      },
+    }),
+  { watch: [locale], deep: true },
 )
 
 // Registration
@@ -147,8 +161,12 @@ const sendModalCourse = async () => {
 }
 
 // Form
-const checkValidity = (event: { target: { reportValidity: () => void } }) => {
+const checkValidity = (event: {
+  target: { reportValidity: () => void }
+  relatedTarget: { focus: () => void }
+}) => {
   event.target.reportValidity()
+  event.relatedTarget.focus()
 }
 
 const form = ref<VNodeRef | undefined>(undefined)

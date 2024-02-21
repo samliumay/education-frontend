@@ -19,7 +19,7 @@
       über Verträge im Fernabsatz und im elektronischen Geschäftsverkehr.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
       1. Geltungsbereich
     </h2>
     <p class="text-brand-gray mb-2">
@@ -36,7 +36,7 @@
       begründen keine Ansprüche für nachfolgende Vertragsverhältnisse.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
       2. Vertragspartner*innen
     </h2>
     <div class="text-brand-gray mb-10">
@@ -69,14 +69,16 @@ href="www.clavis-schule.de"
       </p>
     </div>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
       3. Vertragssprache, Speicherung Vertragstext
     </h2>
     <p class="text-brand-gray mb-10">
       Der Vertragsschluss erfolgt ausschließlich in deutscher Sprache.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">4. Kurse</h2>
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
+      4. Kurse
+    </h2>
     <h3 class="text-brand-black mb-2">4.1. Vertragsgegenstand</h3>
     <p class="text-brand-gray mb-2">
       Vertragsgegenstand ist das Angebot wissenschaftlich oder kreativ
@@ -131,7 +133,7 @@ href="www.clavis-schule.de"
       Erstattung der Teilnahmekosten.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
       5. Ferienakademien
     </h2>
     <h3 class="text-brand-black mb-2">5.1. Vertragsgegenstand</h3>
@@ -174,25 +176,27 @@ href="www.clavis-schule.de"
       folgende Stornierungspauschalen in Rechnung stellen:
     </p>
     <p class="text-brand-gray">Bei Rücktritt vom Vertrag</p>
-    <table class="my-4 w-full rounded-xl overflow-hidden">
+    <table
+      class="my-4 w-full rounded-xl overflow-hidden border-[1px] border-brand-light-gray"
+    >
       <tbody>
         <tr class="bg-brand-dark-gray">
-          <td class="p-2">
+          <td class="p-3">
             <p>bis 14 Tage vor Beginn des Kurses&nbsp;&nbsp;</p>
           </td>
-          <td class="p-2 text-brand-gray"><p>0% der Teilnahmekosten</p></td>
+          <td class="p-3 text-brand-gray"><p>0% der Teilnahmekosten</p></td>
         </tr>
         <tr>
-          <td class="p-2">
+          <td class="p-3">
             <p>bis 7 Tage vor Beginn des Kurses&nbsp; &nbsp;&nbsp; &nbsp;</p>
           </td>
-          <td class="p-2 text-brand-gray"><p>50% der Teilnahmekosten</p></td>
+          <td class="p-3 text-brand-gray"><p>50% der Teilnahmekosten</p></td>
         </tr>
         <tr class="bg-brand-dark-gray">
-          <td class="p-2">
+          <td class="p-3">
             <p>bis 2 Tage vor Beginn des Kurses&nbsp; &nbsp;&nbsp; &nbsp;</p>
           </td>
-          <td class="p-2 text-brand-gray"><p>80% der Teilnahmekosten</p></td>
+          <td class="p-3 text-brand-gray"><p>80% der Teilnahmekosten</p></td>
         </tr>
       </tbody>
     </table>
@@ -210,7 +214,7 @@ href="www.clavis-schule.de"
       Erstattung der Teilnahmekosten.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
       6. WIDERRUFSBELEHRUNG
     </h2>
     <h3 class="text-brand-black mb-2">6.1. Widerrufsrecht</h3>
@@ -269,7 +273,7 @@ href="www.clavis-schule.de"
       Vertrag vorgesehenen Dienstleistungen/Veranstaltungen entspricht.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
       7. Rechte und Pflichten der Vertragspartner
     </h2>
     <h3 class="text-brand-black mb-2">7.1 Pflichten des Veranstalters</h3>
@@ -312,7 +316,9 @@ href="www.clavis-schule.de"
       ausschließlich für Werbezwecke an den Werken des Kindes/Teilnehmers ein.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">8. Haftung</h2>
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
+      8. Haftung
+    </h2>
     <h3 class="text-brand-black mb-2">8.1. Haftung</h3>
     <p class="text-brand-gray">
       Clavis haftet für Personen- und Sachschäden nach den gesetzlichen
@@ -360,14 +366,16 @@ href="www.clavis-schule.de"
       durch den Veranstalter unfallversichert.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">9. Schadenersatz</h2>
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
+      9. Schadenersatz
+    </h2>
     <p class="text-brand-gray mb-10">
       Wird es Clavis aus Gründen, die sie nicht zu vertreten hat, unmöglich,
       Leistungen zu erbringen, so hat der/ die Teilnehmer*innen keinen Anspruch
       auf Schadenersatz.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
       10. Infektionsschutz, Hausordnung
     </h2>
     <p class="text-brand-gray">
@@ -385,7 +393,7 @@ href="www.clavis-schule.de"
       Geschäftsbedingungen.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
       11. Schlussbestimmungen
     </h2>
     <p class="text-brand-gray mb-10">
@@ -396,14 +404,14 @@ href="www.clavis-schule.de"
       zu tragen.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
       12. Gerichtsstand
     </h2>
     <p class="text-brand-gray mb-10">
       Der Gerichtsstand bestimmt sich nach den gesetzlichen Bestimmungen.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
       13. Salvatorische Klausel
     </h2>
     <p class="text-brand-gray mb-10">
@@ -413,7 +421,7 @@ href="www.clavis-schule.de"
       in vollem Umfang.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
       14. Streitbeilegung
     </h2>
     <p class="text-brand-gray">

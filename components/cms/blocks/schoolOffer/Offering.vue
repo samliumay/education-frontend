@@ -1,0 +1,93 @@
+<template>
+  <div class="block-padding-x gap-10 flex flex-col">
+    <h2
+      class="font-semibold text-[48px] lg:text-[72px] uppercase text-center mb-4 lg:mb-12"
+    >
+      {{ blockData.value.title }}
+    </h2>
+    <div
+      class="bg-brand-light-gray rounded-[12px] p-3 lg:p-6 grid grid-cols-1 lg:grid-cols-6"
+    >
+      <div class="flex items-center col-span-2">
+        <h3 class="text-[30px] lg:text-[42px] text-brand-red font-semibold">
+          {{ blockData.value.contents?.top_pane?.title }}
+        </h3>
+      </div>
+
+      <div class="col-span-3">
+        <div
+          v-for="course in blockData.value.contents?.top_pane?.tags"
+          :key="course.inner_text + course.link"
+          class="border-[1px] border-black rounded-[48px] py-2 px-3 items-center inline-block mr-2 mb-2 cursor-pointer"
+        >
+          <a
+            class="w-full h-full flex items-center"
+            :href="course.link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/icons/star.svg" alt="Star" class="mr-1" />
+            {{ course.inner_text }}
+          </a>
+        </div>
+      </div>
+
+      <div class="flex items-start lg:justify-end lg:items-end">
+        <ImageBlock
+          :image="blockData.value.contents?.top_pane?.icon"
+          image-class="mr-1"
+        />
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 -mt-6">
+      <div
+        class="bg-brand-light-gray rounded-[12px] p-3 lg:p-6 relative overflow-hidden"
+      >
+        <ImageBlock
+          :image="blockData.value.contents?.left_pane.photo"
+          image-class="z-0 absolute right-0 top-1/2 -translate-y-1/2 hidden sm:block"
+        />
+        <div class="relative w-full sm:w-3/5 z-10">
+          <h3
+            class="text-[36px] lg:text-[48px] text-brand-red font-semibold leading-tight"
+          >
+            {{ blockData.value.contents?.left_pane.title }}
+          </h3>
+          <p class="font-medium mt-3 lg:mt-6">
+            {{ blockData.value.contents?.left_pane.inner_text }}
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="bg-brand-light-gray rounded-[12px] p-3 lg:p-6 relative overflow-hidden"
+      >
+        <ImageBlock
+          :image="blockData.value.contents?.right_pane.photo"
+          image-class="z-0 absolute right-0 top-1/2 -translate-y-1/2 hidden sm:block"
+        />
+        <div class="relative w-full sm:w-3/5 z-10">
+          <h3
+            class="text-[36px] lg:text-[48px] text-brand-red font-semibold leading-tight"
+          >
+            {{ blockData.value.contents?.right_pane.title }}
+          </h3>
+          <p class="font-medium mt-3 lg:mt-6">
+            {{ blockData.value.contents?.right_pane.inner_text }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <ContactsBlock />
+  </div>
+</template>
+<script setup lang="ts">
+import type { PageBlock } from '../../../../types/cms'
+import ContactsBlock from '../../../misc/ContactsBlock.vue'
+import ImageBlock from '../misc/ImageBlock.vue'
+
+defineProps<{
+  blockData: PageBlock[]
+}>()
+</script>

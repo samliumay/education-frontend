@@ -33,8 +33,10 @@
               <div>
                 <h2 class="text-[24px] font-medium">
                   {{
-                    user?.user?.first_name
-                      ? `${user.user.first_name} ${user.user.last_name}`
+                    user?.user?.first_name || user?.user?.last_name
+                      ? `${user.user.first_name || ''} ${
+                          user.user.last_name || ''
+                        }`
                       : $t('common.you')
                   }}
                 </h2>
@@ -103,7 +105,7 @@
                 :placeholder="$t('user.phone_number')"
                 maska="+49 ### ###-##-##"
                 type="tel"
-                pattern=".{17,}"
+                pattern=".{13,20}"
                 required
                 is-gray
                 @blur="checkValidity"
@@ -312,8 +314,12 @@ const openCommentModal = workshop => {
   isOpenModalComment.value = true
 }
 
-const checkValidity = (event: { target: { reportValidity: () => void } }) => {
+const checkValidity = (event: {
+  target: { reportValidity: () => void }
+  relatedTarget: { focus: () => void }
+}) => {
   event.target.reportValidity()
+  event.relatedTarget.focus()
 }
 
 const changePassword = async () => {

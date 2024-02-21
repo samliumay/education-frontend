@@ -23,6 +23,7 @@
       :placeholder="$t('user.phone_number')"
       class="mt-[12px]"
       type="tel"
+      pattern=".{13,20}"
       required
       @blur="checkValidity"
     />
@@ -104,8 +105,12 @@ const signUpCredentials = ref({
 const form = ref<VNodeRef | undefined>(undefined)
 
 // Actions
-const checkValidity = (event: { target: { reportValidity: () => void } }) => {
+const checkValidity = (event: {
+  target: { reportValidity: () => void }
+  relatedTarget: { focus: () => void }
+}) => {
   event.target.reportValidity()
+  event.relatedTarget.focus()
 }
 
 const clearError = () => {

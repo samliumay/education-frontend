@@ -8,12 +8,14 @@
     class="grid grid-col-1 lg:grid-cols-2 gap-[96px] my-[96px] mx-[16px] lg:mx-[48px]"
   >
     <div>
-      <p class="text-[24px] font-medium mb-[16px]">Вы выбрали</p>
+      <p class="text-[20px] font-medium mb-[16px]">
+        {{ $t('common.modals.youChoosed') }}
+      </p>
       <BuyProductCard :product="product" />
 
       <template v-if="product.product_type === 'Course'">
-        <p class="text-[24px] font-medium mt-[48px] mb-[16px]">
-          Выберите опцию
+        <p class="text-[20px] font-medium mt-[48px] mb-[16px]">
+          {{ $t('common.modals.chooseOption') }}
         </p>
         <PaymentOptions
           :block-data="product.purchase_options"
@@ -41,7 +43,7 @@
       </template>
 
       <template v-if="product.product_type === 'Course'">
-        <p class="text-[24px] font-medium">Выберите дни посещения</p>
+        <p class="text-[20px] font-medium">Выберите дни посещения</p>
         <p class="mt-[4px] mb-[12px]">До 3 дней максимум</p>
         <SelectTagsBlock
           :tags="
@@ -61,7 +63,7 @@
 
         <AppDivider class="my-[24px]" />
 
-        <p class="text-[24px] font-medium mb-[16px]">
+        <p class="text-[20px] font-medium mb-[16px]">
           Выберите дату первого посещения
         </p>
 
@@ -95,17 +97,17 @@
       </template>
 
       <template v-if="product.product_type === 'Academy'">
-        <p class="text-[24px] font-medium">Выберите неделю</p>
+        <p class="text-[20px] font-medium">Выберите неделю</p>
         <n-checkbox v-model:checked="buyForm.first" class="mt-[16px]">
-          1 неделя программы (25.03-28.03)
+          1 неделя программы
         </n-checkbox>
         <n-checkbox v-model:checked="buyForm.second" class="mt-[12px]">
-          2 неделя программы (02.04-05.04)
+          2 неделя программы
         </n-checkbox>
 
         <AppDivider class="my-[24px]" />
 
-        <p class="text-[24px] font-medium">Выберите смену</p>
+        <p class="text-[20px] font-medium">Выберите смену</p>
 
         <n-space vertical>
           <n-radio
@@ -148,7 +150,7 @@
       </template>
 
       <template v-if="product.product_type === 'Workshop'">
-        <p class="text-[24px] font-medium mb-4">
+        <p class="text-[20px] font-medium mb-4">
           Введите имя и фамилию детей, которые придут на мероприятие
         </p>
         <AppTextarea
@@ -156,7 +158,7 @@
           placeholder="Комментарий"
         />
 
-        <p class="text-[24px] font-medium mt-3">Выберите тариф</p>
+        <p class="text-[20px] font-medium mt-3">Выберите тариф</p>
 
         <n-space vertical>
           <n-radio
@@ -182,7 +184,7 @@
 
         <AppDivider class="my-[24px]" />
 
-        <p class="text-[24px] font-medium mt-3 mb-4">
+        <p class="text-[20px] font-medium mt-3 mb-4">
           Есть ли у вашего ребенка особенность и тд?
         </p>
 
@@ -209,7 +211,7 @@
 
         <AppDivider class="my-[24px]" />
 
-        <p class="text-[24px] font-medium mt-3 mb-4">
+        <p class="text-[20px] font-medium mt-3 mb-4">
           Даю согласие на фото моего ребенка
         </p>
 
@@ -237,7 +239,7 @@
 
       <AppDivider class="my-[24px]" />
 
-      <p class="text-[24px] font-medium">
+      <p class="text-[20px] font-medium">
         Итого:
         <span
           v-if="product?.purchase_options?.length > 0"
@@ -256,8 +258,12 @@
         <span v-else class="text-brand-red mr-[8px]">0 €</span>
       </p>
 
-      <AppButton class="mt-4 lg:mt-10 w-full lg:w-auto" @click="addAcademy">
+      <AppButton
+        class="mt-4 lg:mt-10 w-full lg:w-auto flex justify-center items-center text-lg gap-3"
+        @click="addAcademy"
+      >
         Добавить в корзину
+        <img alt="Plus" src="/icons/plus.svg" />
       </AppButton>
     </div>
   </div>
@@ -275,13 +281,15 @@ import PaymentOptions from '../../../components/cms/blocks/products/details/Paym
 import SelectTagsBlock from '../../../components/misc/SelectTagsBlock.vue'
 import { useCartStore } from '../../../store/cart'
 import { useUserStore } from '../../../store/user'
-import type { OrderItem, Product } from '../../../types'
+import type { OrderItem } from '../../../types'
 import { getApiAddress } from '../../../utils/getApiAddress'
 
 const route = useRoute()
 
 const cart = useCartStore()
 const user = useUserStore()
+
+const { locale } = useI18n({ useScope: 'global' })
 
 const buyForm = ref({
   academy_number_of_weeks: 1,
@@ -295,7 +303,7 @@ const buyForm = ref({
   feature: 'yes',
   photo: 'yes',
   visitor: null,
-} as Partial<OrderItem> & {
+} as unknown as Partial<OrderItem> & {
   first: boolean
   second: boolean
   comment: string
@@ -303,10 +311,17 @@ const buyForm = ref({
   photo: string
 })
 
-const { data: product, pending: productPending } = (await useFetch(
-  getApiAddress(`/api/v2/wagtail/products/${route.params.id}/?fields=*`),
-  { deep: true },
-)) as { data: Product }
+const { data: product, pending: productPending } = await useAsyncData(
+  'products',
+  () =>
+    $fetch(getApiAddress(`/api/v2/wagtail/products/${route.params.id}/`), {
+      params: {
+        locale: locale.value,
+        fields: '*',
+      },
+    }),
+  { watch: [locale], deep: true },
+)
 
 const addAcademy = async () => {
   let weeks = 0

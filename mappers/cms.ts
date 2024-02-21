@@ -10,6 +10,7 @@ import RunningText from '../components/cms/blocks/main/RunningText.vue'
 import SeoText from '../components/cms/blocks/main/SeoText.vue'
 import SocialMedia from '../components/cms/blocks/main/SocialMedia.vue'
 import Video from '../components/cms/blocks/main/Video.vue'
+import PriceBlock from '../components/cms/blocks/misc/PriceBlock.vue'
 // catalog
 import AppProductCard from '../components/cms/blocks/products/ProductCard.vue'
 
@@ -27,4 +28,5 @@ export const mapTypeBlock = {
   "social_media": SocialMedia,
   "age_groups": AgeGroups,
   "video_block": Video,
+  "tariff_block": PriceBlock,
 }

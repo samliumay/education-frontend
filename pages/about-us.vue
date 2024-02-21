@@ -1,7 +1,7 @@
 <!-- eslint-disable vuejs-accessibility/alt-text -->
 <template>
   <div
-    class="bg-brand-green px-3 md:px-10 relative overflow-hidden text-white pb-6 md:pb-[96px] overflow-hidden"
+    class="bg-brand-green block-padding-x block-padding-y relative text-white overflow-hidden"
   >
     <img
       src="/icons/aboutus/header_arcs.svg"
@@ -9,7 +9,7 @@
       class="absolute bottom-0 left-1/2 -translate-x-1/2 md:-translate-x-full translate-y-1/4"
     />
 
-    <div class="relative mt-6 mb-10">
+    <div class="relative mt-6 mb-4">
       <n-breadcrumb>
         <n-breadcrumb-item сlass="text-brand-gray">
           <NuxtLink to="/">{{ $t('common.main') }} / </NuxtLink>
@@ -21,11 +21,11 @@
     </div>
 
     <!-- Header -->
-    <h1 class="relative text-[48px] md:text-[72px] leading-tight">
+    <h1 class="relative text-[48px] md:text-[72px] leading-none">
       {{ $t('aboutUs.title') }}
     </h1>
 
-    <div class="relative w-full mt-20 mb-14 md:mt-0 md:mb-0 md:pl-[50%]">
+    <div class="relative w-full mt-10 mb-14 md:mt-10 md:mb-14 md:pl-[50%]">
       <p>
         {{ $t('aboutUs.subtitle') }}
       </p>
@@ -134,12 +134,15 @@
     </div>
   </div>
 
+  <LoadingBlock v-if="pendingInstructors" />
+  <AboutTutors v-else :block-data="instructors.items" />
+
   <!-- Principles -->
   <div
     class="grid grid-cols-1 gap-6 md:gap-0 md:grid-cols-2 mt-8 mb-10 mx-3 md:mx-10"
   >
     <div>
-      <h2 class="font-semibold text-[36px] md:text-[56px] mb-[48px] md:ml-10">
+      <h2 class="font-semibold text-[36px] md:text-[56px] mb-[48px]">
         {{ $t('aboutUs.principles.title') }}
       </h2>
       <img class="block ml-2" src="/icons/aboutus/dots.svg" />
@@ -170,7 +173,7 @@
       </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:pl-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div class="rounded-[12px] bg-brand-light-gray p-4">
         <div class="flex items-center justify-center aspect-square">
           <img src="/icons/aboutus/books.svg" alt="Books" />
@@ -218,7 +221,7 @@
     class="flex flex-col gap-6 lg:gap-0 lg:flex-row aspect-square mx-10 relative mt-3 lg:mt-10"
   >
     <h2
-      class="lg:order-10 lg:text-[56px] lg:absolute lg:-translate-y-1/2 lg:-translate-x-1/2 font-semibold text-[36px] top-1/2 left-1/2"
+      class="lg:order-10 lg:text-[56px] lg:absolute lg:-translate-y-1/2 lg:-translate-x-1/2 font-semibold text-[36px] top-1/2 left-1/2 text-center"
     >
       {{ $t('aboutUs.approach.title') }}
     </h2>
@@ -382,8 +385,38 @@
         </p>
       </div>
     </div>
+
+    <LoaderBlock v-if="pending" />
+    <PageConstructor
+      v-else
+      :blocks="main.items[0].body.filter(item => item.type === 'social_media')"
+      class="flex flex-col"
+    />
   </div>
 </template>
 <script setup lang="ts">
+import { getApiAddress } from '@/utils/getApiAddress'
+
 import AppDivider from '../components/AppDivider.vue'
+import LoaderBlock from '../components/cms/blocks/misc/LoaderBlock.vue'
+import AboutTutors from '../components/cms/blocks/products/details/AboutTutors.vue'
+import PageConstructor from '../components/cms/PageConstructor.vue'
+
+const { locale } = useI18n({ useScope: 'global' })
+
+const { data: main, pending } = useAsyncData(
+  'homepage',
+  () =>
+    $fetch(getApiAddress(`/api/v2/wagtail/homepage/`), {
+      params: {
+        locale: locale.value,
+      },
+    }),
+  { watch: [locale] },
+)
+
+const { data: instructors, pending: pendingInstructors } = useFetch(
+  getApiAddress(`/api/v2/wagtail/instructors/`),
+  { deep: true },
+)
 </script>

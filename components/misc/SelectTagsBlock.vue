@@ -3,7 +3,7 @@
     <button
       v-for="tag in tags"
       :key="tag.value"
-      class="rounded-[88px] border-[1px] px-[12px] py-[8px]"
+      class="rounded-[88px] border-[1px] px-[12px] py-[8px] text-[16px]"
       :class="{
         'bg-white': selectedTags.length < 3 || selectedTags.includes(tag.value),
         'bg-transparent': selectedTags.length >= 3,

@@ -115,6 +115,13 @@ const categories = computed(() => {
     bufferArray.push(props.blockData.language.toLocaleUpperCase())
   }
 
+  if (
+    typeof props.blockData?.category === 'string' &&
+    props.blockData?.category
+  ) {
+    bufferArray.push(props.blockData?.category)
+  }
+
   return bufferArray
 })
 

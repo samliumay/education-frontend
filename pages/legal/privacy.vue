@@ -13,7 +13,9 @@
       Datenschutz bei Clavis-Schule
     </h1>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">Wer wir sind</h2>
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
+      Wer wir sind
+    </h2>
     <p class="text-brand-gray mb-10">
       Die Clavis Kunst und Wissenschaft Privatschule GmbH i.G. ist eine
       Nachmittagsschule inprivater Trägerschaft. Weitere Informationen über die
@@ -22,7 +24,9 @@
       Impressum und alle Kontaktmöglichkeiten auf unserer Kontakt-Seite.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">Ihre Rechte</h2>
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
+      Ihre Rechte
+    </h2>
     <p class="text-brand-gray mb-10">
       Neben der detaillierten Darstellung, welche personenbezogenen Daten wir
       sammeln, wie und warum wir sie sammeln, enthält unsere
@@ -31,7 +35,7 @@
       festgeschriebenen Rechte beim Datenschutz.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
       Welche personenbezogenen Daten wir sammeln und warum wir sie sammeln
     </h2>
     <p class="text-brand-gray mb-10">
@@ -53,7 +57,7 @@
       können.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
       Kontakt-, Anmelde-, Feedback- und Newsletterformulare
     </h2>
     <p class="text-brand-gray mb-10">
@@ -75,7 +79,7 @@
       unberührt.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
       Der Clavis-Onlineshop
     </h2>
     <p class="text-brand-gray">
@@ -125,7 +129,7 @@
       lit. a DSGVO eingewilligt haben.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
       Zahlungsabwicklung
     </h2>
     <p class="text-brand-gray mb-10">
@@ -142,7 +146,9 @@
       https://www.paypal.com/de/webapps/mpp/ua/privacy-full.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">Stripe</h2>
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
+      Stripe
+    </h2>
     <p class="text-brand-gray mb-10">
       Wir bieten die Möglichkeit, den Zahlungsvorgang über den
       Zahlungsdienstleister Stripe, ℅ Legal Process, 510,Townsend St., San
@@ -181,7 +187,7 @@
       Betrugsprävention erforderlich ist.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
       Server-Log-Dateien
     </h2>
     <p class="text-brand-gray">
@@ -204,7 +210,9 @@
       vorvertraglicher Maßnahmen gestattet.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">Cookies</h2>
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
+      Cookies
+    </h2>
     <p class="text-brand-gray">
       Diese Website erfüllt die Pflicht zum Hinweis auf den Einsatz von Cookies.
       Durch die Verwendung von Cookies können Internetseiten nutzerfreundlich,
@@ -217,7 +225,7 @@
       Ihre Cookie-Einstellungen ändern können. Diese finden Sie für die
       jeweiligen Browser unter den folgenden Links:
     </p>
-    <ul class="text-brand-gray">
+    <ul class="text-brand-gray break-all">
       <li>
         Internet Explorer:
         https://support.microsoft.com/de-de/help/17442/windowsinternet-explorer-delete-manage-cookies
@@ -243,7 +251,9 @@
       in Kapitel 2, Artikel 6 der DSGVO begründet.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">Google Analytics</h2>
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
+      Google Analytics
+    </h2>
     <p class="text-brand-gray mb-10">
       Soweit Sie Ihre Einwilligung erklärt haben, wird auf dieser Website Google
       Analytics eingesetzt, einen Webanalysedienst der Google Inc. („Google“).
@@ -267,11 +277,11 @@
       übermittelte IP-Adresse wird nicht mit anderen Daten von Google
       zusammengeführt. Nähere Informationen zu Nutzungsbedingungen und
       Datenschutz finden Sie unter
-      https://www.google.com/analytics/terms/de.html bzw. unter
-      https://policies.google.com/?hl=de.
+      <span class="break-all">https://www.google.com/analytics/terms/de.html</span>
+      bzw. unter https://policies.google.com/?hl=de.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
       Zwecke der Verarbeitung
     </h2>
     <p class="text-brand-gray mb-10">
@@ -282,14 +292,16 @@
       Websitebetreiber zu erbringen.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">Rechtsgrundlage</h2>
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
+      Rechtsgrundlage
+    </h2>
     <p class="text-brand-gray mb-10">
       Die Rechtsgrundlage für den Einsatz von Google Analytics ist ihre
       Einwilligung gemäß Art. 6 Abs. 1 S.1 lit. a DSGVO. Empfänger / Kategorien
       von Empfängern Der Empfänger der erhobenen Daten ist Google.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
       Übermittlung in Drittstaaten
     </h2>
     <p class="text-brand-gray mb-10">
@@ -298,7 +310,7 @@
       die USA übermittelt. Das Zertifikat können Sie hier abrufen.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
       Dauer der Datenspeicherung
     </h2>
     <p class="text-brand-gray mb-10">
@@ -308,7 +320,7 @@
       erfolgt automatisch einmal im Monat.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
       Betroffenenrechte
     </h2>
     <p class="text-brand-gray mb-10">
@@ -328,7 +340,9 @@
       Google Analytics deaktivieren
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">Google AdWords</h2>
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
+      Google AdWords
+    </h2>
     <p class="text-brand-gray mb-10">
       Wir haben auf dieser Internetseite Google AdWords integriert. Google
       AdWords ist ein Dienst zur Internetwerbung, der es Werbetreibenden
@@ -390,10 +404,13 @@
       genutzten Internetbrowser aus den Link www.google.de/settings/ads aufrufen
       und dort die gewünschten Einstellungen vornehmen. Weitere Informationen
       und die geltenden Datenschutzbestimmungen von Google können unter
-      https://www.google.de/intl/de/policies/privacy/ abgerufen werden.
+      <span class="break-all">https://www.google.de/intl/de/policies/privacy/</span>
+      abgerufen werden.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">Google Web Fonts</h2>
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
+      Google Web Fonts
+    </h2>
     <p class="text-brand-gray mb-10">
       Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten so
       genannte Web Fonts, die von Google bereitgestellt werden. Beim Aufruf
@@ -411,7 +428,9 @@
       von Google: https://www.google.com/policies/privacy/.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">Google Maps</h2>
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
+      Google Maps
+    </h2>
     <p class="text-brand-gray mb-10">
       Auf unserer Kontakt-Seite haben wir ein Landkarte des Dienstes “Google
       Maps” des Anbieters Google LLC, 1600 Amphitheatre Parkway, Mountain View,
@@ -423,7 +442,7 @@
       Google https://www.google.com/policies/privacy/.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
       Ihre Datenschutzrechte
     </h2>
     <p class="text-brand-gray">Sie haben das Recht:</p>
@@ -479,7 +498,7 @@
       </li>
     </ul>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
       Widerspruchsrecht
     </h2>
     <p class="text-brand-gray mb-10">
@@ -494,7 +513,9 @@
       Gebrauch machen, genügt eine E- Mail an: info@clavis-schule.de
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">Datensicherheit</h2>
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
+      Datensicherheit
+    </h2>
     <p class="text-brand-gray mb-10">
       Wir verwenden innerhalb des Website-Besuchs das verbreitete SSL-Verfahren
       (Secure Socket Layer) in Verbindung mit der jeweils höchsten
@@ -512,7 +533,7 @@
       technologischen Entwicklung fortlaufend verbessert.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
       Aktualität und Änderung dieser Datenschutzerklärung
     </h2>
     <p class="text-brand-gray mb-10">
@@ -522,7 +543,7 @@
       kann es notwendig werden, diese Datenschutzerklärung zu ändern.
     </p>
 
-    <h2 class="text-brand-black text-4xl mb-6 font-medium">
+    <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">
       Quellen dieser Datenschutzerklärung
     </h2>
     <p class="text-brand-gray mb-10">

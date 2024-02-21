@@ -5,19 +5,23 @@
     <ImageBlock
       v-if="!pending"
       :image="image"
-      class="w-full h-[300px] rounded-xl overflow-hidden"
+      class="w-full aspect-square rounded-xl overflow-hidden"
     />
     <p class="mt-[24px] text-[20px] text-brand-red">
-      {{ `${instructor.first_name} ${instructor.last_name}` }}
+      {{ instructor.name ? instructor.name : `${instructor.first_name} ${instructor.last_name}` }}
     </p>
     <p v-show="instructor.subject" class="font-medium mb-6">
       {{ instructor.subject }}
     </p>
 
-    <NuxtLink :to="`/instructor/${instructor.id}`" class="text-brand-red underline" role="navigation">
+    <NuxtLink
+      :to="`/instructor/${instructor.id}`"
+      class="text-brand-red underline"
+      role="navigation"
+    >
       {{ $t('common.moreDetails') }} →
     </NuxtLink>
-</div>
+  </div>
 </template>
 <script setup lang="ts">
 import { computed } from 'vue'

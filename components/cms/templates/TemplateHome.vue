@@ -12,9 +12,17 @@ import { getApiAddress } from '@/utils/getApiAddress'
 import LoaderBlock from '../blocks/misc/LoaderBlock.vue'
 import PageConstructor from '../PageConstructor.vue'
 
+const { locale } = useI18n({ useScope: 'global' })
+
 // API
-const { data: main, pending } = useFetch(
-  getApiAddress(`/api/v2/wagtail/homepage/`),
-  { deep: true },
+const { data: main, pending } = useAsyncData(
+  'homepage',
+  () =>
+    $fetch(getApiAddress(`/api/v2/wagtail/homepage/`), {
+      params: {
+        locale: locale.value,
+      },
+    }),
+  { watch: [locale] },
 )
 </script>
