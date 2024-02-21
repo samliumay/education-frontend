@@ -12,7 +12,7 @@
 
     <slot name="filters" :title="catalog?.name ?? 'Catalog'" />
 
-    <LoaderBlock v-if="productsPending" />
+    <LoaderBlock v-if="productsPending || catalogsGroupPending" />
     <div v-else class="block-padding flex flex-col gap-2">
       <PageConstructor
         :blocks="blocks"
