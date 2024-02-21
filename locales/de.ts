@@ -3,6 +3,7 @@ export const de = {
     main: 'Clavis',
     tutors: 'Lehrer',
     aboutUs: 'Über uns',
+    prices: 'Preise',
     specialOffer: 'Sonderangebot',
     schoolOffer: 'Angebote für Schulen',
     catalogue: 'Katalog',
