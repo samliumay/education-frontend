@@ -130,7 +130,7 @@ const signUp = async () => {
       signUpCredentials.value.first_name = ''
       signUpCredentials.value.last_name = ''
       signUpCredentials.value.phone_number = ''
-      emit('close')
+      emit('goToEmailStep')
     }
   })
 }
