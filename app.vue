@@ -3,7 +3,7 @@
   <n-config-provider :theme-overrides="themeOverrides">
     <div class="flex justify-center items-start overflow-x-hidden">
       <div
-        class="min-h-[100vh] max-w-[1440px] w-full mx-auto bg-white flex flex-col overflow-x-visible relative"
+        class="min-h-[100vh] max-w-[1520px] w-full mx-auto bg-white flex flex-col overflow-x-visible relative"
       >
         <AppHeader />
         <NuxtLayout>

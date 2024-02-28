@@ -31,7 +31,7 @@
     <div>
       <template v-if="['Course', 'Academy'].includes(product.product_type)">
         <h2 class="text-[32px] lg:text-[48px] font-medium mb-[36px]">
-          Заполните данные
+          {{ $t('buy.enterData') }}
         </h2>
 
         <GetChildData
@@ -43,8 +43,8 @@
       </template>
 
       <template v-if="product.product_type === 'Course'">
-        <p class="text-[20px] font-medium">Выберите дни посещения</p>
-        <p class="mt-[4px] mb-[12px]">До 3 дней максимум</p>
+        <p class="text-[20px] font-medium">{{ $t('buy.chooseDays') }}</p>
+        <p class="mt-[4px] mb-[12px]">{{ $t('buy.chooseDays') }}</p>
         <SelectTagsBlock
           :tags="
             product.schedule_slots.map(slot => {
@@ -64,7 +64,7 @@
         <AppDivider class="my-[24px]" />
 
         <p class="text-[20px] font-medium mb-[16px]">
-          Выберите дату первого посещения
+          {{ $t('buy.firstLesson') }}
         </p>
 
         <n-space>
@@ -74,7 +74,7 @@
             name="when"
             @change="buyForm.when = 'now'"
           >
-            Сразу
+            {{ $t('buy.now') }}
           </n-radio>
 
           <n-radio
@@ -83,7 +83,7 @@
             name="when"
             @change="buyForm.when = 'later'"
           >
-            Позже
+            {{ $t('buy.later') }}
           </n-radio>
         </n-space>
 
@@ -97,17 +97,17 @@
       </template>
 
       <template v-if="product.product_type === 'Academy'">
-        <p class="text-[20px] font-medium">Выберите неделю</p>
+        <p class="text-[20px] font-medium">{{ $t('buy.chooseWeek') }}</p>
         <n-checkbox v-model:checked="buyForm.first" class="mt-[16px]">
-          1 неделя программы
+          {{ $t('buy.firstWeek') }}
         </n-checkbox>
         <n-checkbox v-model:checked="buyForm.second" class="mt-[12px]">
-          2 неделя программы
+          {{ $t('buy.secondWeek') }}
         </n-checkbox>
 
         <AppDivider class="my-[24px]" />
 
-        <p class="text-[20px] font-medium">Выберите смену</p>
+        <p class="text-[20px] font-medium">{{ $t('buy.chooseShift') }}</p>
 
         <n-space vertical>
           <n-radio
@@ -118,8 +118,8 @@
             @change="buyForm.schedule_type = 'Academy (1st half)'"
           >
             <div class="flex flex-col gap-[4px]">
-              <p class="font-medium">1/2 дня утром</p>
-              <p class="text-gray-400">Пн-Пт с 9:30 до 12:30</p>
+              <p class="font-medium">{{ $t('buy.morning') }}</p>
+              <p class="text-gray-400">{{ $t('buy.morningTime') }}</p>
             </div>
           </n-radio>
           <n-radio
@@ -130,8 +130,8 @@
             @change="buyForm.schedule_type = 'Academy (2nd half)'"
           >
             <div class="flex flex-col gap-[4px]">
-              <p class="font-medium">1/2 дня во второй половине</p>
-              <p class="text-gray-400">Пн-Пт с 9:30 до 12:30</p>
+              <p class="font-medium">{{ $t('buy.evening') }}</p>
+              <p class="text-gray-400">{{ $t('buy.eveningTime') }}</p>
             </div>
           </n-radio>
           <n-radio
@@ -142,8 +142,8 @@
             @change="buyForm.schedule_type = 'Academy (full day)'"
           >
             <div class="flex flex-col gap-[4px]">
-              <p class="font-medium">Полный день</p>
-              <p class="text-gray-400">Пн-Пт с 9:30 до 12:30</p>
+              <p class="font-medium">{{ $t('buy.fullday') }}</p>
+              <p class="text-gray-400">{{ $t('buy.fulldayTime') }}</p>
             </div>
           </n-radio>
         </n-space>
@@ -151,14 +151,14 @@
 
       <template v-if="product.product_type === 'Workshop'">
         <p class="text-[20px] font-medium mb-4">
-          Введите имя и фамилию детей, которые придут на мероприятие
+          {{ $t('buy.enterFio') }}
         </p>
         <AppTextarea
           v-model:model-value="buyForm.comment"
           placeholder="Комментарий"
         />
 
-        <p class="text-[20px] font-medium mt-3">Выберите тариф</p>
+        <p class="text-[20px] font-medium mt-3">{{ $t('buy.chooseTariff') }}</p>
 
         <n-space vertical>
           <n-radio
@@ -185,7 +185,7 @@
         <AppDivider class="my-[24px]" />
 
         <p class="text-[20px] font-medium mt-3 mb-4">
-          Есть ли у вашего ребенка особенность и тд?
+          {{ $t('buy.feature') }}
         </p>
 
         <n-space>
@@ -195,7 +195,7 @@
             name="feature"
             @change="buyForm.feature = 'yes'"
           >
-            Да
+            {{ $t('buy.yes') }}
           </n-radio>
 
           <n-radio
@@ -205,14 +205,14 @@
             name="feature"
             @change="buyForm.feature = 'no'"
           >
-            Нет
+            {{ $t('buy.no') }}
           </n-radio>
         </n-space>
 
         <AppDivider class="my-[24px]" />
 
         <p class="text-[20px] font-medium mt-3 mb-4">
-          Даю согласие на фото моего ребенка
+          {{ $t('buy.photo') }}
         </p>
 
         <n-space>
@@ -222,7 +222,7 @@
             name="photo"
             @change="buyForm.photo = 'yes'"
           >
-            Да
+            {{ $t('buy.yes') }}
           </n-radio>
 
           <n-radio
@@ -232,7 +232,7 @@
             name="photo"
             @change="buyForm.photo = 'no'"
           >
-            Нет
+            {{ $t('buy.no') }}
           </n-radio>
         </n-space>
       </template>
@@ -240,7 +240,7 @@
       <AppDivider class="my-[24px]" />
 
       <p class="text-[20px] font-medium">
-        Итого:
+        {{ $t('buy.total') }}
         <span
           v-if="product?.purchase_options?.length > 0"
           class="text-green-700 mr-[8px]"
@@ -249,7 +249,8 @@
             +(
               product?.purchase_options?.find(
                 (purchaseOption: any) =>
-                  purchaseOption?.id === buyForm?.purchase_option,
+                  purchaseOption?.id === buyForm?.purchase_option ||
+                  purchaseOption.schedule_type === buyForm.schedule_type,
               )?.base_price || product.purchase_options[0]?.base_price
             )
           }}
@@ -262,7 +263,7 @@
         class="mt-4 lg:mt-10 w-full lg:w-auto flex justify-center items-center text-lg gap-3"
         @click="addAcademy"
       >
-        Добавить в корзину
+        {{ $t('buy.addCart') }}
         <img alt="Plus" src="/icons/plus.svg" />
       </AppButton>
     </div>

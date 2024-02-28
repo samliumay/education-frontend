@@ -30,7 +30,9 @@
           </template>
         </div>
 
-        <h2 class="text-2xl md:text-4xl font-medium uppercase text-brand-red">
+        <h2
+          class="text-2xl md:text-4xl font-medium uppercase text-brand-red leading-tight"
+        >
           {{ blockData.name }}
         </h2>
 
@@ -69,7 +71,10 @@
         </div>
       </div>
 
-      <AppButton class="mt-[24px] !bg-brand-light-gray" @click="goToDetails">
+      <AppButton
+        class="mt-[24px] !bg-brand-light-gray cursor-pointer"
+        @click="goToDetails"
+      >
         {{ $t('common.moreDetails') }}
       </AppButton>
     </div>

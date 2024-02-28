@@ -18,9 +18,11 @@
           v-for="(instructor, index) in instructors.items"
           :key="instructor.name"
         >
-          <div v-if="(index - 2) % 10 === 0" class="hidden lg:block" />
+          <div
+            v-if="(index - 2) % 9 === 0 || (index - 5) % 9 === 0"
+            class="hidden lg:block"
+          />
           <TutorCard :instructor="instructorConverter(instructor)" />
-          <div v-if="(index - 6) % 10 === 0" class="hidden lg:block" />
         </template>
       </div>
     </div>
