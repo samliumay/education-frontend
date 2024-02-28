@@ -18,39 +18,33 @@
         :key="item.id"
         class="!w-[100%] lg:!w-[33%]"
       >
-        <ProductCard
-          class="h-full"
-          :block-data="item"
-          :extra-props="{ type: 'academy' }"
-        />
+        <ProductCard class="h-full" :block-data="item" />
       </n-carousel-item>
 
       <template #arrow="{ prev, next }">
-        <div class="w-full h-full absolute top-0 left-0 product-carousel">
-          <div class="absolute right-0 -top-14 flex gap-4">
-            <button
-              type="button"
-              class="student-work__arrow-button cursor-pointer p-2 bg-brand-light-gray hover:bg-brand-yellow rounded-full transition ease-in delay-100 transform active:scale-[0.93]"
-              @click="prev"
-            >
-              <img
-                src="/icons/chevron_down.svg"
-                alt="Arrow"
-                class="transform rotate-90 transition ease-in delay-100 active:scale-[0.93]"
-              />
-            </button>
-            <button
-              type="button"
-              class="student-work__arrow-button cursor-pointer p-2 bg-brand-light-gray hover:bg-brand-yellow rounded-full transition ease-in delay-100 transform active:scale-[0.93]"
-              @click="next"
-            >
-              <img
-                src="/icons/chevron_down.svg"
-                alt="Arrow"
-                class="transform -rotate-90 transition ease-in delay-100 active:scale-[0.93]"
-              />
-            </button>
-          </div>
+        <div class="absolute right-0 -top-14 flex gap-4 product-carousel">
+          <button
+            type="button"
+            class="student-work__arrow-button cursor-pointer p-2 bg-brand-light-gray hover:bg-brand-yellow rounded-full transition ease-in delay-100 transform active:scale-[0.93]"
+            @click="prev"
+          >
+            <img
+              src="/icons/chevron_down.svg"
+              alt="Arrow"
+              class="transform rotate-90 transition ease-in delay-100 active:scale-[0.93]"
+            />
+          </button>
+          <button
+            type="button"
+            class="student-work__arrow-button cursor-pointer p-2 bg-brand-light-gray hover:bg-brand-yellow rounded-full transition ease-in delay-100 transform active:scale-[0.93]"
+            @click="next"
+          >
+            <img
+              src="/icons/chevron_down.svg"
+              alt="Arrow"
+              class="transform -rotate-90 transition ease-in delay-100 active:scale-[0.93]"
+            />
+          </button>
         </div>
       </template>
 

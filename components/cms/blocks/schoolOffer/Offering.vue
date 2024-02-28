@@ -1,7 +1,7 @@
 <template>
   <div class="block-padding-x gap-10 flex flex-col">
     <h2
-      class="font-semibold text-[48px] lg:text-[72px] uppercase text-center mb-4 lg:mb-12"
+      class="font-semibold text-[48px] lg:text-[56px] text-brand-black uppercase text-center mb-4 lg:mb-12"
     >
       {{ blockData.value.title }}
     </h2>
@@ -9,12 +9,14 @@
       class="bg-brand-light-gray rounded-[12px] p-3 lg:p-6 grid grid-cols-1 lg:grid-cols-6"
     >
       <div class="flex items-center col-span-2">
-        <h3 class="text-[30px] lg:text-[42px] text-brand-red font-semibold">
+        <h3
+          class="text-[36px] lg:text-[48px] text-brand-red font-semibold uppercase"
+        >
           {{ blockData.value.contents?.top_pane?.title }}
         </h3>
       </div>
 
-      <div class="col-span-3">
+      <div class="col-span-3 self-center">
         <div
           v-for="course in blockData.value.contents?.top_pane?.tags"
           :key="course.inner_text + course.link"
@@ -32,7 +34,7 @@
         </div>
       </div>
 
-      <div class="flex items-start lg:justify-end lg:items-end">
+      <div class="flex items-start lg:justify-end">
         <ImageBlock
           :image="blockData.value.contents?.top_pane?.icon"
           image-class="mr-1"
@@ -50,11 +52,11 @@
         />
         <div class="relative w-full sm:w-3/5 z-10">
           <h3
-            class="text-[36px] lg:text-[48px] text-brand-red font-semibold leading-tight"
+            class="text-[36px] lg:text-[48px] text-brand-red font-semibold leading-tight uppercase"
           >
             {{ blockData.value.contents?.left_pane.title }}
           </h3>
-          <p class="font-medium mt-3 lg:mt-6">
+          <p class="font-medium mt-3 lg:mt-6 text-brand-black">
             {{ blockData.value.contents?.left_pane.inner_text }}
           </p>
         </div>
@@ -65,15 +67,15 @@
       >
         <ImageBlock
           :image="blockData.value.contents?.right_pane.photo"
-          image-class="z-0 absolute right-0 top-1/2 -translate-y-1/2 hidden sm:block"
+          image-class="z-0 absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 hidden sm:block"
         />
-        <div class="relative w-full sm:w-3/5 z-10">
+        <div class="relative w-full sm:w-3/5 z-10 bg-brand-light-gray">
           <h3
-            class="text-[36px] lg:text-[48px] text-brand-red font-semibold leading-tight"
+            class="text-[36px] lg:text-[48px] text-brand-red font-semibold leading-tight uppercase"
           >
             {{ blockData.value.contents?.right_pane.title }}
           </h3>
-          <p class="font-medium mt-3 lg:mt-6">
+          <p class="font-medium mt-3 lg:mt-6 text-brand-black">
             {{ blockData.value.contents?.right_pane.inner_text }}
           </p>
         </div>

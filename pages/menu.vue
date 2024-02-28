@@ -7,7 +7,7 @@
       :class="{ 'bg-white': $route.name === 'cart' }"
     />
 
-    <nav class="relative flex flex-col gap-2">
+    <nav class="relative flex flex-col gap-4">
       <NuxtLink
         v-for="path in pathGroup"
         :key="path.route"

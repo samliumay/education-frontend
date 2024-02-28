@@ -51,7 +51,9 @@
               class="text-brand-gray pl-2 text-lg"
               :class="{ 'mb-[12px]': idx + 1 !== item.bullet_points?.length }"
             >
-              <p class="transform -translate-y-[3px]">{{ option?.label || option }}</p>
+              <p class="transform -translate-y-[3px]">
+                {{ option?.label || option }}
+              </p>
             </li>
           </ul>
 

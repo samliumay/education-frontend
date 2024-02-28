@@ -1,4 +1,6 @@
 // main
+import SeoText from '@/components/cms/blocks/main/SeoText.vue'
+
 import AgeGroups from '../components/cms/blocks/main/AgeGroups.vue'
 import Carousel from '../components/cms/blocks/main/Carousel.vue'
 import CatalogCards from '../components/cms/blocks/main/CatalogCards.vue'
@@ -7,7 +9,6 @@ import Infographics from '../components/cms/blocks/main/Infographics.vue'
 import ProductCarousel from '../components/cms/blocks/main/ProductCarousel.vue'
 import Quote from '../components/cms/blocks/main/Quote.vue'
 import RunningText from '../components/cms/blocks/main/RunningText.vue'
-import SeoText from '../components/cms/blocks/main/SeoText.vue'
 import SocialMedia from '../components/cms/blocks/main/SocialMedia.vue'
 import Video from '../components/cms/blocks/main/Video.vue'
 import PriceBlock from '../components/cms/blocks/misc/PriceBlock.vue'

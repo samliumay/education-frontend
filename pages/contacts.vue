@@ -31,8 +31,8 @@
     @close="isOpenModalApplication = false"
   />
 
-  <div class="pz-3 m-10 mb-20">
-    <h1 class="uppercase text-[36px] lg:text-[56px] mb-4 lg:mb-12">
+  <div class="pz-3 block-padding-x mb-20">
+    <h1 class="uppercase text-[32px] lg:text-[56px] mb-4 lg:mb-12">
       {{ $t('common.contacts.contactUs') }}
     </h1>
 

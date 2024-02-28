@@ -32,22 +32,22 @@
             <EmptyCart v-if="!courseProducts.length" />
 
             <div
-              class="bg-brand-light-gray rounded-xl text-brand-red p-[16px] mt-[24px] flex justify-between items-center cursor-pointer relative overflow-hidden"
+              class="bg-brand-light-gray rounded-xl text-brand-red p-[16px] mt-[24px] flex flex-col md:flex-row justify-center md:justify-between items-center cursor-pointer relative overflow-hidden"
               @click="navigateTo('/courses')"
             >
-              <img
-                src="/icons/products/boxes.svg"
-                alt="book"
-                class="absolute translate-x-12 left-2/4 -top-8"
-              />
-
-              <div class="relative flex flex-col">
+              <div class="relative flex flex-col text-center md:text-left">
                 <p>{{ $t('cart.choosingNextCourse') }}</p>
                 <p>{{ $t('cart.chooseDifferentCourse') }}</p>
               </div>
 
+              <img
+                src="/icons/products/boxes.svg"
+                alt="book"
+                class="block md:absolute md:translate-x-12 left-2/4 -top-8"
+              />
+
               <div
-                class="relative border-black rounded-lg text-brand-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
+                class="w-full md:w-auto justify-center relative border-black rounded-lg text-brand-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
               >
                 {{ $t('cart.goToCatalog') }}
               </div>
@@ -72,22 +72,22 @@
             </template>
             <EmptyCart v-if="!academyProducts.length" />
             <div
-              class="bg-brand-light-gray rounded-xl text-brand-red p-[16px] mt-[24px] flex justify-between items-center cursor-pointer relative overflow-hidden"
+              class="bg-brand-light-gray rounded-xl text-brand-red p-[16px] mt-[24px] flex flex-col md:flex-row justify-center md:justify-between items-center cursor-pointer relative overflow-hidden"
               @click="navigateTo('/academies')"
             >
-              <img
-                src="/icons/products/star.svg"
-                alt="star"
-                class="absolute -translate-x-10 left-2/4 -top-6"
-              />
-
-              <div class="flex flex-col relative">
+              <div class="text-center md:text-left flex flex-col relative">
                 <p>{{ $t('cart.choosingNextAcademy') }}</p>
                 <p>{{ $t('cart.chooseDifferentAcademy') }}</p>
               </div>
 
+              <img
+                src="/icons/products/star.svg"
+                alt="star"
+                class="block md:absolute md:-translate-x-10 left-2/4 -top-6"
+              />
+
               <div
-                class="relative border-black rounded-lg text-brand-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
+                class="w-full md:w-auto justify-center relative border-black rounded-lg text-brand-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
               >
                 {{ $t('cart.goToCatalog') }}
               </div>
@@ -115,21 +115,21 @@
             </template>
             <EmptyCart v-if="!workshopProducts.length" />
             <div
-              class="bg-brand-light-gray rounded-xl text-brand-red p-[16px] mt-[24px] flex justify-between items-center cursor-pointer relative overflow-hidden"
+              class="bg-brand-light-gray rounded-xl text-brand-red p-[16px] mt-[24px] flex flex-col md:flex-row justify-center md:justify-between items-center cursor-pointer relative overflow-hidden"
             >
-              <img
-                src="/icons/products/mountain.svg"
-                alt="mountain"
-                class="absolute translate-x-12 left-2/4 -bottom-5"
-              />
-
-              <div class="relative flex flex-col">
+              <div class="text-center md:text-left relative flex flex-col">
                 <p>{{ $t('cart.choosingNextWorkshop') }}</p>
                 <p>{{ $t('cart.chooseDifferentWorkshop') }}</p>
               </div>
 
+              <img
+                src="/icons/products/mountain.svg"
+                alt="mountain"
+                class="block md:absolute md:translate-x-12 left-2/4 -bottom-5"
+              />
+
               <div
-                class="relative border-black rounded-lg text-brand-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
+                class="w-full md:w-auto justify-center relative border-black rounded-lg text-brand-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
                 @click="navigateTo('/workshops')"
               >
                 {{ $t('cart.goToCatalog') }}
