@@ -107,8 +107,10 @@ export const useUserStore = defineStore('user', () => {
     let errors = {}
     await HTTP.post<{ key: string }>(url, payload)
       .then(async (result: { key: string }) => {
-        setToken(result.key)
-        await retrieveUser()
+        if (result.key) {
+          setToken(result.key)
+          await retrieveUser()
+        }
       })
       .catch(data => {
         errors = data
