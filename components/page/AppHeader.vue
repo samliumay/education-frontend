@@ -18,9 +18,9 @@
 
     <!-- DESKTOP HEADER -->
     <div class="relative -full justify-between gap-[48px] hidden lg:flex">
-      <div class="flex items-center gap-6">
+      <div class="flex items-center gap-8">
         <NuxtLink to="/">
-          <img src="/icons/logo_pink.svg" alt="Clavis logo" class="mr-4" />
+          <img src="/icons/logo_pink.svg" alt="Clavis logo" class="mr-2" />
         </NuxtLink>
 
         <!-- NORMAL NAV HEADER -->

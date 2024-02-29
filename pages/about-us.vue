@@ -1,7 +1,7 @@
 <!-- eslint-disable vuejs-accessibility/alt-text -->
 <template>
   <div
-    class="bg-brand-green block-padding-x block-padding-y relative text-white overflow-hidden"
+    class="bg-brand-green block-padding-x mt-6 mb-12 relative text-white overflow-hidden"
   >
     <img
       src="/icons/aboutus/header_arcs.svg"
@@ -21,11 +21,13 @@
     </div>
 
     <!-- Header -->
-    <h1 class="relative text-[48px] md:text-[72px] leading-none">
+    <h1 class="relative text-[48px] md:text-[72px] leading-none uppercase">
       {{ $t('aboutUs.title') }}
     </h1>
 
-    <div class="relative w-full mt-10 mb-14 md:mt-10 md:mb-14 md:pl-[50%]">
+    <div
+      class="relative w-full mt-10 mb-14 md:mt-10 md:mb-14 md:pl-[50%] md:pr-10"
+    >
       <p>
         {{ $t('aboutUs.subtitle') }}
       </p>
@@ -134,6 +136,17 @@
     </div>
   </div>
 
+  <div class="bg-white">
+    <LoaderBlock v-if="pending" />
+    <PageConstructor
+      v-else
+      :blocks="[
+        main.items[0].body.filter(item => item.type === 'running_text')?.[0],
+      ]"
+      class="flex flex-col"
+    />
+  </div>
+
   <LoadingBlock v-if="pendingInstructors" />
   <AboutTutors v-else :block-data="instructors.items" />
 
@@ -142,7 +155,7 @@
     class="grid grid-cols-1 gap-6 md:gap-0 md:grid-cols-2 mt-8 mb-10 mx-3 md:mx-10"
   >
     <div>
-      <h2 class="font-semibold text-[36px] md:text-[56px] mb-[48px]">
+      <h2 class="font-semibold text-[36px] md:text-[56px] mb-[48px] uppercase">
         {{ $t('aboutUs.principles.title') }}
       </h2>
       <img class="block ml-2" src="/icons/aboutus/dots.svg" />
@@ -156,7 +169,7 @@
 
         <AppDivider class="my-4 px-4" />
 
-        <p class="font-semibold">
+        <p class="font-semibold text-xl">
           {{ $t('aboutUs.principles.item1') }}
         </p>
       </div>
@@ -167,7 +180,7 @@
 
         <AppDivider class="my-4 px-4" />
 
-        <p class="font-semibold">
+        <p class="font-semibold text-xl">
           {{ $t('aboutUs.principles.item2') }}
         </p>
       </div>
@@ -181,7 +194,7 @@
 
         <AppDivider class="my-4 px-4" />
 
-        <p class="font-semibold">
+        <p class="font-semibold text-xl">
           {{ $t('aboutUs.principles.item3') }}
         </p>
       </div>
@@ -192,7 +205,7 @@
 
         <AppDivider class="my-4 px-4" />
 
-        <p class="font-semibold">
+        <p class="font-semibold text-xl">
           {{ $t('aboutUs.principles.item4') }}
         </p>
       </div>
@@ -218,10 +231,10 @@
 
   <!-- Approach -->
   <div
-    class="flex flex-col gap-6 lg:gap-0 lg:flex-row aspect-square mx-10 relative mt-3 lg:mt-10"
+    class="flex flex-col gap-6 lg:gap-0 lg:flex-row aspect-square max-h-[1200px] max-w-[1200px] min-w-base mx-10 lg:mx-auto relative mt-3 lg:mt-10"
   >
     <h2
-      class="lg:order-10 lg:text-[56px] lg:absolute lg:-translate-y-1/2 lg:-translate-x-1/2 font-semibold text-[36px] top-1/2 left-1/2 text-center"
+      class="uppercase lg:order-10 lg:text-[56px] lg:absolute lg:-translate-y-1/2 lg:-translate-x-1/2 font-semibold text-[36px] top-1/2 left-1/2 text-center"
     >
       {{ $t('aboutUs.approach.title') }}
     </h2>
@@ -230,7 +243,7 @@
       class="hidden lg:block border-[1px] border-brand-red rounded-[1000px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-full w-full border-dashed absolute z-0"
     />
     <div
-      class="lg:-translate-y-1/4 lg:absolute z-10 top-1/4 rounded-[12px] bg-brand-light-gray p-6"
+      class="lg:-translate-y-1/4 lg:absolute z-10 top-1/4 rounded-[12px] bg-brand-light-gray p-6 max-w-[500px]"
     >
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
@@ -244,7 +257,7 @@
     </div>
 
     <div
-      class="lg:absolute lg:-translate-y-1/4 z-10 top-1/4 right-0 rounded-[12px] bg-brand-light-gray p-6"
+      class="lg:absolute lg:-translate-y-1/4 z-10 top-1/4 right-0 rounded-[12px] bg-brand-light-gray p-6 max-w-[500px]"
     >
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
@@ -256,7 +269,7 @@
     </div>
 
     <div
-      class="lg:translate-y-1/4 lg:absolute z-10 bottom-1/4 rounded-[12px] bg-brand-light-gray p-6"
+      class="lg:translate-y-1/4 lg:absolute z-10 bottom-1/4 rounded-[12px] bg-brand-light-gray p-6 max-w-[500px]"
     >
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
@@ -270,7 +283,7 @@
     </div>
 
     <div
-      class="lg:translate-y-1/4 lg:absolute z-10 bottom-1/4 right-0 rounded-[12px] bg-brand-light-gray p-6"
+      class="lg:translate-y-1/4 lg:absolute z-10 bottom-1/4 right-0 rounded-[12px] bg-brand-light-gray p-6 max-w-[500px]"
     >
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
@@ -284,7 +297,7 @@
     </div>
 
     <div
-      class="lg:-translate-x-1/2 lg:absolute lg:translate-y-1/2 z-10 bottom-0 left-1/2 rounded-[12px] bg-brand-light-gray p-6"
+      class="lg:-translate-x-1/2 lg:absolute lg:translate-y-1/2 z-10 bottom-0 left-1/2 rounded-[12px] bg-brand-light-gray p-6 max-w-[500px]"
     >
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
@@ -372,7 +385,7 @@
 
     <AppDivider class="mb-12 mt-12" />
 
-    <div class="grid grid-cols-1 md:grid-cols-3 px-3 md:px-10 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 px-3 md:px-10 gap-6 pb-12">
       <h3 class="text-brand-red text-[28px] md:text-[36px]">
         {{ $t('aboutUs.values.item4.title') }}
       </h3>
@@ -386,12 +399,16 @@
       </div>
     </div>
 
-    <LoaderBlock v-if="pending" />
-    <PageConstructor
-      v-else
-      :blocks="main.items[0].body.filter(item => item.type === 'social_media')"
-      class="flex flex-col"
-    />
+    <div class="bg-white">
+      <LoaderBlock v-if="pending" />
+      <PageConstructor
+        v-else
+        :blocks="
+          main.items[0].body.filter(item => item.type === 'social_media')
+        "
+        class="flex flex-col"
+      />
+    </div>
   </div>
 </template>
 <script setup lang="ts">
@@ -420,3 +437,8 @@ const { data: instructors, pending: pendingInstructors } = useFetch(
   { deep: true },
 )
 </script>
+<style scoped>
+.min-w-base {
+  min-width: min(100%, 1200px);
+}
+</style>

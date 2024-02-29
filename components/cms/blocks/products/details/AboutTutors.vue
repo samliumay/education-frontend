@@ -10,7 +10,7 @@
     <img src="/icons/tutors.svg" alt="Tutors" class="absolute top-20 left-0" />
 
     <h2
-      class="text-3xl sm:text-4xl md:text-5xl uppercase font-medium mb-12 relative"
+      class="text-3xl sm:text-4xl md:text-[56px] uppercase font-medium mb-12 relative"
     >
       {{ $t('common.tutors') }}
     </h2>
@@ -18,11 +18,18 @@
     <div
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px] relative"
     >
-      <TutorCard
-        v-for="item in blockData"
-        :key="item.id"
-        :instructor="{ ...item.instructor, ...item, id: item?.id ?? 1 }"
-      />
+      <template v-for="(item, index) in blockData" :key="item.id">
+        <div
+          v-if="
+            (index - 2) % 9 === 0 ||
+            ((index - 5) % 9 === 0 && (index !== 5 || !withAllInstructors))
+          "
+          class="hidden lg:block"
+        />
+        <TutorCard
+          :instructor="{ ...item.instructor, ...item, id: item?.id ?? 1 }"
+        />
+      </template>
     </div>
   </div>
 </template>
@@ -32,5 +39,6 @@ import TutorCard from '../../misc/TutorCard.vue'
 
 defineProps<{
   blockData: PageBlock[]
+  withAllInstructors: boolean
 }>()
 </script>

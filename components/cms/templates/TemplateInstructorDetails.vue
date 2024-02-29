@@ -84,10 +84,7 @@ const studentWorks = computed(() => {
     return result
   }
 
-  return {
-    heading: null,
-    cards: [],
-  }
+  return undefined
 })
 
 const video = computed(() => {
@@ -99,10 +96,7 @@ const video = computed(() => {
     return result
   }
 
-  return {
-    title: null,
-    video_url: '',
-  }
+  return undefined
 })
 
 // Components for render

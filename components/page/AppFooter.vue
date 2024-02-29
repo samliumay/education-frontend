@@ -1,10 +1,14 @@
 <template>
   <footer
-    class="w-full py-[28px] md:py-[48px] flex flex-col gap-10 bg-brand-light-gray relative block-padding-x"
-    :class="{ 'bg-white': $route.name === 'cart' }"
+    class="w-full py-[28px] md:py-[48px] flex flex-col gap-10 relative block-padding-x"
+    :class="
+      route.name === 'prices' || route.name === 'cart'
+        ? 'bg-white'
+        : 'bg-brand-light-gray'
+    "
   >
     <div
-      class="absolute left-1/2 transform -translate-x-1/2 top-0 mx-0 w-screen h-full bg-brand-light-gray"
+      class="absolute left-1/2 transform -translate-x-1/2 top-0 mx-0 w-screen h-full"
       :class="{
         'bg-white': isWhiteBackground,
       }"

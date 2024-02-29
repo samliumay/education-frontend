@@ -69,7 +69,7 @@ const blocksList = computed(() => [
   },
   {
     name: StudentWorks,
-    blockData: product.value?.items[0].student_works_block[0],
+    blockData: product.value?.items[0].student_works_block[0]?.value.contents,
   },
   { name: RichText, blockData: product.value?.items[0].seo_text },
 ])

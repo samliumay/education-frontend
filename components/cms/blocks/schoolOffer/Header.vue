@@ -24,7 +24,9 @@
     <div class="pt-4">
       <div class="flex flex-col lg:flex-row gap-5 lg:gap-40">
         <div class="flex flex-col gap-4">
-          <h2 class="text-[28px] lg:text-[36px] mb-3 lg:mb-6 font-medium">
+          <h2
+            class="text-[28px] lg:text-[36px] mb-3 lg:mb-6 font-medium uppercase"
+          >
             {{ blockData.apply_block[0].value?.title }}
           </h2>
           <p class="font-medium">

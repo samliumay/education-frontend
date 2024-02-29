@@ -3,13 +3,13 @@
     class="block-padding-y block-padding-x overflow-hidden"
     data-cms="tariff-block"
   >
-    <div class="grid grid-cols-1 md:grid-cols-5 gap-[24px]">
-      <AppHeading class="col-span-1 md:col-span-2">
+    <div class="grid grid-cols-1 md:grid-cols-7 gap-[24px] md:mb-10">
+      <AppHeading class="col-span-1 md:col-span-3">
         {{ blockData.value.title }}
       </AppHeading>
 
       <p
-        class="text-brand-gray text-lg font-medium col-span-1 md:col-span-3 mb-6 md:mb-10"
+        class="text-brand-gray text-lg font-medium col-span-1 md:col-span-4 mb-6 md:mb-10"
       >
         {{ blockData.value.description }}
       </p>

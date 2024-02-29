@@ -23,9 +23,33 @@
     >
       <n-tab-pane name="profile" :tab="$t('common.profileMenu.profile')">
         <div
+          class="hidden md:block mt-[48px] grid grid-cols-1 sm:grid-cols-2 gap-[24px] bg-white rounded-[12px] p-[36px]"
+        >
+          <div class="flex items-center gap-[16px]">
+            <div
+              class="bg-brand-light-gray rounded-[1000px] w-[96px] h-[96px]"
+            />
+            <div>
+              <h2 class="text-[24px] font-medium">
+                {{
+                  user?.user?.first_name || user?.user?.last_name
+                    ? `${user.user.first_name || ''} ${
+                        user.user.last_name || ''
+                      }`
+                    : $t('common.you')
+                }}
+              </h2>
+              <p class="text-gray-400">
+                {{ user?.user?.email || '' }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div
           class="mt-[48px] grid grid-cols-1 sm:grid-cols-2 gap-[24px] bg-white rounded-[12px] p-[36px]"
         >
-          <div>
+          <div class="md:hidden">
             <div class="flex items-center gap-[16px]">
               <div
                 class="bg-brand-light-gray rounded-[1000px] w-[96px] h-[96px]"
