@@ -39,7 +39,6 @@ const options = [
       if (process.client) {
         const link = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${siteAddress}&prompt=consent&response_type=code&client_id=${clientId}&scope=openid%20email%20profile&access_type=offline`
         // eslint-disable-next-line no-console
-        console.log(clientId, ' ', link)
         window.open(link, '_blank')
       }
     },
