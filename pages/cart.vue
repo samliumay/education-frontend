@@ -272,19 +272,6 @@
             />
           </div>
         </div>
-
-        <div
-          v-if="cart?.order?.items?.length"
-          class="bg-white rounded-[12px] p-[24px]"
-        >
-          <h2 class="font-medium text-[24px] mb-6">
-            {{ $t('cart.payment.title') }}
-          </h2>
-          <CartBuyOptions
-            :option="buyOption"
-            @select-option="option => (buyOption = option)"
-          />
-        </div>
       </div>
 
       <ErrorBoundaryBlock>
@@ -362,18 +349,20 @@
             >
               {{ infoText }}
             </p>
-            <AppButton
-              v-show="cart?.order?.items?.length"
-              class="w-full"
-              type="submit"
-              :disabled="!form?.checkValidity() ?? false"
-            >
-              {{
-                userStore.isLoggedIn
-                  ? $t('cart.button.checkout')
-                  : $t('cart.button.register')
-              }}
-            </AppButton>
+            <div v-show="form?.checkValidity() && cart?.order?.items?.length">
+              <AppButton
+                class="w-full"
+                type="submit"
+                :disabled="!form?.checkValidity() ?? false"
+              >
+                {{
+                  userStore.isLoggedIn
+                    ? $t('cart.payment.stripe')
+                    : $t('cart.button.register')
+                }}
+              </AppButton>
+              <div id="paypal-checkout" class="mt-4 rounded-[12px]" />
+            </div>
           </div>
         </div>
       </ErrorBoundaryBlock>
@@ -381,13 +370,12 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed, type Ref, ref, type VNodeRef } from 'vue'
+import { computed, onMounted, type Ref, ref, type VNodeRef } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import AppButton from '../components/AppButton.vue'
 import AppDivider from '../components/AppDivider.vue'
 import AppInput from '../components/AppInput.vue'
-import CartBuyOptions from '../components/cart/CartBuyOptions.vue'
 import CartItem from '../components/cart/CartItem.vue'
 import EmptyCart from '../components/cart/EmptyCart.vue'
 import { useCartStore } from '../store/cart'
@@ -404,8 +392,6 @@ const additionalInfo: Ref<AdditionalInfo> = ref({
   first_name: userStore?.user?.first_name ?? '',
   last_name: userStore?.user?.last_name ?? '',
 } as AdditionalInfo)
-
-const buyOption: Ref<'paypal' | 'stripe'> = ref('paypal')
 
 const promocode = ref('')
 const promocodeStatus = ref('empty')
@@ -523,10 +509,31 @@ const fullfillOrder = async () => {
   }
 
   const urlObject = await cart.fulfillOrder(
-    buyOption.value,
+    'stripe',
     String(window.location).replace('cart', ''),
   )
-  window.location.href =
-    buyOption.value === 'paypal' ? urlObject.links[1].href : urlObject.url
+  window.location.href = urlObject.url
 }
+onMounted(() => {
+  usePaypalButton({
+    createOrder() {
+      return cart.paypalFulfillOrder().then((data: any) => {
+        cart.resetCart()
+        return data.id
+      })
+    },
+    onApprove(data: any) {
+      // eslint-disable-next-line no-console
+      return cart.captureOrder(data.orderID, data)
+      .then(() => {
+        cart.getCurrentOrder()
+        navigateTo('/')
+      })
+    },
+    onCancel() {
+      cart.getCurrentOrder()
+      navigateTo('/')
+    },
+  })
+})
 </script>

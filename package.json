@@ -27,6 +27,7 @@
     "husky": "^8.0.3",
     "naive-ui": "^2.35.0",
     "nuxt": "^3.8.1",
+    "nuxt-paypal": "^0.0.1-beta",
     "nuxt-simple-robots": "^4.0.0-rc.14",
     "nuxt-svgo": "^3.6.0",
     "prettier": "^3.1.0",
