@@ -14,10 +14,8 @@ export const useCartStore = defineStore('cart', () => {
 
   const getCurrentOrder = async () => {
     order.value = cartId.value
-      ? await HTTP.get(
-        `/api/v2/orders/current/?cart_id=${cartId.value}`,
-      )
-      : {} as Order
+      ? await HTTP.get(`/api/v2/orders/current/?cart_id=${cartId.value}`)
+      : ({} as Order)
     isDataLoading.value = false
   }
 
@@ -64,9 +62,13 @@ export const useCartStore = defineStore('cart', () => {
     return res
   }
 
-  const captureOrder = (orderId: string, data: any) => HTTP.post(`/api/v2/orders/${orderId}/capture/`, data)
+  const captureOrder = (orderId: string, data: any) =>
+    HTTP.post(`/api/v2/orders/${orderId}/capture/`, data)
 
-  const paypalFulfillOrder = () => HTTP.post(`/api/v2/orders/fulfill/?payment_gateway=paypal&cart_id=${cartId.value}`)
+  const paypalFulfillOrder = () =>
+    HTTP.post(
+      `/api/v2/orders/fulfill/?payment_gateway=paypal&cart_id=${cartId.value}`,
+    )
 
   const init = async () => {
     const currentCartId = window.localStorage.getItem(CART_ID_KEY)
