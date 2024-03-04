@@ -55,7 +55,7 @@ const imageUrl = computed(() => {
 watch(
   () => [props.image, shownImage.value],
   () => {
-    if (shownImage.value && props.image?.meta) {
+    if (shownImage.value && props.image?.meta && shownImage.value?.naturalWidth && shownImage.value?.naturalHeight) {
       const naturalWidth = shownImage.value?.naturalWidth || 1
       const naturalHeight = shownImage.value?.naturalHeight || 1
       const offsetX = props.image.meta.focal_point_width / 2
@@ -75,6 +75,6 @@ watch(
       }%`
     }
   },
-  { immediate: true },
+  { immediate: true, deep: true },
 )
 </script>
