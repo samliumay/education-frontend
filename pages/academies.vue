@@ -128,7 +128,7 @@ const branchesOptions = computed(() =>
 )
 
 const { data: categories, categoriesPending } = useFetch(
-  getApiAddress(`/api/v2/products/categories/?locale=${locale}`),
+  getApiAddress(`/api/v2/products/categories/`),
 )
 const categoriesOptions = computed(() =>
   categories.value

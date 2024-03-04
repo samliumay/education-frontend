@@ -72,7 +72,7 @@ const { data: catalogsGroup, pending: catalogsGroupPending } =
   await useAsyncData(
     'catalogs',
     () =>
-      $fetch(getApiAddress(`${address}/catalog/`), {
+      $fetch(`${address}/catalog/`, {
         params: {
           locale: locale.value,
           type: api.value.type,
