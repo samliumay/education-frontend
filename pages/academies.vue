@@ -76,8 +76,6 @@ import TemplateProduct from '../components/cms/templates/TemplateProduct.vue'
 import AcademySeason from '../components/products/AcademySeason.vue'
 import { ageOptions, languageOptions, seasonsOptions } from '../mappers/options'
 
-const { locale } = useI18n({ useScope: 'global' })
-
 const getCurrentSeason = () => {
   const date = new Date()
   const month = date.getMonth()
