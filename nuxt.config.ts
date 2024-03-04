@@ -10,10 +10,18 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxtjs/sitemap',
     'nuxt-simple-robots',
+    'nuxt-paypal',
     ...(process.env.NODE_ENV === 'production' ? ['@nuxtjs/eslint-module'] : []),
   ],
   alias: {
     '@': path.resolve(__dirname, './'),
+  },
+  paypal: {
+    clientId:
+      process.env.PAYPAL_CLIENT_ID ||
+      'AYfXh9LscHuwUGMImNtDNDmFIujKTzhaO6Tho46Fq212YLyAN0lMALq7dicz8sPathrGwP_zNg5inN8P',
+    disableFunding: 'credit,card',
+    currency: 'EUR',
   },
   css: ['@/assets/styles/fonts.css'],
   i18n: {

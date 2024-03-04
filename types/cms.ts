@@ -26,6 +26,10 @@ export type CmsImage = {
     type: string
     detail_url: string
     download_url: string
+    focal_point_x: number
+    focal_point_y: number
+    focal_point_width: number
+    focal_point_height: number
   }
   title: string
 }
