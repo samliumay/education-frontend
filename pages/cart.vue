@@ -524,8 +524,7 @@ onMounted(() => {
     },
     onApprove(data: any) {
       // eslint-disable-next-line no-console
-      return cart.captureOrder(data.orderID, data)
-      .then(() => {
+      return cart.captureOrder(data.orderID, data).then(() => {
         cart.getCurrentOrder()
         navigateTo('/')
       })
