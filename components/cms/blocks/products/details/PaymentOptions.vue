@@ -31,7 +31,7 @@
         class="p-[30px] rounded-xl border-[1px] flex flex-col justify-between"
         :class="
           selectOption === item.id && item.id !== undefined
-            ? 'border-black bg-brand-light-gray'
+            ? 'border-brand-black bg-brand-light-gray'
             : 'border-brand-dark-gray bg-white'
         "
         @click="$emit('select', item.id)"

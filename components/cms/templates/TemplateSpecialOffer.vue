@@ -41,6 +41,7 @@ import { checkIsEmpty } from '../../../utils/checkIsEmpty'
 import { getApiAddress } from '../../../utils/getApiAddress'
 import ErrorBoundaryBlock from '../blocks/misc/ErrorBoundaryBlock.vue'
 import LoaderBlock from '../blocks/misc/LoaderBlock.vue'
+import RichText from '../blocks/misc/RichText.vue'
 import AboutCourse from '../blocks/products/details/AboutCourse.vue'
 import AboutTutors from '../blocks/products/details/AboutTutors.vue'
 import CourseProgram from '../blocks/products/details/CourseProgram.vue'
@@ -100,5 +101,6 @@ const blocksList = computed(() => [
   { name: AboutTutors, blockData: special.value?.instructors },
   { name: StudentWorks, blockData: special.value?.student_works },
   { name: QuestionsAnswers, blockData: special.value?.qna },
+  { name: RichText, blockData: special.value?.seo_text },
 ])
 </script>

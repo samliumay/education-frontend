@@ -123,6 +123,7 @@ const signUp = async () => {
       error.value = t('common.somethingWrong')
       setTimeout(clearError, 2000)
     } else {
+      const { email } = signUpCredentials.value
       error.value = ''
       signUpCredentials.value.email = ''
       signUpCredentials.value.password1 = ''
@@ -130,7 +131,7 @@ const signUp = async () => {
       signUpCredentials.value.first_name = ''
       signUpCredentials.value.last_name = ''
       signUpCredentials.value.phone_number = ''
-      emit('goToEmailStep')
+      emit('goToEmailStep', email)
     }
   })
 }

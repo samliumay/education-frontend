@@ -3,7 +3,9 @@
     <div
       class="absolute left-1/2 transform -translate-x-1/2 top-0 mx-0 w-screen h-full bg-brand-light-gray"
     />
-    <h1 class="font-medium text-3xl md:text-6xl mb-12 uppercase relative">
+    <h1
+      class="font-medium text-[32px] md:text-[56px] mb-12 uppercase relative text-brand-black"
+    >
       {{ $t('cart.title') }}
     </h1>
 
@@ -47,7 +49,7 @@
               />
 
               <div
-                class="w-full md:w-auto justify-center relative border-black rounded-lg text-brand-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
+                class="w-full md:w-auto justify-center relative border-brand-black rounded-lg text-brand-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
               >
                 {{ $t('cart.goToCatalog') }}
               </div>
@@ -87,7 +89,7 @@
               />
 
               <div
-                class="w-full md:w-auto justify-center relative border-black rounded-lg text-brand-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
+                class="w-full md:w-auto justify-center relative border-brand-black rounded-lg text-brand-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
               >
                 {{ $t('cart.goToCatalog') }}
               </div>
@@ -129,7 +131,7 @@
               />
 
               <div
-                class="w-full md:w-auto justify-center relative border-black rounded-lg text-brand-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
+                class="w-full md:w-auto justify-center relative border-brand-black rounded-lg text-brand-black bg-white border-[1px] py-[12px] px-[24px] flex gap-[8px] items-center"
                 @click="navigateTo('/workshops')"
               >
                 {{ $t('cart.goToCatalog') }}
@@ -297,6 +299,20 @@
               />
             </template>
 
+            <p
+              v-show="cart?.order?.items?.length"
+              class="flex justify-between font-medium text-[20px] mt-[24px] mb-[12px]"
+            >
+              <span>{{ $t('cart.order.discountAmount') }}</span>
+              <span class="text-brand-green">{{
+                `-${(cart?.order?.items || []).reduce((acc, item) => {
+                  const newAcc =
+                    Number(acc ?? 0) + Number(item.discount_amount ?? 0)
+                  return Number(newAcc ?? 0).toFixed(2)
+                }, 0)} €`
+              }}</span>
+            </p>
+
             <div v-if="cart?.order?.items?.length > 0">
               <AppInput
                 v-model="promocode"
@@ -314,20 +330,6 @@
                 {{ $t('cart.promocode.fail') }}
               </p>
             </div>
-
-            <p
-              v-show="cart?.order?.items?.length"
-              class="flex justify-between font-medium text-[24px] mt-[24px] mb-[12px]"
-            >
-              <span>{{ $t('cart.order.discountAmount') }}</span>
-              <span class="text-brand-green">{{
-                `-${(cart?.order?.items || []).reduce((acc, item) => {
-                  const newAcc =
-                    Number(acc ?? 0) + Number(item.discount_amount ?? 0)
-                  return Number(newAcc ?? 0).toFixed(2)
-                }, 0)} €`
-              }}</span>
-            </p>
 
             <p
               v-show="cart?.order?.items?.length"

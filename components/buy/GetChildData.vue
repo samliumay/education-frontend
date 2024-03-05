@@ -89,7 +89,7 @@ await userStore.getVisitors()
 
 // State
 const form = ref<VNodeRef | undefined>(undefined)
-const step = ref(GetChildStep.Select)
+const step = ref(userStore.isLoggedIn ? GetChildStep.Select : GetChildStep.Add)
 const newVisitor = ref({
   first_name: '',
   last_name: '',

@@ -78,7 +78,7 @@
             {{ $t('common.cart') }}
           </span>
           <span
-            class="border-black rounded-full border-[1px] p-[12px] ml-[6px] relative"
+            class="border-brand-black rounded-full border-[1px] p-[12px] ml-[6px] relative"
           >
             <span
               class="absolute w-full h-full flex items-center justify-center top-0 left-0"
@@ -90,7 +90,7 @@
 
         <button
           v-if="user.isLoggedIn"
-          class="bg-white rounded-full w-[50px] h-[50px] min-h-[50px] min-w-[50px] overflow-hidden border-black border-[1px]"
+          class="bg-white rounded-full w-[50px] h-[50px] min-h-[50px] min-w-[50px] overflow-hidden border-brand-black border-[1px]"
           @click="isOpenModalProfile = true"
         >
           <img
@@ -159,7 +159,7 @@
 
         <template v-if="user.isLoggedIn">
           <button
-            class="bg-white rounded-full w-[30px] h-[30px] min-h-[30px] min-w-[30px] overflow-hidden border-black border-[1px]"
+            class="bg-white rounded-full w-[30px] h-[30px] min-h-[30px] min-w-[30px] overflow-hidden border-brand-black border-[1px]"
             @click="isOpenModalProfile = true"
           >
             <img

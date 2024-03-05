@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="w-full py-[28px] md:py-[48px] flex flex-col gap-10 relative block-padding-x"
+    class="w-[100vw] py-[28px] md:py-[48px] flex flex-col gap-10 relative block-padding-x"
     :class="
       route.name === 'prices' || route.name === 'cart'
         ? 'bg-white'
@@ -107,7 +107,11 @@ class="text-brand-gray font-medium"
         </NuxtLink>
       </div>
 
-      <p>{{ $t('common.info.schoolCopyright') }}</p>
+      <p>
+        {{
+          `${$t('common.info.schoolCopyright') + new Date().getFullYear()} ©`
+        }}
+      </p>
     </div>
   </footer>
 </template>

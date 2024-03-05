@@ -111,6 +111,11 @@
 
         <n-space vertical>
           <n-radio
+            v-if="
+              product.purchase_options?.find(
+                option => option.schedule_type === 'Academy (1st half)',
+              )
+            "
             class="mt-[16px]"
             :checked="buyForm.schedule_type === 'Academy (1st half)'"
             value="first"
@@ -123,6 +128,11 @@
             </div>
           </n-radio>
           <n-radio
+            v-if="
+              product.purchase_options?.find(
+                option => option.schedule_type === 'Academy (2nd half)',
+              )
+            "
             class="mt-[12px]"
             :checked="buyForm.schedule_type === 'Academy (2nd half)'"
             value="second"
@@ -135,6 +145,11 @@
             </div>
           </n-radio>
           <n-radio
+            v-if="
+              product.purchase_options?.find(
+                option => option.schedule_type === 'Academy (full day)',
+              )
+            "
             class="mt-[12px]"
             :checked="buyForm.schedule_type === 'Academy (full day)'"
             value="full"

@@ -7,7 +7,7 @@
       :class="{
         'bg-white': selectedTags.length < 3 || selectedTags.includes(tag.value),
         'bg-transparent': selectedTags.length >= 3,
-        'border-black': selectedTags.includes(tag.value),
+        'border-brand-black': selectedTags.includes(tag.value),
         'border-gray-300': !selectedTags.includes(tag.value),
       }"
       :disabled="selectedTags.length >= 3"

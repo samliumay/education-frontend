@@ -1,5 +1,5 @@
 <template>
-  <main class="px-10 py-6">
+  <main class="px-4 md:pl-10 md:pr-[270px] py-6">
     <n-breadcrumb class="mb-10">
       <n-breadcrumb-item сlass="text-brand-gray">
         <NuxtLink to="/">Главная</NuxtLink>
@@ -143,7 +143,10 @@
       hinterlegten Bankdaten von PayPal zur Zahlung verwendet. Auf diese Daten
       haben wir keinen Zugriff. Mehr Informationen zu PayPal und deren
       Datenschutzgrundsätzen finden sie hier:
-      https://www.paypal.com/de/webapps/mpp/ua/privacy-full.
+      <span class="break-all">
+        https://www.paypal.com/de/webapps/mpp/ua/privacy-full
+      </span>
+      .
     </p>
 
     <h2 class="text-brand-black text-2xl md:text-4xl mb-6 font-medium">

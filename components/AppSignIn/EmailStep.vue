@@ -33,7 +33,7 @@
     <p v-if="error" class="text-brand-red mt-2 mb-2">{{ error }}</p>
 
     <AppButton
-      class="block mt-[36px] w-full"
+      class="block mt-[36px] w-full text-[18px]"
       type="submit"
       :disabled="!form?.checkValidity() ?? false"
     >
