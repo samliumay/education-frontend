@@ -1,5 +1,5 @@
 <template>
-  <main class="px-10 py-6">
+  <main class="px-4 md:pl-10 md:pr-[270px] py-6">
     <n-breadcrumb class="mb-10">
       <n-breadcrumb-item сlass="text-brand-gray">
         <NuxtLink to="/">Главная</NuxtLink>
@@ -9,7 +9,7 @@
       </n-breadcrumb-item>
     </n-breadcrumb>
 
-    <h1 class="text-brand-black text-5xl mb-10 font-medium">
+    <h1 class="text-brand-black text-4xl md:text-5xl mb-10 font-medium">
       ALLGEMEINE GESCHÄFTSBEDINGUNGEN FÜR DIE Clavis Kunst und Wissenschaft
       Privatschule GmbH
     </h1>

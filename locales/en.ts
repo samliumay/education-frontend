@@ -140,7 +140,7 @@ export const en = {
       privacy: 'Privacy Policy',
       legal: 'Legal',
       serviceTerms: 'Terms of Service',
-      schoolCopyright: 'Clavis School of Art and Science GmbH 2023 ©',
+      schoolCopyright: 'Clavis School of Art and Science GmbH ',
     },
     types: {
       courses: 'Courses',
@@ -321,6 +321,10 @@ export const en = {
     lastNameRule: 'Last name must contain at least two characters',
     invalidEmail: 'Invalid email',
     birthdate: 'Date of birth',
+    verifyEmail: 'Verify your email address',
+    verify1: 'We sent you an email to ',
+    verify2: ' to verify the email.',
+    verify3: 'Please check the email to activate your account',
   },
   schoolOffer: {
     title: 'Offers for schools',

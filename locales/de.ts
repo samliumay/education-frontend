@@ -12,10 +12,10 @@ export const de = {
     error: 'Fehler:',
     somethingWrong: 'Hoppla! Es scheint, als wäre etwas schief gelaufen.',
     wrongCredentials: 'Ungültige E-Mail oder Passwort',
-    moreDetails: 'Mehr Details',
+    moreDetails: 'Mehr Informationen',
     showMore: 'Zeig mehr',
     school: 'Clavis Schule für Kunst und Wissenschaft',
-    menu: 'Speisekarte',
+    menu: 'Menü',
     cart: 'Warenkorb',
     notFound: 'Nichts gefunden',
     courseNotFound: 'Der Kurs mit der angegebenen ID wurde nicht gefunden',
@@ -92,7 +92,7 @@ export const de = {
     },
     actions: {
       close: 'Schließen',
-      signIn: 'Betreten',
+      signIn: 'Login',
       signUp: 'Registrieren',
       chooseSeason: 'Saison auswählen:',
       cancel: 'Stornieren',
@@ -107,9 +107,9 @@ export const de = {
       turnOn: 'Anmachen',
       acceptAll: 'Alle akzeptieren',
       acceptEssential: 'Nur essentielle Cookies akzeptieren',
-      tryFree: 'Kostenlos testen',
+      tryFree: 'Kostenlos ausprobieren',
       submitApplication: 'Reichen Sie Ihre Bewerbung ein',
-      buy: 'Kaufen',
+      buy: 'Kurs buchen',
     },
     subscription: {
       abonement: 'Abonnement',
@@ -142,7 +142,7 @@ export const de = {
       privacy: 'Datenschutz',
       legal: 'Impressum',
       serviceTerms: 'AGB',
-      schoolCopyright: 'Clavis School of Art and Science GmbH 2023 ©',
+      schoolCopyright: 'Clavis School of Art and Science GmbH ',
     },
     types: {
       courses: 'Kurse',
@@ -274,7 +274,7 @@ export const de = {
     tutorCourses: 'Lehrerkurse',
     main: {
       offers: 'Unsere Angebote',
-      toCatalogue: 'Zum Katalog gehen',
+      toCatalogue: 'Mehr anzeigen',
       social: 'Soziale Netzwerke',
       video: {
         mainParagraph:
@@ -326,6 +326,10 @@ export const de = {
     lastNameRule: 'Der Nachname muss mindestens zwei Zeichen enthalten',
     invalidEmail: 'Ungültige E-Mail',
     birthdate: 'Geburtsdatum',
+    verifyEmail: 'Bestätige deine Email-Adresse',
+    verify1: 'Wir haben Ihnen eine E-Mail an gesendet ',
+    verify2: ' um die E-Mail zu bestätigen.',
+    verify3: 'Bitte überprüfen Sie die E-Mail, um Ihr Konto zu aktivieren',
   },
   schoolOffer: {
     title: 'Angebote für Schulen',

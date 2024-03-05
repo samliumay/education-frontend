@@ -128,6 +128,7 @@ export enum LoginSteps {
   RestorePassword,
   ConfirmRestorePassword,
   SignUp,
+  VerifyEmail,
 }
 
 export type OrderItem = {

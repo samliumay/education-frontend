@@ -20,7 +20,7 @@
         <div
           v-for="course in blockData.value.contents?.top_pane?.tags"
           :key="course.inner_text + course.link"
-          class="border-[1px] border-black rounded-[48px] py-2 px-3 items-center inline-block mr-2 mb-2 cursor-pointer"
+          class="border-[1px] border-brand-black rounded-[48px] py-2 px-3 items-center inline-block mr-2 mb-2 cursor-pointer"
         >
           <a
             class="w-full h-full flex items-center"
@@ -56,7 +56,7 @@
           >
             {{ blockData.value.contents?.left_pane.title }}
           </h3>
-          <p class="font-medium mt-3 lg:mt-6 text-brand-black">
+          <p class="font-medium mt-3 lg:mt-6 text-brand-gray">
             {{ blockData.value.contents?.left_pane.inner_text }}
           </p>
         </div>
@@ -67,7 +67,7 @@
       >
         <ImageBlock
           :image="blockData.value.contents?.right_pane.photo"
-          image-class="z-0 absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 hidden sm:block"
+          image-class="z-0 absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 hidden sm:block max-w-full max-h-full w-auto h-auto"
         />
         <div class="relative w-full sm:w-3/5 z-10 bg-brand-light-gray">
           <h3
@@ -75,7 +75,7 @@
           >
             {{ blockData.value.contents?.right_pane.title }}
           </h3>
-          <p class="font-medium mt-3 lg:mt-6 text-brand-black">
+          <p class="font-medium mt-3 lg:mt-6 text-brand-gray">
             {{ blockData.value.contents?.right_pane.inner_text }}
           </p>
         </div>

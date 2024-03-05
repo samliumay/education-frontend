@@ -21,12 +21,14 @@
     </div>
 
     <!-- Header -->
-    <h1 class="relative text-[48px] md:text-[72px] leading-none uppercase">
+    <h1
+      class="relative text-[48px] md:text-[72px] leading-none uppercase text-brand-black"
+    >
       {{ $t('aboutUs.title') }}
     </h1>
 
     <div
-      class="relative w-full mt-10 mb-14 md:mt-10 md:mb-14 md:pl-[50%] md:pr-10"
+      class="relative w-full mt-10 mb-14 md:mt-10 md:mb-14 md:pl-[50%] md:pr-[15%] text-xl"
     >
       <p>
         {{ $t('aboutUs.subtitle') }}
@@ -43,29 +45,31 @@
 
   <!-- Offers -->
   <div class="px-3 md:px-10 mt-6 md:mt-24 mb-10">
-    <h2 class="font-semibold text-[36px] md:text-[56px] mb-[48px]">
+    <h2
+      class="font-semibold text-[36px] md:text-[56px] mb-[48px] text-brand-black uppercase"
+    >
       {{ $t('aboutUs.offers.title') }}
     </h2>
 
     <div class="flex flex-col gap-6">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="flex justify-center items-center">
-          <img src="/icons/aboutus/pen.svg" alt="Pen" />
+          <img src="/icons/aboutus/person.svg" alt="Person" />
         </div>
         <div>
           <h3 class="text-brand-red text-[28px] sm:text-[36px] mb-6">
             {{ $t('aboutUs.offers.first.title') }}
           </h3>
-          <h4 class="text-gray-500 font-medium mb-1">
+          <h4 class="text-brand-gray font-medium mb-1">
             {{ $t('aboutUs.offers.first.subtitle1') }}
           </h4>
-          <p class="text-gray-400">
+          <p class="text-brand-gray">
             {{ $t('aboutUs.offers.first.text1') }}
           </p>
-          <h4 class="text-gray-500 font-medium mb-1">
+          <h4 class="text-brand-gray font-medium mb-1">
             {{ $t('aboutUs.offers.first.subtitle2') }}
           </h4>
-          <p class="text-gray-400">
+          <p class="text-brand-gray">
             {{ $t('aboutUs.offers.first.text2') }}
           </p>
         </div>
@@ -73,22 +77,22 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="flex justify-center items-center md:order-2">
-          <img src="/icons/aboutus/stars.svg" alt="Stars" />
+          <img src="/icons/aboutus/masks.svg" alt="Masks" />
         </div>
         <div>
           <h3 class="text-brand-red text-[28px] sm:text-[36px] mb-6">
             {{ $t('aboutUs.offers.second.title') }}
           </h3>
-          <h4 class="text-gray-500 font-medium mb-1">
+          <h4 class="text-brand-gray font-medium mb-1">
             {{ $t('aboutUs.offers.second.subtitle1') }}
           </h4>
-          <p class="text-gray-400">
+          <p class="text-brand-gray">
             {{ $t('aboutUs.offers.second.text1') }}
           </p>
-          <h4 class="text-gray-500 font-medium mb-1">
+          <h4 class="text-brand-gray font-medium mb-1">
             {{ $t('aboutUs.offers.second.subtitle2') }}
           </h4>
-          <p class="text-gray-400">
+          <p class="text-brand-gray">
             {{ $t('aboutUs.offers.second.text2') }}
           </p>
         </div>
@@ -96,16 +100,16 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="flex justify-center items-center">
-          <img src="/icons/aboutus/book.svg" alt="Book" />
+          <img src="/icons/aboutus/stars.svg" alt="Stars" />
         </div>
         <div>
           <h3 class="text-brand-red text-[28px] sm:text-[36px] mb-6">
             {{ $t('aboutUs.offers.third.title') }}
           </h3>
-          <h4 class="text-gray-500 font-medium mb-1">
+          <h4 class="text-brand-gray font-medium mb-1">
             {{ $t('aboutUs.offers.third.subtitle1') }}
           </h4>
-          <p class="text-gray-400">
+          <p class="text-brand-gray">
             {{ $t('aboutUs.offers.third.text1') }}
           </p>
         </div>
@@ -113,22 +117,22 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="flex justify-center items-center md:order-2">
-          <img src="/icons/aboutus/planet.svg" alt="Planet" />
+          <img src="/icons/aboutus/cubic.svg" alt="Cubic" />
         </div>
         <div>
           <h3 class="text-brand-red text-[28px] sm:text-[36px] mb-6">
             {{ $t('aboutUs.offers.fourth.title') }}
           </h3>
-          <h4 class="text-gray-500 font-medium mb-1">
+          <h4 class="text-brand-gray font-medium mb-1">
             {{ $t('aboutUs.offers.fourth.subtitle1') }}
           </h4>
-          <p class="text-gray-400">
+          <p class="text-brand-gray">
             {{ $t('aboutUs.offers.fourth.text1') }}
           </p>
-          <h4 class="text-gray-500 font-medium mb-1">
+          <h4 class="text-brand-gray font-medium mb-1">
             {{ $t('aboutUs.offers.fourth.subtitle2') }}
           </h4>
-          <p class="text-gray-400">
+          <p class="text-brand-gray">
             {{ $t('aboutUs.offers.fourth.text2') }}
           </p>
         </div>
@@ -155,7 +159,9 @@
     class="grid grid-cols-1 gap-6 md:gap-0 md:grid-cols-2 mt-8 mb-10 mx-3 md:mx-10"
   >
     <div>
-      <h2 class="font-semibold text-[36px] md:text-[56px] mb-[48px] uppercase">
+      <h2
+        class="font-semibold text-[36px] md:text-[56px] mb-[48px] uppercase text-brand-black"
+      >
         {{ $t('aboutUs.principles.title') }}
       </h2>
       <img class="block ml-2" src="/icons/aboutus/dots.svg" />
@@ -169,7 +175,7 @@
 
         <AppDivider class="my-4 px-4" />
 
-        <p class="font-semibold text-xl">
+        <p class="font-medium text-brand-black text-xl">
           {{ $t('aboutUs.principles.item1') }}
         </p>
       </div>
@@ -180,7 +186,7 @@
 
         <AppDivider class="my-4 px-4" />
 
-        <p class="font-semibold text-xl">
+        <p class="font-medium text-brand-black text-xl">
           {{ $t('aboutUs.principles.item2') }}
         </p>
       </div>
@@ -194,7 +200,7 @@
 
         <AppDivider class="my-4 px-4" />
 
-        <p class="font-semibold text-xl">
+        <p class="font-medium text-brand-black text-xl">
           {{ $t('aboutUs.principles.item3') }}
         </p>
       </div>
@@ -205,7 +211,7 @@
 
         <AppDivider class="my-4 px-4" />
 
-        <p class="font-semibold text-xl">
+        <p class="font-medium text-brand-black text-xl">
           {{ $t('aboutUs.principles.item4') }}
         </p>
       </div>
@@ -224,17 +230,19 @@
         <p class="font-semibold text-[20px] md:text-[24px] w-3/5">
           {{ $t('aboutUs.principles.quote.text') }}
         </p>
-        <p class="text-gray-400">{{ $t('aboutUs.principles.quote.author') }}</p>
+        <p class="text-brand-gray">
+          {{ $t('aboutUs.principles.quote.author') }}
+        </p>
       </div>
     </div>
   </div>
 
   <!-- Approach -->
   <div
-    class="flex flex-col gap-6 lg:gap-0 lg:flex-row aspect-square max-h-[1200px] max-w-[1200px] min-w-base mx-10 lg:mx-auto relative mt-3 lg:mt-10"
+    class="flex flex-col gap-6 lg:gap-0 lg:flex-row aspect-square max-h-[1100px] max-w-[1100px] min-w-base mx-10 lg:mx-auto relative mt-3 lg:mt-10"
   >
     <h2
-      class="uppercase lg:order-10 lg:text-[56px] lg:absolute lg:-translate-y-1/2 lg:-translate-x-1/2 font-semibold text-[36px] top-1/2 left-1/2 text-center"
+      class="uppercase text-brand-black lg:order-10 lg:text-[56px] lg:absolute lg:-translate-y-1/2 lg:-translate-x-1/2 font-semibold text-[36px] top-1/2 left-1/2 text-center"
     >
       {{ $t('aboutUs.approach.title') }}
     </h2>
@@ -251,7 +259,7 @@
           {{ $t('aboutUs.approach.item1.title') }}
         </span>
       </p>
-      <p class="mt-4 text-[18px]">
+      <p class="mt-4 text-[18px] text-brand-black">
         {{ $t('aboutUs.approach.item1.text') }}
       </p>
     </div>
@@ -265,7 +273,9 @@
           {{ $t('aboutUs.approach.item2.title') }}
         </span>
       </p>
-      <p class="mt-4 text-[18px]">{{ $t('aboutUs.approach.item2.text') }}</p>
+      <p class="mt-4 text-[18px] text-brand-black">
+        {{ $t('aboutUs.approach.item2.text') }}
+      </p>
     </div>
 
     <div
@@ -277,7 +287,7 @@
           {{ $t('aboutUs.approach.item3.title') }}
         </span>
       </p>
-      <p class="mt-4 text-[18px]">
+      <p class="mt-4 text-[18px] text-brand-black">
         {{ $t('aboutUs.approach.item3.text') }}
       </p>
     </div>
@@ -291,13 +301,13 @@
           {{ $t('aboutUs.approach.item3.title') }}
         </span>
       </p>
-      <p class="mt-4 text-[18px]">
+      <p class="mt-4 text-[18px] text-brand-black">
         {{ $t('aboutUs.approach.item3.text') }}
       </p>
     </div>
 
     <div
-      class="lg:-translate-x-1/2 lg:absolute lg:translate-y-1/2 z-10 bottom-0 left-1/2 rounded-[12px] bg-brand-light-gray p-6 max-w-[500px]"
+      class="lg:-translate-x-1/2 lg:absolute lg:translate-y-1/2 z-10 bottom-0 left-1/2 rounded-[12px] bg-brand-light-gray p-6 max-w-[500px] mt-8"
     >
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
@@ -312,7 +322,7 @@
   <!-- Values -->
   <div class="mt-24 bg-brand-light-gray pt-12 pb-8">
     <h2
-      class="font-semibold text-[36px] md:text-[56px] mb-[48px] px-3 md:px-10"
+      class="font-semibold text-[36px] md:text-[56px] mb-[48px] px-3 md:px-10 text-brand-black"
     >
       {{ $t('aboutUs.values.title') }}
     </h2>
@@ -324,16 +334,16 @@
         {{ $t('aboutUs.values.item1.title') }}
       </h3>
       <div class="col-span-2 mr-8">
-        <h4 class="text-gray-500 font-medium mb-1">
+        <h4 class="text-brand-gray font-medium mb-1">
           {{ $t('aboutUs.values.item1.subtitle1') }}
         </h4>
-        <p class="text-gray-400 mb-1">
+        <p class="text-brand-gray mb-1">
           {{ $t('aboutUs.values.item1.text1') }}
         </p>
-        <h4 class="text-gray-500 font-medium mb-1">
+        <h4 class="text-brand-gray font-medium mb-1">
           {{ $t('aboutUs.values.item1.subtitle2') }}
         </h4>
-        <p class="text-gray-400 mb-1">
+        <p class="text-brand-gray mb-1">
           {{ $t('aboutUs.values.item1.text2') }}
         </p>
       </div>
@@ -346,16 +356,16 @@
         {{ $t('aboutUs.values.item2.title') }}
       </h3>
       <div class="col-span-2 mr-8">
-        <h4 class="text-gray-500 font-medium mb-1">
+        <h4 class="text-brand-gray font-medium mb-1">
           {{ $t('aboutUs.values.item2.subtitle1') }}
         </h4>
-        <p class="text-gray-400 mb-1">
+        <p class="text-brand-gray mb-1">
           {{ $t('aboutUs.values.item2.text1') }}
         </p>
-        <h4 class="text-gray-500 font-medium mb-1">
+        <h4 class="text-brand-gray font-medium mb-1">
           {{ $t('aboutUs.values.item2.subtitle2') }}
         </h4>
-        <p class="text-gray-400 mb-1">
+        <p class="text-brand-gray mb-1">
           {{ $t('aboutUs.values.item2.text2') }}
         </p>
       </div>
@@ -368,16 +378,16 @@
         {{ $t('aboutUs.values.item3.title') }}
       </h3>
       <div class="col-span-2 mr-8">
-        <h4 class="text-gray-500 font-medium mb-1">
+        <h4 class="text-brand-gray font-medium mb-1">
           {{ $t('aboutUs.values.item3.subtitle1') }}
         </h4>
-        <p class="text-gray-400 mb-1">
+        <p class="text-brand-gray mb-1">
           {{ $t('aboutUs.values.item3.text1') }}
         </p>
-        <h4 class="text-gray-500 font-medium mb-1">
+        <h4 class="text-brand-gray font-medium mb-1">
           {{ $t('aboutUs.values.item3.subtitle2') }}
         </h4>
-        <p class="text-gray-400 mb-1">
+        <p class="text-brand-gray mb-1">
           {{ $t('aboutUs.values.item3.text2') }}
         </p>
       </div>
@@ -390,10 +400,10 @@
         {{ $t('aboutUs.values.item4.title') }}
       </h3>
       <div class="col-span-2 mr-8">
-        <h4 class="text-gray-500 font-medium mb-1">
+        <h4 class="text-brand-gray font-medium mb-1">
           {{ $t('aboutUs.values.item4.subtitle1') }}
         </h4>
-        <p class="text-gray-400 mb-1">
+        <p class="text-brand-gray mb-1">
           {{ $t('aboutUs.values.item4.text1') }}
         </p>
       </div>

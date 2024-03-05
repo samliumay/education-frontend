@@ -25,11 +25,11 @@
       <div class="flex flex-col lg:flex-row gap-5 lg:gap-40">
         <div class="flex flex-col gap-4">
           <h2
-            class="text-[28px] lg:text-[36px] mb-3 lg:mb-6 font-medium uppercase"
+            class="text-[28px] lg:text-[36px] mb-3 lg:mb-6 font-medium uppercase text-brand-black"
           >
             {{ blockData.apply_block[0].value?.title }}
           </h2>
-          <p class="font-medium">
+          <p class="font-medium text-brand-gray">
             {{ blockData.apply_block[0].value?.inner_text }}
           </p>
           <div>

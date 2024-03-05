@@ -5,7 +5,7 @@
     >
       <div class="flex flex-col">
         <div
-          class="flex justify-end items-center border-b-[1px] border-black py-[16px]"
+          class="flex justify-end items-center border-b-[1px] border-brand-black py-[16px]"
         >
           <div
             class="flex gap-[20px] items-center mr-10"

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="block-padding flex flex-col items-center"
+    class="block-padding flex flex-col items-center max-w-[1116px]"
     data-cms="main-social-media"
   >
     <AppHeading>
