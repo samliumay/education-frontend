@@ -275,6 +275,7 @@
       </p>
 
       <AppButton
+        :disabled="!isButtonActive"
         class="mt-4 lg:mt-10 w-full lg:w-auto flex justify-center items-center text-lg gap-3"
         @click="addAcademy"
       >
@@ -286,7 +287,7 @@
 </template>
 <script setup lang="ts">
 import { NCheckbox, NRadio, NSpace } from 'naive-ui'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 import AppLoader from '../../../components/AppLoader.vue'
@@ -367,4 +368,11 @@ const addAcademy = async () => {
   await cart.addOrderItem(productOrder)
   navigateTo('/cart')
 }
+
+const isButtonActive = computed(
+  () =>
+    buyForm.value.visitor !== null &&
+    buyForm.value.visitor !== undefined &&
+    !!buyForm.value.purchase_option,
+)
 </script>

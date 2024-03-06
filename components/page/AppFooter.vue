@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="w-[100vw] py-[28px] md:py-[48px] flex flex-col gap-10 relative block-padding-x"
+    class="w-[100vw] py-[28px] md:py-[48px] flex flex-col gap-10 relative block-padding-x self-center"
     :class="
       route.name === 'prices' || route.name === 'cart'
         ? 'bg-white'

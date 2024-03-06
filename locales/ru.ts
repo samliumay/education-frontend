@@ -174,6 +174,15 @@ export const ru = {
     },
     weekdays: {
       monday: 'Понедельник',
+      short: {
+        monday: 'Пн',
+        tuesday: 'Вт',
+        wednesday: 'Ср',
+        thursday: 'Чт',
+        friday: 'Пт',
+        saturday: 'Сб',
+        sunday: 'Вс',
+      },
     },
     status: {
       delete: 'Удаление...',

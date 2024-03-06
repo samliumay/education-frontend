@@ -136,7 +136,7 @@ const { locale } = useI18n({ useScope: 'global' })
 
 // Get data
 const { data: product, pending: productPending } = await useAsyncData(
-  'products',
+  'productsModal',
   () =>
     $fetch(getApiAddress(`/api/v2/wagtail/products/${route.params.id}/`), {
       params: {

@@ -5,7 +5,7 @@ ended. // ! If problems arise, it is better to rewrite it in css + js
 
 <template>
   <div
-    class="my-10 text-4xl text-brand-red font-medium w-[100vw]"
+    class="my-10 text-4xl text-brand-red font-medium w-[100vw] self-center"
     data-cms="main-running-text"
   >
     <marquee direction="left" behavior="scroll">

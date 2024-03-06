@@ -176,6 +176,15 @@ export const de = {
     },
     weekdays: {
       monday: 'Montag',
+      short: {
+        monday: 'Mo',
+        tuesday: 'Di',
+        wednesday: 'Mi',
+        thursday: 'Do',
+        friday: 'Fr',
+        saturday: 'Sa',
+        sunday: 'So',
+      },
     },
     status: {
       delete: 'Entfernung...',

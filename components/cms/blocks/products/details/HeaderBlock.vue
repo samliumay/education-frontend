@@ -27,7 +27,14 @@
           >
             {{ blockData.name }}
           </h1>
-          <CategoryBlock :items="blockData.schedule_slots">
+          <CategoryBlock
+            :items="
+              blockData.product_type === 'Academy'
+                ? blockData.purchase_options
+                : blockData.schedule_slots
+            "
+            :is-academy="blockData.product_type === 'Academy'"
+          >
             <template #icon>
               <img
                 v-if="type === 'course'"
