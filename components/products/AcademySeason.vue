@@ -6,7 +6,7 @@
         v-for="season in seasons"
         :key="season"
         class="relative min-h-[140px] rounded-[12px] bg-brand-light-gray p-[16px] cursor-pointer flex flex-col justify-between"
-        :class="{ 'border-black border-[1px]': selected === season }"
+        :class="{ 'border-brand-black border-[1px]': selected === season }"
         @click="$emit('update:selected', season)"
       >
         <h2 class="relative text-2xl font-medium mr-[40px] text-brand-black">

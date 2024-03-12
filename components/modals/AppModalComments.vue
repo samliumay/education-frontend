@@ -5,7 +5,7 @@
     >
       <div class="flex flex-col">
         <div
-          class="flex justify-between items-center border-b-[1px] border-black py-[16px]"
+          class="flex justify-between items-center border-b-[1px] border-brand-black py-[16px]"
         >
           <h1 class="font-medium text-4xl ml-10">
             {{ $t('common.modals.comment') }}

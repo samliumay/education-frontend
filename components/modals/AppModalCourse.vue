@@ -5,7 +5,7 @@
     >
       <div class="flex flex-col">
         <div
-          class="flex justify-end items-center border-b-[1px] border-black py-[16px]"
+          class="flex justify-end items-center border-b-[1px] border-brand-black py-[16px]"
         >
           <div
             class="flex gap-[20px] items-center mr-10"
@@ -136,7 +136,7 @@ const { locale } = useI18n({ useScope: 'global' })
 
 // Get data
 const { data: product, pending: productPending } = await useAsyncData(
-  'products',
+  'productsModal',
   () =>
     $fetch(getApiAddress(`/api/v2/wagtail/products/${route.params.id}/`), {
       params: {

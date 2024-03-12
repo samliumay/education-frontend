@@ -1,5 +1,5 @@
 <template>
-  <main class="px-2 md:px-[270px] py-6">
+  <main class="px-4 md:pl-10 md:pr-[270px] py-6">
     <n-breadcrumb class="mb-10">
       <n-breadcrumb-item сlass="text-brand-gray">
         <NuxtLink to="/">Главная</NuxtLink>

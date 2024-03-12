@@ -140,7 +140,7 @@ export const ru = {
       privacy: 'Политика конфиденциальности',
       legal: 'Лигал',
       serviceTerms: 'Условия использования',
-      schoolCopyright: 'Clavis School of Art and Science GmbH 2023 ©',
+      schoolCopyright: 'Clavis School of Art and Science GmbH ',
     },
     types: {
       courses: 'Курсы',
@@ -174,6 +174,15 @@ export const ru = {
     },
     weekdays: {
       monday: 'Понедельник',
+      short: {
+        monday: 'Пн',
+        tuesday: 'Вт',
+        wednesday: 'Ср',
+        thursday: 'Чт',
+        friday: 'Пт',
+        saturday: 'Сб',
+        sunday: 'Вс',
+      },
     },
     status: {
       delete: 'Удаление...',
@@ -322,6 +331,11 @@ export const ru = {
     lastNameRule: 'Фамилия должна содержать не менее двух символов',
     invalidEmail: 'Неверная почта',
     birthdate: 'Дата рождения',
+    verifyEmail: 'Подтвердите свой адрес электронной почты',
+    verify1: 'Мы отправили вам письмо на ',
+    verify2: '.',
+    verify3:
+      'Пожалуйста, нажмите на подтверждение в пришедшем вам письме для активации аккаунта',
   },
   schoolOffer: {
     title: 'Предложения для школ',

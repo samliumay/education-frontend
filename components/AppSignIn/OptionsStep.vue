@@ -2,7 +2,7 @@
   <div
     v-for="(option, index) in options"
     :key="option.label"
-    class="relative bg-white rounded-[12px] px-[24px] py-[16px] cursor-pointer"
+    class="relative bg-white rounded-[12px] px-[24px] py-[16px] cursor-pointer border-brand-light-gray border-[1px]"
     :class="{ 'mb-[12px]': index !== 3 }"
     @click="option.onClick()"
   >

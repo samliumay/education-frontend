@@ -1,10 +1,18 @@
 <template>
   <n-modal :show="isOpen" @mask-click="close">
     <div
-      class="bg-brand-light-gray rounded-lg p-[44px] md:left-auto md:w-[600px] w-[90%]"
+      class="bg-brand-light-gray rounded-lg p-[44px] md:left-auto modal-width"
     >
-      <div class="flex justify-between mb-[36px]">
-        <h2 class="text-3xl font-medium">
+      <div
+        class="flex mb-[36px]"
+        :class="
+          step === LoginSteps.VerifyEmail ? 'justify-end' : 'justify-between'
+        "
+      >
+        <h2
+          v-if="step !== LoginSteps.VerifyEmail"
+          class="text-[28px] md:text-[36px] font-medium"
+        >
           <span v-if="step === LoginSteps.SignUp">{{
             $t('user.registration')
           }}</span>
@@ -40,11 +48,16 @@
       />
       <SignUpStep
         v-else-if="step === LoginSteps.SignUp"
-        @go-to-email-step="step = LoginSteps.Email"
+        @go-to-email-step="goToVerify"
         @close="close"
       />
       <ConfirmRestorePasswordStep
         v-else-if="step === LoginSteps.ConfirmRestorePassword"
+        @close="close"
+      />
+      <VerifyEmailStep
+        v-else-if="step === LoginSteps.VerifyEmail"
+        :email="savedEmail"
         @close="close"
       />
     </div>
@@ -60,6 +73,7 @@ import EmailStep from './EmailStep.vue'
 import OptionsStep from './OptionsStep.vue'
 import RestorePasswordStep from './RestorePasswordStep.vue'
 import SignUpStep from './SignUpStep.vue'
+import VerifyEmailStep from './VerifyEmailStep.vue'
 
 // Init
 defineProps<{
@@ -70,6 +84,7 @@ const emit = defineEmits(['close'])
 
 // State
 const step = ref(LoginSteps.Options)
+const savedEmail = ref('')
 
 // Actions
 const close = () => {
@@ -78,4 +93,18 @@ const close = () => {
   }, 250)
   emit('close')
 }
+
+const goToVerify = (email: string) => {
+  savedEmail.value = email
+  step.value = LoginSteps.VerifyEmail
+}
 </script>
+<style scoped>
+.modal-width {
+  width: 600px;
+
+  @media screen and (max-width: 769px) {
+    width: calc(100% - 20px);
+  }
+}
+</style>
