@@ -373,6 +373,9 @@ const isButtonActive = computed(
   () =>
     buyForm.value.visitor !== null &&
     buyForm.value.visitor !== undefined &&
-    !!buyForm.value.purchase_option,
+    ((product.value.product_type === 'Course' &&
+    !!buyForm.value.purchase_option) ||
+    (product.value.product_type === 'Academy' &&
+    !!buyForm.value.academy_number_of_weeks)),
 )
 </script>
