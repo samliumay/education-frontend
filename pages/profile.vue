@@ -258,7 +258,7 @@
                         .join('; ')
                     }}
                   </p>
-                  <p>{{ new Date().toDateString() }}</p>
+                  <p>{{ new Date(workshop.purchased_at).toDateString() }}</p>
                   <button
                     class="w-fit text-brand-black active:text-brand-red cursor-pointer underline underline-offset-8"
                     @click="openCommentModal(workshop)"
