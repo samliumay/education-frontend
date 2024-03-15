@@ -29,12 +29,8 @@
 
         <div class="flex flex-col gap-4 m-10">
           <div class="w-full py-2 flex justify-between items-center">
-            <p>{{ $t('common.modals.subscriptionPaymentPayPal') }}</p>
-            <AppButton>{{ $t('common.actions.pay') }}</AppButton>
-          </div>
-          <div class="w-full py-2 flex justify-between items-center">
             <p>{{ $t('common.modals.autopayPayPal') }}</p>
-            <AppButton>{{ $t('common.actions.turnOn') }}</AppButton>
+            <div id="paypal-subscription" />
           </div>
 
           <AppDivider />
@@ -43,6 +39,7 @@
             <p>{{ $t('common.modals.cancelSubscription') }}</p>
             <button
               class="w-fit text-brand-black active:text-brand-red cursor-pointer underline underline-offset-8"
+              @click="handleCancel"
             >
               {{ $t('common.actions.cancel') }}
             </button>
@@ -53,16 +50,55 @@
   </n-modal>
 </template>
 <script setup lang="ts">
+import { loadScript } from '@paypal/paypal-js'
 import { NModal } from 'naive-ui'
+import { onMounted, type Ref, ref } from 'vue'
 
-import AppButton from '@/components/AppButton.vue'
 import AppDivider from '@/components/AppDivider.vue'
+import { useCartStore } from '@/store/cart'
 
-defineProps<{
+const props = defineProps<{
   isOpen: boolean
   // eslint-disable-next-line vue/no-unused-properties
-  order: unknown
+  order: any
 }>()
 
-defineEmits(['close'])
+const emit = defineEmits(['close'])
+
+const paypal: Ref<any> = ref(null)
+
+const cart = useCartStore()
+
+onMounted(async () => {
+  try {
+    paypal.value = await loadScript({
+      clientId:
+        import.meta.env.VITE_PAYPAL_CLIENT_ID ||
+        'AYfXh9LscHuwUGMImNtDNDmFIujKTzhaO6Tho46Fq212YLyAN0lMALq7dicz8sPathrGwP_zNg5inN8P',
+      disableFunding: 'credit,card',
+      currency: 'EUR',
+      vault: 'true',
+      intent: 'subscription',
+    })
+    if (paypal.value) {
+      await paypal.value
+        .Buttons({
+          createSubscription() {
+            return cart
+              .makeRecurring(props?.order.id)
+              .then((data: any) => data.id)
+          },
+          onApprove() {},
+        })
+        .render('#paypal-subscription')
+    }
+  } catch (err: any) {
+    console.error(err)
+  }
+})
+
+const handleCancel = () => {
+  cart.cancelRecurring(props?.order.id)
+  emit('close')
+}
 </script>

@@ -62,7 +62,7 @@
             <button
               v-if="withButton"
               class="py-[8px] w-fit h-fit"
-              @click="openPaymentModal"
+              @click="openPaymentModal(order)"
             >
               <img src="/icons/edit.svg" class="w-[20px] h-[20px]" alt="edit" />
             </button>
