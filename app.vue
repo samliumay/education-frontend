@@ -96,6 +96,7 @@ body {
   font-family: Aeroport, sans-serif;
   background: white;
   font-size: 16px;
+  color: #202020;
 }
 
 /* Global classes */

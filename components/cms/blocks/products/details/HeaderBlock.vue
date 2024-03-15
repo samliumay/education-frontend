@@ -118,6 +118,12 @@
       </div>
     </div>
 
+    <SeoText
+      v-if="type === 'special'"
+      :block-data="{ value: { heading: '', paragraph: blockData.seo_text } }"
+      class="mt-8 mb-4"
+    />
+
     <Cover
       :image-title="blockData.title_image"
       :image-background="blockData.background_image"
@@ -137,6 +143,7 @@ import { type Product, type ProductType } from '../../../../../types'
 import { type PageBlock } from '../../../../../types/cms'
 import CategoryBlock from '../../../../misc/CategoryBlock.vue'
 import TagsBlock from '../../../../misc/TagsBlock.vue'
+import SeoText from '../../main/SeoText.vue'
 import Cover from '../../misc/Cover.vue'
 
 defineProps<{

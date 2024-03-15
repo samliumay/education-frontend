@@ -13,7 +13,7 @@
     />
     <h2
       v-if="!withoutTitle"
-      class="relative text-5xl uppercase font-medium mb-12"
+      class="relative text-5xl uppercase font-medium mb-12 text-center"
     >
       Тарифы
     </h2>
@@ -38,7 +38,7 @@
       >
         <div>
           <div class="flex items-center">
-            <ImageBlock :image="item?.icon" class="w-[64px] h-[64px]" />
+            <ImageBlock :image="item?.icon" />
             <h3 class="text-[28px] font-medium ml-[20px]">
               {{ item.title }}
             </h3>

@@ -1,6 +1,7 @@
 export const en = {
   common: {
     recommend: 'We recommend',
+    age: 'y. o.',
     main: 'Home',
     tutors: 'Instructors',
     aboutUs: 'About us',

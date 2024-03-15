@@ -15,7 +15,7 @@
       ref="shownImage"
       :src="imageUrl"
       :alt="image?.title ?? 'image'"
-      :class="`w-full h-full object-cover ${imageClass ?? ''}`"
+      :class="`object-cover ${imageClass ?? ''} w-full h-full`"
       @load="imageLoading = false"
       @error="
         () => {

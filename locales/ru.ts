@@ -1,6 +1,7 @@
 export const ru = {
   common: {
     recommend: 'Рекомендуем',
+    age: 'Лет',
     main: 'Главная',
     tutors: 'Преподаватели',
     aboutUs: 'О нас',

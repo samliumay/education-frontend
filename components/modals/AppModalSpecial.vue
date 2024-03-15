@@ -45,7 +45,7 @@
             <form
               ref="form"
               class="flex flex-col gap-2 mt-10 relative"
-              @submit.prevent="sendModalCourse"
+              @submit.prevent.stop="sendModalCourse"
             >
               <div class="grid grid-cols-1 lg:grid-cols-2 gap-[12px]">
                 <AppInput
@@ -105,8 +105,8 @@ import { computed, ref, type VNodeRef } from 'vue'
 import AppInput from '@/components/AppInput.vue'
 import BuyProductCard from '@/components/buy/BuyProductCard.vue'
 import GetChildData from '@/components/buy/GetChildData.vue'
-// import { useCartStore } from '@/store/cart'
-// import { useUserStore } from '@/store/user'
+import { useCartStore } from '@/store/cart'
+import { useUserStore } from '@/store/user'
 import { getApiAddress } from '@/utils/getApiAddress'
 
 const props = defineProps<{
@@ -118,8 +118,8 @@ const emit = defineEmits(['close'])
 // Init hooks
 
 // Store
-// const userStore = useUserStore()
-// const cartStore = useCartStore()
+const userStore = useUserStore()
+const cartStore = useCartStore()
 
 // State
 // eslint-disable-next-line vue/require-typed-ref
@@ -152,12 +152,15 @@ const registrationForm = ref({
 
 // eslint-disable-next-line require-await
 const sendModalCourse = async () => {
-  // await cartStore.sendVisitRequest({
-  //   product_page: route.params.id,
-  //   children: [userStore.visitors.find((el) => el.id === visitor.value)],
-  //   adults: [registrationForm.value],
-  // })
-  emit('close')
+  await cartStore
+    .sendVisitRequest({
+      product_page: product.value.id,
+      children: [userStore.visitors.find(el => el.id === visitor.value)],
+      adults: [registrationForm.value],
+    })
+    .then(() => {
+      emit('close')
+    })
 }
 
 // Form
@@ -166,7 +169,7 @@ const checkValidity = (event: {
   relatedTarget: { focus: () => void }
 }) => {
   event.target.reportValidity()
-  event.relatedTarget.focus()
+  event.relatedTarget?.focus()
 }
 
 const form = ref<VNodeRef | undefined>(undefined)
