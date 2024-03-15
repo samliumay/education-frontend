@@ -1,7 +1,10 @@
 <!-- eslint-disable vue-scoped-css/enforce-style-type -->
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <div class="rich-text block-padding-x" v-html="sanitizedDescription" />
+  <div
+    class="rich-text block-padding-x text-brand-gray"
+    v-html="sanitizedDescription"
+  />
 </template>
 <script setup lang="ts">
 import DOMPurify from 'dompurify'

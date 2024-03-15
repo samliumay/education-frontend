@@ -129,6 +129,8 @@ const goToDetails = () => {
   navigateTo(`/product/${props.blockData?.id}`)
 }
 
+const { t } = useI18n()
+
 // Catalog
 const removeLocalhost = (url: string) => url.replace('http://localhost', '')
 const catalogAddress = props?.blockData?.catalog?.meta?.detail_url ?? ''
@@ -170,7 +172,7 @@ const tags = computed(() => {
     typeof props.blockData?.age_group === 'string' &&
     props.blockData?.age_group
   ) {
-    bufferArray.push(`${props.blockData?.age_group} Лет`)
+    bufferArray.push(`${props.blockData?.age_group} ${t('common.age')}`)
   }
 
   // Status
@@ -183,8 +185,6 @@ const tags = computed(() => {
 
   return bufferArray
 })
-
-const { t } = useI18n()
 
 // Schedule
 const schedule = computed(() => {

@@ -3,10 +3,18 @@
     class="block-padding-y block-padding-x overflow-hidden"
     data-cms="tariff-block"
   >
-    <div class="grid grid-cols-1 md:grid-cols-7 gap-[24px] md:mb-6">
-      <AppHeading class="col-span-1 md:col-span-3">
-        {{ blockData.value.title }}
-      </AppHeading>
+    <div class="grid grid-cols-1 md:grid-cols-7 gap-[12px] md:mb-6">
+      <div class="col-span-1 md:col-span-3">
+        <AppHeading>
+          {{ blockData.value.title }}
+        </AppHeading>
+        <AppButton
+          class="block mb-8 w-full md:w-auto -mt-6"
+          @click="navigateToCatalog"
+        >
+          {{ $t('common.actions.buy') }}
+        </AppButton>
+      </div>
 
       <p
         class="text-brand-gray text-lg font-medium col-span-1 md:col-span-4 mb-3 md:mb-10"
@@ -14,10 +22,6 @@
         {{ blockData.value.description }}
       </p>
     </div>
-
-    <AppButton class="block mb-8 w-full md:w-auto" @click="navigateToCatalog">
-      {{ $t('common.actions.buy') }}
-    </AppButton>
 
     <PaymentOptions without-title :block-data="blockData.value.tariff_cards" />
   </div>
