@@ -62,6 +62,11 @@ export const useCartStore = defineStore('cart', () => {
     return res
   }
 
+  const makeRecurring = (id: number) =>
+    HTTP.post(`/api/v2/orders/subscriptions/${id}/make_recurring/`)
+  const cancelRecurring = (id: number) =>
+    HTTP.patch(`/api/v2/orders/subscriptions/${id}/cancel/`)
+
   const captureOrder = (orderId: string, data: any) =>
     HTTP.post(`/api/v2/orders/${orderId}/capture/`, data)
 
@@ -99,5 +104,7 @@ export const useCartStore = defineStore('cart', () => {
     resetCart,
     paypalFulfillOrder,
     captureOrder,
+    makeRecurring,
+    cancelRecurring,
   }
 })
