@@ -310,7 +310,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed, onMounted, type Ref, ref, type VNodeRef } from 'vue'
+import { computed, onMounted, ref, type VNodeRef } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import AppButton from '../components/AppButton.vue'
@@ -320,18 +320,12 @@ import CartItem from '../components/cart/CartItem.vue'
 import EmptyCart from '../components/cart/EmptyCart.vue'
 import { useCartStore } from '../store/cart'
 import { useUserStore } from '../store/user'
-import type { AdditionalInfo } from '../types'
 
 const { t } = useI18n()
 
 const userStore = useUserStore()
 const cart = useCartStore()
 await cart.getCurrentOrder()
-
-const additionalInfo: Ref<AdditionalInfo> = ref({
-  first_name: userStore?.user?.first_name ?? '',
-  last_name: userStore?.user?.last_name ?? '',
-} as AdditionalInfo)
 
 const promocode = ref('')
 const promocodeStatus = ref('empty')
