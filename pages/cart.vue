@@ -212,68 +212,6 @@
             />
           </div>
         </div>
-
-        <div
-          v-if="cart?.order?.items?.length > 0 && userStore.isLoggedIn"
-          class="bg-white rounded-[12px] p-[24px]"
-        >
-          <h2 class="font-medium text-[24px] mb-6">
-            {{ $t('cart.paymentDetails.title') }}
-          </h2>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-[12px] mb-[12px]">
-            <AppInput
-              v-model="additionalInfo.first_name"
-              :placeholder="$t('cart.paymentDetails.name')"
-              required
-              pattern=".{2,}"
-              title="The name must contain at least two characters"
-              @blur="checkValidity"
-            />
-            <AppInput
-              v-model="additionalInfo.last_name"
-              :placeholder="$t('cart.paymentDetails.surname')"
-              pattern=".{2,}"
-              title="Last name must contain at least two characters"
-              required
-              @blur="checkValidity"
-            />
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-[12px] mb-[12px]">
-            <AppInput
-              v-model.lazy="additionalInfo.street"
-              :placeholder="$t('cart.paymentDetails.streetName')"
-              pattern=".{2,}"
-              title="Street name must contain at least two characters"
-              required
-              @blur="checkValidity"
-            />
-            <AppInput
-              v-model="additionalInfo.state"
-              required
-              :placeholder="$t('cart.paymentDetails.streetNumber')"
-            />
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-[12px]">
-            <AppInput
-              v-model.lazy="additionalInfo.post_code"
-              :placeholder="$t('cart.paymentDetails.postalCode')"
-              pattern=".{2,}"
-              title="Postal code must contain at least two characters"
-              required
-              @blur="checkValidity"
-            />
-            <AppInput
-              v-model.lazy="additionalInfo.city"
-              pattern=".{2,}"
-              title="City must contain at least two characters"
-              required
-              :placeholder="$t('cart.paymentDetails.city')"
-            />
-          </div>
-        </div>
       </div>
 
       <ErrorBoundaryBlock>
@@ -372,7 +310,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed, onMounted, type Ref, ref, type VNodeRef } from 'vue'
+import { computed, onMounted, ref, type VNodeRef } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import AppButton from '../components/AppButton.vue'
@@ -382,18 +320,12 @@ import CartItem from '../components/cart/CartItem.vue'
 import EmptyCart from '../components/cart/EmptyCart.vue'
 import { useCartStore } from '../store/cart'
 import { useUserStore } from '../store/user'
-import type { AdditionalInfo } from '../types'
 
 const { t } = useI18n()
 
 const userStore = useUserStore()
 const cart = useCartStore()
 await cart.getCurrentOrder()
-
-const additionalInfo: Ref<AdditionalInfo> = ref({
-  first_name: userStore?.user?.first_name ?? '',
-  last_name: userStore?.user?.last_name ?? '',
-} as AdditionalInfo)
 
 const promocode = ref('')
 const promocodeStatus = ref('empty')
@@ -527,7 +459,7 @@ onMounted(() => {
     onApprove(data: any) {
       // eslint-disable-next-line no-console
       return cart.captureOrder(data.orderID, data).then(() => {
-        cart.getCurrentOrder()
+        setTimeout(() => cart.getCurrentOrder(), 200)
         navigateTo('/')
       })
     },
