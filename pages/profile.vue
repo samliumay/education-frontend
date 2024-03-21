@@ -258,7 +258,7 @@
                         .join('; ')
                     }}
                   </p>
-                  <p>{{ new Date().toDateString() }}</p>
+                  <p>{{ new Date(workshop.purchased_at).toDateString() }}</p>
                   <button
                     class="w-fit text-brand-black active:text-brand-red cursor-pointer underline underline-offset-8"
                     @click="openCommentModal(workshop)"
@@ -343,7 +343,7 @@ const checkValidity = (event: {
   relatedTarget: { focus: () => void }
 }) => {
   event.target.reportValidity()
-  event.relatedTarget.focus()
+  event.relatedTarget?.focus()
 }
 
 const changePassword = async () => {

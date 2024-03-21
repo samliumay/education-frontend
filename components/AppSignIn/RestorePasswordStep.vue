@@ -55,7 +55,7 @@ const checkValidity = (event: {
   relatedTarget: { focus: () => void }
 }) => {
   event.target.reportValidity()
-  event.relatedTarget.focus()
+  event.relatedTarget?.focus()
 }
 
 const clearError = () => {

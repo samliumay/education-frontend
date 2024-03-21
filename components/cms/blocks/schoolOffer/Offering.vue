@@ -46,10 +46,12 @@
       <div
         class="bg-brand-light-gray rounded-[12px] p-3 lg:p-6 relative overflow-hidden"
       >
-        <ImageBlock
-          :image="blockData.value.contents?.left_pane.photo"
-          image-class="z-0 absolute right-0 top-1/2 -translate-y-1/2 hidden sm:block"
-        />
+        <div class="absolute left-[60%] w-2/5 top-0 h-full">
+          <ImageBlock
+            :image="blockData.value.contents?.left_pane.photo"
+            image-class="absolute hidden sm:block max-w-full max-h-full w-auto h-auto top-1/2 -translate-y-1/2"
+          />
+        </div>
         <div class="relative w-full sm:w-3/5 z-10">
           <h3
             class="text-[36px] lg:text-[48px] text-brand-red font-semibold leading-tight uppercase"
@@ -65,10 +67,12 @@
       <div
         class="bg-brand-light-gray rounded-[12px] p-3 lg:p-6 relative overflow-hidden"
       >
-        <ImageBlock
-          :image="blockData.value.contents?.right_pane.photo"
-          image-class="z-0 absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 hidden sm:block max-w-full max-h-full w-auto h-auto"
-        />
+        <div class="absolute left-[60%] w-2/5 top-0 h-full">
+          <ImageBlock
+            :image="blockData.value.contents?.right_pane.photo"
+            image-class="absolute hidden sm:block max-w-full max-h-full w-auto h-auto top-1/2 -translate-y-1/2"
+          />
+        </div>
         <div class="relative w-full sm:w-3/5 z-10 bg-brand-light-gray">
           <h3
             class="text-[36px] lg:text-[48px] text-brand-red font-semibold leading-tight uppercase"

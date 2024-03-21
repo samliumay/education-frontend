@@ -14,11 +14,12 @@
       show-arrow
     >
       <n-carousel-item
-        v-for="item in blockData.content"
+        v-for="item in blockData.content || []"
         :key="item"
         style="width: fit-content"
       >
         <ImageBlockById
+          v-if="!!item?.id"
           :id="item"
           class="h-[300px] rounded-xl overflow-hidden"
         />

@@ -212,7 +212,7 @@ export const useUserStore = defineStore('user', () => {
 
   const getWorkshopOrders = async () => {
     workshopOrders.value = await HTTP.get(
-      `/api/v2/orders/items/history/?product_type=Workshop`,
+      `/api/v2/orders/items/history/?product_page__product_type=Workshop`,
     )
   }
 

@@ -1,6 +1,7 @@
 export const en = {
   common: {
     recommend: 'We recommend',
+    age: 'y. o.',
     main: 'Home',
     tutors: 'Instructors',
     aboutUs: 'About us',
@@ -208,10 +209,11 @@ export const en = {
     enterFio:
       'Enter the first and last name of the children who will come to the event',
     chooseTariff: 'Select tariff',
-    feature: 'Does your child have a special feature?',
+    feature: 'Allergies or illnesses',
     yes: 'Yes',
     no: 'No',
-    photo: 'I consent to the photograph of my child',
+    photo: 'Photo approval',
+    alone: 'Going home alone',
     total: 'Total: ',
     addCart: 'Add to the cart',
   },

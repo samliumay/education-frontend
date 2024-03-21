@@ -18,6 +18,7 @@
       class="mb-10 lg:flex lg:items-center"
     >
       <ImageBlockByID
+        v-if="!!item?.id"
         :id="item?.image"
         class="h-[200px] rounded-xl overflow-hidden lg:w-1/2"
         image-class="!object-contain"
