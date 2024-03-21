@@ -211,10 +211,11 @@ export const de = {
     enterFio:
       'Geben Sie den Vor- und Nachnamen der Kinder ein, die zur Veranstaltung kommen werden',
     chooseTariff: 'Tarif auswählen',
-    feature: 'Hat Ihr Kind eine Besonderheit?',
+    feature: 'Allergien oder Krankheiten',
     yes: 'Ja',
     no: 'Nein',
-    photo: 'Ich bin mit der Fotografie meines Kindes einverstanden',
+    photo: 'Fotoerlaubnis',
+    alone: 'Darf Ihr Kind alleine nachhause gehen?',
     total: 'Gesamt: ',
     addCart: 'In den Warenkorb legen',
   },

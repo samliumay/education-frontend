@@ -198,59 +198,92 @@
         </n-space>
 
         <AppDivider class="my-[24px]" />
-
-        <p class="text-[20px] font-medium mt-3 mb-4">
-          {{ $t('buy.feature') }}
-        </p>
-
-        <n-space>
-          <n-radio
-            :checked="buyForm.feature === 'yes'"
-            value="yes"
-            name="feature"
-            @change="buyForm.feature = 'yes'"
-          >
-            {{ $t('buy.yes') }}
-          </n-radio>
-
-          <n-radio
-            class="ml-[12px]"
-            :checked="buyForm.feature === 'no'"
-            value="no"
-            name="feature"
-            @change="buyForm.feature = 'no'"
-          >
-            {{ $t('buy.no') }}
-          </n-radio>
-        </n-space>
-
-        <AppDivider class="my-[24px]" />
-
-        <p class="text-[20px] font-medium mt-3 mb-4">
-          {{ $t('buy.photo') }}
-        </p>
-
-        <n-space>
-          <n-radio
-            :checked="buyForm.photo === 'yes'"
-            value="yes"
-            name="photo"
-            @change="buyForm.photo = 'yes'"
-          >
-            {{ $t('buy.yes') }}
-          </n-radio>
-
-          <n-radio
-            class="ml-[12px]"
-            :checked="buyForm.photo === 'no'"
-            value="no"
-            name="photo"
-            @change="buyForm.photo = 'no'"
-          >
-            {{ $t('buy.no') }}
-          </n-radio>
-        </n-space>
       </template>
+
+      <p class="text-[20px] font-medium mt-3 mb-4">
+        {{ $t('buy.photo') }}
+      </p>
+
+      <n-space>
+        <n-radio
+          :checked="buyForm.photo === 'yes'"
+          value="yes"
+          name="photo"
+          @change="buyForm.photo = 'yes'"
+        >
+          {{ $t('buy.yes') }}
+        </n-radio>
+
+        <n-radio
+          class="ml-[12px]"
+          :checked="buyForm.photo === 'no'"
+          value="no"
+          name="photo"
+          @change="buyForm.photo = 'no'"
+        >
+          {{ $t('buy.no') }}
+        </n-radio>
+      </n-space>
+
+      <AppDivider class="my-[24px]" />
+
+      <p class="text-[20px] font-medium mt-3 mb-4">
+        {{ $t('buy.alone') }}
+      </p>
+
+      <n-space>
+        <n-radio
+          :checked="buyForm.alone === 'yes'"
+          value="yes"
+          name="photo"
+          @change="buyForm.alone = 'yes'"
+        >
+          {{ $t('buy.yes') }}
+        </n-radio>
+
+        <n-radio
+          class="ml-[12px]"
+          :checked="buyForm.alone === 'no'"
+          value="no"
+          name="photo"
+          @change="buyForm.alone = 'no'"
+        >
+          {{ $t('buy.no') }}
+        </n-radio>
+      </n-space>
+
+      <AppDivider class="my-[24px]" />
+
+      <p class="text-[20px] font-medium mt-3 mb-4">
+        {{ $t('buy.feature') }}
+      </p>
+
+      <n-space>
+        <n-radio
+          :checked="buyForm.feature === 'yes'"
+          value="yes"
+          name="feature"
+          @change="buyForm.feature = 'yes'"
+        >
+          {{ $t('buy.yes') }}
+        </n-radio>
+
+        <n-radio
+          class="ml-[12px]"
+          :checked="buyForm.feature === 'no'"
+          value="no"
+          name="feature"
+          @change="buyForm.feature = 'no'"
+        >
+          {{ $t('buy.no') }}
+        </n-radio>
+      </n-space>
+
+      <AppTextarea
+        v-if="buyForm.feature === 'yes'"
+        v-model:model-value="buyForm.comment"
+        class="mt-3"
+      />
 
       <AppDivider class="my-[24px]" />
 
@@ -319,6 +352,7 @@ const buyForm = ref({
   comment: '',
   feature: 'yes',
   photo: 'yes',
+  alone: 'no',
   visitor: null,
 } as unknown as Partial<OrderItem> & {
   first: boolean
@@ -326,6 +360,7 @@ const buyForm = ref({
   comment: string
   feature: string
   photo: string
+  alone: string
 })
 
 const { data: product, pending: productPending } = await useAsyncData(
