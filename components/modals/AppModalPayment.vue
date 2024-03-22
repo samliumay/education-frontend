@@ -30,7 +30,23 @@
         <div class="flex flex-col gap-4 m-10">
           <div class="w-full py-2 flex justify-between items-center">
             <p>{{ $t('common.modals.subscriptionPaymentPayPal') }}</p>
-            <a :href="order.paypal_invoice_link" target="_blank" rel="noopener noreferrer"><AppButton>{{ $t('common.actions.pay') }}</AppButton></a>
+            <a
+              :href="
+                !!order.paypal_invoice_link &&
+                ['awaiting payment', 'renewal available'].includes(order.state)
+                  ? order.paypal_invoice_link
+                  : '#'
+              "
+              target="_blank"
+              rel="noopener noreferrer"
+              ><AppButton
+                :disabled="
+                  !order.paypal_invoice_link ||
+                  ['awaiting payment', 'renewal available']!.includes(
+                    order.state,
+                  )
+                "
+                >{{ $t('common.actions.pay') }}</AppButton></a>
           </div>
           <div class="w-full py-2 flex justify-between items-center">
             <p>{{ $t('common.modals.autopayPayPal') }}</p>
