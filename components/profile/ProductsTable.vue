@@ -56,9 +56,15 @@
               }}
             </p>
             <p>
-              {{ new Date().toDateString() }}
+              {{ order.purchased_at || new Date().toDateString() }}
             </p>
-            <p class="text-brand-gray">{{ $t('common.canceled') }}</p>
+            <p class="text-brand-gray">
+              {{
+                order.state
+                  ? $t(`common.states.${order.state}`)
+                  : $t(`common.canceled`)
+              }}
+            </p>
             <button
               v-if="withButton"
               class="py-[8px] w-fit h-fit"

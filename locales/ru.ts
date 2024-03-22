@@ -1,5 +1,12 @@
 export const ru = {
   common: {
+    states: {
+      "cancelled": 'Отменено',
+      "frozen": 'Заморожено',
+      'awaiting payment': 'Ожидает оплаты',
+      "active": 'Активно',
+      'renewal available': 'Доступно продление',
+    },
     recommend: 'Рекомендуем',
     age: 'Лет',
     main: 'Главная',
