@@ -1,5 +1,12 @@
 export const en = {
   common: {
+    states: {
+      "cancelled": 'Cancelled',
+      "frozen": 'Frozen',
+      'awaiting payment': 'Awaiting Payment',
+      "active": 'Active',
+      'renewal available': 'Renewal Available',
+    },
     recommend: 'We recommend',
     age: 'y. o.',
     main: 'Home',

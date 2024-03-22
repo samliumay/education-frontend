@@ -1,5 +1,12 @@
 export const de = {
   common: {
+    states: {
+      "cancelled": 'Abgesagt',
+      "frozen": 'Gefroren',
+      'awaiting payment': 'Warten auf Zahlung',
+      "active": 'Aktiv',
+      'renewal available': 'Verlängerung verfügbar',
+    },
     recommend: 'Wir empfehlen',
     age: 'Jahre',
     main: 'Clavis',
