@@ -10,7 +10,9 @@ services:
       context: .
       dockerfile: ./docker/prod/Dockerfile
       args:
-        VITE_API_URL: https://devops-schuleberlin.de
+        VITE_API_URL: $VITE_API_URL
+        VITE_PAYPAL_CLIENT_ID: $VITE_GOOGLE_SSO_CLIENT_ID
+        VITE_GOOGLE_SSO_CLIENT_ID: $VITE_GOOGLE_SSO_CLIENT_ID
     image: $CI_REGISTRY_IMAGE/frontend:$CI_COMMIT_SHA
     restart: unless-stopped
     expose:
