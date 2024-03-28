@@ -446,6 +446,7 @@ const fullfillOrder = async () => {
     'stripe',
     String(window.location).replace('cart', ''),
   )
+  cart.resetCart()
   window.location.href = urlObject.url
 }
 onMounted(() => {
