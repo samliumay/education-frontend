@@ -12,7 +12,7 @@ import { computed } from 'vue'
 
 const props = defineProps<{
   html: string
-  blockData: string
+  blockData?: string
 }>()
 
 const sanitizedDescription = computed(() =>

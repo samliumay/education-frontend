@@ -1,5 +1,5 @@
 <template>
-  <form ref="form" @submit.prevent="login">
+  <form ref="form" @submit.prevent="login" @enter.prevent="login">
     <AppInput
       v-model="credentials.email"
       placeholder="E-mail"
@@ -17,13 +17,21 @@
       :title="$t('user.passwordValidation')"
       @blur="checkValidity"
     />
-    <button class="mt-[16px] block" @click="$emit('goToRestorePasswordStep')">
+    <button
+      type="button"
+      class="mt-[16px] block"
+      @click="$emit('goToRestorePasswordStep')"
+    >
       {{ $t('user.forgotPassword') }}
       <span class="text-brand-red cursor-pointer">{{
         $t('common.actions.restore')
       }}</span>
     </button>
-    <button class="mt-[16px] block" @click="$emit('goToSignUpStep')">
+    <button
+      type="button"
+      class="mt-[16px] block"
+      @click="$emit('goToSignUpStep')"
+    >
       {{ $t('user.noAccount') }}
       <span class="text-brand-red cursor-pointer">{{
         $t('common.actions.signUp')

@@ -17,9 +17,8 @@
       :key="item?.title"
       class="mb-10 lg:flex lg:items-center"
     >
-      <ImageBlockByID
-        v-if="!!item?.id"
-        :id="item?.image"
+      <ImageBlock
+        :image="item?.image"
         class="h-[200px] rounded-xl overflow-hidden lg:w-1/2"
         image-class="!object-contain"
         :class="{
@@ -46,7 +45,7 @@
 </template>
 <script setup lang="ts">
 import type { PageBlock } from '../../../../../types/cms'
-import ImageBlockByID from '../../misc/ImageBlockByID.vue'
+import ImageBlock from '../../misc/ImageBlock.vue'
 import RichText from '../../misc/RichText.vue'
 
 defineProps<{

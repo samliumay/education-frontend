@@ -58,6 +58,7 @@
     <div class="mt-[16px]">
       {{ $t('user.hasAccount') }}
       <button
+        type="button"
         class="text-brand-red cursor-pointer"
         @click="$emit('goToEmailStep')"
       >

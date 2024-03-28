@@ -7,6 +7,8 @@ export const de = {
       "active": 'Aktiv',
       'renewal available': 'Verlängerung verfügbar',
     },
+    go: 'Zum',
+    allTeachers: 'Alle Lehrer',
     recommend: 'Wir empfehlen',
     age: 'Jahre',
     main: 'Clavis',

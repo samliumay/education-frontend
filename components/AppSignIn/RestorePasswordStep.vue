@@ -8,6 +8,7 @@
       @blur="checkValidity"
     />
     <button
+      type="button"
       class="mt-[16px] text-brand-red cursor-pointer"
       @click="$emit('goToEmailStep')"
     >

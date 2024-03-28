@@ -7,6 +7,8 @@ export const en = {
       "active": 'Active',
       'renewal available': 'Renewal Available',
     },
+    go: 'Go',
+    allTeachers: 'All teachers',
     recommend: 'We recommend',
     age: 'y. o.',
     main: 'Home',
