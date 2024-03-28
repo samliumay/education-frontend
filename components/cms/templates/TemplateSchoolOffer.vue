@@ -7,6 +7,7 @@
           :is="block.name"
           v-if="!checkIsEmpty(block.blockData)"
           :block-data="block.blockData"
+          :has-button="block?.hasButton"
         />
       </ErrorBoundaryBlock>
     </div>
@@ -66,6 +67,7 @@ const blocksList = computed(() => [
   {
     name: AboutTutors,
     blockData: product.value?.items[0].instructors_block[0].value.instructors,
+    hasButton: true,
   },
   {
     name: StudentWorks,

@@ -17,7 +17,7 @@
         </h3>
 
         <ImageBlock
-          :image="item.icon"
+          :image="item.icon || item.image"
           class="w-[160px] h-fit translate-y-1.5"
         />
 
