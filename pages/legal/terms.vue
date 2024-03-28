@@ -9,7 +9,7 @@
       </n-breadcrumb-item>
     </n-breadcrumb>
 
-    <h1 class="text-brand-black text-4xl md:text-5xl mb-10 font-medium">
+    <h1 class="text-brand-black text-3xl md:text-5xl mb-10 font-medium">
       ALLGEMEINE GESCHÄFTSBEDINGUNGEN FÜR DIE Clavis Kunst und Wissenschaft
       Privatschule GmbH
     </h1>

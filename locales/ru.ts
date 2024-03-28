@@ -7,6 +7,8 @@ export const ru = {
       "active": 'Активно',
       'renewal available': 'Доступно продление',
     },
+    go: 'Перейти',
+    allTeachers: 'Все преподаватели',
     recommend: 'Рекомендуем',
     age: 'Лет',
     main: 'Главная',

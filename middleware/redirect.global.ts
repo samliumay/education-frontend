@@ -3,7 +3,7 @@ import { useUserStore } from '../store/user'
 // eslint-disable-next-line consistent-return
 export default defineNuxtRouteMiddleware(to => {
   if (process.client) {
-    if (/^\/?profile(\/\w+)?\/?$/.test(to.path)) {
+    if ((to.path as string).includes('profile')) {
       const userStorage = useUserStore()
 
       if (!userStorage.isLoggedIn) {
