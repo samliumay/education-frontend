@@ -45,7 +45,7 @@
             </p>
             <p class="col-span-2">
               {{
-                order.product_page.schedule_slots
+                order.schedule_slots
                   .map((slot: Slot) => {
                     return `${slot.weekday.slice(0, 2)} ${slot.start.slice(
                       0,

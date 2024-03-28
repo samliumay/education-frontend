@@ -412,7 +412,7 @@ const isButtonActive = computed(
         !!buyForm.value.purchase_option &&
         !!buyForm.value.schedule_slots?.length) ||
         (product.value.product_type === 'Academy' &&
-          !!buyForm.value.academy_number_of_weeks))) ||
+          !!buyForm.value.academy_number_of_weeks && (buyForm.value.first || buyForm.value.second)))) ||
     (product.value.product_type === 'Workshop' && !!buyForm.value.comment),
 )
 </script>
