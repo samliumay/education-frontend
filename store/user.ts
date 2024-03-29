@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { computed, type Ref, ref } from 'vue'
 
-import { VISITORS_KEY } from '@/constants/localStorage?'
+import { VISITORS_KEY } from '@/constants/localStorage'
 
 import { getToken, HTTP, setToken } from '../api/index'
 import {
@@ -12,7 +12,7 @@ import {
 } from '../types'
 
 export const useUserStore = defineStore('user', () => {
-  const localUser = localStorage?.getItem('user')
+  const localUser = localStorage.getItem('user')
   const initialUser = localUser
     ? JSON.parse(localUser)
     : {
@@ -49,7 +49,7 @@ export const useUserStore = defineStore('user', () => {
       return null
     }
 
-    visitors.value = JSON.parse(window.localStorage?.getItem('visitors'))
+    visitors.value = JSON.parse(window.localStorage.getItem('visitors'))
   }
 
   const postVisitor = async (visitor: Omit<Visitor, 'id'>) => {
@@ -59,11 +59,11 @@ export const useUserStore = defineStore('user', () => {
       return res
     }
 
-    const currentVisitors = JSON.parse(window.localStorage?.getItem('visitors'))
+    const currentVisitors = JSON.parse(window.localStorage.getItem('visitors'))
     const id = currentVisitors.length + 1
     currentVisitors.push({ ...visitor, id })
 
-    window.localStorage?.setItem(VISITORS_KEY, JSON.stringify(currentVisitors))
+    window.localStorage.setItem(VISITORS_KEY, JSON.stringify(currentVisitors))
     visitors.value = currentVisitors
 
     return {
@@ -77,11 +77,11 @@ export const useUserStore = defineStore('user', () => {
 
   const setUser = (newValue: FullUser) => {
     user.value = newValue
-    localStorage?.setItem('user', JSON.stringify(newValue))
+    localStorage.setItem('user', JSON.stringify(newValue))
   }
 
   const logout = () => {
-    localStorage?.clear()
+    localStorage.clear()
     user.value = initialUser
     visitors.value = []
     ordersByVisitors.value = {}

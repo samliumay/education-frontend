@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
-import { CART_ID_KEY, VISITORS_KEY } from '@/constants/localStorage?'
+import { CART_ID_KEY, VISITORS_KEY } from '@/constants/localStorage'
 
 import { HTTP } from '../api/index'
 import { type Order, type OrderItem } from '../types'
@@ -47,8 +47,8 @@ export const useCartStore = defineStore('cart', () => {
   const resetCart = async () => {
     const res = await HTTP.post(getApiAddress(`/api/v2/orders/init/`))
 
-    localStorage?.setItem(CART_ID_KEY, res?.cart_id)
-    localStorage?.setItem(VISITORS_KEY, JSON.stringify([]))
+    localStorage.setItem(CART_ID_KEY, res?.cart_id)
+    localStorage.setItem(VISITORS_KEY, JSON.stringify([]))
 
     cartId.value = res?.cart_id
   }
@@ -80,13 +80,13 @@ export const useCartStore = defineStore('cart', () => {
     )
 
   const init = async () => {
-    const currentCartId = window.localStorage?.getItem(CART_ID_KEY)
+    const currentCartId = window.localStorage.getItem(CART_ID_KEY)
 
     if (!currentCartId) {
       const res = await HTTP.post(getApiAddress(`/api/v2/orders/init/`))
 
-      localStorage?.setItem(CART_ID_KEY, res?.cart_id)
-      localStorage?.setItem(VISITORS_KEY, JSON.stringify([]))
+      localStorage.setItem(CART_ID_KEY, res?.cart_id)
+      localStorage.setItem(VISITORS_KEY, JSON.stringify([]))
 
       cartId.value = res?.cart_id
     } else {

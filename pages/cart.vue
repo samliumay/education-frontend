@@ -425,7 +425,7 @@ const signUp = async () => {
   if (!registrationError.value) {
     if (process.client) {
       const visitors = JSON.parse(
-        window.localStorage?.getItem('visitors') || '[]',
+        window.localStorage.getItem('visitors') || '[]',
       )
       await userStore.postVisitor(visitors[0])
 

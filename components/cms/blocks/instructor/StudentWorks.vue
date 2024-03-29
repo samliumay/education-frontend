@@ -10,13 +10,13 @@
       :space-between="10"
       :loop="false"
       slides-per-view="auto"
-      draggable
       show-arrow
+      draggable
     >
       <n-carousel-item
         v-for="item in blockData.content || []"
         :key="item"
-        style="width: fit-content"
+        class="w-[100%] lg:!w-[33%]"
       >
         <ImageBlockById
           v-if="!!item?.id"

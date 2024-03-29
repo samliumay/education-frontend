@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const getToken = () => {
-  const token = window.localStorage?.getItem('odev-token')
+  const token = window.localStorage.getItem('odev-token')
 
   if (token) {
     return token
@@ -11,11 +11,11 @@ export const getToken = () => {
 }
 
 export const setToken = (token: string) => {
-  window.localStorage?.setItem('odev-token', token)
+  window.localStorage.setItem('odev-token', token)
 }
 
 export const deleteToken = () => {
-  window.localStorage?.removeItem('odev-token')
+  window.localStorage.removeItem('odev-token')
 }
 
 export const apiClient = axios.create({
