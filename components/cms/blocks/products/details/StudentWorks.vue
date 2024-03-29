@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-static-inline-styles -->
 
 <template>
-  <div class="mx-10 student-works" data-cms="products-details-student-works">
+  <div class="mx-10 student-works" data-cms="products-details-student-works overflow-x-hidden overflow-y-auto">
     <h2
       class="text-3xl sm:text-4xl md:text-[56px] uppercase font-medium mb-20 lg:mb-14"
     >
@@ -9,15 +9,15 @@
     </h2>
     <n-carousel
       :space-between="10"
-      :current-index="currentIndex"
-      :loop="false"
       slides-per-view="auto"
       show-arrow
+      draggable
+      class="w-full"
     >
       <n-carousel-item
         v-for="item in blockData"
         :key="item.id"
-        style="width: fit-content"
+        class="w-[100%] lg:!w-[33%]"
       >
         <ImageBlock
           :image="item.icon"
@@ -26,12 +26,12 @@
         <p class="mt-1">{{ item.name }}</p>
       </n-carousel-item>
 
-      <template #arrow>
+      <template #arrow="{ next, prev }">
         <div class="absolute -top-14 right-0 flex gap-4">
           <button
             type="button"
             class="student-work__arrow-button cursor-pointer p-2 bg-brand-light-gray hover:bg-brand-yellow rounded-full transition ease-in delay-100 transform active:scale-[0.93]"
-            @click="next"
+            @click="prev"
           >
             <img
               src="/icons/chevron_down.svg"
@@ -42,7 +42,7 @@
           <button
             type="button"
             class="student-work__arrow-button cursor-pointer p-2 bg-brand-light-gray hover:bg-brand-yellow rounded-full transition ease-in delay-100 transform active:scale-[0.93]"
-            @click="prev"
+            @click="next"
           >
             <img
               src="/icons/chevron_down.svg"
@@ -52,44 +52,18 @@
           </button>
         </div>
       </template>
-
-      <template #dots="{ total, currentIndex, to }">
-        <ul class="hidden">
-          <li
-            v-for="index of total"
-            :key="index"
-            :class="{ ['is-active']: currentIndex === index - 1 }"
-            @click="to(index - 1)"
-          />
-        </ul>
-      </template>
     </n-carousel>
   </div>
 </template>
 <script setup lang="ts">
 import { NCarousel, NCarouselItem } from 'naive-ui'
-import { ref } from 'vue'
 
 import type { PageBlock } from '../../../../../types/cms'
 import ImageBlock from '../../misc/ImageBlock.vue'
 
-const props = defineProps<{
+defineProps<{
   blockData: PageBlock[]
 }>()
-
-const currentIndex = ref(0)
-
-const next = () => {
-  if (props.blockData.length - currentIndex.value < props.blockData.length) {
-    currentIndex.value++
-  }
-}
-
-const prev = () => {
-  if (currentIndex.value > -props.blockData.length + 1) {
-    currentIndex.value--
-  }
-}
 </script>
 <style>
 .student-work__arrow-button:hover > img {

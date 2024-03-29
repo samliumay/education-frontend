@@ -10,7 +10,7 @@
         v-for="item in blockData.item"
         :key="item.id"
         class="bg-white border-brand-dark-gray p-3 border-[1px] rounded-[12px] flex flex-col md:flex-row gap-4 cursor-pointer"
-        @click="navigateTo(`/product/${item.id}`)"
+        @click="navigateTo(`/product/${item.slug || item.id}`)"
       >
         <Cover
           :image-title="item?.title_image"

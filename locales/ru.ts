@@ -7,6 +7,8 @@ export const ru = {
       "active": 'Активно',
       'renewal available': 'Доступно продление',
     },
+    successPayment: 'Оплата прошла успешно',
+    failedPayment: 'Оплата не прошла',
     go: 'Перейти',
     allTeachers: 'Все преподаватели',
     recommend: 'Рекомендуем',

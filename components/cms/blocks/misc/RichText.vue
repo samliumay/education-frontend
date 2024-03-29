@@ -2,7 +2,8 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
   <div
-    class="rich-text block-padding-x text-brand-gray"
+    class="rich-text text-brand-gray"
+    :class="withoutBlockPadding ? '' : 'block-padding-x'"
     v-html="sanitizedDescription"
   />
 </template>
@@ -13,6 +14,7 @@ import { computed } from 'vue'
 const props = defineProps<{
   html: string
   blockData?: string
+  withoutBlockPadding?: boolean
 }>()
 
 const sanitizedDescription = computed(() =>

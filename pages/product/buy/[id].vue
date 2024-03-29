@@ -363,16 +363,26 @@ const buyForm = ref({
   alone: string
 })
 
+const isSlug = computed(() => !/^\d+$/.test(route.params.id as string))
+
 const { data: product, pending: productPending } = await useAsyncData(
   'products',
   () =>
-    $fetch(getApiAddress(`/api/v2/wagtail/products/${route.params.id}/`), {
-      params: {
-        locale: locale.value,
-        fields: '*',
+    $fetch(
+      getApiAddress(
+        isSlug.value
+          ? `/api/v2/wagtail/products/`
+          : `/api/v2/wagtail/products/${route.params.id}/`,
+      ),
+      {
+        params: {
+          locale: locale.value,
+          fields: '*',
+          slug: isSlug.value ? route.params.id : undefined,
+        },
       },
-    }),
-  { watch: [locale], deep: true },
+    ).then(data => (isSlug.value ? data?.items[0] : data)),
+  { watch: [locale, isSlug], deep: true },
 )
 
 const addAcademy = async () => {
@@ -389,11 +399,10 @@ const addAcademy = async () => {
   const productOrder = {
     academy_number_of_weeks: weeks || 1,
     product: route.params.id,
-    // purchase_option:
-    //   product.purchase_options.find(
-    //     option => buyForm.value.schedule_type === option.type,
-    //   )?.id || 0,
-    purchase_option: product?.value?.purchase_options?.[0]?.id ?? 1,
+    purchase_option:
+      product?.value?.product_type === 'Academy'
+        ? product?.value?.purchase_options?.[0]?.id ?? 1
+        : buyForm.value.purchase_option,
     visitor: user.isLoggedIn ? buyForm.value.visitor : null,
     schedule_slots,
     product_page: product?.value?.id,
@@ -412,7 +421,8 @@ const isButtonActive = computed(
         !!buyForm.value.purchase_option &&
         !!buyForm.value.schedule_slots?.length) ||
         (product.value.product_type === 'Academy' &&
-          !!buyForm.value.academy_number_of_weeks && (buyForm.value.first || buyForm.value.second)))) ||
+          !!buyForm.value.academy_number_of_weeks &&
+          (buyForm.value.first || buyForm.value.second)))) ||
     (product.value.product_type === 'Workshop' && !!buyForm.value.comment),
 )
 </script>

@@ -15,19 +15,18 @@
     <div
       v-for="(item, index) in blockData?.[1]?.value"
       :key="item?.title"
-      class="mb-10 lg:flex lg:items-center"
+      class="mb-10 lg:grid lg:grid-cols-2 lg:items-center"
     >
       <ImageBlock
         :image="item?.image"
-        class="h-[200px] rounded-xl overflow-hidden lg:w-1/2"
-        image-class="!object-contain"
+        class="rounded-xl overflow-hidden"
+        image-class="!object-contain max-h-[300px]"
         :class="{
           'order-2 lg:order-1': index % 2 === 0,
           'order-1 lg:order-2': index % 2 !== 0,
         }"
       />
       <div
-        class="lg:w-1/2"
         :class="{
           'order-1 lg:order-2': index % 2 === 0,
           'order-2 lg:order-1': index % 2 !== 0,
@@ -38,7 +37,7 @@
         >
           {{ item?.title }}
         </h2>
-        <RichText :html="item?.paragraph" />
+        <RichText :html="item?.paragraph" without-block-padding />
       </div>
     </div>
   </div>

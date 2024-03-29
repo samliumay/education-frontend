@@ -2,6 +2,7 @@
   <div
     class="flex flex-col justify-between gap-4 rounded-[12px] bg-white"
     data-cms="product-card"
+    @click="goToDetails"
   >
     <div class="flex flex-col gap-4">
       <Cover
@@ -102,10 +103,7 @@
         </template>
       </div>
 
-      <AppButton
-        class="mt-[24px] !bg-brand-light-gray cursor-pointer"
-        @click="goToDetails"
-      >
+      <AppButton class="mt-[24px] !bg-brand-light-gray cursor-pointer">
         {{ $t('common.moreDetails') }}
       </AppButton>
     </div>
@@ -126,7 +124,7 @@ const props = defineProps<{
 }>()
 
 const goToDetails = () => {
-  navigateTo(`/product/${props.blockData?.id}`)
+  navigateTo(`/product/${props.blockData?.slug || props.blockData?.id}`)
 }
 
 const { t } = useI18n()

@@ -7,6 +7,8 @@ export const de = {
       "active": 'Aktiv',
       'renewal available': 'Verlängerung verfügbar',
     },
+    successPayment: 'Die Zahlung war erfolgreich',
+    failedPayment: 'Die Zahlung ist fehlgeschlagen',
     go: 'Zum',
     allTeachers: 'Alle Lehrer',
     recommend: 'Wir empfehlen',
