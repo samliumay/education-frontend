@@ -39,6 +39,8 @@ build prod:
     VITE_GOOGLE_SSO_CLIENT_ID: $PROD__VITE_GOOGLE_SSO_CLIENT_ID
   only:
     - main
+  variables:
+    VITE_PAYPAL_CLIENT_ID: $${VITE_PAYPAL_CLIENT_ID}
   script:
     - docker-compose -f docker-compose.prod.yml build
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
@@ -65,6 +67,8 @@ deploy prod:
   tags:
     - docker-compose
     - prod
+  variables:
+    VITE_PAYPAL_CLIENT_ID: $${VITE_PAYPAL_CLIENT_ID}
   script:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
     - docker-compose -f docker-compose.prod.yml pull
