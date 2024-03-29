@@ -298,10 +298,14 @@
                 {{
                   userStore.isLoggedIn
                     ? $t('cart.payment.stripe')
-                    : $t('cart.button.register')
+                    : $t('cart.button.registration')
                 }}
               </AppButton>
-              <div id="paypal-checkout" class="mt-4 rounded-[12px]" />
+              <div
+                v-show="userStore.isLoggedIn"
+                id="paypal-checkout"
+                class="mt-4 rounded-[12px]"
+              />
             </div>
           </div>
         </div>
@@ -421,7 +425,7 @@ const signUp = async () => {
   if (!registrationError.value) {
     if (process.client) {
       const visitors = JSON.parse(
-        window.localStorage.getItem('visitors') || '[]',
+        window.localStorage?.getItem('visitors') || '[]',
       )
       await userStore.postVisitor(visitors[0])
 
@@ -444,7 +448,14 @@ const fullfillOrder = async () => {
 
   const urlObject = await cart.fulfillOrder(
     'stripe',
-    String(window.location).replace('cart', ''),
+    `${String(window.location).replace(
+      'cart',
+      '',
+    )}profile?tab=sales&payment=success`,
+    `${String(window.location).replace(
+      'cart',
+      '',
+    )}profile?tab=sales&payment=fail`,
   )
   cart.resetCart()
   window.location.href = urlObject.url
@@ -461,12 +472,12 @@ onMounted(() => {
       // eslint-disable-next-line no-console
       return cart.captureOrder(data.orderID, data).then(() => {
         setTimeout(() => cart.getCurrentOrder(), 200)
-        navigateTo('/')
+        navigateTo('/profile?tab=sales&payment=success')
       })
     },
     onCancel() {
       cart.getCurrentOrder()
-      navigateTo('/')
+      navigateTo('/profile?tab=sales&payment=fail')
     },
   })
 })

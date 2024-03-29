@@ -6,6 +6,7 @@
     <div class="flex flex-col md:flex-row gap-[12px] md:gap-[36px]">
       <button
         v-show="!deletingProduct"
+        type="button"
         class="transition ease-in delay-100 transform active:scale-[0.93] absolute right-0 top-0"
         @click="deleteProduct"
       >
@@ -61,6 +62,7 @@
             class="hidden xl:w-[260px] xl:block lg:w-[220px] lg:block md:w-[280px] md:block"
           />
           <button
+            type="button"
             class="flex gap-2 items-center text-xl font-medium cursor-pointe"
             @click="isShowDetails = !isShowDetails"
           >

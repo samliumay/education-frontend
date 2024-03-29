@@ -212,7 +212,7 @@ const isOpenSignIn = ref(false)
 const isOpenModalProfile = ref(false)
 
 // Language Switcher
-const currentLanguage = ref(localStorage.getItem('locale') || 'ru')
+const currentLanguage = ref(localStorage?.getItem('locale') || 'ru')
 const languageOptions = [
   {
     label: 'RU',
@@ -230,7 +230,7 @@ const languageOptions = [
 
 // Actions
 const setLocale = () => {
-  localStorage.setItem('locale', currentLanguage.value)
+  localStorage?.setItem('locale', currentLanguage.value)
   locale.value = currentLanguage.value
 }
 
@@ -242,6 +242,6 @@ watch(
 )
 
 onMounted(() => {
-  locale.value = localStorage.getItem('locale') || 'ru'
+  locale.value = localStorage?.getItem('locale') || 'ru'
 })
 </script>

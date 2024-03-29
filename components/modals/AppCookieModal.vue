@@ -106,7 +106,7 @@ import { ref } from 'vue'
 import AppButton from '@/components/AppButton.vue'
 
 // State
-const isOpen = ref(window.localStorage.getItem('is-closed-cookie') !== 'true')
+const isOpen = ref(window.localStorage?.getItem('is-closed-cookie') !== 'true')
 
 const checkboxStatistic = ref(false)
 const checkboxExternalMedia = ref(false)
@@ -114,7 +114,7 @@ const checkboxExternalMedia = ref(false)
 // Actions
 const close = () => {
   isOpen.value = false
-  window.localStorage.setItem('is-closed-cookie', 'true')
+  window.localStorage?.setItem('is-closed-cookie', 'true')
 }
 
 const closeAndAcceptAll = () => {

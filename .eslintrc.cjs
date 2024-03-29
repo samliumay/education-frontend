@@ -84,7 +84,7 @@ module.exports = {
     'vue/html-indent': 'off',
     'consistent-return': 'off',
     // eslint - block
-    'no-console': ['error', { allow: ['warn', 'error'] }],
+    'no-console': ['error', { allow: ['warn', 'error', 'log'] }],
     'prefer-destructuring': ['error', { object: true, array: false }],
     // Vue - block
     'vue/block-lang': 'warn',

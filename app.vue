@@ -10,9 +10,11 @@
         :class="$route.path === '/prices' ? 'bg-brand-light-gray' : 'bg-white'"
       >
         <AppHeader />
-        <NuxtLayout>
-          <NuxtPage />
-        </NuxtLayout>
+        <n-notification-provider>
+          <NuxtLayout>
+            <NuxtPage />
+          </NuxtLayout>
+        </n-notification-provider>
         <AppCookieModal />
         <AppFooter v-if="$route.path !== '/menu'" />
       </div>
@@ -20,6 +22,8 @@
   </n-config-provider>
 </template>
 <script setup lang="ts">
+import { NNotificationProvider } from 'naive-ui'
+
 import AppCookieModal from './components/modals/AppCookieModal.vue'
 import AppFooter from './components/page/AppFooter.vue'
 import AppHeader from './components/page/AppHeader.vue'

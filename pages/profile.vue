@@ -281,14 +281,14 @@
       </n-tab-pane>
       <n-tab-pane name="sales" :tab="$t('common.profileMenu.history')">
         <div class="bg-white p-[36px] rounded-[12px] mt-[48px] mb-[24px]">
-          <ProductsTable :orders="user.orders" />
+          <ProductsTable :orders="user.orders" with-button />
         </div>
       </n-tab-pane>
     </n-tabs>
   </div>
 </template>
 <script setup lang="ts">
-import { NTabPane, NTabs } from 'naive-ui'
+import { NTabPane, NTabs, useNotification } from 'naive-ui'
 import { onMounted, ref, type VNodeRef } from 'vue'
 import { useRoute } from 'vue-router'
 
@@ -309,6 +309,12 @@ await user.getVisitors()
 await user.getOrdersByVisitors()
 await user.getOrders()
 await user.getWorkshopOrders()
+
+if (process.client && !user.isLoggedIn) {
+  // eslint-disable-next-line no-console
+  console.info('💥 The user is not logged in to the account!')
+  navigateTo('/')
+}
 
 user.visitorsOrders = user.visitors.map(visitor => ({
   ...visitor,
@@ -331,6 +337,8 @@ const passwordChanged = ref('')
 
 const comment = ref('Nothing...')
 const isOpenModalComment = ref(false)
+
+const { t } = useI18n()
 
 // Actions
 const openCommentModal = workshop => {
@@ -372,10 +380,23 @@ const changePassword = async () => {
   }
 }
 
+const notification = useNotification()
+
 // Live hooks
 onMounted(() => {
   if (route.query.tab) {
     activeTab.value = route.query.tab as string
+  }
+  if (route.query.payment) {
+    notification[route.query.payment === 'success' ? 'success' : 'error']({
+      title: t(
+        route.query.payment === 'success'
+          ? 'common.successPayment'
+          : 'common.failedPayment',
+      ),
+      duration: 2500,
+      keepAliveOnHover: true,
+    })
   }
 })
 </script>

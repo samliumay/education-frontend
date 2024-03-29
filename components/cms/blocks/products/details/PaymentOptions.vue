@@ -38,9 +38,11 @@
       >
         <div>
           <div class="flex items-center">
-            <div class="w-[48px] h-[48px]">
-              <ImageBlock :image="item?.icon" />
-            </div>
+            <ImageBlock
+              :image="item?.icon"
+              class="w-[48px] h-[48px] shrink-0"
+              image-class="w-[48px] h-[48px] shrink-0"
+            />
             <h3 class="text-[24px] font-medium ml-[20px]">
               {{ item.title }}
             </h3>

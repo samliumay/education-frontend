@@ -7,6 +7,8 @@ export const en = {
       "active": 'Active',
       'renewal available': 'Renewal Available',
     },
+    successPayment: 'Payment was succesful',
+    failedPayment: 'Payment has failed',
     go: 'Go',
     allTeachers: 'All teachers',
     recommend: 'We recommend',

@@ -1,12 +1,16 @@
 <template>
-  <LoaderBlock v-if="pending" />
+  <LoaderBlock v-if="pending || (isSlug && product?.length)" />
   <main v-else class="flex flex-col gap-2 mb-10">
     <n-breadcrumb class="mt-6 mb-10 px-10">
       <n-breadcrumb-item сlass="text-brand-gray">
         <NuxtLink to="/">{{ $t('common.main') }}</NuxtLink>
       </n-breadcrumb-item>
       <n-breadcrumb-item сlass="text-brand-gray">
-        <NuxtLink :to="catalogPath">{{ product?.product_type }}</NuxtLink>
+        <NuxtLink :to="catalogPath">
+{{
+          $t(`mappers.${product?.product_type}`)
+        }}
+</NuxtLink>
       </n-breadcrumb-item>
       <n-breadcrumb-item сlass="text-brand-gray">
         {{ product?.name }}
@@ -22,7 +26,9 @@
         >
           <AppButton
             v-show="product?.product_type !== 'Event'"
-            @click="navigateTo(`/product/buy/${route.params.id}`)"
+            @click="
+              navigateTo(`/product/buy/${product.slug || route.params.id}`)
+            "
           >
             {{ $t('common.actions.buy') }}
           </AppButton>
@@ -84,17 +90,26 @@ const route = useRoute()
 
 const { locale } = useI18n({ useScope: 'global' })
 
-// API
+const isSlug = computed(() => !/^\d+$/.test(route.params.id as string))
+
 const { data: product, pending } = await useAsyncData(
   'products',
   () =>
-    $fetch(getApiAddress(`/api/v2/wagtail/products/${route.params.id}/`), {
-      params: {
-        locale: locale.value,
-        fields: '*',
+    $fetch(
+      getApiAddress(
+        isSlug.value
+          ? `/api/v2/wagtail/products/`
+          : `/api/v2/wagtail/products/${route.params.id}/`,
+      ),
+      {
+        params: {
+          locale: locale.value,
+          fields: '*',
+          slug: isSlug.value ? route.params.id : undefined,
+        },
       },
-    }),
-  { watch: [locale], deep: true },
+    ).then(data => (isSlug.value ? data?.items[0] : data)),
+  { watch: [locale, isSlug], deep: true },
 )
 
 const catalogPath = computed(() => {
