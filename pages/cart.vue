@@ -457,7 +457,7 @@ const fullfillOrder = async () => {
       '',
     )}profile?tab=sales&payment=fail`,
   )
-  cart.resetCart()
+  await cart.resetCart()
   window.location.href = urlObject.url
 }
 onMounted(() => {
