@@ -323,7 +323,6 @@ import { computed, onMounted, ref, type VNodeRef } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 // import RecommendationBlock from '@/components/RecommendationBlock.vue'
-
 import AppButton from '../components/AppButton.vue'
 import AppDivider from '../components/AppDivider.vue'
 import AppInput from '../components/AppInput.vue'
