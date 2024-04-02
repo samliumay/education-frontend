@@ -1,5 +1,15 @@
 export const de = {
   common: {
+    purchaseOption: {
+      'Course (1 / week)': 'Kurs (1 / Woche)',
+      'Course (2 / week)': 'Kurs (2 / Woche)',
+      'Course (3 / week)': 'Kurs (3 / Woche)',
+      "Terminkarten": 'Terminkarten',
+      'Academy (1st half)': 'Akademie (1. Hälfte)',
+      'Academy (2nd half)': 'Akademie (2. Hälfte)',
+      'Academy (full day)': 'Akademie (ganztägig)',
+      "default": 'Einmal',
+    },
     states: {
       "cancelled": 'Abgesagt',
       "frozen": 'Gefroren',
@@ -214,11 +224,8 @@ export const de = {
     secondWeek: '2. Woche des Programms',
     chooseShift: 'Wählen Sie Schicht',
     morning: '1/2 Tag morgens',
-    morningTime: 'Mo-Fr von 9:30 bis 12:30 Uhr',
     evening: '1/2 Tag nachmittags',
-    eveningTime: 'Mo-Fr von 9:30 bis 12:30 Uhr',
     fullday: 'Ganzen Tag',
-    fulldayTime: 'Mo-Fr von 9:30 bis 12:30 Uhr',
     enterFio:
       'Geben Sie den Vor- und Nachnamen der Kinder ein, die zur Veranstaltung kommen werden',
     chooseTariff: 'Tarif auswählen',
@@ -289,7 +296,7 @@ export const de = {
     },
     button: {
       checkout: 'Kostenpflichtig buchen',
-      registration: 'Anmeldung',
+      registration: 'Login',
     },
   },
   blocks: {

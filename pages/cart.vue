@@ -1,4 +1,5 @@
 <template>
+  <AppSignIn :is-open="isOpenSignIn" @close="isOpenSignIn = false" />
   <div class="relative py-24 px-4 md:px-12 bg-brand-light-gray">
     <div
       class="absolute left-1/2 transform -translate-x-1/2 top-0 mx-0 w-screen h-full bg-brand-light-gray"
@@ -32,6 +33,11 @@
               />
             </template>
             <EmptyCart v-if="!courseProducts.length" />
+            <RecommendationBlock
+              :block-data="
+                courseProducts.map(product => product.recommendations).flat()
+              "
+            />
 
             <div
               class="bg-brand-light-gray rounded-xl text-brand-red p-[16px] mt-[24px] flex flex-col md:flex-row justify-center md:justify-between items-center cursor-pointer relative overflow-hidden"
@@ -73,6 +79,11 @@
               />
             </template>
             <EmptyCart v-if="!academyProducts.length" />
+            <RecommendationBlock
+              :block-data="
+                academyProducts.map(product => product.recommendations).flat()
+              "
+            />
             <div
               class="bg-brand-light-gray rounded-xl text-brand-red p-[16px] mt-[24px] flex flex-col md:flex-row justify-center md:justify-between items-center cursor-pointer relative overflow-hidden"
               @click="navigateTo('/academies')"
@@ -317,6 +328,8 @@
 import { computed, onMounted, ref, type VNodeRef } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+import RecommendationBlock from '@/components/RecommendationBlock.vue'
+
 import AppButton from '../components/AppButton.vue'
 import AppDivider from '../components/AppDivider.vue'
 import AppInput from '../components/AppInput.vue'
@@ -330,6 +343,8 @@ const { t } = useI18n()
 const userStore = useUserStore()
 const cart = useCartStore()
 await cart.getCurrentOrder()
+
+const isOpenSignIn = ref(false)
 
 const promocode = ref('')
 const promocodeStatus = ref('empty')
@@ -405,57 +420,17 @@ const clearError = () => {
   registrationError.value = ''
 }
 
-const signUp = async () => {
-  await userStore.register(registrationForm.value).catch(err => {
-    if (Object.keys(err).length !== 0) {
-      registrationError.value = t('common.somethingWrong')
-      setTimeout(clearError, 2000)
-    } else {
-      registrationError.value = ''
-
-      registrationForm.value.email = ''
-      registrationForm.value.password1 = ''
-      registrationForm.value.password2 = ''
-      registrationForm.value.first_name = ''
-      registrationForm.value.last_name = ''
-      registrationForm.value.phone_number = ''
-    }
-  })
-
-  if (!registrationError.value) {
-    if (process.client) {
-      const visitors = JSON.parse(
-        window.localStorage.getItem('visitors') || '[]',
-      )
-      await userStore.postVisitor(visitors[0])
-
-      // Update visitors for items in cart
-      const ids = cart?.order?.items?.map(item => item.id)
-      await Promise.all(
-        ids.map(id => cart.updateOrderItem(id, { visitor: visitors[0].id })),
-      )
-      await cart.getCurrentOrder()
-    }
-  }
-}
-
 // eslint-disable-next-line consistent-return
 const fullfillOrder = async () => {
   if (!userStore.isLoggedIn) {
-    await signUp()
-    return null
+    isOpenSignIn.value = true
+    return
   }
 
   const urlObject = await cart.fulfillOrder(
     'stripe',
-    `${String(window.location).replace(
-      'cart',
-      '',
-    )}profile?tab=sales&payment=success`,
-    `${String(window.location).replace(
-      'cart',
-      '',
-    )}profile?tab=sales&payment=fail`,
+    `${String(window.location).replace('cart', '')}profile?payment=success`,
+    `${String(window.location).replace('cart', '')}profile?payment=fail`,
   )
   await cart.resetCart()
   window.location.href = urlObject.url

@@ -124,7 +124,6 @@
           >
             <div class="flex flex-col gap-[4px]">
               <p class="font-medium">{{ $t('buy.morning') }}</p>
-              <p class="text-gray-400">{{ $t('buy.morningTime') }}</p>
             </div>
           </n-radio>
           <n-radio
@@ -141,7 +140,6 @@
           >
             <div class="flex flex-col gap-[4px]">
               <p class="font-medium">{{ $t('buy.evening') }}</p>
-              <p class="text-gray-400">{{ $t('buy.eveningTime') }}</p>
             </div>
           </n-radio>
           <n-radio
@@ -158,7 +156,6 @@
           >
             <div class="flex flex-col gap-[4px]">
               <p class="font-medium">{{ $t('buy.fullday') }}</p>
-              <p class="text-gray-400">{{ $t('buy.fulldayTime') }}</p>
             </div>
           </n-radio>
         </n-space>

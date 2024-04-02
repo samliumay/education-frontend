@@ -1,7 +1,10 @@
 <!-- eslint-disable vue/no-static-inline-styles -->
 
 <template>
-  <div class="mx-10 student-works" data-cms="products-details-student-works overflow-x-hidden overflow-y-auto">
+  <div
+    class="mx-10 student-works"
+    data-cms="products-details-student-works overflow-x-hidden overflow-y-auto"
+  >
     <h2
       class="text-3xl sm:text-4xl md:text-[56px] uppercase font-medium mb-20 lg:mb-14"
     >

@@ -110,7 +110,7 @@
 </template>
 <script setup lang="ts">
 import { NCheckbox, NModal } from 'naive-ui'
-import { ref, type VNodeRef } from 'vue'
+import { computed, ref, type VNodeRef } from 'vue'
 import { useRoute } from 'vue-router'
 
 import AppInput from '@/components/AppInput.vue'
@@ -134,17 +134,27 @@ const checkbox = ref(false)
 
 const { locale } = useI18n({ useScope: 'global' })
 
+const isSlug = computed(() => !/^\d+$/.test(route.params.id as string))
+
 // Get data
 const { data: product, pending: productPending } = await useAsyncData(
   'productsModal',
   () =>
-    $fetch(getApiAddress(`/api/v2/wagtail/products/${route.params.id}/`), {
-      params: {
-        locale: locale.value,
-        fields: '*',
+    $fetch(
+      getApiAddress(
+        isSlug.value
+          ? `/api/v2/wagtail/products/`
+          : `/api/v2/wagtail/products/${route.params.id}/`,
+      ),
+      {
+        params: {
+          locale: locale.value,
+          fields: '*',
+          slug: isSlug.value ? route.params.id : undefined,
+        },
       },
-    }),
-  { watch: [locale], deep: true },
+    ).then(data => (isSlug.value ? data?.items[0] : data)),
+  { watch: [locale, isSlug], deep: true },
 )
 
 // Registration

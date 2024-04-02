@@ -68,8 +68,9 @@ export const useCartStore = defineStore('cart', () => {
 
   const makeRecurring = (id: number) =>
     HTTP.post(`/api/v2/orders/subscriptions/${id}/make_recurring/`)
-  const cancelRecurring = (id: number) =>
+  const cancelRecurring = (id: number) => {
     HTTP.patch(`/api/v2/orders/subscriptions/${id}/cancel/`)
+  }
 
   const captureOrder = (orderId: string, data: any) =>
     HTTP.post(`/api/v2/orders/${orderId}/capture/`, data)

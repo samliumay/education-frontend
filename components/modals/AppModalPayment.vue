@@ -76,6 +76,7 @@ import { onMounted, type Ref, ref } from 'vue'
 
 import AppDivider from '@/components/AppDivider.vue'
 import { useCartStore } from '@/store/cart'
+import { useUserStore } from '@/store/user'
 
 const props = defineProps<{
   isOpen: boolean
@@ -83,11 +84,12 @@ const props = defineProps<{
   order: any
 }>()
 
-const emit = defineEmits(['close'])
+const emit = defineEmits(['close', 'statusCancel'])
 
 const paypal: Ref<any> = ref(null)
 
 const cart = useCartStore()
+const user = useUserStore()
 
 onMounted(async () => {
   try {
@@ -119,6 +121,7 @@ onMounted(async () => {
 
 const handleCancel = () => {
   cart.cancelRecurring(props?.order.id)
-  emit('close')
+  user.getOrdersByVisitors()
+  emit('statusCancel')
 }
 </script>

@@ -36,21 +36,23 @@
             </p>
             <p>
               {{
-                order.product_page.purchase_options.includes('Academy')
-                  ? $t(`mappers.${order.schedule_type}`)
-                  : order.schedule_type === 'TERMINKARTEN'
-                    ? $t('common.subscription.card')
-                    : $t('common.subscription.abonement')
+                $t(
+                  `common.purchaseOption.${order.purchase_option.schedule_type}`,
+                ) ===
+                `common.purchaseOption.${order.purchase_option.schedule_type}`
+                  ? $t(`common.purchaseOption.default`)
+                  : $t(
+                      `common.purchaseOption.${order.purchase_option.schedule_type}`,
+                    )
               }}
             </p>
             <p class="col-span-2">
               {{
                 order.schedule_slots
                   .map((slot: Slot) => {
-                    return `${slot.weekday.slice(0, 2)} ${slot.start.slice(
-                      0,
-                      5,
-                    )}-${slot.end.slice(0, 5)}`
+                    return `${$t(
+                      `common.weekdays.short.${slot.weekday.toLowerCase()}`,
+                    )} ${slot.start.slice(0, 5)}-${slot.end.slice(0, 5)}`
                   })
                   .join('; ')
               }}

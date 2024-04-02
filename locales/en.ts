@@ -1,5 +1,15 @@
 export const en = {
   common: {
+    purchaseOption: {
+      'Course (1 / week)': 'Course (1 / week)',
+      'Course (2 / week)': 'Course (2 / week)',
+      'Course (3 / week)': 'Course (3 / week)',
+      "Terminkarten": 'Terminkarten',
+      'Academy (1st half)': 'Academy (1st half)',
+      'Academy (2nd half)': 'Academy (2nd half)',
+      'Academy (full day)': 'Academy (full day)',
+      "default": 'One-time',
+    },
     states: {
       "cancelled": 'Cancelled',
       "frozen": 'Frozen',
@@ -212,11 +222,8 @@ export const en = {
     secondWeek: '2nd week of the program',
     chooseShift: 'Select shift',
     morning: '1/2 day in the morning',
-    morningTime: 'Mon-Fri from 9:30 to 12:30',
     evening: '1/2 day in the afternoon',
-    eveningTime: 'Mon-Fri from 9:30 to 12:30',
     fullday: 'Full day',
-    fulldayTime: 'Mon-Fri from 9:30 to 12:30',
     enterFio:
       'Enter the first and last name of the children who will come to the event',
     chooseTariff: 'Select tariff',
@@ -284,7 +291,7 @@ export const en = {
     },
     button: {
       checkout: 'Checkout',
-      registration: 'Registration',
+      registration: 'Sign In',
     },
   },
   blocks: {
