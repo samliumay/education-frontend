@@ -33,12 +33,6 @@
               />
             </template>
             <EmptyCart v-if="!courseProducts.length" />
-            <RecommendationBlock
-              :block-data="
-                courseProducts.map(product => product.recommendations).flat()
-              "
-            />
-
             <div
               class="bg-brand-light-gray rounded-xl text-brand-red p-[16px] mt-[24px] flex flex-col md:flex-row justify-center md:justify-between items-center cursor-pointer relative overflow-hidden"
               @click="navigateTo('/courses')"
@@ -328,7 +322,7 @@
 import { computed, onMounted, ref, type VNodeRef } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import RecommendationBlock from '@/components/RecommendationBlock.vue'
+// import RecommendationBlock from '@/components/RecommendationBlock.vue'
 
 import AppButton from '../components/AppButton.vue'
 import AppDivider from '../components/AppDivider.vue'
@@ -413,12 +407,6 @@ const registrationForm = ref({
   password1: '',
   password2: '',
 })
-
-const registrationError = ref('')
-
-const clearError = () => {
-  registrationError.value = ''
-}
 
 // eslint-disable-next-line consistent-return
 const fullfillOrder = async () => {

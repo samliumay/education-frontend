@@ -27,7 +27,7 @@
           class="hidden lg:block"
         />
         <div
-          v-if="index - 2 === 9 && hasButton"
+          v-if="index - 5 === 9 && hasButton"
           class="hidden lg:flex flex-col rounded-[100%] bg-brand-yellow justify-center items-center"
         >
           <p class="text-4xl font-medium text-center">
