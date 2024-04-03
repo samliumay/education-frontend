@@ -387,9 +387,9 @@ onMounted(() => {
   if (route.query.tab) {
     if (['sales-success', 'sales-fail'].includes(route.query.tab as string)) {
       activeTab.value = 'sales'
-      notification[route.query.payment === 'success' ? 'success' : 'error']({
+      notification[route.query.tab === 'sales-success' ? 'success' : 'error']({
         title: t(
-          route.query.payment === 'success'
+          route.query.tab === 'sales-success'
             ? 'common.successPayment'
             : 'common.failedPayment',
         ),
