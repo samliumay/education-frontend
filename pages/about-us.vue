@@ -423,8 +423,9 @@
         </p>
       </div>
     </div>
+  </div>
 
-    <div class="bg-white">
+    <div class="bg-white pb-8">
       <LoaderBlock v-if="pending" />
       <PageConstructor
         v-else
@@ -434,7 +435,6 @@
         class="flex flex-col"
       />
     </div>
-  </div>
 </template>
 <script setup lang="ts">
 import RunningMedia from '@/components/cms/blocks/main/RunningMedia.vue'

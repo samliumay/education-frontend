@@ -22,7 +22,7 @@
         <div
           v-if="
             (index - 2) % 9 === 0 ||
-            ((index - 5) % 9 === 0 && (index !== 5 || !withAllInstructors))
+            ((index - 5) % 9 === 0 && (index !== 5 || !(withAllInstructors || hasButton)))
           "
           class="hidden lg:block"
         />

@@ -67,10 +67,7 @@
           {{ `${order?.calculated_price ?? 0} €` }}
           <span
             v-if="
-              $t(
-                `common.purchaseOption.${purchaseOption.schedule_type}`,
-              ) !==
-              `common.purchaseOption.${purchaseOption.schedule_type}`
+              ['Abonnement (1 visit / week)', 'Abonnement (2 visit / week)', 'Abonnement (3 visit / week)'].includes(purchaseOption.schedule_type)
             "
             class="text-gray-400 ml-[8px]"
           >
