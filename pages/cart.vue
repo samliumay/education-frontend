@@ -33,6 +33,13 @@
               />
             </template>
             <EmptyCart v-if="!courseProducts.length" />
+            <RecommendationBlock
+              :block-data="
+                courseProducts
+                  .map(product => product.product_page.recommendations)
+                  .flat()
+              "
+            />
             <div
               class="bg-brand-light-gray rounded-xl text-brand-red p-[16px] mt-[24px] flex flex-col md:flex-row justify-center md:justify-between items-center cursor-pointer relative overflow-hidden"
               @click="navigateTo('/courses')"
@@ -75,7 +82,9 @@
             <EmptyCart v-if="!academyProducts.length" />
             <RecommendationBlock
               :block-data="
-                academyProducts.map(product => product.recommendations).flat()
+                academyProducts
+                  .map(product => product.product_page.recommendations)
+                  .flat()
               "
             />
             <div
@@ -121,6 +130,13 @@
               />
             </template>
             <EmptyCart v-if="!workshopProducts.length" />
+            <RecommendationBlock
+              :block-data="
+                workshopProducts
+                  .map(product => product.product_page.recommendations)
+                  .flat()
+              "
+            />
             <div
               class="bg-brand-light-gray rounded-xl text-brand-red p-[16px] mt-[24px] flex flex-col md:flex-row justify-center md:justify-between items-center cursor-pointer relative overflow-hidden"
             >
@@ -144,79 +160,6 @@
             </div>
           </div>
         </ErrorBoundaryBlock>
-
-        <div
-          v-if="!userStore.isLoggedIn"
-          class="bg-white rounded-[12px] p-[24px]"
-        >
-          <h2 class="font-medium text-[24px] mb-6">
-            {{ $t('cart.registerDetails.title') }}
-          </h2>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-[12px] mb-[12px]">
-            <AppInput
-              v-model="registrationForm.first_name"
-              :placeholder="$t('cart.registerDetails.name')"
-              required
-              pattern=".{2,}"
-              title="The name must contain at least two characters"
-              autocomplete="off"
-              @blur="checkValidity"
-            />
-            <AppInput
-              v-model="registrationForm.last_name"
-              :placeholder="$t('cart.registerDetails.surname')"
-              required
-              pattern=".{2,}"
-              title="Last name must contain at least two characters"
-              autocomplete="off"
-              @blur="checkValidity"
-            />
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-[12px] mb-[12px]">
-            <AppInput
-              v-model="registrationForm.email"
-              placeholder="Email"
-              type="email"
-              required
-              autocomplete="off"
-              @blur="checkValidity"
-            />
-            <AppInput
-              v-model="registrationForm.phone_number"
-              :placeholder="$t('cart.registerDetails.phone')"
-              maska="+49 ### ###-##-##"
-              type="tel"
-              required
-              autocomplete="off"
-              @blur="checkValidity"
-            />
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-[12px] mb-[12px]">
-            <AppInput
-              v-model="registrationForm.password1"
-              :placeholder="$t('cart.registerDetails.password')"
-              required
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-              title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-              type="password"
-              autocomplete="off"
-              @blur="checkValidity"
-            />
-            <AppInput
-              v-model="registrationForm.password2"
-              :placeholder="$t('cart.registerDetails.repeatPassword')"
-              type="password"
-              required
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-              title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-              autocomplete="off"
-              @blur="checkValidity"
-            />
-          </div>
-        </div>
       </div>
 
       <ErrorBoundaryBlock>
@@ -241,6 +184,22 @@
                 class="my-[24px]"
               />
             </template>
+
+            <p
+              v-show="cart?.order?.items?.length"
+              class="flex justify-between font-medium text-[20px] mt-[24px] mb-[12px]"
+            >
+              <span>{{ $t('cart.totalCheckout') }}</span>
+              <span>{{ cart?.order?.total_checkout_price }}</span>
+            </p>
+
+            <p
+              v-show="cart?.order?.items?.length"
+              class="flex justify-between font-medium text-[20px] mt-[24px] mb-[12px]"
+            >
+              <span>{{ $t('cart.totalRecurrent') }}</span>
+              <span>{{ cart?.order?.total_recurrent_price }}</span>
+            </p>
 
             <p
               v-show="cart?.order?.items?.length"
@@ -322,7 +281,8 @@
 import { computed, onMounted, ref, type VNodeRef } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-// import RecommendationBlock from '@/components/RecommendationBlock.vue'
+import RecommendationBlock from '@/components/RecommendationBlock.vue'
+
 import AppButton from '../components/AppButton.vue'
 import AppDivider from '../components/AppDivider.vue'
 import AppInput from '../components/AppInput.vue'
@@ -378,15 +338,6 @@ const workshopProducts = computed(
     ) || [],
 )
 
-// Form
-const checkValidity = (event: {
-  target: { reportValidity: () => void }
-  relatedTarget: { focus: () => void }
-}) => {
-  event.target.reportValidity()
-  event.relatedTarget?.focus()
-}
-
 const form = ref<VNodeRef | undefined>(undefined)
 
 const infoText = computed(() => {
@@ -395,16 +346,6 @@ const infoText = computed(() => {
   }
 
   return t('cart.order.pleaseRegister')
-})
-
-// Registration
-const registrationForm = ref({
-  first_name: '',
-  last_name: '',
-  email: '',
-  phone_number: '',
-  password1: '',
-  password2: '',
 })
 
 // eslint-disable-next-line consistent-return
@@ -416,8 +357,8 @@ const fullfillOrder = async () => {
 
   const urlObject = await cart.fulfillOrder(
     'stripe',
-    `${String(window.location).replace('cart', '')}profile?payment=success`,
-    `${String(window.location).replace('cart', '')}profile?payment=fail`,
+    `${String(window.location).replace('cart', '')}profile?tab=sales-success`,
+    `${String(window.location).replace('cart', '')}profile?tab=sales-fail`,
   )
   await cart.resetCart()
   window.location.href = urlObject.url
@@ -434,12 +375,12 @@ onMounted(() => {
       // eslint-disable-next-line no-console
       return cart.captureOrder(data.orderID, data).then(() => {
         setTimeout(() => cart.getCurrentOrder(), 200)
-        navigateTo('/profile?tab=sales&payment=success')
+        navigateTo('/profile?tab=sales-success')
       })
     },
     onCancel() {
       cart.getCurrentOrder()
-      navigateTo('/profile?tab=sales&payment=fail')
+      navigateTo('/profile?tab=sales-fail')
     },
   })
 })

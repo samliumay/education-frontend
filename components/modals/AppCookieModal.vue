@@ -28,9 +28,14 @@
               <n-checkbox checked disabled>
                 {{ $t('common.cookies.options.essential.label') }}
               </n-checkbox>
-              <NuxtLink class="text-brand-black underline underline-offset-">
+              <a
+                class="text-brand-black underline underline-offset-"
+                href="/docs/cookies.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {{ $t('common.cookies.options.essential.link') }}
-              </NuxtLink>
+              </a>
             </div>
             <div>
               {{ $t('common.cookies.options.essential.text') }}
@@ -42,9 +47,14 @@
               <n-checkbox v-model:checked="checkboxStatistic">
                 {{ $t('common.cookies.options.statistics.label') }}
               </n-checkbox>
-              <NuxtLink class="text-brand-black underline underline-offset-">
+              <a
+                class="text-brand-black underline underline-offset-"
+                href="/docs/cookies.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {{ $t('common.cookies.options.statistics.link') }}
-              </NuxtLink>
+              </a>
             </div>
             <div>
               {{ $t('common.cookies.options.statistics.text') }}
@@ -56,9 +66,14 @@
               <n-checkbox v-model:checked="checkboxExternalMedia">
                 {{ $t('common.cookies.options.externalMedia.label') }}
               </n-checkbox>
-              <NuxtLink class="text-brand-black underline underline-offset-">
+              <a
+                class="text-brand-black underline underline-offset-"
+                href="/docs/cookies.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {{ $t('common.cookies.options.externalMedia.link') }}
-              </NuxtLink>
+              </a>
             </div>
             <div>
               {{ $t('common.cookies.options.externalMedia.text') }}

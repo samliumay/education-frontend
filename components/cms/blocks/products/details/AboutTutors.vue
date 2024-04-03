@@ -27,14 +27,14 @@
           class="hidden lg:block"
         />
         <div
-          v-if="index - 5 === 9 && hasButton"
-          class="hidden lg:flex flex-col rounded-[100%] bg-brand-yellow justify-center items-center"
+          v-if="index - 2 === 0 && hasButton"
+          class="hidden lg:flex flex-col rounded-[100%] bg-brand-yellow justify-center items-center aspect-square"
         >
           <p class="text-4xl font-medium text-center">
             {{ $t('common.allTeachers') }}
           </p>
           <p
-            class="text-xl font-medium text-center underline"
+            class="text-xl font-medium text-center underline cursor-pointer"
             @click="navigateTo('/instructors')"
           >
             {{ $t('common.go') }}

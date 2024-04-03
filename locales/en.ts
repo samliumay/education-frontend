@@ -65,7 +65,7 @@ export const en = {
       requestCallback: 'Request for a call back',
       comment: 'Comment',
       editSubscription: 'Editing subscription',
-      cancelSubscription: 'Cancel subscription',
+      cancelSubscription: 'Cancel payment',
       subscriptionPaymentPayPal: 'PayPal subscription payment',
       autopayPayPal: 'Autopay PayPal',
       registerInService: 'By registering in the service, you accept',
@@ -236,6 +236,8 @@ export const en = {
     addCart: 'Add to the cart',
   },
   cart: {
+    totalCheckout: 'One-time',
+    totalRecurrent: 'Monthly',
     promocode: {
       input: 'Enter promo code',
       success: 'Promo code added successfully',

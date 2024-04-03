@@ -65,7 +65,7 @@ export const de = {
       requestCallback: 'Bitte um Rückruf',
       comment: 'Kommentar',
       editSubscription: 'Abonnement bearbeiten',
-      cancelSubscription: 'Abonnement beenden',
+      cancelSubscription: 'Zahlung stornieren',
       subscriptionPaymentPayPal: 'PayPal-Abonnementzahlung',
       autopayPayPal: 'PayPal automatisch bezahlen',
       registerInService:
@@ -238,6 +238,8 @@ export const de = {
     addCart: 'In den Warenkorb legen',
   },
   cart: {
+    totalCheckout: 'Einmal',
+    totalRecurrent: 'Monatlich',
     promocode: {
       input: 'Aktionscode eingeben',
       success: 'Aktionscode erfolgreich hinzugefügt',

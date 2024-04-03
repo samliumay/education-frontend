@@ -28,7 +28,7 @@
     </h1>
 
     <div
-      class="relative w-full mt-10 mb-14 md:mt-10 md:mb-14 md:pl-[50%] md:pr-[15%] text-xl"
+      class="relative w-full mt-10 mb-14 md:mt-10 md:mb-14 md:pl-[50%] md:pr-[15%] text-xl text-brand-black"
     >
       <p>
         {{ $t('aboutUs.subtitle') }}
@@ -44,7 +44,7 @@
   </h2>
 
   <!-- Offers -->
-  <div class="px-3 md:px-10 mt-6 md:mt-24 mb-10">
+  <div class="px-3 md:px-10 mt-6 md:mt-24 mb-10 text-brand-black">
     <h2
       class="font-semibold text-[36px] md:text-[56px] mb-[48px] text-brand-black uppercase"
     >
@@ -140,7 +140,7 @@
     </div>
   </div>
 
-  <div class="bg-white">
+  <div class="bg-white text-brand-black">
     <LoaderBlock v-if="pending" />
     <PageConstructor
       v-else
@@ -156,7 +156,7 @@
 
   <!-- Principles -->
   <div
-    class="grid grid-cols-1 gap-6 md:gap-0 md:grid-cols-2 mt-8 mb-10 mx-3 md:mx-10"
+    class="grid grid-cols-1 gap-6 md:gap-0 md:grid-cols-2 mt-8 mb-10 mx-3 md:mx-10 text-brand-black"
   >
     <div>
       <h2
@@ -192,7 +192,7 @@
       </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-brand-black">
       <div class="rounded-[12px] bg-brand-light-gray p-4">
         <div class="flex items-center justify-center aspect-square">
           <img src="/icons/aboutus/books.svg" alt="Books" />
@@ -239,7 +239,7 @@
 
   <!-- Approach -->
   <div
-    class="flex flex-col gap-6 lg:gap-0 lg:flex-row aspect-square max-h-[1100px] max-w-[1100px] min-w-base mx-10 lg:mx-auto relative mt-3 lg:mt-10"
+    class="text-brand-black flex flex-col gap-6 lg:gap-0 lg:flex-row aspect-square max-h-[1100px] max-w-[1100px] min-w-base mx-10 lg:mx-auto relative mt-3 lg:mt-10"
   >
     <h2
       class="uppercase text-brand-black lg:order-10 lg:text-[56px] lg:absolute lg:-translate-y-1/2 lg:-translate-x-1/2 font-semibold text-[36px] top-1/2 left-1/2 text-center"
@@ -265,7 +265,7 @@
     </div>
 
     <div
-      class="lg:absolute lg:-translate-y-1/4 z-10 top-1/4 right-0 rounded-[12px] bg-brand-light-gray p-6 max-w-[500px]"
+      class="text-brand-black lg:absolute lg:-translate-y-1/4 z-10 top-1/4 right-0 rounded-[12px] bg-brand-light-gray p-6 max-w-[500px]"
     >
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
@@ -279,7 +279,7 @@
     </div>
 
     <div
-      class="lg:translate-y-1/4 lg:absolute z-10 bottom-1/4 rounded-[12px] bg-brand-light-gray p-6 max-w-[500px]"
+      class="lg:translate-y-1/4 lg:absolute z-10 bottom-1/4 rounded-[12px] bg-brand-light-gray p-6 max-w-[500px] text-brand-black"
     >
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
@@ -293,7 +293,7 @@
     </div>
 
     <div
-      class="lg:translate-y-1/4 lg:absolute z-10 bottom-1/4 right-0 rounded-[12px] bg-brand-light-gray p-6 max-w-[500px]"
+      class="lg:translate-y-1/4 lg:absolute z-10 bottom-1/4 right-0 rounded-[12px] bg-brand-light-gray p-6 max-w-[500px] text-brand-black"
     >
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
@@ -307,7 +307,7 @@
     </div>
 
     <div
-      class="lg:-translate-x-1/2 lg:absolute lg:translate-y-1/2 z-10 bottom-0 left-1/2 rounded-[12px] bg-brand-light-gray p-6 max-w-[500px] mt-8"
+      class="lg:-translate-x-1/2 lg:absolute lg:translate-y-1/2 z-10 bottom-0 left-1/2 rounded-[12px] bg-brand-light-gray p-6 max-w-[500px] mt-8 text-brand-black"
     >
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
@@ -320,7 +320,7 @@
   </div>
 
   <!-- Values -->
-  <div class="mt-24 bg-brand-light-gray pt-12 pb-8">
+  <div class="mt-24 bg-brand-light-gray pt-12 pb-8 text-brand-black">
     <h2
       class="font-semibold text-[36px] md:text-[56px] mb-[48px] px-3 md:px-10 text-brand-black"
     >

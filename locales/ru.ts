@@ -65,7 +65,7 @@ export const ru = {
       requestCallback: 'Заявка на обратный звонок',
       comment: 'Комментарий',
       editSubscription: 'Редактирование подписки',
-      cancelSubscription: 'Отмена абонемента',
+      cancelSubscription: 'Отмена платежа',
       subscriptionPaymentPayPal: 'Оплата подписки PayPal',
       autopayPayPal: 'Автоплатёж PayPal',
       registerInService: 'Регистрируясь в сервисе, вы принимаете',
@@ -235,6 +235,8 @@ export const ru = {
     addCart: 'Добавить в корзину',
   },
   cart: {
+    totalCheckout: 'Разово',
+    totalRecurrent: 'Ежемесячно',
     promocode: {
       input: 'Введите промокод',
       success: 'Промокод успешно добавлен',

@@ -385,18 +385,20 @@ const notification = useNotification()
 // Live hooks
 onMounted(() => {
   if (route.query.tab) {
-    activeTab.value = route.query.tab as string
-  }
-  if (route.query.payment) {
-    notification[route.query.payment === 'success' ? 'success' : 'error']({
-      title: t(
-        route.query.payment === 'success'
-          ? 'common.successPayment'
-          : 'common.failedPayment',
-      ),
-      duration: 2500,
-      keepAliveOnHover: true,
-    })
+    if (['sales-success', 'sales-fail'].includes(route.query.tab as string)) {
+      activeTab.value = 'sales'
+      notification[route.query.payment === 'success' ? 'success' : 'error']({
+        title: t(
+          route.query.payment === 'success'
+            ? 'common.successPayment'
+            : 'common.failedPayment',
+        ),
+        duration: 2500,
+        keepAliveOnHover: true,
+      })
+    } else {
+      activeTab.value = route.query.tab as string
+    }
   }
 })
 </script>

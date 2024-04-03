@@ -68,12 +68,13 @@
               }}
             </p>
             <button
-              v-if="withButton"
+              v-if="withButton && order.state === 'active'"
               class="py-[8px] w-fit h-fit"
               @click="openPaymentModal(order)"
             >
               <img src="/icons/edit.svg" class="w-[20px] h-[20px]" alt="edit" />
             </button>
+            <div v-else-if="withButton && order.state !== 'active'" />
           </div>
         </div>
       </template>

@@ -104,7 +104,7 @@ import {
   NCarousel,
   NCarouselItem,
 } from 'naive-ui'
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 
 import type { Instructor } from '../../../../types/index'
 import AppDivider from '../../../AppDivider.vue'
@@ -116,8 +116,4 @@ defineProps<{
 }>()
 
 const currentIndex = ref(0)
-
-watch(currentIndex, () => {
-  console.log(currentIndex)
-})
 </script>

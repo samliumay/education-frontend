@@ -1,16 +1,26 @@
 <template>
   <div v-if="blockData.length !== 0">
-    <h3 class="flex items-center gap-3">
+    <h3 class="flex items-center gap-3 text-4xl font-medium">
       {{ $t('common.recommend') }}
-      <img alt="Arrow" url="/icons/chevron_down.svg" />
+      <img
+        alt="Arrow"
+        src="/icons/chevron_down.svg"
+        @click="showBlock = !showBlock"
+      />
     </h3>
 
-    <div class="overflow-x-auto flex gap-4 mt-6">
+    <div v-if="showBlock" class="overflow-x-auto flex gap-4 mt-6">
       <div
         v-for="item in blockData"
         :key="item.id"
-        class="bg-white border-brand-dark-gray p-3 border-[1px] rounded-[12px] flex flex-col md:flex-row gap-4 cursor-pointer"
-        @click="navigateTo(`/product/${item.recommended_page.slug || item.id}`)"
+        class="bg-white border-brand-dark-gray p-3 border-[1px] rounded-[12px] flex flex-col md:flex-row gap-4 cursor-pointer max-w-[50%]"
+        @click="
+          navigateTo(
+            `/product/${
+              item.recommended_page.slug || item.recommended_page.id
+            }`,
+          )
+        "
       >
         <Cover
           :image-title="item?.recommended_page.title_image"
@@ -33,9 +43,14 @@
   </div>
 </template>
 <script setup lang="ts">
+import { ref } from 'vue'
+
 import { getTagsFromProduct } from '../helpers/products'
+import Cover from './cms/blocks/misc/Cover.vue'
 
 defineProps<{
   blockData: any
 }>()
+
+const showBlock = ref(false)
 </script>

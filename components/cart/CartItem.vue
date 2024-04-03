@@ -36,6 +36,20 @@
           <div
             class="bg-brand-light-gray px-4 p-2 rounded-full flex items-center"
           >
+            {{ $t('common.tableOptions.option') }}:&nbsp;<span class="font-medium">{{
+              $t(
+                `common.purchaseOption.${order.purchase_option.schedule_type}`,
+              ) ===
+              `common.purchaseOption.${order.purchase_option.schedule_type}`
+                ? $t(`common.purchaseOption.default`)
+                : $t(
+                    `common.purchaseOption.${order.purchase_option.schedule_type}`,
+                  )
+            }}</span>
+          </div>
+          <div
+            class="bg-brand-light-gray px-4 p-2 rounded-full flex items-center"
+          >
             Ребенок:
             <AppSelect
               :placeholder="$t('common.children.selectChild')"
