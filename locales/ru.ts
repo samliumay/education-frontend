@@ -377,7 +377,8 @@ export const ru = {
     title: 'Личный кабинет',
   },
   aboutUs: {
-    title: 'Клавис Берлин - школа искусств и науки для детей и юношества',
+    title:
+      'Клавис <img src="/icons/leologo.svg" alt="logo" class="align-middle inline-block" /> Берлин - школа искусств и науки для  <img src="/icons/wisp.svg" alt="logo" class="align-middle inline-block" /> детей и юношества',
     subtitle:
       'Clavis — это новый учебный центр для студентов разных возрастных групп, предлагающий широкий спектр курсов, таких как: Художественный и визуальный театр, естествознание, математика и цифровой рисунок.',
     target:

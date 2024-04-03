@@ -1,9 +1,9 @@
 <template>
   <div class="block-padding" data-cms="main-seo-text">
-    <h2 class="text-3xl md:text-5xl uppercase mb-8 font-bold text-brand-red">
+    <h2 class="text-3xl md:text-[56px] uppercase mb-8 font-bold text-brand-red">
       {{ blockData.value.heading }}
     </h2>
-    <p class="text-brand-gray text-base xl:text-lg">
+    <p class="text-brand-gray text-base xl:text-[20px] font-medium">
       {{ blockData.value.paragraph }}
     </p>
   </div>

@@ -97,13 +97,28 @@
       </template>
 
       <template v-if="product.product_type === 'Academy'">
-        <p class="text-[20px] font-medium">{{ $t('buy.chooseWeek') }}</p>
-        <n-checkbox v-model:checked="buyForm.first" class="mt-[16px]">
-          {{ $t('buy.firstWeek') }}
-        </n-checkbox>
-        <n-checkbox v-model:checked="buyForm.second" class="mt-[12px]">
-          {{ $t('buy.secondWeek') }}
-        </n-checkbox>
+        <template v-if="!product.academy_weeks">
+          <p class="text-[20px] font-medium">{{ $t('buy.chooseWeek') }}</p>
+          <n-checkbox v-model:checked="buyForm.first" class="mt-[16px]">
+            {{ $t('buy.firstWeek') }}
+          </n-checkbox>
+          <n-checkbox v-model:checked="buyForm.second" class="mt-[12px]">
+            {{ $t('buy.secondWeek') }}
+          </n-checkbox>
+        </template>
+        <template v-else>
+          <p class="text-[20px] font-medium">{{ $t('buy.chooseWeek') }}</p>
+          <n-checkbox-group v-model:value="buyForm.academy_weeks">
+            <n-checkbox
+              v-for="week in !product.academy_weeks"
+              :key="Number(week)"
+              :value="Number(week)"
+              class="mt-[16px]"
+            >
+              {{ $t('buy.customWeek') }}
+            </n-checkbox>
+          </n-checkbox-group>
+        </template>
 
         <AppDivider class="my-[24px]" />
 
@@ -316,7 +331,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { NCheckbox, NRadio, NSpace } from 'naive-ui'
+import { NCheckbox, NCheckboxGroup, NRadio, NSpace } from 'naive-ui'
 import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
@@ -351,6 +366,7 @@ const buyForm = ref({
   photo: 'yes',
   alone: 'no',
   visitor: null,
+  academy_weeks: [],
 } as unknown as Partial<OrderItem> & {
   first: boolean
   second: boolean
@@ -358,6 +374,7 @@ const buyForm = ref({
   feature: string
   photo: string
   alone: string
+  academy_weeks: number[]
 })
 
 const isSlug = computed(() => !/^\d+$/.test(route.params.id as string))
@@ -394,7 +411,7 @@ const addAcademy = async () => {
       : [11]
 
   const productOrder = {
-    academy_number_of_weeks: weeks || 1,
+    academy_number_of_weeks: buyForm.value.academy_weeks.length || weeks || 1,
     product: route.params.id,
     purchase_option:
       product?.value?.product_type === 'Academy'
@@ -404,6 +421,7 @@ const addAcademy = async () => {
     schedule_slots,
     product_page: product?.value?.id,
     comment: buyForm.value.comment,
+    academy_weeks: buyForm.value.academy_weeks,
   }
 
   await cart.addOrderItem(productOrder)

@@ -381,7 +381,7 @@ export const de = {
   },
   aboutUs: {
     title:
-      'Clavis Berlin - Kunstschule und Wissenschafts für Kinder und Jugendliche',
+      'Clavis <img src="/icons/leologo.svg" alt="logo" class="align-middle inline-block" /> Berlin - Kunstschule und Wissenschafts für <img src="/icons/wisp.svg" alt="logo" class="align-middle inline-block" /> Kinder und Jugendliche',
     subtitle:
       'Clavis ist ein neues Lernzentrum für Schüler*innen verschiedener Altersgruppen, dass ein breites Spektrum an Kursen anbietet wie z. B.Kunst und visuelles Theater, Naturwissenschaften, Mathematik und Digitales Zeichnen',
     target:

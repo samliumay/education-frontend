@@ -1,6 +1,6 @@
 <template>
   <div
-    class="px-10 bg-brand-light-gray py-16 relative"
+    class="px-10 bg-brand-light-gray py-16 relative text-brand-black"
     data-cms="products-details-about-tutors"
   >
     <div

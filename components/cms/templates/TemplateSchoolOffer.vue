@@ -18,9 +18,9 @@ import { computed } from 'vue'
 
 import { checkIsEmpty } from '../../../utils/checkIsEmpty'
 import { getApiAddress } from '../../../utils/getApiAddress'
+import SeoText from '../blocks/main/SeoText.vue'
 import ErrorBoundaryBlock from '../blocks/misc/ErrorBoundaryBlock.vue'
 import LoaderBlock from '../blocks/misc/LoaderBlock.vue'
-import RichText from '../blocks/misc/RichText.vue'
 import AboutTutors from '../blocks/products/details/AboutTutors.vue'
 import StudentWorks from '../blocks/products/details/StudentWorks.vue'
 import Header from '../blocks/schoolOffer/Header.vue'
@@ -73,6 +73,6 @@ const blocksList = computed(() => [
     name: StudentWorks,
     blockData: product.value?.items[0].student_works_block[0]?.value.contents,
   },
-  { name: RichText, blockData: product.value?.items[0].seo_text },
+  { name: SeoText, blockData: product.value?.items[0].seo_text },
 ])
 </script>

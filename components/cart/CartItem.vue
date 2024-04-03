@@ -34,18 +34,20 @@
 
         <div class="flex gap-[12px]">
           <div
-            class="bg-brand-light-gray px-4 p-2 rounded-full flex items-center"
+            class="bg-brand-light-gray px-4 p-2 rounded-full items-center"
           >
-            {{ $t('common.tableOptions.option') }}:&nbsp;<span class="font-medium">{{
-              $t(
-                `common.purchaseOption.${order.purchase_option.schedule_type}`,
-              ) ===
-              `common.purchaseOption.${order.purchase_option.schedule_type}`
-                ? $t(`common.purchaseOption.default`)
-                : $t(
-                    `common.purchaseOption.${order.purchase_option.schedule_type}`,
-                  )
-            }}</span>
+            {{ $t('common.tableOptions.option') }}: <span
+              class="font-medium"
+              >{{
+                $t(
+                  `common.purchaseOption.${purchaseOption.schedule_type}`,
+                ) ===
+                `common.purchaseOption.${purchaseOption.schedule_type}`
+                  ? $t(`common.purchaseOption.default`)
+                  : $t(
+                      `common.purchaseOption.${purchaseOption.schedule_type}`,
+                    )
+              }}</span>
           </div>
           <div
             class="bg-brand-light-gray px-4 p-2 rounded-full flex items-center"
@@ -63,7 +65,15 @@
 
         <p class="font-medium text-[24px]">
           {{ `${order?.calculated_price ?? 0} €` }}
-          <span class="text-gray-400 ml-[8px]">
+          <span
+            v-if="
+              $t(
+                `common.purchaseOption.${purchaseOption.schedule_type}`,
+              ) !==
+              `common.purchaseOption.${purchaseOption.schedule_type}`
+            "
+            class="text-gray-400 ml-[8px]"
+          >
             {{ $t('cart.perMonth') }}
           </span>
         </p>
@@ -150,6 +160,8 @@ const props = defineProps<{
 }>()
 
 defineEmits(['close'])
+
+const purchaseOption = computed(() => props.order ? props.order.product_page.purchase_options.find(option => props.order.purchase_option === option.id) : {})
 
 // Init store
 const cart = useCartStore()

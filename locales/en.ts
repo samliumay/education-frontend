@@ -376,7 +376,7 @@ export const en = {
   },
   aboutUs: {
     title:
-      'Clavis Berlin - art school and science for children and young people',
+      'Clavis <img src="/icons/leologo.svg" alt="logo" class="align-middle inline-block" /> Berlin - art school and science for <img src="/icons/wisp.svg" alt="logo" class="align-middle inline-block" /> children and young people',
     subtitle:
       'Clavis is a new learning center for students of different age groups that offers a wide range of courses such as: B.Art and visual theater, science, mathematics and digital drawing',
     target:
