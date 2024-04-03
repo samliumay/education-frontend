@@ -135,7 +135,7 @@ const { data } = await useAsyncData(
         fields: '*',
         name: 'Impressum',
       },
-    }),
+    }).then(data => data.items[0].contents),
   { watch: [locale], deep: true },
 )
 </script>
