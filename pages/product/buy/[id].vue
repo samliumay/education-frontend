@@ -380,8 +380,6 @@ const buyForm = ref({
 
 const isSlug = computed(() => !/^\d+$/.test(route.params.id as string))
 
-const isCard = computed(() => product.value.purchase_options.find(option => option.id === buyForm.value.purchase_option)?.schedule_type === 'Terminkarten')
-
 const { data: product, pending: productPending } = await useAsyncData(
   'products',
   () =>
@@ -401,6 +399,8 @@ const { data: product, pending: productPending } = await useAsyncData(
     ).then(data => (isSlug.value ? data?.items[0] : data)),
   { watch: [locale, isSlug], deep: true },
 )
+
+const isCard = computed(() => product.value.purchase_options.find(option => option.id === buyForm.value.purchase_option)?.schedule_type === 'Terminkarten')
 
 const addAcademy = async () => {
   let weeks = 0
