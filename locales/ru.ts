@@ -1,5 +1,6 @@
 export const ru = {
   common: {
+    tariffs: 'Тарифы',
     purchaseOption: {
       'Course (1 / week)': 'Курс (1 / неделя)',
       'Course (2 / week)': 'Курс (2 / неделя)',

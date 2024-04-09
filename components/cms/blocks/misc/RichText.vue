@@ -21,9 +21,43 @@ const sanitizedDescription = computed(() =>
   DOMPurify.sanitize(props?.html ?? props?.blockData ?? '<p>Unknown</p>'),
 )
 </script>
-<style>
+<style lang="scss">
+.rich-text h1, .rich-text h2, .rich-text h3, .rich-text p {
+  color: #202020;
+}
+
+.rich-text h1 {
+  font-size: 48px;
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+
+.rich-text h2 {
+  font-size: 36px;
+  font-weight: 500;
+  margin-bottom: 24px;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 24px;
+  }
+}
+
+.rich-text h3 {
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 12px;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+
+.rich-text p {
+  margin-bottom: 6px;
+}
+
 .rich-text a {
-  color: #db3b4d;
   text-decoration: underline;
+  color: #db3b4e;
 }
 </style>

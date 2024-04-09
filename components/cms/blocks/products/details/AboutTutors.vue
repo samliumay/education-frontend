@@ -1,6 +1,6 @@
 <template>
   <div
-    class="px-10 bg-brand-light-gray py-16 relative text-brand-black"
+    class=" bg-brand-light-gray relative text-brand-black block-padding-x block-padding-y"
     data-cms="products-details-about-tutors"
   >
     <div
@@ -44,10 +44,15 @@
           :instructor="{ ...item.instructor, ...item, id: item?.id ?? 1 }"
         />
       </template>
+      <AppButton class="block lg:hidden" @click="navigateTo('/instructors')">
+        {{ $t('common.allTeachers') }}
+      </AppButton>
     </div>
   </div>
 </template>
 <script setup lang="ts">
+import AppButton from '@/components/AppButton.vue'
+
 import type { PageBlock } from '../../../../../types/cms'
 import TutorCard from '../../misc/TutorCard.vue'
 

@@ -2,13 +2,13 @@
   <main class="px-4 md:pl-10 md:pr-[270px] py-6">
     <n-breadcrumb class="mb-10">
       <n-breadcrumb-item сlass="text-brand-gray">
-        <NuxtLink to="/">Главная</NuxtLink>
+        <NuxtLink to="/">{{ $t('common.main') }}</NuxtLink>
       </n-breadcrumb-item>
-      <n-breadcrumb-item сlass="text-brand-gray"> Legal </n-breadcrumb-item>
+      <n-breadcrumb-item сlass="text-brand-gray"> {{ $t('common.info.legal') }} </n-breadcrumb-item>
     </n-breadcrumb>
 
     <template v-if="data">
-      <RichText html="data" without-block-padding />
+      <RichText :html="data" without-block-padding />
     </template>
     <template v-else>
       <h1 class="text-brand-black text-5xl mb-10 font-medium">

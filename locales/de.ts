@@ -1,5 +1,6 @@
 export const de = {
   common: {
+    tariffs: 'Tarife',
     purchaseOption: {
       'Course (1 / week)': 'Kurs (1 / Woche)',
       'Course (2 / week)': 'Kurs (2 / Woche)',
@@ -226,8 +227,8 @@ export const de = {
     firstWeek: '1. Woche des Programms',
     secondWeek: '2. Woche des Programms',
     chooseShift: 'Wählen Sie Schicht',
-    morning: '1/2 Tag morgens',
-    evening: '1/2 Tag nachmittags',
+    morning: 'Vormittags',
+    evening: 'Nachmittags',
     fullday: 'Ganzen Tag',
     enterFio:
       'Geben Sie den Vor- und Nachnamen der Kinder ein, die zur Veranstaltung kommen werden',

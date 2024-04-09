@@ -5,12 +5,12 @@
       :key="tag.value"
       class="rounded-[88px] border-[1px] px-[12px] py-[8px] text-[16px]"
       :class="{
-        'bg-white': selectedTags.length < 3 || selectedTags.includes(tag.value),
+        'bg-white': (selectedTags.length < 3 && maxThree) || selectedTags.includes(tag.value),
         'bg-transparent': selectedTags.length >= 3,
         'border-brand-black': selectedTags.includes(tag.value),
         'border-gray-300': !selectedTags.includes(tag.value),
       }"
-      :disabled="selectedTags.length >= 3"
+      :disabled="selectedTags.length >= 3 && maxThree"
       @click="
         $emit(
           'update:selectedTags',
@@ -27,13 +27,22 @@
   </div>
 </template>
 <script setup lang="ts">
-defineProps<{
+import { watch } from 'vue'
+
+const props = defineProps<{
   tags: Array<{
     label: string
     value: number | string
   }>
   selectedTags: Array<string | number>
+  maxThree?: boolean
 }>()
 
-defineEmits('update:selectedTags')
+const emit = defineEmits('update:selectedTags')
+
+watch(() => props.maxThree, () => {
+  if (props.maxThree) {
+    emit('update:selectedTags', props.selectedTags.slice(0, 3))
+  }
+})
 </script>

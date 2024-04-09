@@ -22,12 +22,12 @@
 
     <!-- Header -->
     <h1
-      class="relative text-[48px] md:text-[72px] leading-none uppercase text-brand-black"
+      class="relative text-[48px] md:text-[72px] leading-none uppercase text-white"
       v-html="$t('aboutUs.title')"
     />
 
     <div
-      class="relative w-full mt-10 mb-14 md:mt-10 md:mb-14 md:pl-[50%] md:pr-[15%] text-xl text-brand-black"
+      class="relative w-full mt-10 mb-14 md:mt-10 md:mb-14 md:pl-[50%] md:pr-[15%] text-xl text-white"
     >
       <p>
         {{ $t('aboutUs.subtitle') }}
@@ -230,7 +230,7 @@
       <div
         class="md:absolute top-1/2 left-1/2 w-full md:-translate-x-1/2 md:-translate-y-1/2 z-10 flex flex-col items-center justify-center gap-6"
       >
-        <img src="/icons/aboutus/quotes.svg" alt="Quotes" />
+        <img src="/icons/aboutus/quotes.svg" alt="Quotes" class="scale-[1.2] lg:scale-100" />
         <p class="font-semibold text-[20px] md:text-[24px] w-3/5">
           {{ $t('aboutUs.principles.quote.text') }}
         </p>
@@ -252,7 +252,7 @@
 
   <!-- Approach -->
   <div
-    class="text-brand-black flex flex-col gap-6 lg:gap-0 lg:flex-row aspect-square max-h-[1000px] max-w-[1000px] min-w-base mx-10 lg:mx-auto relative mt-3 lg:mt-10"
+    class="text-brand-black flex flex-col items-center gap-6 lg:gap-0 lg:flex-row aspect-square max-h-[1000px] max-w-[1000px] min-w-base mx-10 lg:mx-auto relative mt-3 lg:mt-10"
   >
     <h2
       class="uppercase text-brand-black lg:order-10 lg:text-[56px] lg:absolute lg:-translate-y-1/2 lg:-translate-x-1/2 font-semibold text-[36px] top-1/2 left-1/2 text-center"
@@ -268,11 +268,11 @@
     >
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
-        <span class="text-[20px] lg:text-[24px] ml-1">
+        <span class="text-[20px] lg:text-[24px] ml-1 text-brand-red">
           {{ $t('aboutUs.approach.item1.title') }}
         </span>
       </p>
-      <p class="mt-4 text-[18px] text-brand-red">
+      <p class="mt-4 text-[18px]">
         {{ $t('aboutUs.approach.item1.text') }}
       </p>
     </div>
@@ -282,11 +282,11 @@
     >
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
-        <span class="text-[20px] lg:text-[24px] ml-1">
+        <span class="text-[20px] lg:text-[24px] ml-1 text-brand-red">
           {{ $t('aboutUs.approach.item2.title') }}
         </span>
       </p>
-      <p class="mt-4 text-[18px] text-brand-red">
+      <p class="mt-4 text-[18px]">
         {{ $t('aboutUs.approach.item2.text') }}
       </p>
     </div>
@@ -296,11 +296,11 @@
     >
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
-        <span class="text-[20px] lg:text-[24px] ml-1">
+        <span class="text-[20px] lg:text-[24px] ml-1 text-brand-red">
           {{ $t('aboutUs.approach.item3.title') }}
         </span>
       </p>
-      <p class="mt-4 text-[18px] text-brand-red">
+      <p class="mt-4 text-[18px]">
         {{ $t('aboutUs.approach.item3.text') }}
       </p>
     </div>
@@ -310,11 +310,11 @@
     >
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
-        <span class="text-[20px] lg:text-[24px] ml-1">
+        <span class="text-[20px] lg:text-[24px] ml-1 text-brand-red">
           {{ $t('aboutUs.approach.item3.title') }}
         </span>
       </p>
-      <p class="mt-4 text-[18px] text-brand-red">
+      <p class="mt-4 text-[18px]">
         {{ $t('aboutUs.approach.item3.text') }}
       </p>
     </div>
@@ -324,11 +324,11 @@
     >
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
-        <span class="text-[20px] lg:text-[24px] ml-1">
+        <span class="text-[20px] lg:text-[24px] ml-1 text-brand-red">
           {{ $t('aboutUs.approach.item4.title') }}
         </span>
       </p>
-      <p class="mt-4 text-[18px] text-brand-red">
+      <p class="mt-4 text-[18px]">
         {{ $t('aboutUs.approach.item4.text') }}
       </p>
     </div>
@@ -458,9 +458,16 @@ const { data: main, pending } = useAsyncData(
   { watch: [locale] },
 )
 
-const { data: instructors, pending: pendingInstructors } = useFetch(
-  getApiAddress(`/api/v2/wagtail/instructors/`),
-  { deep: true },
+const { data: instructors, pending: pendingInstructors } = await useAsyncData(
+  'instructors',
+  () =>
+    $fetch(getApiAddress(`/api/v2/wagtail/instructors/`), {
+      params: {
+        locale: locale.value,
+        fields: '*',
+      },
+    }),
+  { watch: [locale], deep: true },
 )
 </script>
 <style scoped>

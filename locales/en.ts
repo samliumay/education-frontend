@@ -1,5 +1,6 @@
 export const en = {
   common: {
+    tariffs: 'Tariffs',
     purchaseOption: {
       'Course (1 / week)': 'Course (1 / week)',
       'Course (2 / week)': 'Course (2 / week)',

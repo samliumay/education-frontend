@@ -57,6 +57,7 @@
               }
             })
           "
+          :max-three="isCard"
           :selected-tags="buyForm.schedule_slots as number[]"
           @update:selected-tags="el => (buyForm.schedule_slots = el)"
         />
@@ -379,6 +380,8 @@ const buyForm = ref({
 
 const isSlug = computed(() => !/^\d+$/.test(route.params.id as string))
 
+const isCard = computed(() => product.value.purchase_options.find(option => option.id === buyForm.value.purchase_option)?.schedule_type === 'Terminkarten')
+
 const { data: product, pending: productPending } = await useAsyncData(
   'products',
   () =>
@@ -415,7 +418,7 @@ const addAcademy = async () => {
     product: route.params.id,
     purchase_option:
       product?.value?.product_type === 'Academy'
-        ? product?.value?.purchase_options?.[0]?.id ?? 1
+        ? product?.value?.purchase_options?.find(option => option.schedule_type === buyForm.value.schedule_type)?.id ?? product?.value?.purchase_options?.[0]?.id
         : buyForm.value.purchase_option,
     visitor: user.isLoggedIn ? buyForm.value.visitor : null,
     schedule_slots,

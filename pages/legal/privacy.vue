@@ -612,4 +612,34 @@ ul {
   margin-left: 1rem;
   margin-bottom: 0.75rem;
 }
+
+h1, h2, p {
+  color: #202020;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-size: 36px;
+  font-weight: 500;
+  margin-bottom: 24px;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 24px;
+  }
+}
+
+p {
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+a {
+  text-decoration: underline;
+  color: #db3b4e;
+}
 </style>
