@@ -15,7 +15,7 @@
       v-if="!withoutTitle"
       class="relative text-5xl uppercase font-medium mb-12 text-center"
     >
-      Тарифы
+      {{ $t('common.tariffs') }}
     </h2>
 
     <div
