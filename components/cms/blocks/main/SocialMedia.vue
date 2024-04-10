@@ -1,6 +1,6 @@
 <template>
   <div
-    class="block-padding flex flex-col items-center max-w-[1116px] self-center"
+    class="block-padding flex flex-col items-center max-w-[1116px] self-center text-brand-black"
     data-cms="main-social-media"
   >
     <AppHeading>
@@ -13,7 +13,7 @@
           v-if="blockData.value.media_card[0]"
           :to="blockData.value?.media_card[0]?.media_link ?? '/'"
           target="_blank"
-          class="flex gap-25 py-2 lg:py-0 justify-between lg:w-7/12 rounded-lg border-2 border-brand-dark-gray px-5 hover:bg-brand-light-gray cursor-pointer overflow-hidden"
+          class="flex gap-25 py-2 lg:py-0 justify-between lg:w-7/12 rounded-lg border-2 border-brand-light-gray px-5 hover:bg-brand-light-gray cursor-pointer overflow-hidden"
         >
           <div class="flex flex-col justify-center gap-4 w-6/12">
             <div class="w-fit h-fit">
@@ -50,7 +50,7 @@
           v-if="blockData.value.media_card[1]"
           :to="blockData.value?.media_card[1]?.media_link ?? '/'"
           target="_blank"
-          class="flex gap-5 py-2 lg:py-0 justify-between lg:w-5/12 rounded-lg border-2 border-brand-dark-gray px-5 hover:bg-brand-light-gray cursor-pointer overflow-hidden"
+          class="flex gap-5 py-2 lg:py-0 justify-between lg:w-5/12 rounded-lg border-2 border-brand-light-gray px-5 hover:bg-brand-light-gray cursor-pointer overflow-hidden"
         >
           <div class="flex flex-col justify-center gap-4 w-6/12">
             <div class="w-fit h-fit">
@@ -84,12 +84,12 @@
         </NuxtLink>
       </div>
 
-      <div class="flex flex-col lg:flex-row gap-2 lg:h-[260px]">
+      <div class="flex flex-col lg:flex-row gap-5 lg:h-[260px]">
         <NuxtLink
           v-if="blockData.value.media_card[2]"
           target="_blank"
           :to="blockData.value?.media_card[2]?.media_link ?? '/'"
-          class="flex gap-5 py-2 lg:py-0 justify-between lg:w-5/12 rounded-lg border-2 border-brand-dark-gray px-5 hover:bg-brand-light-gray cursor-pointer overflow-hidden"
+          class="flex gap-5 py-2 lg:py-0 justify-between lg:w-5/12 rounded-lg border-2 border-brand-light-gray px-5 hover:bg-brand-light-gray cursor-pointer overflow-hidden"
         >
           <div class="flex flex-col justify-center gap-4 w-6/12">
             <a
@@ -131,7 +131,7 @@
           v-if="blockData.value.media_card[3]"
           target="_blank"
           :to="blockData.value?.media_card[3]?.media_link ?? '/'"
-          class="flex gap-5 py-2 lg:py-0 justify-between lg:w-7/12 rounded-lg border-2 border-brand-dark-gray px-5 hover:bg-brand-light-gray cursor-pointer overflow-hidden"
+          class="flex gap-5 py-2 lg:py-0 justify-between lg:w-7/12 rounded-lg border-2 border-brand-light-gray px-5 hover:bg-brand-light-gray cursor-pointer overflow-hidden"
         >
           <div class="flex flex-col justify-center gap-4 w-6/12">
             <a

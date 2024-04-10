@@ -1,5 +1,19 @@
 export const en = {
   common: {
+    tariffs: 'Tariffs',
+    purchaseOption: {
+      'Course (1 / week)': 'Course (1 / week)',
+      'Course (2 / week)': 'Course (2 / week)',
+      'Course (3 / week)': 'Course (3 / week)',
+      'Abonnement (1 visit / week)': 'Abonement (1 / week)',
+      'Abonnement (2 visit / week)': 'Abonement (2 / week)',
+      'Abonnement (3 visit / week)': 'Abonement (3 / week)',
+      "Terminkarten": 'Terminkarten',
+      'Academy (1st half)': 'Academy (1st half)',
+      'Academy (2nd half)': 'Academy (2nd half)',
+      'Academy (full day)': 'Academy (full day)',
+      "default": 'One-time',
+    },
     states: {
       "cancelled": 'Cancelled',
       "frozen": 'Frozen',
@@ -55,7 +69,7 @@ export const en = {
       requestCallback: 'Request for a call back',
       comment: 'Comment',
       editSubscription: 'Editing subscription',
-      cancelSubscription: 'Cancel subscription',
+      cancelSubscription: 'Cancel payment',
       subscriptionPaymentPayPal: 'PayPal subscription payment',
       autopayPayPal: 'Autopay PayPal',
       registerInService: 'By registering in the service, you accept',
@@ -212,11 +226,8 @@ export const en = {
     secondWeek: '2nd week of the program',
     chooseShift: 'Select shift',
     morning: '1/2 day in the morning',
-    morningTime: 'Mon-Fri from 9:30 to 12:30',
     evening: '1/2 day in the afternoon',
-    eveningTime: 'Mon-Fri from 9:30 to 12:30',
     fullday: 'Full day',
-    fulldayTime: 'Mon-Fri from 9:30 to 12:30',
     enterFio:
       'Enter the first and last name of the children who will come to the event',
     chooseTariff: 'Select tariff',
@@ -229,6 +240,8 @@ export const en = {
     addCart: 'Add to the cart',
   },
   cart: {
+    totalCheckout: 'One-time',
+    totalRecurrent: 'Monthly',
     promocode: {
       input: 'Enter promo code',
       success: 'Promo code added successfully',
@@ -284,7 +297,7 @@ export const en = {
     },
     button: {
       checkout: 'Checkout',
-      registration: 'Registration',
+      registration: 'Sign In',
     },
   },
   blocks: {
@@ -305,6 +318,7 @@ export const en = {
       },
     },
     product: {
+      category: 'Category:',
       program: 'Program',
       age: 'Age:',
       language: 'Language:',
@@ -367,7 +381,7 @@ export const en = {
   },
   aboutUs: {
     title:
-      'Clavis Berlin - art school and science for children and young people',
+      'Clavis <img src="/icons/leologo.svg" alt="logo" class="align-middle inline-block" /> Berlin - art school and science for <img src="/icons/wisp.svg" alt="logo" class="align-middle inline-block" /> children and young people',
     subtitle:
       'Clavis is a new learning center for students of different age groups that offers a wide range of courses such as: B.Art and visual theater, science, mathematics and digital drawing',
     target:

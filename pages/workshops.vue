@@ -32,7 +32,11 @@ import { computed, ref } from 'vue'
 
 import AppSelect from '../components/AppSelect.vue'
 import TemplateProduct from '../components/cms/templates/TemplateProduct.vue'
-import { ageOptions } from '../mappers/options'
+import { ageOptionsByLocale } from '../mappers/options'
+
+const { t } = useI18n()
+
+const ageOptions = ageOptionsByLocale(t)
 
 const filters = ref({
   age_group: null,

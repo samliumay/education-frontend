@@ -1,68 +1,68 @@
-export const languageOptions = [
+export const languageOptionsByLocale = (t: (arg0: string) => string) => [
   {
-    label: 'Двуязычный',
+    label: t('common.languages.bi'),
     value: 'bi',
   },
   {
-    label: 'Русский',
+    label: t('common.languages.ru'),
     value: 'ru',
   },
   {
-    label: 'Английский',
+    label: t('common.languages.en'),
     value: 'en',
   },
   {
-    label: 'Немецкий',
+    label: t('common.languages.de'),
     value: 'de',
   },
   {
-    label: 'Русский/Английский',
+    label: t('common.languages.ru-en'),
     value: 'ru-en',
   },
   {
-    label: 'Немецкий/Английский',
+    label: t('common.languages.de-en'),
     value: 'de-en',
   },
   {
-    label: 'Немецкий/Русский',
+    label: t('common.languages.de-ru'),
     value: 'de-ru',
   },
 ]
 
-export const ageOptions = [
+export const ageOptionsByLocale = (t: (arg0: string) => string) => [
   {
-    label: '5-7 лет',
+    label: t('common.ages.5-7'),
     value: '5-7',
   },
   {
-    label: '8-11 лет',
+    label: t('common.ages.8-11'),
     value: '8-11',
   },
   {
-    label: 'от 12 лет',
+    label: t('common.ages.12+'),
     value: '12+',
   },
   {
-    label: 'от 14 лет',
+    label: t('common.ages.14+'),
     value: '14+',
   },
 ]
 
-export const seasonsOptions = [
+export const seasonsOptionsByLocale = (t: (arg0: string) => string) => [
   {
-    label: 'Зимние каникулы 2023',
+    label: t('common.filters.seasons.winter'),
     value: 'Winter',
   },
   {
-    label: 'Весенние каникулы 2023',
+    label: t('common.filters.seasons.spring'),
     value: 'Spring',
   },
   {
-    label: 'Летние каникулы 2023',
+    label: t('common.filters.seasons.summer'),
     value: 'Summer',
   },
   {
-    label: 'Осенние каникулы 2023',
+    label: t('common.filters.seasons.autumn'),
     value: 'Autumn',
   },
 ]

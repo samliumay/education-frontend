@@ -34,10 +34,18 @@ import { getApiAddress } from '@/utils/getApiAddress'
 import LoaderBlock from '../components/cms/blocks/misc/LoaderBlock.vue'
 import TutorCard from '../components/cms/blocks/misc/TutorCard.vue'
 
+const { locale } = useI18n()
 // API
-const { data: instructors, pending } = useFetch(
-  getApiAddress(`/api/v2/wagtail/instructors/`),
-  { deep: true },
+const { data: instructors, pending } = await useAsyncData(
+  'instructors',
+  () =>
+    $fetch(getApiAddress(`/api/v2/wagtail/instructors/`), {
+      params: {
+        locale: locale.value,
+        fields: '*',
+      },
+    }),
+  { watch: [locale], deep: true },
 )
 
 const instructorConverter = wrongInstructor => {

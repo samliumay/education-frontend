@@ -22,13 +22,12 @@
 
     <!-- Header -->
     <h1
-      class="relative text-[48px] md:text-[72px] leading-none uppercase text-brand-black"
-    >
-      {{ $t('aboutUs.title') }}
-    </h1>
+      class="relative text-[48px] md:text-[72px] leading-none uppercase text-white"
+      v-html="$t('aboutUs.title')"
+    />
 
     <div
-      class="relative w-full mt-10 mb-14 md:mt-10 md:mb-14 md:pl-[50%] md:pr-[15%] text-xl"
+      class="relative w-full mt-10 mb-14 md:mt-10 md:mb-14 md:pl-[50%] md:pr-[15%] text-xl text-white"
     >
       <p>
         {{ $t('aboutUs.subtitle') }}
@@ -44,7 +43,7 @@
   </h2>
 
   <!-- Offers -->
-  <div class="px-3 md:px-10 mt-6 md:mt-24 mb-10">
+  <div class="px-3 md:px-10 mt-6 md:mt-24 mb-10 text-brand-black">
     <h2
       class="font-semibold text-[36px] md:text-[56px] mb-[48px] text-brand-black uppercase"
     >
@@ -140,7 +139,7 @@
     </div>
   </div>
 
-  <div class="bg-white">
+  <div class="bg-white text-brand-black">
     <LoaderBlock v-if="pending" />
     <PageConstructor
       v-else
@@ -152,11 +151,16 @@
   </div>
 
   <LoadingBlock v-if="pendingInstructors" />
-  <AboutTutors v-else :block-data="instructors.items" />
+  <AboutTutors
+    v-else
+    :block-data="instructors.items.slice(0, 7)"
+    :with-all-instructors="false"
+    has-button
+  />
 
   <!-- Principles -->
   <div
-    class="grid grid-cols-1 gap-6 md:gap-0 md:grid-cols-2 mt-8 mb-10 mx-3 md:mx-10"
+    class="grid grid-cols-1 gap-6 md:gap-0 md:grid-cols-2 mt-8 mb-10 mx-3 md:mx-10 text-brand-black"
   >
     <div>
       <h2
@@ -192,7 +196,7 @@
       </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-brand-black">
       <div class="rounded-[12px] bg-brand-light-gray p-4">
         <div class="flex items-center justify-center aspect-square">
           <img src="/icons/aboutus/books.svg" alt="Books" />
@@ -226,7 +230,7 @@
       <div
         class="md:absolute top-1/2 left-1/2 w-full md:-translate-x-1/2 md:-translate-y-1/2 z-10 flex flex-col items-center justify-center gap-6"
       >
-        <img src="/icons/aboutus/quotes.svg" alt="Quotes" />
+        <img src="/icons/aboutus/quotes.svg" alt="Quotes" class="scale-[1.2] lg:scale-100" />
         <p class="font-semibold text-[20px] md:text-[24px] w-3/5">
           {{ $t('aboutUs.principles.quote.text') }}
         </p>
@@ -237,9 +241,18 @@
     </div>
   </div>
 
+  <RunningMedia
+    :block-data="
+      instructors
+        ?.items
+        .slice(0, 8)
+        .map(instructor => getApiAddress(instructor.title_image.meta.download_url)) || []
+    "
+  />
+
   <!-- Approach -->
   <div
-    class="flex flex-col gap-6 lg:gap-0 lg:flex-row aspect-square max-h-[1100px] max-w-[1100px] min-w-base mx-10 lg:mx-auto relative mt-3 lg:mt-10"
+    class="text-brand-black flex flex-col items-center gap-6 lg:gap-0 lg:flex-row aspect-square max-h-[1000px] max-w-[1000px] min-w-base mx-10 lg:mx-auto relative mt-3 lg:mt-10"
   >
     <h2
       class="uppercase text-brand-black lg:order-10 lg:text-[56px] lg:absolute lg:-translate-y-1/2 lg:-translate-x-1/2 font-semibold text-[36px] top-1/2 left-1/2 text-center"
@@ -255,74 +268,76 @@
     >
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
-        <span class="text-brand-red text-[20px] lg:text-[24px] ml-1">
+        <span class="text-[20px] lg:text-[24px] ml-1 text-brand-red">
           {{ $t('aboutUs.approach.item1.title') }}
         </span>
       </p>
-      <p class="mt-4 text-[18px] text-brand-black">
+      <p class="mt-4 text-[18px]">
         {{ $t('aboutUs.approach.item1.text') }}
       </p>
     </div>
 
     <div
-      class="lg:absolute lg:-translate-y-1/4 z-10 top-1/4 right-0 rounded-[12px] bg-brand-light-gray p-6 max-w-[500px]"
+      class="text-brand-black lg:absolute lg:-translate-y-1/4 z-10 top-1/4 right-0 rounded-[12px] bg-brand-light-gray p-6 max-w-[500px]"
     >
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
-        <span class="text-brand-red text-[20px] lg:text-[24px] ml-1">
+        <span class="text-[20px] lg:text-[24px] ml-1 text-brand-red">
           {{ $t('aboutUs.approach.item2.title') }}
         </span>
       </p>
-      <p class="mt-4 text-[18px] text-brand-black">
+      <p class="mt-4 text-[18px]">
         {{ $t('aboutUs.approach.item2.text') }}
       </p>
     </div>
 
     <div
-      class="lg:translate-y-1/4 lg:absolute z-10 bottom-1/4 rounded-[12px] bg-brand-light-gray p-6 max-w-[500px]"
+      class="lg:translate-y-1/4 lg:absolute z-10 bottom-1/4 rounded-[12px] bg-brand-light-gray p-6 max-w-[500px] text-brand-black"
     >
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
-        <span class="text-brand-red text-[20px] lg:text-[24px] ml-1">
+        <span class="text-[20px] lg:text-[24px] ml-1 text-brand-red">
           {{ $t('aboutUs.approach.item3.title') }}
         </span>
       </p>
-      <p class="mt-4 text-[18px] text-brand-black">
+      <p class="mt-4 text-[18px]">
         {{ $t('aboutUs.approach.item3.text') }}
       </p>
     </div>
 
     <div
-      class="lg:translate-y-1/4 lg:absolute z-10 bottom-1/4 right-0 rounded-[12px] bg-brand-light-gray p-6 max-w-[500px]"
+      class="lg:translate-y-1/4 lg:absolute z-10 bottom-1/4 right-0 rounded-[12px] bg-brand-light-gray p-6 max-w-[500px] text-brand-black"
     >
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
-        <span class="text-brand-red text-[20px] lg:text-[24px] ml-1">
+        <span class="text-[20px] lg:text-[24px] ml-1 text-brand-red">
           {{ $t('aboutUs.approach.item3.title') }}
         </span>
       </p>
-      <p class="mt-4 text-[18px] text-brand-black">
+      <p class="mt-4 text-[18px]">
         {{ $t('aboutUs.approach.item3.text') }}
       </p>
     </div>
 
     <div
-      class="lg:-translate-x-1/2 lg:absolute lg:translate-y-1/2 z-10 bottom-0 left-1/2 rounded-[12px] bg-brand-light-gray p-6 max-w-[500px] mt-8"
+      class="lg:-translate-x-1/2 lg:absolute lg:translate-y-1/2 z-10 bottom-0 left-1/2 rounded-[12px] bg-brand-light-gray p-6 max-w-[500px] mt-8 text-brand-black"
     >
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
-        <span class="text-brand-red text-[20px] lg:text-[24px] ml-1">
+        <span class="text-[20px] lg:text-[24px] ml-1 text-brand-red">
           {{ $t('aboutUs.approach.item4.title') }}
         </span>
       </p>
-      <p class="mt-4 text-[18px]">{{ $t('aboutUs.approach.item4.text') }}</p>
+      <p class="mt-4 text-[18px]">
+        {{ $t('aboutUs.approach.item4.text') }}
+      </p>
     </div>
   </div>
 
   <!-- Values -->
-  <div class="mt-24 bg-brand-light-gray pt-12 pb-8">
+  <div class="mt-[120px] bg-brand-light-gray pt-12 pb-8 text-brand-black">
     <h2
-      class="font-semibold text-[36px] md:text-[56px] mb-[48px] px-3 md:px-10 text-brand-black"
+      class="font-semibold text-[36px] md:text-[56px] mb-[48px] px-3 md:px-10 text-brand-black uppercase"
     >
       {{ $t('aboutUs.values.title') }}
     </h2>
@@ -408,8 +423,9 @@
         </p>
       </div>
     </div>
+  </div>
 
-    <div class="bg-white">
+    <div class="bg-white pb-8">
       <LoaderBlock v-if="pending" />
       <PageConstructor
         v-else
@@ -419,9 +435,9 @@
         class="flex flex-col"
       />
     </div>
-  </div>
 </template>
 <script setup lang="ts">
+import RunningMedia from '@/components/cms/blocks/main/RunningMedia.vue'
 import { getApiAddress } from '@/utils/getApiAddress'
 
 import AppDivider from '../components/AppDivider.vue'
@@ -442,9 +458,16 @@ const { data: main, pending } = useAsyncData(
   { watch: [locale] },
 )
 
-const { data: instructors, pending: pendingInstructors } = useFetch(
-  getApiAddress(`/api/v2/wagtail/instructors/`),
-  { deep: true },
+const { data: instructors, pending: pendingInstructors } = await useAsyncData(
+  'instructors',
+  () =>
+    $fetch(getApiAddress(`/api/v2/wagtail/instructors/`), {
+      params: {
+        locale: locale.value,
+        fields: '*',
+      },
+    }),
+  { watch: [locale], deep: true },
 )
 </script>
 <style scoped>

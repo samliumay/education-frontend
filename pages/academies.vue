@@ -74,7 +74,13 @@ import { computed, ref } from 'vue'
 import AppSelect from '../components/AppSelect.vue'
 import TemplateProduct from '../components/cms/templates/TemplateProduct.vue'
 import AcademySeason from '../components/products/AcademySeason.vue'
-import { ageOptions, languageOptions, seasonsOptions } from '../mappers/options'
+import { ageOptionsByLocale, languageOptionsByLocale, seasonsOptionsByLocale } from '../mappers/options'
+
+const { t } = useI18n()
+
+const ageOptions = ageOptionsByLocale(t)
+const languageOptions = languageOptionsByLocale(t)
+const seasonsOptions = seasonsOptionsByLocale(t)
 
 const getCurrentSeason = () => {
   const date = new Date()

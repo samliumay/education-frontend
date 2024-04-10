@@ -112,6 +112,7 @@ export type RegistrationErrors = {
 }
 
 export type Instructor = {
+  [x: string]: any
   first_name: string
   last_name: string
   job: string

@@ -80,6 +80,7 @@ useHead({
 const themeOverrides = {
   common: {
     primaryColor: 'rgb(34, 197, 94)',
+    placeholderColor: '#202020',
     fontSize: '16px',
   },
 }
@@ -99,6 +100,10 @@ if (process.client) {
 }
 </script>
 <style>
+.n-base-selection-placeholder__inner {
+  color: #202020;
+}
+
 body {
   font-family: Aeroport, sans-serif;
   background: white;

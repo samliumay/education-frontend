@@ -1,5 +1,19 @@
 export const de = {
   common: {
+    tariffs: 'Tarife',
+    purchaseOption: {
+      'Course (1 / week)': 'Kurs (1 / Woche)',
+      'Course (2 / week)': 'Kurs (2 / Woche)',
+      'Course (3 / week)': 'Kurs (3 / Woche)',
+      'Abonnement (1 visit / week)': 'Kurs (1 / Woche)',
+      'Abonnement (2 visit / week)': 'Kurs (2 / Woche)',
+      'Abonnement (3 visit / week)': 'Kurs (3 / Woche)',
+      "Terminkarten": 'Terminkarten',
+      'Academy (1st half)': 'Akademie (1. Hälfte)',
+      'Academy (2nd half)': 'Akademie (2. Hälfte)',
+      'Academy (full day)': 'Akademie (ganztägig)',
+      "default": 'Einmal',
+    },
     states: {
       "cancelled": 'Abgesagt',
       "frozen": 'Gefroren',
@@ -55,7 +69,7 @@ export const de = {
       requestCallback: 'Bitte um Rückruf',
       comment: 'Kommentar',
       editSubscription: 'Abonnement bearbeiten',
-      cancelSubscription: 'Abonnement beenden',
+      cancelSubscription: 'Zahlung stornieren',
       subscriptionPaymentPayPal: 'PayPal-Abonnementzahlung',
       autopayPayPal: 'PayPal automatisch bezahlen',
       registerInService:
@@ -213,12 +227,9 @@ export const de = {
     firstWeek: '1. Woche des Programms',
     secondWeek: '2. Woche des Programms',
     chooseShift: 'Wählen Sie Schicht',
-    morning: '1/2 Tag morgens',
-    morningTime: 'Mo-Fr von 9:30 bis 12:30 Uhr',
-    evening: '1/2 Tag nachmittags',
-    eveningTime: 'Mo-Fr von 9:30 bis 12:30 Uhr',
+    morning: 'Vormittags',
+    evening: 'Nachmittags',
     fullday: 'Ganzen Tag',
-    fulldayTime: 'Mo-Fr von 9:30 bis 12:30 Uhr',
     enterFio:
       'Geben Sie den Vor- und Nachnamen der Kinder ein, die zur Veranstaltung kommen werden',
     chooseTariff: 'Tarif auswählen',
@@ -231,6 +242,8 @@ export const de = {
     addCart: 'In den Warenkorb legen',
   },
   cart: {
+    totalCheckout: 'Einmal',
+    totalRecurrent: 'Monatlich',
     promocode: {
       input: 'Aktionscode eingeben',
       success: 'Aktionscode erfolgreich hinzugefügt',
@@ -289,7 +302,7 @@ export const de = {
     },
     button: {
       checkout: 'Kostenpflichtig buchen',
-      registration: 'Anmeldung',
+      registration: 'Login',
     },
   },
   blocks: {
@@ -310,11 +323,12 @@ export const de = {
       },
     },
     product: {
+      category: 'Fachrichtung:',
       program: 'Programm',
       age: 'Alter:',
       language: 'Sprache:',
-      tutors: 'Lehrer:',
-      place: 'Kabinett:',
+      tutors: 'Lehrkraft:',
+      place: 'Raum:',
       qna: 'Q&A',
       studentWorks: 'Studentische Arbeiten',
     },
@@ -372,7 +386,7 @@ export const de = {
   },
   aboutUs: {
     title:
-      'Clavis Berlin - Kunstschule und Wissenschafts für Kinder und Jugendliche',
+      'Clavis <img src="/icons/leologo.svg" alt="logo" class="align-middle inline-block" /> Berlin - Kunstschule und Wissenschafts für <img src="/icons/wisp.svg" alt="logo" class="align-middle inline-block" /> Kinder und Jugendliche',
     subtitle:
       'Clavis ist ein neues Lernzentrum für Schüler*innen verschiedener Altersgruppen, dass ein breites Spektrum an Kursen anbietet wie z. B.Kunst und visuelles Theater, Naturwissenschaften, Mathematik und Digitales Zeichnen',
     target:

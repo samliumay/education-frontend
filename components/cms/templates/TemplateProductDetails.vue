@@ -7,10 +7,8 @@
       </n-breadcrumb-item>
       <n-breadcrumb-item сlass="text-brand-gray">
         <NuxtLink :to="catalogPath">
-{{
-          $t(`mappers.${product?.product_type}`)
-        }}
-</NuxtLink>
+          {{ $t(`mappers.${product?.product_type}`) }}
+        </NuxtLink>
       </n-breadcrumb-item>
       <n-breadcrumb-item сlass="text-brand-gray">
         {{ product?.name }}

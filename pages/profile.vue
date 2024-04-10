@@ -216,6 +216,7 @@
                 class="w-full"
                 :orders="visitor.orders"
                 with-button
+                @cancel="navigateTo('/profile?tab=visitors')"
               />
             </div>
           </div>
@@ -281,7 +282,7 @@
       </n-tab-pane>
       <n-tab-pane name="sales" :tab="$t('common.profileMenu.history')">
         <div class="bg-white p-[36px] rounded-[12px] mt-[48px] mb-[24px]">
-          <ProductsTable :orders="user.orders" with-button />
+          <ProductsTable :orders="user.orders" with-button @cancel="navigateTo('/profile?tab=sales')" />
         </div>
       </n-tab-pane>
     </n-tabs>
@@ -385,18 +386,20 @@ const notification = useNotification()
 // Live hooks
 onMounted(() => {
   if (route.query.tab) {
-    activeTab.value = route.query.tab as string
-  }
-  if (route.query.payment) {
-    notification[route.query.payment === 'success' ? 'success' : 'error']({
-      title: t(
-        route.query.payment === 'success'
-          ? 'common.successPayment'
-          : 'common.failedPayment',
-      ),
-      duration: 2500,
-      keepAliveOnHover: true,
-    })
+    if (['sales-success', 'sales-fail'].includes(route.query.tab as string)) {
+      activeTab.value = 'sales'
+      notification[route.query.tab === 'sales-success' ? 'success' : 'error']({
+        title: t(
+          route.query.tab === 'sales-success'
+            ? 'common.successPayment'
+            : 'common.failedPayment',
+        ),
+        duration: 2500,
+        keepAliveOnHover: true,
+      })
+    } else {
+      activeTab.value = route.query.tab as string
+    }
   }
 })
 </script>

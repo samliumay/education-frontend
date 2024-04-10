@@ -1,5 +1,19 @@
 export const ru = {
   common: {
+    tariffs: 'Тарифы',
+    purchaseOption: {
+      'Course (1 / week)': 'Курс (1 / неделя)',
+      'Course (2 / week)': 'Курс (2 / неделя)',
+      'Course (3 / week)': 'Курс (3 / неделя)',
+      'Abonnement (1 visit / week)': 'Абонемент (1 / неделя)',
+      'Abonnement (2 visit / week)': 'Абонемент (2 / неделя)',
+      'Abonnement (3 visit / week)': 'Абонемент (3 / неделя)',
+      "Terminkarten": 'Карта встреч',
+      'Academy (1st half)': 'Академия (1ая половина)',
+      'Academy (2nd half)': 'Академия (2ая половина)',
+      'Academy (full day)': 'Академия (весь день)',
+      "default": 'Единоразово',
+    },
     states: {
       "cancelled": 'Отменено',
       "frozen": 'Заморожено',
@@ -55,7 +69,7 @@ export const ru = {
       requestCallback: 'Заявка на обратный звонок',
       comment: 'Комментарий',
       editSubscription: 'Редактирование подписки',
-      cancelSubscription: 'Отмена абонемента',
+      cancelSubscription: 'Отмена платежа',
       subscriptionPaymentPayPal: 'Оплата подписки PayPal',
       autopayPayPal: 'Автоплатёж PayPal',
       registerInService: 'Регистрируясь в сервисе, вы принимаете',
@@ -212,11 +226,8 @@ export const ru = {
     secondWeek: '2 неделя программы',
     chooseShift: 'Выберите смену',
     morning: '1/2 дня утром',
-    morningTime: 'Пн-Пт с 9:30 до 12:30',
     evening: '1/2 дня во второй половине',
-    eveningTime: 'Пн-Пт с 9:30 до 12:30',
     fullday: 'Полный день',
-    fulldayTime: 'Пн-Пт с 9:30 до 12:30',
     enterFio: 'Введите имя и фамилию детей, которые придут на мероприятие',
     chooseTariff: 'Выберите тариф',
     feature: 'Есть ли у вашего ребенка аллергии или болезни?',
@@ -228,6 +239,8 @@ export const ru = {
     addCart: 'Добавить в корзину',
   },
   cart: {
+    totalCheckout: 'Разово',
+    totalRecurrent: 'Ежемесячно',
     promocode: {
       input: 'Введите промокод',
       success: 'Промокод успешно добавлен',
@@ -285,7 +298,7 @@ export const ru = {
     },
     button: {
       checkout: 'Оформить заказ',
-      registration: 'Регистрация',
+      registration: 'Войти',
     },
   },
   blocks: {
@@ -306,6 +319,7 @@ export const ru = {
       },
     },
     product: {
+      category: 'Направление:',
       program: 'Программа',
       age: 'Возраст:',
       language: 'Язык:',
@@ -368,7 +382,8 @@ export const ru = {
     title: 'Личный кабинет',
   },
   aboutUs: {
-    title: 'Клавис Берлин - школа искусств и науки для детей и юношества',
+    title:
+      'Клавис <img src="/icons/leologo.svg" alt="logo" class="align-middle inline-block" /> Берлин - школа искусств и науки для  <img src="/icons/wisp.svg" alt="logo" class="align-middle inline-block" /> детей и юношества',
     subtitle:
       'Clavis — это новый учебный центр для студентов разных возрастных групп, предлагающий широкий спектр курсов, таких как: Художественный и визуальный театр, естествознание, математика и цифровой рисунок.',
     target:

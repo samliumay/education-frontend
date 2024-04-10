@@ -1,6 +1,6 @@
 <template>
   <div
-    class="px-10 bg-brand-light-gray py-16 relative"
+    class=" bg-brand-light-gray relative text-brand-black block-padding-x block-padding-y"
     data-cms="products-details-about-tutors"
   >
     <div
@@ -22,19 +22,19 @@
         <div
           v-if="
             (index - 2) % 9 === 0 ||
-            ((index - 5) % 9 === 0 && (index !== 5 || !withAllInstructors))
+            ((index - 5) % 9 === 0 && (index !== 5 || !(withAllInstructors || hasButton)))
           "
           class="hidden lg:block"
         />
         <div
-          v-if="index - 2 === 9 && hasButton"
-          class="hidden lg:flex flex-col rounded-[100%] bg-brand-yellow justify-center items-center"
+          v-if="index - 2 === 0 && hasButton"
+          class="hidden lg:flex flex-col rounded-[100%] bg-brand-yellow justify-center items-center aspect-square"
         >
           <p class="text-4xl font-medium text-center">
             {{ $t('common.allTeachers') }}
           </p>
           <p
-            class="text-xl font-medium text-center underline"
+            class="text-xl font-medium text-center underline cursor-pointer"
             @click="navigateTo('/instructors')"
           >
             {{ $t('common.go') }}
@@ -44,10 +44,15 @@
           :instructor="{ ...item.instructor, ...item, id: item?.id ?? 1 }"
         />
       </template>
+      <AppButton class="block lg:hidden" @click="navigateTo('/instructors')">
+        {{ $t('common.allTeachers') }}
+      </AppButton>
     </div>
   </div>
 </template>
 <script setup lang="ts">
+import AppButton from '@/components/AppButton.vue'
+
 import type { PageBlock } from '../../../../../types/cms'
 import TutorCard from '../../misc/TutorCard.vue'
 

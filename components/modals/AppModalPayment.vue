@@ -28,32 +28,36 @@
         </div>
 
         <div class="flex flex-col gap-4 m-10">
-          <div class="w-full py-2 flex justify-between items-center">
-            <p>{{ $t('common.modals.subscriptionPaymentPayPal') }}</p>
-            <a
-              :href="
-                !!order.paypal_invoice_link &&
-                ['awaiting payment', 'renewal available'].includes(order.state)
-                  ? order.paypal_invoice_link
-                  : '#'
-              "
-              target="_blank"
-              rel="noopener noreferrer"
-              ><AppButton
-                :disabled="
-                  !order.paypal_invoice_link ||
-                  ['awaiting payment', 'renewal available']!.includes(
+          <template v-if="order.paypal_invoice_link">
+            <div class="w-full py-2 flex justify-between items-center">
+              <p>{{ $t('common.modals.subscriptionPaymentPayPal') }}</p>
+              <a
+                :href="
+                  !!order.paypal_invoice_link &&
+                  ['awaiting payment', 'renewal available'].includes(
                     order.state,
                   )
+                    ? order.paypal_invoice_link
+                    : '#'
                 "
-                >{{ $t('common.actions.pay') }}</AppButton></a>
-          </div>
-          <div class="w-full py-2 flex justify-between items-center">
-            <p>{{ $t('common.modals.autopayPayPal') }}</p>
-            <div id="paypal-subscription" />
-          </div>
+                target="_blank"
+                rel="noopener noreferrer"
+                ><AppButton
+                  :disabled="
+                    !order.paypal_invoice_link ||
+                    ['awaiting payment', 'renewal available']!.includes(
+                      order.state,
+                    )
+                  "
+                  >{{ $t('common.actions.pay') }}</AppButton></a>
+            </div>
+            <div class="w-full py-2 flex justify-between items-center">
+              <p>{{ $t('common.modals.autopayPayPal') }}</p>
+              <div id="paypal-subscription" />
+            </div>
+          </template>
 
-          <AppDivider />
+          <AppDivider v-if="order.paypal_invoice_link" />
 
           <div class="w-full h-fit flex justify-between items-center">
             <p>{{ $t('common.modals.cancelSubscription') }}</p>
@@ -76,6 +80,7 @@ import { onMounted, type Ref, ref } from 'vue'
 
 import AppDivider from '@/components/AppDivider.vue'
 import { useCartStore } from '@/store/cart'
+import { useUserStore } from '@/store/user'
 
 const props = defineProps<{
   isOpen: boolean
@@ -83,11 +88,12 @@ const props = defineProps<{
   order: any
 }>()
 
-const emit = defineEmits(['close'])
+const emit = defineEmits(['close', 'statusCancel'])
 
 const paypal: Ref<any> = ref(null)
 
 const cart = useCartStore()
+const user = useUserStore()
 
 onMounted(async () => {
   try {
@@ -119,6 +125,7 @@ onMounted(async () => {
 
 const handleCancel = () => {
   cart.cancelRecurring(props?.order.id)
-  emit('close')
+  user.getOrdersByVisitors()
+  emit('statusCancel')
 }
 </script>

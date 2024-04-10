@@ -32,7 +32,8 @@
         </div>
 
         <h2
-          class="text-2xl md:text-4xl font-medium uppercase text-brand-red leading-tight"
+          class="text-2xl md:text-4xl font-medium uppercase leading-tight"
+          :class="isGreenText ? 'text-brand-green' : 'text-brand-red'"
         >
           {{ blockData.name }}
         </h2>
@@ -121,6 +122,7 @@ import Cover from '../misc/Cover.vue'
 
 const props = defineProps<{
   blockData: PageBlock
+  isGreenText?: boolean
 }>()
 
 const goToDetails = () => {

@@ -2,7 +2,7 @@
   <ImageBlock
     v-if="!pending"
     :image="image"
-    class="w-full h-[300px] rounded-xl overflow-hidden"
+    class="rounded-xl overflow-hidden"
     :image-class="imageClass"
   />
 </template>
@@ -17,7 +17,9 @@ const props = defineProps<{ id: number; imageClass?: string }>()
 
 // Get data
 const imageId = computed(() => props?.id)
-const { data: image, pending } = await useFetch(
-  getApiAddress(`/api/v2/wagtail/images/${imageId.value}/`),
+const { data: image, pending } = await useAsyncData(
+  `random${String(imageId.value)}${String(Math.random)}`,
+  () => $fetch(getApiAddress(`/api/v2/wagtail/images/${imageId.value}/`)),
+  { watch: [imageId] },
 )
 </script>

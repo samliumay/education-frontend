@@ -1,4 +1,5 @@
 // main
+import StudentWorks from '@/components/cms/blocks/instructor/StudentWorks.vue'
 import SeoText from '@/components/cms/blocks/main/SeoText.vue'
 
 import AgeGroups from '../components/cms/blocks/main/AgeGroups.vue'
@@ -30,4 +31,5 @@ export const mapTypeBlock = {
   "age_groups": AgeGroups,
   "video_block": Video,
   "tariff_block": PriceBlock,
+  "art_works": StudentWorks,
 }

@@ -34,6 +34,22 @@
 
         <div class="flex gap-[12px]">
           <div
+            class="bg-brand-light-gray px-4 p-2 rounded-full items-center"
+          >
+            {{ $t('common.tableOptions.option') }}: <span
+              class="font-medium"
+              >{{
+                $t(
+                  `common.purchaseOption.${purchaseOption.schedule_type}`,
+                ) ===
+                `common.purchaseOption.${purchaseOption.schedule_type}`
+                  ? $t(`common.purchaseOption.default`)
+                  : $t(
+                      `common.purchaseOption.${purchaseOption.schedule_type}`,
+                    )
+              }}</span>
+          </div>
+          <div
             class="bg-brand-light-gray px-4 p-2 rounded-full flex items-center"
           >
             Ребенок:
@@ -49,7 +65,12 @@
 
         <p class="font-medium text-[24px]">
           {{ `${order?.calculated_price ?? 0} €` }}
-          <span class="text-gray-400 ml-[8px]">
+          <span
+            v-if="
+              ['Abonnement (1 visit / week)', 'Abonnement (2 visit / week)', 'Abonnement (3 visit / week)'].includes(purchaseOption.schedule_type)
+            "
+            class="text-gray-400 ml-[8px]"
+          >
             {{ $t('cart.perMonth') }}
           </span>
         </p>
@@ -136,6 +157,8 @@ const props = defineProps<{
 }>()
 
 defineEmits(['close'])
+
+const purchaseOption = computed(() => props.order ? props.order.product_page.purchase_options.find(option => props.order.purchase_option === option.id) : {})
 
 // Init store
 const cart = useCartStore()
