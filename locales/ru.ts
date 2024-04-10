@@ -319,6 +319,7 @@ export const ru = {
       },
     },
     product: {
+      category: 'Направление:',
       program: 'Программа',
       age: 'Возраст:',
       language: 'Язык:',

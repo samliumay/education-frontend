@@ -126,6 +126,6 @@ onMounted(async () => {
 const handleCancel = () => {
   cart.cancelRecurring(props?.order.id)
   user.getOrdersByVisitors()
-  emit('close')
+  emit('statusCancel')
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <n-modal :show="isOpen">
     <div
-      class="bg-white overflow-y-scroll w-full md:max-w-[80%] lg:max-w-[60%] h-fit rounded-md"
+      class="bg-white overflow-y-scroll w-full md:max-w-[60%] h-fit rounded-md"
     >
       <div
         class="flex flex-col items-center gap-10 block-padding h-full md:max-h-[600px]"

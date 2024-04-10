@@ -37,7 +37,9 @@ const { data: prices, pending } = useAsyncData(
   'prices',
   () =>
     $fetch(getApiAddress(`/api/v2/wagtail/prices/`), {
-      params: {},
+      params: {
+        locale: locale.value,
+      },
     }),
   { watch: [locale] },
 )

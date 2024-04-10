@@ -216,6 +216,7 @@
                 class="w-full"
                 :orders="visitor.orders"
                 with-button
+                @cancel="navigateTo('/profile?tab=visitors')"
               />
             </div>
           </div>
@@ -281,7 +282,7 @@
       </n-tab-pane>
       <n-tab-pane name="sales" :tab="$t('common.profileMenu.history')">
         <div class="bg-white p-[36px] rounded-[12px] mt-[48px] mb-[24px]">
-          <ProductsTable :orders="user.orders" with-button />
+          <ProductsTable :orders="user.orders" with-button @cancel="navigateTo('/profile?tab=sales')" />
         </div>
       </n-tab-pane>
     </n-tabs>

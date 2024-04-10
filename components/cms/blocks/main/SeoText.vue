@@ -1,6 +1,6 @@
 <template>
   <div class="block-padding" data-cms="main-seo-text">
-    <h2 class="text-3xl md:text-[56px] uppercase mb-8 font-bold text-brand-red">
+    <h2 class="text-3xl md:text-[56px] uppercase mb-8 font-bold text-brand-red leading-tight">
       {{ blockData.value.heading }}
     </h2>
     <p class="text-brand-gray text-base xl:text-[20px] font-medium">

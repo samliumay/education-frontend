@@ -318,6 +318,7 @@ export const en = {
       },
     },
     product: {
+      category: 'Category:',
       program: 'Program',
       age: 'Age:',
       language: 'Language:',

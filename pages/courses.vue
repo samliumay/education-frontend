@@ -57,9 +57,12 @@ import { getApiAddress } from '@/utils/getApiAddress'
 
 import AppSelect from '../components/AppSelect.vue'
 import TemplateProduct from '../components/cms/templates/TemplateProduct.vue'
-import { ageOptions, languageOptions } from '../mappers/options'
+import { ageOptionsByLocale, languageOptionsByLocale } from '../mappers/options'
 
-const { locale } = useI18n({ useScope: 'global' })
+const { locale, t } = useI18n({ useScope: 'global' })
+
+const ageOptions = ageOptionsByLocale(t)
+const languageOptions = languageOptionsByLocale(t)
 
 const filters = ref({
   language: null,

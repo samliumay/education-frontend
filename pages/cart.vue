@@ -255,7 +255,7 @@
             </p>
             <div v-show="form?.checkValidity() && cart?.order?.items?.length">
               <AppButton
-                class="w-full"
+                class="w-full rounded-[4px] py-[2px]"
                 type="submit"
                 :disabled="!form?.checkValidity() ?? false"
               >

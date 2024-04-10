@@ -70,6 +70,11 @@
 
       <div class="flex flex-col gap-1 pt-12">
         <p>
+          <span class="font-medium">{{ $t('blocks.product.category') }}</span>
+          <span class="text-gray-400 ml-[8px]">{{ blockData.category }}</span>
+        </p>
+
+        <p>
           <span class="font-medium">{{ $t('blocks.product.age') }}</span>
           <span class="text-gray-400 ml-[8px]">{{ blockData.age_group }}</span>
         </p>
@@ -82,7 +87,7 @@
         </p>
 
         <p>
-          <span class="font-medium">{{ $t('blocks.product.tutors') }}</span>
+          <span class="font-medium mr-[8px]">{{ $t('blocks.product.tutors') }}</span>
           <template v-if="blockData?.instructors?.length">
             {{
               Array.from(

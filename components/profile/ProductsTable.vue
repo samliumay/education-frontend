@@ -4,6 +4,7 @@
     :is-open="isOpenPaymentModal"
     :order="order"
     @close="isOpenPaymentModal = false"
+    @status-cancel="handleCancel"
   />
 
   <div class="overflow-x-scroll">
@@ -99,9 +100,16 @@ defineProps<{
   withButton?: boolean
 }>()
 
+const emit = defineEmits(['cancel'])
+
 // State
 const isOpenPaymentModal = ref(false)
 const order = ref({})
+
+const handleCancel = () => {
+  emit('cancel')
+  isOpenPaymentModal.value = false
+}
 
 // Actions
 const openPaymentModal = item => {

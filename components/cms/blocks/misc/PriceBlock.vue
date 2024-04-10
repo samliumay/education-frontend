@@ -12,7 +12,7 @@
           class="block mb-8 w-full md:w-auto -mt-6"
           @click="navigateToCatalog"
         >
-          {{ $t('common.actions.buy') }}
+          {{ blockData.value.button_text || $t('common.actions.buy') }}
         </AppButton>
       </div>
 

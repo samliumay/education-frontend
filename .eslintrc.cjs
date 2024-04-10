@@ -162,7 +162,7 @@ module.exports = {
       'error',
       {
         min: 2,
-        exceptions: ['x', 'y', '_'],
+        exceptions: ['x', 'y', '_', 't'],
         properties: 'never',
       },
     ],

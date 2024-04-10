@@ -1,10 +1,12 @@
 <template>
   <div
-    class="bg-white mb-6 mt-3 lg:mt-6 rounded-[12px] border-[1px] p-4 lg:p-8 grid grid-cols-1 lg:grid-cols-4 gap-3 sm:gap-6"
+    class="bg-white mb-6 mt-3 lg:mt-6 rounded-[12px] border-[1px] border-brand-black p-4 lg:p-8 grid grid-cols-1 lg:grid-cols-4 gap-3 sm:gap-6"
   >
     <p class="font-semibold text-[20px] col-span-2 flex items-center">
-      {{ $t('schoolOffer.questions') }}
-      <span class="text-brand-red">{{ $t('schoolOffer.workhours') }}</span>
+      <span>
+        {{ $t('schoolOffer.questions') }}
+        <span class="text-brand-red">{{ $t('schoolOffer.workhours') }}</span>
+      </span>
     </p>
     <div>
       <p class="font-medium text-[20px]">{{ $t('common.info.phone') }}</p>

@@ -55,7 +55,9 @@ const { data: product, pending } = await useAsyncData(
   'schoolOffer',
   () =>
     $fetch(getApiAddress(`/api/v2/wagtail/school-offers/`), {
-      params: {},
+      params: {
+        locale: locale.value,
+      },
     }),
   { watch: [locale], deep: true },
 )

@@ -18,7 +18,7 @@
         :key="item.id"
         class="w-[100%] lg:!w-[33%]"
       >
-        <ProductCard class="h-full" :block-data="item" />
+        <ProductCard class="h-full" :block-data="item" :is-green-text="blockData.value[0].catalog_link.includes('workshops')" />
       </n-carousel-item>
 
       <template #arrow="{ prev, next }">
