@@ -23,7 +23,7 @@
       :placeholder="$t('user.phone_number')"
       class="mt-[12px]"
       type="tel"
-      pattern=".{13,20}"
+      pattern=".{14,18}"
       required
       @blur="checkValidity"
     />
@@ -84,7 +84,7 @@ import { useUserStore } from '../../store/user'
 import AppInput from '../AppInput.vue'
 
 // Init component
-const emit = defineEmits(['close', 'goToEmailStep'])
+const emit = defineEmits(['close', 'goToEmailStep', 'goToVerify'])
 
 // Store
 const userStore = useUserStore()
@@ -121,7 +121,17 @@ const clearError = () => {
 const signUp = async () => {
   await userStore.register(signUpCredentials.value).catch(err => {
     if (Object.keys(err).length !== 0) {
-      error.value = t('common.somethingWrong')
+      if (err?.phone_number?.[0].includes('Enter a valid phone number.')) {
+        error.value = t('common.errors.phone')
+      } else if (err?.email?.[0].includes('Enter a valid email address.')) {
+        error.value = t('common.errors.email')
+      } else if (err?.email?.[0] && err?.username?.[0]) {
+        error.value = t('common.errors.exists')
+      } else if (err?.non_field_errors?.[0].includes("The two password fields didn't match.")) {
+        error.value = t('common.errors.passwordMatch')
+      } else {
+        error.value = t('common.somethingWrong')
+      }
       setTimeout(clearError, 2000)
     } else {
       const { email } = signUpCredentials.value
@@ -132,7 +142,7 @@ const signUp = async () => {
       signUpCredentials.value.first_name = ''
       signUpCredentials.value.last_name = ''
       signUpCredentials.value.phone_number = ''
-      emit('goToEmailStep', email)
+      emit('goToVerify', email)
     }
   })
 }

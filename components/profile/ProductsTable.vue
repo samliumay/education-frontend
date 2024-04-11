@@ -107,7 +107,7 @@ const isOpenPaymentModal = ref(false)
 const order = ref({})
 
 const handleCancel = () => {
-  emit('cancel')
+  emit('cancel', order.value.id)
   isOpenPaymentModal.value = false
 }
 

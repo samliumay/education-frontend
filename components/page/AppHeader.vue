@@ -178,6 +178,7 @@
 </template>
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 
 import { useCartStore } from '../../store/cart'
 import { useUserStore } from '../../store/user'
@@ -186,6 +187,8 @@ import AppSelect from '../AppSelect.vue'
 import ProfileMenu from '../profile/ProfileMenu.vue'
 
 const { t, locale } = useI18n({ useScope: 'global' })
+
+const route = useRoute()
 
 const routes = computed(() => [
   {
@@ -210,6 +213,12 @@ cart.getCurrentOrder()
 // Flags
 const isOpenSignIn = ref(false)
 const isOpenModalProfile = ref(false)
+
+onMounted(() => {
+  if (route.query.uid && route.query.token) {
+    isOpenSignIn.value = true
+  }
+})
 
 // Language Switcher
 const currentLanguage = ref(localStorage.getItem('locale') || 'ru')

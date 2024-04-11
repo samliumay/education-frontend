@@ -1,5 +1,11 @@
 export const en = {
   common: {
+    errors: {
+      phone: 'Incorrect phone number',
+      email: 'Incorrect e-mail',
+      exists: 'A user is already registered with this e-mail address',
+      passwordMatch: 'Passwords don`t match',
+    },
     tariffs: 'Tariffs',
     purchaseOption: {
       'Course (1 / week)': 'Course (1 / week)',

@@ -75,6 +75,6 @@ const blocksList = computed(() => [
     name: StudentWorks,
     blockData: product.value?.items[0].student_works_block[0]?.value.contents,
   },
-  { name: SeoText, blockData: product.value?.items[0].seo_text },
+  { name: SeoText, blockData: product.value?.items[0].seo_text[0] },
 ])
 </script>

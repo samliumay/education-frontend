@@ -1,5 +1,11 @@
 export const ru = {
   common: {
+    errors: {
+      phone: 'Некорректный номер телефона',
+      email: 'Некорректный e-mail',
+      exists: 'Пользователь с таким e-mail уже зарегистрирован',
+      passwordMatch: 'Пароли не совпадают',
+    },
     tariffs: 'Тарифы',
     purchaseOption: {
       'Course (1 / week)': 'Курс (1 / неделя)',

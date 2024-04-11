@@ -1,5 +1,11 @@
 export const de = {
   common: {
+    errors: {
+      phone: 'Ungültige Telefonnummer',
+      email: 'Falsche Email',
+      exists: 'Ein Benutzer mit dieser E-Mail ist bereits registriert',
+      passwordMatch: 'Die Passwörter stimmen nicht überein',
+    },
     tariffs: 'Tarife',
     purchaseOption: {
       'Course (1 / week)': 'Kurs (1 / Woche)',
@@ -229,7 +235,7 @@ export const de = {
     chooseShift: 'Wählen Sie Schicht',
     morning: 'Vormittags',
     evening: 'Nachmittags',
-    fullday: 'Ganzen Tag',
+    fullday: 'Ganztägig',
     enterFio:
       'Geben Sie den Vor- und Nachnamen der Kinder ein, die zur Veranstaltung kommen werden',
     chooseTariff: 'Tarif auswählen',
@@ -337,9 +343,9 @@ export const de = {
     "Course": 'Kurs',
     "Academy": 'Akademie',
     "Workshop": 'Werkstatt',
-    'Academy (1st half)': '1/2 Morgen',
-    'Academy (2nd half)': '1/2 Abend',
-    'Academy (full day)': 'Den ganzen Tag',
+    'Academy (1st half)': 'Vormittags',
+    'Academy (2nd half)': 'Nachmittags',
+    'Academy (full day)': 'Ganztägig',
   },
   user: {
     password: 'Passwort',

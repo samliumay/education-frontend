@@ -129,7 +129,7 @@
                 :placeholder="$t('user.phone_number')"
                 maska="+49 ### ###-##-##"
                 type="tel"
-                pattern=".{13,20}"
+                pattern=".{14,18}"
                 required
                 is-gray
                 @blur="checkValidity"
@@ -282,7 +282,7 @@
       </n-tab-pane>
       <n-tab-pane name="sales" :tab="$t('common.profileMenu.history')">
         <div class="bg-white p-[36px] rounded-[12px] mt-[48px] mb-[24px]">
-          <ProductsTable :orders="user.orders" with-button @cancel="navigateTo('/profile?tab=sales')" />
+          <ProductsTable :orders="user.orders" with-button @cancel="handleCancelStatus" />
         </div>
       </n-tab-pane>
     </n-tabs>
@@ -311,11 +311,11 @@ await user.getOrdersByVisitors()
 await user.getOrders()
 await user.getWorkshopOrders()
 
-if (process.client && !user.isLoggedIn) {
-  // eslint-disable-next-line no-console
-  console.info('💥 The user is not logged in to the account!')
-  navigateTo('/')
-}
+// if (process.client && !user.isLoggedIn && route.fullPath.includes('/profile')) {
+//   // eslint-disable-next-line no-console
+//   console.info('💥 The user is not logged in to the account!')
+//   navigateTo('/')
+// }
 
 user.visitorsOrders = user.visitors.map(visitor => ({
   ...visitor,
@@ -345,6 +345,15 @@ const { t } = useI18n()
 const openCommentModal = workshop => {
   comment.value = workshop.comment
   isOpenModalComment.value = true
+}
+
+const handleCancelStatus = (id: any) => {
+  user.orders = user.orders.map(order => {
+    if (order.id === id) {
+      order.state = 'cancelled'
+    }
+    return order
+  })
 }
 
 const checkValidity = (event: {
@@ -388,15 +397,18 @@ onMounted(() => {
   if (route.query.tab) {
     if (['sales-success', 'sales-fail'].includes(route.query.tab as string)) {
       activeTab.value = 'sales'
-      notification[route.query.tab === 'sales-success' ? 'success' : 'error']({
-        title: t(
-          route.query.tab === 'sales-success'
-            ? 'common.successPayment'
-            : 'common.failedPayment',
-        ),
-        duration: 2500,
-        keepAliveOnHover: true,
-      })
+      if (localStorage.getItem('notifyWasShown')) {
+        notification[route.query.tab === 'sales-success' ? 'success' : 'error']({
+          title: t(
+            route.query.tab === 'sales-success'
+              ? 'common.successPayment'
+              : 'common.failedPayment',
+          ),
+          duration: 2500,
+          keepAliveOnHover: true,
+        })
+        localStorage.setItem('notifyWasShown', 'yes')
+      }
     } else {
       activeTab.value = route.query.tab as string
     }
