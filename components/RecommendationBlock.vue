@@ -1,6 +1,6 @@
 <template>
   <div v-if="blockData.length !== 0">
-    <h3 class="flex items-center gap-3 text-4xl font-medium">
+    <h3 class="flex items-center gap-3 text-xl md:text-2xl font-medium">
       {{ $t('common.recommend') }}
       <img
         alt="Arrow"
@@ -13,7 +13,7 @@
       <div
         v-for="item in blockData"
         :key="item.id"
-        class="bg-white border-brand-dark-gray p-3 border-[1px] rounded-[12px] flex flex-col md:flex-row gap-4 cursor-pointer max-w-[50%]"
+        class="bg-brand-light-gray border-brand-dark-gray p-3 border-[1px] rounded-[12px] flex flex-col md:flex-row gap-4 cursor-pointer max-w-[50%]"
         @click="
           navigateTo(
             `/product/${

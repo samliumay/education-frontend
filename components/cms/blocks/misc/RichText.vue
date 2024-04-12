@@ -22,7 +22,10 @@ const sanitizedDescription = computed(() =>
 )
 </script>
 <style lang="scss">
-.rich-text h1, .rich-text h2, .rich-text h3, .rich-text p {
+.rich-text h1,
+.rich-text h2,
+.rich-text h3,
+.rich-text p {
   color: #202020;
 }
 

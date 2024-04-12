@@ -154,7 +154,11 @@
         />
 
         <NuxtLink to="/cart">
-          <img src="/icons/cart.svg" alt="Cart" />
+          <img
+            src="/icons/cart.svg"
+            alt="Cart"
+            class="shrink-0 w-[36px] md:w-auto"
+          />
         </NuxtLink>
 
         <template v-if="user.isLoggedIn">
@@ -220,8 +224,16 @@ onMounted(() => {
   }
 })
 
+const browserLocale = ['ru', 'en', 'de'].includes(
+  navigator.language.slice(0, 2),
+)
+  ? navigator.language.slice(0, 2)
+  : undefined
+
 // Language Switcher
-const currentLanguage = ref(localStorage.getItem('locale') || 'ru')
+const currentLanguage = ref(
+  localStorage.getItem('locale') || browserLocale || 'ru',
+)
 const languageOptions = [
   {
     label: 'RU',

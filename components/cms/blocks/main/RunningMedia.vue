@@ -10,7 +10,17 @@ ended. // ! If problems arise, it is better to rewrite it in css + js
   >
     <marquee direction="left" behavior="scroll">
       <div class="flex gap-6 w-max p-2">
-        <template v-for="(link, index) in [...blockData, ...blockData, ...blockData, ...blockData, ...blockData, ...blockData] as Array<any>" :key="link">
+        <template
+          v-for="(link, index) in [
+            ...blockData,
+            ...blockData,
+            ...blockData,
+            ...blockData,
+            ...blockData,
+            ...blockData,
+          ] as Array<any>"
+          :key="link"
+        >
           <img
             v-if="index % 8 === 0"
             src="/icons/running_1.svg"
@@ -34,7 +44,14 @@ ended. // ! If problems arise, it is better to rewrite it in css + js
     <marquee direction="right" behavior="scroll">
       <div class="flex gap-6 w-max p-2">
         <template
-          v-for="(link, index) in [...blockData, ...blockData, ...blockData, ...blockData, ...blockData, ...blockData].reduce((acc, link) => {
+          v-for="(link, index) in [
+            ...blockData,
+            ...blockData,
+            ...blockData,
+            ...blockData,
+            ...blockData,
+            ...blockData,
+          ].reduce((acc, link) => {
             acc.unshift(link)
             return acc
           }, [] as Array<any>)"

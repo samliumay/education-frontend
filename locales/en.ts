@@ -5,6 +5,8 @@ export const en = {
       email: 'Incorrect e-mail',
       exists: 'A user is already registered with this e-mail address',
       passwordMatch: 'Passwords don`t match',
+      uniquePhone:
+        'Mit dieser Telefonnummer ist bereits ein Benutzer registriert',
     },
     tariffs: 'Tariffs',
     purchaseOption: {
@@ -206,6 +208,12 @@ export const en = {
     },
     weekdays: {
       monday: 'Monday',
+      tuesday: 'Tuesday',
+      wednesday: 'Wednesday',
+      thursday: 'Thursday',
+      friday: 'Friday',
+      saturday: 'Saturday',
+      sunday: 'Sunday',
       short: {
         monday: 'Mo',
         tuesday: 'Tu',

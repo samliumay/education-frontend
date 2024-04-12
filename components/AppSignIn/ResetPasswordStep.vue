@@ -74,15 +74,22 @@ const clearError = () => {
 }
 
 const reset = async () => {
-  await userStore.confirmResetPassword(password1.value, password2.value, route.query.uid as string, route.query.token as string).catch(err => {
-    if (Object.keys(err).length !== 0) {
-      error.value = t('common.somethingWrong')
-      setTimeout(clearError, 2000)
-    } else {
-      emit('reset')
-      isSended.value = true
-      error.value = ''
-    }
-  })
+  await userStore
+    .confirmResetPassword(
+      password1.value,
+      password2.value,
+      route.query.uid as string,
+      route.query.token as string,
+    )
+    .catch(err => {
+      if (Object.keys(err).length !== 0) {
+        error.value = t('common.somethingWrong')
+        setTimeout(clearError, 2000)
+      } else {
+        emit('reset')
+        isSended.value = true
+        error.value = ''
+      }
+    })
 }
 </script>

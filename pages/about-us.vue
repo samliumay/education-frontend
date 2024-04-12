@@ -223,15 +223,19 @@
 
     <div class="relative py-32 md:py-0">
       <img
-        class="absolute top-1/2 left-1/2 w-4/5 -translate-x-1/2 -translate-y-1/2 z-0"
+        class="absolute top-1/2 left-1/2 w-full md:w-4/5 -translate-x-1/2 -translate-y-1/2 z-0"
         alt="Border"
         src="/icons/aboutus/border.svg"
       />
       <div
-        class="md:absolute top-1/2 left-1/2 w-full md:-translate-x-1/2 md:-translate-y-1/2 z-10 flex flex-col items-center justify-center gap-6"
+        class="md:absolute top-1/2 left-1/2 w-full md:-translate-x-1/2 md:-translate-y-1/2 z-10 flex flex-col items-center justify-center gap-3 md:gap-6"
       >
-        <img src="/icons/aboutus/quotes.svg" alt="Quotes" class="scale-[1.2] lg:scale-100" />
-        <p class="font-semibold text-[20px] md:text-[24px] w-3/5">
+        <img
+          src="/icons/aboutus/quotes.svg"
+          alt="Quotes"
+          class="scale-[1.2] lg:scale-100"
+        />
+        <p class="font-semibold text-[16px] md:text-[24px] w-3/5">
           {{ $t('aboutUs.principles.quote.text') }}
         </p>
         <p class="text-brand-gray">
@@ -243,19 +247,20 @@
 
   <RunningMedia
     :block-data="
-      instructors
-        ?.items
+      instructors?.items
         .slice(0, 8)
-        .map(instructor => getApiAddress(instructor.title_image.meta.download_url)) || []
+        .map(instructor =>
+          getApiAddress(instructor.title_image.meta.download_url),
+        ) || []
     "
   />
 
   <!-- Approach -->
   <div
-    class="text-brand-black flex flex-col items-center gap-6 lg:gap-0 lg:flex-row aspect-square max-h-[1000px] max-w-[1000px] min-w-base mx-10 lg:mx-auto relative mt-3 lg:mt-10"
+    class="text-brand-black flex flex-col items-center gap-6 lg:gap-0 lg:flex-row aspect-square max-h-[1000px] max-w-[1000px] min-w-base mx-3 lg:mx-auto relative mt-3 lg:mt-10"
   >
     <h2
-      class="uppercase text-brand-black lg:order-10 lg:text-[56px] lg:absolute lg:-translate-y-1/2 lg:-translate-x-1/2 font-semibold text-[36px] top-1/2 left-1/2 text-center"
+      class="uppercase text-brand-black lg:order-10 lg:text-[56px] lg:absolute lg:-translate-y-1/2 lg:-translate-x-1/2 font-semibold text-[30px] top-1/2 lg:left-1/2 text-center"
     >
       {{ $t('aboutUs.approach.title') }}
     </h2>
@@ -269,11 +274,11 @@
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
         <span class="text-[20px] lg:text-[24px] ml-1 text-brand-red">
-          {{ $t('aboutUs.approach.item1.title') }}
+          {{ $t('aboutUs.approach.item1.text') }}
         </span>
       </p>
       <p class="mt-4 text-[18px]">
-        {{ $t('aboutUs.approach.item1.text') }}
+        {{ $t('aboutUs.approach.item1.title') }}
       </p>
     </div>
 
@@ -283,11 +288,11 @@
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
         <span class="text-[20px] lg:text-[24px] ml-1 text-brand-red">
-          {{ $t('aboutUs.approach.item2.title') }}
+          {{ $t('aboutUs.approach.item2.text') }}
         </span>
       </p>
       <p class="mt-4 text-[18px]">
-        {{ $t('aboutUs.approach.item2.text') }}
+        {{ $t('aboutUs.approach.item2.title') }}
       </p>
     </div>
 
@@ -297,11 +302,11 @@
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
         <span class="text-[20px] lg:text-[24px] ml-1 text-brand-red">
-          {{ $t('aboutUs.approach.item3.title') }}
+          {{ $t('aboutUs.approach.item3.text') }}
         </span>
       </p>
       <p class="mt-4 text-[18px]">
-        {{ $t('aboutUs.approach.item3.text') }}
+        {{ $t('aboutUs.approach.item3.title') }}
       </p>
     </div>
 
@@ -311,11 +316,11 @@
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
         <span class="text-[20px] lg:text-[24px] ml-1 text-brand-red">
-          {{ $t('aboutUs.approach.item3.title') }}
+          {{ $t('aboutUs.approach.item3.text') }}
         </span>
       </p>
       <p class="mt-4 text-[18px]">
-        {{ $t('aboutUs.approach.item3.text') }}
+        {{ $t('aboutUs.approach.item3.title') }}
       </p>
     </div>
 
@@ -325,11 +330,11 @@
       <p class="flex items-center">
         <img src="/icons/star.svg" alt="Star" />
         <span class="text-[20px] lg:text-[24px] ml-1 text-brand-red">
-          {{ $t('aboutUs.approach.item4.title') }}
+          {{ $t('aboutUs.approach.item4.text') }}
         </span>
       </p>
       <p class="mt-4 text-[18px]">
-        {{ $t('aboutUs.approach.item4.text') }}
+        {{ $t('aboutUs.approach.item4.title') }}
       </p>
     </div>
   </div>
@@ -425,16 +430,14 @@
     </div>
   </div>
 
-    <div class="bg-white pb-8">
-      <LoaderBlock v-if="pending" />
-      <PageConstructor
-        v-else
-        :blocks="
-          main.items[0].body.filter(item => item.type === 'social_media')
-        "
-        class="flex flex-col"
-      />
-    </div>
+  <div class="bg-white pb-8">
+    <LoaderBlock v-if="pending" />
+    <PageConstructor
+      v-else
+      :blocks="main.items[0].body.filter(item => item.type === 'social_media')"
+      class="flex flex-col"
+    />
+  </div>
 </template>
 <script setup lang="ts">
 import RunningMedia from '@/components/cms/blocks/main/RunningMedia.vue'
@@ -473,5 +476,9 @@ const { data: instructors, pending: pendingInstructors } = await useAsyncData(
 <style scoped>
 .min-w-base {
   min-width: min(100%, 1200px);
+
+  @media screen and (max-width: 1024px) {
+    min-width: auto;
+  }
 }
 </style>

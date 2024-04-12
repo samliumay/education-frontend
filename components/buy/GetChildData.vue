@@ -43,7 +43,13 @@
       <AppButton
         type="submit"
         class="mt-[36px] w-full"
-        :disabled="(!form?.checkValidity() || (!newVisitor.first_name || !newVisitor.last_name || !newVisitor.birth_date)) ?? false"
+        :disabled="
+          (!form?.checkValidity() ||
+            !newVisitor.first_name ||
+            !newVisitor.last_name ||
+            !newVisitor.birth_date) ??
+          false
+        "
       >
         {{ $t('common.children.addChild') }}
       </AppButton>

@@ -98,7 +98,8 @@ const rules = computed(() =>
           trigger: ['input', 'blur'],
         },
         password1: {
-          validator: () => password1.value.length >= MIN_PWD_LENGTH,
+          validator: () =>
+            password1.value.length >= 8 && password1.value.length <= 64,
           message: t('validation.password1', { n: MIN_PWD_LENGTH }),
           trigger: ['input', 'blur'],
         },
@@ -108,12 +109,18 @@ const rules = computed(() =>
           trigger: ['input', 'blur'],
         },
         first_name: {
-          validator: () => !!firstName.value,
+          validator: () =>
+            !!firstName.value &&
+            firstName.value.length >= 1 &&
+            firstName.value.length <= 64,
           message: t('validation.required'),
           trigger: ['input', 'blur'],
         },
         last_name: {
-          validator: () => !!lastName.value,
+          validator: () =>
+            !!lastName.value &&
+            lastName.value.length >= 1 &&
+            lastName.value.length <= 64,
           message: t('validation.required'),
           trigger: ['input', 'blur'],
         },

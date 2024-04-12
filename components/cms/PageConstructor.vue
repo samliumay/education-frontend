@@ -29,6 +29,7 @@ const pageComponents = computed(() => {
       return h(mapTypeBlock[blockType], {
         blockData,
         extraProps: props.blockProps,
+        ...props.blockProps,
       })
     })
   }

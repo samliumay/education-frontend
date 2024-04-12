@@ -4,7 +4,9 @@
       <n-breadcrumb-item сlass="text-brand-gray">
         <NuxtLink to="/">{{ $t('common.main') }}</NuxtLink>
       </n-breadcrumb-item>
-      <n-breadcrumb-item сlass="text-brand-gray"> {{ $t('common.info.legal') }} </n-breadcrumb-item>
+      <n-breadcrumb-item сlass="text-brand-gray">
+        {{ $t('common.info.legal') }}
+      </n-breadcrumb-item>
     </n-breadcrumb>
 
     <template v-if="data">

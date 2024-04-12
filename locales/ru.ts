@@ -5,6 +5,7 @@ export const ru = {
       email: 'Некорректный e-mail',
       exists: 'Пользователь с таким e-mail уже зарегистрирован',
       passwordMatch: 'Пароли не совпадают',
+      uniquePhone: 'Пользователь с таким номером телефона уже зарегистрирован',
     },
     tariffs: 'Тарифы',
     purchaseOption: {
@@ -206,6 +207,12 @@ export const ru = {
     },
     weekdays: {
       monday: 'Понедельник',
+      tuesday: 'Вторник',
+      wednesday: 'Среда',
+      thursday: 'Четверг',
+      friday: 'Пятница',
+      saturday: 'Суббота',
+      sunday: 'Воскресенье',
       short: {
         monday: 'Пн',
         tuesday: 'Вт',

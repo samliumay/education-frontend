@@ -52,6 +52,7 @@ const templateProps = computed(() => ({
   },
   blockProps: {
     type: 'workshop',
+    isGreenText: true,
   },
 }))
 </script>

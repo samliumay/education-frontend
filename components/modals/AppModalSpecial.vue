@@ -52,16 +52,16 @@
                   v-model="registrationForm.first_name"
                   :placeholder="$t('cart.registerDetails.name')"
                   required
-                  pattern=".{2,}"
-                  title="The name must contain at least two characters"
+                  pattern=".{1,64}"
+                  title="The name must be from 1 to 64 characters"
                   @blur="checkValidity"
                 />
                 <AppInput
                   v-model="registrationForm.last_name"
                   :placeholder="$t('cart.registerDetails.surname')"
                   required
-                  pattern=".{2,}"
-                  title="Last name must contain at least two characters"
+                  pattern=".{1,64}"
+                  title="Last name must be from 1 to 64 characters"
                   @blur="checkValidity"
                 />
               </div>
@@ -76,8 +76,8 @@
                 />
                 <AppInput
                   v-model="registrationForm.phone"
-                  :placeholder="$t('cart.registerDetails.phone')"
-                  maska="+49 ### ###-##-##"
+                  placeholder="+491112221212"
+                  pattern=".{9,16}"
                   type="tel"
                   required
                   @blur="checkValidity"

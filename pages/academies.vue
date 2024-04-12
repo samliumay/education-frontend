@@ -74,7 +74,11 @@ import { computed, ref } from 'vue'
 import AppSelect from '../components/AppSelect.vue'
 import TemplateProduct from '../components/cms/templates/TemplateProduct.vue'
 import AcademySeason from '../components/products/AcademySeason.vue'
-import { ageOptionsByLocale, languageOptionsByLocale, seasonsOptionsByLocale } from '../mappers/options'
+import {
+  ageOptionsByLocale,
+  languageOptionsByLocale,
+  seasonsOptionsByLocale,
+} from '../mappers/options'
 
 const { t } = useI18n()
 

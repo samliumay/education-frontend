@@ -5,6 +5,7 @@ export const de = {
       email: 'Falsche Email',
       exists: 'Ein Benutzer mit dieser E-Mail ist bereits registriert',
       passwordMatch: 'Die Passwörter stimmen nicht überein',
+      uniquePhone: '',
     },
     tariffs: 'Tarife',
     purchaseOption: {
@@ -208,6 +209,12 @@ export const de = {
     },
     weekdays: {
       monday: 'Montag',
+      tuesday: 'Dienstag',
+      wednesday: 'Mittwoch',
+      thursday: 'Donnerstag',
+      friday: 'Freitag',
+      saturday: 'Samstag',
+      sunday: 'Sonntag',
       short: {
         monday: 'Mo',
         tuesday: 'Di',

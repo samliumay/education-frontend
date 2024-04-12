@@ -126,10 +126,9 @@
               </p>
               <AppInput
                 v-model="user.user.phone_number"
-                :placeholder="$t('user.phone_number')"
-                maska="+49 ### ###-##-##"
+                placeholder="+491112221212"
+                pattern=".{9,16}"
                 type="tel"
-                pattern=".{14,18}"
                 required
                 is-gray
                 @blur="checkValidity"
@@ -282,7 +281,11 @@
       </n-tab-pane>
       <n-tab-pane name="sales" :tab="$t('common.profileMenu.history')">
         <div class="bg-white p-[36px] rounded-[12px] mt-[48px] mb-[24px]">
-          <ProductsTable :orders="user.orders" with-button @cancel="handleCancelStatus" />
+          <ProductsTable
+            :orders="user.orders"
+            with-button
+            @cancel="handleCancelStatus"
+          />
         </div>
       </n-tab-pane>
     </n-tabs>
@@ -398,15 +401,17 @@ onMounted(() => {
     if (['sales-success', 'sales-fail'].includes(route.query.tab as string)) {
       activeTab.value = 'sales'
       if (localStorage.getItem('notifyWasShown')) {
-        notification[route.query.tab === 'sales-success' ? 'success' : 'error']({
-          title: t(
-            route.query.tab === 'sales-success'
-              ? 'common.successPayment'
-              : 'common.failedPayment',
-          ),
-          duration: 2500,
-          keepAliveOnHover: true,
-        })
+        notification[route.query.tab === 'sales-success' ? 'success' : 'error'](
+          {
+            title: t(
+              route.query.tab === 'sales-success'
+                ? 'common.successPayment'
+                : 'common.failedPayment',
+            ),
+            duration: 2500,
+            keepAliveOnHover: true,
+          },
+        )
         localStorage.setItem('notifyWasShown', 'yes')
       }
     } else {

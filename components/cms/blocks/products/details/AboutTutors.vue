@@ -1,6 +1,6 @@
 <template>
   <div
-    class=" bg-brand-light-gray relative text-brand-black block-padding-x block-padding-y"
+    class="bg-brand-light-gray relative text-brand-black block-padding-x block-padding-y"
     data-cms="products-details-about-tutors"
   >
     <div
@@ -22,7 +22,8 @@
         <div
           v-if="
             (index - 2) % 9 === 0 ||
-            ((index - 5) % 9 === 0 && (index !== 5 || !(withAllInstructors || hasButton)))
+            ((index - 5) % 9 === 0 &&
+              (index !== 5 || !(withAllInstructors || hasButton)))
           "
           class="hidden lg:block"
         />
