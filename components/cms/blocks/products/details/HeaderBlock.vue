@@ -87,7 +87,9 @@
         </p>
 
         <p>
-          <span class="font-medium mr-[8px]">{{ $t('blocks.product.tutors') }}</span>
+          <span class="font-medium mr-[8px]">{{
+            $t('blocks.product.tutors')
+          }}</span>
           <template v-if="blockData?.instructors?.length">
             {{
               Array.from(

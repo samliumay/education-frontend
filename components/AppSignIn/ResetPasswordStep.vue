@@ -1,8 +1,8 @@
 <template>
-  <form ref="form" @submit.prevent="confirmRestore">
+  <form ref="form" @submit.prevent="reset">
     <AppInput
-      v-model="restoreCredentials.password1"
-      :placeholder="$t('user.password')"
+      v-model="password1"
+      :placeholder="$t('user.newPassword')"
       type="password"
       class="mt-[12px]"
       required
@@ -11,7 +11,7 @@
       @blur="checkValidity"
     />
     <AppInput
-      v-model="restoreCredentials.password2"
+      v-model="password2"
       :placeholder="$t('user.repeatPassword')"
       type="password"
       class="mt-[12px]"
@@ -22,13 +22,16 @@
     />
 
     <p v-if="error" class="text-brand-red mt-2 mb-2">{{ error }}</p>
+    <p v-if="isSended" class="text-brand-gray mt-2 mb-2">
+      {{ $t('user.restoreMessage') }}
+    </p>
 
     <AppButton
       class="block mt-[36px] w-full"
       type="submit"
       :disabled="!form?.checkValidity() ?? false"
     >
-      {{ $t('common.actions.restore') }}
+      {{ $t('common.actions.change') }}
     </AppButton>
   </form>
 </template>
@@ -40,23 +43,22 @@ import { useUserStore } from '../../store/user'
 import AppInput from '../AppInput.vue'
 
 // Init component
-const emit = defineEmits(['close'])
+const emit = defineEmits(['reset'])
 
 // Store
 const userStore = useUserStore()
+
+const route = useRoute()
 
 const { t } = useI18n()
 
 // State
 const error = ref('')
+const password1 = ref('')
+const password2 = ref('')
+const isSended = ref(false)
+
 const form = ref<VNodeRef | undefined>(undefined)
-
-const route = useRoute()
-
-const restoreCredentials = ref({
-  password1: '',
-  password2: '',
-})
 
 // Actions
 const checkValidity = (event: {
@@ -71,11 +73,11 @@ const clearError = () => {
   error.value = ''
 }
 
-const confirmRestore = async () => {
+const reset = async () => {
   await userStore
     .confirmResetPassword(
-      restoreCredentials.value.password1,
-      restoreCredentials.value.password2,
+      password1.value,
+      password2.value,
       route.query.uid as string,
       route.query.token as string,
     )
@@ -84,10 +86,9 @@ const confirmRestore = async () => {
         error.value = t('common.somethingWrong')
         setTimeout(clearError, 2000)
       } else {
+        emit('reset')
+        isSended.value = true
         error.value = ''
-        restoreCredentials.value.password1 = ''
-        restoreCredentials.value.password2 = ''
-        emit('close')
       }
     })
 }

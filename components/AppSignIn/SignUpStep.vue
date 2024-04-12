@@ -4,14 +4,14 @@
       v-model="signUpCredentials.first_name"
       :placeholder="$t('user.first_name')"
       required
-      pattern=".{2,}"
+      pattern=".{1,64}"
       :title="$t('user.nameRule')"
       @blur="checkValidity"
     />
     <AppInput
       v-model="signUpCredentials.last_name"
       :placeholder="$t('user.last_name')"
-      pattern=".{2,}"
+      pattern=".{1,64}"
       title="$t('user.lastNameRule')"
       class="mt-[12px]"
       required
@@ -19,11 +19,10 @@
     />
     <AppInput
       v-model="signUpCredentials.phone_number"
-      maska="+49 ### ###-##-##"
-      :placeholder="$t('user.phone_number')"
+      placeholder="+491112221212"
       class="mt-[12px]"
       type="tel"
-      pattern=".{13,20}"
+      pattern="^\+\d{8,15}$"
       required
       @blur="checkValidity"
     />
@@ -41,7 +40,7 @@
       type="password"
       class="mt-[12px]"
       required
-      pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+      pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,64}"
       :title="$t('user.passwordValidation')"
       @blur="checkValidity"
     />
@@ -51,7 +50,7 @@
       type="password"
       class="mt-[12px]"
       required
-      pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+      pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,64}"
       :title="$t('user.passwordValidation')"
       @blur="checkValidity"
     />
@@ -84,7 +83,7 @@ import { useUserStore } from '../../store/user'
 import AppInput from '../AppInput.vue'
 
 // Init component
-const emit = defineEmits(['close', 'goToEmailStep'])
+const emit = defineEmits(['close', 'goToEmailStep', 'goToVerify'])
 
 // Store
 const userStore = useUserStore()
@@ -121,7 +120,25 @@ const clearError = () => {
 const signUp = async () => {
   await userStore.register(signUpCredentials.value).catch(err => {
     if (Object.keys(err).length !== 0) {
-      error.value = t('common.somethingWrong')
+      if (err?.phone_number?.[0].includes('Enter a valid phone number.')) {
+        error.value = t('common.errors.phone')
+      } else if (err?.email?.[0].includes('Enter a valid email address.')) {
+        error.value = t('common.errors.email')
+      } else if (err?.email?.[0] && err?.username?.[0]) {
+        error.value = t('common.errors.exists')
+      } else if (
+        err?.non_field_errors?.[0].includes(
+          "The two password fields didn't match.",
+        )
+      ) {
+        error.value = t('common.errors.passwordMatch')
+      } else if (
+        err?.phone_number?.[0].includes('This field must be unique.')
+      ) {
+        error.value = t('common.errors.uniquePhone')
+      } else {
+        error.value = t('common.somethingWrong')
+      }
       setTimeout(clearError, 2000)
     } else {
       const { email } = signUpCredentials.value
@@ -132,7 +149,7 @@ const signUp = async () => {
       signUpCredentials.value.first_name = ''
       signUpCredentials.value.last_name = ''
       signUpCredentials.value.phone_number = ''
-      emit('goToEmailStep', email)
+      emit('goToVerify', email)
     }
   })
 }

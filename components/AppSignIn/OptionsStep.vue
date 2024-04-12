@@ -25,6 +25,8 @@ const clientId =
   /* import.meta.env.VITE_GOOGLE_SSO_CLIENT_ID || */ '464713450575-ecsmsdjo2oql1nsjuvnepeat0usf8vgp.apps.googleusercontent.com'
 const siteAddress = import.meta.env?.VITE_SITE_URL || window.location.origin
 
+const facebookClientId = '2579067525587022'
+
 // Options
 const options = [
   {
@@ -43,10 +45,17 @@ const options = [
       }
     },
   },
-  // {
-  //   label: 'Facebook',
-  //   icon: '/icons/sign_in/facebook_icon.svg',
-  //   onClick: () => {},
-  // },
+  {
+    label: 'Facebook',
+    icon: '/icons/sign_in/facebook_icon.svg',
+    onClick: () => {
+      if (process.client) {
+        const version = '13.0'
+        const link = `https://www.facebook.com/v${version}/dialog/oauth?client_id=${facebookClientId}&redirect_uri=${siteAddress}&response_type=code&scope=email%20public_profile`
+        // eslint-disable-next-line no-console
+        window.open(link, '_blank')
+      }
+    },
+  },
 ]
 </script>

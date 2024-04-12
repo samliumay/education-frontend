@@ -1,6 +1,9 @@
 <template>
   <div class="block-padding" data-cms="main-seo-text">
-    <h2 class="text-3xl md:text-[56px] uppercase mb-8 font-bold text-brand-red leading-tight">
+    <h2
+      class="text-3xl md:text-[56px] uppercase mb-8 font-bold leading-tight"
+      :class="isBlackHeader ? 'text-brand-black' : 'text-brand-red'"
+    >
       {{ blockData.value.heading }}
     </h2>
     <p class="text-brand-gray text-base xl:text-[20px] font-medium">
@@ -13,6 +16,7 @@ import type { PageBlock } from '../../../../types/cms'
 
 defineProps<{
   blockData: PageBlock[]
+  isBlackHeader?: boolean
 }>()
 </script>
 <style scoped>

@@ -613,7 +613,9 @@ ul {
   margin-bottom: 0.75rem;
 }
 
-h1, h2, p {
+h1,
+h2,
+p {
   color: #202020;
 }
 

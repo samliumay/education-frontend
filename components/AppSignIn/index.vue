@@ -48,12 +48,13 @@
       />
       <SignUpStep
         v-else-if="step === LoginSteps.SignUp"
-        @go-to-email-step="goToVerify"
+        @go-to-email-step="step = LoginSteps.Email"
+        @go-to-verify="goToVerify"
         @close="close"
       />
       <ConfirmRestorePasswordStep
         v-else-if="step === LoginSteps.ConfirmRestorePassword"
-        @close="close"
+        @close="step = LoginSteps.Email"
       />
       <VerifyEmailStep
         v-else-if="step === LoginSteps.VerifyEmail"
@@ -65,7 +66,8 @@
 </template>
 <script lang="ts" setup>
 import { NModal } from 'naive-ui'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
+import { useRoute } from 'vue-router'
 
 import { LoginSteps } from '../../types'
 import ConfirmRestorePasswordStep from './ConfirmRestorePasswordStep.vue'
@@ -86,6 +88,8 @@ const emit = defineEmits(['close'])
 const step = ref(LoginSteps.Options)
 const savedEmail = ref('')
 
+const route = useRoute()
+
 // Actions
 const close = () => {
   setTimeout(() => {
@@ -98,6 +102,12 @@ const goToVerify = (email: string) => {
   savedEmail.value = email
   step.value = LoginSteps.VerifyEmail
 }
+
+onMounted(() => {
+  if (route.query.uid && route.query.token) {
+    step.value = LoginSteps.ConfirmRestorePassword
+  }
+})
 </script>
 <style scoped>
 .modal-width {

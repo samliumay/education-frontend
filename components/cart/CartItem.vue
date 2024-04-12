@@ -25,29 +25,22 @@
         :age-group="String(product?.age_group).toLocaleLowerCase()"
       />
 
-      <div class="flex flex-col gap-[16px] w-6/12">
+      <div class="flex flex-col gap-[16px] w-full md:w-6/12">
         <div class="flex justify-between">
           <h3 class="font-medium text-3xl text-brand-red uppercase">
             {{ order?.product_page?.name ?? $t('cart.unknown') }}
           </h3>
         </div>
 
-        <div class="flex gap-[12px]">
-          <div
-            class="bg-brand-light-gray px-4 p-2 rounded-full items-center"
-          >
-            {{ $t('common.tableOptions.option') }}: <span
-              class="font-medium"
-              >{{
-                $t(
-                  `common.purchaseOption.${purchaseOption.schedule_type}`,
-                ) ===
-                `common.purchaseOption.${purchaseOption.schedule_type}`
-                  ? $t(`common.purchaseOption.default`)
-                  : $t(
-                      `common.purchaseOption.${purchaseOption.schedule_type}`,
-                    )
-              }}</span>
+        <div class="flex flex-col md:flex-row gap-[12px]">
+          <div class="bg-brand-light-gray px-4 p-2 rounded-full items-center">
+            {{ $t('common.tableOptions.option') }}:
+            <span class="font-medium">{{
+              $t(`common.purchaseOption.${purchaseOption.schedule_type}`) ===
+              `common.purchaseOption.${purchaseOption.schedule_type}`
+                ? $t(`common.purchaseOption.default`)
+                : $t(`common.purchaseOption.${purchaseOption.schedule_type}`)
+            }}</span>
           </div>
           <div
             class="bg-brand-light-gray px-4 p-2 rounded-full flex items-center"
@@ -62,44 +55,41 @@
             />
           </div>
         </div>
-
-        <p class="font-medium text-[24px]">
-          {{ `${order?.calculated_price ?? 0} €` }}
-          <span
-            v-if="
-              ['Abonnement (1 visit / week)', 'Abonnement (2 visit / week)', 'Abonnement (3 visit / week)'].includes(purchaseOption.schedule_type)
-            "
-            class="text-gray-400 ml-[8px]"
-          >
-            {{ $t('cart.perMonth') }}
-          </span>
-        </p>
       </div>
     </div>
     <div>
-      <n-space vertical>
-        <div class="w-full flex gap-9">
-          <div
-            class="hidden xl:w-[260px] xl:block lg:w-[220px] lg:block md:w-[280px] md:block"
+      <p class="font-medium text-[24px]">
+        {{ `${order?.calculated_price ?? 0} €` }}
+        <span
+          v-if="
+            [
+              'Abonnement (1 visit / week)',
+              'Abonnement (2 visit / week)',
+              'Abonnement (3 visit / week)',
+            ].includes(purchaseOption.schedule_type)
+          "
+          class="text-gray-400 ml-[8px]"
+        >
+          {{ $t('cart.perMonth') }}
+        </span>
+      </p>
+      <div class="w-full flex gap-9 my-3">
+        <button
+          type="button"
+          class="flex gap-2 items-center text-xl md:text-2xl font-medium cursor-pointer"
+          @click="isShowDetails = !isShowDetails"
+        >
+          {{ $t('cart.selectedDays') }}
+          <img
+            src="/icons/chevron_down.svg"
+            alt="Arrow down"
+            :class="{ '-rotate-90': !isShowDetails }"
           />
-          <button
-            type="button"
-            class="flex gap-2 items-center text-xl font-medium cursor-pointe"
-            @click="isShowDetails = !isShowDetails"
-          >
-            {{ $t('cart.selectedDays') }}
-            <img
-              src="/icons/chevron_down.svg"
-              alt="Arrow down"
-              :class="{ '-rotate-90': !isShowDetails }"
-            />
-          </button>
-        </div>
+        </button>
+      </div>
+      <n-space vertical>
         <n-collapse-transition :show="isShowDetails">
           <div class="w-full flex gap-9">
-            <div
-              class="hidden xl:w-[260px] xl:block lg:w-[220px] lg:block md:w-[280px] md:block"
-            />
             <div class="flex flex-col gap-6">
               <div
                 v-for="item in order?.schedule_slots"
@@ -107,7 +97,10 @@
                 class="bg-brand-light-gray py-1 px-4 rounded-full w-fit"
               >
                 <p class="font-medium">
-                  {{ item?.weekday ?? $t('common.weekdays.monday') }}
+                  {{
+                    $t(`common.weekdays.${item?.weekday.toLowerCase()}`) ??
+                    $t('common.weekdays.monday')
+                  }}
                   {{ String(item?.start ?? '00:00').slice(0, 5) }}
                 </p>
               </div>
@@ -117,7 +110,9 @@
                   {{ $t('cart.firstAppointment') }}
                 </p>
 
-                <div class="bg-brand-light-gray py-1 px-4 rounded-full w-fit">
+                <div
+                  class="bg-brand-light-gray py-1 px-4 rounded-full w-fit mb-5"
+                >
                   <p class="font-medium">
                     {{
                       `${getNearDate(
@@ -158,7 +153,13 @@ const props = defineProps<{
 
 defineEmits(['close'])
 
-const purchaseOption = computed(() => props.order ? props.order.product_page.purchase_options.find(option => props.order.purchase_option === option.id) : {})
+const purchaseOption = computed(() =>
+  props.order
+    ? props.order.product_page.purchase_options.find(
+        option => props.order.purchase_option === option.id,
+      )
+    : {},
+)
 
 // Init store
 const cart = useCartStore()

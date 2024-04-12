@@ -49,10 +49,9 @@
           :tags="
             product.schedule_slots.map(slot => {
               return {
-                label: `${slot.weekday.slice(0, 2)} ${slot.start.slice(
-                  0,
-                  5,
-                )}-${slot.end.slice(0, 5)}`,
+                label: `${$t(
+                  `common.weekdays.short.${slot.weekday.toLowerCase()}`,
+                )} ${slot.start.slice(0, 5)}-${slot.end.slice(0, 5)}`,
                 value: slot.id,
               }
             })
@@ -400,7 +399,12 @@ const { data: product, pending: productPending } = await useAsyncData(
   { watch: [locale, isSlug], deep: true },
 )
 
-const isCard = computed(() => product.value.purchase_options.find(option => option.id === buyForm.value.purchase_option)?.schedule_type === 'Terminkarten')
+const isCard = computed(
+  () =>
+    product.value.purchase_options.find(
+      option => option.id === buyForm.value.purchase_option,
+    )?.schedule_type === 'Terminkarten',
+)
 
 const addAcademy = async () => {
   let weeks = 0
@@ -410,7 +414,7 @@ const addAcademy = async () => {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const schedule_slots =
     product?.value?.schedule_slots?.length > 0
-      ? product?.value?.schedule_slots.map(item => item?.id)
+      ? buyForm.value.schedule_slots
       : [11]
 
   const productOrder = {
@@ -418,7 +422,9 @@ const addAcademy = async () => {
     product: route.params.id,
     purchase_option:
       product?.value?.product_type === 'Academy'
-        ? product?.value?.purchase_options?.find(option => option.schedule_type === buyForm.value.schedule_type)?.id ?? product?.value?.purchase_options?.[0]?.id
+        ? product?.value?.purchase_options?.find(
+            option => option.schedule_type === buyForm.value.schedule_type,
+          )?.id ?? product?.value?.purchase_options?.[0]?.id
         : buyForm.value.purchase_option,
     visitor: user.isLoggedIn ? buyForm.value.visitor : null,
     schedule_slots,

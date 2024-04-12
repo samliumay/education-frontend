@@ -154,7 +154,11 @@
         />
 
         <NuxtLink to="/cart">
-          <img src="/icons/cart.svg" alt="Cart" />
+          <img
+            src="/icons/cart.svg"
+            alt="Cart"
+            class="shrink-0 w-[36px] md:w-auto"
+          />
         </NuxtLink>
 
         <template v-if="user.isLoggedIn">
@@ -178,6 +182,7 @@
 </template>
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 
 import { useCartStore } from '../../store/cart'
 import { useUserStore } from '../../store/user'
@@ -186,6 +191,8 @@ import AppSelect from '../AppSelect.vue'
 import ProfileMenu from '../profile/ProfileMenu.vue'
 
 const { t, locale } = useI18n({ useScope: 'global' })
+
+const route = useRoute()
 
 const routes = computed(() => [
   {
@@ -211,8 +218,22 @@ cart.getCurrentOrder()
 const isOpenSignIn = ref(false)
 const isOpenModalProfile = ref(false)
 
+onMounted(() => {
+  if (route.query.uid && route.query.token) {
+    isOpenSignIn.value = true
+  }
+})
+
+const browserLocale = ['ru', 'en', 'de'].includes(
+  navigator.language.slice(0, 2),
+)
+  ? navigator.language.slice(0, 2)
+  : undefined
+
 // Language Switcher
-const currentLanguage = ref(localStorage.getItem('locale') || 'ru')
+const currentLanguage = ref(
+  localStorage.getItem('locale') || browserLocale || 'ru',
+)
 const languageOptions = [
   {
     label: 'RU',
@@ -242,6 +263,6 @@ watch(
 )
 
 onMounted(() => {
-  locale.value = localStorage.getItem('locale') || 'ru'
+  locale.value = localStorage.getItem('locale') || browserLocale || 'ru'
 })
 </script>

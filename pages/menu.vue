@@ -127,10 +127,6 @@ const pathGroup = computed(() => [
     label: t('common.tutors'),
     route: '/instructors',
   },
-  // {
-  //   label: 'Расписание',
-  //   route: '/',
-  // },
   {
     label: t('common.info.contacts'),
     route: '/contacts',

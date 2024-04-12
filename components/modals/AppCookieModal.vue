@@ -1,10 +1,10 @@
 <template>
   <n-modal :show="isOpen">
     <div
-      class="bg-white overflow-y-scroll w-full md:max-w-[60%] h-fit rounded-md"
+      class="bg-white overflow-y-scroll max-w-[90%] md:max-w-[60%] h-fit rounded-md"
     >
       <div
-        class="flex flex-col items-center gap-10 block-padding h-full md:max-h-[600px]"
+        class="flex flex-col items-center gap-10 block-padding max-h-[600px] md:max-h-[650px]"
       >
         <h2 class="text-3xl text-brand-black">
           {{ $t('common.cookies.title') }}
@@ -81,11 +81,11 @@
           </div>
         </div>
 
-        <div class="flex w-full gap-4">
-          <AppButton class="w-1/2" @click="close">
+        <div class="flex flex-col md:flex-row w-full gap-4">
+          <AppButton class="w-full md:w-1/2" @click="close">
             {{ $t('common.actions.acceptEssential') }}
           </AppButton>
-          <AppButton class="w-1/2" @click="closeAndAcceptAll">
+          <AppButton class="w-full md:w-1/2" @click="closeAndAcceptAll">
             {{ $t('common.actions.acceptAll') }}
           </AppButton>
         </div>

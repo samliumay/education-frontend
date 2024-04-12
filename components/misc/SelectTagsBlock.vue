@@ -5,7 +5,9 @@
       :key="tag.value"
       class="rounded-[88px] border-[1px] px-[12px] py-[8px] text-[16px]"
       :class="{
-        'bg-white': (selectedTags.length < 3 && maxThree) || selectedTags.includes(tag.value),
+        'bg-white':
+          (selectedTags.length < 3 && maxThree) ||
+          selectedTags.includes(tag.value),
         'bg-transparent': selectedTags.length >= 3,
         'border-brand-black': selectedTags.includes(tag.value),
         'border-gray-300': !selectedTags.includes(tag.value),
@@ -40,9 +42,12 @@ const props = defineProps<{
 
 const emit = defineEmits('update:selectedTags')
 
-watch(() => props.maxThree, () => {
-  if (props.maxThree) {
-    emit('update:selectedTags', props.selectedTags.slice(0, 3))
-  }
-})
+watch(
+  () => props.maxThree,
+  () => {
+    if (props.maxThree) {
+      emit('update:selectedTags', props.selectedTags.slice(0, 3))
+    }
+  },
+)
 </script>

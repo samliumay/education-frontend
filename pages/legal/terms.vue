@@ -467,7 +467,9 @@ const { data } = await useAsyncData(
 )
 </script>
 <style scoped lang="scss">
-h1, h2, p {
+h1,
+h2,
+p {
   color: #202020;
 }
 

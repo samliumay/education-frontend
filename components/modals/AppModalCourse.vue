@@ -52,16 +52,16 @@
                   v-model="registrationForm.first_name"
                   :placeholder="$t('cart.registerDetails.name')"
                   required
-                  pattern=".{2,}"
-                  title="The name must contain at least two characters"
+                  pattern=".{1,64}"
+                  title="The name must be from 1 to 64 characters"
                   @blur="checkValidity"
                 />
                 <AppInput
                   v-model="registrationForm.last_name"
                   :placeholder="$t('cart.registerDetails.surname')"
                   required
-                  pattern=".{2,}"
-                  title="Last name must contain at least two characters"
+                  pattern=".{1,64}"
+                  title="Last name must be from 1 to 64 characters"
                   @blur="checkValidity"
                 />
               </div>
@@ -74,8 +74,8 @@
               />
               <AppInput
                 v-model="registrationForm.phone"
-                :placeholder="$t('cart.registerDetails.phone')"
-                maska="+49 ### ###-##-##"
+                placeholder="+491112221212"
+                pattern="^\+\d{8,15}$"
                 type="tel"
                 required
                 @blur="checkValidity"
@@ -116,6 +116,8 @@ import { useRoute } from 'vue-router'
 import AppInput from '@/components/AppInput.vue'
 import BuyProductCard from '@/components/buy/BuyProductCard.vue'
 import GetChildData from '@/components/buy/GetChildData.vue'
+import { useCartStore } from '@/store/cart'
+import { useUserStore } from '@/store/user'
 import { getApiAddress } from '@/utils/getApiAddress'
 
 defineProps<{
@@ -127,9 +129,12 @@ const emit = defineEmits(['close'])
 // Init hooks
 const route = useRoute()
 
+const userStore = useUserStore()
+const cartStore = useCartStore()
+
 // State
 // eslint-disable-next-line vue/require-typed-ref
-const visitor = ref(null)
+const visitor = ref(undefined)
 const checkbox = ref(false)
 
 const { locale } = useI18n({ useScope: 'global' })
@@ -165,8 +170,16 @@ const registrationForm = ref({
   phone: '',
 })
 
-const sendModalCourse = () => {
-  emit('close')
+const sendModalCourse = async () => {
+  await cartStore
+    .sendVisitRequest({
+      product_page: product.value.id,
+      children: [userStore.visitors.find(el => el.id === visitor.value)],
+      adults: [registrationForm.value],
+    })
+    .then(() => {
+      emit('close')
+    })
 }
 
 // Form
