@@ -50,8 +50,8 @@
             product.schedule_slots.map(slot => {
               return {
                 label: `${$t(
-                  `dates.weekdays.short.${slot.weekday}`,
-                )}${slot.start.slice(0, 5)}-${slot.end.slice(0, 5)}`,
+                  `common.weekdays.short.${slot.weekday.toLowerCase()}`,
+                )} ${slot.start.slice(0, 5)}-${slot.end.slice(0, 5)}`,
                 value: slot.id,
               }
             })
