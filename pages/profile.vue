@@ -400,7 +400,7 @@ onMounted(() => {
   if (route.query.tab) {
     if (['sales-success', 'sales-fail'].includes(route.query.tab as string)) {
       activeTab.value = 'sales'
-      if (localStorage.getItem('notifyWasShown')) {
+      if (!localStorage.getItem('notifyWasShown')) {
         notification[route.query.tab === 'sales-success' ? 'success' : 'error'](
           {
             title: t(

@@ -22,7 +22,7 @@
       placeholder="+491112221212"
       class="mt-[12px]"
       type="tel"
-      pattern=".{9,16}"
+      pattern="^\+\d{8,15}$"
       required
       @blur="checkValidity"
     />

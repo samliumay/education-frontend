@@ -263,6 +263,6 @@ watch(
 )
 
 onMounted(() => {
-  locale.value = localStorage.getItem('locale') || 'ru'
+  locale.value = localStorage.getItem('locale') || browserLocale || 'ru'
 })
 </script>

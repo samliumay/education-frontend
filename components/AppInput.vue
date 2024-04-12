@@ -12,6 +12,7 @@
       :value="modelValue"
       maxlength="64"
       minlength="1"
+      :pattern="pattern"
       :data-maska="maska"
       @input="
         $emit(
@@ -53,6 +54,7 @@ defineProps<{
   placeholder?: string
   maska?: string
   isGray?: boolean
+  pattern?: string
 }>()
 
 defineEmits(['update:modelValue', 'blur'])

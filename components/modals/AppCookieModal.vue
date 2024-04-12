@@ -4,7 +4,7 @@
       class="bg-white overflow-y-scroll max-w-[90%] md:max-w-[60%] h-fit rounded-md"
     >
       <div
-        class="flex flex-col items-center gap-10 block-padding max-h-[600px] md:max-h-[600px]"
+        class="flex flex-col items-center gap-10 block-padding max-h-[600px] md:max-h-[650px]"
       >
         <h2 class="text-3xl text-brand-black">
           {{ $t('common.cookies.title') }}

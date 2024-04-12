@@ -75,7 +75,7 @@
               <AppInput
                 v-model="registrationForm.phone"
                 placeholder="+491112221212"
-                pattern=".{9,16}"
+                pattern="^\+\d{8,15}$"
                 type="tel"
                 required
                 @blur="checkValidity"
@@ -116,6 +116,8 @@ import { useRoute } from 'vue-router'
 import AppInput from '@/components/AppInput.vue'
 import BuyProductCard from '@/components/buy/BuyProductCard.vue'
 import GetChildData from '@/components/buy/GetChildData.vue'
+import { useCartStore } from '@/store/cart'
+import { useUserStore } from '@/store/user'
 import { getApiAddress } from '@/utils/getApiAddress'
 
 defineProps<{
@@ -127,9 +129,12 @@ const emit = defineEmits(['close'])
 // Init hooks
 const route = useRoute()
 
+const userStore = useUserStore()
+const cartStore = useCartStore()
+
 // State
 // eslint-disable-next-line vue/require-typed-ref
-const visitor = ref(null)
+const visitor = ref(undefined)
 const checkbox = ref(false)
 
 const { locale } = useI18n({ useScope: 'global' })
@@ -165,8 +170,16 @@ const registrationForm = ref({
   phone: '',
 })
 
-const sendModalCourse = () => {
-  emit('close')
+const sendModalCourse = async () => {
+  await cartStore
+    .sendVisitRequest({
+      product_page: product.value.id,
+      children: [userStore.visitors.find(el => el.id === visitor.value)],
+      adults: [registrationForm.value],
+    })
+    .then(() => {
+      emit('close')
+    })
 }
 
 // Form

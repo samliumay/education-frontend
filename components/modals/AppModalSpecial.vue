@@ -77,7 +77,7 @@
                 <AppInput
                   v-model="registrationForm.phone"
                   placeholder="+491112221212"
-                  pattern=".{9,16}"
+                  pattern="^\+\d{8,15}$"
                   type="tel"
                   required
                   @blur="checkValidity"
