@@ -12,9 +12,12 @@
       :value="modelValue"
       maxlength="64"
       minlength="1"
+      :max="max"
+      :min="min"
       :pattern="pattern"
       :data-maska="maska"
-      @input="
+      @keydown="checkKeydown"
+      @input.prevent.stop="
         $emit(
           'update:modelValue',
           ($event.target as unknown as IEventTarget).value,
@@ -48,16 +51,33 @@ import { ref } from 'vue'
 
 import type { IEventTarget } from '../types'
 
-defineProps<{
+const props = defineProps<{
   modelValue: string
   type?: string
   placeholder?: string
   maska?: string
   isGray?: boolean
   pattern?: string
+  max?: string
+  min?: string
 }>()
 
 defineEmits(['update:modelValue', 'blur'])
 
 const isOpen = ref(false)
+
+const checkKeydown = (event: any) => {
+  if (props.type === 'tel') {
+    if (
+      !event.shiftKey &&
+      !event.ctrlKey &&
+      !event.metaKey &&
+      event.key.length === 1 &&
+      ((props.modelValue.length === 0 && event.key !== '+') ||
+        (props.modelValue.length !== 0 && /\D/.test(event.key)))
+    ) {
+      event.preventDefault()
+    }
+  }
+}
 </script>

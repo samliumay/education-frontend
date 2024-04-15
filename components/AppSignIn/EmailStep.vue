@@ -52,6 +52,8 @@
 <script lang="ts" setup>
 import { ref, type VNodeRef } from 'vue'
 
+import { useCartStore } from '@/store/cart'
+
 import { useUserStore } from '../../store/user'
 import AppButton from '../AppButton.vue'
 import AppInput from '../AppInput.vue'
@@ -60,6 +62,7 @@ const emit = defineEmits(['close', 'goToRestorePasswordStep', 'goToSignUpStep'])
 
 // Store
 const userStore = useUserStore()
+const cartStore = useCartStore()
 
 const { t } = useI18n()
 
@@ -89,6 +92,39 @@ const clearError = () => {
 const login = async () => {
   await userStore
     .login(credentials.value.email, credentials.value.password)
+    .then(async () => {
+      const result = await Promise.all(
+        userStore.visitors.map(visitor => userStore.postOldVisitor(visitor)),
+      )
+      userStore.visitorsMapping = result.map((res: any, idx) => ({
+        visitorId: idx + 1,
+        newVisitorId: res.id,
+      }))
+      const newVisitors = userStore.visitorOrderItems.map(item => {
+        const visitor = userStore.visitorsMapping.find(
+          visItem => visItem.visitorId === item.visitorId,
+        )?.newVisitorId as number
+        return {
+          itemId: item.itemId,
+          visitorId: visitor,
+        }
+      })
+      console.log(result)
+      console.log(userStore.visitorsMapping)
+      console.log(userStore.visitorOrderItems)
+      await Promise.all(
+        newVisitors.map(item =>
+          cartStore.updateOrderItem(item.itemId, { visitor: item.visitorId }),
+        ),
+      )
+      userStore.getVisitors()
+      cartStore.getCurrentOrder()
+      userStore.visitorsMapping = []
+      userStore.visitorOrderItems = []
+      credentials.value.email = ''
+      credentials.value.password = ''
+      emit('close')
+    })
     .catch(err => {
       if (Object.keys(err).length !== 0) {
         console.error(err)

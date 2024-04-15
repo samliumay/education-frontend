@@ -1,5 +1,6 @@
 export const de = {
   common: {
+    customWeek: ' Woche',
     errors: {
       phone: 'Ungültige Telefonnummer',
       email: 'Falsche Email',
