@@ -109,16 +109,12 @@ const login = async () => {
           visitorId: visitor,
         }
       })
-      console.log(result)
-      console.log(userStore.visitorsMapping)
-      console.log(userStore.visitorOrderItems)
       await Promise.all(
         newVisitors.map(item =>
           cartStore.updateOrderItem(item.itemId, { visitor: item.visitorId }),
         ),
       )
-      userStore.getVisitors()
-      cartStore.getCurrentOrder()
+      await Promise.all([userStore.getVisitors(), cartStore.getCurrentOrder()])
       userStore.visitorsMapping = []
       userStore.visitorOrderItems = []
       credentials.value.email = ''

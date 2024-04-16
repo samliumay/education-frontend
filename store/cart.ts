@@ -13,10 +13,17 @@ export const useCartStore = defineStore('cart', () => {
   const cartId = ref<string | null>(null)
 
   const getCurrentOrder = async () => {
-    order.value = cartId.value
-      ? await HTTP.get(`/api/v2/orders/current/?cart_id=${cartId.value}`)
-      : ({} as Order)
+    if (cartId.value) {
+      const res = (await HTTP.get(
+        `/api/v2/orders/current/?cart_id=${cartId.value}`,
+      )) as Order
+      order.value = res
+      isDataLoading.value = false
+      return res
+    }
+    order.value = {} as Order
     isDataLoading.value = false
+    return Promise.resolve()
   }
 
   const addOrderItem = async (orderItem: Partial<OrderItem>) =>

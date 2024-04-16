@@ -69,7 +69,6 @@ const isOpen = ref(false)
 const checkKeydown = (event: any) => {
   if (props.type === 'tel') {
     if (
-      !event.shiftKey &&
       !event.ctrlKey &&
       !event.metaKey &&
       event.key.length === 1 &&

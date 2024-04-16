@@ -72,11 +72,10 @@ import { NCarousel, NCarouselItem } from 'naive-ui'
 import type { PageBlock } from '../../../../../types/cms'
 import ImageBlockById from '../../blocks/misc/ImageBlockByID'
 
-const props = defineProps<{
+defineProps<{
   blockData: PageBlock[]
 }>()
 
-console.log(props)
 </script>
 <style>
 .student-works .n-carousel {
