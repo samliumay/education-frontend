@@ -5,7 +5,7 @@
 
   <div
     v-else
-    class="grid grid-col-1 lg:grid-cols-2 gap-[96px] my-[96px] mx-[16px] lg:mx-[48px]"
+    class="flex flex-col md:grid md:grid-cols-2 gap-[96px] block-padding-x block-padding-y break-words"
   >
     <div>
       <p class="text-[20px] font-medium mb-[16px]">

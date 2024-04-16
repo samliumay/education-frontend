@@ -111,13 +111,13 @@
 
     <!-- MOBILE HEADER -->
     <div
-      class="relative w-full flex items-center justify-between gap-6 lg:hidden"
+      class="relative w-full flex items-center justify-between gap-3 md:gap-6 lg:hidden"
     >
       <!-- OPEN MENU BUTTON HEADER -->
       <template v-if="$route.name !== 'menu'">
         <AppButton
           is-inverted
-          class="flex gap-2 items-center"
+          class="flex gap-1 md:gap-2 items-center"
           @click="navigateTo('/menu')"
         >
           <img src="/icons/star.svg" alt="Stars" />
@@ -129,7 +129,7 @@
       <template v-else>
         <AppButton
           is-inverted
-          class="flex gap-2 items-center"
+          class="flex gap-1 md:gap-2 items-center"
           @click="$router.go(-1)"
         >
           <img src="/icons/cross.svg" alt="close" />
@@ -145,7 +145,7 @@
         />
       </NuxtLink>
 
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-2 md:gap-4">
         <AppSelect
           v-model:value="currentLanguage"
           :options="languageOptions"
@@ -157,24 +157,28 @@
           <img
             src="/icons/cart.svg"
             alt="Cart"
-            class="shrink-0 w-[36px] md:w-auto"
+            class="shrink-0 w-[24px] md:w-auto mr-2"
           />
         </NuxtLink>
 
         <template v-if="user.isLoggedIn">
           <button
-            class="bg-white rounded-full w-[30px] h-[30px] min-h-[30px] min-w-[30px] overflow-hidden border-brand-black border-[1px]"
+            class="bg-white rounded-full w-[24px] h-[24px] min-h-[24px] min-w-[24px] overflow-hidden border-brand-black border-[1px]"
             @click="isOpenModalProfile = true"
           >
             <img
               src="/icons/profile.svg"
               alt="Profile"
-              class="w-[30px] h-[30px]"
+              class="w-[24px] h-[24px]"
             />
           </button>
         </template>
         <button v-else @click="isOpenSignIn = true">
-          <img src="/icons/exit.svg" alt="Login" />
+          <img
+            src="/icons/exit.svg"
+            alt="Login"
+            class="shrink-0 w-[24px] md:w-auto"
+          />
         </button>
       </div>
     </div>

@@ -6,7 +6,7 @@
       :class="$route.path === '/prices' ? 'bg-brand-light-gray' : 'bg-white'"
     >
       <div
-        class="min-h-[100vh] max-w-[1520px] w-full mx-auto flex flex-col overflow-x-visible relative"
+        class="min-h-[100vh] max-w-[1520px] w-full mx-auto flex flex-col md:overflow-x-visible relative"
         :class="$route.path === '/prices' ? 'bg-brand-light-gray' : 'bg-white'"
       >
         <AppHeader />
