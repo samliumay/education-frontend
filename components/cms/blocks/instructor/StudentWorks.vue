@@ -20,17 +20,17 @@
       >
         <ImageBlockById
           v-if="!!item?.id"
-          :id="item"
+          :id="item.id"
           class="h-[300px] rounded-xl overflow-hidden"
         />
         <p class="mt-1">{{ item.name }}</p>
       </n-carousel-item>
 
       <template #arrow="{ prev, next }">
-        <div class="w-full h-full absolute left-0 right-0 -top-14 flex gap-4">
+        <div class="absolute -top-14 right-0 flex gap-4">
           <button
             type="button"
-            class="student-work__arrow-button cursor-pointer p-2 bg-brand-light-gray hover:bg-brand-yellow rounded-full transition ease-in delay-100 transform active:scale-[0.93]"
+            class="student-work__arrow-button cursor-pointer p-2 bg-brand-light-gray hover:bg-brand-yellow rounded-full transition ease-in delay-100 transform active:scale-[0.93] h-[36px]"
             @click="prev"
           >
             <img
@@ -41,7 +41,7 @@
           </button>
           <button
             type="button"
-            class="student-work__arrow-button cursor-pointer p-2 bg-brand-light-gray hover:bg-brand-yellow rounded-full transition ease-in delay-100 transform active:scale-[0.93]"
+            class="student-work__arrow-button cursor-pointer p-2 bg-brand-light-gray hover:bg-brand-yellow rounded-full transition ease-in delay-100 transform active:scale-[0.93] h-[36px]"
             @click="next"
           >
             <img
@@ -75,6 +75,7 @@ import ImageBlockById from '../../blocks/misc/ImageBlockByID'
 defineProps<{
   blockData: PageBlock[]
 }>()
+
 </script>
 <style>
 .student-works .n-carousel {

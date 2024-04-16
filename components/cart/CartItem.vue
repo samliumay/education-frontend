@@ -49,7 +49,7 @@
             <AppSelect
               :placeholder="$t('common.children.selectChild')"
               :options="userStore.getVisitorOptions"
-              :value="order?.visitor?.id ?? 1"
+              :value="visitorId"
               class="min-w-[200px]"
               @update:value="updateVisitor"
             />
@@ -171,7 +171,7 @@ const { locale } = useI18n({ useScope: 'global' })
 const id = computed(() => props.order?.product_page?.id ?? 0)
 
 const { data: product, pending: loadingProduct } = await useAsyncData(
-  'products',
+  `products${id.value}`,
   () =>
     $fetch(getApiAddress(`/api/v2/wagtail/products/${id.value}/`), {
       params: {
@@ -197,6 +197,14 @@ const isShowDetails = ref(false)
 // Visitors
 const userStore = useUserStore()
 await userStore.getVisitors()
+
+const visitorId = computed(
+  () =>
+    props.order.visitor?.id ??
+    userStore.visitorOrderItems.find(item => item.itemId === props.order.id)
+      ?.visitorId ??
+    1,
+)
 
 // eslint-disable-next-line vue/require-typed-ref
 const visitor = ref()

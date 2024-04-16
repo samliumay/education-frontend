@@ -1,9 +1,9 @@
 <template>
-  <div class="flex gap-[8px] font-medium">
+  <div class="inline-block gap-[8px] font-medium">
     <button
       v-for="tag in tags"
       :key="tag.value"
-      class="rounded-[88px] border-[1px] px-[12px] py-[8px] text-[16px]"
+      class="rounded-[88px] border-[1px] px-[12px] py-[8px] text-[16px] mr-[8px] mb-[8px]"
       :class="{
         'bg-white':
           (selectedTags.length < 3 && maxThree) ||

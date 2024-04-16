@@ -5,6 +5,8 @@
       <img
         alt="Arrow"
         src="/icons/chevron_down.svg"
+        class="transition-all"
+        :class="!showBlock ? '-rotate-90' : 'rotate-0'"
         @click="showBlock = !showBlock"
       />
     </h3>
@@ -29,7 +31,9 @@
         />
 
         <div class="flex flex-col justify-between gap-[16px] h-fit">
-          <h1 class="text-xl md:text-2xl font-medium uppercase text-brand-red">
+          <h1
+            class="text-[18px] md:text-2xl font-medium uppercase text-brand-red break-words"
+          >
             {{ item?.recommended_page.name }}
           </h1>
 

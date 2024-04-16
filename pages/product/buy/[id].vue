@@ -5,7 +5,7 @@
 
   <div
     v-else
-    class="grid grid-col-1 lg:grid-cols-2 gap-[96px] my-[96px] mx-[16px] lg:mx-[48px]"
+    class="flex flex-col md:grid md:grid-cols-2 gap-[96px] block-padding-x block-padding-y break-words"
   >
     <div>
       <p class="text-[20px] font-medium mb-[16px]">
@@ -91,6 +91,7 @@
           v-if="buyForm.when === 'later'"
           v-model="buyForm.later"
           type="date"
+          :min="new Date().toISOString().substring(0, 10)"
           placeholder="2012-12-21"
           class="mt-[16px]"
         />
@@ -110,12 +111,12 @@
           <p class="text-[20px] font-medium">{{ $t('buy.chooseWeek') }}</p>
           <n-checkbox-group v-model:value="buyForm.academy_weeks">
             <n-checkbox
-              v-for="week in !product.academy_weeks"
+              v-for="(week, idx) in product.academy_weeks"
               :key="Number(week)"
               :value="Number(week)"
               class="mt-[16px]"
             >
-              {{ $t('buy.customWeek') }}
+              {{ `${idx + 1} ${$t('common.customWeek')}` }}
             </n-checkbox>
           </n-checkbox-group>
         </template>
@@ -413,9 +414,11 @@ const addAcademy = async () => {
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const schedule_slots =
-    product?.value?.schedule_slots?.length > 0
-      ? buyForm.value.schedule_slots
-      : [11]
+    product?.value?.product_type !== 'Academy'
+      ? product?.value?.schedule_slots?.length > 0
+        ? buyForm.value.schedule_slots
+        : [11]
+      : [product?.value?.schedule_slots[0].id]
 
   const productOrder = {
     academy_number_of_weeks: buyForm.value.academy_weeks.length || weeks || 1,
@@ -433,11 +436,18 @@ const addAcademy = async () => {
     academy_weeks: buyForm.value.academy_weeks,
   }
 
-  await cart.addOrderItem(productOrder)
+  const res = (await cart.addOrderItem(productOrder)) as any
+  if (!user.isLoggedIn) {
+    user.visitorOrderItems.push({
+      visitorId: buyForm.value.visitor as number,
+      itemId: res.id,
+    })
+  }
   navigateTo('/cart')
 }
 
 const isButtonActive = computed(
+  // eslint-disable-next-line complexity
   () =>
     (buyForm.value.visitor !== null &&
       buyForm.value.visitor !== undefined &&
@@ -446,7 +456,9 @@ const isButtonActive = computed(
         !!buyForm.value.schedule_slots?.length) ||
         (product.value.product_type === 'Academy' &&
           !!buyForm.value.academy_number_of_weeks &&
-          (buyForm.value.first || buyForm.value.second)))) ||
+          (product?.value?.academy_weeks ||
+            buyForm.value.first ||
+            buyForm.value.second)))) ||
     (product.value.product_type === 'Workshop' && !!buyForm.value.comment),
 )
 </script>

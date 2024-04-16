@@ -25,11 +25,11 @@
         <div class="flex flex-col gap-2">
           <div class="bg-brand-light-gray flex flex-col gap-4 p-4 rounded-md">
             <div class="flex justify-between">
-              <n-checkbox checked disabled>
+              <n-checkbox checked disabled class="whitespace-nowrap">
                 {{ $t('common.cookies.options.essential.label') }}
               </n-checkbox>
               <a
-                class="text-brand-black underline underline-offset-"
+                class="text-brand-black underline underline-offset- text-right"
                 href="/docs/cookies.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -44,11 +44,14 @@
 
           <div class="bg-brand-light-gray flex flex-col gap-4 p-4 rounded-md">
             <div class="flex justify-between">
-              <n-checkbox v-model:checked="checkboxStatistic">
+              <n-checkbox
+                v-model:checked="checkboxStatistic"
+                class="whitespace-nowrap"
+              >
                 {{ $t('common.cookies.options.statistics.label') }}
               </n-checkbox>
               <a
-                class="text-brand-black underline underline-offset-"
+                class="text-brand-black underline underline-offset- text-right"
                 href="/docs/cookies.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -63,11 +66,14 @@
 
           <div class="bg-brand-light-gray flex flex-col gap-4 p-4 rounded-md">
             <div class="flex justify-between">
-              <n-checkbox v-model:checked="checkboxExternalMedia">
+              <n-checkbox
+                v-model:checked="checkboxExternalMedia"
+                class="whitespace-nowrap"
+              >
                 {{ $t('common.cookies.options.externalMedia.label') }}
               </n-checkbox>
               <a
-                class="text-brand-black underline underline-offset-"
+                class="text-brand-black underline underline-offset- text-right"
                 href="/docs/cookies.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -90,7 +96,9 @@
           </AppButton>
         </div>
 
-        <div class="flex gap-4 justify-center w-full pb-4 md:pb-10">
+        <div
+          class="flex flex-col md:flex-row items-center text-center md:text-left gap-4 justify-center w-full pb-4 md:pb-10"
+        >
           <NuxtLink
             class="w-fit inline-block text-brand-gray hover:text-brand-red"
             to="/legal/privacy"

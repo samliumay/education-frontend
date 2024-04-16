@@ -1,5 +1,6 @@
 export const ru = {
   common: {
+    customWeek: 'неделя',
     errors: {
       phone: 'Некорректный номер телефона',
       email: 'Некорректный e-mail',

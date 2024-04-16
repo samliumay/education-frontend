@@ -37,6 +37,7 @@
         :placeholder="$t('common.children.birthdate')"
         type="date"
         required
+        :max="new Date().toISOString().substring(0, 10)"
         class="mt-[12px]"
         @blur="checkValidity"
       />
@@ -104,7 +105,7 @@ const newVisitor = ref({
 
 // Completed
 const isShowAddChild = computed(() => {
-  if (!userStore.isLoggedIn && userStore.getVisitorOptions.length >= 1) {
+  if (!userStore.isLoggedIn && userStore.getVisitorOptions.length < 1) {
     return false
   }
 

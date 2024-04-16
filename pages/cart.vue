@@ -44,9 +44,12 @@
               class="bg-brand-light-gray rounded-xl text-brand-red p-[16px] mt-[24px] flex flex-col md:flex-row justify-center md:justify-between items-center cursor-pointer relative overflow-hidden"
               @click="navigateTo('/courses')"
             >
-              <div class="relative flex flex-col text-center md:text-left">
-                <p>{{ $t('cart.choosingNextCourse') }}</p>
-                <p>{{ $t('cart.chooseDifferentCourse') }}</p>
+              <div class="relative flex flex-col text-left">
+                <p>
+                  {{ $t('cart.choosingNextCourse') }}
+                  <br class="hidden md:block">
+                  {{ $t('cart.chooseDifferentCourse') }}
+                </p>
               </div>
 
               <img
@@ -91,9 +94,12 @@
               class="bg-brand-light-gray rounded-xl text-brand-red p-[16px] mt-[24px] flex flex-col md:flex-row justify-center md:justify-between items-center cursor-pointer relative overflow-hidden"
               @click="navigateTo('/academies')"
             >
-              <div class="text-center md:text-left flex flex-col relative">
-                <p>{{ $t('cart.choosingNextAcademy') }}</p>
-                <p>{{ $t('cart.chooseDifferentAcademy') }}</p>
+              <div class="text-left flex flex-col relative">
+                <p>
+                  {{ $t('cart.choosingNextAcademy') }}
+                  <br class="hidden md:block">
+                  {{ $t('cart.chooseDifferentAcademy') }}
+                </p>
               </div>
 
               <img
@@ -140,9 +146,12 @@
             <div
               class="bg-brand-light-gray rounded-xl text-brand-red p-[16px] mt-[24px] flex flex-col md:flex-row justify-center md:justify-between items-center cursor-pointer relative overflow-hidden"
             >
-              <div class="text-center md:text-left relative flex flex-col">
-                <p>{{ $t('cart.choosingNextWorkshop') }}</p>
-                <p>{{ $t('cart.chooseDifferentWorkshop') }}</p>
+              <div class="text-left relative flex flex-col">
+                <p>
+                  {{ $t('cart.choosingNextWorkshop') }}
+                  <br class="hidden md:block">
+                  {{ $t('cart.chooseDifferentWorkshop') }}
+                </p>
               </div>
 
               <img

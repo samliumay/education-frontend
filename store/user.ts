@@ -71,6 +71,11 @@ export const useUserStore = defineStore('user', () => {
     }
   }
 
+  const postOldVisitor = async (visitor: Omit<Visitor, 'id'>) => {
+    const res = await HTTP.post('/api/v2/visitors/', visitor)
+    return res
+  }
+
   const updateVisitor = async (id: number, data: Partial<Visitor>) => {
     await HTTP.patch(`/api/v2/visitors/${id}/`, data)
   }
@@ -95,7 +100,6 @@ export const useUserStore = defineStore('user', () => {
 
   const retrieveUser = async () => {
     setUser(await HTTP.get('/api/v2/users/me/'))
-    await getVisitors()
     return user.value
   }
 
@@ -105,7 +109,7 @@ export const useUserStore = defineStore('user', () => {
 
   const userPostRequest = async (payload: any, url: string) => {
     let errors = {}
-    await HTTP.post<{ key: string }>(url, payload)
+    const res = await HTTP.post<{ key: string }>(url, payload)
       .then(async (result: { key: string }) => {
         if (result.key) {
           setToken(result.key)
@@ -115,8 +119,8 @@ export const useUserStore = defineStore('user', () => {
       .catch(data => {
         errors = data
       })
-    if (errors) return Promise.reject(errors)
-    return Promise.resolve()
+    if (Object.keys(errors).length > 0) return Promise.reject(errors)
+    return res
   }
 
   // eslint-disable-next-line consistent-return
@@ -227,6 +231,13 @@ export const useUserStore = defineStore('user', () => {
     return res
   }
 
+  const visitorOrderItems: Ref<Array<{ visitorId: number; itemId: number }>> =
+    ref([])
+
+  const visitorsMapping: Ref<
+    Array<{ visitorId: number; newVisitorId: number }>
+  > = ref([])
+
   return {
     user,
     setUser,
@@ -255,5 +266,8 @@ export const useUserStore = defineStore('user', () => {
     getWorkshopOrders,
     googleAuth,
     facebookAuth,
+    visitorOrderItems,
+    visitorsMapping,
+    postOldVisitor,
   }
 })
