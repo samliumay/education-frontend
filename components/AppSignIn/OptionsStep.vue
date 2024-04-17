@@ -21,13 +21,11 @@ const emit = defineEmits(['goToEmailStep'])
 // Init hooks
 const { t } = useI18n()
 
-const clientId = import.meta.env.VITE_GOOGLE_SSO_CLIENT_ID
-const siteAddress = import.meta.env.VITE_SITE_URL
-const facebookClientId = import.meta.env.VITE_FACEBOOK_SSO_CLIENT_ID
+const appConfig = useAppConfig()
 
-assert(clientId !== null)
-assert(siteAddress !== null)
-assert(facebookClientId !== null)
+const clientId = appConfig.google.clientId
+const siteAddress = appConfig.siteAddress
+const facebookClientId = appConfig.facebook.clientId
 
 // Options
 const options = [

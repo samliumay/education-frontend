@@ -17,13 +17,6 @@ export default defineNuxtConfig({
   alias: {
     '@': path.resolve(__dirname, './'),
   },
-  paypal: {
-    clientId:
-      process.env.VITE_PAYPAL_CLIENT_ID ||
-      'AYfXh9LscHuwUGMImNtDNDmFIujKTzhaO6Tho46Fq212YLyAN0lMALq7dicz8sPathrGwP_zNg5inN8P',
-    disableFunding: 'credit,card',
-    currency: 'EUR',
-  },
   css: ['@/assets/styles/fonts.css'],
   i18n: {
     vueI18n: './i18n.config.ts', // if you are using custom path, default
