@@ -25,6 +25,10 @@ const clientId = import.meta.env.VITE_GOOGLE_SSO_CLIENT_ID
 const siteAddress = import.meta.env.VITE_SITE_URL
 const facebookClientId = import.meta.env.VITE_FACEBOOK_SSO_CLIENT_ID
 
+assert(clientId !== null)
+assert(siteAddress !== null)
+assert(facebookClientId !== null)
+
 // Options
 const options = [
   {
