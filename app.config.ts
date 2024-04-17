@@ -1,8 +1,8 @@
-const requireEnvConfig = (varName) => {
+const requireEnvConfig = varName => {
   if (!process.env[varName]) {
-    throw new Error(`${varName} is not found in build environment`);
+    throw new Error(`${varName} is not found in build environment`)
   }
-  return process.env[varName];
+  return process.env[varName]
 }
 
 export default defineAppConfig({

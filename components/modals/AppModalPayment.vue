@@ -94,13 +94,12 @@ const paypal: Ref<any> = ref(null)
 
 const cart = useCartStore()
 const user = useUserStore()
+const config = useAppConfig()
 
 onMounted(async () => {
   try {
     paypal.value = await loadScript({
-      clientId:
-        import.meta.env.VITE_PAYPAL_CLIENT_ID ||
-        'AYfXh9LscHuwUGMImNtDNDmFIujKTzhaO6Tho46Fq212YLyAN0lMALq7dicz8sPathrGwP_zNg5inN8P',
+      clientId: config.paypal.clientId,
       disableFunding: 'credit,card',
       currency: 'EUR',
       vault: 'true',
