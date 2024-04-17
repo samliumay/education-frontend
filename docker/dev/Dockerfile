@@ -36,10 +36,11 @@ ADD nuxt.config.ts .
 COPY --from=build-stage /app/.output ./.output
 COPY --from=build-stage /app/.nuxt ./.nuxt
 COPY --from=build-stage /app/node_modules ./node_modules
+COPY --from=build-stage /app/.env ./.env
 
 ENV NUXT_HOST=0.0.0.0
 ENV NUXT_PORT=3000
 
 EXPOSE 3000
 
-CMD ["node", ".output/server/index.mjs"]
+CMD ["node", "-r", "dotenv/config", ".output/server/index.mjs"]
