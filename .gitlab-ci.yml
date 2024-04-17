@@ -21,6 +21,7 @@ build dev:
     VITE_API_URL: $DEV__VITE_API_URL
     VITE_PAYPAL_CLIENT_ID: $DEV__VITE_PAYPAL_CLIENT_ID
     VITE_GOOGLE_SSO_CLIENT_ID: $DEV__VITE_GOOGLE_SSO_CLIENT_ID
+    VITE_FACEBOOK_SSO_CLIENT_ID: $DEV__VITE_FACEBOOK_SSO_CLIENT_ID
   except:
     - main
   script:
@@ -37,10 +38,9 @@ build prod:
     VITE_API_URL: $PROD__VITE_API_URL
     VITE_PAYPAL_CLIENT_ID: $PROD__VITE_PAYPAL_CLIENT_ID
     VITE_GOOGLE_SSO_CLIENT_ID: $PROD__VITE_GOOGLE_SSO_CLIENT_ID
+    VITE_FACEBOOK_SSO_CLIENT_ID: $PROD__VITE_FACEBOOK_SSO_CLIENT_ID
   only:
     - main
-  variables:
-    VITE_PAYPAL_CLIENT_ID: $${VITE_PAYPAL_CLIENT_ID}
   script:
     - docker-compose -f docker-compose.prod.yml build
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
@@ -67,8 +67,6 @@ deploy prod:
   tags:
     - docker-compose
     - prod
-  variables:
-    VITE_PAYPAL_CLIENT_ID: $${VITE_PAYPAL_CLIENT_ID}
   script:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
     - docker-compose -f docker-compose.prod.yml pull
