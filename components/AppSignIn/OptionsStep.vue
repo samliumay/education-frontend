@@ -23,8 +23,8 @@ const { t } = useI18n()
 
 const appConfig = useAppConfig()
 
-const clientId = appConfig.google.clientId
-const siteAddress = appConfig.siteAddress
+const { siteAddress } = appConfig
+const googleClientId = appConfig.google.clientId
 const facebookClientId = appConfig.facebook.clientId
 
 // Options
@@ -39,7 +39,7 @@ const options = [
     icon: '/icons/sign_in/google_icon.svg',
     onClick: () => {
       if (process.client) {
-        const link = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${siteAddress}&prompt=consent&response_type=code&client_id=${clientId}&scope=openid%20email%20profile&access_type=offline`
+        const link = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${siteAddress}&prompt=consent&response_type=code&client_id=${googleClientId}&scope=openid%20email%20profile&access_type=offline`
         // eslint-disable-next-line no-console
         window.open(link, '_blank')
       }
