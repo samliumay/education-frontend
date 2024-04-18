@@ -12,10 +12,10 @@ export default defineAppConfig({
     currency: 'EUR',
   },
   google: {
-    clientId: requireEnvConfig('VITE_GOOGLE_CLIENT_ID'),
+    clientId: requireEnvConfig('VITE_GOOGLE_SSO_CLIENT_ID'),
   },
   facebook: {
-    clientId: requireEnvConfig('VITE_FACEBOOK_CLIENT_ID'),
+    clientId: requireEnvConfig('VITE_FACEBOOK_SSO_CLIENT_ID'),
   },
   siteAddress: requireEnvConfig('VITE_SITE_URL'),
 })
