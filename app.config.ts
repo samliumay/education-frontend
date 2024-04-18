@@ -1,8 +1,8 @@
 const requireEnvConfig = varName => {
-  if (!process.browser && !process.env[varName]) {
+  if (!process.browser && !import.meta.env[varName]) {
     throw new Error(`${varName} is not found in build environment`)
   }
-  return process.env[varName]
+  return import.meta.env[varName]
 }
 
 export default defineAppConfig({
