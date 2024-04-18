@@ -7,6 +7,7 @@ COPY package*.json ./
 
 RUN npm install
 
+COPY . /usr/src
 
 ARG VITE_API_URL
 ARG VITE_SITE_URL
@@ -14,18 +15,16 @@ ARG VITE_GOOGLE_SSO_CLIENT_ID
 ARG VITE_FACEBOOK_SSO_CLIENT_ID
 ARG VITE_PAYPAL_CLIENT_ID
 
-COPY . /usr/src
-
-RUN echo "VITE_API_URL=$VITE_API_URL" > /app/.env
-RUN echo "VITE_SITE_URL=$VITE_SITE_URL" > /app/.env
-RUN echo "VITE_GOOGLE_SSO_CLIENT_ID=$VITE_GOOGLE_SSO_CLIENT_ID" > /app/.env
-RUN echo "VITE_FACEBOOK_SSO_CLIENT_ID=$VITE_FACEBOOK_SSO_CLIENT_ID" > /app/.env
-RUN echo "VITE_PAYPAL_CLIENT_ID=$VITE_PAYPAL_CLIENT_ID" > /app/.env
+RUN echo "VITE_API_URL=$VITE_API_URL" >> /usr/src/.env
+RUN echo "VITE_SITE_URL=$VITE_SITE_URL" >> /usr/src/.env
+RUN echo "VITE_GOOGLE_SSO_CLIENT_ID=$VITE_GOOGLE_SSO_CLIENT_ID" >> /usr/src/.env
+RUN echo "VITE_FACEBOOK_SSO_CLIENT_ID=$VITE_FACEBOOK_SSO_CLIENT_ID" >> /usr/src/.env
+RUN echo "VITE_PAYPAL_CLIENT_ID=$VITE_PAYPAL_CLIENT_ID" >> /usr/src/.env
 
 
 # build necessary, even if no static files are needed,
 # since it builds the server as well
-RUN npm run generate
+RUN npm run generate --fail-on-page-error
 
 # Use NGINX to serve the built app
 FROM nginx:1.23.3-alpine
