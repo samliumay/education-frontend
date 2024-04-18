@@ -27,7 +27,6 @@ build dev:
     - main
   script:
     - docker-compose -f compose.yml build
-    - docker-compose -f compose.yml run frontend npm run preview
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
     - docker-compose -f compose.yml push
 

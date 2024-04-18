@@ -21,7 +21,8 @@ RUN echo "VITE_GOOGLE_SSO_CLIENT_ID=$VITE_GOOGLE_SSO_CLIENT_ID" > /app/.env
 RUN echo "VITE_FACEBOOK_SSO_CLIENT_ID=$VITE_FACEBOOK_SSO_CLIENT_ID" > /app/.env
 RUN echo "VITE_PAYPAL_CLIENT_ID=$VITE_PAYPAL_CLIENT_ID" > /app/.env
 
-RUN npm run build --fail-on-page-error
+RUN npm run build
+RUN npm test
 
 
 # Stage 2 - production

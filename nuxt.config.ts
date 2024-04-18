@@ -4,6 +4,7 @@ import path from 'path'
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
+    '@nuxt/test-utils/module',
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
     'nuxt-svgo',
