@@ -13,7 +13,7 @@
     "format:check": "prettier --check './**/*.{js,jsx,ts,tsx,css,md,json,vue}'",
     "postinstall": "nuxt prepare",
     "prepare": "husky install",
-    "test": "vitest"
+    "test": "vitest run"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
