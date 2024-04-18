@@ -1,5 +1,5 @@
 const requireEnvConfig = varName => {
-  if (!process.env[varName]) {
+  if (!process.browser && !process.env[varName]) {
     throw new Error(`${varName} is not found in build environment`)
   }
   return process.env[varName]
