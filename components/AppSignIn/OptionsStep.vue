@@ -29,8 +29,8 @@ const { siteAddress } = appConfig
 const googleClientId = appConfig.google.clientId
 const facebookClientId = appConfig.facebook.clientId
 
-const googleRedirectUri = normalizeUrl(`${siteAddress}/sso/google`)
-const facebookRedirectUri = normalizeUrl(`${siteAddress}/sso/facebook`)
+const googleRedirectUri = normalizeUrl(`${siteAddress}?sso_provider=google`)
+const facebookRedirectUri = normalizeUrl(`${siteAddress}?sso_provider=facebook`)
 
 // Options
 const options = [
