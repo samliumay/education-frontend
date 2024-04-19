@@ -7,11 +7,13 @@ export default defineNuxtRouteMiddleware(to => {
 
     if (to?.path === '/sso/google') {
         userStorage.googleAuth(to.query.code)
-        return navigateTo('/')
     }
     if (to?.path === '/sso/facebook') {
         userStorage.facebookAuth(to.query.code)
-        return navigateTo('/')
     }
+  }
+
+  if (to?.path.startsWith('/sso')) {
+    return navigateTo('/');
   }
 })
