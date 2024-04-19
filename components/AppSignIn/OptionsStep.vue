@@ -15,6 +15,8 @@
   </div>
 </template>
 <script lang="ts" setup>
+import normalizeUrl from 'normalize-url'
+
 // Init component
 const emit = defineEmits(['goToEmailStep'])
 
@@ -26,6 +28,9 @@ const appConfig = useAppConfig()
 const { siteAddress } = appConfig
 const googleClientId = appConfig.google.clientId
 const facebookClientId = appConfig.facebook.clientId
+
+const googleRedirectUri = normalizeUrl(`${siteAddress}/sso/google`)
+const facebookRedirectUri = normalizeUrl(`${siteAddress}/sso/facebook`)
 
 // Options
 const options = [
@@ -39,7 +44,7 @@ const options = [
     icon: '/icons/sign_in/google_icon.svg',
     onClick: () => {
       if (process.client) {
-        const link = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${siteAddress}&prompt=consent&response_type=code&client_id=${googleClientId}&scope=openid%20email%20profile&access_type=offline`
+        const link = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${googleRedirectUri}&prompt=consent&response_type=code&client_id=${googleClientId}&scope=openid%20email%20profile&access_type=offline`
         // eslint-disable-next-line no-console
         window.open(link, '_blank')
       }
@@ -51,7 +56,7 @@ const options = [
     onClick: () => {
       if (process.client) {
         const version = '13.0'
-        const link = `https://www.facebook.com/v${version}/dialog/oauth?client_id=${facebookClientId}&redirect_uri=${siteAddress}&response_type=code&scope=email%20public_profile`
+        const link = `https://www.facebook.com/v${version}/dialog/oauth?client_id=${facebookClientId}&redirect_uri=${facebookRedirectUri}&response_type=code&scope=email%20public_profile`
         // eslint-disable-next-line no-console
         window.open(link, '_blank')
       }
