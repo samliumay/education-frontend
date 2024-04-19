@@ -14,6 +14,6 @@ export default defineNuxtRouteMiddleware(to => {
   }
 
   if (to?.path.startsWith('/sso')) {
-    return navigateTo('/');
+    return navigateTo('/')
   }
 })
