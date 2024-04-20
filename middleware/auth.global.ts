@@ -11,7 +11,7 @@ export default defineNuxtRouteMiddleware(to => {
       } else if (to?.query?.sso_provider === 'facebook') {
         userStorage.facebookAuth(to.query.code)
       }
-      return navigateTo('/');
+      return navigateTo('/')
     }
   }
 })
