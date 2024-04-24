@@ -8,7 +8,7 @@ export default defineNuxtRouteMiddleware(to => {
     if (to?.query?.code) {
       if (to?.query?.sso_provider === 'google') {
         userStorage.googleAuth(to.query.code)
-      } else if (to?.query?.sso_provider === 'facebook') {
+      } else if (to?.query?.state === 'facebook') {
         userStorage.facebookAuth(to.query.code)
       }
       return navigateTo('/')
