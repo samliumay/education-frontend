@@ -5,13 +5,13 @@ export default defineNuxtRouteMiddleware(to => {
   if (process.client) {
     const userStorage = useUserStore()
 
-    if (to?.path === '/sso/google') {
+    if (to?.query?.code) {
+      if (to?.query?.sso_provider === 'google') {
         userStorage.googleAuth(to.query.code)
-        return navigateTo('/')
-    }
-    if (to?.path === '/sso/facebook') {
+      } else if (to?.query?.state === 'facebook') {
         userStorage.facebookAuth(to.query.code)
-        return navigateTo('/')
+      }
+      return navigateTo('/')
     }
   }
 })

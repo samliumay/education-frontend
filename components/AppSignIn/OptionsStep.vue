@@ -29,8 +29,10 @@ const { siteAddress } = appConfig
 const googleClientId = appConfig.google.clientId
 const facebookClientId = appConfig.facebook.clientId
 
-const googleRedirectUri = normalizeUrl(`${siteAddress}/sso/google`)
-const facebookRedirectUri = normalizeUrl(`${siteAddress}/sso/facebook`)
+const googleRedirectUri = normalizeUrl(`${siteAddress}?sso_provider=google`)
+const facebookRedirectUri = normalizeUrl(
+  `${siteAddress}/`, { removeTrailingSlash: false, removeSingleSlash: false },
+)
 
 // Options
 const options = [
@@ -56,7 +58,7 @@ const options = [
     onClick: () => {
       if (process.client) {
         const version = '13.0'
-        const link = `https://www.facebook.com/v${version}/dialog/oauth?client_id=${facebookClientId}&redirect_uri=${facebookRedirectUri}&response_type=code&scope=email%20public_profile`
+        const link = `https://www.facebook.com/v${version}/dialog/oauth?client_id=${facebookClientId}&redirect_uri=${facebookRedirectUri}&state=facebook&response_type=code&scope=email%20public_profile`
         // eslint-disable-next-line no-console
         window.open(link, '_blank')
       }
