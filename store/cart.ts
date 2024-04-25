@@ -41,7 +41,7 @@ export const useCartStore = defineStore('cart', () => {
   }
 
   const setPromocode = async (promocode: string) =>
-    await HTTP.put('/api/v2/orders/current/set_promocode', { promocode })
+    await HTTP.put('/api/v2/orders/current/set_promocode/', { promocode })
 
   const deleteOrderItem = async (id: number) => {
     await HTTP.delete(
