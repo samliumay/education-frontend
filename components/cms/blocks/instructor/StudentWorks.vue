@@ -75,7 +75,6 @@ import ImageBlockById from '../../blocks/misc/ImageBlockByID'
 defineProps<{
   blockData: PageBlock[]
 }>()
-
 </script>
 <style>
 .student-works .n-carousel {

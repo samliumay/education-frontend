@@ -186,6 +186,7 @@ export const de = {
     ages: {
       '5-7': '5-7 Jahre',
       '8-11': '8-11 Jahre',
+      '10+': 'от 10 Jahre',
       '12+': 'от 12 Jahre',
       '14+': 'от 14 Jahre',
     },

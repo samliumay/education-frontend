@@ -144,7 +144,6 @@ export const useUserStore = defineStore('user', () => {
     userPostRequest(
       {
         ...credentials,
-        username: credentials.email,
       },
       '/api/v2/users/sign_up/',
     )

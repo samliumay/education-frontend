@@ -54,10 +54,28 @@ const { t } = useI18n({ useScope: 'global' })
 // Store
 const route = useRoute()
 
-// API
-const { data: instructor, pending } = await useFetch(
-  getApiAddress(`/api/v2/wagtail/instructors/${route.params.id}/`),
-  { deep: true },
+const { locale } = useI18n({ useScope: 'global' })
+
+const isSlug = computed(() => !/^\d+$/.test(route.params.id as string))
+
+const { data: instructor, pending } = await useAsyncData(
+  'products',
+  () =>
+    $fetch(
+      getApiAddress(
+        isSlug.value
+          ? `/api/v2/wagtail/instructors/`
+          : `/api/v2/wagtail/instructors/${route.params.id}/`,
+      ),
+      {
+        params: {
+          locale: locale.value,
+          fields: '*',
+          slug: isSlug.value ? route.params.id : undefined,
+        },
+      },
+    ).then(data => (isSlug.value ? data?.items[0] : data)),
+  { watch: [locale, isSlug], deep: true },
 )
 
 const courses = computed(() => {

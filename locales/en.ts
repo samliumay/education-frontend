@@ -185,8 +185,9 @@ export const en = {
     ages: {
       '5-7': '5-7 years',
       '8-11': '8-11 years',
-      '12+': 'от 12 years',
-      '14+': 'от 14 years',
+      '10+': 'from 10 years',
+      '12+': 'from 12 years',
+      '14+': 'from 14 years',
     },
     languages: {
       "bi": 'All languages',
