@@ -12,10 +12,12 @@
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json,vue}'",
     "format:check": "prettier --check './**/*.{js,jsx,ts,tsx,css,md,json,vue}'",
     "postinstall": "nuxt prepare",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "vitest run"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "@nuxt/test-utils": "^3.12.1",
     "@nuxtjs/eslint-module": "^4.1.0",
     "@nuxtjs/i18n": "^8.0.0-rc.5",
     "@nuxtjs/sitemap": "^5.1.0",
@@ -24,6 +26,7 @@
     "eslint": "^8.53.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
+    "happy-dom": "^14.7.1",
     "husky": "^8.0.3",
     "naive-ui": "^2.35.0",
     "nuxt": "^3.8.1",
@@ -32,6 +35,8 @@
     "nuxt-svgo": "^3.6.0",
     "prettier": "^3.1.0",
     "sass": "^1.69.5",
+    "vitest": "^1.5.0",
+    "vitest-environment-nuxt": "^1.0.0",
     "vue": "^3.3.8",
     "vue-router": "^4.2.5"
   },
@@ -44,6 +49,7 @@
     "@vue/eslint-config-airbnb-with-typescript": "^7.0.0",
     "axios": "^1.6.1",
     "dompurify": "^3.0.8",
+    "dotenv": "^16.4.5",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-vue-scoped-css": "^2.5.1",
     "maska": "^2.1.11",

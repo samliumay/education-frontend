@@ -39,5 +39,6 @@
     "vite.config.ts",
     "additional.d.ts"
   ],
+  "types": ["vitest/globals"],
   "extends": "./.nuxt/tsconfig.json"
 }
