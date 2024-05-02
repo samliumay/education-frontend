@@ -98,7 +98,7 @@
       </template>
 
       <template v-if="product.product_type === 'Academy'">
-        <template v-if="!product.academy_weeks">
+        <template v-if="product.academy_schedule_slots?.length === 0">
           <p class="text-[20px] font-medium">{{ $t('buy.chooseWeek') }}</p>
           <n-checkbox v-model:checked="buyForm.first" class="mt-[16px]">
             {{ $t('buy.firstWeek') }}
@@ -111,12 +111,12 @@
           <p class="text-[20px] font-medium">{{ $t('buy.chooseWeek') }}</p>
           <n-checkbox-group v-model:value="buyForm.academy_weeks">
             <n-checkbox
-              v-for="(week, idx) in product.academy_weeks"
-              :key="Number(week)"
-              :value="Number(week)"
+              v-for="week in product.academy_schedule_slots"
+              :key="Number(week.week_number)"
+              :value="Number(week.week_number)"
               class="mt-[16px]"
             >
-              {{ `${idx + 1} ${$t('common.customWeek')}` }}
+              {{ `${week.week_number} ${$t('common.customWeek')}` }}
             </n-checkbox>
           </n-checkbox-group>
         </template>
@@ -456,7 +456,7 @@ const isButtonActive = computed(
         !!buyForm.value.schedule_slots?.length) ||
         (product.value.product_type === 'Academy' &&
           !!buyForm.value.academy_number_of_weeks &&
-          (product?.value?.academy_weeks ||
+          (product?.value?.academy_schedule_slots?.length !== 0 ||
             buyForm.value.first ||
             buyForm.value.second)))) ||
     (product.value.product_type === 'Workshop' && !!buyForm.value.comment),
