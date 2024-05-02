@@ -228,6 +228,12 @@ export const useUserStore = defineStore('user', () => {
     return res
   }
 
+  const postAppointment = (data: any) => HTTP.post('/api/v2/contact_us/appointment/', data)
+
+  const postCallback = (data: any) => HTTP.post('/api/v2/contact_us/callback/', data)
+
+  const postPartnership = (data: any) => HTTP.post('/api/v2/contact_us/partnership/', data)
+
   const visitorOrderItems: Ref<Array<{ visitorId: number; itemId: number }>> =
     ref([])
 
@@ -266,5 +272,8 @@ export const useUserStore = defineStore('user', () => {
     visitorOrderItems,
     visitorsMapping,
     postOldVisitor,
+    postAppointment,
+    postCallback,
+    postPartnership,
   }
 })
