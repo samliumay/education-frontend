@@ -48,6 +48,51 @@
                 </n-calendar>
               </n-config-provider>
 
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-[12px]">
+                <AppInput
+                  v-model="registrationForm.first_name"
+                  :placeholder="$t('cart.registerDetails.name')"
+                  required
+                  pattern=".{1,64}"
+                  title="The name must be from 1 to 64 characters"
+                  @blur="checkValidity"
+                />
+                <AppInput
+                  v-model="registrationForm.last_name"
+                  :placeholder="$t('cart.registerDetails.surname')"
+                  required
+                  pattern=".{1,64}"
+                  title="Last name must be from 1 to 64 characters"
+                  @blur="checkValidity"
+                />
+              </div>
+
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-[12px]">
+                <AppInput
+                  v-model="registrationForm.email"
+                  :placeholder="$t('cart.registerDetails.email')"
+                  type="email"
+                  required
+                  @blur="checkValidity"
+                />
+                <AppInput
+                  v-model="registrationForm.phone"
+                  placeholder="+491112221212"
+                  pattern="^\+\d{8,15}$"
+                  type="tel"
+                  required
+                  @blur="checkValidity"
+                />
+              </div>
+
+              <AppTextarea
+                v-model="registrationForm.comment"
+                :placeholder="$t('common.modals.additionalInfo')"
+                type="text"
+                required
+                @blur="checkValidity"
+              />
+
               <div class="w-full mt-5 flex gap-4">
                 <NCheckbox v-model:checked="checkbox" required class="pt-1" />
                 <p>
@@ -76,6 +121,7 @@
   </n-modal>
 </template>
 <script setup lang="ts">
+import { useUserStore } from '@/store/user';
 import {
   dateDeDE,
   dateEnUS,
@@ -102,9 +148,27 @@ const { locale } = useI18n({ useScope: 'global' })
 const value = ref(new Date())
 const checkbox = ref(false)
 
+const user = useUserStore()
+
 // eslint-disable-next-line @typescript-eslint/no-shadow
 const handleUpdateValue = (value: Date) => {
   value.value = value
+}
+
+const registrationForm = ref({
+  first_name: '',
+  last_name: '',
+  email: '',
+  phone: '',
+  comment: '',
+})
+
+const checkValidity = (event: {
+  target: { reportValidity: () => void }
+  relatedTarget: { focus: () => void }
+}) => {
+  event.target.reportValidity()
+  event.relatedTarget?.focus()
 }
 
 const naiveLocale = {
@@ -123,6 +187,7 @@ const naiveLocale = {
 }
 
 const sendModalCourse = () => {
+  user.postAppointment(registrationForm.value)
   emit('close')
 }
 

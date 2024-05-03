@@ -25,11 +25,17 @@
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-[44px] m-10">
-          <div v-if="!productPending">
+          <div v-if="(!productsPending && isProductSelect) || !productPending">
+            <template v-if="isProductSelect">
+              <p class="text-[24px] font-medium mb-[16px]">
+                {{ $t('common.modals.chooseOption') }}
+              </p>
+              <n-select v-model:value="chosenProduct" :options="productOptions" class="my-2" />
+            </template>
             <p class="text-[24px] font-medium mb-[16px]">
               {{ $t('common.modals.youChoosed') }}
             </p>
-            <BuyProductCard :product="product" />
+            <BuyProductCard v-if="!isProductSelect || chosenProduct !== null" :product="calculatedProduct" />
           </div>
 
           <div>
@@ -109,8 +115,8 @@
   </n-modal>
 </template>
 <script setup lang="ts">
-import { NCheckbox, NModal } from 'naive-ui'
-import { computed, ref, type VNodeRef } from 'vue'
+import { NCheckbox, NModal, NSelect } from 'naive-ui'
+import { computed, type Ref, ref, type VNodeRef } from 'vue'
 import { useRoute } from 'vue-router'
 
 import AppInput from '@/components/AppInput.vue'
@@ -120,8 +126,9 @@ import { useCartStore } from '@/store/cart'
 import { useUserStore } from '@/store/user'
 import { getApiAddress } from '@/utils/getApiAddress'
 
-defineProps<{
+const props = defineProps<{
   isOpen: boolean
+  isProductSelect?: boolean
 }>()
 // Init component
 const emit = defineEmits(['close'])
@@ -140,6 +147,24 @@ const checkbox = ref(false)
 const { locale } = useI18n({ useScope: 'global' })
 
 const isSlug = computed(() => !/^\d+$/.test(route.params.id as string))
+
+const { data: products, pending: productsPending } = await useAsyncData(
+  'productsListModal',
+  () =>
+    $fetch(getApiAddress(`/api/v2/wagtail/products/`), {
+      params: {
+        locale: locale.value,
+        fields: '*',
+        product_type: 'Course',
+      },
+    }),
+  { watch: [locale], deep: true },
+)
+
+const productOptions = computed(() => products.value?.items.map(targetProduct => ({
+  value: targetProduct.id,
+  label: targetProduct.name,
+})) || [])
 
 // Get data
 const { data: product, pending: productPending } = await useAsyncData(
@@ -170,10 +195,14 @@ const registrationForm = ref({
   phone: '',
 })
 
+const chosenProduct: Ref<any> = ref(null)
+
+const calculatedProduct = computed(() => props.isProductSelect ? products.value?.items.find(targetProduct => targetProduct.id === chosenProduct.value) : product.value)
+
 const sendModalCourse = async () => {
   await cartStore
     .sendVisitRequest({
-      product_page: product.value.id,
+      product_page: calculatedProduct.value.id,
       children: [userStore.visitors.find(el => el.id === visitor.value)],
       adults: [registrationForm.value],
     })
