@@ -121,7 +121,6 @@
   </n-modal>
 </template>
 <script setup lang="ts">
-import { useUserStore } from '@/store/user';
 import {
   dateDeDE,
   dateEnUS,
@@ -135,6 +134,8 @@ import {
   ruRU,
 } from 'naive-ui'
 import { ref, type VNodeRef } from 'vue'
+
+import { useUserStore } from '@/store/user'
 
 defineProps<{
   isOpen: boolean

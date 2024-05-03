@@ -113,7 +113,7 @@ import { ref, type VNodeRef } from 'vue'
 
 import AppInput from '@/components/AppInput.vue'
 import AppTextarea from '@/components/AppTextarea.vue'
-import { useUserStore } from '@/store/user';
+import { useUserStore } from '@/store/user'
 
 defineProps<{
   isOpen: boolean
