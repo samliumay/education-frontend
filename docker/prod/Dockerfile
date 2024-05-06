@@ -27,13 +27,33 @@ RUN echo "VITE_PAYPAL_CLIENT_ID=$VITE_PAYPAL_CLIENT_ID" >> /usr/src/.env
 RUN npm run generate --fail-on-page-error
 
 # Use NGINX to serve the built app
-FROM nginx:1.23.3-alpine
+# FROM nginx:1.23.3-alpine
+
+# WORKDIR /usr/src
+
+# RUN rm -rf /etc/nginx/conf.d
+# COPY docker/prod/nginx.conf /etc/nginx/nginx.conf
+# COPY public/* /usr/src/public/
+
+# # Copy build dist files to NGINX image
+# COPY --from=0 /usr/src/.output/public /usr/src
+
+FROM node:18-alpine as final
 
 WORKDIR /usr/src
 
-RUN rm -rf /etc/nginx/conf.d
-COPY docker/prod/nginx.conf /etc/nginx/nginx.conf
-COPY public/* /usr/src/public/
+ADD package.json .
 
-# Copy build dist files to NGINX image
-COPY --from=0 /usr/src/.output/public /usr/src
+ADD nuxt.config.ts .
+
+COPY --from=build-stage /usr/src/.output ./.output
+COPY --from=build-stage /usr/src/.nuxt ./.nuxt
+COPY --from=build-stage /usr/src/node_modules ./node_modules
+COPY --from=build-stage /usr/src/.env ./.env
+
+ENV NUXT_HOST=0.0.0.0
+ENV NUXT_PORT=80
+
+EXPOSE 80
+
+CMD ["node", "-r", "dotenv/config", ".output/server/index.mjs"]
