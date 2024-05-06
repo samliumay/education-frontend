@@ -24,7 +24,8 @@ RUN echo "VITE_PAYPAL_CLIENT_ID=$VITE_PAYPAL_CLIENT_ID" >> /usr/src/.env
 
 # build necessary, even if no static files are needed,
 # since it builds the server as well
-RUN npm run generate --fail-on-page-error
+# RUN npm run generate --fail-on-page-error
+RUN npm run build
 
 # Use NGINX to serve the built app
 # FROM nginx:1.23.3-alpine
