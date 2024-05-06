@@ -53,8 +53,8 @@ COPY --from=build-stage /usr/src/node_modules ./node_modules
 COPY --from=build-stage /usr/src/.env ./.env
 
 ENV NUXT_HOST=0.0.0.0
-ENV NUXT_PORT=80
+ENV NUXT_PORT=3000
 
-EXPOSE 80
+EXPOSE 3000
 
 CMD ["node", "-r", "dotenv/config", ".output/server/index.mjs"]
