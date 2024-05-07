@@ -73,7 +73,7 @@
               </div>
 
               <AppTextarea
-                v-model="registrationForm.message"
+                v-model="registrationForm.comment"
                 :placeholder="$t('common.modals.additionalInfo')"
                 type="text"
                 required
@@ -132,7 +132,7 @@ const registrationForm = ref({
   last_name: '',
   email: '',
   phone: '',
-  message: '',
+  comment: '',
 })
 
 const sendModalCourse = () => {

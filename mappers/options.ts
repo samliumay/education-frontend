@@ -43,6 +43,10 @@ export const ageOptionsByLocale = (t: (arg0: string) => string) =>
       value: '8-11',
     },
     {
+      label: t('common.ages.10+'),
+      value: '10+',
+    },
+    {
       label: t('common.ages.12+'),
       value: '12+',
     },

@@ -143,6 +143,7 @@ export const en = {
       tryFree: 'Try for free',
       submitApplication: 'Submit your application',
       buy: 'Buy',
+      buyAcademia: 'Buy',
     },
     subscription: {
       abonement: 'Subscription',
@@ -194,9 +195,9 @@ export const en = {
       "ru": 'Russian',
       "en": 'English',
       "de": 'German',
-      'ru-en': 'Russian/English',
-      'de-en': 'German/English',
-      'de-ru': 'German/Russian',
+      'ru/en': 'Russian/English',
+      'de/en': 'German/English',
+      'de/ru': 'German/Russian',
     },
     children: {
       enterData: 'Enter your child`s details',

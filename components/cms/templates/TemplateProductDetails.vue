@@ -28,7 +28,7 @@
               navigateTo(`/product/buy/${product.slug || route.params.id}`)
             "
           >
-            {{ $t('common.actions.buy') }}
+            {{ product?.product_type !== 'Acadeemy' ? $t('common.actions.buyAcademia') : $t('common.actions.buy') }}
           </AppButton>
         </HeaderBlock>
       </ErrorBoundaryBlock>

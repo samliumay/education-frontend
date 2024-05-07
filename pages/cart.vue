@@ -313,8 +313,9 @@ const promocodeStatus = ref('empty')
 const setPromocode = async () => {
   await cart
     .setPromocode(promocode.value)
-    .then(() => {
+    .then(async () => {
       promocodeStatus.value = 'success'
+      await cart.getCurrentOrder()
     })
     .catch(err => {
       promocodeStatus.value = 'fail'

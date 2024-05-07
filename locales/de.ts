@@ -144,6 +144,7 @@ export const de = {
       tryFree: 'Kostenlos ausprobieren',
       submitApplication: 'Reichen Sie Ihre Bewerbung ein',
       buy: 'Kurs buchen',
+      buyAcademia: 'Akademie buchen',
     },
     subscription: {
       abonement: 'Abonnement',
@@ -195,9 +196,9 @@ export const de = {
       "ru": 'Russisch',
       "en": 'Englisch',
       "de": 'Deutsch',
-      'ru-en': 'Russisch/Englisch',
-      'de-en': 'Deutsch/Englisch',
-      'de-ru': 'Deutsch/Russisch',
+      'ru/en': 'Russisch/Englisch',
+      'de/en': 'Deutsch/Englisch',
+      'de/ru': 'Deutsch/Russisch',
     },
     children: {
       enterData: 'Geben Sie die Daten Ihres Kindes ein',

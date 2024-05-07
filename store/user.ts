@@ -222,10 +222,7 @@ export const useUserStore = defineStore('user', () => {
   }
 
   const facebookAuth = async (code: string) => {
-    const res = await HTTP.post('/api/v2/users/auth/sso/facebook/', {
-      code,
-    })
-    return res
+    await userPostRequest({ code }, '/api/v2/users/auth/sso/facebook/')
   }
 
   const postAppointment = (data: any) => HTTP.post('/api/v2/contact_us/appointment/', data)
