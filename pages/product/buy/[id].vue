@@ -307,13 +307,13 @@
           class="text-green-700 mr-[8px]"
         >
           {{
-            +(
+            (+(
               product?.purchase_options?.find(
                 (purchaseOption: any) =>
                   purchaseOption?.id === buyForm?.purchase_option ||
                   purchaseOption.schedule_type === buyForm.schedule_type,
               )?.base_price || product.purchase_options[0]?.base_price
-            )
+            )) * (product?.product_type === 'Academy' ? (buyForm.academy_weeks.length + (buyForm.first ? 1 : 0) + (buyForm.second ? 1 : 0)) : 1)
           }}
           €
         </span>

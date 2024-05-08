@@ -1,5 +1,6 @@
 export const ru = {
   common: {
+    child: 'Ребенок',
     customWeek: 'неделя',
     errors: {
       phone: 'Некорректный номер телефона',

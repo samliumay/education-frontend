@@ -1,5 +1,6 @@
 export const de = {
   common: {
+    child: 'Kind',
     customWeek: ' Woche',
     errors: {
       phone: 'Ungültige Telefonnummer',
