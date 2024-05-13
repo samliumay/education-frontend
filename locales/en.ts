@@ -1,5 +1,6 @@
 export const en = {
   common: {
+    child: 'Child',
     customWeek: ' week',
     errors: {
       phone: 'Incorrect phone number',
@@ -143,6 +144,7 @@ export const en = {
       tryFree: 'Try for free',
       submitApplication: 'Submit your application',
       buy: 'Buy',
+      buyAcademia: 'Buy',
     },
     subscription: {
       abonement: 'Subscription',
@@ -185,17 +187,18 @@ export const en = {
     ages: {
       '5-7': '5-7 years',
       '8-11': '8-11 years',
-      '12+': 'от 12 years',
-      '14+': 'от 14 years',
+      '10+': 'from 10 years',
+      '12+': 'from 12 years',
+      '14+': 'from 14 years',
     },
     languages: {
       "bi": 'All languages',
       "ru": 'Russian',
       "en": 'English',
       "de": 'German',
-      'ru-en': 'Russian/English',
-      'de-en': 'German/English',
-      'de-ru': 'German/Russian',
+      'ru/en': 'Russian/English',
+      'de/en': 'German/English',
+      'de/ru': 'German/Russian',
     },
     children: {
       enterData: 'Enter your child`s details',

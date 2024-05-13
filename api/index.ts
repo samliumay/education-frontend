@@ -26,6 +26,7 @@ export const apiClient = axios.create({
   },
   xsrfCookieName: 'csrftoken',
   xsrfHeaderName: 'X-CSRFToken',
+  withCredentials: true,
 })
 
 apiClient.interceptors.request.use(request => {

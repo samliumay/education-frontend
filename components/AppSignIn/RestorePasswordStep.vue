@@ -64,14 +64,17 @@ const clearError = () => {
 }
 
 const restore = async () => {
-  await userStore.resetPassword(email.value).catch(err => {
-    if (Object.keys(err).length !== 0) {
-      error.value = t('common.somethingWrong')
-      setTimeout(clearError, 2000)
-    } else {
+  await userStore
+    .resetPassword(email.value)
+    .then(() => {
       isSended.value = true
       error.value = ''
-    }
-  })
+    })
+    .catch(err => {
+      if (Object.keys(err).length !== 0) {
+        error.value = t('common.somethingWrong')
+        setTimeout(clearError, 2000)
+      }
+    })
 }
 </script>

@@ -45,7 +45,7 @@
           <div
             class="bg-brand-light-gray px-4 p-2 rounded-full flex items-center"
           >
-            Ребенок:
+            {{ $t('common.child') }}:
             <AppSelect
               :placeholder="$t('common.children.selectChild')"
               :options="userStore.getVisitorOptions"

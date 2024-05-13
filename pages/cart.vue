@@ -47,7 +47,7 @@
               <div class="relative flex flex-col text-left">
                 <p>
                   {{ $t('cart.choosingNextCourse') }}
-                  <br class="hidden md:block">
+                  <br class="hidden md:block" />
                   {{ $t('cart.chooseDifferentCourse') }}
                 </p>
               </div>
@@ -97,7 +97,7 @@
               <div class="text-left flex flex-col relative">
                 <p>
                   {{ $t('cart.choosingNextAcademy') }}
-                  <br class="hidden md:block">
+                  <br class="hidden md:block" />
                   {{ $t('cart.chooseDifferentAcademy') }}
                 </p>
               </div>
@@ -149,7 +149,7 @@
               <div class="text-left relative flex flex-col">
                 <p>
                   {{ $t('cart.choosingNextWorkshop') }}
-                  <br class="hidden md:block">
+                  <br class="hidden md:block" />
                   {{ $t('cart.chooseDifferentWorkshop') }}
                 </p>
               </div>
@@ -313,8 +313,9 @@ const promocodeStatus = ref('empty')
 const setPromocode = async () => {
   await cart
     .setPromocode(promocode.value)
-    .then(() => {
+    .then(async () => {
       promocodeStatus.value = 'success'
+      await cart.getCurrentOrder()
     })
     .catch(err => {
       promocodeStatus.value = 'fail'

@@ -57,6 +57,7 @@ const instructorConverter = wrongInstructor => {
     subject: wrongInstructor.speciality,
     profile_pic: wrongInstructor?.title_image?.id,
     id: wrongInstructor.id,
+    slug: wrongInstructor.slug,
   }
 }
 </script>

@@ -119,6 +119,7 @@ import { ref, type VNodeRef } from 'vue'
 
 import AppInput from '@/components/AppInput.vue'
 import AppTextarea from '@/components/AppTextarea.vue'
+import { useUserStore } from '@/store/user'
 
 defineProps<{
   isOpen: boolean
@@ -128,6 +129,8 @@ const emit = defineEmits(['close'])
 
 // State
 const checkbox = ref(false)
+
+const user = useUserStore()
 
 // Registration
 const registrationForm = ref({
@@ -140,6 +143,7 @@ const registrationForm = ref({
 })
 
 const sendModalCourse = () => {
+  user.postPartnership(registrationForm.value)
   emit('close')
 }
 

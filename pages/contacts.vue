@@ -13,6 +13,7 @@
   <AppModalCourse
     v-if="isOpenModalCourse"
     :is-open="isOpenModalCourse"
+    is-product-select
     @close="isOpenModalCourse = false"
   />
   <AppModalCalendar

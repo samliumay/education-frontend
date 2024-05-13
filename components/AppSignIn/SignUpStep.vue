@@ -118,29 +118,9 @@ const clearError = () => {
 }
 
 const signUp = async () => {
-  await userStore.register(signUpCredentials.value).catch(err => {
-    if (Object.keys(err).length !== 0) {
-      if (err?.phone_number?.[0].includes('Enter a valid phone number.')) {
-        error.value = t('common.errors.phone')
-      } else if (err?.email?.[0].includes('Enter a valid email address.')) {
-        error.value = t('common.errors.email')
-      } else if (err?.email?.[0] && err?.username?.[0]) {
-        error.value = t('common.errors.exists')
-      } else if (
-        err?.non_field_errors?.[0].includes(
-          "The two password fields didn't match.",
-        )
-      ) {
-        error.value = t('common.errors.passwordMatch')
-      } else if (
-        err?.phone_number?.[0].includes('This field must be unique.')
-      ) {
-        error.value = t('common.errors.uniquePhone')
-      } else {
-        error.value = t('common.somethingWrong')
-      }
-      setTimeout(clearError, 2000)
-    } else {
+  await userStore
+    .register(signUpCredentials.value)
+    .then(() => {
       const { email } = signUpCredentials.value
       error.value = ''
       signUpCredentials.value.email = ''
@@ -150,7 +130,30 @@ const signUp = async () => {
       signUpCredentials.value.last_name = ''
       signUpCredentials.value.phone_number = ''
       emit('goToVerify', email)
-    }
-  })
+    })
+    .catch(err => {
+      if (Object.keys(err).length !== 0) {
+        if (err?.phone_number?.[0].includes('Enter a valid phone number.')) {
+          error.value = t('common.errors.phone')
+        } else if (err?.email?.[0].includes('Enter a valid email address.')) {
+          error.value = t('common.errors.email')
+        } else if (err?.email?.[0] && err?.username?.[0]) {
+          error.value = t('common.errors.exists')
+        } else if (
+          err?.non_field_errors?.[0].includes(
+            "The two password fields didn't match.",
+          )
+        ) {
+          error.value = t('common.errors.passwordMatch')
+        } else if (
+          err?.phone_number?.[0].includes('This field must be unique.')
+        ) {
+          error.value = t('common.errors.uniquePhone')
+        } else {
+          error.value = t('common.somethingWrong')
+        }
+        setTimeout(clearError, 2000)
+      }
+    })
 }
 </script>

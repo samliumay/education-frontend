@@ -222,11 +222,14 @@ export const useUserStore = defineStore('user', () => {
   }
 
   const facebookAuth = async (code: string) => {
-    const res = await HTTP.post('/api/v2/users/auth/sso/facebook/', {
-      code,
-    })
-    return res
+    await userPostRequest({ code }, '/api/v2/users/auth/sso/facebook/')
   }
+
+  const postAppointment = (data: any) => HTTP.post('/api/v2/contact_us/appointment/', data)
+
+  const postCallback = (data: any) => HTTP.post('/api/v2/contact_us/callback/', data)
+
+  const postPartnership = (data: any) => HTTP.post('/api/v2/contact_us/partnership/', data)
 
   const visitorOrderItems: Ref<Array<{ visitorId: number; itemId: number }>> =
     ref([])
@@ -266,5 +269,8 @@ export const useUserStore = defineStore('user', () => {
     visitorOrderItems,
     visitorsMapping,
     postOldVisitor,
+    postAppointment,
+    postCallback,
+    postPartnership,
   }
 })

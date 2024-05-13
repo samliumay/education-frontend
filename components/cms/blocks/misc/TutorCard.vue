@@ -19,7 +19,7 @@
     </p>
 
     <NuxtLink
-      :to="`/instructor/${instructor.id}`"
+      :to="`/instructor/${instructor.slug || instructor.id}`"
       class="text-brand-red underline"
       role="navigation"
     >
@@ -41,8 +41,11 @@ const props = defineProps<{
     subject: string
     profile_pic: number
     id: number
+    slug: string
   }
 }>()
+
+console.log(props)
 
 // Get data
 const imageId = computed(() => props?.instructor?.profile_pic)

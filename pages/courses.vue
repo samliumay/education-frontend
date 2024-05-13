@@ -112,7 +112,7 @@ const categoriesOptions = computed(() =>
   categories.value
     ? categories.value.map(category => ({
         label: category.name,
-        value: category.id,
+        value: category.name.replace(' ', '+'),
       }))
     : [],
 )

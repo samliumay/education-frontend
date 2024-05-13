@@ -22,7 +22,7 @@
     </div>
 
     <div class="px-[28px] md:px-[48px] flex justify-center w-full mb-14 mt-14">
-      <AppButton v-if="isShowAddMoreItemsButton" @click="addMoreItems">
+      <AppButton v-if="false" @click="addMoreItems">
         {{ $t('common.showMore') }}
       </AppButton>
     </div>
@@ -114,14 +114,11 @@ const addMoreItems = () => {
   itemsOnPage.value += defaultItemsCount
 }
 
-const blocks = computed(() => {
-  const items = products?.value?.items ?? []
-  return items.slice(0, itemsOnPage.value)
-})
+const blocks = computed(() => products?.value?.items ?? [])
 
-const isShowAddMoreItemsButton = computed(
-  () =>
-    products?.value?.items?.length > itemsOnPage.value &&
-    !productsPending.value,
-)
+// const isShowAddMoreItemsButton = computed(
+//   () =>
+//     products?.value?.items?.length > itemsOnPage.value &&
+//     !productsPending.value,
+// )
 </script>
