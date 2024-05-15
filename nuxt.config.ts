@@ -14,6 +14,11 @@ export default defineNuxtConfig({
     'nuxt-paypal',
     ...(process.env.NODE_ENV === 'production' ? ['@nuxtjs/eslint-module'] : []),
   ],
+  paypal: {
+    clientId: process.env.VITE_PAYPAL_CLIENT_ID,
+    disableFunding: 'credit,card',
+    currency: 'EUR',
+  },
   envPrefix: ['VITE_', 'PAYPAL_'],
   alias: {
     '@': path.resolve(__dirname, './'),
