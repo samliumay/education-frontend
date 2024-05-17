@@ -130,7 +130,7 @@ export const en = {
       signUp: 'Sign Up',
       chooseSeason: 'Choose a Season:',
       cancel: 'Cancel',
-      exit: 'Exit',
+      exit: 'Log out',
       restore: 'Recover',
       save: 'Save',
       resetPassword: 'Reset the password',
