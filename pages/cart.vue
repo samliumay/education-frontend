@@ -378,10 +378,10 @@ onMounted(() => {
   usePaypalButton({
     createOrder() {
       localStorage.removeItem('notifyWasShown')
-      return cart.paypalFulfillOrder().then((data: any) => {
-        // cart.resetCart()
-        return data.id
-      })
+      return cart.paypalFulfillOrder().then((data: any) => data.id)
+      //   cart.resetCart()
+      //   return data.id
+      // })
     },
     onApprove(data: any) {
       // eslint-disable-next-line no-console

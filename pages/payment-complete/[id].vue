@@ -37,8 +37,8 @@
 import { NButton, NH1, NH2 } from 'naive-ui'
 import { computed } from 'vue'
 
-import { useListsStore } from '../../store/lists'
 import { useCartStore } from '../../store/cart'
+import { useListsStore } from '../../store/lists'
 
 const listsStore = useListsStore()
 const cart = useCartStore()
