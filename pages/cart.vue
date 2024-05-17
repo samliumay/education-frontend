@@ -370,7 +370,7 @@ const fullfillOrder = async () => {
     `${String(window.location).replace('cart', '')}profile?tab=sales-success`,
     `${String(window.location).replace('cart', '')}profile?tab=sales-fail`,
   )
-  await cart.resetCart()
+  // await cart.resetCart()
   localStorage.removeItem('notifyWasShown')
   window.location.href = urlObject.url
 }
@@ -379,7 +379,7 @@ onMounted(() => {
     createOrder() {
       localStorage.removeItem('notifyWasShown')
       return cart.paypalFulfillOrder().then((data: any) => {
-        cart.resetCart()
+        // cart.resetCart()
         return data.id
       })
     },
