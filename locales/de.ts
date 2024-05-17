@@ -131,7 +131,7 @@ export const de = {
       signUp: 'Registrieren',
       chooseSeason: 'Saison auswählen:',
       cancel: 'Stornieren',
-      exit: 'Ausfahrt',
+      exit: 'Ausloggen',
       restore: 'Wiederherstellen',
       save: 'Speichern',
       resetPassword: 'Kennwort ändern',
