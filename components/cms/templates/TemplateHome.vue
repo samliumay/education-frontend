@@ -17,11 +17,15 @@ const { locale } = useI18n({ useScope: 'global' })
 // API
 const { data: main, pending } = useAsyncData(
   'homepage',
-  () =>
+  () => 
     $fetch(getApiAddress(`/api/v2/wagtail/homepage/`), {
       params: {
         locale: locale.value,
       },
+    }).then((out) => {
+      window.scrollTo({ top: 0 })
+
+      return out
     }),
   { watch: [locale] },
 )
