@@ -418,7 +418,7 @@ const addAcademy = async () => {
       ? product?.value?.schedule_slots?.length > 0
         ? buyForm.value.schedule_slots
         : [11]
-      : [product?.value?.schedule_slots[0].id]
+      : [product?.value?.academy_schedule_slots[0].id]
 
   const productOrder = {
     academy_number_of_weeks: buyForm.value.academy_weeks.length || weeks || 1,
