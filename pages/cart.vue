@@ -184,7 +184,11 @@
                   {{ item.product_page?.name }}
                 </span>
                 <span>
-                  {{ `${Number(item.calculated_price ?? 0).toFixed(2)} €` }}
+                  {{ 
+                    `${Math.floor(Number(item.calculated_price)) !== Number(item.calculated_price) 
+                    ? Number(item.calculated_price ?? 0).toFixed(2) 
+                    : item.calculated_price} €` 
+                  }}
                 </span>
               </div>
 
@@ -219,7 +223,11 @@
                 `-${(cart?.order?.items || []).reduce((acc, item) => {
                   const newAcc =
                     Number(acc ?? 0) + Number(item.discount_amount ?? 0)
-                  return Number(newAcc ?? 0).toFixed(2)
+                  return Number(newAcc ?? 0).toFixed( 
+                    Number(newAcc ?? 0) !== Math.floor(Number(newAcc ?? 0)) 
+                    ? 2
+                    : 0
+                  )
                 }, 0)} €`
               }}</span>
             </p>
@@ -251,7 +259,11 @@
                 `${(cart?.order?.items || []).reduce((acc, item) => {
                   const newAcc =
                     Number(acc ?? 0) + Number(item.calculated_price ?? 0)
-                  return Number(newAcc ?? 0).toFixed(2)
+                  return Number(newAcc ?? 0).toFixed( 
+                    Number(newAcc ?? 0) !== Math.floor(Number(newAcc ?? 0)) 
+                    ? 2
+                    : 0
+                  )
                 }, 0)} €`
               }}</span>
             </p>
