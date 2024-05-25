@@ -367,6 +367,7 @@ export const ru = {
     remembered: 'Я вспомнил пароль',
     restoreMessage:
       'Мы отправили вам сообщение для восстановления пароля. Проверьте, пожалуйста, вашу почту',
+    successRestoreMessage: 'Ваш пароль был успешно восстановлен',
     first_name: 'Имя',
     last_name: 'Фамилия',
     phone_number: 'Номер телефона',
