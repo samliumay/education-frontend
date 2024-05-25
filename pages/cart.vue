@@ -185,9 +185,12 @@
                 </span>
                 <span>
                   {{
-                    `${Math.floor(Number(item.calculated_price)) !== Number(item.calculated_price)
-                    ? Number(item.calculated_price ?? 0).toFixed(2)
-                    : item.calculated_price} €`
+                    `${
+                      Math.floor(Number(item.calculated_price)) !==
+                      Number(item.calculated_price)
+                        ? Number(item.calculated_price ?? 0).toFixed(2)
+                        : item.calculated_price
+                    } €`
                   }}
                 </span>
               </div>
@@ -199,7 +202,7 @@
             </template>
 
             <p
-              v-show="cart?.order?.items?.length"
+              v-show="cart?.order?.items?.length && !hasOnlySubscriptionsProduct"
               class="flex justify-between font-medium text-[20px] mt-[24px] mb-[12px]"
             >
               <span>{{ $t('cart.totalCheckout') }}</span>
@@ -225,8 +228,8 @@
                     Number(acc ?? 0) + Number(item.discount_amount ?? 0)
                   return Number(newAcc ?? 0).toFixed(
                     Number(newAcc ?? 0) !== Math.floor(Number(newAcc ?? 0))
-                    ? 2
-                    : 0,
+                      ? 2
+                      : 0,
                   )
                 }, 0)} €`
               }}</span>
@@ -261,8 +264,8 @@
                     Number(acc ?? 0) + Number(item.calculated_price ?? 0)
                   return Number(newAcc ?? 0).toFixed(
                     Number(newAcc ?? 0) !== Math.floor(Number(newAcc ?? 0))
-                    ? 2
-                    : 0,
+                      ? 2
+                      : 0,
                   )
                 }, 0)} €`
               }}</span>
@@ -339,6 +342,34 @@ const setPromocode = async () => {
 }
 
 // Products
+const hasOnlySubscriptionsProduct = computed(() => {
+  const productPurchases: boolean[] = []
+
+  const hasNotOnlyCourse = cart?.order?.items?.some(
+    item =>
+      item.product_page.product_type === 'Academy' ||
+      item.product_page.product_type === 'Workshop' ||
+      item.product_page.product_type === 'Event',
+  )
+
+  if (hasNotOnlyCourse) return false
+
+  cart?.order?.items?.forEach(item => {
+    const purchaseOption = item.purchase_option
+    let isSubscriptionOption = false
+
+    item.product_page.purchase_options.forEach(option => {
+      if (option.id === purchaseOption && option.schedule_type.includes('Abonnement')) {
+        isSubscriptionOption = true
+      }
+    })
+
+    productPurchases.push(isSubscriptionOption)
+  })
+
+  return productPurchases.every(item => item)
+})
+
 const courseProducts = computed(
   () =>
     cart?.order?.items?.filter(
