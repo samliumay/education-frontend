@@ -91,19 +91,34 @@
         <n-collapse-transition :show="isShowDetails">
           <div class="w-full flex gap-9">
             <div class="flex flex-col gap-6">
-              <div
-                v-for="item in order?.schedule_slots"
-                :key="item.key"
-                class="bg-brand-light-gray py-1 px-4 rounded-full w-fit"
-              >
-                <p class="font-medium">
-                  {{
-                    $t(`common.weekdays.${item?.weekday.toLowerCase()}`) ??
-                    $t('common.weekdays.monday')
-                  }}
-                  {{ String(item?.start ?? '00:00').slice(0, 5) }}
-                </p>
-              </div>
+              <template v-if="order?.product_page.product_type === 'Academy'">
+                <div class="flex gap-2 flex-wrap">
+                  <div
+                    v-for="week in order?.academy_weeks"
+                    :key="week"
+                    class="bg-brand-light-gray py-1 px-4 rounded-full w-fit"
+                  >
+                    <p class="font-medium">
+                      {{ `${week} ${$t('common.customWeek')}` }}
+                    </p>
+                  </div>
+                </div>
+              </template>
+              <template v-else>
+                <div
+                  v-for="item in order?.schedule_slots"
+                  :key="item.key"
+                  class="bg-brand-light-gray py-1 px-4 rounded-full w-fit"
+                >
+                  <p class="font-medium">
+                    {{
+                      $t(`common.weekdays.${item?.weekday.toLowerCase()}`) ??
+                      $t('common.weekdays.monday')
+                    }}
+                    {{ String(item?.start ?? '00:00').slice(0, 5) }}
+                  </p>
+                </div>
+              </template>
 
               <div>
                 <p class="text-xl font-medium mb-2">

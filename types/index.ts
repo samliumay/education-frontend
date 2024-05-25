@@ -134,6 +134,7 @@ export enum LoginSteps {
 
 export type OrderItem = {
   id: number
+  academy_weeks: number[]
   calculated_price: string
   academy_number_of_weeks: number
   schedule_type: ScheduleType
@@ -142,6 +143,9 @@ export type OrderItem = {
   visitor: number
   purchase_option: number
   schedule_slots: (number | Slot)[]
+  product_page: {
+    product_type: 'Course' | 'Academy' | 'Workshop' | 'Event'
+  }
 }
 
 export type Order = {
