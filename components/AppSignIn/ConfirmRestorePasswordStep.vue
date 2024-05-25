@@ -1,6 +1,7 @@
 <template>
   <form ref="form" @submit.prevent="confirmRestore">
     <AppInput
+      v-if="!isRestoredPassword"
       v-model="restoreCredentials.password1"
       :placeholder="$t('user.password')"
       type="password"
@@ -11,6 +12,7 @@
       @blur="checkValidity"
     />
     <AppInput
+      v-if="!isRestoredPassword"
       v-model="restoreCredentials.password2"
       :placeholder="$t('user.repeatPassword')"
       type="password"
@@ -22,8 +24,12 @@
     />
 
     <p v-if="error" class="text-brand-red mt-2 mb-2">{{ error }}</p>
+    <p v-if="isRestoredPassword" class="text-brand-gray mt-2 mb-2">
+      {{ $t('user.successRestoreMessage') }}
+    </p>
 
     <AppButton
+      v-if="!isRestoredPassword"
       class="block mt-[36px] w-full"
       type="submit"
       :disabled="!form?.checkValidity() ?? false"
@@ -40,7 +46,7 @@ import { useUserStore } from '../../store/user'
 import AppInput from '../AppInput.vue'
 
 // Init component
-const emit = defineEmits(['close'])
+defineEmits(['close'])
 
 // Store
 const userStore = useUserStore()
@@ -50,6 +56,7 @@ const { t } = useI18n()
 // State
 const error = ref('')
 const form = ref<VNodeRef | undefined>(undefined)
+const isRestoredPassword = ref(false)
 
 const route = useRoute()
 
@@ -83,12 +90,10 @@ const confirmRestore = async () => {
       if (Object.keys(err).length !== 0) {
         error.value = t('common.somethingWrong')
         setTimeout(clearError, 2000)
-      } else {
-        error.value = ''
-        restoreCredentials.value.password1 = ''
-        restoreCredentials.value.password2 = ''
-        emit('close')
       }
+    })
+    .then(() => {
+      isRestoredPassword.value = true
     })
 }
 </script>

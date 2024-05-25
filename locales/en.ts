@@ -367,6 +367,7 @@ export const en = {
     remembered: 'I remember password',
     restoreMessage:
       'We have sent you a message to reset your password. Please check your email',
+    successRestoreMessage: 'Your password has been successfully reset',
     first_name: 'First name',
     last_name: 'Last name',
     phone_number: 'Phone number',

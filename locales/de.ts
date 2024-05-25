@@ -371,6 +371,7 @@ export const de = {
     remembered: 'Ich habe mich an mein Passwort erinnert',
     restoreMessage:
       'Wir haben Ihnen eine Nachricht zum Zurücksetzen Ihres Passworts gesendet. Bitte überprüfen Sie Ihre E-Mails',
+    successRestoreMessage: 'Ihr Passwort wurde erfolgreich zurückgesetzt',
     first_name: 'Name',
     last_name: 'Nachname',
     phone_number: 'Telefonnummer',
