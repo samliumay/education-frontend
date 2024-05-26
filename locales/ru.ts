@@ -362,6 +362,7 @@ export const ru = {
     forgotPassword: 'Забыли пароль?',
     newPassword: 'Новый пароль',
     noAccount: 'Нет аккаунта?',
+    confirmedMail: 'Ваш адрес электронной почты был успешно подтвержден. Войдите, чтобы продолжить.',
     registration: 'Регистрация',
     passwordRestore: 'Восстановление пароля',
     remembered: 'Я вспомнил пароль',

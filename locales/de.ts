@@ -366,6 +366,7 @@ export const de = {
     forgotPassword: 'Passwort vergessen?',
     newPassword: 'Neues Passwort',
     noAccount: 'Sie haben noch kein Konto?',
+    confirmedMail: 'Ihre E-Mail wurde erfolgreich bestätigt. Melden Sie sich an, um fortzufahren.',
     registration: 'Anmeldung',
     passwordRestore: 'Passwort Wiederherstellung',
     remembered: 'Ich habe mich an mein Passwort erinnert',

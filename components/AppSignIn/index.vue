@@ -38,6 +38,7 @@
       />
       <EmailStep
         v-else-if="step === LoginSteps.Email"
+        :is-confirmed-mail="isConfirmedMail"
         @close="close"
         @go-to-restore-password-step="step = LoginSteps.RestorePassword"
         @go-to-sign-up-step="step = LoginSteps.SignUp"
@@ -87,6 +88,7 @@ const emit = defineEmits(['close'])
 // State
 const step = ref(LoginSteps.Options)
 const savedEmail = ref('')
+const isConfirmedMail = ref(false)
 
 const route = useRoute()
 
@@ -104,8 +106,12 @@ const goToVerify = (email: string) => {
 }
 
 onMounted(() => {
-  if (route.query.uid && route.query.token) {
+  if (route.query.uid && route.query.token)
     step.value = LoginSteps.ConfirmRestorePassword
+
+  if (route.query?.email === 'confirmed') {
+    isConfirmedMail.value = true
+    step.value = LoginSteps.Email
   }
 })
 </script>
