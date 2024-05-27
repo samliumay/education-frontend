@@ -206,7 +206,7 @@
               class="flex justify-between font-medium text-[20px] mt-[24px] mb-[12px]"
             >
               <span>{{ $t('cart.totalCheckout') }}</span>
-              <span>{{ cart?.order?.total_checkout_price }}</span>
+              <span>{{ cart?.order?.total_checkout_price }} €</span>
             </p>
 
             <p
@@ -214,7 +214,7 @@
               class="flex justify-between font-medium text-[20px] mt-[24px] mb-[12px]"
             >
               <span>{{ $t('cart.totalRecurrent') }}</span>
-              <span>{{ cart?.order?.total_recurrent_price }}</span>
+              <span>{{ cart?.order?.total_recurrent_price }} €</span>
             </p>
 
             <p
