@@ -162,7 +162,7 @@ export const useUserStore = defineStore('user', () => {
   ) =>
     userPostRequest(
       { new_password1, new_password2, uid, token },
-      '/api/v2/users/auth/password/reset/confirm/',
+      '/auth/password/reset/confirm/',
     )
 
   const changePassword = async (

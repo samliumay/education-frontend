@@ -362,11 +362,13 @@ export const en = {
     forgotPassword: 'Did you forget the password?',
     newPassword: 'New password',
     noAccount: 'No account?',
+    confirmedMail: 'Your email has been successfully confirmed. Sign in to continue',
     registration: 'Registration',
     passwordRestore: 'Password recovery',
     remembered: 'I remember password',
     restoreMessage:
       'We have sent you a message to reset your password. Please check your email',
+    successRestoreMessage: 'Your password has been successfully reset',
     first_name: 'First name',
     last_name: 'Last name',
     phone_number: 'Phone number',

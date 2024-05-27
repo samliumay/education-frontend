@@ -22,6 +22,10 @@ const { data: main, pending } = useAsyncData(
       params: {
         locale: locale.value,
       },
+    }).then(out => {
+      window.scrollTo({ top: 0 })
+
+      return out
     }),
   { watch: [locale] },
 )

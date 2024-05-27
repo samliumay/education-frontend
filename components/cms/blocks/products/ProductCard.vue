@@ -195,7 +195,7 @@ const schedule = computed(() => {
       start:
         `${t(`common.weekdays.short.${element.weekday.toLowerCase()}`)} ` +
         `${getNearDate(element.weekday, element.start)}`,
-      end: `${element.end.substring(0, 5)} UHR`,
+      end: `${element.start.substring(0, 5)} UHR`,
       id: element.id,
     })
   })
