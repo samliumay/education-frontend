@@ -34,7 +34,8 @@ build prod:
   stage: build
   image: atnartur/docker:latest
   tags:
-    - docker
+    - docker-compose
+    - prod
   variables:
     VITE_API_URL: $PROD__VITE_API_URL
     VITE_SITE_URL: $PROD__VITE_SITE_URL
