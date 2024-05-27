@@ -39,6 +39,7 @@
     </button>
 
     <p v-if="error" class="text-brand-red mt-2 mb-2">{{ error }}</p>
+    <p v-if="isConfirmedMail" class="text-brand-gray mt-2 mb-2">{{ $t('user.confirmedMail') }}</p>
 
     <AppButton
       class="block mt-[36px] w-full text-[18px]"
@@ -57,6 +58,10 @@ import { useCartStore } from '@/store/cart'
 import { useUserStore } from '../../store/user'
 import AppButton from '../AppButton.vue'
 import AppInput from '../AppInput.vue'
+
+defineProps<{
+  isConfirmedMail: boolean
+}>()
 
 const emit = defineEmits(['close', 'goToRestorePasswordStep', 'goToSignUpStep'])
 

@@ -225,6 +225,8 @@ const isOpenModalProfile = ref(false)
 onMounted(() => {
   if (route.query.uid && route.query.token) {
     isOpenSignIn.value = true
+  } else if (route.query?.email === 'confirmed') {
+    isOpenSignIn.value = true
   }
 })
 

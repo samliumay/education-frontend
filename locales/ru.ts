@@ -362,11 +362,13 @@ export const ru = {
     forgotPassword: 'Забыли пароль?',
     newPassword: 'Новый пароль',
     noAccount: 'Нет аккаунта?',
+    confirmedMail: 'Ваш адрес электронной почты был успешно подтвержден. Войдите, чтобы продолжить.',
     registration: 'Регистрация',
     passwordRestore: 'Восстановление пароля',
     remembered: 'Я вспомнил пароль',
     restoreMessage:
       'Мы отправили вам сообщение для восстановления пароля. Проверьте, пожалуйста, вашу почту',
+    successRestoreMessage: 'Ваш пароль был успешно восстановлен',
     first_name: 'Имя',
     last_name: 'Фамилия',
     phone_number: 'Номер телефона',
