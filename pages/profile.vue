@@ -258,7 +258,14 @@
                         .join('; ')
                     }}
                   </p>
-                  <p>{{ new Date(workshop.purchased_at).toDateString() }}</p>
+                  <p>
+                    {{
+                      (workshop?.purchased_at ?? '').replace(
+                        /(\d{4})-(\d{2})-(\d{2})/,
+                        '$3.$2.$1',
+                      ) || new Date().toDateString()
+                    }}
+                  </p>
                   <button
                     class="w-fit text-brand-black active:text-brand-red cursor-pointer underline underline-offset-8"
                     @click="openCommentModal(workshop)"
