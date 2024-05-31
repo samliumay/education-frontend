@@ -44,7 +44,7 @@
                   #="{ year, month, date }"
                   @update:value="handleUpdateValue"
                 >
-                  {{ year }}-{{ month }}-{{ date }}
+                  {{ date }}-{{ month }}-{{ year }}
                 </n-calendar>
               </n-config-provider>
 
