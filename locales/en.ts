@@ -362,7 +362,8 @@ export const en = {
     forgotPassword: 'Did you forget the password?',
     newPassword: 'New password',
     noAccount: 'No account?',
-    confirmedMail: 'Your email has been successfully confirmed. Sign in to continue',
+    confirmedMail:
+      'Your email has been successfully confirmed. Sign in to continue',
     registration: 'Registration',
     passwordRestore: 'Password recovery',
     remembered: 'I remember password',

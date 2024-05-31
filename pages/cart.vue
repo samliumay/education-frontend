@@ -202,7 +202,9 @@
             </template>
 
             <p
-              v-show="cart?.order?.items?.length && !hasOnlySubscriptionsProduct"
+              v-show="
+                cart?.order?.items?.length && !hasOnlySubscriptionsProduct
+              "
               class="flex justify-between font-medium text-[20px] mt-[24px] mb-[12px]"
             >
               <span>{{ $t('cart.totalCheckout') }}</span>
@@ -359,7 +361,10 @@ const hasOnlySubscriptionsProduct = computed(() => {
     let isSubscriptionOption = false
 
     item.product_page.purchase_options.forEach(option => {
-      if (option.id === purchaseOption && option.schedule_type.includes('Abonnement')) {
+      if (
+        option.id === purchaseOption &&
+        option.schedule_type.includes('Abonnement')
+      ) {
         isSubscriptionOption = true
       }
     })

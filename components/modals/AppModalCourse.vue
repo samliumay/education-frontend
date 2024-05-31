@@ -30,12 +30,19 @@
               <p class="text-[24px] font-medium mb-[16px]">
                 {{ $t('common.modals.chooseOption') }}
               </p>
-              <n-select v-model:value="chosenProduct" :options="productOptions" class="my-2" />
+              <n-select
+                v-model:value="chosenProduct"
+                :options="productOptions"
+                class="my-2"
+              />
             </template>
             <p class="text-[24px] font-medium mb-[16px]">
               {{ $t('common.modals.youChoosed') }}
             </p>
-            <BuyProductCard v-if="!isProductSelect || chosenProduct !== null" :product="calculatedProduct" />
+            <BuyProductCard
+              v-if="!isProductSelect || chosenProduct !== null"
+              :product="calculatedProduct"
+            />
           </div>
 
           <div>
@@ -161,10 +168,13 @@ const { data: products, pending: productsPending } = await useAsyncData(
   { watch: [locale], deep: true },
 )
 
-const productOptions = computed(() => products.value?.items.map(targetProduct => ({
-  value: targetProduct.id,
-  label: targetProduct.name,
-})) || [])
+const productOptions = computed(
+  () =>
+    products.value?.items.map(targetProduct => ({
+      value: targetProduct.id,
+      label: targetProduct.name,
+    })) || [],
+)
 
 // Get data
 const { data: product, pending: productPending } = await useAsyncData(
@@ -197,7 +207,13 @@ const registrationForm = ref({
 
 const chosenProduct: Ref<any> = ref(null)
 
-const calculatedProduct = computed(() => props.isProductSelect ? products.value?.items.find(targetProduct => targetProduct.id === chosenProduct.value) : product.value)
+const calculatedProduct = computed(() =>
+  props.isProductSelect
+    ? products.value?.items.find(
+        targetProduct => targetProduct.id === chosenProduct.value,
+      )
+    : product.value,
+)
 
 const sendModalCourse = async () => {
   await cartStore

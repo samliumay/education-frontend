@@ -39,7 +39,9 @@
     </button>
 
     <p v-if="error" class="text-brand-red mt-2 mb-2">{{ error }}</p>
-    <p v-if="isConfirmedMail" class="text-brand-gray mt-2 mb-2">{{ $t('user.confirmedMail') }}</p>
+    <p v-if="isConfirmedMail" class="text-brand-gray mt-2 mb-2">
+      {{ $t('user.confirmedMail') }}
+    </p>
 
     <AppButton
       class="block mt-[36px] w-full text-[18px]"

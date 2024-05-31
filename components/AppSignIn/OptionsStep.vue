@@ -30,9 +30,10 @@ const googleClientId = appConfig.google.clientId
 const facebookClientId = appConfig.facebook.clientId
 
 const googleRedirectUri = normalizeUrl(`${siteAddress}?sso_provider=google`)
-const facebookRedirectUri = normalizeUrl(
-  `${siteAddress}/`, { removeTrailingSlash: false, removeSingleSlash: false },
-)
+const facebookRedirectUri = normalizeUrl(`${siteAddress}/`, {
+  removeTrailingSlash: false,
+  removeSingleSlash: false,
+})
 
 // Options
 const options = [
