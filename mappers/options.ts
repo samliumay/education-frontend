@@ -3,10 +3,6 @@ import { computed } from 'vue'
 export const languageOptionsByLocale = (t: (arg0: string) => string) =>
   computed(() => [
     {
-      label: t('common.languages.bi'),
-      value: 'bi',
-    },
-    {
       label: t('common.languages.ru'),
       value: 'ru',
     },
@@ -19,15 +15,19 @@ export const languageOptionsByLocale = (t: (arg0: string) => string) =>
       value: 'de',
     },
     {
-      label: t('common.languages.ru-en'),
+      label: t('common.languages.bi'),
+      value: 'bi',
+    },
+    {
+      label: t('common.languages.ru/en'),
       value: 'ru-en',
     },
     {
-      label: t('common.languages.de-en'),
+      label: t('common.languages.de/en'),
       value: 'de-en',
     },
     {
-      label: t('common.languages.de-ru'),
+      label: t('common.languages.de/ru'),
       value: 'de-ru',
     },
   ])
