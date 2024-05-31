@@ -11,16 +11,16 @@ export const de = {
     },
     tariffs: 'Tarife',
     purchaseOption: {
-      'Course (1 / week)': 'Kurs (1 / Woche)',
-      'Course (2 / week)': 'Kurs (2 / Woche)',
-      'Course (3 / week)': 'Kurs (3 / Woche)',
-      'Abonnement (1 visit / week)': 'Kurs (1 / Woche)',
-      'Abonnement (2 visit / week)': 'Kurs (2 / Woche)',
-      'Abonnement (3 visit / week)': 'Kurs (3 / Woche)',
+      'Course (1 / week)': 'Studio (1 / Woche)',
+      'Course (2 / week)': 'Studio (2 / Woche)',
+      'Course (3 / week)': 'Studio (3 / Woche)',
+      'Abonnement (1 visit / week)': 'Studio (1 / Woche)',
+      'Abonnement (2 visit / week)': 'Studio (2 / Woche)',
+      'Abonnement (3 visit / week)': 'Studio (3 / Woche)',
       "Terminkarten": 'Terminkarten',
-      'Academy (1st half)': 'Akademie (1. Hälfte)',
-      'Academy (2nd half)': 'Akademie (2. Hälfte)',
-      'Academy (full day)': 'Akademie (ganztägig)',
+      'Academy (1st half)': 'Camp (1. Hälfte)',
+      'Academy (2nd half)': 'Camp (2. Hälfte)',
+      'Academy (full day)': 'Camp (ganztägig)',
       "default": 'Einmal',
     },
     states: {
@@ -119,10 +119,10 @@ export const de = {
       direction: 'Fachrichtung',
       branch: 'Fakultät',
       seasons: {
-        winter: 'Winterferien 2024',
-        spring: 'Frühlingsferien 2024',
-        summer: 'Sommerferien 2024',
-        autumn: 'Herbstferien 2024',
+        winter: 'Wintercamp 2025',
+        spring: 'Ostercamp 2025',
+        summer: 'Sommercamp 2024',
+        autumn: 'Herbstcamp 2024',
       },
     },
     actions: {
@@ -137,7 +137,7 @@ export const de = {
       resetPassword: 'Kennwort ändern',
       change: 'Ändern',
       look: 'Suchen',
-      send: 'Schicken',
+      send: 'Senden',
       pay: 'Zahlen',
       turnOn: 'Anmachen',
       acceptAll: 'Alle akzeptieren',
@@ -145,7 +145,7 @@ export const de = {
       tryFree: 'Kostenlos ausprobieren',
       submitApplication: 'Reichen Sie Ihre Bewerbung ein',
       buy: 'Kurs buchen',
-      buyAcademia: 'Akademie buchen',
+      buyAcademia: 'Camps buchen',
     },
     subscription: {
       abonement: 'Abonnement',
@@ -157,15 +157,15 @@ export const de = {
       option: 'Möglichkeit',
       schedule: 'Zeitplan',
       date: 'Kaufdatum',
-      noActiveCourses: 'Keine aktiven Kurse',
-      noActiveWorkshops: 'Keine aktiven Workshops',
+      noActiveCourses: 'Keine aktiven Studio',
+      noActiveWorkshops: 'Keine aktiven Kurse',
       comment: 'Ein Kommentar',
       status: 'Status',
     },
     profileMenu: {
       profile: 'Mein Profil',
       children: 'Meine Kinder',
-      workshops: 'Meine Workshops',
+      workshops: 'Meine Kurse',
       history: 'Kaufhistorie',
     },
     info: {
@@ -181,9 +181,9 @@ export const de = {
       schoolCopyright: 'Clavis School of Art and Science GmbH ',
     },
     types: {
-      courses: 'Kurse',
-      academies: 'Akademie',
-      workshops: 'Workshops',
+      courses: 'Studios',
+      academies: 'Camps',
+      workshops: 'Kurse',
     },
     ages: {
       '5-7': '5-7 Jahre',
@@ -295,9 +295,9 @@ export const de = {
     firstAppointment: 'Datum des ersten Besuchs',
     isEmpty: 'Einkaufswagen ist leer',
     title: 'Warenkorb',
-    courses: 'Kurse',
-    academies: 'Akademien',
-    workshops: 'Werkstätten',
+    courses: 'Studios',
+    academies: 'Camps',
+    workshops: 'Kurse',
     goToCatalog: 'Zum Katalog gehen',
     choosingNextCourse: 'Tipp: Jede weitere Buchung wird für Sie günstiger!',
     chooseDifferentCourse: 'Jetzt Kurse zu reduzierten Preisen sichern!',
@@ -305,11 +305,11 @@ export const de = {
     chooseDifferentAcademy:
       'Jetzt Akademiekurse zu reduzierten Preisen sichern!',
     choosingNextWorkshop: 'Tipp: Jede weitere Buchung wird für Sie günstiger! ',
-    chooseDifferentWorkshop: 'Jetzt Workshops zu reduzierten Preisen sichern!',
+    chooseDifferentWorkshop: 'Jetzt Kurse zu reduzierten Preisen sichern!',
     order: {
       title: 'Bestelldetails',
       subtitle:
-        'Ihr Warenkorb ist momentan leer. Fügen Sie Kurse, Akademiekurse oder Workshops hinzu, um fortzufahren.',
+        'Ihr Warenkorb ist momentan leer. Fügen Sie Kurse, Akademiekurse oder Kurse hinzu, um fortzufahren.',
       total: 'Gesamt',
       discountAmount: 'Rabattbetrag',
       fillOutPaymentDetails:
@@ -351,9 +351,9 @@ export const de = {
     },
   },
   mappers: {
-    "Course": 'Kurs',
-    "Academy": 'Akademie',
-    "Workshop": 'Werkstatt',
+    "Course": 'Studio',
+    "Academy": 'Camp',
+    "Workshop": 'Kurse',
     'Academy (1st half)': 'Vormittags',
     'Academy (2nd half)': 'Nachmittags',
     'Academy (full day)': 'Ganztägig',
@@ -366,7 +366,8 @@ export const de = {
     forgotPassword: 'Passwort vergessen?',
     newPassword: 'Neues Passwort',
     noAccount: 'Sie haben noch kein Konto?',
-    confirmedMail: 'Ihre E-Mail wurde erfolgreich bestätigt. Melden Sie sich an, um fortzufahren.',
+    confirmedMail:
+      'Ihre E-Mail wurde erfolgreich bestätigt. Melden Sie sich an, um fortzufahren.',
     registration: 'Anmeldung',
     passwordRestore: 'Passwort Wiederherstellung',
     remembered: 'Ich habe mich an mein Passwort erinnert',
@@ -392,7 +393,7 @@ export const de = {
     ourOffer: 'Was bieten wir an',
     courseSelect: 'Kursauswahl',
     seminarOffer:
-      'Wir bieten alle unsere Kurse auch als Workshops für Schulen an. Das Seminar kann entweder bei Ihnen vor Ort oder in unseren Räumlichkeiten stattfinden.',
+      'Wir bieten alle unsere Kurse auch als Kurse für Schulen an. Das Seminar kann entweder bei Ihnen vor Ort oder in unseren Räumlichkeiten stattfinden.',
     program: 'AGs und Ferienkurse',
     programOffer:
       'Wir freuen uns, mit Schulen zusammenzuarbeiten, um ihre Tages- oder Ferienprogramme an unserem Standort oder an ihrem Standort durchzuführen.',
@@ -419,7 +420,7 @@ export const de = {
           'In unseren Kursen zur bildenden Kunst liegt der Fokus darauf, die Kreativität, Vorstellungskraft und Selbstständigkeit der Kinder zu fördern. Wir vermitteln ihnen nicht nur künstlerische Techniken und den Umgang mit verschiedenen Materialien, sondern unterstützen sie auch dabei, Ausdauer zu entwickeln und Projekte erfolgreich abzuschließen.',
         subtitle2: 'Mehr als nur Kunstunterricht',
         text2:
-          'Unser Konzept geht über den traditionellen Kunstunterricht hinaus. Wir organisieren künstlerische Veranstaltungen und Ausflüge, die den Kindern praktische Einblicke in die Kunstwelt bieten. Zusätzlich stellen wir die im Unterricht entstandenen Werke in Ausstellungen vor und bieten Kreativ-Workshops an, um das Lernerlebnis zubereichern.',
+          'Unser Konzept geht über den traditionellen Kunstunterricht hinaus. Wir organisieren künstlerische Veranstaltungen und Ausflüge, die den Kindern praktische Einblicke in die Kunstwelt bieten. Zusätzlich stellen wir die im Unterricht entstandenen Werke in Ausstellungen vor und bieten Kreativ-Kurse an, um das Lernerlebnis zubereichern.',
       },
       second: {
         title: 'Theater: Kreativität auf der Bühnet',

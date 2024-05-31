@@ -86,21 +86,10 @@ const ageOptions = ageOptionsByLocale(t)
 const languageOptions = languageOptionsByLocale(t)
 const seasonsOptions = seasonsOptionsByLocale(t)
 
-const getCurrentSeason = () => {
-  const date = new Date()
-  const month = date.getMonth()
-
-  if (month < 2 || month === 11) return 'Winter'
-  if (month < 5) return 'Spring'
-  if (month < 8) return 'Summer'
-
-  return 'Autumn'
-}
-
 const filters = ref({
   language: null,
   age_group: null,
-  season: getCurrentSeason(),
+  season: 'Summer',
   branch: null,
   category: null,
 })

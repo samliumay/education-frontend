@@ -242,16 +242,16 @@ const currentLanguage = ref(
 )
 const languageOptions = [
   {
-    label: 'RU',
-    value: 'ru',
+    label: 'DE',
+    value: 'de',
   },
   {
     label: 'EN',
     value: 'en',
   },
   {
-    label: 'DE',
-    value: 'de',
+    label: 'RU',
+    value: 'ru',
   },
 ]
 
