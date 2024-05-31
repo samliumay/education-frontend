@@ -76,7 +76,7 @@
         <template v-else>
           <div class="flex gap-4 items-center">
             <p class="whitespace-nowrap font-medium">
-              {{ (blockData?.start_date ?? '').split('-').reverse().join('-') }}
+              {{ (blockData?.start_date ?? '').split('-').reverse().join('.') }}
             </p>
 
             <div class="flex-grow flex-shrink-0 flex items-center relative">
@@ -98,7 +98,7 @@
             </div>
 
             <p class="whitespace-nowrap font-medium">
-              {{ (blockData?.end_date ?? '').split('-').reverse().join('-') }}
+              {{ (blockData?.end_date ?? '').split('-').reverse().join('.') }}
             </p>
           </div>
         </template>

@@ -140,11 +140,7 @@ export const useUserStore = defineStore('user', () => {
     password2: string
     first_name: string
     last_name: string
-  }) =>
-    userPostRequest(
-      credentials,
-      '/api/v2/users/sign_up/',
-    )
+  }) => userPostRequest(credentials, '/api/v2/users/sign_up/')
 
   const resetPassword = (email: string) =>
     userPostRequest(
@@ -225,11 +221,14 @@ export const useUserStore = defineStore('user', () => {
     await userPostRequest({ code }, '/api/v2/users/auth/sso/facebook/')
   }
 
-  const postAppointment = (data: any) => HTTP.post('/api/v2/contact_us/appointment/', data)
+  const postAppointment = (data: any) =>
+    HTTP.post('/api/v2/contact_us/appointment/', data)
 
-  const postCallback = (data: any) => HTTP.post('/api/v2/contact_us/callback/', data)
+  const postCallback = (data: any) =>
+    HTTP.post('/api/v2/contact_us/callback/', data)
 
-  const postPartnership = (data: any) => HTTP.post('/api/v2/contact_us/partnership/', data)
+  const postPartnership = (data: any) =>
+    HTTP.post('/api/v2/contact_us/partnership/', data)
 
   const visitorOrderItems: Ref<Array<{ visitorId: number; itemId: number }>> =
     ref([])
