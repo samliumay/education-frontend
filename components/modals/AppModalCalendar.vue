@@ -168,8 +168,8 @@ const checkValidity = (event: {
   target: { reportValidity: () => void }
   relatedTarget: { focus: () => void }
 }) => {
-  event.target.reportValidity()
-  event.relatedTarget?.focus()
+  event?.target?.reportValidity()
+  event?.relatedTarget?.focus()
 }
 
 const naiveLocale = {
@@ -188,7 +188,10 @@ const naiveLocale = {
 }
 
 const sendModalCourse = () => {
-  user.postAppointment(registrationForm.value)
+  user.postAppointment({
+    ...registrationForm.value,
+    appointment_date: new Date(value.value).toISOString().slice(0, 10),
+  })
   emit('close')
 }
 
