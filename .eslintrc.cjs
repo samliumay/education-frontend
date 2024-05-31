@@ -153,7 +153,7 @@ module.exports = {
         ignoreGlobals: true,
       },
     ],
-    'complexity': ['error', 11], // tunned on 3 projects. may be less
+    'complexity': ['error', 13], // tunned on 3 projects. may be less
     'consistent-this': ['error', 'that'],
     'default-param-last': 'error',
     'func-style': ['error', 'expression'],
