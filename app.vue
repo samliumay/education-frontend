@@ -12,7 +12,7 @@
         <AppHeader />
         <n-notification-provider>
           <NuxtLayout>
-            <NuxtPage />
+            <NuxtPage class="mt-24 lg:mt-36"/>
           </NuxtLayout>
         </n-notification-provider>
         <AppCookieModal />

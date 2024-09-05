@@ -2,7 +2,7 @@
   <AppSignIn :is-open="isOpenSignIn" @close="isOpenSignIn = false" />
 
   <header
-    class="w-[100vw] relative before:font-medium bg-white py-[18px] lg:py-[28px] block-padding-x self-center"
+    class="w-[100vw] fixed top-0 z-100 before:font-medium bg-white py-[18px] lg:py-[28px] block-padding-x self-center"
     :class="{ '!bg-brand-light-gray': $route.name === 'menu' }"
   >
     <div
