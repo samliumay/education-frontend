@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full">
+  <div v-if="type !== 'tel'" class="relative w-full">
     <input
       v-maska
       class="w-full rounded-[12px] px-[24px] py-[16px] border-gray-200 border-[1px] text-[16px] relative"
@@ -16,13 +16,12 @@
       :min="min"
       :pattern="pattern"
       :data-maska="maska"
-      @keydown="checkKeydown"
       @input.prevent.stop="
         $emit(
           'update:modelValue',
           ($event.target as unknown as IEventTarget).value,
         )
-      "
+        "
       @blur="event => $emit('blur', event)"
     />
     <div
@@ -45,9 +44,27 @@
       />
     </div>
   </div>
+  <div v-if="type === 'tel'" class="relative w-full">
+    <vue-tel-input
+      class="w-full !rounded-[12px] !px-[24px] !py-[16px] !border-gray-200 !border-[1px] !text-[16px]"
+      :class="{
+        'bg-brand-light-gray': isGray && modelValue,
+        'bg-white disabled:bg-brand-light-gray': !isGray || !modelValue,
+      }"
+      :placeholder="placeholder"
+      :default-country="'us'"
+      :preferred-countries="['us', 'gb', 'de', 'fr', 'in']"
+      :input-options="{showDialCode: true}"
+      v-model="phone"
+      @keydown="checkKeydown"
+    />
+    
+  </div>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
+import { VueTelInput } from 'vue-tel-input'
+import 'vue-tel-input/dist/vue-tel-input.css'
 
 import type { IEventTarget } from '../types'
 
@@ -65,6 +82,7 @@ const props = defineProps<{
 defineEmits(['update:modelValue', 'blur'])
 
 const isOpen = ref(false)
+const phone = ref('')
 
 const checkKeydown = (event: any) => {
   if (props.type === 'tel') {
@@ -72,8 +90,8 @@ const checkKeydown = (event: any) => {
       !event.ctrlKey &&
       !event.metaKey &&
       event.key.length === 1 &&
-      ((props.modelValue.length === 0 && event.key !== '+') ||
-        (props.modelValue.length !== 0 && /\D/.test(event.key)))
+      ((phone.value.length === 0 && event.key !== '+') ||
+        (phone.value.length !== 0 && /\D/.test(event.key)))
     ) {
       event.preventDefault()
     }
