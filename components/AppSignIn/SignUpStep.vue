@@ -22,9 +22,7 @@
       placeholder="+491112221212"
       class="mt-[12px]"
       type="tel"
-      pattern="^\+\d{8,15}$"
       required
-      @blur="checkValidity"
     />
     <AppInput
       v-model="signUpCredentials.email"
