@@ -415,7 +415,6 @@ onMounted(() => {
                 ? 'common.successPayment'
                 : 'common.failedPayment',
             ),
-            duration: 2500,
             keepAliveOnHover: true,
           },
         )
