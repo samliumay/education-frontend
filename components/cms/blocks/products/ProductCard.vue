@@ -103,10 +103,21 @@
           </div>
         </template>
       </div>
-
-      <AppButton class="mt-[24px] !bg-brand-light-gray cursor-pointer">
-        {{ $t('common.moreDetails') }}
-      </AppButton>
+      <div>
+        <AppButton
+            class="justify-start mt-4 mr-4"
+            @click="
+              navigateTo(`/product/buy/${props.blockData.slug}`)
+            "
+          >
+            {{
+              $t('common.actions.buyAcademia')
+            }}
+          </AppButton>
+        <AppButton class="mt-[24px] !bg-brand-light-gray cursor-pointer">
+          {{ $t('common.moreDetails') }}
+        </AppButton>
+      </div>
     </div>
   </div>
 </template>

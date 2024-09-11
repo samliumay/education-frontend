@@ -1,5 +1,5 @@
 <template>
-  <div v-if="type !== 'tel'" class="relative w-full">
+  <div v-if="type !== 'tel' && type !== 'search' && type !== 'number' " class="relative w-full">
     <input
       v-maska
       :class="[
@@ -25,7 +25,7 @@
           ($event.target as unknown as IEventTarget).value,
         )
         "
-      @blur="event => $emit('blur', event)"
+      @blur="(event: any) => $emit('blur', event)"
     />
     <div
       v-if="type === 'password'"
@@ -50,10 +50,11 @@
   <div v-if="type === 'tel'" class="relative w-full">
     <VueTelInput
       class="w-full !rounded-[12px] !px-[24px] !py-[16px] !border-gray-200 !border-[1px] !text-[16px]"
-      :class="{
-        'bg-brand-light-gray': isGray && modelValue,
-        'bg-white disabled:bg-brand-light-gray': !isGray || !modelValue,
-      }"
+      :class="[isInvalid ? 'border-red-500' : 'border-gray-200',
+        {
+          'bg-brand-light-gray': isGray && modelValue,
+          'bg-white disabled:bg-brand-light-gray': !isGray || !modelValue,
+      }]"
       :placeholder="placeholder"
       :default-country="'us'"
       :preferred-countries="['us', 'gb', 'de', 'fr', 'in']"
@@ -61,6 +62,51 @@
       v-model="localPhone"
       @keydown="checkKeydown"
       @blur="(event : any) => $emit('blur', event)"
+    />
+    
+  </div>
+  <div v-if="type === 'search'">
+    <input
+      v-maska
+      :class="[isInvalid ? 'min-w-[65px] !border-0 select' : 'min-w-[65px] !border-0 select', 'n-base-selection-label', 'text-base']"
+      :placeholder="placeholder"
+      :type="type"
+      :value="modelValue"
+      maxlength="64"
+      minlength="1"
+      :max="max"
+      :min="min"
+      :pattern="pattern"
+      :data-maska="maska"
+      @input.prevent.stop="
+        $emit(
+          'update:modelValue',
+          ($event.target as unknown as IEventTarget).value,
+        )
+        "
+      @blur="(event: any) => $emit('blur', event)"
+    />
+    
+  </div>
+  <div v-if="type === 'number'">
+    <input
+      v-maska
+      :class="[ isInvalid ? 'min-w-[65px] ' : 'min-w-[65px]', 
+          'n-base-selection-label'
+        ]"
+      :placeholder="placeholder"
+      :type="type"
+      :data-maska="maska"
+      :value="modelValue"
+      max=100
+      min=1
+      @input.prevent.stop="
+        $emit(
+          'update:modelValue',
+          ($event.target as unknown as IEventTarget).value,
+        )
+        "
+      @blur="(event: any) => $emit('blur', event)"
     />
     
   </div>
@@ -73,7 +119,7 @@ import 'vue-tel-input/dist/vue-tel-input.css'
 import type { IEventTarget } from '../types'
 
 const props = defineProps<{
-  modelValue: string
+  modelValue: any
   type?: string
   placeholder?: string
   maska?: string
@@ -98,6 +144,8 @@ watch(() => props.modelValue, (newValue) => {
 })
 
 
+
+
 const checkKeydown = (event: any) => {
   if (props.type === 'tel') {
     if (
@@ -112,3 +160,31 @@ const checkKeydown = (event: any) => {
   }
 }
 </script>
+
+<style>
+.select .n-base-selection__border {
+  display: none !important;
+}
+
+.select .n-base-selection__state-border {
+  display: none !important;
+}
+
+.select .n-base-suffix__arrow {
+  filter: invert(100%);
+}
+
+.select .n-base-selection-input__content {
+  font-weight: 500;
+  font-size: 16px;
+  font-weight: 500 !important;
+  color: #202020;
+}
+
+.n-base-selection-label {
+  background: #f2f2f2 !important;
+  padding: 5px 8px 5px 8px;
+  outline:none;
+  border-radius: 12px;
+}
+</style>

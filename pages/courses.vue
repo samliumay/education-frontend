@@ -15,6 +15,18 @@
         <div
           class="flex justify-start lg:justify-end flex-wrap w-full items-center gap-[12px]"
         >
+          <AppInput
+            v-show="!categoriesPending"
+            v-model="filters.search"
+            :isInvalid="true"
+            :placeholder="$t('common.filters.search')"
+            class="max-w-[160px] min-w-[120px]"
+            type="search"
+            pattern=".{1,64}"
+            clearable
+            @blur=""
+           />
+
           <AppSelect
             v-show="!categoriesPending"
             v-model:value="filters.category"
@@ -30,13 +42,33 @@
             :options="languageOptions"
             class="max-w-[160px] min-w-[120px]"
           />
-          <AppSelect
-            v-model:value="filters.age_group"
-            :placeholder="$t('common.filters.age')"
-            clearable
-            :options="ageOptions"
+          <p>
+            age:
+          </p>
+          <AppInput
+            v-show="!categoriesPending"
+            v-model="ageFilters.min_age"
+            :isInvalid="true"
+            :placeholder="$t('common.filters.minAge')"
             class="max-w-[160px] min-w-[120px]"
-          />
+            type="number"
+            required
+            @blur="getAge('min_age')"
+           />
+           <p>
+            ~
+          </p>
+           <AppInput
+            v-show="!categoriesPending"
+            v-model="ageFilters.max_age"
+            :isInvalid="true"
+            :placeholder="$t('common.filters.maxAge')"
+            class="max-w-[160px] min-w-[120px]"
+            type="number"
+            required
+            @blur="getAge('max_age')"
+           />
+          
           <AppSelect
             v-show="!branchesPending"
             v-model:value="filters.branch"
@@ -51,11 +83,12 @@
   </TemplateProduct>
 </template>
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 
 import { getApiAddress } from '@/utils/getApiAddress'
 
 import AppSelect from '../components/AppSelect.vue'
+import AppInput from '../components/AppInput.vue'
 import TemplateProduct from '../components/cms/templates/TemplateProduct.vue'
 import { ageOptionsByLocale, languageOptionsByLocale } from '../mappers/options'
 
@@ -65,10 +98,16 @@ const ageOptions = ageOptionsByLocale(t)
 const languageOptions = languageOptionsByLocale(t)
 
 const filters = ref({
-  language: null,
-  age_group: null,
-  branch: null,
-  category: null,
+  search: undefined,
+  language: undefined,
+  age_group: undefined as undefined | string,
+  branch: undefined,
+  category: undefined,
+})
+
+const ageFilters = ref({
+  min_age: 1,
+  max_age: 100,
 })
 
 const templateProps = computed(() => ({
@@ -83,6 +122,21 @@ const templateProps = computed(() => ({
     type: 'сourse',
   },
 }))
+
+const getAge = (field: string) => {
+  // filters.value.age_group = ageFilters.value.min_age + '-' + ageFilters.value.max_age
+  filters.value.age_group = ''
+
+  console.log("yyyyyyyyyyyyy", filters.value.search)
+}
+
+watch(() => ageFilters.value.min_age,  () => {
+  getAge('min_age');
+});
+
+watch(() => ageFilters.value.max_age,  () => {
+  getAge('max_age');
+});
 
 // API
 const { data: branches, branchesPending } = useFetch(
