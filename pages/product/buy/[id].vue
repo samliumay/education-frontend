@@ -35,6 +35,7 @@
         </h2>
 
         <GetChildData
+          :product="product"
           :visitor="buyForm.visitor"
           @update:visitor="el => (buyForm.visitor = el)"
         />
