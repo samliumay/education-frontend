@@ -1,4 +1,5 @@
 <template>
+  <AppSignIn :is-open="isOpenSignIn" @close="isOpenSignIn = false" />
   <LoaderBlock v-if="pending || (isSlug && product?.length)" />
   <main v-else class="flex flex-col gap-2 mb-10">
     <n-breadcrumb class="mt-6 mb-10 px-10">
@@ -20,12 +21,15 @@
         <HeaderBlock
           v-if="!pending"
           :block-data="product"
+          :isOpenSignIn ="isOpenSignIn"
           :type="product?.product_type?.toLocaleLowerCase()"
+          v-model="isOpenSignIn"
+          
         >
           <AppButton
             v-show="product?.product_type !== 'Event'"
-            @click="
-              navigateTo(`/product/buy/${product.slug || route.params.id}`)
+            @click="user.isLoggedIn?
+              navigateTo(`/product/buy/${product.slug || route.params.id}`) : isOpenSignIn = true
             "
           >
             {{
@@ -49,7 +53,7 @@
 </template>
 <script setup lang="ts">
 import { NBreadcrumb, NBreadcrumbItem } from 'naive-ui'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 import { checkIsEmpty } from '../../../utils/checkIsEmpty'
@@ -65,11 +69,16 @@ import HeaderBlock from '../blocks/products/details/HeaderBlock.vue'
 import PaymentOptions from '../blocks/products/details/PaymentOptions.vue'
 import QuestionsAnswers from '../blocks/products/details/QuestionsAnswers.vue'
 import StudentWorks from '../blocks/products/details/StudentWorks.vue'
+import { useUserStore } from '../../../store/user'
 
+
+const user = useUserStore()
 // Init template
 const props = defineProps<{
   head?: { title: string; description: string }
 }>()
+
+const isOpenSignIn = ref(false)
 
 const head = computed(() => props.head)
 useHead({

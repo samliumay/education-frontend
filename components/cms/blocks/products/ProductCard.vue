@@ -1,8 +1,9 @@
 <template>
+  <AppSignIn :is-open="isOpenSignIn" @close="isOpenSignIn = false" />
   <div
     class="flex flex-col justify-between gap-4 rounded-[12px] bg-white"
     data-cms="product-card"
-    @click="goToDetails"
+    @click="goToDetails(isOpenSignIn)"
   >
     <div class="flex flex-col gap-4">
       <Cover
@@ -106,8 +107,8 @@
       <div>
         <AppButton
             class="justify-start mt-4 mr-4"
-            @click="
-              navigateTo(`/product/buy/${props.blockData.slug}`)
+            @click="user.isLoggedIn?
+              navigateTo(`/product/buy/${props.blockData.slug}`): isOpenSignIn = true
             "
           >
             {{
@@ -122,7 +123,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
 import { useCatalogApi } from '../../../../composables/api/useCatalogApi'
 import type { PageBlock } from '../../../../types/cms'
@@ -130,14 +131,23 @@ import { getNearDate } from '../../../../utils/getNearDate'
 import AppButton from '../../../AppButton.vue'
 import TagsBlock from '../../../misc/TagsBlock.vue'
 import Cover from '../misc/Cover.vue'
+import { useUserStore } from '../../../../store/user'
+
+const user = useUserStore()
+
+const isOpenSignIn = ref(false)
+
 
 const props = defineProps<{
   blockData: PageBlock
   isGreenText?: boolean
 }>()
 
-const goToDetails = () => {
-  navigateTo(`/product/${props.blockData?.slug || props.blockData?.id}`)
+const goToDetails = (isOpenSignIn: boolean) => {
+  if(!isOpenSignIn){
+    navigateTo(`/product/${props.blockData?.slug || props.blockData?.id}`)
+  }
+  
 }
 
 const { t } = useI18n()
@@ -176,6 +186,8 @@ const categories = computed(() => {
 
 // Tags
 const tags = computed(() => {
+
+  console.log("loglogloglog", user.isLoggedIn)
   const bufferArray = []
 
   // Age
