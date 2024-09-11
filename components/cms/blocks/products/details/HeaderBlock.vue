@@ -56,7 +56,8 @@
           <AppButton
             v-if="type === 'course' || type === 'event' || type === 'special'"
             class="!bg-brand-red text-white"
-            @click="isOpenModalCourse = true"
+            :value="modelValue"
+            @click="checkClick(user.isLoggedIn)"
           >
             {{
               type === 'special'
@@ -152,12 +153,26 @@ import CategoryBlock from '../../../../misc/CategoryBlock.vue'
 import TagsBlock from '../../../../misc/TagsBlock.vue'
 import SeoText from '../../main/SeoText.vue'
 import Cover from '../../misc/Cover.vue'
+import { useUserStore } from '../../../../../store/user'
+
+const user = useUserStore()
+
 
 defineProps<{
   blockData: PageBlock & { product: Product }
   type: ProductType
+  modelValue: boolean
   id?: number
 }>()
 
+const emit = defineEmits(['update:modelValue', 'blur'])
+
+const checkClick = (isLoggedIn:boolean) =>{
+  if(isLoggedIn){
+    isOpenModalCourse.value = true
+  }else{
+    emit('update:modelValue', true)
+  }
+}
 const isOpenModalCourse = ref(false)
 </script>
