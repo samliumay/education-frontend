@@ -57,6 +57,7 @@ export const en = {
     courseNotFound: 'Course with the given Id is not found',
     you: 'You',
     canceled: 'Canceled',
+    back: 'Back',
     contacts: {
       contactUs: 'Contact us',
       tryout: 'Arrange a trial course',
@@ -116,6 +117,9 @@ export const en = {
       age: 'Age',
       season: 'Season',
       direction: 'Direction',
+      search: 'Search',
+      minAge: 'Min Age',
+      maxAge: 'Max Age',
       branch: 'Branch',
       seasons: {
         winter: 'Winter holidays 2025',

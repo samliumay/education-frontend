@@ -52,6 +52,7 @@
 
             <GetChildData
               :visitor="visitor"
+              :product="calculatedProduct"
               @update:visitor="el => (visitor = el)"
             />
 
