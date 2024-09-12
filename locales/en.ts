@@ -383,6 +383,7 @@ export const en = {
     invalidEmail: 'Invalid email',
     birthdate: 'Date of birth',
     verifyEmail: 'Verify your email address',
+    resendVerifyEmail: 'Resend',
     verify1: 'We sent you an email to ',
     verify2: ' to verify the email.',
     verify3: 'Please check the email to activate your account',
