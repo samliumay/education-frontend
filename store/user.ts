@@ -150,6 +150,14 @@ export const useUserStore = defineStore('user', () => {
       '/api/v2/users/auth/password/reset/',
     )
 
+  const resendVerificationEmail = (email: string) =>
+    userPostRequest(
+      {
+        email,
+      },
+      '/api/v2/users/verify_email/',
+    )
+
   const confirmResetPassword = (
     new_password1: string,
     new_password2: string,
@@ -243,6 +251,7 @@ export const useUserStore = defineStore('user', () => {
     retrieveUser,
     login,
     logout,
+    resendVerificationEmail,
     resetPassword,
     confirmResetPassword,
     changePassword,
