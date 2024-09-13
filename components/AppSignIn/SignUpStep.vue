@@ -10,8 +10,8 @@
       @blur="checkValidity('first_name')"
     />
     <p v-if="validationErrors.first_name === true" class="text-brand-red">Please enter a first name.</p>
-    
 
+    <!-- Last Name Input -->
     <AppInput
       v-model="signUpCredentials.last_name"
       :placeholder="$t('user.last_name')"
@@ -23,6 +23,8 @@
       @blur="checkValidity('last_name')"
     />
     <p v-if="validationErrors.last_name === true" class="text-brand-red">Please enter a last name.</p>
+
+    <!-- Phone Number Input -->
     <AppInput
       v-model="signUpCredentials.phone_number"
       placeholder="+491112221212"
@@ -32,7 +34,9 @@
       :isInvalid="validationErrors.phone_number === true"
       @blur="checkValidity('phone_number')"
     />
-    <p v-if="validationErrors.phone_number === true" class="text-brand-red">Please enter a vaild phone number.</p>
+    <p v-if="validationErrors.phone_number === true" class="text-brand-red">Please enter a valid phone number.</p>
+
+    <!-- Email Input -->
     <AppInput
       v-model="signUpCredentials.email"
       placeholder="E-mail"
@@ -43,6 +47,8 @@
       @blur="checkValidity('email')"
     />
     <p v-if="validationErrors.email === true" class="text-brand-red">Please enter a valid email.</p>
+
+    <!-- Password1 Input -->
     <AppInput
       v-model="signUpCredentials.password1"
       :placeholder="$t('user.password')"
@@ -58,6 +64,7 @@
     />
     <p v-if="validationErrors.password1 === true && signUpCredentials.password1.length === 0" class="text-brand-red">Please enter a valid password.</p>
 
+    <!-- Password Rules -->
     <ul v-if="validationErrors.password1 === true && signUpCredentials.password1.length > 0" class="text-gray-500 mt-2">
       <li v-if="validationPassword.lengthValid" :class="{'text-brand-red': validationPassword.lengthValid}">Minimum 8 characters</li>
       <li v-if="validationPassword.capitalLetterValid" :class="{'text-brand-red': validationPassword.capitalLetterValid}">1 capital letter</li>
@@ -65,6 +72,7 @@
       <li v-if="validationPassword.digitValid" :class="{'text-brand-red': validationPassword.digitValid}">1 digit</li>
     </ul>
 
+    <!-- Password2 Input -->
     <AppInput
       v-model="signUpCredentials.password2"
       :placeholder="$t('user.repeatPassword')"
@@ -77,8 +85,8 @@
       @blur="checkValidity('password2')"
     />
     <p v-if="validationErrors.password2 === true" class="text-brand-red">Please repeat a valid password.</p>
-    
 
+    <!-- Sign In Link -->
     <div class="mt-[16px]">
       {{ $t('user.hasAccount') }}
       <button
@@ -90,8 +98,10 @@
       </button>
     </div>
 
+    <!-- Error Message -->
     <p v-if="error" class="text-brand-red mt-2 mb-2">{{ error }}</p>
 
+    <!-- Sign Up Button -->
     <AppButton
       class="block mt-[36px] w-full"
       type="submit"
@@ -102,8 +112,7 @@
   </form>
 </template>
 <script lang="ts" setup>
-import { ref, type VNodeRef, computed, watch  } from 'vue'
-
+import { ref, type VNodeRef, computed, watch ,onMounted } from 'vue'
 import { useUserStore } from '../../store/user'
 import AppInput from '../AppInput.vue'
 
@@ -150,6 +159,19 @@ const validationPassword = ref({
   lowercaseLetterValid: false,
   digitValid: false,
   specialCharacterValid: false,
+})
+
+// Watchers to save data to localStorage
+watch(signUpCredentials, (newVal) => {
+  localStorage.setItem('signUpCredentials', JSON.stringify(newVal))
+}, { deep: true })
+
+// Retrieve data on component mount
+onMounted(() => {
+  const savedData = localStorage.getItem('signUpCredentials')
+  if (savedData) {
+    signUpCredentials.value = JSON.parse(savedData)
+  }
 })
 
 const form = ref<VNodeRef | undefined>(undefined)
@@ -259,7 +281,7 @@ const checkValidity = (field: string) => {
     }else{
       validationErrors.value.password1 = false
     }
-      
+
   } else if (field === 'password2') {
 
     const flag = signUpCredentials.value.password1 !== signUpCredentials.value.password2
@@ -268,20 +290,21 @@ const checkValidity = (field: string) => {
       validationErrors.value.password2 = true
     }else{
       validationErrors.value.password2 = false
-      
-    }
-  } 
 
-  if(validationErrors.value.email === false && validationErrors.value.first_name === false && 
+    }
+  }
+
+  if(validationErrors.value.email === false && validationErrors.value.first_name === false &&
         validationErrors.value.last_name === false && validationErrors.value.phone_number === false && validationErrors.value.password1 === false
         && validationErrors.value.password2 === false
-  ) 
+  )
   {
     validationForm.value.isFormValid = true
   }else{
     validationForm.value.isFormValid = false
   }
-  
+  validationForm.value.isFormValid = !Object.values(validationErrors.value).some(val => val === true)
+
 }
 
 watch(() => signUpCredentials.value.password1,  () => {
@@ -308,6 +331,7 @@ const signUp = async () => {
       signUpCredentials.value.first_name = ''
       signUpCredentials.value.last_name = ''
       signUpCredentials.value.phone_number = ''
+      localStorage.removeItem('signUpCredentials')
       emit('goToVerify', email)
     })
     .catch(err => {
