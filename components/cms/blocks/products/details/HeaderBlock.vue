@@ -54,7 +54,7 @@
 
         <div class="flex gap-[12px]">
           <AppButton
-            v-if="type === 'course' || type === 'event' || type === 'special'"
+            v-if="(type === 'course' || type === 'event' || type === 'special') && user.orders.length === 0"
             class="!bg-brand-red text-white"
             :value="modelValue"
             @click="checkClick(user.isLoggedIn)"
