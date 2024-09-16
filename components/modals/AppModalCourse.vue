@@ -46,16 +46,45 @@
           </div>
 
           <div>
+
             <h1 class="font-medium text-4xl mb-10">
               {{ $t('common.modals.fillApplication') }}
             </h1>
+            <p class="text-[24px] font-medium">{{ $t('cart.registerDetails.isParent') }}</p>
+
+            <n-space>
+              <n-radio
+                :checked="isParent === true"
+                value="yes"
+                name="Parent"
+                @change="checkParent(true)"
+              >
+                {{ $t('cart.registerDetails.yes') }}
+              </n-radio>
+
+              <n-radio
+                class="ml-[12px]"
+                :checked="isParent === false"
+                value="no"
+                name="Other"
+                @change="checkParent(false)"
+              >
+                {{ $t('cart.registerDetails.no') }}
+              </n-radio>
+            </n-space>
 
             <GetChildData
+              v-if="isParent"
               :visitor="visitor"
               :product="calculatedProduct"
               @update:visitor="el => (visitor = el)"
             />
 
+            <p v-if="!isParent" class="text-brand-red">Attention!!! Only the parent has the right to fill out the child’s personal data. You can register your child for a trial lesson, but your registration must be activated by the child’s parent.</p>
+            <!-- <AppInput
+              v-model="selectedDate.today"
+              type="date"
+            /> -->
             <form
               ref="form"
               class="flex flex-col gap-2 mt-10 relative"
@@ -123,9 +152,10 @@
   </n-modal>
 </template>
 <script setup lang="ts">
-import { NCheckbox, NModal, NSelect } from 'naive-ui'
+import { NCheckbox, NModal, NSelect, NRadio } from 'naive-ui'
 import { computed, type Ref, ref, type VNodeRef } from 'vue'
 import { useRoute } from 'vue-router'
+// import Datepicker from 'vuejs3-datepicker';
 
 import AppInput from '@/components/AppInput.vue'
 import BuyProductCard from '@/components/buy/BuyProductCard.vue'
@@ -133,6 +163,7 @@ import GetChildData from '@/components/buy/GetChildData.vue'
 import { useCartStore } from '@/store/cart'
 import { useUserStore } from '@/store/user'
 import { getApiAddress } from '@/utils/getApiAddress'
+import { email } from '@vuelidate/validators';
 
 const props = defineProps<{
   isOpen: boolean
@@ -151,6 +182,20 @@ const cartStore = useCartStore()
 // eslint-disable-next-line vue/require-typed-ref
 const visitor = ref(undefined)
 const checkbox = ref(false)
+
+const selectedDate =ref({
+  today: new Date()
+})
+
+const isParent = ref(true)
+const parent = ref({
+  parent: 'parent',
+  other:'other'
+})
+
+
+
+
 
 const { locale } = useI18n({ useScope: 'global' })
 
@@ -200,11 +245,39 @@ const { data: product, pending: productPending } = await useAsyncData(
 
 // Registration
 const registrationForm = ref({
-  first_name: '',
-  last_name: '',
-  email: '',
-  phone: '',
+  first_name: userStore.user.first_name,
+  last_name: userStore.user.last_name,
+  email: userStore.user.email,
+  phone: userStore.user.phone_number
 })
+
+const dateInputData = ref({
+  selectedDate: '',
+  minDate: new Date().toISOString().substring(0, 10), // Earliest scheduled date
+  scheduledDates: ['2024-09-12', '2024-09-15', '2024-09-18', '2024-09-25'], 
+})
+
+
+const isScheduled = (date : any) => {
+      return dateInputData.value.scheduledDates.includes(date);
+}
+
+const checkParent = (isParentFlag : boolean) => {
+  isParent.value = isParentFlag
+  if(!isParentFlag){
+    registrationForm.value.first_name = ''
+    registrationForm.value.last_name = ''
+    registrationForm.value.email = ''
+    registrationForm.value.phone = ''
+  }else{
+    registrationForm.value.first_name = userStore.user.first_name,
+    registrationForm.value.last_name = userStore.user.last_name,
+    registrationForm.value.email = userStore.user.email,
+    registrationForm.value.phone = userStore.user.phone_number
+  }
+  
+}
+
 
 const chosenProduct: Ref<any> = ref(null)
 
