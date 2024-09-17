@@ -15,8 +15,8 @@
       class="grid grid-cols-1 lg:grid-cols-3 gap-[24px] relative"
       @submit.prevent="fullfillOrder"
     >
-      <div class="md:col-span-2 flex flex-col gap-[24px]">
-        <ErrorBoundaryBlock>
+      <div class="md:col-span-2 flex flex-col gap-[24px] currentLocaleClass">
+        <ErrorBoundaryBlock :class="currentLocale === 'ru' ? 'order-2' : 'order-1'">
           <div class="bg-white rounded-xl p-6">
             <h2 class="font-medium text-[24px] mb-[24px]">
               {{ $t('cart.courses') }}
@@ -67,7 +67,7 @@
           </div>
         </ErrorBoundaryBlock>
 
-        <ErrorBoundaryBlock>
+        <ErrorBoundaryBlock :class="currentLocale === 'ru' ? 'order-1' : 'order-2'">
           <div class="bg-white rounded-xl p-6">
             <h2 class="font-medium text-[24px] mb-[24px]">
               {{ $t('cart.academies') }}
@@ -117,7 +117,7 @@
           </div>
         </ErrorBoundaryBlock>
 
-        <ErrorBoundaryBlock>
+        <ErrorBoundaryBlock class="order-3">
           <div class="bg-white rounded-xl p-6">
             <h2 class="font-medium text-[24px] mb-[24px]">
               {{ $t('cart.workshops') }}
@@ -316,12 +316,16 @@ import CartItem from '../components/cart/CartItem.vue'
 import EmptyCart from '../components/cart/EmptyCart.vue'
 import { useCartStore } from '../store/cart'
 import { useUserStore } from '../store/user'
+import { useLocaleStore } from '../store/locale';
 
 const { t } = useI18n()
 
 const userStore = useUserStore()
 const cart = useCartStore()
 await cart.getCurrentOrder()
+
+const localeStore = useLocaleStore();
+const currentLocale = ref(localeStore.currentLocale);
 
 const isOpenSignIn = ref(false)
 
@@ -444,4 +448,11 @@ onMounted(() => {
     },
   })
 })
+
+watch(
+  () => localeStore.currentLocale,
+  (newLocale) => {
+    currentLocale.value = newLocale;
+  }
+);
 </script>
