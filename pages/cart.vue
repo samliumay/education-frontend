@@ -173,129 +173,179 @@
 
       <ErrorBoundaryBlock>
         <div>
-          <div class="bg-white rounded-[12px] p-[24px]">
+          <div class="flex flex-col bg-white rounded-[12px] p-[24px]">
             <h2 class="font-medium text-2xl mb-4">
               {{ $t('cart.order.title') }}
             </h2>
+            <div :class="currentLocale === 'ru' ? 'order-2' : 'order-1'">
+              <template v-for="(item, idx) in cart.order.items.filter(i => i.product_page.product_type === 'Course')" :key="item.id">
+                <div class="flex justify-between gap-[24px] mb-2">
+                  <span class="font-medium">
+                    {{ item.product_page?.name }}
+                  </span>
+                  <span>
+                    {{
+                      `${
+                        Math.floor(Number(item.calculated_price)) !==
+                        Number(item.calculated_price)
+                          ? Number(item.calculated_price ?? 0).toFixed(2)
+                          : item.calculated_price
+                      } €`
+                    }}
+                  </span>
+                </div>
 
-            <template v-for="(item, idx) in cart.order.items" :key="item.id">
-              <div class="flex justify-between gap-[24px] mb-2">
-                <span class="font-medium">
-                  {{ item.product_page?.name }}
-                </span>
-                <span>
-                  {{
-                    `${
-                      Math.floor(Number(item.calculated_price)) !==
-                      Number(item.calculated_price)
-                        ? Number(item.calculated_price ?? 0).toFixed(2)
-                        : item.calculated_price
-                    } €`
-                  }}
-                </span>
+                <AppDivider
+                  v-if="idx + 1 !== cart.order.items.length"
+                  class="my-[24px]"
+                />
+              </template>
+            </div>
+            <div :class="currentLocale === 'ru' ? 'order-1' : 'order-2'">
+              <template v-for="(item, idx) in cart.order.items.filter(i => i.product_page.product_type === 'Academy')" :key="item.id">
+                <div class="flex justify-between gap-[24px] mb-2">
+                  <span class="font-medium">
+                    {{ item.product_page?.name }}
+                  </span>
+                  <span>
+                    {{
+                      `${
+                        Math.floor(Number(item.calculated_price)) !==
+                        Number(item.calculated_price)
+                          ? Number(item.calculated_price ?? 0).toFixed(2)
+                          : item.calculated_price
+                      } €`
+                    }}
+                  </span>
+                </div>
+
+                <AppDivider
+                  v-if="idx + 1 !== cart.order.items.length"
+                  class="my-[24px]"
+                />
+              </template>
+            </div>
+            <div class="order-3">
+              <template v-for="(item, idx) in cart.order.items.filter(i => i.product_page.product_type === 'Workshop')" :key="item.id">
+                <div class="flex justify-between gap-[24px] mb-2">
+                  <span class="font-medium">
+                    {{ item.product_page?.name }}
+                  </span>
+                  <span>
+                    {{
+                      `${
+                        Math.floor(Number(item.calculated_price)) !==
+                        Number(item.calculated_price)
+                          ? Number(item.calculated_price ?? 0).toFixed(2)
+                          : item.calculated_price
+                      } €`
+                    }}
+                  </span>
+                </div>
+
+                <AppDivider
+                  v-if="idx + 1 !== cart.order.items.length"
+                  class="my-[24px]"
+                />
+              </template>
+            </div>
+            <div class="order-4">
+              <p
+                v-show="
+                  cart?.order?.items?.length && !hasOnlySubscriptionsProduct
+                "
+                class="flex justify-between font-medium text-[20px] mt-[24px] mb-[12px]"
+              >
+                <span>{{ $t('cart.totalCheckout') }}</span>
+                <span>{{ cart?.order?.total_checkout_price }} €</span>
+              </p>
+
+              <p
+                v-show="cart?.order?.items?.length"
+                class="flex justify-between font-medium text-[20px] mt-[24px] mb-[12px]"
+              >
+                <span>{{ $t('cart.totalRecurrent') }}</span>
+                <span>{{ cart?.order?.total_recurrent_price }} €</span>
+              </p>
+
+              <p
+                v-show="cart?.order?.items?.length"
+                class="flex justify-between font-medium text-[20px] mt-[24px] mb-[12px]"
+              >
+                <span>{{ $t('cart.order.discountAmount') }}</span>
+                <span class="text-brand-green">{{
+                  `-${(cart?.order?.items || []).reduce((acc, item) => {
+                    const newAcc =
+                      Number(acc ?? 0) + Number(item.discount_amount ?? 0)
+                    return Number(newAcc ?? 0).toFixed(
+                      Number(newAcc ?? 0) !== Math.floor(Number(newAcc ?? 0))
+                        ? 2
+                        : 0,
+                    )
+                  }, 0)} €`
+                }}</span>
+              </p>
+
+              <div v-if="cart?.order?.items?.length > 0">
+                <AppInput
+                  v-model="promocode"
+                  :placeholder="$t('cart.promocode.input')"
+                  class="mt-[24px] w-full"
+                  :disabled="promocodeStatus === 'success'"
+                  @blur="setPromocode"
+                  @enter="setPromocode"
+                />
+
+                <p v-if="promocodeStatus === 'success'" class="text-brand-green">
+                  {{ $t('cart.promocode.success') }}
+                </p>
+                <p v-if="promocodeStatus === 'fail'" class="text-brand-red">
+                  {{ $t('cart.promocode.fail') }}
+                </p>
               </div>
 
-              <AppDivider
-                v-if="idx + 1 !== cart.order.items.length"
-                class="my-[24px]"
-              />
-            </template>
-
-            <p
-              v-show="
-                cart?.order?.items?.length && !hasOnlySubscriptionsProduct
-              "
-              class="flex justify-between font-medium text-[20px] mt-[24px] mb-[12px]"
-            >
-              <span>{{ $t('cart.totalCheckout') }}</span>
-              <span>{{ cart?.order?.total_checkout_price }} €</span>
-            </p>
-
-            <p
-              v-show="cart?.order?.items?.length"
-              class="flex justify-between font-medium text-[20px] mt-[24px] mb-[12px]"
-            >
-              <span>{{ $t('cart.totalRecurrent') }}</span>
-              <span>{{ cart?.order?.total_recurrent_price }} €</span>
-            </p>
-
-            <p
-              v-show="cart?.order?.items?.length"
-              class="flex justify-between font-medium text-[20px] mt-[24px] mb-[12px]"
-            >
-              <span>{{ $t('cart.order.discountAmount') }}</span>
-              <span class="text-brand-green">{{
-                `-${(cart?.order?.items || []).reduce((acc, item) => {
-                  const newAcc =
-                    Number(acc ?? 0) + Number(item.discount_amount ?? 0)
-                  return Number(newAcc ?? 0).toFixed(
-                    Number(newAcc ?? 0) !== Math.floor(Number(newAcc ?? 0))
-                      ? 2
-                      : 0,
-                  )
-                }, 0)} €`
-              }}</span>
-            </p>
-
-            <div v-if="cart?.order?.items?.length > 0">
-              <AppInput
-                v-model="promocode"
-                :placeholder="$t('cart.promocode.input')"
-                class="mt-[24px] w-full"
-                :disabled="promocodeStatus === 'success'"
-                @blur="setPromocode"
-                @enter="setPromocode"
-              />
-
-              <p v-if="promocodeStatus === 'success'" class="text-brand-green">
-                {{ $t('cart.promocode.success') }}
-              </p>
-              <p v-if="promocodeStatus === 'fail'" class="text-brand-red">
-                {{ $t('cart.promocode.fail') }}
-              </p>
-            </div>
-
-            <p
-              v-show="cart?.order?.items?.length"
-              class="flex justify-between font-medium text-[24px] mb-[24px]"
-            >
-              <span>{{ $t('cart.order.total') }}</span>
-              <span>{{
-                `${(cart?.order?.items || []).reduce((acc, item) => {
-                  const newAcc =
-                    Number(acc ?? 0) + Number(item.calculated_price ?? 0)
-                  return Number(newAcc ?? 0).toFixed(
-                    Number(newAcc ?? 0) !== Math.floor(Number(newAcc ?? 0))
-                      ? 2
-                      : 0,
-                  )
-                }, 0)} €`
-              }}</span>
-            </p>
-
-            <p
-              v-show="!form?.checkValidity() ?? false"
-              class="mb-2 text-brand-red text-md"
-            >
-              {{ infoText }}
-            </p>
-            <div v-show="form?.checkValidity() && cart?.order?.items?.length">
-              <AppButton
-                class="w-full rounded-[4px] py-[2px]"
-                type="submit"
-                :disabled="!form?.checkValidity() ?? false"
+              <p
+                v-show="cart?.order?.items?.length"
+                class="flex justify-between font-medium text-[24px] mb-[24px]"
               >
-                {{
-                  userStore.isLoggedIn
-                    ? $t('cart.payment.stripe')
-                    : $t('cart.button.registration')
-                }}
-              </AppButton>
-              <div
-                v-show="userStore.isLoggedIn"
-                id="paypal-checkout"
-                class="mt-4 rounded-[12px]"
-              />
+                <span>{{ $t('cart.order.total') }}</span>
+                <span>{{
+                  `${(cart?.order?.items || []).reduce((acc, item) => {
+                    const newAcc =
+                      Number(acc ?? 0) + Number(item.calculated_price ?? 0)
+                    return Number(newAcc ?? 0).toFixed(
+                      Number(newAcc ?? 0) !== Math.floor(Number(newAcc ?? 0))
+                        ? 2
+                        : 0,
+                    )
+                  }, 0)} €`
+                }}</span>
+              </p>
+
+              <p
+                v-show="!form?.checkValidity() ?? false"
+                class="mb-2 text-brand-red text-md"
+              >
+                {{ infoText }}
+              </p>
+              <div v-show="form?.checkValidity() && cart?.order?.items?.length">
+                <AppButton
+                  class="w-full rounded-[4px] py-[2px]"
+                  type="submit"
+                  :disabled="!form?.checkValidity() ?? false"
+                >
+                  {{
+                    userStore.isLoggedIn
+                      ? $t('cart.payment.stripe')
+                      : $t('cart.button.registration')
+                  }}
+                </AppButton>
+                <div
+                  v-show="userStore.isLoggedIn"
+                  id="paypal-checkout"
+                  class="mt-4 rounded-[12px]"
+                />
+              </div>
             </div>
           </div>
         </div>
