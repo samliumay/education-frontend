@@ -190,6 +190,7 @@ import { useRoute } from 'vue-router'
 
 import { useCartStore } from '../../store/cart'
 import { useUserStore } from '../../store/user'
+import { useLocaleStore } from '../../store/locale'
 import AppButton from '../AppButton.vue'
 import AppSelect from '../AppSelect.vue'
 import ProfileMenu from '../profile/ProfileMenu.vue'
@@ -216,6 +217,7 @@ const routes = computed(() => [
 // Stores
 const user = useUserStore()
 const cart = useCartStore()
+const localeStore = useLocaleStore();
 cart.getCurrentOrder()
 
 // Flags
@@ -237,9 +239,8 @@ const browserLocale = ['ru', 'en', 'de'].includes(
   : undefined
 
 // Language Switcher
-const currentLanguage = ref(
-  localStorage.getItem('locale') || browserLocale || 'ru',
-)
+const currentLanguage = ref(localeStore.currentLocale);
+
 const languageOptions = [
   {
     label: 'DE',
@@ -257,7 +258,7 @@ const languageOptions = [
 
 // Actions
 const setLocale = () => {
-  localStorage.setItem('locale', currentLanguage.value)
+  localeStore.setLocale(currentLanguage.value);
   locale.value = currentLanguage.value
 }
 
@@ -269,6 +270,6 @@ watch(
 )
 
 onMounted(() => {
-  locale.value = localStorage.getItem('locale') || browserLocale || 'ru'
+  locale.value = localeStore.currentLocale;
 })
 </script>
