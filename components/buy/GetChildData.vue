@@ -6,8 +6,8 @@
       <AppSelect
         :placeholder="$t('common.children.selectChild')"
         :options="filterVisitorOptions(props.product.age_group)"
-        :value="visitor"
-        @update:value="el => $emit('update:visitor', el)"
+        :value="visitors"
+        @update:value="el => $emit('update:visitors', el)"
       />
     </template>
     <form
@@ -56,12 +56,28 @@
       </AppButton>
     </form>
     <div
+      v-if="isInAgeRange" 
+      class="flex gap-[20px] border-brand-black border-[1px]"
+      @click="closeMessage"
+    >
+      <p class=" ml-5 mt-5 mb-5 text-brand-red ">The child's data was successfully saved, but the child cannot be registered because he or she does not meet the product's age range.</p>
+      <button
+        class="mr-5 mt-5 mb-5 bg-white  w-[35px] h-[35px] rounded-full flex items-center justify-center hover:bg-brand-light-gray transition ease-in delay-100 transform active:scale-[0.93]"
+      >
+        <img
+          src="/icons/cross.svg"
+          alt="close"
+          class="w-[15px] h-[15px]"
+        />
+      </button>
+    </div>
+    <div
       v-show="isShowAddChild"
       class="flex items-center gap-[8px] cursor-pointer"
       @click="
         step === GetChildStep.Add
           ? (step = GetChildStep.Select)
-          : (step = GetChildStep.Add)
+          : (step = GetChildStep.Add, isInAgeRange = false)
       "
     >
       <span>{{
@@ -87,11 +103,11 @@ import type { Product } from '../../types'
 
 // Init component
 const props = defineProps<{
-  visitor?: number
+  visitors?: any
   product: Product
 }>()
 
-const emit = defineEmits(['update:visitor'])
+const emit = defineEmits(['update:visitors'])
 
 // Store
 const userStore = useUserStore()
@@ -106,6 +122,8 @@ const newVisitor = ref({
   birth_date: '',
 })
 
+const isInAgeRange = ref(false)
+
 // Completed
 const isShowAddChild = computed(() => {
   if (!userStore.isLoggedIn && userStore.getVisitorOptions.length < 1) {
@@ -117,7 +135,7 @@ const isShowAddChild = computed(() => {
 
 // Actions
 const calculateAge = (birth_date: string) => {
-  const [month, day, year] = birth_date.split('/').map(Number); // Convert mm/dd/yyyy to numbers
+  const [year, month, day] = birth_date.split('-').map(Number); // Convert mm/dd/yyyy to numbers
   const birthDate = new Date(year, month - 1, day);
   const today = new Date();
   let age = today.getFullYear() - birthDate.getFullYear();
@@ -171,10 +189,40 @@ const checkValidity = (event: {
   event.relatedTarget?.focus()
 }
 
+const closeMessage = () =>{
+  isInAgeRange.value = false
+}
+
 const addVisitor = () => {
   userStore.postVisitor(newVisitor.value).then((res: any) => {
-    emit('update:visitor', res.id)
+    emit('update:visitors', res.id)
     step.value = GetChildStep.Select
+    const newVisitorAge = calculateAge(newVisitor.value.birth_date)
+    let min_age: number, max_age: number | null;
+    if (props.product.age_group.includes('-')) {
+      // Handle "min_age-max_age" format
+      [min_age, max_age] = props.product.age_group.split('-').map(Number);
+    } else if (props.product.age_group.includes('+')) {
+      // Handle "min_age+" format
+      min_age = Number(props.product.age_group.replace('+', ''));
+      max_age = null; // No upper limit
+    } else {
+      throw new Error('Invalid age group format');
+    }
+
+    if (max_age !== null) {
+        // If max_age exists, check if the visitor's age is within the range
+        if(newVisitorAge >= min_age && newVisitorAge <= max_age)
+          isInAgeRange.value = false
+        else
+          isInAgeRange.value = true
+      } else {
+        // If there's no max_age, check if the visitor's age is greater than or equal to min_age
+        if(newVisitorAge >= min_age)
+          isInAgeRange.value = false
+        else
+          isInAgeRange.value = true
+      }
   })
 }
 </script>

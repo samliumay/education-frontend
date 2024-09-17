@@ -9,16 +9,19 @@
     :default-value="defaultValue"
     :clearable="clearable"
     :placeholder="placeholder"
+    multiple
     @update:value="emit('update:modelValue', $event)"
   />
 </template>
 <script setup lang="ts">
 import type { SelectOption } from 'naive-ui'
 import { NSelect } from 'naive-ui'
+import { ref,   watch, defineProps, defineEmits, } from 'vue'
+import type { IEventTarget } from '../types'
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
-    modelValue?: string
+    modelValue?: any
     options?: SelectOption[]
     variant?: 'solid' | 'transparent'
     defaultValue?: string

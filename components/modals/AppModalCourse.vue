@@ -75,9 +75,9 @@
 
             <GetChildData
               v-if="isParent"
-              :visitor="visitor"
+              :visitor="visitors"
               :product="calculatedProduct"
-              @update:visitor="el => (visitor = el)"
+              @update:visitors="el => (visitors = el)"
             />
 
             <p v-if="!isParent" class="text-brand-red">Attention!!! Only the parent has the right to fill out the child’s personal data. You can register your child for a trial lesson, but your registration must be activated by the child’s parent.</p>
@@ -142,7 +142,7 @@
                 type="submit"
                 :disabled="!(form?.checkValidity() && checkbox)"
               >
-                {{ $t('common.actions.send') }}
+                {{ $t('common.actions.send') + $t(' / ') + $t('common.actions.submit')}}
               </AppButton>
             </form>
           </div>
@@ -153,7 +153,7 @@
 </template>
 <script setup lang="ts">
 import { NCheckbox, NModal, NSelect, NRadio } from 'naive-ui'
-import { computed, type Ref, ref, type VNodeRef } from 'vue'
+import { computed, type Ref, ref, type VNodeRef, watch } from 'vue'
 import { useRoute } from 'vue-router'
 // import Datepicker from 'vuejs3-datepicker';
 
@@ -180,7 +180,8 @@ const cartStore = useCartStore()
 
 // State
 // eslint-disable-next-line vue/require-typed-ref
-const visitor = ref(undefined)
+// const visitors = ref(undefined)
+const visitors = ref<any>()
 const checkbox = ref(false)
 
 const selectedDate =ref({
@@ -192,10 +193,6 @@ const parent = ref({
   parent: 'parent',
   other:'other'
 })
-
-
-
-
 
 const { locale } = useI18n({ useScope: 'global' })
 
@@ -293,7 +290,8 @@ const sendModalCourse = async () => {
   await cartStore
     .sendVisitRequest({
       product_page: calculatedProduct.value.id,
-      children: [userStore.visitors.find(el => el.id === visitor.value)],
+      children: [userStore.visitors.filter(el => visitors.value.includes(el.id))],
+      //----------------------------------confirm---------------------------
       adults: [registrationForm.value],
     })
     .then(() => {

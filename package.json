@@ -50,17 +50,21 @@
     "@vue/eslint-config-airbnb-with-typescript": "^7.0.0",
     "@vuelidate/core": "^2.0.3",
     "@vuelidate/validators": "^2.0.4",
+    "@vuepic/vue-datepicker": "^9.0.3",
     "axios": "^1.6.1",
     "dompurify": "^3.0.8",
     "dotenv": "^16.4.5",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-vue-scoped-css": "^2.5.1",
+    "js-cookie": "^3.0.5",
     "maska": "^2.1.11",
     "normalize-url": "^8.0.0",
     "pinia": "^2.1.7",
-    "vue-phone-number-input": "^1.12.13",
+    "vue-cal": "^4.9.0",
+    "vue-phone-number-input": "^1.1.7",
     "vue-tel-input": "^6.0.5",
     "vue-tel-input-vuetify": "^1.5.3",
+    "vue3-datepicker": "^0.4.0",
     "vue3-google-map": "^0.19.0"
   }
 }

@@ -155,7 +155,7 @@ export const useUserStore = defineStore('user', () => {
       {
         email,
       },
-      '/api/v2/users/verify_email/',
+      '/api/v2/users/resend_verification/',
     )
 
   const confirmResetPassword = (
