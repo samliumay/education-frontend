@@ -141,6 +141,7 @@ export const en = {
       change: 'Change',
       look: 'Open',
       send: 'Send',
+      submit: 'Submit',
       pay: 'Pay',
       turnOn: 'Turn on',
       acceptAll: 'Accept all',
@@ -270,6 +271,9 @@ export const en = {
       fail: 'Promo code not valid',
     },
     registerDetails: {
+      yes: 'Yes',
+      no: 'No',
+      isParent: 'Are you the child’s parent?',
       title: 'Registration',
       name: 'Parent`s name',
       surname: 'Parent`s last name',

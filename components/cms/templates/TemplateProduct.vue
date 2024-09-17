@@ -1,14 +1,23 @@
 <template>
   <LoaderBlock v-if="catalogsGroupPending" />
   <div v-else class="flex flex-col gap-2">
-    <n-breadcrumb class="mt-4 block-padding">
-      <n-breadcrumb-item сlass="text-brand-gray">
-        <NuxtLink to="/">{{ $t('common.main') }}</NuxtLink>
-      </n-breadcrumb-item>
-      <n-breadcrumb-item сlass="text-brand-gray">
-        {{ catalog?.name ?? $t('common.catalogue') }}
-      </n-breadcrumb-item>
-    </n-breadcrumb>
+    <div class="flex justify-between items-center" >
+      <div>
+        <n-breadcrumb class="mt-4 block-padding">
+          <n-breadcrumb-item сlass="text-brand-gray">
+            <NuxtLink to="/">{{ $t('common.main') }}</NuxtLink>
+          </n-breadcrumb-item>
+          <n-breadcrumb-item сlass="text-brand-gray">
+            {{ catalog?.name ?? $t('common.catalogue') }}
+          </n-breadcrumb-item>
+        </n-breadcrumb>
+      </div>
+      <div class="justify-end mt-4 mr-4 block-padding">
+        <AppButton @click="goBack">
+          {{ $t('common.back') }}
+        </AppButton>
+      </div>
+    </div>
 
     <slot name="filters" :title="catalog?.name ?? 'Catalog'" />
 
@@ -36,12 +45,21 @@ import { getApiAddress } from '../../../utils/getApiAddress'
 import LoaderBlock from '../blocks/misc/LoaderBlock.vue'
 import PageConstructor from '../PageConstructor.vue'
 
+import { useRouter } from 'vue-router'
+
 const props = defineProps<{
   head: { title: string; description: string }
   api: { type: string }
-  filters: { language?: string; age_group?: string; season?: string }
+  filters: { language?: string; age_group?: string; season?: string; search?: string;  }
   blockProps: Record<string, unknown>
 }>()
+
+const router = useRouter()  // Importing the router instance
+
+// Function to handle going back
+const goBack = () => {
+  router.go(-1)  // Go back to the previous page
+}
 
 const head = computed(() => props.head)
 useHead({

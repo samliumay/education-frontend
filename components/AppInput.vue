@@ -1,5 +1,5 @@
 <template>
-  <div v-if="type !== 'tel' && type !== 'search' && type !== 'number' " class="relative w-full">
+  <div v-if="type !== 'tel' && type !== 'search' && type !== 'number' && type !== 'date' && type !== 'checkbox'" class="relative w-full">
     <input
       v-maska
       :class="[
@@ -86,7 +86,7 @@
         "
       @blur="(event: any) => $emit('blur', event)"
     />
-    
+
   </div>
   <div v-if="type === 'number'">
     <input
@@ -110,6 +110,27 @@
     />
     
   </div>
+
+  <div v-if="type === 'date'">
+    <input
+      v-maska
+      :class="[ isInvalid ? 'min-w-[65px] ' : 'min-w-[65px]', 
+          'n-base-selection-label'
+        ]"
+      :placeholder="placeholder"
+      :type="type"
+      :data-maska="maska"
+      :value="modelValue"
+      :max="max"
+      @input.prevent.stop="
+        $emit(
+          'update:modelValue',
+          ($event.target as unknown as IEventTarget).value,
+        )
+        "
+      @blur="(event: any) => $emit('blur', event)"
+    />
+  </div>
 </template>
 <script setup lang="ts">
 import { ref, watch, defineProps, defineEmits, } from 'vue'
@@ -127,7 +148,10 @@ const props = defineProps<{
   pattern?: string
   max?: string
   min?: string
-  isInvalid: boolean
+  isInvalid?: boolean
+  isDisabled?: string[]
+  scheduledDates?: string[]
+  formatDate?: string
 }>()
 
 const emit = defineEmits(['update:modelValue', 'blur'])

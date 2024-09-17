@@ -68,6 +68,14 @@
             required
             @blur="getAge('max_age')"
            />
+
+           <AppSelect
+            v-model:value="filters.age_group"
+            :placeholder="$t('common.filters.age')"
+            clearable
+            :options="ageOptions"
+            class="max-w-[160px] min-w-[120px]"
+          />
           
           <AppSelect
             v-show="!branchesPending"
