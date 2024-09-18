@@ -87,6 +87,7 @@
             <VueDatePicker
               class="mt-5"
               v-model="date"
+              @update:model-value="handleDate"
               :allowed-dates="allowedDates"
               :enable-time-picker="false"
             />
@@ -186,12 +187,39 @@ const cartStore = useCartStore()
 
 const date = ref();
 const allowedDates = computed(() => {
-  return [
-    new Date(),
-    new Date(new Date().setDate(new Date().getDate() + 1))
-  ];
+  const dates = [];
+  const schedule_slots = product.value.schedule_slots;
+  const weekdayMap = {
+    'Sunday': 0,
+    'Monday': 1,
+    'Tuesday': 2,
+    'Wednesday': 3,
+    'Thursday': 4,
+    'Friday': 5,
+    'Saturday': 6
+  };
+
+  const targetWeekdays = schedule_slots.map(slot => weekdayMap[slot.weekday]);
+
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth();
+  const firstDayOfMonth = new Date(year, month, 1);
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  for (let day = 1; day <= daysInMonth; day++) {
+    const date = new Date(year, month, day);
+    if (targetWeekdays.includes(date.getDay())) {
+      dates.push(date);
+    }
+  }
+
+  return dates;
 });
 
+
+const handleDate = (modelData) => {
+  date.value = modelData;
+}
 
 const visitors = ref<any>()
 const checkbox = ref(false)
@@ -289,8 +317,9 @@ const sendModalCourse = async () => {
   await cartStore
     .sendVisitRequest({
       product_page: calculatedProduct.value.id,
-      children: [userStore.visitors.filter(el => visitors.value.includes(el.id))],
+      children: userStore.visitors.filter(el => visitors.value.includes(el.id)),
       adults: [registrationForm.value],
+      date: date.value,
     })
     .then(() => {
       emit('close')
