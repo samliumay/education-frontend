@@ -63,7 +63,7 @@
       @keydown="checkKeydown"
       @blur="(event : any) => $emit('blur', event)"
     />
-    
+
   </div>
   <div v-if="type === 'search'">
     <input
@@ -91,7 +91,7 @@
   <div v-if="type === 'number'">
     <input
       v-maska
-      :class="[ isInvalid ? 'min-w-[65px] ' : 'min-w-[65px]', 
+      :class="[ isInvalid ? 'min-w-[65px] ' : 'min-w-[65px]',
           'n-base-selection-label'
         ]"
       :placeholder="placeholder"
@@ -108,14 +108,14 @@
         "
       @blur="(event: any) => $emit('blur', event)"
     />
-    
+
   </div>
 
   <div v-if="type === 'date'">
     <input
       v-maska
-      :class="[ isInvalid ? 'min-w-[65px] ' : 'min-w-[65px]', 
-          'n-base-selection-label'
+      :class="[ isInvalid ? 'min-w-[65px] ' : 'min-w-[65px]',
+          'n-base-selection-label mt-5',
         ]"
       :placeholder="placeholder"
       :type="type"

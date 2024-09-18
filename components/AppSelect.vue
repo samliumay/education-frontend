@@ -9,7 +9,6 @@
     :default-value="defaultValue"
     :clearable="clearable"
     :placeholder="placeholder"
-    multiple
     @update:value="emit('update:modelValue', $event)"
   />
 </template>
