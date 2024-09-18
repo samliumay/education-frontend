@@ -70,6 +70,16 @@ const emit = defineEmits(['update:modelValue'])
   border-radius: 12px;
 }
 
+.select .n-base-selection-tags {
+  background: transparent !important;
+  border-radius: 12px;
+}
+
+.solid .n-base-selection-tags {
+  background: #f2f2f2 !important;
+  border-radius: 12px;
+}
+
 /* DROPDOWN */
 .n-select-menu {
   box-shadow: none !important;

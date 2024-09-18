@@ -1,5 +1,5 @@
 <template>
-  <div v-if="type !== 'tel' && type !== 'search' && type !== 'number' && type !== 'date' && type !== 'checkbox'" class="relative w-full">
+  <div v-if="type !== 'tel' && type !== 'search' && type !== 'number' && type !== 'checkbox'" class="relative w-full">
     <input
       v-maska
       :class="[
@@ -100,28 +100,6 @@
       :value="modelValue"
       max=100
       min=1
-      @input.prevent.stop="
-        $emit(
-          'update:modelValue',
-          ($event.target as unknown as IEventTarget).value,
-        )
-        "
-      @blur="(event: any) => $emit('blur', event)"
-    />
-
-  </div>
-
-  <div v-if="type === 'date'">
-    <input
-      v-maska
-      :class="[ isInvalid ? 'min-w-[65px] ' : 'min-w-[65px]',
-          'n-base-selection-label mt-5',
-        ]"
-      :placeholder="placeholder"
-      :type="type"
-      :data-maska="maska"
-      :value="modelValue"
-      :max="max"
       @input.prevent.stop="
         $emit(
           'update:modelValue',
