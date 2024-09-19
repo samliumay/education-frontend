@@ -34,11 +34,37 @@
           {{ $t('buy.enterData') }}
         </h2>
 
+        <p class="text-[24px] font-medium">{{ $t('cart.registerDetails.isParent') }}</p>
+
+        <n-space>
+          <n-radio
+            :checked="isParent === true"
+            value="yes"
+            name="Parent"
+            @change="checkParent(true)"
+          >
+            {{ $t('cart.registerDetails.yes') }}
+          </n-radio>
+
+          <n-radio
+            class="ml-[12px]"
+            :checked="isParent === false"
+            value="no"
+            name="Other"
+            @change="checkParent(false)"
+          >
+            {{ $t('cart.registerDetails.no') }}
+          </n-radio>
+        </n-space>
+
         <GetChildData
+          v-if="isParent"
           :product="product"
           :visitor="buyForm.visitor"
           @update:visitor="el => (buyForm.visitor = el)"
         />
+
+        <p v-if="!isParent" class="text-brand-red">Attention!!! Only the parent has the right to fill out the child’s personal data. You can buy a camp for a child, but your registration must be activated by the child’s parent.</p>
 
         <AppDivider class="my-[24px]" />
       </template>
@@ -383,6 +409,11 @@ const buyForm = ref({
   alone: string
   academy_weeks: number[]
 })
+
+const isParent = ref(true)
+const checkParent = (isParentFlag : boolean) => {
+  isParent.value = isParentFlag
+}
 
 const isSlug = computed(() => !/^\d+$/.test(route.params.id as string))
 
