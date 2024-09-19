@@ -77,6 +77,7 @@
               v-if="isParent"
               :visitor="visitors"
               :product="calculatedProduct"
+              multiple=true
               @update:visitors="el => (visitors = el)"
             />
 

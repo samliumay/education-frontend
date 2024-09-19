@@ -8,7 +8,7 @@
         :options="filterVisitorOptions(props.product.age_group)"
         :value="visitors"
         @update:value="el => $emit('update:visitors', el)"
-        multiple=true
+        :multiple="multiple"
       />
     </template>
     <form
@@ -106,6 +106,7 @@ import type { Product } from '../../types'
 const props = defineProps<{
   visitors?: any
   product: Product
+  multiple?: boolean
 }>()
 
 const emit = defineEmits(['update:visitors'])
