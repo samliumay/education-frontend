@@ -8,6 +8,7 @@
         :options="filterVisitorOptions(props.product.age_group)"
         :value="visitors"
         @update:value="el => $emit('update:visitors', el)"
+        multiple=true
       />
     </template>
     <form
@@ -56,7 +57,7 @@
       </AppButton>
     </form>
     <div
-      v-if="isInAgeRange" 
+      v-if="isInAgeRange"
       class="flex gap-[20px] border-brand-black border-[1px]"
       @click="closeMessage"
     >

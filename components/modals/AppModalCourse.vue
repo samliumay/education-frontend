@@ -80,11 +80,17 @@
               @update:visitors="el => (visitors = el)"
             />
 
-            <p v-if="!isParent" class="text-brand-red">Attention!!! Only the parent has the right to fill out the child’s personal data. You can register your child for a trial lesson, but your registration must be activated by the child’s parent.</p>
-            <!-- <AppInput
-              v-model="selectedDate.today"
-              type="date"
-            /> -->
+            <p v-if="!isParent" class="text-brand-red">
+              Attention!!! Only the parent has the right to fill out the child’s personal data.
+              You can register your child for a trial lesson, but your registration must be activated by the child’s parent.
+            </p>
+            <VueDatePicker
+              class="mt-5"
+              v-model="date"
+              @update:model-value="handleDate"
+              :allowed-dates="allowedDates"
+              :enable-time-picker="false"
+            />
             <form
               ref="form"
               class="flex flex-col gap-2 mt-10 relative"
@@ -155,7 +161,8 @@
 import { NCheckbox, NModal, NSelect, NRadio } from 'naive-ui'
 import { computed, type Ref, ref, type VNodeRef, watch } from 'vue'
 import { useRoute } from 'vue-router'
-// import Datepicker from 'vuejs3-datepicker';
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css'
 
 import AppInput from '@/components/AppInput.vue'
 import BuyProductCard from '@/components/buy/BuyProductCard.vue'
@@ -178,9 +185,42 @@ const route = useRoute()
 const userStore = useUserStore()
 const cartStore = useCartStore()
 
-// State
-// eslint-disable-next-line vue/require-typed-ref
-// const visitors = ref(undefined)
+const date = ref();
+const allowedDates = computed(() => {
+  const dates = [];
+  const schedule_slots = product.value.schedule_slots;
+  const weekdayMap = {
+    'Sunday': 0,
+    'Monday': 1,
+    'Tuesday': 2,
+    'Wednesday': 3,
+    'Thursday': 4,
+    'Friday': 5,
+    'Saturday': 6
+  };
+
+  const targetWeekdays = schedule_slots.map(slot => weekdayMap[slot.weekday]);
+
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth();
+  const firstDayOfMonth = new Date(year, month, 1);
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  for (let day = 1; day <= daysInMonth; day++) {
+    const date = new Date(year, month, day);
+    if (targetWeekdays.includes(date.getDay())) {
+      dates.push(date);
+    }
+  }
+
+  return dates;
+});
+
+
+const handleDate = (modelData) => {
+  date.value = modelData;
+}
+
 const visitors = ref<any>()
 const checkbox = ref(false)
 
@@ -248,17 +288,6 @@ const registrationForm = ref({
   phone: userStore.user.phone_number
 })
 
-const dateInputData = ref({
-  selectedDate: '',
-  minDate: new Date().toISOString().substring(0, 10), // Earliest scheduled date
-  scheduledDates: ['2024-09-12', '2024-09-15', '2024-09-18', '2024-09-25'], 
-})
-
-
-const isScheduled = (date : any) => {
-      return dateInputData.value.scheduledDates.includes(date);
-}
-
 const checkParent = (isParentFlag : boolean) => {
   isParent.value = isParentFlag
   if(!isParentFlag){
@@ -272,9 +301,7 @@ const checkParent = (isParentFlag : boolean) => {
     registrationForm.value.email = userStore.user.email,
     registrationForm.value.phone = userStore.user.phone_number
   }
-  
 }
-
 
 const chosenProduct: Ref<any> = ref(null)
 
@@ -290,9 +317,9 @@ const sendModalCourse = async () => {
   await cartStore
     .sendVisitRequest({
       product_page: calculatedProduct.value.id,
-      children: [userStore.visitors.filter(el => visitors.value.includes(el.id))],
-      //----------------------------------confirm---------------------------
+      children: userStore.visitors.filter(el => visitors.value.includes(el.id)),
       adults: [registrationForm.value],
+      date: date.value,
     })
     .then(() => {
       emit('close')
@@ -310,3 +337,9 @@ const checkValidity = (event: {
 
 const form = ref<VNodeRef | undefined>(undefined)
 </script>
+<style>
+  .dp__input {
+    height: 58px;
+    border-radius: 12px;
+  }
+</style>

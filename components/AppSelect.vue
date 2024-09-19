@@ -9,7 +9,7 @@
     :default-value="defaultValue"
     :clearable="clearable"
     :placeholder="placeholder"
-    multiple
+    :multiple="multiple"
     @update:value="emit('update:modelValue', $event)"
   />
 </template>
@@ -27,9 +27,11 @@ const props = withDefaults(
     defaultValue?: string
     clearable?: boolean
     placeholder?: string
+    multiple?: boolean
   }>(),
   {
     variant: 'solid',
+    multiple: false,
   },
 )
 
@@ -64,6 +66,16 @@ const emit = defineEmits(['update:modelValue'])
 }
 
 .solid .n-base-selection-label {
+  background: #f2f2f2 !important;
+  border-radius: 12px;
+}
+
+.select .n-base-selection-tags {
+  background: transparent !important;
+  border-radius: 12px;
+}
+
+.solid .n-base-selection-tags {
   background: #f2f2f2 !important;
   border-radius: 12px;
 }
