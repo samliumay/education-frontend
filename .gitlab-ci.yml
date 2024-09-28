@@ -18,7 +18,8 @@ build dev:
   stage: build
   image: atnartur/docker:latest
   tags:
-    - docker
+    - docker-compose
+    - dev
   variables:
     VITE_API_URL: $DEV__VITE_API_URL
     VITE_SITE_URL: $DEV__VITE_SITE_URL
