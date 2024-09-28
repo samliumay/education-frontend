@@ -1,13 +1,9 @@
-FROM node:16-alpine as build-stage
+FROM node:20.17.0-alpine as build-stage
 RUN mkdir -p /usr/src
 WORKDIR /usr/src
 
 # Install dependencies needed for build
 COPY package*.json ./
-
-RUN npm install
-
-COPY . /usr/src
 
 ARG VITE_API_URL
 ARG VITE_SITE_URL
@@ -21,6 +17,9 @@ RUN echo "VITE_GOOGLE_SSO_CLIENT_ID=$VITE_GOOGLE_SSO_CLIENT_ID" >> /usr/src/.env
 RUN echo "VITE_FACEBOOK_SSO_CLIENT_ID=$VITE_FACEBOOK_SSO_CLIENT_ID" >> /usr/src/.env
 RUN echo "VITE_PAYPAL_CLIENT_ID=$VITE_PAYPAL_CLIENT_ID" >> /usr/src/.env
 
+RUN npm ci --frozen-lockfile
+
+COPY . .
 
 # build necessary, even if no static files are needed,
 # since it builds the server as well
@@ -39,7 +38,7 @@ RUN npm run build
 # # Copy build dist files to NGINX image
 # COPY --from=0 /usr/src/.output/public /usr/src
 
-FROM node:18-alpine as final
+FROM node:20.17.0-alpine
 
 WORKDIR /usr/src
 

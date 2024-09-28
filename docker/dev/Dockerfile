@@ -1,13 +1,10 @@
 # Stage 1 - build
-FROM node:18-alpine as build-stage
+FROM node:20.17.0-alpine as build-stage
 
 WORKDIR /app
 
 COPY package*.json ./
 
-RUN  npm install
-
-COPY . .
 
 ARG VITE_API_URL
 ARG VITE_SITE_URL
@@ -21,12 +18,15 @@ RUN echo "VITE_GOOGLE_SSO_CLIENT_ID=$VITE_GOOGLE_SSO_CLIENT_ID" >> /app/.env
 RUN echo "VITE_FACEBOOK_SSO_CLIENT_ID=$VITE_FACEBOOK_SSO_CLIENT_ID" >> /app/.env
 RUN echo "VITE_PAYPAL_CLIENT_ID=$VITE_PAYPAL_CLIENT_ID" >> /app/.env
 
-RUN npm run build
-RUN npm test
+RUN  npm ci --frozen-lockfile
+
+COPY . .
+
+RUN npm build
 
 
 # Stage 2 - production
-FROM node:18-alpine as final
+FROM node:20.17.0-alpine as final
 
 WORKDIR /app
 

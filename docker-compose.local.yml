@@ -1,4 +1,4 @@
-version: '3'
+version: '3.6'
 
 services:
   frontend-prod:
@@ -7,7 +7,6 @@ services:
       dockerfile: ./docker/prod/Dockerfile
       args:
         VITE_API_URL: https://api.clavis.the-o.co
-        VITE_PAYPAL_CLIENT_ID: $VITE_PAYPAL_CLIENT_ID
     image: frontend
     restart: unless-stopped
     ports:

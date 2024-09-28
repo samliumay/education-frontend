@@ -3,6 +3,7 @@ import path from 'path'
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+
   modules: [
     '@nuxt/test-utils/module',
     '@nuxtjs/tailwindcss',
@@ -14,19 +15,25 @@ export default defineNuxtConfig({
     'nuxt-paypal',
     ...(process.env.NODE_ENV === 'production' ? ['@nuxtjs/eslint-module'] : []),
   ],
+
   paypal: {
     clientId: process.env.VITE_PAYPAL_CLIENT_ID,
     disableFunding: 'credit,card',
     currency: 'EUR',
   },
+
   envPrefix: ['VITE_', 'PAYPAL_'],
+
   alias: {
     '@': path.resolve(__dirname, './'),
   },
+
   css: ['@/assets/styles/fonts.css'],
+
   i18n: {
     vueI18n: './i18n.config.ts', // if you are using custom path, default
   },
+
   build: {
     transpile:
       process.env.NODE_ENV === 'production'
@@ -40,6 +47,7 @@ export default defineNuxtConfig({
           ]
         : ['@juggle/resize-observer'],
   },
+
   runtimeConfig: {
     public: {
       sentry: {
@@ -51,6 +59,7 @@ export default defineNuxtConfig({
       },
     },
   },
+
   vite: {
     optimizeDeps: {
       include:
@@ -64,4 +73,6 @@ export default defineNuxtConfig({
       },
     },
   },
+
+  compatibilityDate: '2024-09-28',
 })
