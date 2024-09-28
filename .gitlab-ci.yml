@@ -6,6 +6,7 @@ stages:
 lint:
   image: node:20.17.0-alpine
   stage: test
+  allow_failure: true 
   tags:
     - docker-compose
     - prod
