@@ -22,7 +22,7 @@ RUN  npm ci --frozen-lockfile
 
 COPY . .
 
-RUN npm build
+RUN npm run build
 
 
 # Stage 2 - production
