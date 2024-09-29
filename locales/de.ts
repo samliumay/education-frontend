@@ -7,7 +7,9 @@ export const de = {
       email: 'Falsche Email',
       exists: 'Ein Benutzer mit dieser E-Mail ist bereits registriert',
       passwordMatch: 'Die Passwörter stimmen nicht überein',
-      uniquePhone: '',
+      uniquePhone: 'Ein Benutzer mit dieser Telefonnummer ist bereits registriert.',
+      emailRegistered:
+        'Ein Benutzer mit dieser E-Mail ist bereits registriert, bitte melden Sie sich an.',
     },
     tariffs: 'Tarife',
     purchaseOption: {

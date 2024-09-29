@@ -8,7 +8,9 @@ export const en = {
       exists: 'A user is already registered with this e-mail address',
       passwordMatch: 'Passwords don`t match',
       uniquePhone:
-        'A user is already registered with this phone number',
+        'A user is already registered with this phone number.',
+      emailRegistered:
+        'A user is already registered with this Email, please login.',
     },
     tariffs: 'Tariffs',
     purchaseOption: {

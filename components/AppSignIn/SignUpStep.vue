@@ -335,26 +335,32 @@ const signUp = async () => {
       emit('goToVerify', email)
     })
     .catch(err => {
-      if (Object.keys(err).length !== 0) {
-        if (err?.phone_number?.[0].includes('Enter a valid phone number.')) {
+      console.log('API error response:', err);  // Log the error response for debugging
+
+      if (err && Object.keys(err).length !== 0) {
+        // Check if the email error is present and includes the "already registered" message
+        if (err?.email?.[0]?.includes('A user is already registered with this e-mail address.')) {
+          error.value = t('common.errors.emailRegistered')
+        } else if (err?.phone_number?.[0]?.includes('Enter a valid phone number.')) {
           error.value = t('common.errors.phone')
-        } else if (err?.email?.[0].includes('Enter a valid email address.')) {
+        } else if (err?.email?.[0]?.includes('Enter a valid email address.')) {
           error.value = t('common.errors.email')
         } else if (err?.email?.[0] && err?.username?.[0]) {
           error.value = t('common.errors.exists')
         } else if (
-          err?.non_field_errors?.[0].includes(
+          err?.non_field_errors?.[0]?.includes(
             "The two password fields didn't match.",
           )
         ) {
           error.value = t('common.errors.passwordMatch')
         } else if (
-          err?.phone_number?.[0].includes('This field must be unique.')
+          err?.phone_number?.[0]?.includes('This field must be unique.')
         ) {
           error.value = t('common.errors.uniquePhone')
         } else {
           error.value = t('common.somethingWrong')
         }
+
         setTimeout(clearError, 2000)
       }
     })
