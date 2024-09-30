@@ -60,8 +60,8 @@
         <GetChildData
           v-if="isParent"
           :product="product"
-          :visitor="buyForm.visitor"
-          @update:visitor="el => (buyForm.visitor = el)"
+          :visitors="buyForm.visitors"
+          @update:visitors="el => (buyForm.visitors = el)"
         />
 
         <p v-if="!isParent" class="text-brand-red">Attention!!! Only the parent has the right to fill out the child’s personal data. You can buy a camp for a child, but your registration must be activated by the child’s parent.</p>
@@ -398,7 +398,7 @@ const buyForm = ref({
   feature: 'yes',
   photo: 'yes',
   alone: 'no',
-  visitor: null,
+  visitors: null,
   academy_weeks: [],
 } as unknown as Partial<OrderItem> & {
   first: boolean
@@ -468,7 +468,7 @@ const addAcademy = async () => {
             option => option.schedule_type === buyForm.value.schedule_type,
           )?.id ?? product?.value?.purchase_options?.[0]?.id
         : buyForm.value.purchase_option,
-    visitor: user.isLoggedIn ? buyForm.value.visitor : null,
+    visitor: user.isLoggedIn ? buyForm.value.visitors : null,
     schedule_slots,
     product_page: product?.value?.id,
     comment: buyForm.value.comment,
@@ -488,8 +488,8 @@ const addAcademy = async () => {
 const isButtonActive = computed(
   // eslint-disable-next-line complexity
   () =>
-    (buyForm.value.visitor !== null &&
-      buyForm.value.visitor !== undefined &&
+    (buyForm.value.visitors !== null &&
+      buyForm.value.visitors !== undefined &&
       ((product.value.product_type === 'Course' &&
         !!buyForm.value.purchase_option &&
         !!buyForm.value.schedule_slots?.length) ||
