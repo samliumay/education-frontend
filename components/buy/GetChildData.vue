@@ -8,7 +8,7 @@
         :options="filterVisitorOptions(props.product.age_group)"
         :value="visitors"
         @update:value="el => $emit('update:visitors', el)"
-        :multiple="multiple"
+        :IsMultiple=IsMultiple
       />
     </template>
     <form
@@ -17,7 +17,7 @@
       @submit.prevent="addVisitor"
     >
       <AppInput
-        v-model:model-value="newVisitor.first_name"
+        v-model:model-value="newVisitorData.first_name"
         :placeholder="$t('common.children.name')"
         required
         pattern=".{2,}"
@@ -25,7 +25,7 @@
         @blur="checkValidity"
       />
       <AppInput
-        v-model:model-value="newVisitor.last_name"
+        v-model:model-value="newVisitorData.last_name"
         :placeholder="$t('common.children.surname')"
         required
         class="mt-[12px]"
@@ -34,7 +34,7 @@
         @blur="checkValidity"
       />
       <AppInput
-        v-model:model-value="newVisitor.birth_date"
+        v-model:model-value="newVisitorData.birth_date"
         :placeholder="$t('common.children.birthdate')"
         type="date"
         required
@@ -47,9 +47,9 @@
         class="mt-[36px] w-full"
         :disabled="
           (!form?.checkValidity() ||
-            !newVisitor.first_name ||
-            !newVisitor.last_name ||
-            !newVisitor.birth_date) ??
+            !newVisitorData.first_name ||
+            !newVisitorData.last_name ||
+            !newVisitorData.birth_date) ??
           false
         "
       >
@@ -77,7 +77,7 @@
       class="flex items-center gap-[8px] cursor-pointer"
       @click="
         step === GetChildStep.Add
-          ? (step = GetChildStep.Select)
+          ? (step = GetChildStep.Select, newVisitorData.first_name = '', newVisitorData.last_name= '', newVisitorData.birth_date= '')
           : (step = GetChildStep.Add, isInAgeRange = false)
       "
     >
@@ -106,7 +106,8 @@ import type { Product } from '../../types'
 const props = defineProps<{
   visitors?: any
   product: Product
-  multiple?: boolean
+  IsMultiple?: boolean
+  newVisitorData?: any
 }>()
 
 const emit = defineEmits(['update:visitors'])
@@ -118,11 +119,11 @@ await userStore.getVisitors()
 // State
 const form = ref<VNodeRef | undefined>(undefined)
 const step = ref(userStore.isLoggedIn ? GetChildStep.Select : GetChildStep.Add)
-const newVisitor = ref({
-  first_name: '',
-  last_name: '',
-  birth_date: '',
-})
+// const newVisitor = ref({
+//   first_name: '',
+//   last_name: '',
+//   birth_date: '',
+// })
 
 const isInAgeRange = ref(false)
 
@@ -195,11 +196,12 @@ const closeMessage = () =>{
   isInAgeRange.value = false
 }
 
+
 const addVisitor = () => {
-  userStore.postVisitor(newVisitor.value).then((res: any) => {
+  userStore.postVisitor(props.newVisitorData).then((res: any) => {
     emit('update:visitors', res.id)
     step.value = GetChildStep.Select
-    const newVisitorAge = calculateAge(newVisitor.value.birth_date)
+    const newVisitorAge = calculateAge(props.newVisitorData.birth_date)
     let min_age: number, max_age: number | null;
     if (props.product.age_group.includes('-')) {
       // Handle "min_age-max_age" format
@@ -212,6 +214,9 @@ const addVisitor = () => {
       throw new Error('Invalid age group format');
     }
 
+    props.newVisitorData.first_name = '' 
+    props.newVisitorData.last_name= ''
+    props.newVisitorData.birth_date= ''
     if (max_age !== null) {
         // If max_age exists, check if the visitor's age is within the range
         if(newVisitorAge >= min_age && newVisitorAge <= max_age)
