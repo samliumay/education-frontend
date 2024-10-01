@@ -156,6 +156,9 @@ import Cover from '../../misc/Cover.vue'
 import { useUserStore } from '../../../../../store/user'
 
 const user = useUserStore()
+await user.getOrders()
+await user.getVisitors()
+
 
 
 defineProps<{

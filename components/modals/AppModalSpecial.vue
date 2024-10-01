@@ -48,7 +48,7 @@
               class="flex flex-col gap-2 mt-10 relative"
               @submit.prevent.stop="sendModalCourse"
             >
-              <div class="grid grid-cols-1 lg:grid-cols-2 gap-[12px]">
+              <div class="grid grid-cols-1 lg:grid-cols-3 gap-[12px]">
                 <AppInput
                   v-model="registrationForm.first_name"
                   :placeholder="$t('cart.registerDetails.name')"
@@ -63,6 +63,14 @@
                   required
                   pattern=".{1,64}"
                   title="Last name must be from 1 to 64 characters"
+                  @blur="checkValidity"
+                />
+                <AppInput
+                  v-model="registrationForm.relation"
+                  :placeholder="$t('cart.registerDetails.relation')"
+                  required
+                  pattern=".{1,64}"
+                  title="The name must be from 1 to 64 characters"
                   @blur="checkValidity"
                 />
               </div>
@@ -149,6 +157,7 @@ const registrationForm = ref({
   last_name: '',
   email: '',
   phone: '',
+  relation: ''
 })
 
 // eslint-disable-next-line require-await

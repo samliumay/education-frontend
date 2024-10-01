@@ -9,7 +9,7 @@
     :default-value="defaultValue"
     :clearable="clearable"
     :placeholder="placeholder"
-    :multiple="multiple"
+    :multiple="IsMultiple"
     @update:value="emit('update:modelValue', $event)"
   />
 </template>
@@ -27,7 +27,7 @@ const props = withDefaults(
     defaultValue?: string
     clearable?: boolean
     placeholder?: string
-    multiple?: boolean
+    IsMultiple?: boolean
   }>(),
   {
     variant: 'solid',
