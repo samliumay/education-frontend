@@ -106,7 +106,15 @@
         >
           {{ $t('common.actions.signIn') }}
         </AppButton>
+        
       </div>
+      
+    </div>
+    <div class="absolute bg-white rounded-full w-[50px] h-[50px] min-h-[50px] min-w-[50px] overflow-hidden border-[1px] right-0 mt-16 mr-16 ">
+      <AppButton @click="goBack" 
+      >
+          {{ $t('common.backRouter') }}
+      </AppButton>
     </div>
 
     <!-- MOBILE HEADER -->
@@ -194,6 +202,8 @@ import { useLocaleStore } from '../../store/locale'
 import AppButton from '../AppButton.vue'
 import AppSelect from '../AppSelect.vue'
 import ProfileMenu from '../profile/ProfileMenu.vue'
+import { useRouter } from 'vue-router'
+
 
 const { t, locale } = useI18n({ useScope: 'global' })
 
@@ -219,6 +229,8 @@ const user = useUserStore()
 const cart = useCartStore()
 const localeStore = useLocaleStore();
 cart.getCurrentOrder()
+const router = useRouter()  // Importing the router instance
+
 
 // Flags
 const isOpenSignIn = ref(false)
@@ -231,6 +243,10 @@ onMounted(() => {
     isOpenSignIn.value = true
   }
 })
+
+const goBack = () => {
+  router.go(-1)  // Go back to the previous page
+}
 
 const browserLocale = ['ru', 'en', 'de'].includes(
   navigator.language.slice(0, 2),

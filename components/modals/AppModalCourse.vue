@@ -75,29 +75,32 @@
 
             <GetChildData
               v-if="isParent"
+              :newVisitorData="newVisitor"
+              :IsMultiple="true"
               :visitor="visitors"
               :product="calculatedProduct"
-              multiple=true
               @update:visitors="el => (visitors = el)"
+              @update:newVisitorData="(data: any) => (newVisitor = data)"
             />
 
             <p v-if="!isParent" class="text-brand-red">
               Attention!!! Only the parent has the right to fill out the child’s personal data.
               You can register your child for a trial lesson, but your registration must be activated by the child’s parent.
             </p>
-            <VueDatePicker
-              class="mt-5"
-              v-model="date"
-              @update:model-value="handleDate"
-              :allowed-dates="allowedDates"
-              :enable-time-picker="false"
-            />
+              <VueDatePicker
+                class="mt-10"
+                v-model="date"
+                @update:model-value="handleDate"
+                :allowed-dates="allowedDates"
+                :enable-time-picker="false"
+                placeholder="Select a trial lesson day"
+              />
             <form
               ref="form"
               class="flex flex-col gap-2 mt-10 relative"
               @submit.prevent="sendModalCourse"
             >
-              <div class="grid grid-cols-1 lg:grid-cols-2 gap-[12px]">
+              <div class="grid grid-cols-1 lg:grid-cols-3 gap-[12px]">
                 <AppInput
                   v-model="registrationForm.first_name"
                   :placeholder="$t('cart.registerDetails.name')"
@@ -112,6 +115,14 @@
                   required
                   pattern=".{1,64}"
                   title="Last name must be from 1 to 64 characters"
+                  @blur="checkValidity"
+                />
+                <AppInput
+                  v-model="registrationForm.relation"
+                  :placeholder="$t('cart.registerDetails.relation')"
+                  required
+                  pattern=".{1,64}"
+                  title="The name must be from 1 to 64 characters"
                   @blur="checkValidity"
                 />
               </div>
@@ -281,12 +292,23 @@ const { data: product, pending: productPending } = await useAsyncData(
   { watch: [locale, isSlug], deep: true },
 )
 
+//Child Data
+const newVisitor = ref({
+  first_name: '',
+  last_name: '',
+  birth_date: ''
+})
+
+
+
+
 // Registration
 const registrationForm = ref({
   first_name: userStore.user.first_name,
   last_name: userStore.user.last_name,
   email: userStore.user.email,
-  phone: userStore.user.phone_number
+  phone: userStore.user.phone_number,
+  relation: ''
 })
 
 const checkParent = (isParentFlag : boolean) => {
@@ -296,11 +318,13 @@ const checkParent = (isParentFlag : boolean) => {
     registrationForm.value.last_name = ''
     registrationForm.value.email = ''
     registrationForm.value.phone = ''
+    registrationForm.value.relation = ''
   }else{
     registrationForm.value.first_name = userStore.user.first_name,
     registrationForm.value.last_name = userStore.user.last_name,
     registrationForm.value.email = userStore.user.email,
-    registrationForm.value.phone = userStore.user.phone_number
+    registrationForm.value.phone = userStore.user.phone_number,
+    registrationForm.value.relation = ''
   }
 }
 
@@ -315,16 +339,33 @@ const calculatedProduct = computed(() =>
 )
 
 const sendModalCourse = async () => {
-  await cartStore
-    .sendVisitRequest({
+  try {
+    if(newVisitor.value.first_name.length > 0 && newVisitor.value.last_name.length > 0 && newVisitor.value.birth_date.length > 0)
+    {
+
+    let newVisitorID: number;
+
+    await userStore.postVisitor(newVisitor.value).then((res: any) => {
+      newVisitorID = res.id
+      cartStore.sendVisitRequest({
+      product_page: calculatedProduct.value.id,
+      children: userStore.visitors.filter(el => newVisitorID === el.id),
+      adults: [registrationForm.value],
+      date: date.value,
+    });
+    });
+  }else{
+    await cartStore.sendVisitRequest({
       product_page: calculatedProduct.value.id,
       children: userStore.visitors.filter(el => visitors.value.includes(el.id)),
       adults: [registrationForm.value],
       date: date.value,
-    })
-    .then(() => {
-      emit('close')
-    })
+    });
+  }
+    emit('close');
+  } catch (error) {
+    console.error("Error occurred:", error);
+  }
 }
 
 // Form

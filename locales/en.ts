@@ -60,6 +60,7 @@ export const en = {
     you: 'You',
     canceled: 'Canceled',
     back: 'Back',
+    backRouter: '<',
     contacts: {
       contactUs: 'Contact us',
       tryout: 'Arrange a trial course',
@@ -283,6 +284,7 @@ export const en = {
       phone: 'Phone',
       password: 'Password',
       repeatPassword: 'Repeat password',
+      relation: 'Relation with the child'
     },
     paymentDetails: {
       title: 'Payment details',
