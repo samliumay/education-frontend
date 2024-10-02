@@ -8,7 +8,7 @@
         :options="filterVisitorOptions(props.product.age_group)"
         :value="visitors"
         @update:value="el => $emit('update:visitors', el)"
-        :IsMultiple=IsMultiple
+        :IsMultiple="IsMultiple"
       />
     </template>
     <form
@@ -17,7 +17,7 @@
       @submit.prevent="addVisitor"
     >
       <AppInput
-        v-model:model-value="newVisitorData.first_name"
+        v-model="newVisitorData.first_name"
         :placeholder="$t('common.children.name')"
         required
         pattern=".{2,}"
@@ -25,7 +25,7 @@
         @blur="checkValidity"
       />
       <AppInput
-        v-model:model-value="newVisitorData.last_name"
+        v-model="newVisitorData.last_name"
         :placeholder="$t('common.children.surname')"
         required
         class="mt-[12px]"
@@ -34,7 +34,7 @@
         @blur="checkValidity"
       />
       <AppInput
-        v-model:model-value="newVisitorData.birth_date"
+        v-model="newVisitorData.birth_date"
         :placeholder="$t('common.children.birthdate')"
         type="date"
         required
@@ -46,11 +46,10 @@
         type="submit"
         class="mt-[36px] w-full"
         :disabled="
-          (!form?.checkValidity() ||
-            !newVisitorData.first_name ||
-            !newVisitorData.last_name ||
-            !newVisitorData.birth_date) ??
-          false
+          !form?.checkValidity() ||
+          !newVisitorData.first_name ||
+          !newVisitorData.last_name ||
+          !newVisitorData.birth_date
         "
       >
         {{ $t('common.children.addChild') }}
@@ -61,15 +60,13 @@
       class="flex gap-[20px] border-brand-black border-[1px]"
       @click="closeMessage"
     >
-      <p class=" ml-5 mt-5 mb-5 text-brand-red ">The child's data was successfully saved, but the child cannot be registered because he or she does not meet the product's age range.</p>
+      <p class="ml-5 mt-5 mb-5 text-brand-red">
+        The child's data was successfully saved, but the child cannot be registered because he or she does not meet the product's age range.
+      </p>
       <button
-        class="mr-5 mt-5 mb-5 bg-white  w-[35px] h-[35px] rounded-full flex items-center justify-center hover:bg-brand-light-gray transition ease-in delay-100 transform active:scale-[0.93]"
+        class="mr-5 mt-5 mb-5 bg-white w-[35px] h-[35px] rounded-full flex items-center justify-center hover:bg-brand-light-gray transition ease-in delay-100 transform active:scale-[0.93]"
       >
-        <img
-          src="/icons/cross.svg"
-          alt="close"
-          class="w-[15px] h-[15px]"
-        />
+        <img src="/icons/cross.svg" alt="close" class="w-[15px] h-[15px]" />
       </button>
     </div>
     <div
@@ -77,102 +74,107 @@
       class="flex items-center gap-[8px] cursor-pointer"
       @click="
         step === GetChildStep.Add
-          ? (step = GetChildStep.Select, newVisitorData.first_name = '', newVisitorData.last_name= '', newVisitorData.birth_date= '')
+          ? (step = GetChildStep.Select, clearVisitorData())
           : (step = GetChildStep.Add, isInAgeRange = false)
       "
     >
-      <span>{{
-        step === GetChildStep.Select
-          ? $t('common.children.addNewChild')
-          : $t('common.children.backToSelect')
-      }}</span>
+      <span>
+        {{
+          step === GetChildStep.Select
+            ? $t('common.children.addNewChild')
+            : $t('common.children.backToSelect')
+        }}
+      </span>
       <ArrowIcon class="relative top-[4px]" />
     </div>
   </div>
 </template>
+
 <script setup lang="ts">
-import { computed, ref, type VNodeRef } from 'vue'
+import { computed, ref, watch, type VNodeRef } from 'vue';
 
-import ArrowIcon from '../../public/icons/arrow_short_right.svg'
-import { useUserStore } from '../../store/user'
-import { GetChildStep } from '../../types'
-import AppButton from '../AppButton.vue'
-import AppInput from '../AppInput.vue'
-import AppSelect from '../AppSelect.vue'
-import type { Product } from '../../types'
-
+import ArrowIcon from '../../public/icons/arrow_short_right.svg';
+import { useUserStore } from '../../store/user';
+import { GetChildStep } from '../../types';
+import AppButton from '../AppButton.vue';
+import AppInput from '../AppInput.vue';
+import AppSelect from '../AppSelect.vue';
+import type { Product } from '../../types';
 
 // Init component
 const props = defineProps<{
-  visitors?: any
-  product: Product
-  IsMultiple?: boolean
-  newVisitorData?: any
-}>()
+  visitors?: any;
+  product: Product;
+  IsMultiple?: boolean;
+  newVisitorData?: any;
+}>();
 
-const emit = defineEmits(['update:visitors'])
+const emit = defineEmits(['update:visitors']);
 
 // Store
-const userStore = useUserStore()
-await userStore.getVisitors()
+const userStore = useUserStore();
+await userStore.getVisitors();
 
 // State
-const form = ref<VNodeRef | undefined>(undefined)
-const step = ref(userStore.isLoggedIn ? GetChildStep.Select : GetChildStep.Add)
-// const newVisitor = ref({
-//   first_name: '',
-//   last_name: '',
-//   birth_date: '',
-// })
+const form = ref<VNodeRef | undefined>(undefined);
+const step = ref(userStore.isLoggedIn ? GetChildStep.Select : GetChildStep.Add);
 
-const isInAgeRange = ref(false)
+// Initialize `newVisitorData` if it's undefined or incomplete
+const newVisitorData = ref({
+  first_name: props.newVisitorData?.first_name || '',
+  last_name: props.newVisitorData?.last_name || '',
+  birth_date: props.newVisitorData?.birth_date || '',
+});
+
+watch(
+  () => props.newVisitorData,
+  (newVal) => {
+    if (newVal) {
+      newVisitorData.value.first_name = newVal.first_name || '';
+      newVisitorData.value.last_name = newVal.last_name || '';
+      newVisitorData.value.birth_date = newVal.birth_date || '';
+    }
+  },
+  { immediate: true }
+);
+
+const isInAgeRange = ref(false);
 
 // Completed
 const isShowAddChild = computed(() => {
-  if (!userStore.isLoggedIn && userStore.getVisitorOptions.length < 1) {
-    return false
-  }
-
-  return true
-})
+  return userStore.isLoggedIn || userStore.getVisitorOptions.length > 0;
+});
 
 // Actions
 const calculateAge = (birth_date: string) => {
-  const [year, month, day] = birth_date.split('-').map(Number); // Convert mm/dd/yyyy to numbers
+  const [year, month, day] = birth_date.split('-').map(Number);
   const birthDate = new Date(year, month - 1, day);
   const today = new Date();
   let age = today.getFullYear() - birthDate.getFullYear();
   const monthDiff = today.getMonth() - birthDate.getMonth();
   if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-    age--; // If the birthday hasn't happened yet this year, subtract one from age
+    age--;
   }
   return age;
 };
 
 const filterVisitorOptions = (age_group: any) => {
-
   let min_age: number, max_age: number | null;
   if (age_group.includes('-')) {
-    // Handle "min_age-max_age" format
     [min_age, max_age] = age_group.split('-').map(Number);
   } else if (age_group.includes('+')) {
-    // Handle "min_age+" format
     min_age = Number(age_group.replace('+', ''));
-    max_age = null; // No upper limit
+    max_age = null;
   } else {
     throw new Error('Invalid age group format');
   }
 
-
-  const returnOptions = userStore.visitors
+  return userStore.visitors
     .filter(visitor => {
-      const visitorAge = calculateAge(visitor.birth_date); // Calculate the visitor's age
-
+      const visitorAge = calculateAge(visitor.birth_date);
       if (max_age !== null) {
-        // If max_age exists, check if the visitor's age is within the range
         return visitorAge >= min_age && visitorAge <= max_age;
       } else {
-        // If there's no max_age, check if the visitor's age is greater than or equal to min_age
         return visitorAge >= min_age;
       }
     })
@@ -180,56 +182,64 @@ const filterVisitorOptions = (age_group: any) => {
       value: visitor.id,
       label: `${visitor.first_name} ${visitor.last_name}`,
     }));
-
-  return returnOptions
-}
+};
 
 const checkValidity = (event: {
-  target: { reportValidity: () => void }
-  relatedTarget: { focus: () => void }
+  target: { reportValidity: () => void };
+  relatedTarget: { focus: () => void };
 }) => {
-  event.target.reportValidity()
-  event.relatedTarget?.focus()
-}
+  event.target.reportValidity();
+  event.relatedTarget?.focus();
+};
 
-const closeMessage = () =>{
-  isInAgeRange.value = false
-}
+const closeMessage = () => {
+  isInAgeRange.value = false;
+};
 
+const clearVisitorData = () => {
+  newVisitorData.value.first_name = '';
+  newVisitorData.value.last_name = '';
+  newVisitorData.value.birth_date = '';
+};
 
 const addVisitor = () => {
-  userStore.postVisitor(props.newVisitorData).then((res: any) => {
-    emit('update:visitors', res.id)
-    step.value = GetChildStep.Select
-    const newVisitorAge = calculateAge(props.newVisitorData.birth_date)
-    let min_age: number, max_age: number | null;
-    if (props.product.age_group.includes('-')) {
-      // Handle "min_age-max_age" format
-      [min_age, max_age] = props.product.age_group.split('-').map(Number);
-    } else if (props.product.age_group.includes('+')) {
-      // Handle "min_age+" format
-      min_age = Number(props.product.age_group.replace('+', ''));
-      max_age = null; // No upper limit
-    } else {
-      throw new Error('Invalid age group format');
-    }
+  console.log('Adding Visitor:', newVisitorData.value);
 
-    props.newVisitorData.first_name = '' 
-    props.newVisitorData.last_name= ''
-    props.newVisitorData.birth_date= ''
-    if (max_age !== null) {
-        // If max_age exists, check if the visitor's age is within the range
-        if(newVisitorAge >= min_age && newVisitorAge <= max_age)
-          isInAgeRange.value = false
-        else
-          isInAgeRange.value = true
+  userStore
+    .postVisitor(newVisitorData.value)
+    .then((res: any) => {
+      // Emit updated visitor list including the new visitor data
+      emit('update:visitors', {
+        id: res.id,
+        first_name: newVisitorData.value.first_name,
+        last_name: newVisitorData.value.last_name,
+        birth_date: newVisitorData.value.birth_date,
+      });
+
+      // Clear form after submission
+      clearVisitorData();
+      step.value = GetChildStep.Select;
+
+      // Validate age range logic
+      const newVisitorAge = calculateAge(newVisitorData.value.birth_date);
+      let min_age, max_age;
+      if (props.product.age_group.includes('-')) {
+        [min_age, max_age] = props.product.age_group.split('-').map(Number);
+      } else if (props.product.age_group.includes('+')) {
+        min_age = Number(props.product.age_group.replace('+', ''));
+        max_age = null;
       } else {
-        // If there's no max_age, check if the visitor's age is greater than or equal to min_age
-        if(newVisitorAge >= min_age)
-          isInAgeRange.value = false
-        else
-          isInAgeRange.value = true
+        throw new Error('Invalid age group format');
       }
-  })
-}
+
+      if (max_age !== null) {
+        isInAgeRange.value = newVisitorAge < min_age || newVisitorAge > max_age;
+      } else {
+        isInAgeRange.value = newVisitorAge < min_age;
+      }
+    })
+    .catch((err) => {
+      console.error('Error adding visitor:', err);
+    });
+};
 </script>
