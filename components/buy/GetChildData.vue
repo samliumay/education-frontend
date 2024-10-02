@@ -6,9 +6,8 @@
       <AppSelect
         :placeholder="$t('common.children.selectChild')"
         :options="filterVisitorOptions(props.product.age_group)"
-        :value="visitors"
-        @update:value="el => $emit('update:visitors', el)"
-        :IsMultiple="IsMultiple"
+        :value="visitor"
+        @update:value="el => $emit('update:visitor', el)"
       />
     </template>
     <form
@@ -158,8 +157,8 @@ const calculateAge = (birth_date: string) => {
   return age;
 };
 
-const filterVisitorOptions = (age_group: any) => {
-  let min_age: number, max_age: number | null;
+const filterVisitorOptions = (age_group) => {
+  let min_age, max_age;
   if (age_group.includes('-')) {
     [min_age, max_age] = age_group.split('-').map(Number);
   } else if (age_group.includes('+')) {
@@ -179,8 +178,8 @@ const filterVisitorOptions = (age_group: any) => {
       }
     })
     .map(visitor => ({
-      value: visitor.id,
-      label: `${visitor.first_name} ${visitor.last_name}`,
+      value: visitor.id, // Ensure the value is the ID
+      label: `${visitor.first_name} ${visitor.last_name}`, // Full name for display
     }));
 };
 
@@ -203,11 +202,16 @@ const clearVisitorData = () => {
 };
 
 const addVisitor = () => {
-  console.log('Adding Visitor:', newVisitorData.value);
+  // Log the raw data from the reactive object
+  console.log('Adding Visitor:', { ...newVisitorData.value });
 
   userStore
-    .postVisitor(newVisitorData.value)
+    .postVisitor({ ...newVisitorData.value }) // Spread the value to get the raw data
     .then((res: any) => {
+      console.log("res ", res)
+      console.log("newVisitorData.value.first_name ", newVisitorData.value.first_name)
+      console.log("newVisitorData.value.last_name ", newVisitorData.value.last_name)
+      console.log("newVisitorData.value.birth_date ", newVisitorData.value.birth_date)
       // Emit updated visitor list including the new visitor data
       emit('update:visitors', {
         id: res.id,
