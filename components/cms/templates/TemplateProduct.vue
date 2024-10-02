@@ -99,17 +99,25 @@ const catalogType = computed(() => {
 // eslint-disable-next-line vue/no-setup-props-destructure
 const { data: products, pending: productsPending } = await useAsyncData(
   'products',
-  () =>
-    $fetch(`${address}/products/`, {
+  async () => {
+    // Make the API request
+    const response = await $fetch(`${address}/products/`, {
       params: {
         locale: locale.value,
         fields: '*',
         product_type: catalogType.value,
         ...props.filters,
       },
-    }),
+    });
+
+    // Log the response to the console
+    console.log('Fetched products:', response);
+
+    return response; // Ensure the fetched data is returned
+  },
   { watch: [locale, props.filters], deep: true },
-)
+);
+
 
 // Add more items
 const defaultItemsCount = 3
