@@ -3,14 +3,15 @@
 
   <div class="flex flex-col gap-[12px] mt-[16px]">
     <template v-if="step === GetChildStep.Select">
+      <!-- Use :value and @update:value to handle two-way binding -->
       <AppSelect
         :placeholder="$t('common.children.selectChild')"
         :options="filterVisitorOptions(props.product.age_group)"
         :value="visitors"
-        @update:value="el => $emit('update:visitors', el)"
-        :IsMultiple="IsMultiple"
+        @update:value="updateVisitors"
       />
     </template>
+
     <form
       v-else-if="step === GetChildStep.Add"
       ref="form"
@@ -55,6 +56,7 @@
         {{ $t('common.children.addChild') }}
       </AppButton>
     </form>
+
     <div
       v-if="isInAgeRange"
       class="flex gap-[20px] border-brand-black border-[1px]"
@@ -69,6 +71,7 @@
         <img src="/icons/cross.svg" alt="close" class="w-[15px] h-[15px]" />
       </button>
     </div>
+
     <div
       v-show="isShowAddChild"
       class="flex items-center gap-[8px] cursor-pointer"
@@ -94,12 +97,12 @@
 import { computed, ref, watch, type VNodeRef } from 'vue';
 
 import ArrowIcon from '../../public/icons/arrow_short_right.svg';
-import { useUserStore } from '../../store/user';
-import { GetChildStep } from '../../types';
+import { useUserStore } from '@/store/user.ts';
+import { GetChildStep } from '@/types';
 import AppButton from '../AppButton.vue';
 import AppInput from '../AppInput.vue';
 import AppSelect from '../AppSelect.vue';
-import type { Product } from '../../types';
+import type { Product } from '@/types';
 
 // Init component
 const props = defineProps<{
@@ -145,6 +148,11 @@ const isShowAddChild = computed(() => {
   return userStore.isLoggedIn || userStore.getVisitorOptions.length > 0;
 });
 
+// Function to handle update of visitors from AppSelect
+const updateVisitors = (newValue: any) => {
+  emit('update:visitors', newValue);
+};
+
 // Actions
 const calculateAge = (birth_date: string) => {
   const [year, month, day] = birth_date.split('-').map(Number);
@@ -158,8 +166,8 @@ const calculateAge = (birth_date: string) => {
   return age;
 };
 
-const filterVisitorOptions = (age_group: any) => {
-  let min_age: number, max_age: number | null;
+const filterVisitorOptions = (age_group: string) => {
+  let min_age, max_age;
   if (age_group.includes('-')) {
     [min_age, max_age] = age_group.split('-').map(Number);
   } else if (age_group.includes('+')) {
@@ -179,8 +187,8 @@ const filterVisitorOptions = (age_group: any) => {
       }
     })
     .map(visitor => ({
-      value: visitor.id,
-      label: `${visitor.first_name} ${visitor.last_name}`,
+      value: visitor.id, // Ensure the value is the ID
+      label: `${visitor.first_name} ${visitor.last_name}`, // Full name for display
     }));
 };
 
@@ -203,17 +211,18 @@ const clearVisitorData = () => {
 };
 
 const addVisitor = () => {
-  console.log('Adding Visitor:', newVisitorData.value);
+  // Log the raw data from the reactive object
+  console.log('Adding Visitor:', { ...newVisitorData.value });
 
   userStore
-    .postVisitor(newVisitorData.value)
+    .postVisitor({ ...newVisitorData.value }) // Spread the value to get the raw data
     .then((res: any) => {
       // Emit updated visitor list including the new visitor data
       emit('update:visitors', {
         id: res.id,
-        first_name: newVisitorData.value.first_name,
-        last_name: newVisitorData.value.last_name,
-        birth_date: newVisitorData.value.birth_date,
+        first_name: res.first_name,
+        last_name: res.last_name,
+        birth_date: res.birth_date,
       });
 
       // Clear form after submission
@@ -228,8 +237,6 @@ const addVisitor = () => {
       } else if (props.product.age_group.includes('+')) {
         min_age = Number(props.product.age_group.replace('+', ''));
         max_age = null;
-      } else {
-        throw new Error('Invalid age group format');
       }
 
       if (max_age !== null) {

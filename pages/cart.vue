@@ -367,6 +367,8 @@ import EmptyCart from '../components/cart/EmptyCart.vue'
 import { useCartStore } from '../store/cart'
 import { useUserStore } from '../store/user'
 import { useLocaleStore } from '../store/locale';
+import ErrorBoundaryBlock
+  from '@/components/cms/blocks/misc/ErrorBoundaryBlock.vue'
 
 const { t } = useI18n()
 
