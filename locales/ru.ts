@@ -290,6 +290,8 @@ export const ru = {
       paypal: 'Оплата через Paypal',
       stripe: 'Оплата через Stripe',
     },
+    requestProposal: 'Запросить предложение',
+    close: 'Закрывать',
     unknown: 'Неизвестно',
     perMonth: '/мес',
     selectedDays: 'Выбранные дни посещения',

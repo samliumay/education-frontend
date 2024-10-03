@@ -284,7 +284,7 @@ export const en = {
       phone: 'Phone',
       password: 'Password',
       repeatPassword: 'Repeat password',
-      relation: 'Relation with the child'
+      relation: 'Relation with the child',
     },
     paymentDetails: {
       title: 'Payment details',
@@ -300,6 +300,8 @@ export const en = {
       paypal: 'Payment via Paypal',
       stripe: 'Payment via Stripe',
     },
+    requestProposal: 'Request Proposal',
+    close: 'Close',
     unknown: 'Unknown',
     perMonth: '/month',
     selectedDays: 'Selected visiting days',
