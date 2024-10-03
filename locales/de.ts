@@ -58,6 +58,8 @@ export const de = {
     courseNotFound: 'Der Kurs mit der angegebenen ID wurde nicht gefunden',
     you: 'Du',
     canceled: 'Abgesagt',
+    back: 'Zurück',
+    backRouter: 'Zurück',
     contacts: {
       contactUs: 'Kontaktieren Sie uns',
       tryout: 'Probekurs vereinbaren',

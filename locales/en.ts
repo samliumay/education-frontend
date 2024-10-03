@@ -60,7 +60,7 @@ export const en = {
     you: 'You',
     canceled: 'Canceled',
     back: 'Back',
-    backRouter: '<',
+    backRouter: 'Back',
     contacts: {
       contactUs: 'Contact us',
       tryout: 'Arrange a trial course',
