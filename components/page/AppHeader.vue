@@ -106,16 +106,16 @@
         >
           {{ $t('common.actions.signIn') }}
         </AppButton>
-        
+
       </div>
-      
+
     </div>
-    <div class="absolute bg-white rounded-full w-[50px] h-[50px] min-h-[50px] min-w-[50px] overflow-hidden border-[1px] right-0 mt-16 mr-16 ">
-      <AppButton @click="goBack" 
-      >
-          {{ $t('common.backRouter') }}
+    <div class="absolute bg-white rounded-[4px] w-[50px] h-[50px] flex justify-center items-center border-[1px] right-0 mt-16 mr-16">
+      <AppButton @click="goBack">
+        {{ $t('common.backRouter') }}
       </AppButton>
     </div>
+
 
     <!-- MOBILE HEADER -->
     <div
