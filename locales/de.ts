@@ -293,6 +293,8 @@ export const de = {
       paypal: 'Zahlung per Paypal',
       stripe: 'Zahlung per Stripe',
     },
+    requestProposal: 'Angebot anfordern',
+    close: 'Schließen',
     unknown: 'Unbekannt',
     perMonth: '/Monat',
     selectedDays: 'Ausgewählte Besuchstage',
