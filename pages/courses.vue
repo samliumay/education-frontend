@@ -1,20 +1,26 @@
 <template>
   <TemplateProduct v-bind="templateProps">
     <template #filters="{ title }">
-      <div
-        class="flex flex-col lg:flex-row lg:items-center block-padding-x gap-5"
-      >
+      <div class="flex flex-col lg:flex-row lg:items-center block-padding-x gap-5">
         <div class="flex items-center gap-[18px]">
-          <h1
-            class="text-[38px] md:text-[32px] sm:text-[48px] font-medium uppercase"
-          >
+          <h1 class="text-[38px] md:text-[32px] sm:text-[48px] font-medium uppercase">
             {{ title }}
           </h1>
         </div>
 
-        <div
-          class="flex justify-start lg:justify-end flex-wrap w-full items-center gap-[12px]"
-        >
+        <div class="flex justify-start lg:justify-end flex-wrap w-full items-center gap-[12px]">
+          <AppInput
+            v-show="!categoriesPending"
+            v-model="filters.search"
+            :isInvalid="true"
+            :placeholder="$t('common.filters.search')"
+            class="max-w-[160px] min-w-[120px]"
+            type="search"
+            pattern=".{1,64}"
+            clearable
+            @input="filterCourses"
+          />
+
           <AppSelect
             v-show="!categoriesPending"
             v-model:value="filters.category"
@@ -30,13 +36,29 @@
             :options="languageOptions"
             class="max-w-[160px] min-w-[120px]"
           />
-          <AppSelect
-            v-model:value="filters.age_group"
-            :placeholder="$t('common.filters.age')"
-            clearable
-            :options="ageOptions"
+          <p>{{ $t('common.filters.age') }}</p>
+          <AppInput
+            v-show="!categoriesPending"
+            v-model="ageFilters.min_age"
+            :isInvalid="true"
+            :placeholder="$t('common.filters.minAge')"
             class="max-w-[160px] min-w-[120px]"
+            type="number"
+            required
+            @blur="getAge()"
           />
+          <p>~</p>
+          <AppInput
+            v-show="!categoriesPending"
+            v-model="ageFilters.max_age"
+            :isInvalid="true"
+            :placeholder="$t('common.filters.maxAge')"
+            class="max-w-[160px] min-w-[120px]"
+            type="number"
+            required
+            @blur="getAge()"
+          />
+
           <AppSelect
             v-show="!branchesPending"
             v-model:value="filters.branch"
@@ -50,26 +72,31 @@
     </template>
   </TemplateProduct>
 </template>
+
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref } from 'vue';
+import { getApiAddress } from '@/utils/getApiAddress';
+import AppSelect from '../components/AppSelect.vue';
+import AppInput from '../components/AppInput.vue';
+import TemplateProduct from '../components/cms/templates/TemplateProduct.vue';
+import { ageOptionsByLocale, languageOptionsByLocale } from '../mappers/options';
 
-import { getApiAddress } from '@/utils/getApiAddress'
+const { locale, t } = useI18n({ useScope: 'global' });
 
-import AppSelect from '../components/AppSelect.vue'
-import TemplateProduct from '../components/cms/templates/TemplateProduct.vue'
-import { ageOptionsByLocale, languageOptionsByLocale } from '../mappers/options'
-
-const { locale, t } = useI18n({ useScope: 'global' })
-
-const ageOptions = ageOptionsByLocale(t)
-const languageOptions = languageOptionsByLocale(t)
+const languageOptions = languageOptionsByLocale(t);
 
 const filters = ref({
-  language: null,
-  age_group: null,
-  branch: null,
-  category: null,
-})
+  search: undefined,
+  language: undefined,
+  age_group: undefined as undefined | string,
+  branch: undefined,
+  category: undefined,
+});
+
+const ageFilters = ref({
+  min_age: 1,
+  max_age: 100,
+});
 
 const templateProps = computed(() => ({
   filters: filters.value,
@@ -82,22 +109,33 @@ const templateProps = computed(() => ({
   blockProps: {
     type: 'сourse',
   },
-}))
+}));
 
-// API
-const { data: branches, branchesPending } = useFetch(
-  getApiAddress(`/api/v2/products/branches/`),
-)
+const getAge = () => {
+  filters.value.age_group = ``;
+  console.log('Current filters:', filters.value);
+}
+
+
+// API for fetching branches
+const {
+  data: branches,
+  branchesPending,
+} = useFetch(getApiAddress(`/api/v2/products/branches/`));
 const branchesOptions = computed(() =>
   branches.value
     ? branches.value.map(branch => ({
       label: branch.name,
       value: branch.id,
     }))
-    : [],
-)
+    : []
+);
 
-const { data: categories, pending: categoriesPending } = await useAsyncData(
+// API for fetching categories
+const {
+  data: categories,
+  pending: categoriesPending,
+} = await useAsyncData(
   'categories',
   () =>
     $fetch(getApiAddress(`/api/v2/products/categories/`), {
@@ -105,8 +143,8 @@ const { data: categories, pending: categoriesPending } = await useAsyncData(
         locale: locale.value,
       },
     }),
-  { watch: [locale] },
-)
+  { watch: [locale] }
+);
 
 const categoriesOptions = computed(() =>
   categories.value
@@ -114,6 +152,6 @@ const categoriesOptions = computed(() =>
       label: category.name,
       value: category.name.replace(' ', '+'),
     }))
-    : [],
-)
+    : []
+);
 </script>

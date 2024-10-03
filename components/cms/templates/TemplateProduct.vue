@@ -1,7 +1,7 @@
 <template>
   <LoaderBlock v-if="catalogsGroupPending" />
   <div v-else class="flex flex-col gap-2">
-    <div class="flex justify-between items-center" >
+    <div class="flex justify-between items-center">
       <div>
         <n-breadcrumb class="mt-4 block-padding">
           <n-breadcrumb-item сlass="text-brand-gray">
@@ -40,11 +40,15 @@ import { getApiAddress } from '../../../utils/getApiAddress'
 import LoaderBlock from '../blocks/misc/LoaderBlock.vue'
 import PageConstructor from '../PageConstructor.vue'
 
-
 const props = defineProps<{
   head: { title: string; description: string }
   api: { type: string }
-  filters: { language?: string; age_group?: string; season?: string; search?: string;  }
+  filters: {
+    language?: string;
+    age_group?: string;
+    season?: string;
+    search?: string;
+  }
   blockProps: Record<string, unknown>
 }>()
 
@@ -54,15 +58,15 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: head.value?.description || 'Clavis website page',
-    },
+      content: head.value?.description || 'Clavis website page'
+    }
   ],
   link: [
     {
       rel: 'canonical',
-      href: 'https://clavis-schule.de/',
-    },
-  ],
+      href: 'https://clavis-schule.de/'
+    }
+  ]
 })
 
 // API
@@ -73,17 +77,23 @@ const { locale } = useI18n({ useScope: 'global' })
 
 // Docs https://the-o.youtrack.cloud/articles/CLAVIS-A-32/Katalogi
 // Catalog header and icon
-const { data: catalogsGroup, pending: catalogsGroupPending } =
+const {
+  data: catalogsGroup,
+  pending: catalogsGroupPending
+} =
   await useAsyncData(
     'catalogs',
     () =>
       $fetch(`${address}/catalog/`, {
         params: {
           locale: locale.value,
-          type: api.value.type,
-        },
+          type: api.value.type
+        }
       }),
-    { watch: [locale], deep: true },
+    {
+      watch: [locale],
+      deep: true
+    }
   )
 
 const catalog = computed(() => catalogsGroup.value?.items?.[0])
@@ -97,23 +107,55 @@ const catalogType = computed(() => {
   return api.value.type
 })
 // eslint-disable-next-line vue/no-setup-props-destructure
+
 const { data: products, pending: productsPending } = await useAsyncData(
   'products',
   async () => {
     // Make the API request
-    const response = await $fetch(`${address}/products/`, {
+    let response = await $fetch(`${address}/products/`, {
       params: {
         locale: locale.value,
         fields: '*',
         product_type: catalogType.value,
-        ...props.filters,
       },
     });
 
-    // Log the response to the console
-    console.log('Fetched products:', response);
+    // Log the initial response to the console
+    console.log('Initial Response:', response);
 
-    return response; // Ensure the fetched data is returned
+    // Prepare the filtered products structure
+    let filteredProducts = {
+      total_count: 0, // Initialize total count
+      items: [], // Initialize items array
+    };
+
+    // Check if props.filters.search is defined and has a value
+    if (props.filters.search) {
+      const searchTerm = props.filters.search.toLowerCase(); // Convert search term to lowercase for case-insensitive comparison
+      console.log('Search Term:', searchTerm); // Log the search term for debugging
+
+      // Access the items array
+      const productsArray = response.items || []; // Fallback to an empty array if items doesn't exist
+
+      // Filter the products based on the search term
+      filteredProducts.items = productsArray.filter(product => {
+        // Ensure product.name is defined and perform the check
+        const productName = product.name ? product.name.toLowerCase() : '';
+        console.log(`Checking product: ${productName}`); // Log each product name being checked
+        return productName.includes(searchTerm); // Check if product name includes the search term
+      });
+    } else {
+      // If no search term, return all products
+      filteredProducts.items = response.items || [];
+    }
+
+    // Update total_count based on the filtered items
+    filteredProducts.total_count = filteredProducts.items.length;
+
+    // Log the filtered response for debugging
+    console.log('Filtered Products:', filteredProducts);
+
+    return filteredProducts; // Return the formatted response
   },
   { watch: [locale, props.filters], deep: true },
 );
