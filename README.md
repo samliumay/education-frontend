@@ -3,6 +3,10 @@
 
 This is the **frontend** of the **Education-Aided System**, which helps provide educational tools and resources for students, teachers, and administrators. The frontend is built using **Vue.js** and interacts with a backend API to provide functionalities like course management, assignments, and user dashboards.
 
+## Preview
+
+![Screenshot1](./assets/Screenshot 2024-10-22 113811.jpg)
+
 ## Table of Contents
 
 - [Installation](#installation)
