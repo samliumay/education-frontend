@@ -8,10 +8,8 @@ This is the **frontend** of the **Education-Aided System**, which helps provide 
 - [Installation](#installation)
 - [Project Setup](#project-setup)
 - [Features](#features)
-- [Folder Structure](#folder-structure)
 - [Technologies](#technologies)
 - [Running Locally](#running-locally)
-- [API Integration](#api-integration)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -92,23 +90,6 @@ Your app will be available at [http://localhost:8080](http://localhost:8080).
 - **User Dashboards**: Personalized dashboards for students, teachers, and administrators.
 - **Admin Panel**: Admins can manage users, courses, and settings.
 
-## Folder Structure
-
-Here is a brief overview of the project folder structure:
-
-```
-src/
-├── assets/            # Static assets like images, fonts, etc.
-├── components/        # Reusable components (buttons, cards, etc.)
-├── views/             # Pages (Login, Dashboard, Courses, etc.)
-├── store/             # Vuex store (state management)
-├── router/            # Vue Router configuration (routes)
-├── services/          # API calls and data fetching functions
-├── utils/             # Utility functions and helpers
-└── App.vue            # Main Vue component
-└── main.js            # Vue entry point (initialize Vue app)
-```
-
 ## Technologies
 
 This project is built using the following technologies:
@@ -128,16 +109,6 @@ To run the app locally on your machine, make sure to follow these steps:
 2. Set the appropriate environment variables (refer to the `.env` file).
 3. Run the project using `npm run serve` or `yarn serve`.
 4. Visit [http://localhost:8080](http://localhost:8080) to view the frontend.
-
-## API Integration
-
-The frontend interacts with the **backend API** for various functionalities. Example API endpoints:
-
-- **GET** `/courses`: Fetch a list of available courses.
-- **POST** `/auth/login`: User login and token retrieval.
-- **GET** `/users/{id}/grades`: Fetch grades for a specific user.
-
-For more details, refer to the [backend API documentation](https://github.com/yourusername/education-aided-system-backend).
 
 ## Contributing
 
