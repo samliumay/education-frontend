@@ -5,7 +5,8 @@ This is the **frontend** of the **Education-Aided System**, which helps provide 
 
 ## Preview
 
-![Screenshot1](./assets/Screenshot 2024-10-22 113811.jpg)
+![Screenshot1](./assets/Screenshot_2024-10-22_113811.jpg)
+![Screenshot2](./assets/Screenshot_2024-10-22_113851.jpg)
 
 ## Table of Contents
 
